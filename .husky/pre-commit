@@ -1,44 +1,67 @@
 #!/usr/bin/env sh
 
-# Pre-commit hook for {{theme_slug}} theme
-# This hook runs before each commit to ensure code quality
+# Pre-commit hook for block theme scaffold
+# Intelligently handles both scaffold mode and generated theme mode
 
 . "$(dirname -- "$0")/_/husky.sh"
 
-echo "🔍 Running pre-commit checks for {{theme_name}}..."
+# Check if we're in scaffold mode (has mustache variables)
+if node bin/test-placeholders.js check package.json 2>/dev/null; then
+    echo "🔍 Scaffold mode detected - using dry-run linting..."
+    echo ""
 
-# Run JavaScript linting
-echo "🟡 Linting JavaScript..."
-npm run lint:js || {
-    echo "❌ JavaScript linting failed. Please fix the issues and try again."
-    exit 1
-}
-
-# Run CSS linting
-echo "🟡 Linting CSS..."
-npm run lint:css || {
-    echo "❌ CSS linting failed. Please fix the issues and try again."
-    exit 1
-}
-
-# Run PHP linting (if composer is available)
-if command -v composer &> /dev/null; then
-    echo "🟡 Linting PHP..."
-    composer run lint || {
-        echo "❌ PHP linting failed. Please fix the issues and try again."
+    # Run lint dry-run which handles mustache variables
+    npm run lint:dry-run || {
+        echo ""
+        echo "❌ Lint dry-run failed. Please fix the issues and try again."
+        echo "💡 Tip: Run 'npm run lint:dry-run' to see all issues"
+        echo "💡 To bypass this check (not recommended), use: git commit --no-verify"
         exit 1
     }
+
+    echo ""
+    echo "✅ All scaffold pre-commit checks passed!"
+
 else
-    echo "⚠️  Skipping PHP linting (Composer not available)"
+    echo "🔍 Generated theme mode detected - running standard linting..."
+    echo ""
+
+    # Standard linting for generated themes
+    echo "🟡 Linting JavaScript..."
+    npm run lint:js || {
+        echo "❌ JavaScript linting failed. Please fix the issues and try again."
+        echo "💡 Tip: Run 'npm run lint:js:fix' to auto-fix many issues"
+        exit 1
+    }
+
+    echo "🟡 Linting CSS..."
+    npm run lint:css || {
+        echo "❌ CSS linting failed. Please fix the issues and try again."
+        echo "💡 Tip: Run 'npm run lint:css:fix' to auto-fix many issues"
+        exit 1
+    }
+
+    # Run PHP linting (if composer is available)
+    if command -v composer > /dev/null 2>&1; then
+        echo "🟡 Linting PHP..."
+        composer run lint || {
+            echo "❌ PHP linting failed. Please fix the issues and try again."
+            echo "💡 Tip: Run 'composer run lint:fix' to auto-fix many issues"
+            exit 1
+        }
+    else
+        echo "⚠️  Skipping PHP linting (Composer not available)"
+    fi
+
+    # Run security audit
+    echo "🔒 Running security audit..."
+    npm audit --audit-level=high --production || {
+        echo "⚠️  Security vulnerabilities detected (high or critical)."
+        echo "💡 Run 'npm audit' for details or 'npm audit fix' to attempt automatic fixes."
+        echo "💡 To bypass this check (not recommended), use: git commit --no-verify"
+        exit 1
+    }
+
+    echo ""
+    echo "✅ All pre-commit checks passed!"
 fi
-
-# Run security audit
-echo "🔒 Running security audit..."
-npm audit --audit-level=high --production || {
-    echo "⚠️  Security vulnerabilities detected (high or critical)."
-    echo "Run 'npm audit' for details or 'npm audit fix' to attempt automatic fixes."
-    echo "To bypass this check (not recommended), use: git commit --no-verify"
-    exit 1
-}
-
-echo "✅ All pre-commit checks passed!"

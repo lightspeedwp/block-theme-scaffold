@@ -11,7 +11,14 @@ test-results/
 playwright-report/
 bin/
 docs/
-reports/
+
+# Runtime logs and temporary files
+logs/
+tmp/
+.github/reports/
+!.github/reports/README.md
+!.github/reports/.gitkeep
+
 .devcontainer/
 *.log
 *.lock

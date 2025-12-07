@@ -24,11 +24,167 @@ block-theme-scaffold/
 ├── tests/
 │   ├── js/              # JavaScript unit tests
 │   ├── php/             # PHP unit tests
-│   └── e2e/             # End-to-end tests
-├── .jest.config.cjs     # Jest configuration
-├── .playwright.config.cjs  # Playwright configuration
-└── phpunit.xml          # PHPUnit configuration
+│   ├── e2e/             # End-to-end tests
+│   ├── test-logger.js   # Test logging utility
+│   ├── test-utils.js    # Test utilities
+│   ├── setup-tests.js   # Jest setup
+│   └── bootstrap.php    # PHPUnit bootstrap
+├── jest.config.js       # Jest configuration
+├── phpunit.xml          # PHPUnit configuration
+├── composer.json        # PHP dependencies & test scripts
+└── package.json         # Node dependencies & test scripts
 ```
+
+## Configuration Files
+
+### Jest Configuration (`jest.config.js`)
+
+```javascript
+module.exports = {
+  preset: '@wordpress/jest-preset-default',
+  testEnvironment: 'jsdom',
+  setupFilesAfterEnv: [
+    '@wordpress/jest-console',
+    '@wordpress/jest-puppeteer-axe',
+    'expect-puppeteer',
+  ],
+  testPathIgnorePatterns: [
+    '/node_modules/',
+    '/vendor/',
+    '/public/',
+  ],
+  collectCoverageFrom: [
+    'src/**/*.{js,jsx}',
+    '!src/**/*.test.{js,jsx}',
+    '!src/**/*.stories.{js,jsx}',
+  ],
+  coverageDirectory: 'coverage',
+  coverageReporters: ['text', 'lcov', 'html'],
+};
+```
+
+**Key settings:**
+
+- Uses `@wordpress/jest-preset-default` for WordPress compatibility
+- `jsdom` environment for DOM testing
+- Excludes `node_modules`, `vendor`, `public` from tests
+- Collects coverage from `src/` directory
+- Outputs coverage to `coverage/` directory
+
+**Reference:** [Jest Configuration Documentation](https://jestjs.io/docs/configuration)
+
+### PHPUnit Configuration (`phpunit.xml`)
+
+```xml
+<?xml version="1.0"?>
+<phpunit
+  bootstrap="tests/bootstrap.php"
+  backupGlobals="false"
+  colors="true"
+  convertErrorsToExceptions="true"
+  convertNoticesToExceptions="true"
+  convertWarningsToExceptions="true"
+>
+  <testsuites>
+    <testsuite name="{{theme_name}} Test Suite">
+      <directory prefix="test-" suffix=".php">./tests/</directory>
+    </testsuite>
+  </testsuites>
+  <coverage includeUncoveredFiles="true">
+    <include>
+      <directory suffix=".php">./inc/</directory>
+      <file>./functions.php</file>
+    </include>
+    <exclude>
+      <directory>./tests/</directory>
+      <directory>./vendor/</directory>
+      <directory>./node_modules/</directory>
+    </exclude>
+  </coverage>
+  <php>
+    <const name="WP_TESTS_PHPUNIT_POLYFILLS_PATH" value="./vendor/yoast/phpunit-polyfills/phpunitpolyfills-autoload.php" />
+  </php>
+</phpunit>
+```
+
+**Key settings:**
+
+- Uses `tests/bootstrap.php` to load WordPress test environment
+- Test files must be prefixed with `test-` and suffixed with `.php`
+- Collects coverage from `inc/` and `functions.php`
+- Uses Yoast PHPUnit Polyfills for WordPress compatibility
+- Converts errors, notices, and warnings to exceptions
+
+**Reference:** [PHPUnit Configuration Documentation](https://docs.phpunit.de/en/10.5/configuration.html)
+
+### Composer Configuration (`composer.json`)
+
+```json
+{
+  "require-dev": {
+    "squizlabs/php_codesniffer": "^3.7",
+    "wp-coding-standards/wpcs": "^3.0",
+    "phpcompatibility/phpcompatibility-wp": "^2.1",
+    "dealerdirect/phpcodesniffer-composer-installer": "^1.0",
+    "phpunit/phpunit": "^9.0",
+    "yoast/phpunit-polyfills": "^1.0"
+  },
+  "scripts": {
+    "lint": "phpcs",
+    "lint:fix": "phpcbf",
+    "test": "phpunit",
+    "test:coverage": "phpunit --coverage-html coverage"
+  }
+}
+```
+
+**Key dependencies:**
+
+- `phpunit/phpunit` - PHP testing framework
+- `yoast/phpunit-polyfills` - WordPress compatibility layer
+- `squizlabs/php_codesniffer` - PHP code style checker
+- `wp-coding-standards/wpcs` - WordPress coding standards
+- `phpcompatibility/phpcompatibility-wp` - PHP compatibility checker
+
+**Test scripts:**
+
+- `composer test` - Run PHPUnit tests
+- `composer test:coverage` - Run tests with HTML coverage report
+- `composer lint` - Run PHP_CodeSniffer
+- `composer lint:fix` - Auto-fix PHP code style issues
+
+**Reference:** [Composer Scripts Documentation](https://getcomposer.org/doc/articles/scripts.md)
+
+## Test Logging
+
+All tests use the centralized logging utility for consistent log output.
+
+### Test Logger Utility
+
+Location: `tests/test-logger.js`
+
+```javascript
+const TestLogger = require('./test-logger');
+const logger = new TestLogger('jest');
+
+// Log test lifecycle
+logger.suiteStart('ComponentName');
+logger.testStart('should render correctly');
+logger.testEnd('should render correctly', true);
+logger.suiteEnd('ComponentName', { passed: 10, failed: 0, total: 10 });
+```
+
+**Log levels:**
+
+- `logger.debug(message)` - Detailed diagnostic information
+- `logger.info(message)` - General informational messages
+- `logger.warn(message)` - Warning messages
+- `logger.error(message)` - Error messages
+- `logger.fatal(message)` - Critical failures
+
+**Log files:** All test logs are written to `logs/test/YYYY-MM-DD-{test-type}.log`
+
+**Reference:** [LOGGING.md](./LOGGING.md) for complete logging standards
 
 ## Running Tests
 
@@ -375,6 +531,15 @@ npx playwright install
 ✅ **Automated CI/CD** - Tests run on every commit
 ✅ **High coverage** - Aim for >80% coverage
 ✅ **Best practices** - Independent, descriptive, behavior-focused tests
+✅ **Centralized logging** - Consistent test logs in logs/test/
 
-For CI/CD workflows, see [WORKFLOWS.md](./WORKFLOWS.md).
-For development setup, see [BUILD-PROCESS.md](./BUILD-PROCESS.md).
+## Related Documentation
+
+- [VALIDATION.md](./VALIDATION.md) - Quick validation reference and command guide
+- [LINTING.md](./LINTING.md) - Code quality standards and linting
+- [LOGGING.md](./LOGGING.md) - Logging standards for test output
+- [WORKFLOWS.md](./WORKFLOWS.md) - CI/CD testing workflows
+- [BUILD_PROCESS.md](./BUILD_PROCESS.md) - Build system and asset compilation
+- [PERFORMANCE.md](./PERFORMANCE.md) - Performance validation and monitoring
+- [WORKFLOWS.md](./WORKFLOWS.md) - CI/CD workflows
+- [BUILD_PROCESS.md](./BUILD_PROCESS.md) - Development setup

@@ -19,8 +19,6 @@
 	<rule ref="WordPress">
 		<!-- Allow short array syntax -->
 		<exclude name="Generic.Arrays.DisallowShortArraySyntax"/>
-		<!-- Allow short ternary operator -->
-		<exclude name="WordPress.PHP.DisallowShortTernary"/>
 	</rule>
 
 	<!-- Use WordPress-Extra rule set. -->

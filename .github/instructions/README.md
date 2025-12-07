@@ -13,12 +13,23 @@ This directory contains detailed instructions and guidelines for AI-assisted dev
 
 ## Files
 
-- **index.md** - Instructions directory index
-- **block-theme.instructions.md** - Block theme development guidelines
-- **php-wordpress.instructions.md** - WordPress PHP coding standards
-- **playwright-tests.instructions.md** - E2E testing guidelines
-- **testing.instructions.md** - General testing guidelines
-- **theme-json.instructions.md** - theme.json configuration guidelines
+**Core Development Standards:**
+
+- **accessibility.instructions.md** - Comprehensive accessibility standards (WCAG 2.2 AA)
+- **block-theme-development.instructions.md** - Block theme development guidelines
+- **html-markup.instructions.md** - HTML markup and template standards
+- **javascript.instructions.md** - JavaScript, React, and JSDoc standards
+- **wpcs-css.instructions.md** - CSS/SCSS coding standards
+- **wpcs-php.instructions.md** - WordPress PHP coding standards
+
+**Specialized Guidelines:**
+
+- **theme-json.instructions.md** - Theme.json configuration and design systems
+- **security-nonce.instructions.md** - WordPress nonce implementation patterns
+- **naming-conventions.instructions.md** - File and code naming standards
+- **reporting.instructions.md** - Report generation and management
+- **copilot-ai-agent.instructions.md** - AI agent workflows and rules
+- **generate-theme.instructions.md** - Theme generation instructions
 
 ## Purpose
 

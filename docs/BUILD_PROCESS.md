@@ -274,44 +274,13 @@ const text = __( 'Text to translate', '{{theme_slug}}' );
 <?php echo esc_html_x( 'Text', 'Context', '{{theme_slug}}' ); ?>
 ```
 
-## Linting and Formatting
+## Code Quality & Testing
 
-### JavaScript Linting
+For comprehensive guides on code validation and testing, see:
 
-```bash
-npm run lint:js          # Check JS files
-npm run lint:js:fix      # Auto-fix JS issues
-```
-
-### CSS Linting
-
-```bash
-npm run lint:css         # Check CSS/SCSS files
-npm run lint:css:fix     # Auto-fix CSS issues
-```
-
-### PHP Linting
-
-```bash
-npm run lint:php         # Check PHP files (via Composer)
-npm run lint:php:fix     # Auto-fix PHP issues
-```
-
-### Format All Files
-
-```bash
-npm run format           # Format with Prettier
-```
-
-## Testing
-
-```bash
-npm run test             # Run all tests
-npm run test:js          # JavaScript unit tests
-npm run test:js:watch    # Watch mode
-npm run test:php         # PHP unit tests
-npm run test:e2e         # End-to-end tests
-```
+- **[LINTING.md](./LINTING.md)** - Complete linting standards for JavaScript, CSS, and PHP
+- **[TESTING.md](./TESTING.md)** - Testing strategies and examples for all test types
+- **[VALIDATION.md](./VALIDATION.md)** - Reference for all validation and code quality tools
 
 ## WordPress Environment
 
@@ -330,58 +299,11 @@ Access at:
 - Username: `admin`
 - Password: `password`
 
-## Performance Optimization
+## Performance
 
-### Code Splitting
+For performance monitoring, optimization strategies, and bundle analysis, see **[PERFORMANCE.md](./PERFORMANCE.md)**.
 
-Webpack automatically splits code into optimized chunks:
-
-- Separate bundles for editor and frontend
-- Vendor code split from theme code
-- CSS extracted into separate files
-
-### Asset Optimization
-
-- **Images:** Compressed and optimized during build
-- **Fonts:** Subsetting for smaller file sizes
-- **CSS:** Minified, autoprefixed, and purged of unused styles
-- **JavaScript:** Minified, tree-shaken, and bundled efficiently
-
-### Caching
-
-Asset files include version hashes for cache busting:
-
-- `theme.asset.php` contains dependency info and version
-- WordPress automatically handles cache invalidation
-
-## Troubleshooting
-
-### Build Fails
-
-```bash
-# Clear caches
-rm -rf node_modules build
-npm install
-npm run build
-```
-
-### Hot Reload Not Working
-
-1. Check webpack-dev-server is running (`npm run start`)
-2. Verify proxy settings in `.wp-env.json`
-3. Clear browser cache
-
-### Translation Strings Not Showing
-
-1. Regenerate POT file: `npm run makepot`
-2. Ensure text domain matches theme slug
-3. Check `load_theme_textdomain()` is called in `functions.php`
-
-### Asset 404 Errors
-
-1. Verify build directory exists: `npm run build`
-2. Check paths in `functions.php` match output directory
-3. Ensure `.asset.php` files are generated
+The build system supports asset minification and compression through webpack configuration.
 
 ## References
 
@@ -389,3 +311,11 @@ npm run build
 - [WordPress Theme Build Process](https://developer.wordpress.org/themes/advanced-topics/build-process/)
 - [WordPress Internationalization](https://developer.wordpress.org/themes/advanced-topics/internationalization/)
 - [Block Theme Development](https://developer.wordpress.org/themes/block-themes/)
+
+## Related Documentation
+
+- [LINTING.md](./LINTING.md) - Code quality standards and lint dry-run mode
+- [TESTING.md](./TESTING.md) - Testing guide for all test types
+- [VALIDATION.md](./VALIDATION.md) - Comprehensive validation tools reference
+- [PERFORMANCE.md](./PERFORMANCE.md) - Performance monitoring and optimization
+- [LOGGING.md](./LOGGING.md) - Logging standards for build processes

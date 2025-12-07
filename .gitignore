@@ -20,6 +20,13 @@ languages/*.mo
 *.tmp
 *.temp
 
+# Runtime generated files - NEVER commit
+logs/
+tmp/
+.github/reports/
+!.github/reports/README.md
+!.github/reports/.gitkeep
+
 # Environment files
 .env
 .env.*

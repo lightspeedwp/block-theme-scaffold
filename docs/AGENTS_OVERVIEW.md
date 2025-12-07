@@ -68,7 +68,7 @@ This theme includes AI agents that automate development tasks, maintain code qua
 - Updates package.json and composer.json
 - Generates initial documentation
 
-**Usage**: See [GENERATE-THEME.md](./GENERATE-THEME.md) for complete guide.
+**Usage**: See [GENERATE_THEME.md](./GENERATE_THEME.md) for complete guide.
 
 ## Agent Workflows
 

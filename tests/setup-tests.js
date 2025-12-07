@@ -7,6 +7,13 @@
 // Import testing utilities
 import '@testing-library/jest-dom';
 
+// Import test logger
+const TestLogger = require('./test-logger');
+const logger = new TestLogger('jest');
+
+// Log test session start
+logger.info('Jest test session started');
+
 // Mock WordPress dependencies
 jest.mock( '@wordpress/i18n', () => ( {
 	__: jest.fn( ( text ) => text ),
@@ -47,3 +54,11 @@ global.fetch = jest.fn( () =>
 afterEach( () => {
 	jest.clearAllMocks();
 } );
+
+// Log test completion
+afterAll( () => {
+	logger.info('Jest test session completed');
+} );
+
+// Export logger for use in tests
+global.testLogger = logger;

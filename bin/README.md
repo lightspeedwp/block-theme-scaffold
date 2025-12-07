@@ -40,6 +40,69 @@ flowchart TB
 
 ## Scripts
 
+### `test-placeholders.js`
+
+**New!** Centralized test placeholder values for mustache variables. Enables linting and testing of scaffold templates.
+
+**Module Usage:**
+
+```javascript
+const {
+    testPlaceholders,
+    replacePlaceholders,
+    isScaffoldMode,
+} = require('./bin/test-placeholders');
+
+// Replace placeholders in content
+const processedContent = replacePlaceholders(templateContent);
+
+// Check if in scaffold mode
+if (isScaffoldMode('package.json')) {
+    // Use dry-run linting
+}
+```
+
+**CLI Usage:**
+
+```bash
+# Check if in scaffold mode
+node bin/test-placeholders.js check package.json
+
+# Get a specific placeholder value
+node bin/test-placeholders.js get "{{theme_slug}}"
+
+# List all placeholder keys
+node bin/test-placeholders.js list
+
+# Output all as JSON
+node bin/test-placeholders.js json
+```
+
+See [Lint Dry-Run Documentation](../docs/LINT-DRY-RUN.md) for details.
+
+### `lint-dry-run.js`
+
+Runs linting with test placeholder values, enabling code quality checks on scaffold templates.
+
+**Usage:**
+
+```bash
+# Run full linting with test values
+node bin/lint-dry-run.js
+
+# Or via npm script
+npm run lint:dry-run
+```
+
+This script:
+
+- Creates temporary directory with processed files
+- Runs JavaScript, CSS, and PHP linting
+- Cleans up automatically
+- Used by pre-commit hook in scaffold mode
+
+See [Lint Dry-Run Documentation](../docs/LINT-DRY-RUN.md) for details.
+
 ### `generate-theme.js`
 
 Generates a new theme from the scaffold template by replacing mustache placeholders with provided values.

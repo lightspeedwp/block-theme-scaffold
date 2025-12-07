@@ -319,6 +319,15 @@ add_action( 'wp_enqueue_scripts', 'theme_enqueue_scripts' );
 - Use font-display: optional
 - Preload fonts
 
+## Related Documentation
+
+- [BUILD_PROCESS.md](./BUILD_PROCESS.md) - Build system and asset compilation
+- [LINTING.md](./LINTING.md) - Code quality standards
+- [TESTING.md](./TESTING.md) - Testing guide including performance tests
+- [LOGGING.md](./LOGGING.md) - Logging performance metrics
+- [VALIDATION.md](./VALIDATION.md) - Validation quick reference
+- [WORKFLOWS.md](./WORKFLOWS.md) - CI/CD workflows including performance jobs
+
 ## Resources
 
 - [Lighthouse Documentation](https://developers.google.com/web/tools/lighthouse)

@@ -35,6 +35,7 @@
     "makejson": "wp i18n make-json languages --no-purge",
     "i18n": "npm run makepot && npm run makejson",
     "lint": "npm run lint:js && npm run lint:css && npm run lint:php",
+    "lint:dry-run": "node bin/lint-dry-run.js",
     "lint:js": "wp-scripts lint-js",
     "lint:js:fix": "wp-scripts lint-js --fix",
     "lint:css": "wp-scripts lint-style",

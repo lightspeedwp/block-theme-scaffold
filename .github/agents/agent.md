@@ -25,6 +25,13 @@ This file documents the primary automation agent(s) for this repository, their p
 
 ## Available Agents
 
+### Gemini Agent (MCP)
+
+- **Agent Spec:** `.github/agents/gemini.agent.md`
+- **Agent Script:** `.github/agents/gemini.agent.js`
+- **Purpose:** Primary agent for interfacing with Google's Gemini models for advanced code generation, refactoring, and other development tasks.
+- **Usage:** Activated via the Gemini CLI.
+
 ### Scaffold Generator Agent
 
 - **Agent Spec:** `.github/agents/scaffold-generator.agent.md`

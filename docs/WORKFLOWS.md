@@ -528,4 +528,20 @@ Never log secrets:
 ✅ **Notifications** - Get alerts on failures
 
 For agent documentation, see [AGENTS.md](./AGENTS.md).
+
+## Related Documentation
+
+### Process Documentation
+
+- [BUILD_PROCESS.md](./BUILD_PROCESS.md) - Build system details for CI/CD build jobs
+- [LINTING.md](./LINTING.md) - Code quality standards for linting workflows
+- [TESTING.md](./TESTING.md) - Testing framework details for test jobs
+- [PERFORMANCE.md](./PERFORMANCE.md) - Performance validation for performance workflows
+- [VALIDATION.md](./VALIDATION.md) - Quick validation command reference
+
+### Supporting Documentation
+
+- [LOGGING.md](./LOGGING.md) - Workflow and process logging standards
+- [GOVERNANCE.md](./GOVERNANCE.md) - Project policies and standards
+- [ARCHITECTURE.md](./ARCHITECTURE.md) - Repository structure
 For testing documentation, see [TESTING.md](./TESTING.md).

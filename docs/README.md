@@ -43,10 +43,10 @@ flowchart TB
 
 New to this scaffold? Start here:
 
-1. 📖 [Theme Generation Guide](./GENERATE-THEME.md) - How to create a theme from this scaffold
+1. 📖 [Theme Generation Guide](./GENERATE_THEME.md) - How to create a theme from this scaffold
 2. 🎯 [Setup Summary](./SETUP-SUMMARY.md) - Overview of what's configured
-3. 🏗️ [Build Process](./BUILD-PROCESS.md) - Understanding the build system
-4. 📚 [API Reference](./API-REFERENCE.md) - Complete API documentation
+3. 🏗️ [Build Process](./BUILD_PROCESS.md) - Understanding the build system
+4. 📚 [API Reference](./API_REFERENCE.md) - Complete API documentation
 
 ## Documentation Structure
 
@@ -54,16 +54,20 @@ New to this scaffold? Start here:
 
 | Document | Description |
 |----------|-------------|
-| [GENERATE-THEME.md](./GENERATE-THEME.md) | Complete guide to generating a theme from this scaffold |
+| [GENERATE_THEME.md](./GENERATE_THEME.md) | Complete guide to generating a theme from this scaffold |
 | [SETUP-SUMMARY.md](./SETUP-SUMMARY.md) | Overview of completed setup tasks and configurations |
 
 ### Development Guides
 
 | Document | Description |
 |----------|-------------|
-| [BUILD-PROCESS.md](./BUILD-PROCESS.md) | Complete build process documentation with webpack, Babel, and asset compilation |
+| [BUILD_PROCESS.md](./BUILD_PROCESS.md) | Complete build process documentation with webpack, Babel, and asset compilation |
 | [SRC-FOLDER-STRUCTURE.md](./SRC-FOLDER-STRUCTURE.md) | Source directory structure and file organization |
 | [INTERNATIONALIZATION.md](./INTERNATIONALIZATION.md) | Translation and localization guide |
+| [LINTING.md](./LINTING.md) | Linting standards and lint dry-run mode with scaffold variables |
+| [HUSKY_PRECOMMIT.md](./HUSKY_PRECOMMIT.md) | Automatic pre-commit linting with scaffold mode detection |
+| [TESTING.md](./TESTING.md) | Testing standards and test execution patterns |
+| [VALIDATION.md](./VALIDATION.md) | Validation commands and quick reference |
 
 ### wp-scripts Documentation
 
@@ -90,12 +94,27 @@ Detailed documentation for `@wordpress/scripts` build system:
 | [SECURITY-HEADERS.md](./SECURITY-HEADERS.md) | Security headers and content security policies |
 | [DEPRECATION.md](./DEPRECATION.md) | Deprecation workflow for functions and hooks |
 
+### Governance & Architecture
+
+| Document | Description |
+|----------|-------------|
+| [ARCHITECTURE.md](./ARCHITECTURE.md) | Repository structure and architectural overview |
+| [FOLDER_STRUCTURE.md](./FOLDER_STRUCTURE.md) | Folder organization and naming conventions |
+| [LOGGING.md](./LOGGING.md) | Logging standards and implementation guide |
+| [REPORTING.md](./REPORTING.md) | Report generation, organization, and management |
+| [GOVERNANCE.md](./GOVERNANCE.md) | Project policies and decision-making rules |
+
+**For AI Agents & Contributors:**
+
+- [AI Agent Instructions](../.github/instructions/copilot-ai-agent.instructions.md) - Guidelines for Copilot and AI agents
+- [Naming Conventions Instructions](../.github/instructions/naming-conventions.instructions.md) - File/folder naming rules with examples
+
 ### Performance & Quality
 
 | Document | Description |
 |----------|-------------|
 | [PERFORMANCE.md](./PERFORMANCE.md) | Performance monitoring with Lighthouse CI and bundle analysis |
-| [API-REFERENCE.md](./API-REFERENCE.md) | Complete API reference for PHP and JavaScript |
+| [API_REFERENCE.md](./API_REFERENCE.md) | Complete API reference for PHP and JavaScript |
 
 ## Configuration Files
 
@@ -161,6 +180,9 @@ npm run lint:js
 
 # Lint CSS/SCSS
 npm run lint:css
+
+# Lint with test values (for scaffold development)
+npm run lint:dry-run
 
 # Format all files
 npm run format
