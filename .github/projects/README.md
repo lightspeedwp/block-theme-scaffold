@@ -24,6 +24,7 @@ Projects use status indicators to show current progress:
 **Purpose:** Comprehensive plan to reduce token bloat and context usage in the block-theme-scaffold repository.
 
 **Phases:**
+
 - ✅ Phase 1: Delete Model-Specific Files (~495 lines removed)
 - ✅ Phase 2: Consolidate Documentation (merged governance and development docs)
 - ✅ Phase 3: Optimize Core Index Files (reduced AGENTS.md, agent.md, prompts.md)
@@ -45,6 +46,7 @@ Projects use status indicators to show current progress:
    - Example: `context-reduction.md`
 
 2. Include project header:
+
    ```markdown
    # Project Title
 

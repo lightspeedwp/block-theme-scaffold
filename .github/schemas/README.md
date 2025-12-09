@@ -9,12 +9,14 @@ This directory contains JSON schemas and configuration templates used for code g
 **Purpose:** Official JSON Schema defining all valid configuration options for theme generation.
 
 **Usage:**
+
 - Defines the structure and validation rules for theme configuration files
 - Used by theme generators to validate user input
 - Referenced by editors and IDEs for autocomplete and validation
 - Provides documentation for all available configuration options
 
 **Schema Defines:**
+
 - Required fields (theme_slug, theme_name, author)
 - Optional fields (description, version, license, etc.)
 - Design system tokens (colors, typography, spacing)
@@ -23,6 +25,7 @@ This directory contains JSON schemas and configuration templates used for code g
 - Content options
 
 **Example:**
+
 ```bash
 # Validate a configuration file against the schema
 jq -f .github/schemas/theme-config.schema.json my-config.json
@@ -33,18 +36,21 @@ jq -f .github/schemas/theme-config.schema.json my-config.json
 **Purpose:** Pre-filled example configuration showing realistic values for all schema fields.
 
 **Usage:**
+
 - Template for users creating new theme configurations
 - Reference implementation of all available options
 - Documentation through working example
 - Copy and customize for new projects
 
 **Content:**
+
 - Complete theme-config with all sections populated
 - Realistic values for Tour Operator theme
 - Comments explaining each major section
 - Valid against theme-config.schema.json
 
 **Example:**
+
 ```bash
 # Copy example to create your own configuration
 cp .github/schemas/theme-config.example.json my-theme-config.json

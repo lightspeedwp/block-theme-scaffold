@@ -13,16 +13,17 @@ This document explains where different types of files are stored in the block-th
 
 ## Core Policy: Documentation Location
 
-**🔑 Key Rule:** All permanent documentation must be stored in the `docs/` folder, not in `.github/` subdirectories.
+**🔑 Key Rule:** All permanent user-facing documentation must be stored in the `docs/` folder, not in `.github/` subdirectories.
 
-- `.github/` is for infrastructure, configuration, and transient work (projects, reports)
-- `docs/` is for permanent, versioned documentation
+- `.github/` is for infrastructure, AI tool configuration, and transient work (projects, reports)
+- `docs/` is for permanent documentation that developers and contributors read regularly
 - `tmp/` and `logs/` do NOT include README.md files
 
 This separation ensures:
 
-- Clear distinction between infrastructure and documentation
+- Clear distinction between infrastructure/tooling and user documentation
 - Permanent docs are discoverable and grouped together
+- AI tool configuration stays with GitHub infrastructure
 - Easier navigation for developers and AI agents
 - Reduces cognitive overhead
 
@@ -37,14 +38,14 @@ block-theme-scaffold/
 │   ├── instructions/         # AI agent & coding standards
 │   ├── agents/               # Agent specifications and code
 │   ├── workflows/            # GitHub Actions CI/CD
-│   └── prompts/              # Prompt templates for AI generation
-├── docs/                     # ⭐ ALL permanent documentation here
+│   ├── prompts/              # Prompt templates for AI generation
+│   ├── copilot-tasks.md      # Copilot task definitions
+│   └── custom-instructions.md # Custom AI instructions
+├── docs/                     # ⭐ ALL permanent user-facing documentation here
 │   ├── GOVERNANCE-START-HERE.md  # Navigation hub
 │   ├── GOVERNANCE.md         # Core policies & standards
 │   ├── ARCHITECTURE.md       # Project structure
 │   ├── FILE_ORGANIZATION.md  # This file
-│   ├── CUSTOM_INSTRUCTIONS.md    # Custom AI instructions
-│   ├── COPILOT_TASKS.md      # Copilot task definitions
 │   └── [other comprehensive guides]/
 ├── src/                      # Source code (JS, CSS)
 ├── inc/                      # PHP includes

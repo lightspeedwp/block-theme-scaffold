@@ -20,14 +20,12 @@ This directory contains GitHub-specific configuration files for the {{theme_name
 - **reports/** - Completed task reports and validation outcomes
 - **schemas/** - JSON schemas and configuration templates
 - **workflows/** - GitHub Actions CI/CD workflow definitions
+- `copilot-tasks.md` - Copilot task definitions and specifications
+- `custom-instructions.md` - Custom AI instructions for Copilot
 
 ## Documentation
 
-Permanent documentation is stored in the [docs/](../docs/) folder, not here. See:
-
-- [docs/FILE_ORGANIZATION.md](../docs/FILE_ORGANIZATION.md) - File organization guide
-- [docs/COPILOT_TASKS.md](../docs/COPILOT_TASKS.md) - Copilot task definitions
-- [docs/CUSTOM_INSTRUCTIONS.md](../docs/CUSTOM_INSTRUCTIONS.md) - Custom AI instructions
+Permanent user-facing documentation is stored in the [docs/](../docs/) folder. See [docs/FILE_ORGANIZATION.md](../docs/FILE_ORGANIZATION.md) for the complete file organization guide.
 
 ## Workflows
 
