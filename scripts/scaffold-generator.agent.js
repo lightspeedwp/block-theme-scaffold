@@ -129,6 +129,9 @@ const CONFIG_SCHEMA = {
 
 /**
  * Validate a single value against its schema definition
+ * @param key
+ * @param value
+ * @param schema
  */
 function validateValue(key, value, schema) {
 	const errors = [];
@@ -148,9 +151,7 @@ function validateValue(key, value, schema) {
 				errors.push(`${key} must be a string`);
 			} else {
 				if (schema.pattern && !schema.pattern.test(value)) {
-					errors.push(
-						`${key} must match pattern: ${schema.pattern}`
-					);
+					errors.push(`${key} must match pattern: ${schema.pattern}`);
 				}
 				if (schema.minLength && value.length < schema.minLength) {
 					errors.push(
@@ -189,7 +190,9 @@ function validateValue(key, value, schema) {
 
 		case 'version':
 			if (!/^\d+\.\d+(\.\d+)?$/.test(value)) {
-				errors.push(`${key} must be a valid version (e.g., 6.0 or 8.0.0)`);
+				errors.push(
+					`${key} must be a valid version (e.g., 6.0 or 8.0.0)`
+				);
 			}
 			break;
 	}
@@ -199,6 +202,7 @@ function validateValue(key, value, schema) {
 
 /**
  * Validate complete configuration object
+ * @param config
  */
 function validateConfig(config) {
 	const errors = [];
@@ -222,6 +226,7 @@ function validateConfig(config) {
 
 /**
  * Apply defaults to configuration
+ * @param config
  */
 function applyDefaults(config) {
 	const result = { ...config };
@@ -245,6 +250,7 @@ function applyDefaults(config) {
 
 /**
  * Build the generation command
+ * @param config
  */
 function buildCommand(config) {
 	const args = ['node', 'bin/generate-theme.js'];
@@ -260,6 +266,7 @@ function buildCommand(config) {
 
 /**
  * Get questions for a specific stage
+ * @param stage
  */
 function getStageQuestions(stage) {
 	return Object.entries(CONFIG_SCHEMA)
@@ -283,7 +290,9 @@ async function interactiveSession() {
 		new Promise((resolve) => rl.question(question, resolve));
 
 	console.log('\n🎨 Block Theme Scaffold Generator\n');
-	console.log('This wizard will guide you through creating a new WordPress block theme.\n');
+	console.log(
+		'This wizard will guide you through creating a new WordPress block theme.\n'
+	);
 
 	const config = {};
 
@@ -293,7 +302,9 @@ async function interactiveSession() {
 	for (const q of getStageQuestions(1)) {
 		const required = q.required ? ' (required)' : '';
 		const defaultHint = q.default ? ` [${q.default}]` : '';
-		const answer = await ask(`  ${q.description}${required}${defaultHint}: `);
+		const answer = await ask(
+			`  ${q.description}${required}${defaultHint}: `
+		);
 
 		if (answer.trim()) {
 			config[q.key] = answer.trim();
@@ -310,7 +321,9 @@ async function interactiveSession() {
 	}
 
 	// Stage 2: Version
-	const continueStage2 = await ask('\n📋 Stage 2: Version & Compatibility (y/N): ');
+	const continueStage2 = await ask(
+		'\n📋 Stage 2: Version & Compatibility (y/N): '
+	);
 	if (continueStage2.toLowerCase() === 'y') {
 		console.log('');
 		for (const q of getStageQuestions(2)) {
@@ -324,7 +337,9 @@ async function interactiveSession() {
 	}
 
 	// Stage 3: License & Repository
-	const continueStage3 = await ask('\n📋 Stage 3: License & Repository (y/N): ');
+	const continueStage3 = await ask(
+		'\n📋 Stage 3: License & Repository (y/N): '
+	);
 	if (continueStage3.toLowerCase() === 'y') {
 		console.log('');
 		for (const q of getStageQuestions(3)) {
@@ -421,7 +436,10 @@ async function main() {
 
 			if (!validation.valid) {
 				console.error(
-					JSON.stringify({ success: false, errors: validation.errors })
+					JSON.stringify({
+						success: false,
+						errors: validation.errors,
+					})
 				);
 				process.exit(1);
 			}

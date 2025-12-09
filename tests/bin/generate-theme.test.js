@@ -1,7 +1,7 @@
 /**
  * Tests for bin/generate-theme.js
  *
- * @package {{theme_name}}
+ * @package
  */
 
 const fs = require('fs');
@@ -36,7 +36,9 @@ describe('generate-theme.js', () => {
 			try {
 				expect(fs.existsSync(generateScript)).toBe(true);
 			} catch (error) {
-				throw new Error(`Script existence check failed: ${error.message}`);
+				throw new Error(
+					`Script existence check failed: ${error.message}`
+				);
 			}
 		});
 
@@ -66,12 +68,17 @@ describe('generate-theme.js', () => {
 		test('should sanitize slug to valid format', () => {
 			try {
 				const cmd = `node ${generateScript} --slug "Test Theme!" --name "Test Theme"`;
-				const result = execSync(cmd, { stdio: 'pipe', encoding: 'utf8' });
+				const result = execSync(cmd, {
+					stdio: 'pipe',
+					encoding: 'utf8',
+				});
 
 				expect(result).toContain('generated');
 				// Should convert to lowercase and remove invalid chars
 			} catch (error) {
-				throw new Error(`Slug sanitization test failed: ${error.message}`);
+				throw new Error(
+					`Slug sanitization test failed: ${error.message}`
+				);
 			}
 		});
 
@@ -93,30 +100,42 @@ describe('generate-theme.js', () => {
 				fail('Should have thrown error for invalid version');
 			} catch (error) {
 				expect(error.status).toBe(1);
-				expect(error.stderr.toString()).toContain('semantic versioning');
+				expect(error.stderr.toString()).toContain(
+					'semantic versioning'
+				);
 			}
 		});
 
 		test('should accept WordPress version format', () => {
 			try {
 				const cmd = `node ${generateScript} --slug "test-theme" --name "Test Theme" --min_wp_version "6.4"`;
-				const result = execSync(cmd, { stdio: 'pipe', encoding: 'utf8' });
+				const result = execSync(cmd, {
+					stdio: 'pipe',
+					encoding: 'utf8',
+				});
 
 				expect(result).toContain('generated');
 			} catch (error) {
-				throw new Error(`WordPress version format test failed: ${error.message}`);
+				throw new Error(
+					`WordPress version format test failed: ${error.message}`
+				);
 			}
 		});
 
 		test('should sanitize license identifier', () => {
 			try {
 				const cmd = `node ${generateScript} --slug "test-theme" --name "Test Theme" --license "GPL-2.0-or-later@!"`;
-				const result = execSync(cmd, { stdio: 'pipe', encoding: 'utf8' });
+				const result = execSync(cmd, {
+					stdio: 'pipe',
+					encoding: 'utf8',
+				});
 
 				expect(result).toContain('generated');
 				// Should remove invalid characters from license
 			} catch (error) {
-				throw new Error(`License sanitization test failed: ${error.message}`);
+				throw new Error(
+					`License sanitization test failed: ${error.message}`
+				);
 			}
 		});
 	});
@@ -125,12 +144,17 @@ describe('generate-theme.js', () => {
 		test('should generate theme with default values', () => {
 			try {
 				const cmd = `node ${generateScript} --slug "test-theme" --name "Test Theme"`;
-				const result = execSync(cmd, { stdio: 'pipe', encoding: 'utf8' });
+				const result = execSync(cmd, {
+					stdio: 'pipe',
+					encoding: 'utf8',
+				});
 
 				expect(result).toContain('generated');
 				expect(fs.existsSync(outputDir)).toBe(true);
 			} catch (error) {
-				throw new Error(`Theme generation failed: ${error.message}\n${error.stderr?.toString()}`);
+				throw new Error(
+					`Theme generation failed: ${error.message}\n${error.stderr?.toString()}`
+				);
 			}
 		});
 
@@ -155,11 +179,15 @@ describe('generate-theme.js', () => {
 				const packageJsonPath = path.join(outputDir, 'package.json');
 				expect(fs.existsSync(packageJsonPath)).toBe(true);
 
-				const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, 'utf8'));
+				const packageJson = JSON.parse(
+					fs.readFileSync(packageJsonPath, 'utf8')
+				);
 				expect(packageJson.name).toBe('my-test-theme');
 				expect(packageJson.version).toBe('2.0.0');
 			} catch (error) {
-				throw new Error(`Placeholder replacement test failed: ${error.message}`);
+				throw new Error(
+					`Placeholder replacement test failed: ${error.message}`
+				);
 			}
 		});
 
@@ -172,10 +200,10 @@ describe('generate-theme.js', () => {
 					'style.css',
 					'functions.php',
 					'theme.json',
-					'README.md'
+					'README.md',
 				];
 
-				requiredFiles.forEach(file => {
+				requiredFiles.forEach((file) => {
 					const filePath = path.join(outputDir, file);
 					expect(fs.existsSync(filePath)).toBe(true);
 				});
@@ -189,15 +217,23 @@ describe('generate-theme.js', () => {
 				const cmd = `node ${generateScript} --slug "test-theme" --name "Test Theme"`;
 				execSync(cmd, { stdio: 'pipe' });
 
-				const requiredDirs = ['parts', 'templates', 'styles', 'inc', 'src'];
+				const requiredDirs = [
+					'parts',
+					'templates',
+					'styles',
+					'inc',
+					'src',
+				];
 
-				requiredDirs.forEach(dir => {
+				requiredDirs.forEach((dir) => {
 					const dirPath = path.join(outputDir, dir);
 					expect(fs.existsSync(dirPath)).toBe(true);
 					expect(fs.statSync(dirPath).isDirectory()).toBe(true);
 				});
 			} catch (error) {
-				throw new Error(`Directory structure test failed: ${error.message}`);
+				throw new Error(
+					`Directory structure test failed: ${error.message}`
+				);
 			}
 		});
 
@@ -208,7 +244,7 @@ describe('generate-theme.js', () => {
 
 				const excludedItems = ['node_modules', 'dist', '.git'];
 
-				excludedItems.forEach(item => {
+				excludedItems.forEach((item) => {
 					const itemPath = path.join(outputDir, item);
 					expect(fs.existsSync(itemPath)).toBe(false);
 				});
@@ -225,7 +261,10 @@ describe('generate-theme.js', () => {
 				const binPath = path.join(outputDir, 'bin');
 				expect(fs.existsSync(binPath)).toBe(true);
 
-				const generateScriptInOutput = path.join(binPath, 'generate-theme.js');
+				const generateScriptInOutput = path.join(
+					binPath,
+					'generate-theme.js'
+				);
 				expect(fs.existsSync(generateScriptInOutput)).toBe(false);
 			} catch (error) {
 				throw new Error(`Bin exclusion test failed: ${error.message}`);
@@ -245,7 +284,9 @@ describe('generate-theme.js', () => {
 				expect(styleContent).toContain('6.0');
 				expect(styleContent).toContain('6.5');
 			} catch (error) {
-				throw new Error(`WP version placeholder test failed: ${error.message}`);
+				throw new Error(
+					`WP version placeholder test failed: ${error.message}`
+				);
 			}
 		});
 
@@ -259,7 +300,9 @@ describe('generate-theme.js', () => {
 
 				expect(styleContent).toContain('8.0');
 			} catch (error) {
-				throw new Error(`PHP version placeholder test failed: ${error.message}`);
+				throw new Error(
+					`PHP version placeholder test failed: ${error.message}`
+				);
 			}
 		});
 
@@ -273,7 +316,9 @@ describe('generate-theme.js', () => {
 
 				expect(styleContent).toContain('MIT');
 			} catch (error) {
-				throw new Error(`License placeholder test failed: ${error.message}`);
+				throw new Error(
+					`License placeholder test failed: ${error.message}`
+				);
 			}
 		});
 	});
@@ -293,12 +338,17 @@ describe('generate-theme.js', () => {
 		test('should log success message on completion', () => {
 			try {
 				const cmd = `node ${generateScript} --slug "test-theme" --name "Test Theme"`;
-				const result = execSync(cmd, { stdio: 'pipe', encoding: 'utf8' });
+				const result = execSync(cmd, {
+					stdio: 'pipe',
+					encoding: 'utf8',
+				});
 
 				expect(result).toContain('generated');
 				expect(result).toContain('output-theme');
 			} catch (error) {
-				throw new Error(`Success logging test failed: ${error.message}`);
+				throw new Error(
+					`Success logging test failed: ${error.message}`
+				);
 			}
 		});
 

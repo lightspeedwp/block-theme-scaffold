@@ -8,7 +8,7 @@ console.log('Arguments:', args);
 console.log('Environment:', {
 	DRY_RUN: process.env.DRY_RUN,
 	VERBOSE: process.env.VERBOSE,
-	GITHUB_TOKEN: process.env.GITHUB_TOKEN ? '***' : undefined
+	GITHUB_TOKEN: process.env.GITHUB_TOKEN ? '***' : undefined,
 });
 
 // Example: exit with success

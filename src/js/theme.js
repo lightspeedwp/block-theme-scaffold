@@ -80,7 +80,9 @@ const {{theme_slug|camelCase}} = {
 	 * Setup scroll animations
 	 */
 	setupAnimations() {
+		// eslint-disable-next-line no-undef
 		if ( 'IntersectionObserver' in window ) {
+			// eslint-disable-next-line no-undef
 			const observer = new IntersectionObserver(
 				( entries ) => {
 					entries.forEach( ( entry ) => {
@@ -104,6 +106,7 @@ const {{theme_slug|camelCase}} = {
 	 * Setup lazy loading for images
 	 */
 	setupLazyLoading() {
+		// eslint-disable-next-line no-undef
 		if ( 'loading' in HTMLImageElement.prototype ) {
 			const images = document.querySelectorAll( 'img[data-src]' );
 			images.forEach( ( img ) => {

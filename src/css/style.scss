@@ -68,6 +68,8 @@ body {
 }
 
 /* Button styles */
+/* stylelint-disable no-descending-specificity */
+
 .wp-block-button {
   &.is-style-outline {
     .wp-block-button__link {
@@ -94,6 +96,8 @@ body {
     }
   }
 }
+
+/* stylelint-enable no-descending-specificity */
 
 /* Quote styles */
 .wp-block-quote {

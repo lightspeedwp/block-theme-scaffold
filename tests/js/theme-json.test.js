@@ -35,11 +35,13 @@ describe('theme.json Schema Validation', () => {
 		test('has color settings', () => {
 			if (themeJson.settings?.color) {
 				expect(themeJson.settings.color).toHaveProperty('palette');
-				expect(Array.isArray(themeJson.settings.color.palette)).toBe(true);
+				expect(Array.isArray(themeJson.settings.color.palette)).toBe(
+					true
+				);
 
 				// Validate palette structure
 				if (themeJson.settings.color.palette.length > 0) {
-					themeJson.settings.color.palette.forEach(color => {
+					themeJson.settings.color.palette.forEach((color) => {
 						expect(color).toHaveProperty('slug');
 						expect(color).toHaveProperty('color');
 						expect(color).toHaveProperty('name');
@@ -57,7 +59,7 @@ describe('theme.json Schema Validation', () => {
 
 				if (typo.fontSizes) {
 					expect(Array.isArray(typo.fontSizes)).toBe(true);
-					typo.fontSizes.forEach(size => {
+					typo.fontSizes.forEach((size) => {
 						expect(size).toHaveProperty('slug');
 						expect(size).toHaveProperty('size');
 						expect(size).toHaveProperty('name');
@@ -76,7 +78,7 @@ describe('theme.json Schema Validation', () => {
 
 				if (spacing.spacingSizes) {
 					expect(Array.isArray(spacing.spacingSizes)).toBe(true);
-					spacing.spacingSizes.forEach(size => {
+					spacing.spacingSizes.forEach((size) => {
 						expect(size).toHaveProperty('slug');
 						expect(size).toHaveProperty('size');
 						expect(size).toHaveProperty('name');
@@ -124,7 +126,17 @@ describe('theme.json Schema Validation', () => {
 			if (themeJson.styles?.elements) {
 				const elements = themeJson.styles.elements;
 
-				['link', 'button', 'heading', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6'].forEach(element => {
+				[
+					'link',
+					'button',
+					'heading',
+					'h1',
+					'h2',
+					'h3',
+					'h4',
+					'h5',
+					'h6',
+				].forEach((element) => {
 					if (elements[element]) {
 						expect(typeof elements[element]).toBe('object');
 					}
@@ -136,7 +148,7 @@ describe('theme.json Schema Validation', () => {
 			if (themeJson.styles?.blocks) {
 				const blocks = themeJson.styles.blocks;
 
-				Object.keys(blocks).forEach(blockName => {
+				Object.keys(blocks).forEach((blockName) => {
 					expect(blockName).toMatch(/^core\//);
 					expect(typeof blocks[blockName]).toBe('object');
 				});
@@ -149,11 +161,16 @@ describe('theme.json Schema Validation', () => {
 			if (themeJson.templateParts) {
 				expect(Array.isArray(themeJson.templateParts)).toBe(true);
 
-				themeJson.templateParts.forEach(part => {
+				themeJson.templateParts.forEach((part) => {
 					expect(part).toHaveProperty('name');
 					expect(part).toHaveProperty('area');
 					expect(typeof part.name).toBe('string');
-					expect(['header', 'footer', 'general', 'uncategorized']).toContain(part.area);
+					expect([
+						'header',
+						'footer',
+						'general',
+						'uncategorized',
+					]).toContain(part.area);
 				});
 			}
 		});
@@ -164,15 +181,19 @@ describe('theme.json Schema Validation', () => {
 			if (themeJson.customTemplates) {
 				expect(typeof themeJson.customTemplates).toBe('object');
 
-				Object.keys(themeJson.customTemplates).forEach(templateKey => {
-					const template = themeJson.customTemplates[templateKey];
-					expect(template).toHaveProperty('title');
-					expect(typeof template.title).toBe('string');
+				Object.keys(themeJson.customTemplates).forEach(
+					(templateKey) => {
+						const template = themeJson.customTemplates[templateKey];
+						expect(template).toHaveProperty('title');
+						expect(typeof template.title).toBe('string');
 
-					if (template.postTypes) {
-						expect(Array.isArray(template.postTypes)).toBe(true);
+						if (template.postTypes) {
+							expect(Array.isArray(template.postTypes)).toBe(
+								true
+							);
+						}
 					}
-				});
+				);
 			}
 		});
 	});
@@ -188,7 +209,9 @@ describe('theme.json Schema Validation', () => {
 	describe('Color palette validation', () => {
 		test('color slugs are unique', () => {
 			if (themeJson.settings?.color?.palette) {
-				const slugs = themeJson.settings.color.palette.map(c => c.slug);
+				const slugs = themeJson.settings.color.palette.map(
+					(c) => c.slug
+				);
 				const uniqueSlugs = new Set(slugs);
 				expect(slugs.length).toBe(uniqueSlugs.size);
 			}
@@ -196,8 +219,10 @@ describe('theme.json Schema Validation', () => {
 
 		test('color values are valid hex', () => {
 			if (themeJson.settings?.color?.palette) {
-				themeJson.settings.color.palette.forEach(color => {
-					expect(color.color).toMatch(/^#[0-9A-Fa-f]{3}$|^#[0-9A-Fa-f]{6}$/);
+				themeJson.settings.color.palette.forEach((color) => {
+					expect(color.color).toMatch(
+						/^#[0-9A-Fa-f]{3}$|^#[0-9A-Fa-f]{6}$/
+					);
 				});
 			}
 		});
@@ -206,7 +231,9 @@ describe('theme.json Schema Validation', () => {
 	describe('Font size validation', () => {
 		test('font size slugs are unique', () => {
 			if (themeJson.settings?.typography?.fontSizes) {
-				const slugs = themeJson.settings.typography.fontSizes.map(f => f.slug);
+				const slugs = themeJson.settings.typography.fontSizes.map(
+					(f) => f.slug
+				);
 				const uniqueSlugs = new Set(slugs);
 				expect(slugs.length).toBe(uniqueSlugs.size);
 			}
@@ -214,7 +241,7 @@ describe('theme.json Schema Validation', () => {
 
 		test('font sizes have valid units', () => {
 			if (themeJson.settings?.typography?.fontSizes) {
-				themeJson.settings.typography.fontSizes.forEach(size => {
+				themeJson.settings.typography.fontSizes.forEach((size) => {
 					expect(size.size).toMatch(/(px|em|rem|%|vw|vh)$/);
 				});
 			}
@@ -224,7 +251,9 @@ describe('theme.json Schema Validation', () => {
 	describe('Spacing scale validation', () => {
 		test('spacing slugs are unique', () => {
 			if (themeJson.settings?.spacing?.spacingSizes) {
-				const slugs = themeJson.settings.spacing.spacingSizes.map(s => s.slug);
+				const slugs = themeJson.settings.spacing.spacingSizes.map(
+					(s) => s.slug
+				);
 				const uniqueSlugs = new Set(slugs);
 				expect(slugs.length).toBe(uniqueSlugs.size);
 			}
@@ -232,7 +261,7 @@ describe('theme.json Schema Validation', () => {
 
 		test('spacing sizes have valid units', () => {
 			if (themeJson.settings?.spacing?.spacingSizes) {
-				themeJson.settings.spacing.spacingSizes.forEach(size => {
+				themeJson.settings.spacing.spacingSizes.forEach((size) => {
 					expect(size.size).toMatch(/(px|em|rem|%|vw|vh)$/);
 				});
 			}

@@ -19,7 +19,8 @@ const testPlaceholders = {
 	// Theme identification
 	'{{theme_slug}}': 'block-theme-scaffold',
 	'{{theme_name}}': 'Block Theme Scaffold',
-	'{{description}}': 'A modern WordPress block theme scaffold with full site editing support',
+	'{{description}}':
+		'A modern WordPress block theme scaffold with full site editing support',
 	'{{author}}': 'LightSpeed',
 	'{{author_uri}}': 'https://lightspeedwp.com',
 	'{{version}}': '1.0.0',
@@ -36,8 +37,10 @@ const testPlaceholders = {
 	'{{license_uri}}': 'https://www.gnu.org/licenses/gpl-2.0.html',
 
 	// URLs and contact
-	'{{theme_repo_url}}': 'https://github.com/lightspeedwp/block-theme-scaffold',
-	'{{support_url}}': 'https://wordpress.org/support/theme/block-theme-scaffold',
+	'{{theme_repo_url}}':
+		'https://github.com/lightspeedwp/block-theme-scaffold',
+	'{{support_url}}':
+		'https://wordpress.org/support/theme/block-theme-scaffold',
 	'{{support_email}}': 'support@lightspeedwp.com',
 	'{{security_email}}': 'security@lightspeedwp.com',
 	'{{business_email}}': 'contact@lightspeedwp.com',
@@ -95,7 +98,7 @@ const testPlaceholders = {
  * Replace all mustache placeholders in a string with test values.
  *
  * @param {string} content - The content containing mustache placeholders
- * @returns {string} Content with placeholders replaced
+ * @return {string} Content with placeholders replaced
  */
 function replacePlaceholders(content) {
 	let result = content;
@@ -109,7 +112,7 @@ function replacePlaceholders(content) {
  * Check if the current project is in scaffold mode (has mustache variables).
  *
  * @param {string} packageJsonPath - Path to package.json
- * @returns {boolean} True if scaffold mode detected
+ * @return {boolean} True if scaffold mode detected
  */
 function isScaffoldMode(packageJsonPath) {
 	try {
@@ -126,7 +129,7 @@ function isScaffoldMode(packageJsonPath) {
  * Get a specific placeholder value.
  *
  * @param {string} key - The placeholder key (e.g., '{{theme_slug}}')
- * @returns {string|undefined} The test value or undefined if not found
+ * @return {string|undefined} The test value or undefined if not found
  */
 function getPlaceholder(key) {
 	return testPlaceholders[key];
@@ -135,7 +138,7 @@ function getPlaceholder(key) {
 /**
  * Get all placeholder keys.
  *
- * @returns {string[]} Array of all placeholder keys
+ * @return {string[]} Array of all placeholder keys
  */
 function getPlaceholderKeys() {
 	return Object.keys(testPlaceholders);
@@ -144,7 +147,7 @@ function getPlaceholderKeys() {
 /**
  * Get all placeholder values.
  *
- * @returns {Object} Object containing all placeholder key-value pairs
+ * @return {Object} Object containing all placeholder key-value pairs
  */
 function getAllPlaceholders() {
 	return { ...testPlaceholders };
@@ -182,7 +185,9 @@ if (require.main === module) {
 					process.exit(1);
 				}
 			} else {
-				console.error('Usage: node test-placeholders.js get {{placeholder}}');
+				console.error(
+					'Usage: node test-placeholders.js get {{placeholder}}'
+				);
 				process.exit(1);
 			}
 			break;
@@ -204,11 +209,15 @@ if (require.main === module) {
 			console.log('Test Placeholder Utilities');
 			console.log('');
 			console.log('Usage:');
-			console.log('  node test-placeholders.js list          - List all placeholder keys');
+			console.log(
+				'  node test-placeholders.js list          - List all placeholder keys'
+			);
 			console.log(
 				'  node test-placeholders.js get {{key}}   - Get value for specific key'
 			);
-			console.log('  node test-placeholders.js json          - Output all as JSON');
+			console.log(
+				'  node test-placeholders.js json          - Output all as JSON'
+			);
 			console.log(
 				'  node test-placeholders.js check [path]  - Check if in scaffold mode'
 			);

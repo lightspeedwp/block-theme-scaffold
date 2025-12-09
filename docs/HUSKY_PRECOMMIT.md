@@ -2,7 +2,7 @@
 
 ## Overview
 
-The pre-commit hook has been enhanced to automatically detect whether you're working in **scaffold mode** (with mustache variables) or **generated theme mode**, and run the appropriate linting strategy.
+The pre-commit hook automatically runs **linting and tests** before allowing commits. It intelligently detects whether you're working in **scaffold mode** (with mustache variables) or **generated theme mode**, and runs the appropriate checks.
 
 ## How It Works
 
@@ -12,13 +12,17 @@ flowchart TD
     B -->|Has {{mustache}}| C[Scaffold Mode]
     B -->|No {{mustache}}| D[Generated Theme]
     C --> E[Run lint:dry-run]
-    D --> F[Run standard lint]
-    E --> G{Pass?}
-    F --> H{Pass?}
-    G -->|Yes| I[✅ Commit]
-    G -->|No| J[❌ Block Commit]
-    H -->|Yes| I
-    H -->|No| J
+    C --> F[Run scripts tests]
+    D --> G[Run standard lint]
+    D --> H[Run all tests]
+    E --> I{Pass?}
+    F --> I
+    G --> J{Pass?}
+    H --> J
+    I -->|Yes| K[✅ Commit]
+    I -->|No| L[❌ Block Commit]
+    J -->|Yes| K
+    J -->|No| L
 ```
 
 ## Scaffold Mode Detection
@@ -38,7 +42,7 @@ node bin/test-placeholders.js check package.json
 When working on the scaffold itself:
 
 ```text
-🔍 Scaffold mode detected - using dry-run linting...
+🔍 Scaffold mode detected - using dry-run linting and testing...
 
 📁 Creating temporary test files...
 ✓ Temporary files created
@@ -48,20 +52,27 @@ When working on the scaffold itself:
 → CSS linting
 → PHP linting
 
+🧪 Running tests...
+→ Scripts tests (115 tests)
+
 ✅ All scaffold pre-commit checks passed!
 ```
 
-- JavaScript files (ESLint + Prettier)
-- CSS/SCSS files (Stylelint)
-- PHP files (PHPCS + WordPress Standards)
-- No security audit (since package.json has placeholders)
+**Checks Performed:**
+
+- ✅ JavaScript files (ESLint + Prettier)
+- ✅ CSS/SCSS files (Stylelint)
+- ✅ PHP files (PHPCS + WordPress Standards)
+- ✅ Scripts tests (`scripts/__tests__/`)
+- ⏭️ Security audit skipped (package.json has placeholders)
+- ⏭️ Main test suite skipped (has placeholder dependencies)
 
 ### Generated Theme Mode (Standard)
 
 When working on a generated theme:
 
 ```text
-🔍 Generated theme mode detected - running standard linting...
+🔍 Generated theme mode detected - running standard linting and testing...
 
 🟡 Linting JavaScript...
 ✓ JavaScript linting passed
@@ -72,14 +83,24 @@ When working on a generated theme:
 🟡 Linting PHP...
 ✓ PHP linting passed
 
+🧪 Running JavaScript tests...
+✓ All JavaScript tests passed
+
+🧪 Running PHP tests...
+✓ All PHP tests passed
+
 🔒 Running security audit...
 ✓ No vulnerabilities detected
 
 ✅ All pre-commit checks passed!
 ```
 
-- All standard linting
-- Full security audit with `npm audit`
+**Checks Performed:**
+
+- ✅ All standard linting
+- ✅ JavaScript tests (`npm run test:js`)
+- ✅ PHP tests (`composer run test`)
+- ✅ Full security audit with `npm audit`
 
 ## Bypassing the Hook
 
@@ -137,6 +158,23 @@ npm run lint:css:fix
 composer run lint:fix
 ```
 
+### Tests Fail
+
+```bash
+# Run tests manually to see failures
+npm run test:scripts          # Scripts tests (scaffold mode)
+npm run test:js               # JavaScript tests (generated theme)
+npm run test:php              # PHP tests (generated theme)
+
+# Run with watch mode for development
+npm run test:scripts:watch    # Watch scripts tests
+npm run test:js:watch         # Watch JS tests
+
+# Run with coverage
+npm run test:scripts:coverage
+npm run test:js:coverage
+```
+
 ## Integration with CI/CD
 
 For GitHub Actions or other CI systems:
@@ -147,7 +185,7 @@ name: CI
 on: [push, pull_request]
 
 jobs:
-  lint:
+  lint-and-test:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -158,22 +196,28 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Run linting (auto-detects mode)
+      - name: Run linting and tests (auto-detects mode)
         run: |
           if node bin/test-placeholders.js check package.json; then
+            # Scaffold mode
             npm run lint:dry-run
+            npm run test:scripts
           else
+            # Generated theme mode
             npm run lint
+            npm run test
           fi
 ```
 
 ## Benefits
 
-1. **Zero Configuration**: Developers don't need to remember which lint command to use
+1. **Zero Configuration**: Developers don't need to remember which commands to use
 2. **Consistent Quality**: Both scaffold and generated themes maintain code quality
 3. **Faster Development**: No need to generate a theme just to test changes
 4. **CI-Ready**: Same logic works in pre-commit and CI pipelines
-5. **Type Safety**: Prevents commits with unresolved linting issues
+5. **Type Safety**: Prevents commits with linting issues or failing tests
+6. **Comprehensive Testing**: Runs all appropriate tests before allowing commits
+7. **Fast Feedback**: Catches issues before they reach CI/CD pipeline
 
 ## See Also
 

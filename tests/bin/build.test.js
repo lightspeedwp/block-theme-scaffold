@@ -1,7 +1,7 @@
 /**
  * Tests for bin/build.js
  *
- * @package {{theme_name}}
+ * @package
  */
 
 const fs = require('fs');
@@ -22,15 +22,19 @@ describe('build.js', () => {
 			// Create package.json
 			fs.writeFileSync(
 				path.join(testDir, 'package.json'),
-				JSON.stringify({
-					version,
-					name: 'test-theme',
-					scripts: {
-						'build:production': 'echo "Building..."',
-						'lint': 'echo "Linting..."',
-						'test': 'echo "Testing..."'
-					}
-				}, null, 2)
+				JSON.stringify(
+					{
+						version,
+						name: 'test-theme',
+						scripts: {
+							'build:production': 'echo "Building..."',
+							lint: 'echo "Linting..."',
+							test: 'echo "Testing..."',
+						},
+					},
+					null,
+					2
+				)
 			);
 
 			// Create style.css
@@ -72,7 +76,9 @@ describe('build.js', () => {
 			try {
 				expect(fs.existsSync(buildScript)).toBe(true);
 			} catch (error) {
-				throw new Error(`Script existence check failed: ${error.message}`);
+				throw new Error(
+					`Script existence check failed: ${error.message}`
+				);
 			}
 		});
 
@@ -92,7 +98,11 @@ describe('build.js', () => {
 			try {
 				setupTestTheme();
 				const cmd = `node ${buildScript}`;
-				const result = execSync(cmd, { stdio: 'pipe', encoding: 'utf8', cwd: testDir });
+				const result = execSync(cmd, {
+					stdio: 'pipe',
+					encoding: 'utf8',
+					cwd: testDir,
+				});
 
 				expect(result).toContain('Usage:');
 				expect(result).toContain('Commands:');
@@ -107,7 +117,7 @@ describe('build.js', () => {
 		test('should accept valid commands', () => {
 			const validCommands = ['build', 'dist', 'check', 'init', 'version'];
 
-			validCommands.forEach(command => {
+			validCommands.forEach((command) => {
 				expect(command).toBeTruthy();
 			});
 		});
@@ -141,7 +151,9 @@ describe('build.js', () => {
 				);
 				expect(styleContent).toContain('Version: 1.2.0');
 			} catch (error) {
-				throw new Error(`style.css version update failed: ${error.message}`);
+				throw new Error(
+					`style.css version update failed: ${error.message}`
+				);
 			}
 		});
 
@@ -153,7 +165,9 @@ describe('build.js', () => {
 				fail('Should have rejected invalid version');
 			} catch (error) {
 				expect(error.status).toBe(1);
-				expect(error.stderr.toString()).toContain('semantic versioning');
+				expect(error.stderr.toString()).toContain(
+					'semantic versioning'
+				);
 			}
 		});
 
@@ -199,7 +213,11 @@ describe('build.js', () => {
 			try {
 				setupTestTheme();
 				const cmd = `node ${buildScript} build`;
-				const result = execSync(cmd, { stdio: 'pipe', encoding: 'utf8', cwd: testDir });
+				const result = execSync(cmd, {
+					stdio: 'pipe',
+					encoding: 'utf8',
+					cwd: testDir,
+				});
 
 				expect(result).toContain('Building');
 			} catch (error) {
@@ -228,7 +246,11 @@ describe('build.js', () => {
 			try {
 				setupTestTheme();
 				const cmd = `node ${buildScript} build`;
-				const result = execSync(cmd, { stdio: 'pipe', encoding: 'utf8', cwd: testDir });
+				const result = execSync(cmd, {
+					stdio: 'pipe',
+					encoding: 'utf8',
+					cwd: testDir,
+				});
 
 				expect(result).toContain('Running:');
 			} catch (error) {
@@ -263,7 +285,11 @@ describe('build.js', () => {
 		test('should provide helpful error messages', () => {
 			try {
 				const cmd = `node ${buildScript} invalid-command`;
-				const result = execSync(cmd, { stdio: 'pipe', encoding: 'utf8', cwd: testDir });
+				const result = execSync(cmd, {
+					stdio: 'pipe',
+					encoding: 'utf8',
+					cwd: testDir,
+				});
 
 				// Should show help for invalid command
 				expect(result).toContain('Usage');
@@ -309,7 +335,9 @@ describe('build.js', () => {
 				);
 				expect(packageJson.version).toBe('1.2.0');
 			} catch (error) {
-				throw new Error(`Whitespace trim test failed: ${error.message}`);
+				throw new Error(
+					`Whitespace trim test failed: ${error.message}`
+				);
 			}
 		});
 	});
@@ -320,7 +348,10 @@ describe('build.js', () => {
 				setupTestTheme('1.0.0');
 
 				// Update version
-				execSync(`node ${buildScript} version 1.1.0`, { stdio: 'pipe', cwd: testDir });
+				execSync(`node ${buildScript} version 1.1.0`, {
+					stdio: 'pipe',
+					cwd: testDir,
+				});
 
 				// Verify update
 				const packageJson = JSON.parse(

@@ -39,12 +39,14 @@ test.describe('Theme Accessibility Tests', () => {
 	test('Navigation is keyboard accessible', async ({ page }) => {
 		// Tab through navigation
 		await page.keyboard.press('Tab');
-		const firstFocusable = await page.evaluate(() => document.activeElement?.tagName);
+		const firstFocusable = await page.evaluate(
+			() => document.activeElement?.tagName
+		);
 		expect(firstFocusable).toBeTruthy();
 
 		// Skip link should be first interactive element
 		const skipLink = page.locator('a[href^="#"]').first();
-		if (await skipLink.count() > 0) {
+		if ((await skipLink.count()) > 0) {
 			await expect(skipLink).toBeFocused();
 		}
 	});
@@ -59,7 +61,8 @@ test.describe('Theme Accessibility Tests', () => {
 			const ariaLabel = await link.getAttribute('aria-label');
 			const ariaLabelledBy = await link.getAttribute('aria-labelledby');
 
-			const hasAccessibleName = text?.trim() || ariaLabel || ariaLabelledBy;
+			const hasAccessibleName =
+				text?.trim() || ariaLabel || ariaLabelledBy;
 			expect(hasAccessibleName).toBeTruthy();
 		}
 	});
@@ -96,7 +99,9 @@ test.describe('Theme Accessibility Tests', () => {
 			const type = await input.getAttribute('type');
 
 			// Skip hidden and submit inputs
-			if (type === 'hidden' || type === 'submit') continue;
+			if (type === 'hidden' || type === 'submit') {
+				continue;
+			}
 
 			const id = await input.getAttribute('id');
 			const ariaLabel = await input.getAttribute('aria-label');
@@ -143,7 +148,9 @@ test.describe('Theme Accessibility Tests', () => {
 		const h1 = page.locator('h1');
 		await expect(h1).toBeVisible();
 
-		const searchForm = page.locator('form[role="search"], .wp-block-search');
+		const searchForm = page.locator(
+			'form[role="search"], .wp-block-search'
+		);
 		await expect(searchForm).toBeVisible();
 	});
 

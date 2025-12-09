@@ -17,7 +17,7 @@ const colors = {
 	red: '\x1b[31m',
 	green: '\x1b[32m',
 	yellow: '\x1b[33m',
-	cyan: '\x1b[36m'
+	cyan: '\x1b[36m',
 };
 
 function log(message, color = 'reset') {
@@ -42,6 +42,8 @@ function getPackageData() {
 
 /**
  * Run command and handle errors
+ * @param command
+ * @param options
  */
 function runCommand(command, options = {}) {
 	try {
@@ -49,7 +51,7 @@ function runCommand(command, options = {}) {
 		return execSync(command, {
 			stdio: 'inherit',
 			cwd: THEME_DIR,
-			...options
+			...options,
 		});
 	} catch (error) {
 		log(`❌ Command failed: ${command}`, 'red');
@@ -71,7 +73,10 @@ function checkPrerequisites() {
 	const nodeVersion = process.version;
 	const major = parseInt(nodeVersion.slice(1).split('.')[0]);
 	if (major < 18) {
-		log(`❌ Node.js 18.x or higher required. Current: ${nodeVersion}`, 'red');
+		log(
+			`❌ Node.js 18.x or higher required. Current: ${nodeVersion}`,
+			'red'
+		);
 		process.exit(1);
 	}
 	log(`✅ Node.js ${nodeVersion}`, 'green');
@@ -121,7 +126,9 @@ function buildProduction() {
 	const imagesDir = path.join(THEME_DIR, 'assets', 'images');
 	if (fs.existsSync(imagesDir)) {
 		log('🖼️  Optimizing images...', 'cyan');
-		runCommand('npx imagemin assets/images/* --out-dir=build/images', { optional: true });
+		runCommand('npx imagemin assets/images/* --out-dir=build/images', {
+			optional: true,
+		});
 	}
 
 	const duration = ((Date.now() - startTime) / 1000).toFixed(2);
@@ -136,7 +143,9 @@ function createDistribution() {
 	const version = pkg.version;
 	const themeName = pkg.name;
 
-	console.log(`Creating distribution package for ${themeName} v${version}...`);
+	console.log(
+		`Creating distribution package for ${themeName} v${version}...`
+	);
 
 	// Build for production first
 	buildProduction();
@@ -206,6 +215,7 @@ function initDev() {
 
 /**
  * Validate version format
+ * @param version
  */
 function validateVersion(version) {
 	// Remove any whitespace
@@ -217,10 +227,13 @@ function validateVersion(version) {
 	}
 
 	// Validate semantic versioning format
-	const versionRegex = /^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(?:-((?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\.(?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\+([0-9a-zA-Z-]+(?:\.[0-9a-zA-Z-]+)*))?$/;
+	const versionRegex =
+		/^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(?:-((?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\.(?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\+([0-9a-zA-Z-]+(?:\.[0-9a-zA-Z-]+)*))?$/;
 
 	if (!versionRegex.test(version)) {
-		throw new Error('Invalid version format. Must follow semantic versioning (e.g., 1.2.0, 1.2.0-beta.1)');
+		throw new Error(
+			'Invalid version format. Must follow semantic versioning (e.g., 1.2.0, 1.2.0-beta.1)'
+		);
 	}
 
 	// Parse version parts
@@ -239,6 +252,7 @@ function validateVersion(version) {
 
 /**
  * Update theme version
+ * @param newVersion
  */
 function updateVersion(newVersion) {
 	if (!newVersion) {
@@ -262,7 +276,10 @@ function updateVersion(newVersion) {
 	// Update style.css
 	const styleCss = path.join(THEME_DIR, 'style.css');
 	let styleContent = fs.readFileSync(styleCss, 'utf8');
-	styleContent = styleContent.replace(/Version: .*/, `Version: ${newVersion}`);
+	styleContent = styleContent.replace(
+		/Version: .*/,
+		`Version: ${newVersion}`
+	);
 	fs.writeFileSync(styleCss, styleContent);
 
 	console.log(`Version updated to ${newVersion}`);

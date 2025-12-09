@@ -18,9 +18,14 @@ describe('Theme Template Validation', () => {
 	});
 
 	describe('Required templates', () => {
-		const requiredTemplates = ['index.html', 'single.html', 'page.html', '404.html'];
+		const requiredTemplates = [
+			'index.html',
+			'single.html',
+			'page.html',
+			'404.html',
+		];
 
-		requiredTemplates.forEach(template => {
+		requiredTemplates.forEach((template) => {
 			test(`${template} exists`, () => {
 				const templatePath = path.join(templatesDir, template);
 				expect(fs.existsSync(templatePath)).toBe(true);
@@ -38,7 +43,7 @@ describe('Theme Template Validation', () => {
 	describe('Template parts', () => {
 		const requiredParts = ['header.html', 'footer.html'];
 
-		requiredParts.forEach(part => {
+		requiredParts.forEach((part) => {
 			test(`${part} exists`, () => {
 				const partPath = path.join(partsDir, part);
 				expect(fs.existsSync(partPath)).toBe(true);
@@ -55,18 +60,21 @@ describe('Theme Template Validation', () => {
 
 	describe('Block markup validation', () => {
 		function getTemplateFiles(dir) {
-			if (!fs.existsSync(dir)) return [];
-			return fs.readdirSync(dir)
-				.filter(file => file.endsWith('.html'))
-				.map(file => path.join(dir, file));
+			if (!fs.existsSync(dir)) {
+				return [];
+			}
+			return fs
+				.readdirSync(dir)
+				.filter((file) => file.endsWith('.html'))
+				.map((file) => path.join(dir, file));
 		}
 
 		const allTemplates = [
 			...getTemplateFiles(templatesDir),
-			...getTemplateFiles(partsDir)
+			...getTemplateFiles(partsDir),
 		];
 
-		allTemplates.forEach(templatePath => {
+		allTemplates.forEach((templatePath) => {
 			const filename = path.basename(templatePath);
 
 			test(`${filename} has valid block comments`, () => {
@@ -92,18 +100,28 @@ describe('Theme Template Validation', () => {
 				const content = fs.readFileSync(templatePath, 'utf8');
 
 				// Check for semantic tags in main templates
-				if (filename.includes('index') || filename.includes('single') || filename.includes('page')) {
-					const hasMain = content.includes('tagName":"main"') || content.includes('<main');
+				if (
+					filename.includes('index') ||
+					filename.includes('single') ||
+					filename.includes('page')
+				) {
+					const hasMain =
+						content.includes('tagName":"main"') ||
+						content.includes('<main');
 					expect(hasMain).toBe(true);
 				}
 
 				if (filename === 'header.html') {
-					const hasHeader = content.includes('tagName":"header"') || content.includes('<header');
+					const hasHeader =
+						content.includes('tagName":"header"') ||
+						content.includes('<header');
 					expect(hasHeader).toBe(true);
 				}
 
 				if (filename === 'footer.html') {
-					const hasFooter = content.includes('tagName":"footer"') || content.includes('<footer');
+					const hasFooter =
+						content.includes('tagName":"footer"') ||
+						content.includes('<footer');
 					expect(hasFooter).toBe(true);
 				}
 			});
@@ -112,18 +130,21 @@ describe('Theme Template Validation', () => {
 
 	describe('Accessibility checks', () => {
 		function getTemplateFiles(dir) {
-			if (!fs.existsSync(dir)) return [];
-			return fs.readdirSync(dir)
-				.filter(file => file.endsWith('.html'))
-				.map(file => path.join(dir, file));
+			if (!fs.existsSync(dir)) {
+				return [];
+			}
+			return fs
+				.readdirSync(dir)
+				.filter((file) => file.endsWith('.html'))
+				.map((file) => path.join(dir, file));
 		}
 
 		const allTemplates = [
 			...getTemplateFiles(templatesDir),
-			...getTemplateFiles(partsDir)
+			...getTemplateFiles(partsDir),
 		];
 
-		allTemplates.forEach(templatePath => {
+		allTemplates.forEach((templatePath) => {
 			const filename = path.basename(templatePath);
 			const content = fs.readFileSync(templatePath, 'utf8');
 

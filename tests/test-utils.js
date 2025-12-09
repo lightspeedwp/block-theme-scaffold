@@ -1,7 +1,7 @@
 /**
  * Test utilities for error handling and logging
  *
- * @package {{theme_name}}
+ * @package
  */
 
 /**
@@ -21,11 +21,13 @@ class TestLogger {
 			level: 'ERROR',
 			test: this.testName,
 			message,
-			error: error ? {
-				message: error.message,
-				stack: error.stack,
-				code: error.code
-			} : null
+			error: error
+				? {
+						message: error.message,
+						stack: error.stack,
+						code: error.code,
+					}
+				: null,
 		};
 		this.errors.push(logEntry);
 		console.error(`[ERROR] ${this.testName}: ${message}`, error || '');
@@ -37,7 +39,7 @@ class TestLogger {
 			level: 'WARN',
 			test: this.testName,
 			message,
-			details
+			details,
 		};
 		this.warnings.push(logEntry);
 		console.warn(`[WARN] ${this.testName}: ${message}`, details || '');
@@ -49,7 +51,7 @@ class TestLogger {
 			level: 'INFO',
 			test: this.testName,
 			message,
-			details
+			details,
 		};
 		this.info.push(logEntry);
 		console.log(`[INFO] ${this.testName}: ${message}`, details || '');
@@ -80,8 +82,8 @@ class TestLogger {
 			logs: {
 				errors: this.errors,
 				warnings: this.warnings,
-				info: this.info
-			}
+				info: this.info,
+			},
 		};
 	}
 
@@ -94,6 +96,8 @@ class TestLogger {
 
 /**
  * Retry a test operation with exponential backoff
+ * @param operation
+ * @param options
  */
 async function retryOperation(operation, options = {}) {
 	const {
@@ -101,7 +105,7 @@ async function retryOperation(operation, options = {}) {
 		initialDelay = 1000,
 		maxDelay = 5000,
 		backoffMultiplier = 2,
-		logger = null
+		logger = null,
 	} = options;
 
 	let lastError;
@@ -117,24 +121,31 @@ async function retryOperation(operation, options = {}) {
 			lastError = error;
 
 			if (logger) {
-				logger.warn(`Attempt ${attempt} failed: ${error.message}`, { attempt, error });
+				logger.warn(`Attempt ${attempt} failed: ${error.message}`, {
+					attempt,
+					error,
+				});
 			}
 
 			if (attempt < maxRetries) {
 				if (logger) {
 					logger.info(`Retrying in ${delay}ms`);
 				}
-				await new Promise(resolve => setTimeout(resolve, delay));
+				await new Promise((resolve) => setTimeout(resolve, delay));
 				delay = Math.min(delay * backoffMultiplier, maxDelay);
 			}
 		}
 	}
 
-	throw new Error(`Operation failed after ${maxRetries} attempts: ${lastError.message}`);
+	throw new Error(
+		`Operation failed after ${maxRetries} attempts: ${lastError.message}`
+	);
 }
 
 /**
  * Safe file operation wrapper with error handling
+ * @param operation
+ * @param errorHandler
  */
 function safeFileOperation(operation, errorHandler = null) {
 	try {
@@ -159,6 +170,10 @@ function safeFileOperation(operation, errorHandler = null) {
 
 /**
  * Assert with detailed error logging
+ * @param condition
+ * @param message
+ * @param logger
+ * @param details
  */
 function assertWithLog(condition, message, logger, details) {
 	if (!condition) {
@@ -174,6 +189,8 @@ function assertWithLog(condition, message, logger, details) {
 
 /**
  * Measure test execution time
+ * @param fn
+ * @param logger
  */
 function measureExecutionTime(fn, logger) {
 	const start = Date.now();
@@ -199,6 +216,8 @@ function measureExecutionTime(fn, logger) {
 
 /**
  * Validate test environment
+ * @param requirements
+ * @param logger
  */
 function validateTestEnvironment(requirements, logger) {
 	const issues = [];
@@ -206,7 +225,9 @@ function validateTestEnvironment(requirements, logger) {
 	if (requirements.nodeVersion) {
 		const currentVersion = process.version;
 		if (!currentVersion.startsWith(`v${requirements.nodeVersion}`)) {
-			issues.push(`Node version mismatch: expected ${requirements.nodeVersion}, got ${currentVersion}`);
+			issues.push(
+				`Node version mismatch: expected ${requirements.nodeVersion}, got ${currentVersion}`
+			);
 		}
 	}
 
@@ -220,7 +241,7 @@ function validateTestEnvironment(requirements, logger) {
 
 	if (requirements.commands) {
 		const { execSync } = require('child_process');
-		requirements.commands.forEach(cmd => {
+		requirements.commands.forEach((cmd) => {
 			try {
 				execSync(`command -v ${cmd}`, { stdio: 'pipe' });
 			} catch (error) {
@@ -231,7 +252,7 @@ function validateTestEnvironment(requirements, logger) {
 
 	if (issues.length > 0) {
 		if (logger) {
-			issues.forEach(issue => logger.warn(issue));
+			issues.forEach((issue) => logger.warn(issue));
 		}
 		return { valid: false, issues };
 	}
@@ -244,6 +265,9 @@ function validateTestEnvironment(requirements, logger) {
 
 /**
  * Create a test context with cleanup
+ * @param setup
+ * @param cleanup
+ * @param logger
  */
 function createTestContext(setup, cleanup, logger) {
 	const context = {
@@ -261,7 +285,7 @@ function createTestContext(setup, cleanup, logger) {
 				}
 				throw error;
 			}
-		}
+		},
 	};
 
 	try {
@@ -291,7 +315,7 @@ class TestMetrics {
 			skippedTests: 0,
 			totalDuration: 0,
 			errors: [],
-			warnings: []
+			warnings: [],
 		};
 	}
 
@@ -306,7 +330,10 @@ class TestMetrics {
 			case 'failed':
 				this.metrics.failedTests++;
 				if (error) {
-					this.metrics.errors.push({ test: name, error: error.message });
+					this.metrics.errors.push({
+						test: name,
+						error: error.message,
+					});
 				}
 				break;
 			case 'skipped':
@@ -322,12 +349,20 @@ class TestMetrics {
 	getSummary() {
 		return {
 			...this.metrics,
-			successRate: this.metrics.totalTests > 0
-				? (this.metrics.passedTests / this.metrics.totalTests * 100).toFixed(2)
-				: 0,
-			averageDuration: this.metrics.totalTests > 0
-				? (this.metrics.totalDuration / this.metrics.totalTests).toFixed(2)
-				: 0
+			successRate:
+				this.metrics.totalTests > 0
+					? (
+							(this.metrics.passedTests /
+								this.metrics.totalTests) *
+							100
+						).toFixed(2)
+					: 0,
+			averageDuration:
+				this.metrics.totalTests > 0
+					? (
+							this.metrics.totalDuration / this.metrics.totalTests
+						).toFixed(2)
+					: 0,
 		};
 	}
 
@@ -366,5 +401,5 @@ module.exports = {
 	measureExecutionTime,
 	validateTestEnvironment,
 	createTestContext,
-	TestMetrics
+	TestMetrics,
 };

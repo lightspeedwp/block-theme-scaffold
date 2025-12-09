@@ -4,7 +4,7 @@ test.describe('{{theme_name}} Theme E2E Tests', () => {
 	test.beforeEach(async ({ page }) => {
 		// Go to WordPress admin and activate theme
 		await page.goto('/wp-admin');
-		
+
 		// Login if needed (assuming wp-env default credentials)
 		const loginForm = page.locator('#loginform');
 		if (await loginForm.isVisible()) {
@@ -16,22 +16,22 @@ test.describe('{{theme_name}} Theme E2E Tests', () => {
 
 	test('homepage loads correctly', async ({ page }) => {
 		await page.goto('/');
-		
+
 		// Check for basic theme elements
 		await expect(page.locator('header')).toBeVisible();
 		await expect(page.locator('main, #main')).toBeVisible();
 		await expect(page.locator('footer')).toBeVisible();
-		
+
 		// Check for navigation
 		await expect(page.locator('.wp-block-navigation')).toBeVisible();
 	});
 
 	test('site editor loads', async ({ page }) => {
 		await page.goto('/wp-admin/site-editor.php');
-		
+
 		// Wait for editor to load
 		await page.waitForSelector('.edit-site-layout__content');
-		
+
 		// Check editor is functional
 		await expect(page.locator('.edit-site-layout__content')).toBeVisible();
 	});
@@ -40,32 +40,38 @@ test.describe('{{theme_name}} Theme E2E Tests', () => {
 		// Set mobile viewport
 		await page.setViewportSize({ width: 375, height: 667 });
 		await page.goto('/');
-		
+
 		// Check if mobile menu toggle exists
-		const menuToggle = page.locator('.wp-block-navigation__responsive-container-open');
+		const menuToggle = page.locator(
+			'.wp-block-navigation__responsive-container-open'
+		);
 		if (await menuToggle.isVisible()) {
 			await menuToggle.click();
-			
+
 			// Check if menu opens
-			await expect(page.locator('.wp-block-navigation__responsive-container.is-menu-open')).toBeVisible();
+			await expect(
+				page.locator(
+					'.wp-block-navigation__responsive-container.is-menu-open'
+				)
+			).toBeVisible();
 		}
 	});
 
 	test('accessibility standards', async ({ page }) => {
 		await page.goto('/');
-		
+
 		// Check for skip link
 		const skipLink = page.locator('.skip-link');
 		await expect(skipLink).toBeHidden();
-		
+
 		// Focus skip link
 		await page.keyboard.press('Tab');
 		await expect(skipLink).toBeVisible();
-		
+
 		// Check heading hierarchy
 		const h1 = page.locator('h1');
 		await expect(h1).toHaveCount(1);
-		
+
 		// Check for alt text on images
 		const images = page.locator('img');
 		const count = await images.count();
@@ -78,22 +84,24 @@ test.describe('{{theme_name}} Theme E2E Tests', () => {
 
 	test('responsive design', async ({ page }) => {
 		await page.goto('/');
-		
+
 		// Test different viewport sizes
 		const viewports = [
-			{ width: 320, height: 568 },  // Mobile
+			{ width: 320, height: 568 }, // Mobile
 			{ width: 768, height: 1024 }, // Tablet
-			{ width: 1200, height: 800 }  // Desktop
+			{ width: 1200, height: 800 }, // Desktop
 		];
-		
+
 		for (const viewport of viewports) {
 			await page.setViewportSize(viewport);
-			
+
 			// Check layout doesn't break
 			await expect(page.locator('body')).toBeVisible();
-			
+
 			// Check no horizontal scroll
-			const bodyWidth = await page.evaluate(() => document.body.scrollWidth);
+			const bodyWidth = await page.evaluate(
+				() => document.body.scrollWidth
+			);
 			const viewportWidth = viewport.width;
 			expect(bodyWidth).toBeLessThanOrEqual(viewportWidth + 20); // Allow small tolerance
 		}
@@ -101,36 +109,40 @@ test.describe('{{theme_name}} Theme E2E Tests', () => {
 
 	test('block patterns work', async ({ page }) => {
 		await page.goto('/wp-admin/post-new.php?post_type=page');
-		
+
 		// Wait for editor to load
 		await page.waitForSelector('.block-editor-writing-flow');
-		
+
 		// Open patterns panel
 		await page.click('button[aria-label="Add block"]');
 		await page.click('button[aria-label="Patterns"]');
-		
+
 		// Look for theme patterns
-		const themePatterns = page.locator('.block-editor-block-patterns-list__item:has-text("{{theme_name}}")');
+		const themePatterns = page.locator(
+			'.block-editor-block-patterns-list__item:has-text("{{theme_name}}")'
+		);
 		const patternCount = await themePatterns.count();
-		
+
 		expect(patternCount).toBeGreaterThan(0);
 	});
 
 	test('style variations work', async ({ page }) => {
 		await page.goto('/wp-admin/site-editor.php');
-		
+
 		// Wait for editor to load
 		await page.waitForSelector('.edit-site-layout__content');
-		
+
 		// Open global styles
 		const stylesButton = page.locator('button:has-text("Styles")');
 		if (await stylesButton.isVisible()) {
 			await stylesButton.click();
-			
+
 			// Check for style variations
-			const variations = page.locator('.edit-site-global-styles-variations_item');
+			const variations = page.locator(
+				'.edit-site-global-styles-variations_item'
+			);
 			const variationCount = await variations.count();
-			
+
 			expect(variationCount).toBeGreaterThan(1); // Should have at least default + variations
 		}
 	});

@@ -6,7 +6,7 @@
  * Provides consistent logging for test execution across Jest, PHPUnit, and E2E tests.
  * Logs are written to logs/test/ directory with timestamps.
  *
- * @package {{theme_name}}
+ * @package
  * @since {{version}}
  */
 
@@ -41,7 +41,7 @@ class TestLogger {
 	/**
 	 * Get log file path
 	 *
-	 * @returns {string} Log file path
+	 * @return {string} Log file path
 	 */
 	getLogPath() {
 		const date = new Date().toISOString().split('T')[0]; // YYYY-MM-DD
@@ -51,9 +51,9 @@ class TestLogger {
 	/**
 	 * Format log message
 	 *
-	 * @param {string} level - Log level (DEBUG, INFO, WARN, ERROR, FATAL)
+	 * @param {string} level   - Log level (DEBUG, INFO, WARN, ERROR, FATAL)
 	 * @param {string} message - Log message
-	 * @returns {string} Formatted message
+	 * @return {string} Formatted message
 	 */
 	formatMessage(level, message) {
 		const timestamp = new Date().toISOString();
@@ -63,7 +63,7 @@ class TestLogger {
 	/**
 	 * Write log message
 	 *
-	 * @param {string} level - Log level
+	 * @param {string} level   - Log level
 	 * @param {string} message - Log message
 	 */
 	write(level, message) {
@@ -138,11 +138,13 @@ class TestLogger {
 	 * Log test suite end
 	 *
 	 * @param {string} suiteName - Test suite name
-	 * @param {Object} results - Test results
+	 * @param {Object} results   - Test results
 	 */
 	suiteEnd(suiteName, results = {}) {
 		const { passed = 0, failed = 0, total = 0 } = results;
-		this.info(`Test suite completed: ${suiteName} - ${passed}/${total} passed, ${failed} failed`);
+		this.info(
+			`Test suite completed: ${suiteName} - ${passed}/${total} passed, ${failed} failed`
+		);
 	}
 
 	/**
@@ -157,9 +159,9 @@ class TestLogger {
 	/**
 	 * Log test case end
 	 *
-	 * @param {string} testName - Test case name
-	 * @param {boolean} passed - Whether test passed
-	 * @param {string} [error] - Error message if failed
+	 * @param {string}  testName - Test case name
+	 * @param {boolean} passed   - Whether test passed
+	 * @param {string}  [error]  - Error message if failed
 	 */
 	testEnd(testName, passed, error = null) {
 		if (passed) {

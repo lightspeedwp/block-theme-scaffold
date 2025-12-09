@@ -2,12 +2,13 @@
 
 # Pre-commit hook for block theme scaffold
 # Intelligently handles both scaffold mode and generated theme mode
+# Runs linting and tests before allowing commits
 
 . "$(dirname -- "$0")/_/husky.sh"
 
 # Check if we're in scaffold mode (has mustache variables)
 if node bin/test-placeholders.js check package.json 2>/dev/null; then
-    echo "🔍 Scaffold mode detected - using dry-run linting..."
+    echo "🔍 Scaffold mode detected - using dry-run linting and testing..."
     echo ""
 
     # Run lint dry-run which handles mustache variables
@@ -19,11 +20,22 @@ if node bin/test-placeholders.js check package.json 2>/dev/null; then
         exit 1
     }
 
+    # Run tests for scripts directory (no mustache variables in test files)
+    echo ""
+    echo "🧪 Running tests..."
+    npm run test:scripts -- --bail || {
+        echo ""
+        echo "❌ Tests failed. Please fix the failing tests and try again."
+        echo "💡 Tip: Run 'npm run test:scripts' to see all test failures"
+        echo "💡 To bypass this check (not recommended), use: git commit --no-verify"
+        exit 1
+    }
+
     echo ""
     echo "✅ All scaffold pre-commit checks passed!"
 
 else
-    echo "🔍 Generated theme mode detected - running standard linting..."
+    echo "🔍 Generated theme mode detected - running standard linting and testing..."
     echo ""
 
     # Standard linting for generated themes
@@ -53,7 +65,28 @@ else
         echo "⚠️  Skipping PHP linting (Composer not available)"
     fi
 
+    # Run all tests
+    echo ""
+    echo "🧪 Running JavaScript tests..."
+    npm run test:js -- --bail || {
+        echo "❌ JavaScript tests failed. Please fix the failing tests and try again."
+        echo "💡 Tip: Run 'npm run test:js' to see all test failures"
+        exit 1
+    }
+
+    if command -v composer > /dev/null 2>&1; then
+        echo "🧪 Running PHP tests..."
+        npm run test:php || {
+            echo "❌ PHP tests failed. Please fix the failing tests and try again."
+            echo "💡 Tip: Run 'npm run test:php' to see all test failures"
+            exit 1
+        }
+    else
+        echo "⚠️  Skipping PHP tests (Composer not available)"
+    fi
+
     # Run security audit
+    echo ""
     echo "🔒 Running security audit..."
     npm audit --audit-level=high --production || {
         echo "⚠️  Security vulnerabilities detected (high or critical)."
@@ -65,3 +98,4 @@ else
     echo ""
     echo "✅ All pre-commit checks passed!"
 fi
+

@@ -13,27 +13,27 @@
  *
  * Usage: node scripts/audit-frontmatter.js > .github/reports/analysis/YYYY-MM-DD-frontmatter-audit.csv
  *
- * @package block-theme-scaffold
+ * @package
  * @since 1.0.0
  */
 
-const fs = require( 'fs' );
-const path = require( 'path' );
-const matter = require( 'gray-matter' );
+const fs = require('fs');
+const path = require('path');
+const matter = require('gray-matter');
 
 /**
  * Get all markdown files in directory recursively
  *
- * @param {string} dir - Directory to scan
+ * @param {string}   dir      - Directory to scan
  * @param {string[]} fileList - Accumulated file list
- * @returns {string[]} Array of markdown file paths
+ * @return {string[]} Array of markdown file paths
  */
-function getAllMarkdownFiles( dir, fileList = [] ) {
-	const files = fs.readdirSync( dir );
+function getAllMarkdownFiles(dir, fileList = []) {
+	const files = fs.readdirSync(dir);
 
-	files.forEach( ( file ) => {
-		const filePath = path.join( dir, file );
-		const stat = fs.statSync( filePath );
+	files.forEach((file) => {
+		const filePath = path.join(dir, file);
+		const stat = fs.statSync(filePath);
 
 		// Skip node_modules, vendor, .git, tmp, and other build directories
 		if (
@@ -45,17 +45,17 @@ function getAllMarkdownFiles( dir, fileList = [] ) {
 			file === 'dist' ||
 			file === 'build' ||
 			file === '.archive' ||
-			file.startsWith( '.' )
+			file.startsWith('.')
 		) {
 			return;
 		}
 
-		if ( stat.isDirectory() ) {
-			getAllMarkdownFiles( filePath, fileList );
-		} else if ( file.endsWith( '.md' ) ) {
-			fileList.push( filePath );
+		if (stat.isDirectory()) {
+			getAllMarkdownFiles(filePath, fileList);
+		} else if (file.endsWith('.md')) {
+			fileList.push(filePath);
 		}
-	} );
+	});
 
 	return fileList;
 }
@@ -64,19 +64,19 @@ function getAllMarkdownFiles( dir, fileList = [] ) {
  * Extract frontmatter references from a file
  *
  * @param {string} filePath - Path to markdown file
- * @returns {Object} Parsed frontmatter data
+ * @return {Object} Parsed frontmatter data
  */
-function extractFrontmatter( filePath ) {
+function extractFrontmatter(filePath) {
 	try {
-		const content = fs.readFileSync( filePath, 'utf8' );
-		const parsed = matter( content );
+		const content = fs.readFileSync(filePath, 'utf8');
+		const parsed = matter(content);
 
 		return {
 			filePath,
 			data: parsed.data,
 			hasError: false,
 		};
-	} catch ( error ) {
+	} catch (error) {
 		return {
 			filePath,
 			data: {},
@@ -90,12 +90,12 @@ function extractFrontmatter( filePath ) {
  * Build reference graph from all files
  *
  * @param {Object[]} allFrontmatter - Array of frontmatter data
- * @returns {Map} Reference graph map
+ * @return {Map} Reference graph map
  */
-function buildReferenceGraph( allFrontmatter ) {
+function buildReferenceGraph(allFrontmatter) {
 	const graph = new Map();
 
-	allFrontmatter.forEach( ( item ) => {
+	allFrontmatter.forEach((item) => {
 		const { filePath, data } = item;
 		const references = [];
 
@@ -110,18 +110,18 @@ function buildReferenceGraph( allFrontmatter ) {
 			'dependsOn',
 		];
 
-		referenceFields.forEach( ( field ) => {
-			if ( data[ field ] ) {
-				if ( Array.isArray( data[ field ] ) ) {
-					references.push( ...data[ field ] );
-				} else if ( typeof data[ field ] === 'string' ) {
-					references.push( data[ field ] );
+		referenceFields.forEach((field) => {
+			if (data[field]) {
+				if (Array.isArray(data[field])) {
+					references.push(...data[field]);
+				} else if (typeof data[field] === 'string') {
+					references.push(data[field]);
 				}
 			}
-		} );
+		});
 
-		graph.set( filePath, references );
-	} );
+		graph.set(filePath, references);
+	});
 
 	return graph;
 }
@@ -129,50 +129,55 @@ function buildReferenceGraph( allFrontmatter ) {
 /**
  * Detect circular references in graph
  *
- * @param {Map} graph - Reference graph
- * @param {string} node - Starting node
- * @param {Set} visited - Visited nodes
- * @param {Set} recStack - Recursion stack
- * @returns {boolean} True if circular reference detected
+ * @param {Map}    graph    - Reference graph
+ * @param {string} node     - Starting node
+ * @param {Set}    visited  - Visited nodes
+ * @param {Set}    recStack - Recursion stack
+ * @return {boolean} True if circular reference detected
  */
-function hasCircularReference( graph, node, visited = new Set(), recStack = new Set() ) {
-	visited.add( node );
-	recStack.add( node );
+function hasCircularReference(
+	graph,
+	node,
+	visited = new Set(),
+	recStack = new Set()
+) {
+	visited.add(node);
+	recStack.add(node);
 
-	const neighbors = graph.get( node ) || [];
+	const neighbors = graph.get(node) || [];
 
-	for ( const neighbor of neighbors ) {
-		if ( ! visited.has( neighbor ) ) {
-			if ( hasCircularReference( graph, neighbor, visited, recStack ) ) {
+	for (const neighbor of neighbors) {
+		if (!visited.has(neighbor)) {
+			if (hasCircularReference(graph, neighbor, visited, recStack)) {
 				return true;
 			}
-		} else if ( recStack.has( neighbor ) ) {
+		} else if (recStack.has(neighbor)) {
 			return true;
 		}
 	}
 
-	recStack.delete( node );
+	recStack.delete(node);
 	return false;
 }
 
 /**
  * Generate recommendations based on reference count
  *
- * @param {number} count - Number of references
+ * @param {number}  count      - Number of references
  * @param {boolean} isCircular - Has circular references
- * @returns {string} Recommendation
+ * @return {string} Recommendation
  */
-function getRecommendation( count, isCircular ) {
-	if ( isCircular ) {
+function getRecommendation(count, isCircular) {
+	if (isCircular) {
 		return 'REMOVE-CIRCULAR';
 	}
-	if ( count === 0 ) {
+	if (count === 0) {
 		return 'OK';
 	}
-	if ( count <= 3 ) {
+	if (count <= 3) {
 		return 'OK';
 	}
-	if ( count <= 6 ) {
+	if (count <= 6) {
 		return 'REVIEW';
 	}
 	return 'REDUCE';
@@ -182,56 +187,58 @@ function getRecommendation( count, isCircular ) {
  * Generate CSV report
  *
  * @param {Object[]} allFrontmatter - Array of frontmatter data
- * @param {Map} graph - Reference graph
+ * @param {Map}      graph          - Reference graph
  */
-function generateReport( allFrontmatter, graph ) {
+function generateReport(allFrontmatter, graph) {
 	// CSV Header
-	console.log( 'File,Reference Count,References,Circular,Recommendation' );
+	console.log('File,Reference Count,References,Circular,Recommendation');
 
-	allFrontmatter.forEach( ( item ) => {
+	allFrontmatter.forEach((item) => {
 		const { filePath, data, hasError } = item;
 
-		if ( hasError ) {
-			console.log( `"${ filePath }",ERROR,,,ERROR` );
+		if (hasError) {
+			console.log(`"${filePath}",ERROR,,,ERROR`);
 			return;
 		}
 
-		const references = graph.get( filePath ) || [];
+		const references = graph.get(filePath) || [];
 		const count = references.length;
-		const isCircular = hasCircularReference( graph, filePath );
-		const recommendation = getRecommendation( count, isCircular );
+		const isCircular = hasCircularReference(graph, filePath);
+		const recommendation = getRecommendation(count, isCircular);
 
 		// Format references for CSV (escape quotes)
 		const referencesStr = references
-			.map( ( ref ) => ref.replace( /"/g, '""' ) )
-			.join( '; ' );
+			.map((ref) => ref.replace(/"/g, '""'))
+			.join('; ');
 
 		console.log(
-			`"${ filePath }",${ count },"${ referencesStr }",${ isCircular ? 'YES' : 'NO' },${ recommendation }`
+			`"${filePath}",${count},"${referencesStr}",${isCircular ? 'YES' : 'NO'},${recommendation}`
 		);
-	} );
+	});
 }
 
 /**
  * Main execution
  */
 function main() {
-	const rootDir = path.resolve( __dirname, '..' );
-	const markdownFiles = getAllMarkdownFiles( rootDir );
+	const rootDir = path.resolve(__dirname, '..');
+	const markdownFiles = getAllMarkdownFiles(rootDir);
 
-	console.error( `Found ${ markdownFiles.length } markdown files` );
+	console.error(`Found ${markdownFiles.length} markdown files`);
 
-	const allFrontmatter = markdownFiles.map( extractFrontmatter );
-	const graph = buildReferenceGraph( allFrontmatter );
+	const allFrontmatter = markdownFiles.map(extractFrontmatter);
+	const graph = buildReferenceGraph(allFrontmatter);
 
-	generateReport( allFrontmatter, graph );
+	generateReport(allFrontmatter, graph);
 
-	console.error( '\nAudit complete!' );
-	console.error( 'Recommendations:' );
-	console.error( '  OK            - Reference count is reasonable (0-3)' );
-	console.error( '  REVIEW        - Consider reviewing references (4-6)' );
-	console.error( '  REDUCE        - High reference count, consider reducing (7+)' );
-	console.error( '  REMOVE-CIRCULAR - Circular reference detected, must fix' );
+	console.error('\nAudit complete!');
+	console.error('Recommendations:');
+	console.error('  OK            - Reference count is reasonable (0-3)');
+	console.error('  REVIEW        - Consider reviewing references (4-6)');
+	console.error(
+		'  REDUCE        - High reference count, consider reducing (7+)'
+	);
+	console.error('  REMOVE-CIRCULAR - Circular reference detected, must fix');
 }
 
 main();

@@ -1,7 +1,7 @@
 /**
  * Jest setup file for block theme scaffold.
  *
- * @package {{theme_name}}
+ * @package
  */
 
 // Import testing utilities
@@ -15,14 +15,14 @@ const logger = new TestLogger('jest');
 logger.info('Jest test session started');
 
 // Mock WordPress dependencies
-jest.mock( '@wordpress/i18n', () => ( {
-	__: jest.fn( ( text ) => text ),
-	_x: jest.fn( ( text ) => text ),
-	_n: jest.fn( ( single, plural, number ) => ( number === 1 ? single : plural ) ),
-	sprintf: jest.fn( ( format, ...args ) => {
-		return format.replace( /%[sdifF%]/g, () => args.shift() );
-	} ),
-} ) );
+jest.mock('@wordpress/i18n', () => ({
+	__: jest.fn((text) => text),
+	_x: jest.fn((text) => text),
+	_n: jest.fn((single, plural, number) => (number === 1 ? single : plural)),
+	sprintf: jest.fn((format, ...args) => {
+		return format.replace(/%[sdifF%]/g, () => args.shift());
+	}),
+}));
 
 // Mock console methods to reduce noise in tests
 global.console = {
@@ -35,30 +35,32 @@ global.console = {
 // Set up global test environment
 global.wp = {
 	i18n: {
-		__: jest.fn( ( text ) => text ),
-		_x: jest.fn( ( text ) => text ),
-		_n: jest.fn( ( single, plural, number ) => ( number === 1 ? single : plural ) ),
+		__: jest.fn((text) => text),
+		_x: jest.fn((text) => text),
+		_n: jest.fn((single, plural, number) =>
+			number === 1 ? single : plural
+		),
 		sprintf: jest.fn(),
 	},
 };
 
 // Mock fetch for API calls
-global.fetch = jest.fn( () =>
-	Promise.resolve( {
+global.fetch = jest.fn(() =>
+	Promise.resolve({
 		ok: true,
-		json: () => Promise.resolve( {} ),
-	} )
+		json: () => Promise.resolve({}),
+	})
 );
 
 // Reset mocks after each test
-afterEach( () => {
+afterEach(() => {
 	jest.clearAllMocks();
-} );
+});
 
 // Log test completion
-afterAll( () => {
+afterAll(() => {
 	logger.info('Jest test session completed');
-} );
+});
 
 // Export logger for use in tests
 global.testLogger = logger;
