@@ -14,10 +14,20 @@ This directory contains GitHub-specific configuration files for the {{theme_name
 ## Contents
 
 - **agents/** - AI agent configurations for automated development tasks
-- **chatmodes/** - Custom chat mode configurations for AI assistants
 - **instructions/** - Development instructions and guidelines for AI tools
+- **projects/** - Active Copilot projects and in-progress work
 - **prompts/** - Reusable prompt templates for AI-assisted development
+- **reports/** - Completed task reports and validation outcomes
+- **schemas/** - JSON schemas and configuration templates
 - **workflows/** - GitHub Actions CI/CD workflow definitions
+
+## Documentation
+
+Permanent documentation is stored in the [docs/](../docs/) folder, not here. See:
+
+- [docs/FILE_ORGANIZATION.md](../docs/FILE_ORGANIZATION.md) - File organization guide
+- [docs/COPILOT_TASKS.md](../docs/COPILOT_TASKS.md) - Copilot task definitions
+- [docs/CUSTOM_INSTRUCTIONS.md](../docs/CUSTOM_INSTRUCTIONS.md) - Custom AI instructions
 
 ## Workflows
 

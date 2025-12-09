@@ -11,6 +11,21 @@ date: 2025-12-09
 
 This document explains where different types of files are stored in the block-theme-scaffold repository and the rationale for each location.
 
+## Core Policy: Documentation Location
+
+**🔑 Key Rule:** All permanent documentation must be stored in the `docs/` folder, not in `.github/` subdirectories.
+
+- `.github/` is for infrastructure, configuration, and transient work (projects, reports)
+- `docs/` is for permanent, versioned documentation
+- `tmp/` and `logs/` do NOT include README.md files
+
+This separation ensures:
+
+- Clear distinction between infrastructure and documentation
+- Permanent docs are discoverable and grouped together
+- Easier navigation for developers and AI agents
+- Reduces cognitive overhead
+
 ### Directory Structure Overview
 
 ```bash
@@ -23,16 +38,19 @@ block-theme-scaffold/
 │   ├── agents/               # Agent specifications and code
 │   ├── workflows/            # GitHub Actions CI/CD
 │   └── prompts/              # Prompt templates for AI generation
-├── docs/                     # Permanent documentation
+├── docs/                     # ⭐ ALL permanent documentation here
+│   ├── GOVERNANCE-START-HERE.md  # Navigation hub
 │   ├── GOVERNANCE.md         # Core policies & standards
 │   ├── ARCHITECTURE.md       # Project structure
-│   ├── GOVERNANCE-START-HERE.md  # Navigation hub
-│   └── [other docs]/         # Comprehensive guides
+│   ├── FILE_ORGANIZATION.md  # This file
+│   ├── CUSTOM_INSTRUCTIONS.md    # Custom AI instructions
+│   ├── COPILOT_TASKS.md      # Copilot task definitions
+│   └── [other comprehensive guides]/
 ├── src/                      # Source code (JS, CSS)
 ├── inc/                      # PHP includes
 ├── tests/                    # Test files
 ├── bin/                      # Build & utility scripts
-└── [other theme files]/
+└── [other theme folders]/
 ```
 
 ## File Categories & Locations
