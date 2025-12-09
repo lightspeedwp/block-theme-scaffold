@@ -77,11 +77,6 @@
           "fontFamily": "{{body_font_family}}",
           "slug": "body",
           "name": "{{body_font_name}}"
-        },
-        {
-          "fontFamily": "{{mono_font_family}}",
-          "slug": "monospace",
-          "name": "{{mono_font_name}}"
         }
       ],
       "fontSizes": [
@@ -91,34 +86,34 @@
           "name": "Tiny",
           "fluid": {
             "min": "0.65rem",
-          "max": "0.75rem"
-        }
-      },
-      {
-        "slug": "200",
-        "size": "1rem",
-        "name": "Base",
-        "fluid": {
-          "min": "0.875rem",
-          "max": "1rem"
-        }
-      },
-      {
-        "slug": "300",
-        "size": "1.25rem",
-        "name": "Small",
-        "fluid": {
-          "min": "1rem",
-          "max": "1.25rem"
-        }
-      },
-      {
-        "slug": "400",
-        "size": "1.5rem",
-        "name": "Medium",
-        "fluid": {
-          "min": "1.25rem",
-          "max": "1.5rem"
+            "max": "0.75rem"
+          }
+        },
+        {
+          "slug": "200",
+          "size": "1rem",
+          "name": "Base",
+          "fluid": {
+            "min": "0.875rem",
+            "max": "1rem"
+          }
+        },
+        {
+          "slug": "300",
+          "size": "1.25rem",
+          "name": "Small",
+          "fluid": {
+            "min": "1rem",
+            "max": "1.25rem"
+          }
+        },
+        {
+          "slug": "400",
+          "size": "1.5rem",
+          "name": "Medium",
+          "fluid": {
+            "min": "1.25rem",
+            "max": "1.5rem"
           }
         },
         {
@@ -206,28 +201,28 @@
         },
         {
           "slug": "60",
-          "size": "3.5rem",
-          "name": "56px"
-        },
-        {
-          "slug": "70",
           "size": "3.75rem",
           "name": "60px"
         },
         {
+          "slug": "70",
+          "size": "4.375rem",
+          "name": "70px"
+        },
+        {
           "slug": "80",
-          "size": "4rem",
-          "name": "64px"
+          "size": "5rem",
+          "name": "80px"
         },
         {
           "slug": "90",
-          "size": "4.5rem",
-          "name": "72px"
+          "size": "5.625rem",
+          "name": "90px"
         },
         {
           "slug": "100",
-          "size": "5rem",
-          "name": "80px"
+          "size": "6.25rem",
+          "name": "100px"
         }
       ]
     },

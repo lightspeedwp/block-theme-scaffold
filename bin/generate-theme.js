@@ -4,7 +4,11 @@
  * bin/generate-theme.js
  *
  * Script to generate a new WordPress block theme from this scaffold, replacing all moustache placeholders.
- * Usage: node bin/generate-theme.js --slug my-theme --name "My Theme" --description "Description here" --author "Your Name" --author_uri "https://yourdomain.com" --version "1.0.0"
+ *
+ * Usage:
+ *   CLI Mode: node bin/generate-theme.js --slug my-theme --name "My Theme" --author "Your Name" ...
+ *   JSON Mode: node bin/generate-theme.js --config theme-config.json
+ *   Interactive: node bin/generate-theme.js (wizard mode - not yet implemented, use CLI or JSON)
  */
 
 const fs = require('fs');
@@ -83,25 +87,88 @@ args.forEach((arg, i) => {
   }
 });
 
+/**
+ * Load configuration from JSON file
+ */
+function loadConfig(configPath) {
+  try {
+    const absolutePath = path.isAbsolute(configPath) ? configPath : path.resolve(process.cwd(), configPath);
+
+    if (!fs.existsSync(absolutePath)) {
+      throw new Error(`Configuration file not found: ${absolutePath}`);
+    }
+
+    const configContent = fs.readFileSync(absolutePath, 'utf8');
+    const config = JSON.parse(configContent);
+
+    // Validate required fields
+    if (!config.theme_slug || !config.theme_name || !config.author) {
+      throw new Error('Configuration must include theme_slug, theme_name, and author');
+    }
+
+    console.log(`✓ Loaded configuration from ${path.basename(absolutePath)}`);
+    return config;
+  } catch (error) {
+    throw new Error(`Failed to load configuration: ${error.message}`);
+  }
+}
+
+/**
+ * Flatten nested config object to mustache variables
+ */
+function flattenConfig(config, prefix = '') {
+  const flattened = {};
+
+  for (const [key, value] of Object.entries(config)) {
+    const newKey = prefix ? `${prefix}_${key}` : key;
+
+    if (value && typeof value === 'object' && !Array.isArray(value)) {
+      Object.assign(flattened, flattenConfig(value, newKey));
+    } else if (Array.isArray(value)) {
+      // Skip arrays for now - these are structural config, not mustache variables
+      continue;
+    } else {
+      flattened[newKey] = value;
+    }
+  }
+
+  return flattened;
+}
+
 try {
-  const author = sanitizeInput(argMap.author, 'name') || 'Author Name';
-  const authorUri = sanitizeInput(argMap.author_uri, 'url') || 'https://example.com';
-  const themeSlug = sanitizeInput(argMap.slug, 'slug') || 'my-theme';
+  let configData = {};
+
+  // Check if config file provided
+  if (argMap.config) {
+    const rawConfig = loadConfig(argMap.config);
+    configData = flattenConfig(rawConfig);
+  }
+
+  // Override with CLI arguments (CLI takes precedence over config file)
+  Object.keys(argMap).forEach(key => {
+    if (key !== 'config' && argMap[key]) {
+      configData[key] = argMap[key];
+    }
+  });
+
+  const author = sanitizeInput(configData.author || argMap.author, 'name') || 'Author Name';
+  const authorUri = sanitizeInput(configData.author_uri || argMap.author_uri, 'url') || 'https://example.com';
+  const themeSlug = sanitizeInput(configData.theme_slug || argMap.slug, 'slug') || 'my-theme';
 
   const placeholders = {
     '{{theme_slug}}': themeSlug,
-    '{{theme_name}}': sanitizeInput(argMap.name, 'name') || 'My Theme',
-    '{{description}}': sanitizeInput(argMap.description, 'text') || 'A WordPress block theme.',
+    '{{theme_name}}': sanitizeInput(configData.theme_name || argMap.name, 'name') || 'My Theme',
+    '{{description}}': sanitizeInput(configData.description || argMap.description, 'text') || 'A WordPress block theme.',
     '{{author}}': author,
     '{{author_uri}}': authorUri,
-    '{{version}}': sanitizeInput(argMap.version, 'version') || '1.0.0',
-    '{{theme_uri}}': sanitizeInput(argMap.theme_uri, 'url') || 'https://example.com/theme',
-    '{{min_wp_version}}': sanitizeInput(argMap.min_wp_version, 'version') || '6.0',
-    '{{tested_wp_version}}': sanitizeInput(argMap.tested_wp_version, 'version') || '6.5',
-    '{{min_php_version}}': sanitizeInput(argMap.min_php_version, 'version') || '7.4',
-    '{{license}}': sanitizeInput(argMap.license, 'license') || 'GPL-2.0-or-later',
-    '{{license_uri}}': sanitizeInput(argMap.license_uri, 'url') || 'https://www.gnu.org/licenses/gpl-2.0.html',
-    '{{theme_repo_url}}': sanitizeInput(argMap.theme_repo_url, 'url') || `https://github.com/${author}/${themeSlug}`,
+    '{{version}}': sanitizeInput(configData.version || argMap.version, 'version') || '1.0.0',
+    '{{theme_uri}}': sanitizeInput(configData.theme_uri || argMap.theme_uri, 'url') || 'https://example.com/theme',
+    '{{min_wp_version}}': sanitizeInput(configData.min_wp_version || argMap.min_wp_version, 'version') || '6.5',
+    '{{tested_wp_version}}': sanitizeInput(configData.tested_wp_version || argMap.tested_wp_version, 'version') || '6.7',
+    '{{min_php_version}}': sanitizeInput(configData.min_php_version || argMap.min_php_version, 'version') || '8.0',
+    '{{license}}': sanitizeInput(configData.license || argMap.license, 'license') || 'GPL-2.0-or-later',
+    '{{license_uri}}': sanitizeInput(configData.license_uri || argMap.license_uri, 'url') || 'https://www.gnu.org/licenses/gpl-2.0.html',
+    '{{theme_repo_url}}': sanitizeInput(configData.theme_repo_url || argMap.theme_repo_url, 'url') || `https://github.com/${author}/${themeSlug}`,
     '{{namespace}}': themeSlug.replace(/-/g, '_'),
     '{{support_url}}': `https://wordpress.org/support/theme/${themeSlug}`,
     '{{support_email}}': `support@${authorUri.replace(/^https?:\/\/(www\.)?/, '').split('/')[0]}`,
@@ -112,12 +179,127 @@ try {
     '{{discord_url}}': authorUri,
     '{{custom_dev_url}}': authorUri,
     '{{premium_support_url}}': authorUri,
+    // Design system variables
+    '{{primary_color}}': configData.design_system_colors_primary_color || '#0073aa',
+    '{{secondary_color}}': configData.design_system_colors_secondary_color || '#005177',
+    '{{background_color}}': configData.design_system_colors_background_color || '#ffffff',
+    '{{text_color}}': configData.design_system_colors_text_color || '#1a1a1a',
+    '{{accent_color}}': configData.design_system_colors_accent_color || '#ff6b35',
+    '{{neutral_color}}': configData.design_system_colors_neutral_color || '#6c757d',
+    '{{heading_font_family}}': configData.design_system_typography_heading_font_family || 'system-ui, -apple-system, BlinkMacSystemFont, \'Segoe UI\', sans-serif',
+    '{{heading_font_name}}': configData.design_system_typography_heading_font_name || 'System Font',
+    '{{body_font_family}}': configData.design_system_typography_body_font_family || 'system-ui, -apple-system, BlinkMacSystemFont, \'Segoe UI\', sans-serif',
+    '{{body_font_name}}': configData.design_system_typography_body_font_name || 'System Font',
+    '{{heading_font_weight}}': configData.design_system_typography_heading_font_weight || '700',
+    '{{body_line_height}}': configData.design_system_typography_body_line_height || '1.6',
+    '{{heading_line_height}}': configData.design_system_typography_heading_line_height || '1.2',
+    '{{button_font_weight}}': configData.design_system_typography_button_font_weight || '600',
+    '{{site_title_font_weight}}': configData.design_system_typography_site_title_font_weight || '700',
+    '{{content_width}}': configData.design_system_layout_content_width || '720px',
+    '{{wide_width}}': configData.design_system_layout_wide_width || '1200px',
+    '{{content_width_px}}': (configData.design_system_layout_content_width || '720px').replace(/[^\d]/g, ''),
+    '{{button_border_radius}}': configData.content_button_border_radius || '4px',
+    '{{excerpt_more}}': configData.content_excerpt_more || '...',
+    '{{skip_link_text}}': configData.content_skip_link_text || 'Skip to content',
   };
 
   // Validate that placeholders aren't using defaults when user provided input
   if (argMap.author && placeholders['{{author}}'] === 'Author Name') {
     throw new Error('Invalid author name provided');
   }
+
+function showHelp() {
+  console.log(`
+WordPress Block Theme Generator
+================================
+
+Generate a custom WordPress block theme from the scaffold.
+
+USAGE:
+  JSON Config Mode (Recommended):
+    node bin/generate-theme.js --config theme-config.json
+
+  CLI Mode:
+    node bin/generate-theme.js --slug SLUG --name "NAME" --author "AUTHOR" [OPTIONS]
+
+  Help:
+    node bin/generate-theme.js --help
+
+MODES:
+
+  1. JSON Config Mode (Recommended for complex themes)
+     Create a theme-config.json file based on theme-config.template.json
+
+     Example:
+       cp theme-config.template.json my-theme-config.json
+       # Edit my-theme-config.json with your values
+       node bin/generate-theme.js --config my-theme-config.json
+
+  2. CLI Mode (Quick generation with minimal customization)
+     Pass arguments directly via command line
+
+     Example:
+       node bin/generate-theme.js \\
+         --slug tour-operator \\
+         --name "Tour Operator" \\
+         --author "LightSpeed" \\
+         --author_uri "https://developer.lsdev.biz"
+
+REQUIRED ARGUMENTS (CLI Mode):
+  --slug SLUG              Theme slug (lowercase, hyphens only)
+  --name "NAME"            Theme display name
+  --author "AUTHOR"        Author/organization name
+
+OPTIONAL ARGUMENTS (CLI Mode):
+  --description "TEXT"     Theme description
+  --author_uri "URL"       Author website URL
+  --version "X.Y.Z"        Starting version (default: 1.0.0)
+  --min_wp_version "X.Y"   Min WordPress version (default: 6.5)
+  --tested_wp_version "X.Y" Tested WordPress version (default: 6.7)
+  --min_php_version "X.Y"  Min PHP version (default: 8.0)
+
+CONFIGURATION FILE FORMAT:
+  See theme-config.template.json for full schema
+  See theme-config.example.json for a complete example
+
+  JSON config supports:
+    - Core identity (slug, name, author, etc.)
+    - Design system (colors, typography, spacing)
+    - Theme structure (templates, patterns, style variations)
+    - Features (editor styles, post thumbnails, etc.)
+    - Content strings (excerpt settings, copyright, etc.)
+
+EXAMPLES:
+
+  Generate from config file:
+    node bin/generate-theme.js --config theme-config.json
+
+  Quick CLI generation:
+    node bin/generate-theme.js \\
+      --slug my-theme \\
+      --name "My Theme" \\
+      --author "Jane Developer" \\
+      --author_uri "https://jane.dev"
+
+  Override config with CLI:
+    node bin/generate-theme.js \\
+      --config theme-config.json \\
+      --version "2.0.0"
+
+OUTPUT:
+  Generated theme will be in: ./output-theme/
+
+POST-GENERATION:
+  cd output-theme
+  npm install
+  composer install
+  npm run start
+
+For more information, see:
+  - docs/GENERATE_THEME.md
+  - .github/instructions/generate-theme.instructions.md
+`);
+}
 
 function replacePlaceholders(content) {
   let result = content;
@@ -144,6 +326,12 @@ function copyAndReplace(src, dest) {
 }
 
   function main() {
+    // Show help if requested
+    if (argMap.help || argMap.h) {
+      showHelp();
+      process.exit(0);
+    }
+
     if (fs.existsSync(outputDir)) {
       console.error(`Output directory ${outputDir} already exists. Remove it or choose another location.`);
       process.exit(1);
@@ -162,7 +350,41 @@ function copyAndReplace(src, dest) {
     if (file === 'generate-theme.js') continue;
     copyAndReplace(path.join(binSrc, file), path.join(binDest, file));
   }
-  console.log(`Theme generated at ${outputDir}`);
+
+  console.log(`
+✓ Theme generated successfully!
+
+Location: ${outputDir}
+
+Theme Details:
+  Name: ${placeholders['{{theme_name}}']}
+  Slug: ${placeholders['{{theme_slug}}']}
+  Author: ${placeholders['{{author}}']}
+  Version: ${placeholders['{{version}}']}
+
+Next Steps:
+  1. Navigate to theme directory:
+     cd ${path.basename(outputDir)}
+
+  2. Install dependencies:
+     npm install
+     composer install
+
+  3. Start development:
+     npm run start
+
+  4. Build for production:
+     npm run build
+
+  5. Install in WordPress:
+     - Copy ${path.basename(outputDir)}/ to wp-content/themes/
+     - Activate in WordPress admin
+
+For documentation, see:
+  - README.md (theme overview)
+  - DEVELOPMENT.md (development workflow)
+  - docs/ (complete documentation)
+`);
   }
 
   main();

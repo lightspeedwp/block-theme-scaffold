@@ -6,7 +6,7 @@
 
 1. **Before you start**: Read [GOVERNANCE.md](../../docs/GOVERNANCE.md)
 2. **Know the structure**: Reference [ARCHITECTURE.md](../../docs/ARCHITECTURE.md)
-3. **Follow naming rules**: Check [FOLDER-STRUCTURE.md](../../docs/FOLDER-STRUCTURE.md)
+3. **Follow naming rules**: Check [FOLDER_STRUCTURE.md](../../docs/FOLDER_STRUCTURE.md)
 4. **Implement logging**: Use patterns from [LOGGING.md](../../docs/LOGGING.md)
 5. **Run tests & lint**: `npm run test && npm run lint` before changes
 
@@ -32,19 +32,15 @@
 
 ### 2. Naming Conventions
 
-**File Types:**
+**Quick Reference:**
 
-- JavaScript: kebab-case (e.g., `file-handler.js`)
-- PHP: kebab-case (e.g., `file-handler.php`)
-- CSS: kebab-case (e.g., `component-styles.css`)
-- Documentation: UPPER-KEBAB-CASE (e.g., `FILE-HANDLING.md`)
-- Logs: `YYYY-MM-DD-process-name.log` (e.g., `2025-12-07-lint-check.log`)
-- Reports: `YYYY-MM-DD-report-type.ext` (e.g., `2025-12-07-coverage.json`)
+- Files: `kebab-case.{ext}`
+- JS: camelCase functions, PascalCase classes
+- PHP: `prefix_snake_case()` functions, PascalCase classes
+- Docs: `UPPER-KEBAB.md`
+- Logs: `YYYY-MM-DD-process.log`
 
-**Class/Function Names:**
-
-- JavaScript: camelCase functions, PascalCase classes
-- PHP: snake_case functions with prefix, PascalCase classes
+**See:** [naming-conventions.instructions.md](naming-conventions.instructions.md) for complete rules
 
 ### 3. Logging & Reporting
 
@@ -403,7 +399,7 @@ logs/agents/YYYY-MM-DD-build-agent.log     # Agent operation log
 
 1. **[GOVERNANCE.md](../../docs/GOVERNANCE.md)** - Project policies
 2. **[ARCHITECTURE.md](../../docs/ARCHITECTURE.md)** - Folder structure
-3. **[FOLDER-STRUCTURE.md](../../docs/FOLDER-STRUCTURE.md)** - Naming conventions
+3. **[FOLDER_STRUCTURE.md](../../docs/FOLDER_STRUCTURE.md)** - Naming conventions
 4. **[LOGGING.md](../../docs/LOGGING.md)** - Logging standards
 5. **[CONTRIBUTING.md](../../CONTRIBUTING.md)** - Contribution guidelines
 

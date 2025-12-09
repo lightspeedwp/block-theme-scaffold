@@ -9,21 +9,11 @@ date: 2025-12-01
 
 ## Overview
 
-This WordPress block theme uses `@wordpress/scripts` (wp-scripts) for its build process. wp-scripts provides a standardized toolchain that handles all aspects of modern theme development:
+Build system powered by [@wordpress/scripts](https://developer.wordpress.org/block-editor/reference-guides/packages/packages-scripts/).
 
-| Feature | Description | Tool |
-|---------|-------------|------|
-| **Compilation** | Converts ESNext and JSX into browser-compatible JavaScript | Babel |
-| **Bundling** | Combines multiple files into optimized bundles | Webpack |
-| **Code Linting** | Enforces JavaScript and CSS coding standards | ESLint, Stylelint |
-| **Code Formatting** | Maintains consistent code style | Prettier |
-| **Sass Compilation** | Converts .scss files to standard CSS | sass-loader |
-| **Code Minification** | Reduces file sizes for production | Terser (JS), cssnano (CSS) |
+**Tools:** Webpack, Babel, ESLint, Stylelint, PostCSS, Terser
 
-For more details, see the official WordPress documentation:
-
-- [Build Process](https://developer.wordpress.org/themes/advanced-topics/build-process/)
-- [Get started with wp-scripts](https://developer.wordpress.org/block-editor/getting-started/devenv/get-started-with-wp-scripts/)
+**Docs:** [WordPress Build Process](https://developer.wordpress.org/themes/advanced-topics/build-process/)
 
 ### Build Process Flow
 
