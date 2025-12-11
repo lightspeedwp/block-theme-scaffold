@@ -13,9 +13,9 @@ This comprehensive document explains the complete generator system for creating 
 
 The Block Theme Scaffold includes a comprehensive generator system with three main components:
 
-1. **Generator Script** (`bin/generate-theme.js`) - Executable CLI script that performs theme generation
+1. **Generator Script** (`scripts/generate-theme.js`) - Executable CLI script that performs theme generation
 2. **Generator Prompt** (`.github/prompts/generate-theme.prompt.md`) - AI-assisted generation workflow
-3. **Generator Agent** (`.github/agents/scaffold-generator.agent.md`) - Interactive agent specification
+3. **Generator Agent** (`.github/agents/generate-theme.agent.md`) - Interactive agent specification
 
 All three methods use **mustache template variables** to create customized themes from the scaffold template.
 
@@ -49,7 +49,7 @@ function tour_starter_setup() {
 
 ### How The Replacement Works
 
-The generator script (`bin/generate-theme.js`) performs three main operations:
+The generator script (`scripts/generate-theme.js`) performs three main operations:
 
 1. **User Input Collection** - Gather values via CLI arguments
 2. **Value Sanitization** - Validate and sanitize all inputs for security
@@ -327,7 +327,7 @@ wp.blocks.registerBlockStyle( 'core/button', {
 
 ## Generator System Components
 
-### 1. Generator Script (`bin/generate-theme.js`)
+### 1. Generator Script (`scripts/generate-theme.js`)
 
 The core implementation that performs the actual theme generation.
 
@@ -350,7 +350,7 @@ The core implementation that performs the actual theme generation.
 **Usage:**
 
 ```bash
-node bin/generate-theme.js \
+node scripts/generate-theme.js \
   --slug "tour-starter" \
   --name "Tour Starter Theme" \
   --description "A modern WordPress block theme for tour operators" \
@@ -415,7 +415,7 @@ AI-assisted workflow for interactive theme generation through conversation.
 
 The AI assistant will guide you through each stage, collecting information and validating inputs before generating the theme.
 
-### 3. Generator Agent (`.github/agents/scaffold-generator.agent.md`)
+### 3. Generator Agent (`.github/agents/generate-theme.agent.md`)
 
 Interactive agent specification for autonomous theme generation.
 
@@ -445,7 +445,7 @@ Best for: Automated workflows, CI/CD, batch operations
 
 ```bash
 cd /path/to/block-theme-scaffold
-node bin/generate-theme.js --slug my-theme --name "My Theme"
+node scripts/generate-theme.js --slug my-theme --name "My Theme"
 ```
 
 **Pros:**
@@ -505,6 +505,52 @@ Generate a new block theme for a tour operator website
 - May ask clarifying questions
 - Slightly more complex workflow
 
+### Option 4: Using Configuration Template (Recommended for Complex Themes)
+
+Best for: Custom themes with many configuration options, reusable configurations, team collaboration
+
+For complex themes with many customizations, use the template config file:
+
+**1. Copy the template:**
+
+```bash
+cp theme-config.template.json my-theme-config.json
+```
+
+**2. Edit with your values:**
+
+```json
+{
+  "theme_slug": "my-awesome-theme",
+  "theme_name": "My Awesome Theme",
+  "author": "Your Name",
+  "author_uri": "https://yoursite.com",
+  "design_system": {
+    "colors": {
+      "primary_color": "#ff6b35"
+    }
+  }
+}
+```
+
+**3. Generate theme:**
+
+```bash
+node scripts/generate-theme.js --config my-theme-config.json
+```
+
+**Benefits:**
+
+- ✅ Pre-validation with JSON Schema
+- ✅ Autocomplete in VS Code (with schema)
+- ✅ Reusable for future versions
+- ✅ All options in one file
+- ✅ Easy to version control
+
+**Configuration File Format:**
+
+See [theme-config.template.json](../theme-config.template.json) for full schema and [.github/schemas/theme-config.schema.json](.github/schemas/theme-config.schema.json) for JSON Schema validation details.
+
 ## Complete Workflow Example
 
 ### Step-by-Step Generation
@@ -557,7 +603,7 @@ yes
 **6. Generator Executes:**
 
 ```bash
-node bin/generate-theme.js \
+node scripts/generate-theme.js \
   --slug "tour-starter" \
   --name "Tour Starter Theme" \
   --description "A modern WordPress block theme designed for tour operators and travel agencies" \
@@ -656,14 +702,14 @@ flowchart TD
 
 The generated theme includes a complete build system:
 
-### Build Scripts (`bin/build.js`)
+### Build Scripts (`scripts/build.js`)
 
 Utility for building, packaging, and checking the theme.
 
 **Usage:**
 
 ```bash
-node bin/build.js <command> [args]
+node scripts/build.js <command> [args]
 ```
 
 **Commands:**
@@ -678,19 +724,19 @@ node bin/build.js <command> [args]
 
 ```bash
 # Build for production
-node bin/build.js build
+node scripts/build.js build
 
 # Create distribution ZIP
-node bin/build.js dist
+node scripts/build.js dist
 
 # Run all checks
-node bin/build.js check
+node scripts/build.js check
 
 # Update version to 1.2.0
-node bin/build.js version 1.2.0
+node scripts/build.js version 1.2.0
 
 # Initialize new project
-node bin/build.js init
+node scripts/build.js init
 ```
 
 ### npm Scripts
@@ -859,7 +905,7 @@ After generating a theme, always:
 rm -rf output-theme
 # Or specify a different location
 cd /path/to/different/location
-node /path/to/scaffold/bin/generate-theme.js --slug my-theme
+node /path/to/scaffold/scripts/generate-theme.js --slug my-theme
 ```
 
 #### 2. "Invalid slug provided"
@@ -999,7 +1045,7 @@ while IFS= read -r config; do
     name=$(echo "$config" | jq -r '.name')
     author=$(echo "$config" | jq -r '.author')
 
-    node bin/generate-theme.js \
+    node scripts/generate-theme.js \
         --slug "$slug" \
         --name "$name" \
         --author "$author"
@@ -1039,7 +1085,7 @@ jobs:
 
       - name: Generate Theme
         run: |
-          node bin/generate-theme.js \
+          node scripts/generate-theme.js \
             --slug "${{ github.event.inputs.theme_slug }}" \
             --name "${{ github.event.inputs.theme_name }}" \
             --author "${{ github.repository_owner }}"
@@ -1109,7 +1155,7 @@ Generates a new theme by copying the scaffold and replacing all mustache placeho
 **Usage:**
 
 ```sh
-node bin/generate-theme.js --slug my-theme --name "My Theme" --description "Description here" --author "Your Name" --author_uri "https://yourdomain.com" --version "1.0.0"
+node scripts/generate-theme.js --slug my-theme --name "My Theme" --description "Description here" --author "Your Name" --author_uri "https://yourdomain.com" --version "1.0.0"
 ```
 
 - The generated theme will be placed in an `output-theme/` directory in your current working directory.
@@ -1139,7 +1185,7 @@ Utility for building, packaging, and checking the theme.
 **Usage:**
 
 ```sh
-node bin/build.js <command> [args]
+node scripts/build.js <command> [args]
 ```
 
 **Commands:**
@@ -1148,7 +1194,7 @@ node bin/build.js <command> [args]
 - `dist`      Create distribution package (ZIP)
 - `check`     Run linting and tests
 - `init`      Initialize development environment
-- `version`   Update theme version (e.g., `node bin/build.js version 1.2.0`)
+- `version`   Update theme version (e.g., `node scripts/build.js version 1.2.0`)
 
 ### 3. `install-wp-tests.sh`
 
@@ -1184,7 +1230,7 @@ flowchart TD
 1. Generate a new theme:
 
    ```sh
-   node bin/generate-theme.js --slug my-theme --name "My Theme" --description "A custom block theme" --author "Jane Doe"
+   node scripts/generate-theme.js --slug my-theme --name "My Theme" --description "A custom block theme" --author "Jane Doe"
    ```
 
 2. Enter the generated theme directory:
@@ -1196,25 +1242,25 @@ flowchart TD
 3. Install dependencies and initialize:
 
    ```sh
-   node bin/build.js init
+   node scripts/build.js init
    ```
 
 4. Build for production:
 
    ```sh
-   node bin/build.js build
+   node scripts/build.js build
    ```
 
 5. Create a ZIP for distribution:
 
    ```sh
-   node bin/build.js dist
+   node scripts/build.js dist
    ```
 
 6. Run checks and tests:
 
    ```sh
-   node bin/build.js check
+   node scripts/build.js check
    ```
 
 ## Notes
@@ -1250,7 +1296,7 @@ Provides a structured prompt template for AI-assisted theme generation.
 4. Feature Selection - Patterns, templates, and functionality requirements
 5. Build Configuration - Development tools and workflow preferences
 
-#### 2. Scaffold Generator Agent (`.github/agents/scaffold-generator.agent.md`)
+#### 2. Scaffold Generator Agent (`.github/agents/generate-theme.agent.md`)
 
 Defines the interactive agent specification for theme generation.
 
@@ -1268,7 +1314,7 @@ Defines the interactive agent specification for theme generation.
 - Handles edge cases and common errors
 - Ensures all required information is collected
 
-#### 3. Scaffold Generator Script (`.github/agents/scaffold-generator.agent.js`)
+#### 3. Scaffold Generator Script (`.scripts/generate-theme.agent.js`)
 
 The executable implementation that performs the actual theme generation.
 
@@ -1310,14 +1356,14 @@ Request the scaffold generator agent directly:
 Generate a new block theme from scaffold
 ```
 
-The agent will follow the specification in `scaffold-generator.agent.md` to collect requirements and generate the theme.
+The agent will follow the specification in `generate-theme.agent.md` to collect requirements and generate the theme.
 
 #### Option 3: Direct Script Execution
 
 Run the generator script directly from the command line:
 
 ```bash
-node bin/generate-theme.js
+node scripts/generate-theme.js
 ```
 
 This provides a traditional CLI interface with interactive prompts.
@@ -1369,7 +1415,7 @@ The generator validates all configuration against defined schemas:
 }
 ```
 
-See `scaffold-generator.agent.js` for the complete schema definition.
+See `generate-theme.agent.js` for the complete schema definition.
 
 ### Error Handling
 
@@ -1384,7 +1430,7 @@ The generator system includes comprehensive error handling:
 
 The generator system includes comprehensive tests:
 
-- **Unit Tests** - Located in `tests/agents/scaffold-generator.agent.test.js`
+- **Unit Tests** - Located in `scripts/__tests__/generate-theme.agent.test.js`
 - **Integration Tests** - Validates end-to-end generation workflow
 - **Validation Tests** - Ensures configuration schemas are enforced
 
@@ -1419,7 +1465,7 @@ npm run test:agents
 ```bash
 # Ensure you're in the scaffold directory
 cd /path/to/block-theme-scaffold
-node bin/generate-theme.js
+node scripts/generate-theme.js
 ```
 
 **Validation errors:**

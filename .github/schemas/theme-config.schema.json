@@ -1,617 +1,518 @@
 {
-    "$schema": "https://json-schema.org/draft/2020-12/schema",
-    "$id": "https://lightspeedwp.com/schemas/theme-config.json",
-    "title": "WordPress Block Theme Configuration",
-    "description": "Pre-filled configuration for theme generation wizard. Fill in values and pass to generate-theme with --config flag.",
-    "type": "object",
-    "required": [
-        "theme_slug",
-        "theme_name",
-        "author"
-    ],
-    "properties": {
-        "_comment": {
-            "type": "string",
-            "default": "Fill in the values below and save as theme-config.json, then run: node bin/generate-theme.js --config theme-config.json"
-        },
-        "theme_slug": {
-            "type": "string",
-            "description": "URL-safe theme identifier (lowercase, hyphens only)",
-            "pattern": "^[a-z0-9-]{2,}$",
-            "examples": [
-                "tour-starter",
-                "my-theme-2024",
-                "company-blog"
-            ]
-        },
-        "theme_name": {
-            "type": "string",
-            "description": "Human-readable theme name shown in WordPress admin",
-            "minLength": 2,
-            "examples": [
-                "Tour Starter Theme",
-                "My Business Site",
-                "E-Commerce Pro"
-            ]
-        },
-        "description": {
-            "type": "string",
-            "description": "Brief theme description (1-2 sentences)",
-            "default": "A modern WordPress block theme built with accessibility and performance in mind.",
-            "examples": [
-                "A WordPress block theme for tour operators and travel businesses.",
-                "A professional block theme with advanced design system."
-            ]
-        },
-        "author": {
-            "type": "string",
-            "description": "Author or organization name",
-            "default": "Your Name or Company",
-            "examples": [
-                "LightSpeed",
-                "Acme Corporation",
-                "Jane Developer"
-            ]
-        },
-        "author_uri": {
-            "type": "string",
-            "description": "Author website URL (must include protocol)",
-            "format": "uri",
-            "pattern": "^https?://",
-            "default": "https://example.com",
-            "examples": [
-                "https://developer.lsdev.biz",
-                "https://yourcompany.com"
-            ]
-        },
-        "version": {
-            "type": "string",
-            "description": "Starting version number (semantic versioning)",
-            "pattern": "^\\d+\\.\\d+(\\.\\d+)?(-[a-zA-Z0-9.-]+)?$",
-            "default": "1.0.0",
-            "examples": [
-                "1.0.0",
-                "2.1.0",
-                "1.0.0-beta.1"
-            ]
-        },
-        "min_wp_version": {
-            "type": "string",
-            "description": "Minimum required WordPress version",
-            "pattern": "^\\d+\\.\\d+$",
-            "default": "6.5",
-            "examples": [
-                "6.5",
-                "6.7"
-            ]
-        },
-        "tested_wp_version": {
-            "type": "string",
-            "description": "Tested up to WordPress version",
-            "pattern": "^\\d+\\.\\d+$",
-            "default": "6.7",
-            "examples": [
-                "6.7",
-                "6.8"
-            ]
-        },
-        "min_php_version": {
-            "type": "string",
-            "description": "Minimum required PHP version",
-            "pattern": "^\\d+\\.\\d+$",
-            "default": "8.0",
-            "examples": [
-                "8.0",
-                "8.1",
-                "8.2"
-            ]
-        },
-        "license": {
-            "type": "string",
-            "description": "Theme license identifier",
-            "default": "GPL-2.0-or-later",
-            "examples": [
-                "GPL-2.0-or-later",
-                "GPL-3.0",
-                "MIT"
-            ]
-        },
-        "license_uri": {
-            "type": "string",
-            "description": "URL to full license text",
-            "format": "uri",
-            "default": "https://www.gnu.org/licenses/gpl-2.0.html"
-        },
-        "design_system": {
-            "type": "object",
-            "description": "Design tokens for colors, typography, and spacing",
-            "properties": {
-                "colors": {
-                    "type": "object",
-                    "description": "Color palette (hex format: #RRGGBB or #RRGGBBAA)",
-                    "properties": {
-                        "primary_color": {
-                            "type": "string",
-                            "description": "Primary brand color",
-                            "pattern": "^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{8})$",
-                            "default": "#0073aa",
-                            "examples": [
-                                "#0073aa",
-                                "#1e40af",
-                                "#7c3aed"
-                            ]
-                        },
-                        "secondary_color": {
-                            "type": "string",
-                            "description": "Secondary brand color",
-                            "pattern": "^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{8})$",
-                            "default": "#005177",
-                            "examples": [
-                                "#005177",
-                                "#1e3a8a"
-                            ]
-                        },
-                        "background_color": {
-                            "type": "string",
-                            "description": "Default background color",
-                            "pattern": "^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{8})$",
-                            "default": "#ffffff",
-                            "examples": [
-                                "#ffffff",
-                                "#f9fafb",
-                                "#111827"
-                            ]
-                        },
-                        "text_color": {
-                            "type": "string",
-                            "description": "Default text color (ensure WCAG contrast with background)",
-                            "pattern": "^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{8})$",
-                            "default": "#1a1a1a",
-                            "examples": [
-                                "#1a1a1a",
-                                "#111827",
-                                "#374151"
-                            ]
-                        },
-                        "accent_color": {
-                            "type": "string",
-                            "description": "Accent/CTA color",
-                            "pattern": "^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{8})$",
-                            "default": "#ff6b35",
-                            "examples": [
-                                "#ff6b35",
-                                "#f59e0b",
-                                "#ec4899"
-                            ]
-                        },
-                        "neutral_color": {
-                            "type": "string",
-                            "description": "Neutral/gray color",
-                            "pattern": "^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{8})$",
-                            "default": "#6c757d",
-                            "examples": [
-                                "#6c757d",
-                                "#9ca3af",
-                                "#64748b"
-                            ]
-                        }
-                    }
-                },
-                "typography": {
-                    "type": "object",
-                    "description": "Font families and typography settings",
-                    "properties": {
-                        "heading_font_family": {
-                            "type": "string",
-                            "description": "CSS font stack for headings (include fallbacks)",
-                            "default": "system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
-                            "examples": [
-                                "\"Poppins\", \"Inter\", system-ui, sans-serif",
-                                "\"Playfair Display\", Georgia, serif",
-                                "system-ui, -apple-system, sans-serif"
-                            ]
-                        },
-                        "heading_font_name": {
-                            "type": "string",
-                            "description": "Display name for headings font",
-                            "default": "System Font",
-                            "examples": [
-                                "Poppins",
-                                "Playfair Display",
-                                "System Font"
-                            ]
-                        },
-                        "body_font_family": {
-                            "type": "string",
-                            "description": "CSS font stack for body text (include fallbacks)",
-                            "default": "system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
-                            "examples": [
-                                "\"Inter\", -apple-system, BlinkMacSystemFont, sans-serif",
-                                "Georgia, \"Times New Roman\", serif",
-                                "system-ui, sans-serif"
-                            ]
-                        },
-                        "body_font_name": {
-                            "type": "string",
-                            "description": "Display name for body font",
-                            "default": "System Font",
-                            "examples": [
-                                "Inter",
-                                "Georgia",
-                                "System Font"
-                            ]
-                        },
-                        "heading_font_weight": {
-                            "type": "string",
-                            "description": "Font weight for headings (100-900)",
-                            "pattern": "^[1-9]00$",
-                            "default": "700",
-                            "examples": [
-                                "400",
-                                "600",
-                                "700",
-                                "800"
-                            ]
-                        },
-                        "body_line_height": {
-                            "type": "string",
-                            "description": "Line height for body text (unitless)",
-                            "pattern": "^\\d+(\\.\\d+)?$",
-                            "default": "1.6",
-                            "examples": [
-                                "1.5",
-                                "1.6",
-                                "1.8"
-                            ]
-                        },
-                        "heading_line_height": {
-                            "type": "string",
-                            "description": "Line height for headings (unitless)",
-                            "pattern": "^\\d+(\\.\\d+)?$",
-                            "default": "1.2",
-                            "examples": [
-                                "1.1",
-                                "1.2",
-                                "1.3"
-                            ]
-                        },
-                        "button_font_weight": {
-                            "type": "string",
-                            "description": "Font weight for buttons (100-900)",
-                            "pattern": "^[1-9]00$",
-                            "default": "600",
-                            "examples": [
-                                "500",
-                                "600",
-                                "700"
-                            ]
-                        },
-                        "site_title_font_weight": {
-                            "type": "string",
-                            "description": "Font weight for site title (100-900)",
-                            "pattern": "^[1-9]00$",
-                            "default": "700",
-                            "examples": [
-                                "600",
-                                "700",
-                                "800"
-                            ]
-                        }
-                    }
-                },
-                "layout": {
-                    "type": "object",
-                    "description": "Content width and layout settings",
-                    "properties": {
-                        "content_width": {
-                            "type": "string",
-                            "description": "Maximum width for content (with unit)",
-                            "pattern": "^\\d+(px|rem|em)$",
-                            "default": "720px",
-                            "examples": [
-                                "720px",
-                                "768px",
-                                "45rem"
-                            ]
-                        },
-                        "wide_width": {
-                            "type": "string",
-                            "description": "Maximum width for wide blocks (with unit)",
-                            "pattern": "^\\d+(px|rem|em)$",
-                            "default": "1200px",
-                            "examples": [
-                                "1200px",
-                                "1440px",
-                                "75rem"
-                            ]
-                        }
-                    }
-                }
-            }
-        },
-        "theme_structure": {
-            "type": "object",
-            "description": "Define which template parts, patterns, and style variations to include",
-            "properties": {
-                "template_parts": {
-                    "type": "array",
-                    "description": "Template parts to include in theme",
-                    "default": [
-                        "header",
-                        "footer",
-                        "sidebar",
-                        "post-meta",
-                        "pagination",
-                        "comments"
-                    ],
-                    "items": {
-                        "type": "string",
-                        "enum": [
-                            "header",
-                            "footer",
-                            "sidebar",
-                            "post-meta",
-                            "pagination",
-                            "comments"
-                        ]
-                    }
-                },
-                "templates": {
-                    "type": "array",
-                    "description": "Templates to include in theme",
-                    "default": [
-                        "index",
-                        "home",
-                        "single",
-                        "page",
-                        "archive",
-                        "search",
-                        "404"
-                    ],
-                    "items": {
-                        "type": "string",
-                        "enum": [
-                            "index",
-                            "home",
-                            "home-sidebar",
-                            "front-page",
-                            "single",
-                            "page",
-                            "archive",
-                            "category",
-                            "tag",
-                            "author",
-                            "search",
-                            "404",
-                            "singular"
-                        ]
-                    }
-                },
-                "patterns": {
-                    "type": "array",
-                    "description": "Block patterns to include",
-                    "default": [
-                        "header",
-                        "footer",
-                        "hero",
-                        "call-to-action",
-                        "features",
-                        "testimonials",
-                        "post-card",
-                        "post-meta",
-                        "pagination"
-                    ],
-                    "items": {
-                        "type": "string",
-                        "enum": [
-                            "header",
-                            "footer",
-                            "hero",
-                            "call-to-action",
-                            "features",
-                            "testimonials",
-                            "post-card",
-                            "post-meta",
-                            "pagination",
-                            "sidebar",
-                            "comments",
-                            "archive-header",
-                            "author-header",
-                            "single-post-content",
-                            "no-search-results",
-                            "404-content",
-                            "query-posts-grid",
-                            "query-posts-list"
-                        ]
-                    }
-                },
-                "pattern_categories": {
-                    "type": "array",
-                    "description": "Custom pattern categories",
-                    "default": [
-                        "headers",
-                        "footers",
-                        "call-to-action",
-                        "testimonials",
-                        "featured"
-                    ],
-                    "items": {
-                        "type": "object",
-                        "properties": {
-                            "slug": {
-                                "type": "string",
-                                "description": "Category slug",
-                                "pattern": "^[a-z0-9-]+$"
-                            },
-                            "label": {
-                                "type": "string",
-                                "description": "Category display name"
-                            }
-                        },
-                        "required": [
-                            "slug",
-                            "label"
-                        ]
-                    }
-                },
-                "style_variations": {
-                    "type": "object",
-                    "description": "Style variation files to include",
-                    "properties": {
-                        "global": {
-                            "type": "array",
-                            "description": "Global style variations (in styles/)",
-                            "default": [
-                                "dark"
-                            ],
-                            "items": {
-                                "type": "string",
-                                "enum": [
-                                    "dark",
-                                    "light-contrast",
-                                    "high-contrast"
-                                ]
-                            }
-                        },
-                        "block_styles": {
-                            "type": "array",
-                            "description": "Block-specific style variations (in styles/blocks/)",
-                            "default": [
-                                "button-primary",
-                                "button-rounded",
-                                "heading-serif"
-                            ],
-                            "items": {
-                                "type": "string",
-                                "enum": [
-                                    "button-primary",
-                                    "button-secondary",
-                                    "button-rounded",
-                                    "button-outline",
-                                    "heading-serif",
-                                    "heading-condensed",
-                                    "image-rounded",
-                                    "image-shadow"
-                                ]
-                            }
-                        },
-                        "section_styles": {
-                            "type": "array",
-                            "description": "Section-specific style variations (in styles/sections/)",
-                            "default": [
-                                "hero-section",
-                                "content-section"
-                            ],
-                            "items": {
-                                "type": "string",
-                                "enum": [
-                                    "hero-section",
-                                    "hero-overlay",
-                                    "content-section",
-                                    "cta-section",
-                                    "testimonials-section",
-                                    "features-section"
-                                ]
-                            }
-                        }
-                    }
-                }
-            }
-        },
-        "features": {
-            "type": "object",
-            "description": "Optional theme features to enable",
-            "properties": {
-                "editor_styles": {
-                    "type": "boolean",
-                    "description": "Enable editor-specific styles",
-                    "default": true
-                },
-                "post_thumbnails": {
-                    "type": "boolean",
-                    "description": "Enable featured images",
-                    "default": true
-                },
-                "custom_logo": {
-                    "type": "boolean",
-                    "description": "Enable custom logo support",
-                    "default": true
-                },
-                "html5_support": {
-                    "type": "array",
-                    "description": "HTML5 markup support",
-                    "default": [
-                        "search-form",
-                        "comment-form",
-                        "comment-list",
-                        "gallery",
-                        "caption",
-                        "style",
-                        "script"
-                    ],
-                    "items": {
-                        "type": "string",
-                        "enum": [
-                            "search-form",
-                            "comment-form",
-                            "comment-list",
-                            "gallery",
-                            "caption",
-                            "style",
-                            "script"
-                        ]
-                    }
-                },
-                "responsive_embeds": {
-                    "type": "boolean",
-                    "description": "Enable responsive embeds",
-                    "default": true
-                },
-                "woocommerce_support": {
-                    "type": "boolean",
-                    "description": "Enable WooCommerce compatibility",
-                    "default": false
-                }
-            }
-        },
-        "content": {
-            "type": "object",
-            "description": "Default content strings and settings",
-            "properties": {
-                "excerpt_length": {
-                    "type": "integer",
-                    "description": "Number of words in excerpts",
-                    "default": 55,
-                    "minimum": 20,
-                    "maximum": 200
-                },
-                "excerpt_more": {
-                    "type": "string",
-                    "description": "Excerpt 'more' text",
-                    "default": "..."
-                },
-                "skip_link_text": {
-                    "type": "string",
-                    "description": "Skip to content link text",
-                    "default": "Skip to content"
-                },
-                "copyright_text": {
-                    "type": "string",
-                    "description": "Footer copyright text ({{year}} and {{author}} will be replaced)",
-                    "default": "© {{year}} {{author}}. All rights reserved."
-                },
-                "button_border_radius": {
-                    "type": "string",
-                    "description": "Default button border radius",
-                    "default": "4px",
-                    "examples": [
-                        "0",
-                        "4px",
-                        "8px",
-                        "9999px"
-                    ]
-                }
-            }
-        }
-    }
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"$id": "https://lightspeedwp.com/schemas/theme-config.json",
+	"title": "WordPress Block Theme Configuration",
+	"description": "Pre-filled configuration for theme generation wizard. Fill in values and pass to generate-theme with --config flag.",
+	"type": "object",
+	"required": ["theme_slug", "theme_name", "author"],
+	"properties": {
+		"_comment": {
+			"type": "string",
+			"default": "Fill in the values below and save as theme-config.json, then run: node scripts/generate-theme.js --config theme-config.json"
+		},
+		"theme_slug": {
+			"type": "string",
+			"description": "URL-safe theme identifier (lowercase, hyphens only)",
+			"pattern": "^[a-z0-9-]{2,}$",
+			"examples": ["tour-starter", "my-theme-2024", "company-blog"]
+		},
+		"theme_name": {
+			"type": "string",
+			"description": "Human-readable theme name shown in WordPress admin",
+			"minLength": 2,
+			"examples": [
+				"Tour Starter Theme",
+				"My Business Site",
+				"E-Commerce Pro"
+			]
+		},
+		"description": {
+			"type": "string",
+			"description": "Brief theme description (1-2 sentences)",
+			"default": "A modern WordPress block theme built with accessibility and performance in mind.",
+			"examples": [
+				"A WordPress block theme for tour operators and travel businesses.",
+				"A professional block theme with advanced design system."
+			]
+		},
+		"author": {
+			"type": "string",
+			"description": "Author or organization name",
+			"default": "Your Name or Company",
+			"examples": ["LightSpeed", "Acme Corporation", "Jane Developer"]
+		},
+		"author_uri": {
+			"type": "string",
+			"description": "Author website URL (must include protocol)",
+			"format": "uri",
+			"pattern": "^https?://",
+			"default": "https://example.com",
+			"examples": [
+				"https://developer.lsdev.biz",
+				"https://yourcompany.com"
+			]
+		},
+		"version": {
+			"type": "string",
+			"description": "Starting version number (semantic versioning)",
+			"pattern": "^\\d+\\.\\d+(\\.\\d+)?(-[a-zA-Z0-9.-]+)?$",
+			"default": "1.0.0",
+			"examples": ["1.0.0", "2.1.0", "1.0.0-beta.1"]
+		},
+		"min_wp_version": {
+			"type": "string",
+			"description": "Minimum required WordPress version",
+			"pattern": "^\\d+\\.\\d+$",
+			"default": "6.5",
+			"examples": ["6.5", "6.7"]
+		},
+		"tested_wp_version": {
+			"type": "string",
+			"description": "Tested up to WordPress version",
+			"pattern": "^\\d+\\.\\d+$",
+			"default": "6.7",
+			"examples": ["6.7", "6.8"]
+		},
+		"min_php_version": {
+			"type": "string",
+			"description": "Minimum required PHP version",
+			"pattern": "^\\d+\\.\\d+$",
+			"default": "8.0",
+			"examples": ["8.0", "8.1", "8.2"]
+		},
+		"license": {
+			"type": "string",
+			"description": "Theme license identifier",
+			"default": "GPL-2.0-or-later",
+			"examples": ["GPL-2.0-or-later", "GPL-3.0", "MIT"]
+		},
+		"license_uri": {
+			"type": "string",
+			"description": "URL to full license text",
+			"format": "uri",
+			"default": "https://www.gnu.org/licenses/gpl-2.0.html"
+		},
+		"design_system": {
+			"type": "object",
+			"description": "Design tokens for colors, typography, and spacing",
+			"properties": {
+				"colors": {
+					"type": "object",
+					"description": "Color palette (hex format: #RRGGBB or #RRGGBBAA)",
+					"properties": {
+						"primary_color": {
+							"type": "string",
+							"description": "Primary brand color",
+							"pattern": "^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{8})$",
+							"default": "#0073aa",
+							"examples": ["#0073aa", "#1e40af", "#7c3aed"]
+						},
+						"secondary_color": {
+							"type": "string",
+							"description": "Secondary brand color",
+							"pattern": "^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{8})$",
+							"default": "#005177",
+							"examples": ["#005177", "#1e3a8a"]
+						},
+						"background_color": {
+							"type": "string",
+							"description": "Default background color",
+							"pattern": "^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{8})$",
+							"default": "#ffffff",
+							"examples": ["#ffffff", "#f9fafb", "#111827"]
+						},
+						"text_color": {
+							"type": "string",
+							"description": "Default text color (ensure WCAG contrast with background)",
+							"pattern": "^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{8})$",
+							"default": "#1a1a1a",
+							"examples": ["#1a1a1a", "#111827", "#374151"]
+						},
+						"accent_color": {
+							"type": "string",
+							"description": "Accent/CTA color",
+							"pattern": "^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{8})$",
+							"default": "#ff6b35",
+							"examples": ["#ff6b35", "#f59e0b", "#ec4899"]
+						},
+						"neutral_color": {
+							"type": "string",
+							"description": "Neutral/gray color",
+							"pattern": "^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{8})$",
+							"default": "#6c757d",
+							"examples": ["#6c757d", "#9ca3af", "#64748b"]
+						}
+					}
+				},
+				"typography": {
+					"type": "object",
+					"description": "Font families and typography settings",
+					"properties": {
+						"heading_font_family": {
+							"type": "string",
+							"description": "CSS font stack for headings (include fallbacks)",
+							"default": "system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
+							"examples": [
+								"\"Poppins\", \"Inter\", system-ui, sans-serif",
+								"\"Playfair Display\", Georgia, serif",
+								"system-ui, -apple-system, sans-serif"
+							]
+						},
+						"heading_font_name": {
+							"type": "string",
+							"description": "Display name for headings font",
+							"default": "System Font",
+							"examples": [
+								"Poppins",
+								"Playfair Display",
+								"System Font"
+							]
+						},
+						"body_font_family": {
+							"type": "string",
+							"description": "CSS font stack for body text (include fallbacks)",
+							"default": "system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
+							"examples": [
+								"\"Inter\", -apple-system, BlinkMacSystemFont, sans-serif",
+								"Georgia, \"Times New Roman\", serif",
+								"system-ui, sans-serif"
+							]
+						},
+						"body_font_name": {
+							"type": "string",
+							"description": "Display name for body font",
+							"default": "System Font",
+							"examples": ["Inter", "Georgia", "System Font"]
+						},
+						"heading_font_weight": {
+							"type": "string",
+							"description": "Font weight for headings (100-900)",
+							"pattern": "^[1-9]00$",
+							"default": "700",
+							"examples": ["400", "600", "700", "800"]
+						},
+						"body_line_height": {
+							"type": "string",
+							"description": "Line height for body text (unitless)",
+							"pattern": "^\\d+(\\.\\d+)?$",
+							"default": "1.6",
+							"examples": ["1.5", "1.6", "1.8"]
+						},
+						"heading_line_height": {
+							"type": "string",
+							"description": "Line height for headings (unitless)",
+							"pattern": "^\\d+(\\.\\d+)?$",
+							"default": "1.2",
+							"examples": ["1.1", "1.2", "1.3"]
+						},
+						"button_font_weight": {
+							"type": "string",
+							"description": "Font weight for buttons (100-900)",
+							"pattern": "^[1-9]00$",
+							"default": "600",
+							"examples": ["500", "600", "700"]
+						},
+						"site_title_font_weight": {
+							"type": "string",
+							"description": "Font weight for site title (100-900)",
+							"pattern": "^[1-9]00$",
+							"default": "700",
+							"examples": ["600", "700", "800"]
+						}
+					}
+				},
+				"layout": {
+					"type": "object",
+					"description": "Content width and layout settings",
+					"properties": {
+						"content_width": {
+							"type": "string",
+							"description": "Maximum width for content (with unit)",
+							"pattern": "^\\d+(px|rem|em)$",
+							"default": "720px",
+							"examples": ["720px", "768px", "45rem"]
+						},
+						"wide_width": {
+							"type": "string",
+							"description": "Maximum width for wide blocks (with unit)",
+							"pattern": "^\\d+(px|rem|em)$",
+							"default": "1200px",
+							"examples": ["1200px", "1440px", "75rem"]
+						}
+					}
+				}
+			}
+		},
+		"theme_structure": {
+			"type": "object",
+			"description": "Define which template parts, patterns, and style variations to include",
+			"properties": {
+				"template_parts": {
+					"type": "array",
+					"description": "Template parts to include in theme",
+					"default": [
+						"header",
+						"footer",
+						"sidebar",
+						"post-meta",
+						"pagination",
+						"comments"
+					],
+					"items": {
+						"type": "string",
+						"enum": [
+							"header",
+							"footer",
+							"sidebar",
+							"post-meta",
+							"pagination",
+							"comments"
+						]
+					}
+				},
+				"templates": {
+					"type": "array",
+					"description": "Templates to include in theme",
+					"default": [
+						"index",
+						"home",
+						"single",
+						"page",
+						"archive",
+						"search",
+						"404"
+					],
+					"items": {
+						"type": "string",
+						"enum": [
+							"index",
+							"home",
+							"home-sidebar",
+							"front-page",
+							"single",
+							"page",
+							"archive",
+							"category",
+							"tag",
+							"author",
+							"search",
+							"404",
+							"singular"
+						]
+					}
+				},
+				"patterns": {
+					"type": "array",
+					"description": "Block patterns to include",
+					"default": [
+						"header",
+						"footer",
+						"hero",
+						"call-to-action",
+						"features",
+						"testimonials",
+						"post-card",
+						"post-meta",
+						"pagination"
+					],
+					"items": {
+						"type": "string",
+						"enum": [
+							"header",
+							"footer",
+							"hero",
+							"call-to-action",
+							"features",
+							"testimonials",
+							"post-card",
+							"post-meta",
+							"pagination",
+							"sidebar",
+							"comments",
+							"archive-header",
+							"author-header",
+							"single-post-content",
+							"no-search-results",
+							"404-content",
+							"query-posts-grid",
+							"query-posts-list"
+						]
+					}
+				},
+				"pattern_categories": {
+					"type": "array",
+					"description": "Custom pattern categories",
+					"default": [
+						"headers",
+						"footers",
+						"call-to-action",
+						"testimonials",
+						"featured"
+					],
+					"items": {
+						"type": "object",
+						"properties": {
+							"slug": {
+								"type": "string",
+								"description": "Category slug",
+								"pattern": "^[a-z0-9-]+$"
+							},
+							"label": {
+								"type": "string",
+								"description": "Category display name"
+							}
+						},
+						"required": ["slug", "label"]
+					}
+				},
+				"style_variations": {
+					"type": "object",
+					"description": "Style variation files to include",
+					"properties": {
+						"global": {
+							"type": "array",
+							"description": "Global style variations (in styles/)",
+							"default": ["dark"],
+							"items": {
+								"type": "string",
+								"enum": [
+									"dark",
+									"light-contrast",
+									"high-contrast"
+								]
+							}
+						},
+						"block_styles": {
+							"type": "array",
+							"description": "Block-specific style variations (in styles/blocks/)",
+							"default": [
+								"button-primary",
+								"button-rounded",
+								"heading-serif"
+							],
+							"items": {
+								"type": "string",
+								"enum": [
+									"button-primary",
+									"button-secondary",
+									"button-rounded",
+									"button-outline",
+									"heading-serif",
+									"heading-condensed",
+									"image-rounded",
+									"image-shadow"
+								]
+							}
+						},
+						"section_styles": {
+							"type": "array",
+							"description": "Section-specific style variations (in styles/sections/)",
+							"default": ["hero-section", "content-section"],
+							"items": {
+								"type": "string",
+								"enum": [
+									"hero-section",
+									"hero-overlay",
+									"content-section",
+									"cta-section",
+									"testimonials-section",
+									"features-section"
+								]
+							}
+						}
+					}
+				}
+			}
+		},
+		"features": {
+			"type": "object",
+			"description": "Optional theme features to enable",
+			"properties": {
+				"editor_styles": {
+					"type": "boolean",
+					"description": "Enable editor-specific styles",
+					"default": true
+				},
+				"post_thumbnails": {
+					"type": "boolean",
+					"description": "Enable featured images",
+					"default": true
+				},
+				"custom_logo": {
+					"type": "boolean",
+					"description": "Enable custom logo support",
+					"default": true
+				},
+				"html5_support": {
+					"type": "array",
+					"description": "HTML5 markup support",
+					"default": [
+						"search-form",
+						"comment-form",
+						"comment-list",
+						"gallery",
+						"caption",
+						"style",
+						"script"
+					],
+					"items": {
+						"type": "string",
+						"enum": [
+							"search-form",
+							"comment-form",
+							"comment-list",
+							"gallery",
+							"caption",
+							"style",
+							"script"
+						]
+					}
+				},
+				"responsive_embeds": {
+					"type": "boolean",
+					"description": "Enable responsive embeds",
+					"default": true
+				},
+				"woocommerce_support": {
+					"type": "boolean",
+					"description": "Enable WooCommerce compatibility",
+					"default": false
+				}
+			}
+		},
+		"content": {
+			"type": "object",
+			"description": "Default content strings and settings",
+			"properties": {
+				"excerpt_length": {
+					"type": "integer",
+					"description": "Number of words in excerpts",
+					"default": 55,
+					"minimum": 20,
+					"maximum": 200
+				},
+				"excerpt_more": {
+					"type": "string",
+					"description": "Excerpt 'more' text",
+					"default": "..."
+				},
+				"skip_link_text": {
+					"type": "string",
+					"description": "Skip to content link text",
+					"default": "Skip to content"
+				},
+				"copyright_text": {
+					"type": "string",
+					"description": "Footer copyright text ({{year}} and {{author}} will be replaced)",
+					"default": "© {{year}} {{author}}. All rights reserved."
+				},
+				"button_border_radius": {
+					"type": "string",
+					"description": "Default button border radius",
+					"default": "4px",
+					"examples": ["0", "4px", "8px", "9999px"]
+				}
+			}
+		}
+	}
 }

@@ -1,4 +1,5 @@
 ---
+name: "Block Theme Development"
 description: "Comprehensive best practices and guidance for developing WordPress block themes. This instruction set is designed to be inherited by WordPress block theme repositories across the LightSpeedWP organisation."
 applyTo: "**/*.{php,html,json,css,scss,js,jsx,ts,tsx}"
 ---

@@ -27,6 +27,11 @@ tmp/
 !.github/reports/README.md
 !.github/reports/.gitkeep
 
+# User theme configs (but keep template)
+theme-config.json
+*-config.json
+!theme-config.template.json
+
 # Environment files
 .env
 .env.*

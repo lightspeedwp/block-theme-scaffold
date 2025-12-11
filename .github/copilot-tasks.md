@@ -154,7 +154,7 @@ date: 2025-12-01
 **Status**: ✅ COMPLETED
 
 - [x] **Enhanced Build Script (build.js)**
-  - Location: [bin/build.js](../../bin/build.js)
+  - Location: [scripts/build.js](../../scripts/build.js)
   - Improvements:
     - Color-coded output (red, green, yellow, cyan)
     - Prerequisites checking

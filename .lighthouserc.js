@@ -67,9 +67,18 @@ module.exports = {
 				'speed-index': ['warn', { maxNumericValue: 3400 }],
 
 				// Resource size assertions
-				'resource-summary:script:size': ['warn', { maxNumericValue: 102400 }], // 100 KB
-				'resource-summary:stylesheet:size': ['warn', { maxNumericValue: 51200 }], // 50 KB
-				'resource-summary:image:size': ['warn', { maxNumericValue: 204800 }], // 200 KB
+				'resource-summary:script:size': [
+					'warn',
+					{ maxNumericValue: 102400 },
+				], // 100 KB
+				'resource-summary:stylesheet:size': [
+					'warn',
+					{ maxNumericValue: 51200 },
+				], // 50 KB
+				'resource-summary:image:size': [
+					'warn',
+					{ maxNumericValue: 204800 },
+				], // 200 KB
 			},
 		},
 		upload: {

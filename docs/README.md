@@ -353,4 +353,4 @@ This scaffold is licensed under {{license}}. Generated themes inherit this licen
 - [Main README](../README.md) - Repository root documentation
 - [Source Directory](../src/README.md) - Source files documentation
 - [Tests Directory](../tests/README.md) - Testing documentation
-- [Build Scripts](../bin/README.md) - Build script documentation
+- [Build Scripts](../scripts/README.md) - Build script documentation

@@ -1,3 +1,9 @@
+---
+name: "AI Agent & Copilot Workflows"
+description: "Core rules and workflows for AI agents and GitHub Copilot"
+applyTo: "**"
+---
+
 # AI Agent & Copilot Instructions
 
 > **Audience**: GitHub Copilot, Claude, and other AI agents assisting with block-theme-scaffold development.
@@ -28,7 +34,7 @@
 - Commit log files to git
 - Put source code in root
 - Mix tests with source code
-- Leave temp files uncleanedGenerating
+- Leave temp files uncleaned
 
 ### 2. Naming Conventions
 
@@ -342,6 +348,64 @@ reports/performance/YYYY-MM-DD-bundle.json # Bundle analysis
 reports/test-results/YYYY-MM-DD-tests.json # Test results
 logs/agents/YYYY-MM-DD-build-agent.log     # Agent operation log
 ```
+
+### For Theme Generation Agents
+
+When working with theme generation:
+
+1. **Follow mustache variable rules**: See [generate-theme.instructions.md](generate-theme.instructions.md)
+2. **Validate all inputs**: Use patterns from theme-config.schema.json
+3. **Stage-based collection**: Guide users through 3-4 stages
+4. **Sanitize user input**: Prevent path traversal and injection
+5. **Test generated output**: Verify all variables replaced
+
+**Example workflow:**
+
+```bash
+# Interactive agent mode
+node scripts/generate-theme.agent.js
+
+# Direct script mode
+node scripts/generate-theme.js --config theme-config.json
+
+# Agent logs
+logs/agents/YYYY-MM-DD-generate-theme-agent.log
+
+# Agent reports
+.github/reports/agents/YYYY-MM-DD-theme-generation.json
+```
+
+**Report structure:**
+
+```json
+{
+  "agent": "generate-theme",
+  "timestamp": "2025-12-10T10:30:45.123Z",
+  "status": "success",
+  "summary": "Generated theme 'my-awesome-theme' from scaffold",
+  "metrics": {
+    "filesProcessed": 87,
+    "variablesReplaced": 52,
+    "duration": "1.2s",
+    "errors": 0,
+    "warnings": 0
+  },
+  "artifacts": [
+    "output-theme/",
+    "output-theme/style.css",
+    "output-theme/functions.php",
+    "output-theme/theme.json"
+  ],
+  "config": {
+    "theme_slug": "my-awesome-theme",
+    "theme_name": "My Awesome Theme",
+    "author": "Developer Name"
+  },
+  "logFile": "logs/agents/YYYY-MM-DD-generate-theme.log"
+}
+```
+
+See: [generate-theme.agent.md](../agents/generate-theme.agent.md) for complete specification.
 
 ## Troubleshooting Guide
 

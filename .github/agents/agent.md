@@ -10,12 +10,13 @@ date: 2025-12-08
 
 ## Available Agents
 
-| Agent                     | Spec                                                             | Purpose                       |
-| ------------------------- | ---------------------------------------------------------------- | ----------------------------- |
-| **Gemini**                | [gemini.agent.md](gemini.agent.md)                               | Google Gemini model interface |
-| **Scaffold Generator**    | [scaffold-generator.agent.md](scaffold-generator.agent.md)       | Interactive theme generator   |
-| **Development Assistant** | [development-assistant.agent.md](development-assistant.agent.md) | AI development assistant      |
-| **Block Theme Build**     | [block-theme-build.agent.md](block-theme-build.agent.md)         | Build automation              |
+| Agent                     | Spec                                                             | Purpose                          |
+| ------------------------- | ---------------------------------------------------------------- | -------------------------------- |
+| **Gemini**                | [gemini.agent.md](gemini.agent.md)                               | Google Gemini model interface    |
+| **Generate Theme**        | [generate-theme.agent.md](generate-theme.agent.md)               | Interactive theme generator      |
+| **Development Assistant** | [development-assistant.agent.md](development-assistant.agent.md) | AI development assistant         |
+| **Block Theme Build**     | [block-theme-build.agent.md](block-theme-build.agent.md)         | Build automation                 |
+| **Release Manager**       | [release.agent.md](release.agent.md)                             | Release preparation & validation |
 
 ---
 

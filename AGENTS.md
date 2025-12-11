@@ -31,7 +31,7 @@ This repository is block theme–first and designed for advanced AI/Copilot/agen
 
 | Agent | Tests | Notes |
 | ----- | ----- | ---------------------------- |
-| *TBD* | ⏳    | Awaiting test implementation |
+| Generate Theme | ✅ | Passing - tests/bin/generate-theme.test.js, tests/agents/generate-theme.agent.test.js |
 
 > **Note:** As agents are developed and tested, this table will be updated with their status. ✅ indicates passing tests, ❌ indicates failing tests, and ⏳ indicates tests pending implementation.
 

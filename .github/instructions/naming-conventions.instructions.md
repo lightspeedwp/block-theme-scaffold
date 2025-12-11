@@ -1,3 +1,9 @@
+---
+name: "Naming Conventions"
+description: "File and code naming standards for all file types"
+applyTo: "**"
+---
+
 # Naming Conventions & File Organization Instructions
 
 > **Quick Reference**: Standard naming patterns for all file types in block-theme-scaffold.

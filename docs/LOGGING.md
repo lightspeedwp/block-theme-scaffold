@@ -188,7 +188,7 @@ logger.error('Linting failed');
 
 #### Integration with Existing Scripts
 
-Example: `bin/lint-dry-run.js`
+Example: `scripts/lint-dry-run.js`
 
 ```javascript
 #!/usr/bin/env node

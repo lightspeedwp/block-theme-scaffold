@@ -1,10 +1,7 @@
 ---
-title: Security Nonce Coding Standards
-description: Coding standards for WordPress nonce implementation in block themes
-category: Coding Standards
-type: Instructions
-audience: AI Agents, Developers
-date: 2025-12-07
+name: "Security Nonce Standards"
+description: "Coding standards for WordPress nonce implementation in block themes"
+applyTo: "**/*.{php,js,jsx,ts,tsx}"
 ---
 
 # Security Nonce Coding Standards

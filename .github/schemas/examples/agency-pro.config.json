@@ -1,0 +1,46 @@
+{
+	"$schema": "../../schemas/theme-config.schema.json",
+	"_comment": "Example configuration for a creative agency or portfolio website",
+	"theme_slug": "agency-pro",
+	"theme_name": "Agency Pro",
+	"description": "A sophisticated WordPress block theme designed for creative agencies, design studios, and professional service providers",
+	"author": "Your Agency",
+	"author_uri": "https://youragency.com",
+	"version": "1.0.0",
+	"min_wp_version": "6.5",
+	"tested_wp_version": "6.7",
+	"min_php_version": "8.0",
+	"license": "GPL-2.0-or-later",
+	"theme_uri": "https://youragency.com/theme",
+	"theme_repo_url": "https://github.com/youragency/agency-pro",
+	"design_system": {
+		"colors": {
+			"primary_color": "#1A1A1A",
+			"secondary_color": "#666666",
+			"background_color": "#FFFFFF",
+			"text_color": "#333333",
+			"accent_color": "#FF00FF",
+			"neutral_color": "#CCCCCC"
+		},
+		"typography": {
+			"heading_font_family": "'Space Mono', monospace",
+			"heading_font_name": "Space Mono",
+			"body_font_family": "'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
+			"body_font_name": "Roboto",
+			"heading_font_weight": "700",
+			"body_line_height": "1.7",
+			"heading_line_height": "1.1",
+			"button_font_weight": "700",
+			"site_title_font_weight": "700"
+		},
+		"layout": {
+			"content_width": "960px",
+			"wide_width": "1440px"
+		}
+	},
+	"content": {
+		"button_border_radius": "0px",
+		"excerpt_more": "View Project →",
+		"skip_link_text": "Skip to main content"
+	}
+}

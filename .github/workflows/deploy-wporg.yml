@@ -12,217 +12,217 @@
 name: Deploy to WordPress.org
 
 on:
-  release:
-    types: [published]
-  workflow_dispatch:
-    inputs:
-      dry_run:
-        description: 'Perform a dry run without actually deploying'
-        required: false
-        default: 'false'
-        type: boolean
+    release:
+        types: [published]
+    workflow_dispatch:
+        inputs:
+            dry_run:
+                description: 'Perform a dry run without actually deploying'
+                required: false
+                default: 'false'
+                type: boolean
 
 env:
-  THEME_SLUG: 'lswp-theme'
-  SVN_URL: 'https://themes.svn.wordpress.org/lswp-theme'
+    THEME_SLUG: 'lswp-theme'
+    SVN_URL: 'https://themes.svn.wordpress.org/lswp-theme'
 
 jobs:
-  validate:
-    name: Validate Release
-    runs-on: ubuntu-latest
-    outputs:
-      version: ${{ steps.get_version.outputs.version }}
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
+    validate:
+        name: Validate Release
+        runs-on: ubuntu-latest
+        outputs:
+            version: ${{ steps.get_version.outputs.version }}
+        steps:
+            - name: Checkout code
+              uses: actions/checkout@v4
 
-      - name: Get version from style.css
-        id: get_version
-        run: |
-          VERSION=$(grep -oP 'Version:\s*\K[\d.]+' style.css)
-          echo "version=$VERSION" >> $GITHUB_OUTPUT
-          echo "Theme version: $VERSION"
+            - name: Get version from style.css
+              id: get_version
+              run: |
+                  VERSION=$(grep -oP 'Version:\s*\K[\d.]+' style.css)
+                  echo "version=$VERSION" >> $GITHUB_OUTPUT
+                  echo "Theme version: $VERSION"
 
-      - name: Validate version format
-        run: |
-          VERSION="${{ steps.get_version.outputs.version }}"
-          if [[ ! "$VERSION" =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
-            echo "Error: Invalid version format. Expected semver (x.y.z)"
-            exit 1
-          fi
+            - name: Validate version format
+              run: |
+                  VERSION="${{ steps.get_version.outputs.version }}"
+                  if [[ ! "$VERSION" =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
+                    echo "Error: Invalid version format. Expected semver (x.y.z)"
+                    exit 1
+                  fi
 
-      - name: Check release tag matches version
-        if: github.event_name == 'release'
-        run: |
-          TAG_VERSION="${{ github.event.release.tag_name }}"
-          STYLE_VERSION="${{ steps.get_version.outputs.version }}"
-          # Remove 'v' prefix if present
-          TAG_VERSION="${TAG_VERSION#v}"
-          if [[ "$TAG_VERSION" != "$STYLE_VERSION" ]]; then
-            echo "Error: Release tag ($TAG_VERSION) does not match style.css version ($STYLE_VERSION)"
-            exit 1
-          fi
+            - name: Check release tag matches version
+              if: github.event_name == 'release'
+              run: |
+                  TAG_VERSION="${{ github.event.release.tag_name }}"
+                  STYLE_VERSION="${{ steps.get_version.outputs.version }}"
+                  # Remove 'v' prefix if present
+                  TAG_VERSION="${TAG_VERSION#v}"
+                  if [[ "$TAG_VERSION" != "$STYLE_VERSION" ]]; then
+                    echo "Error: Release tag ($TAG_VERSION) does not match style.css version ($STYLE_VERSION)"
+                    exit 1
+                  fi
 
-  build:
-    name: Build Theme
-    runs-on: ubuntu-latest
-    needs: validate
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
+    build:
+        name: Build Theme
+        runs-on: ubuntu-latest
+        needs: validate
+        steps:
+            - name: Checkout code
+              uses: actions/checkout@v4
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '20'
-          cache: 'npm'
+            - name: Setup Node.js
+              uses: actions/setup-node@v4
+              with:
+                  node-version: '20'
+                  cache: 'npm'
 
-      - name: Install dependencies
-        run: npm ci
+            - name: Install dependencies
+              run: npm ci
 
-      - name: Build theme assets
-        run: npm run build
+            - name: Build theme assets
+              run: npm run build
 
-      - name: Remove development files
-        run: |
-          # Remove files not needed for distribution
-          rm -rf node_modules
-          rm -rf src
-          rm -rf tests
-          rm -rf .github
-          rm -rf .git
-          rm -f .gitignore
-          rm -f .editorconfig
-          rm -f .eslintrc.js
-          rm -f eslint.config.js
-          rm -f .stylelintrc.js
-          rm -f stylelint.config.js
-          rm -f .phpcs.xml
-          rm -f phpcs.xml
-          rm -f phpunit.xml
-          rm -f phpstan.neon
-          rm -f composer.json
-          rm -f composer.lock
-          rm -f package.json
-          rm -f package-lock.json
-          rm -f postcss.config.js
-          rm -f webpack.config.js
-          rm -f jest.config.js
-          rm -f playwright.config.js
-          rm -f CONTRIBUTING.md
-          rm -f CHANGELOG.md
-          rm -f SECURITY.md
-          rm -f SUPPORT.md
-          rm -rf bin
-          rm -rf docs
+            - name: Remove development files
+              run: |
+                  # Remove files not needed for distribution
+                  rm -rf node_modules
+                  rm -rf src
+                  rm -rf tests
+                  rm -rf .github
+                  rm -rf .git
+                  rm -f .gitignore
+                  rm -f .editorconfig
+                  rm -f .eslintrc.js
+                  rm -f eslint.config.js
+                  rm -f .stylelintrc.js
+                  rm -f stylelint.config.js
+                  rm -f .phpcs.xml
+                  rm -f phpcs.xml
+                  rm -f phpunit.xml
+                  rm -f phpstan.neon
+                  rm -f composer.json
+                  rm -f composer.lock
+                  rm -f package.json
+                  rm -f package-lock.json
+                  rm -f postcss.config.js
+                  rm -f webpack.config.js
+                  rm -f jest.config.js
+                  rm -f playwright.config.js
+                  rm -f CONTRIBUTING.md
+                  rm -f CHANGELOG.md
+                  rm -f SECURITY.md
+                  rm -f SUPPORT.md
+                  rm -rf bin
+                  rm -rf docs
 
-      - name: Upload build artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: theme-build
-          path: .
-          retention-days: 1
+            - name: Upload build artifact
+              uses: actions/upload-artifact@v4
+              with:
+                  name: theme-build
+                  path: .
+                  retention-days: 1
 
-  deploy:
-    name: Deploy to WordPress.org
-    runs-on: ubuntu-latest
-    needs: [validate, build]
-    environment: wordpress-org
-    steps:
-      - name: Download build artifact
-        uses: actions/download-artifact@v4
-        with:
-          name: theme-build
-          path: theme-build
+    deploy:
+        name: Deploy to WordPress.org
+        runs-on: ubuntu-latest
+        needs: [validate, build]
+        environment: wordpress-org
+        steps:
+            - name: Download build artifact
+              uses: actions/download-artifact@v4
+              with:
+                  name: theme-build
+                  path: theme-build
 
-      - name: Setup SVN
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y subversion
+            - name: Setup SVN
+              run: |
+                  sudo apt-get update
+                  sudo apt-get install -y subversion
 
-      - name: Checkout SVN repository
-        run: |
-          svn checkout --depth immediates "${{ env.SVN_URL }}" svn-repo
-          cd svn-repo
-          svn update --set-depth infinity ${{ needs.validate.outputs.version }} 2>/dev/null || true
+            - name: Checkout SVN repository
+              run: |
+                  svn checkout --depth immediates "${{ env.SVN_URL }}" svn-repo
+                  cd svn-repo
+                  svn update --set-depth infinity ${{ needs.validate.outputs.version }} 2>/dev/null || true
 
-      - name: Prepare theme files
-        run: |
-          VERSION="${{ needs.validate.outputs.version }}"
+            - name: Prepare theme files
+              run: |
+                  VERSION="${{ needs.validate.outputs.version }}"
 
-          # Create version directory if it doesn't exist
-          if [ ! -d "svn-repo/$VERSION" ]; then
-            mkdir -p "svn-repo/$VERSION"
-          fi
+                  # Create version directory if it doesn't exist
+                  if [ ! -d "svn-repo/$VERSION" ]; then
+                    mkdir -p "svn-repo/$VERSION"
+                  fi
 
-          # Copy theme files to version directory
-          cp -r theme-build/* "svn-repo/$VERSION/"
+                  # Copy theme files to version directory
+                  cp -r theme-build/* "svn-repo/$VERSION/"
 
-          # Handle SVN status
-          cd svn-repo
-          svn status | grep -E '^\?' | awk '{print $2}' | xargs -I {} svn add "{}" 2>/dev/null || true
-          svn status | grep -E '^\!' | awk '{print $2}' | xargs -I {} svn delete "{}" 2>/dev/null || true
+                  # Handle SVN status
+                  cd svn-repo
+                  svn status | grep -E '^\?' | awk '{print $2}' | xargs -I {} svn add "{}" 2>/dev/null || true
+                  svn status | grep -E '^\!' | awk '{print $2}' | xargs -I {} svn delete "{}" 2>/dev/null || true
 
-      - name: Display changes (Dry Run)
-        if: inputs.dry_run == 'true'
-        run: |
-          cd svn-repo
-          echo "=== SVN Status ==="
-          svn status
-          echo ""
-          echo "=== Files to be committed ==="
-          svn diff --summarize
+            - name: Display changes (Dry Run)
+              if: inputs.dry_run == 'true'
+              run: |
+                  cd svn-repo
+                  echo "=== SVN Status ==="
+                  svn status
+                  echo ""
+                  echo "=== Files to be committed ==="
+                  svn diff --summarize
 
-      - name: Commit to WordPress.org
-        if: inputs.dry_run != 'true'
-        env:
-          SVN_USERNAME: ${{ secrets.SVN_USERNAME }}
-          SVN_PASSWORD: ${{ secrets.SVN_PASSWORD }}
-        run: |
-          VERSION="${{ needs.validate.outputs.version }}"
-          cd svn-repo
+            - name: Commit to WordPress.org
+              if: inputs.dry_run != 'true'
+              env:
+                  SVN_USERNAME: ${{ secrets.SVN_USERNAME }}
+                  SVN_PASSWORD: ${{ secrets.SVN_PASSWORD }}
+              run: |
+                  VERSION="${{ needs.validate.outputs.version }}"
+                  cd svn-repo
 
-          # Check if there are changes to commit
-          if svn status | grep -qE '^[AM!D]'; then
-            svn commit \
-              --username "$SVN_USERNAME" \
-              --password "$SVN_PASSWORD" \
-              --no-auth-cache \
-              --non-interactive \
-              -m "Update ${{ env.THEME_SLUG }} to version $VERSION"
-            echo "Successfully deployed version $VERSION to WordPress.org"
-          else
-            echo "No changes to commit"
-          fi
+                  # Check if there are changes to commit
+                  if svn status | grep -qE '^[AM!D]'; then
+                    svn commit \
+                      --username "$SVN_USERNAME" \
+                      --password "$SVN_PASSWORD" \
+                      --no-auth-cache \
+                      --non-interactive \
+                      -m "Update ${{ env.THEME_SLUG }} to version $VERSION"
+                    echo "Successfully deployed version $VERSION to WordPress.org"
+                  else
+                    echo "No changes to commit"
+                  fi
 
-  notify:
-    name: Notify Deployment Status
-    runs-on: ubuntu-latest
-    needs: [validate, deploy]
-    if: always()
-    steps:
-      - name: Create deployment summary
-        run: |
-          VERSION="${{ needs.validate.outputs.version }}"
-          DEPLOY_STATUS="${{ needs.deploy.result }}"
+    notify:
+        name: Notify Deployment Status
+        runs-on: ubuntu-latest
+        needs: [validate, deploy]
+        if: always()
+        steps:
+            - name: Create deployment summary
+              run: |
+                  VERSION="${{ needs.validate.outputs.version }}"
+                  DEPLOY_STATUS="${{ needs.deploy.result }}"
 
-          echo "## Theme Deployment Summary" >> $GITHUB_STEP_SUMMARY
-          echo "" >> $GITHUB_STEP_SUMMARY
-          echo "- **Theme:** ${{ env.THEME_SLUG }}" >> $GITHUB_STEP_SUMMARY
-          echo "- **Version:** $VERSION" >> $GITHUB_STEP_SUMMARY
-          echo "- **Status:** $DEPLOY_STATUS" >> $GITHUB_STEP_SUMMARY
-          echo "" >> $GITHUB_STEP_SUMMARY
+                  echo "## Theme Deployment Summary" >> $GITHUB_STEP_SUMMARY
+                  echo "" >> $GITHUB_STEP_SUMMARY
+                  echo "- **Theme:** ${{ env.THEME_SLUG }}" >> $GITHUB_STEP_SUMMARY
+                  echo "- **Version:** $VERSION" >> $GITHUB_STEP_SUMMARY
+                  echo "- **Status:** $DEPLOY_STATUS" >> $GITHUB_STEP_SUMMARY
+                  echo "" >> $GITHUB_STEP_SUMMARY
 
-          if [ "$DEPLOY_STATUS" = "success" ]; then
-            echo "✅ Theme successfully deployed to WordPress.org" >> $GITHUB_STEP_SUMMARY
-            echo "" >> $GITHUB_STEP_SUMMARY
-            echo "[View on WordPress.org](https://wordpress.org/themes/${{ env.THEME_SLUG }}/)" >> $GITHUB_STEP_SUMMARY
-          else
-            echo "❌ Deployment failed. Please check the workflow logs." >> $GITHUB_STEP_SUMMARY
-          fi
+                  if [ "$DEPLOY_STATUS" = "success" ]; then
+                    echo "✅ Theme successfully deployed to WordPress.org" >> $GITHUB_STEP_SUMMARY
+                    echo "" >> $GITHUB_STEP_SUMMARY
+                    echo "[View on WordPress.org](https://wordpress.org/themes/${{ env.THEME_SLUG }}/)" >> $GITHUB_STEP_SUMMARY
+                  else
+                    echo "❌ Deployment failed. Please check the workflow logs." >> $GITHUB_STEP_SUMMARY
+                  fi
 
-      - name: Notify failure
-        if: needs.deploy.result == 'failure'
-        run: |
-          echo "::error::Deployment to WordPress.org failed for version ${{ needs.validate.outputs.version }}"
-          exit 1
+            - name: Notify failure
+              if: needs.deploy.result == 'failure'
+              run: |
+                  echo "::error::Deployment to WordPress.org failed for version ${{ needs.validate.outputs.version }}"
+                  exit 1

@@ -1,0 +1,39 @@
+/**
+ * Editor-specific styles
+ */
+
+/* Import WordPress editor styles */
+@import "~@wordpress/block-editor/build-style/style.css";
+
+/* Editor overrides */
+.block-editor-writing-flow {
+  font-family: var(--wp--preset--font-family--body);
+}
+
+/* Block toolbar customizations */
+.block-editor-block-toolbar {
+  border-radius: 4px;
+}
+
+/* Block controls */
+.block-editor-block-controls {
+  .components-toolbar-group {
+    border-radius: 4px;
+  }
+}
+
+/* Inspector controls */
+.block-editor-block-inspector {
+  .components-panel__header {
+    background: var(--wp--preset--color--background);
+    border-bottom: 1px solid var(--wp--preset--color--neutral);
+  }
+}
+
+/* Template part highlighting */
+.wp-block-template-part {
+  &.is-selected {
+    outline: 2px solid var(--wp--preset--color--primary);
+    outline-offset: 2px;
+  }
+}

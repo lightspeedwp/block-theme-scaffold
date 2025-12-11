@@ -1,8 +1,7 @@
 ---
-file_type: "instructions"
-applyTo: "**/theme.json"
+name: "Theme.json Configuration"
 description: "Theme.json configuration standards for WordPress block themes - design systems, tokens, and global styles"
-license: "GPL-3.0-or-later"
+applyTo: "**/theme.json"
 ---
 
 > ⚠️ **Scope Notice**: These instructions are intended for **WordPress block theme repositories** within the `lightspeedwp` GitHub organisation. They should **not** be applied to the `lightspeedwp/.github` community health repository, as that repository does not contain WordPress code.

@@ -1,27 +1,27 @@
 name: Block Theme Build & E2E
 
 on:
-  push:
-    branches: [develop, main]
-  pull_request:
-    branches: [develop, main]
+    push:
+        branches: [develop, main]
+    pull_request:
+        branches: [develop, main]
 
 jobs:
-  build-lint-test:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - name: Use Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: "18.x"
-      - name: Install dependencies
-        run: npm ci
-      - name: Lint
-        run: npm run lint
-      - name: Build
-        run: npm run build
-      - name: Test
-        run: npm test
-      - name: Run Block Theme Build Agent
-        run: node .github/agents/block-theme-build.agent.js
+    build-lint-test:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v4
+            - name: Use Node.js
+              uses: actions/setup-node@v4
+              with:
+                  node-version: '18.x'
+            - name: Install dependencies
+              run: npm ci
+            - name: Lint
+              run: npm run lint
+            - name: Build
+              run: npm run build
+            - name: Test
+              run: npm test
+            - name: Run Block Theme Build Agent
+              run: node .github/agents/block-theme-build.agent.js

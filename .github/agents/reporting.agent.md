@@ -280,6 +280,66 @@ Depending on agent type:
 - Determine if within threshold
 - Generate comparison report
 
+### 7. Project Progress Report Generator
+
+**Triggered by**: Active projects tracked in `.github/projects/active/`
+**Output path**: `.github/reports/projects/active/{project-slug}/{YYYY-MM-DD}-{cadence}.md`
+**Responsibility**: Agents managing multi-day or multi-week initiatives
+
+**Cadences**:
+
+- Daily updates: `{YYYY-MM-DD}-daily-progress.md`
+- Weekly rollups: `{YYYY-MM-DD}-weekly-summary.md` (date is the Monday of the week)
+
+**Daily update format**:
+
+```markdown
+Date: 2025-12-07
+Project: {project-name-or-slug}
+Work Completed:
+- Task X.Y completed
+- N tests added to file.test.js
+- Coverage: 80% → 84% (+4%)
+Blockers:
+- None / {describe blockers}
+Next Steps:
+- Continue with Task X.Y+1
+Links:
+- Project doc: .github/projects/active/{project-slug}.md
+- Logs: logs/projects/{YYYY-MM-DD}-{project-slug}.log
+```
+
+**Weekly summary format**:
+
+```markdown
+Week of 2025-12-07
+Project: {project-name-or-slug}
+Summary:
+- Phase X completed
+- Coverage: 82% → 86% (Δ+4%)
+- Tests added: 12
+Key Achievements:
+- [...]
+Challenges:
+- [...]
+Blockers:
+- None / [...]
+Next Steps:
+- Continue with Task X.Y+1
+Links:
+- Daily logs: .github/reports/projects/active/{project-slug}/
+- Project doc: .github/projects/active/{project-slug}.md
+```
+
+**Implementation**:
+
+- Create per-project subdirectories under `.github/reports/projects/active/`
+- Derive project slug from `.github/projects/active/` filenames
+- Default to ISO weekday start (Monday) for `Week of` values
+- Include coverage deltas and test counts when available
+- Link to related logs in `logs/projects/`
+- Validate that markdown files live inside `.github/reports/projects/active/{project-slug}/`
+
 ## Implementation Patterns
 
 ### Pattern 1: Basic Report Generator

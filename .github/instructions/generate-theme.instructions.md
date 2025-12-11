@@ -1,5 +1,6 @@
 ---
-description: Instructions for AI agents on using mustache variables in theme generation
+name: "Theme Generation"
+description: "Instructions for AI agents on using mustache variables in theme generation"
 applyTo: ".github/prompts/generate-theme.prompt.md"
 ---
 
@@ -9,7 +10,7 @@ This file provides comprehensive instructions for AI agents using the `generate-
 
 ## Overview
 
-The Block Theme Scaffold uses **mustache template variables** (`{{variable_name}}`) throughout the codebase. During theme generation, these placeholders are replaced with user-provided values by the `bin/generate-theme.js` script.
+The Block Theme Scaffold uses **mustache template variables** (`{{variable_name}}`) throughout the codebase. During theme generation, these placeholders are replaced with user-provided values by the `scripts/generate-theme.js` script.
 
 **Your role as an AI agent is to:**
 
@@ -540,7 +541,7 @@ Excerpt more text ("..."):
 **Build command with all collected values:**
 
 ```bash
-node bin/generate-theme.js \
+node scripts/generate-theme.js \
   --slug "{{collected_slug}}" \
   --name "{{collected_name}}" \
   --description "{{collected_description}}" \
@@ -828,8 +829,10 @@ grep -r "{{" --exclude-dir=node_modules --exclude-dir=vendor .
 
 - [GENERATE-THEME.md](../../docs/GENERATE-THEME.md) - Complete generator system documentation
 - [generate-theme.prompt.md](../prompts/generate-theme.prompt.md) - User-facing generation prompt
-- [scaffold-generator.agent.md](../agents/scaffold-generator.agent.md) - Agent specification
+- [generate-theme.agent.md](../agents/generate-theme.agent.md) - Agent specification
 - [theme-json.instructions.md](./theme-json.instructions.md) - theme.json configuration guide
+- [theme-config.schema.json](../schemas/theme-config.schema.json) - JSON Schema for validation
+- [theme-config.template.json](../../theme-config.template.json) - Template config file
 
 ## Summary
 

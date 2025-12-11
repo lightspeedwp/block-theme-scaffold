@@ -13,8 +13,8 @@ This document specifies the Gemini Master Control Program (MCP) agent. This agen
 
 **Related Files:**
 
-- [Agent Script](./gemini.agent.js)
-- [Custom AI Instructions](../../.github/custom-instructions.md)
+- [Agent Script](../../scripts/gemini.agent.js)
+- [Custom AI Instructions](../custom-instructions.md)
 - [Main Agent Index](./agent.md)
 
 ---
@@ -22,7 +22,7 @@ This document specifies the Gemini Master Control Program (MCP) agent. This agen
 ## Agent: Gemini MCP
 
 - **Agent Spec:** `.github/agents/gemini.agent.md`
-- **Agent Script:** `.github/agents/gemini.agent.js`
+- **Agent Script:** `scripts/gemini.agent.js`
 - **Purpose:** To provide a powerful, centralized interface for Gemini-driven development, ensuring all interactions and code generation adhere to the repository's standards and best practices.
 - **Usage:**
   - The agent is activated through the Gemini CLI.

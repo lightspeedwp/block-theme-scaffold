@@ -7,7 +7,7 @@
 . "$(dirname -- "$0")/_/husky.sh"
 
 # Check if we're in scaffold mode (has mustache variables)
-if node bin/test-placeholders.js check package.json 2>/dev/null; then
+if node scripts/test-placeholders.js check package.json 2>/dev/null; then
     echo "🔍 Scaffold mode detected - using dry-run linting and testing..."
     echo ""
 
@@ -20,13 +20,13 @@ if node bin/test-placeholders.js check package.json 2>/dev/null; then
         exit 1
     }
 
-    # Run tests for scripts directory (no mustache variables in test files)
+    # Run test dry-run which handles mustache variables
     echo ""
-    echo "🧪 Running tests..."
-    npm run test:scripts -- --bail || {
+    echo "🧪 Running tests with dry-run..."
+    npm run test:dry-run || {
         echo ""
-        echo "❌ Tests failed. Please fix the failing tests and try again."
-        echo "💡 Tip: Run 'npm run test:scripts' to see all test failures"
+        echo "❌ Test dry-run failed. Please fix the failing tests and try again."
+        echo "💡 Tip: Run 'npm run test:dry-run' to see all test failures"
         echo "💡 To bypass this check (not recommended), use: git commit --no-verify"
         exit 1
     }

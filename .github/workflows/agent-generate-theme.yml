@@ -1,0 +1,30 @@
+name: Generate Theme
+
+on:
+    workflow_dispatch:
+        inputs:
+            theme_name:
+                description: 'Theme Name'
+                required: true
+            theme_slug:
+                description: 'Theme Slug'
+                required: true
+
+jobs:
+    generate-theme:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v4
+            - uses: actions/setup-node@v4
+              with:
+                  node-version: '20'
+                  cache: npm
+            - run: npm ci
+            - name: Validate theme config
+              run: node scripts/generate-theme.agent.js --validate theme-config.json
+            - name: Dry-run theme generation
+              run: |
+                  node scripts/generate-theme.agent.js \
+                    --slug "${{ github.event.inputs.theme_slug }}" \
+                    --name "${{ github.event.inputs.theme_name }}" \
+                    --dry-run

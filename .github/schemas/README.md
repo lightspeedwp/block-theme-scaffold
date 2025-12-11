@@ -33,6 +33,8 @@ jq -f .github/schemas/theme-config.schema.json my-config.json
 
 ### theme-config.example.json
 
+Location: `.github/schemas/examples/theme-config.example.json`
+
 **Purpose:** Pre-filled example configuration showing realistic values for all schema fields.
 
 **Usage:**
@@ -53,13 +55,13 @@ jq -f .github/schemas/theme-config.schema.json my-config.json
 
 ```bash
 # Copy example to create your own configuration
-cp .github/schemas/theme-config.example.json my-theme-config.json
+cp .github/schemas/examples/theme-config.example.json my-theme-config.json
 
 # Edit and customize for your theme
 vim my-theme-config.json
 
 # Generate theme with custom config
-node bin/generate-theme.js --config my-theme-config.json
+node scripts/generate-theme.js --config my-theme-config.json
 ```
 
 ## Adding New Schemas
@@ -76,6 +78,6 @@ When adding new schemas:
 ## Related Files
 
 - [FILE_ORGANIZATION.md](../FILE_ORGANIZATION.md) - Overall file organization guide
-- [bin/generate-theme.js](../../bin/generate-theme.js) - Theme generation script
+- [scripts/generate-theme.js](../../scripts/generate-theme.js) - Theme generation script
 - [.github/instructions/generate-theme.instructions.md](../instructions/generate-theme.instructions.md) - Theme generation guidance
 - [docs/THEME_STRUCTURE.md](../../docs/THEME_STRUCTURE.md) - Theme structure documentation

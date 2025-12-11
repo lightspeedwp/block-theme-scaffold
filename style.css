@@ -1,17 +1,17 @@
 /*
-Theme Name: {{theme_name}}
-Theme URI: {{theme_uri}}
-Author: {{author}}
-Author URI: {{author_uri}}
-Description: {{description}}
-Version: {{version}}
-Requires at least: {{min_wp_version}}
-Tested up to: {{tested_wp_version}}
-Requires PHP: {{min_php_version}}
-License: {{license}}
-License URI: {{license_uri}}
-Text Domain: {{theme_slug}}
-Tags: {{theme_tags}}
+Theme Name: Block Theme Scaffold
+Theme URI: https://github.com/lightspeedwp/block-theme-scaffold
+Author: LightSpeedWP
+Author URI: https://lightspeedwp.com
+Description: A modern WordPress block theme scaffold with Full Site Editing support, automated testing, and best practices
+Version: 1.0.0
+Requires at least: 6.5
+Tested up to: 6.7
+Requires PHP: 8.0
+License: GPL-2.0-or-later
+License URI: https://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: block-theme-scaffold
+Tags: block-theme, full-site-editing, accessibility, performance, modern
 Network: false
 
 {{theme_name}} WordPress Theme, Copyright (C) {{year}} {{author}}

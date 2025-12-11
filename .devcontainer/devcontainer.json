@@ -34,15 +34,8 @@
 				"[php]": {
 					"editor.defaultFormatter": "bmewburn.vscode-intelephense-client"
 				},
-				"eslint.validate": [
-					"javascript",
-					"javascriptreact"
-				],
-				"stylelint.validate": [
-					"css",
-					"scss",
-					"postcss"
-				],
+				"eslint.validate": ["javascript", "javascriptreact"],
+				"stylelint.validate": ["css", "scss", "postcss"],
 				"files.associations": {
 					"*.php": "php",
 					"*.html": "html"

@@ -82,7 +82,7 @@ These help pre-configure theme.json:
 Once I have all the information, I'll generate the theme using:
 
 ```bash
-node bin/generate-theme.js \
+node scripts/generate-theme.js \
   --slug "{{theme_slug}}" \
   --name "{{theme_name}}" \
   --description "{{description}}" \
@@ -153,7 +153,7 @@ _Type "yes" to accept defaults, or provide custom values._
 
 ## Related Resources
 
-- [Generate Theme Script](../../bin/generate-theme.js)
+- [Generate Theme Script](../../scripts/generate-theme.js)
 - [Block Theme Build Agent](../agents/block-theme-build.agent.md)
 - [Development Assistant](../agents/development-assistant.agent.md)
 - [Theme JSON Instructions](../instructions/theme-json.instructions.md)

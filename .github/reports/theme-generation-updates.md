@@ -92,7 +92,7 @@
 
 ### 4. Enhanced Generation Script ✅
 
-**File Modified:** `bin/generate-theme.js`
+**File Modified:** `scripts/generate-theme.js`
 
 **New Features:**
 
@@ -101,13 +101,13 @@
 1. **JSON Config Mode** (Recommended)
 
    ```bash
-   node bin/generate-theme.js --config theme-config.json
+   node scripts/generate-theme.js --config theme-config.json
    ```
 
 2. **CLI Mode** (Quick generation)
 
    ```bash
-   node bin/generate-theme.js --slug my-theme --name "My Theme" --author "Author"
+   node scripts/generate-theme.js --slug my-theme --name "My Theme" --author "Author"
    ```
 
 #### Config Loading
@@ -128,7 +128,7 @@ Added support for all design system variables:
 #### Help System
 
 ```bash
-node bin/generate-theme.js --help
+node scripts/generate-theme.js --help
 ```
 
 Shows comprehensive usage guide with examples.
@@ -229,7 +229,7 @@ Fill in all required fields and customize design system:
 **Step 3: Generate theme**
 
 ```bash
-node bin/generate-theme.js --config my-theme-config.json
+node scripts/generate-theme.js --config my-theme-config.json
 ```
 
 **Advantages:**
@@ -267,7 +267,7 @@ The AI agent should:
 **For simple themes:**
 
 ```bash
-node bin/generate-theme.js \
+node scripts/generate-theme.js \
   --slug my-theme \
   --name "My Theme" \
   --author "Jane Developer" \
@@ -372,7 +372,7 @@ When user has pre-filled configuration:
 
 1. **Load Configuration**
    ```bash
-   node bin/generate-theme.js --config theme-config.json
+   node scripts/generate-theme.js --config theme-config.json
    ```
 
 2. **Validate Configuration**
@@ -457,7 +457,7 @@ Agent: "I'll guide you through creating a theme-config.json file.
        [Multi-stage collection]
 
        I've created theme-config.json. Review it and run:
-       node bin/generate-theme.js --config theme-config.json"
+       node scripts/generate-theme.js --config theme-config.json"
 ```
 
 **Scenario 3: Quick generation**
@@ -516,7 +516,7 @@ If regenerating existing themes:
 
 ### Core Files
 - ✅ `theme.json` - Spacing scale + font families
-- ✅ `bin/generate-theme.js` - JSON config support
+- ✅ `scripts/generate-theme.js` - JSON config support
 - ✅ `docs/STYLES.md` - Updated documentation
 
 ### New Files

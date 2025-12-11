@@ -1,0 +1,188 @@
+/**
+ * Main theme styles
+ */
+
+/* Import WordPress block styles */
+@import "~@wordpress/block-library/build-style/style.css";
+@import "~@wordpress/block-library/build-style/theme.css";
+
+/* Custom theme styles */
+:root {
+  /* Custom properties for theme colors */
+  --theme-primary: var(--wp--preset--color--primary);
+  --theme-secondary: var(--wp--preset--color--secondary);
+  --theme-background: var(--wp--preset--color--background);
+  --theme-foreground: var(--wp--preset--color--foreground);
+  --theme-accent: var(--wp--preset--color--accent);
+  --theme-neutral: var(--wp--preset--color--neutral);
+
+  /* Custom properties for spacing */
+  --theme-spacing-xs: var(--wp--preset--spacing--x-small);
+  --theme-spacing-sm: var(--wp--preset--spacing--small);
+  --theme-spacing-md: var(--wp--preset--spacing--medium);
+  --theme-spacing-lg: var(--wp--preset--spacing--large);
+  --theme-spacing-xl: var(--wp--preset--spacing--x-large);
+}
+
+/* Body and typography */
+body {
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Accessibility improvements */
+.screen-reader-text {
+  border: 0;
+  clip: rect(1px, 1px, 1px, 1px);
+  -webkit-clip-path: inset(50%);
+  clip-path: inset(50%);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute !important;
+  width: 1px;
+  word-wrap: normal !important;
+}
+
+.screen-reader-text:focus {
+  background-color: #f1f1f1;
+  border-radius: 3px;
+  box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.6);
+  clip: auto !important;
+  -webkit-clip-path: none;
+  clip-path: none;
+  color: #21759b;
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 700;
+  height: auto;
+  left: 5px;
+  line-height: normal;
+  padding: 15px 23px 14px;
+  text-decoration: none;
+  top: 5px;
+  width: auto;
+  z-index: 100000;
+}
+
+/* Button styles */
+/* stylelint-disable no-descending-specificity */
+
+.wp-block-button {
+  &.is-style-outline {
+    .wp-block-button__link {
+      border: 2px solid currentColor;
+      background: transparent;
+
+      &:hover {
+        background: currentColor;
+        color: var(--wp--preset--color--background);
+      }
+    }
+  }
+
+  &.is-style-ghost {
+    .wp-block-button__link {
+      background: transparent;
+      color: inherit;
+      text-decoration: underline;
+      border: none;
+
+      &:hover {
+        text-decoration: none;
+      }
+    }
+  }
+}
+
+/* stylelint-enable no-descending-specificity */
+
+/* Quote styles */
+.wp-block-quote {
+  &.is-style-modern {
+    border-left: none;
+    padding-left: 0;
+    position: relative;
+
+    &::before {
+      content: '"';
+      font-size: 4rem;
+      line-height: 1;
+      color: var(--wp--preset--color--primary);
+      position: absolute;
+      top: -1rem;
+      left: -1rem;
+    }
+
+    p {
+      font-style: italic;
+      font-size: 1.25rem;
+      margin-left: 2rem;
+    }
+  }
+}
+
+/* Group styles */
+.wp-block-group {
+  &.is-style-shadow {
+    box-shadow:
+      0 4px 6px -1px rgba(0, 0, 0, 0.1),
+      0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    border-radius: 0.5rem;
+    padding: var(--wp--preset--spacing--medium);
+  }
+
+  &.is-style-border {
+    border: 1px solid var(--wp--preset--color--neutral);
+    border-radius: 0.5rem;
+    padding: var(--wp--preset--spacing--medium);
+  }
+}
+
+/* Image styles */
+.wp-block-image {
+  &.is-style-rounded {
+    img {
+      border-radius: 0.5rem;
+    }
+  }
+}
+
+/* Post title styles */
+.wp-block-post-title {
+  &.is-style-gradient {
+    background: var(--wp--preset--gradient--primary-to-secondary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+}
+
+/* Navigation improvements */
+.wp-block-navigation {
+  .wp-block-navigation__responsive-container.is-menu-open {
+    padding: var(--wp--preset--spacing--medium);
+  }
+}
+
+/* Skip link */
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  z-index: 999999999;
+  text-decoration: none;
+
+  &:focus {
+    left: 6px;
+    top: 7px;
+    z-index: 999999;
+    padding: 8px 16px;
+    background: var(--wp--preset--color--background);
+    color: var(--wp--preset--color--foreground);
+    text-decoration: none;
+    border-radius: 3px;
+    box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.6);
+  }
+}

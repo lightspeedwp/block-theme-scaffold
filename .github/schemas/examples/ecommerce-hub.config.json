@@ -1,0 +1,46 @@
+{
+	"$schema": "../../schemas/theme-config.schema.json",
+	"_comment": "Example configuration for an e-commerce or online store website",
+	"theme_slug": "ecommerce-hub",
+	"theme_name": "E-Commerce Hub",
+	"description": "A feature-rich WordPress block theme built for online stores, product catalogs, and digital commerce",
+	"author": "Your Store",
+	"author_uri": "https://yourstore.com",
+	"version": "1.0.0",
+	"min_wp_version": "6.5",
+	"tested_wp_version": "6.7",
+	"min_php_version": "8.0",
+	"license": "GPL-2.0-or-later",
+	"theme_uri": "https://yourstore.com/theme",
+	"theme_repo_url": "https://github.com/yourstore/ecommerce-hub",
+	"design_system": {
+		"colors": {
+			"primary_color": "#C41E3A",
+			"secondary_color": "#003F87",
+			"background_color": "#F5F5F5",
+			"text_color": "#222222",
+			"accent_color": "#FFB300",
+			"neutral_color": "#999999"
+		},
+		"typography": {
+			"heading_font_family": "'Montserrat', sans-serif",
+			"heading_font_name": "Montserrat",
+			"body_font_family": "'Open Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
+			"body_font_name": "Open Sans",
+			"heading_font_weight": "700",
+			"body_line_height": "1.5",
+			"heading_line_height": "1.2",
+			"button_font_weight": "700",
+			"site_title_font_weight": "700"
+		},
+		"layout": {
+			"content_width": "1000px",
+			"wide_width": "1400px"
+		}
+	},
+	"content": {
+		"button_border_radius": "4px",
+		"excerpt_more": "Shop Now",
+		"skip_link_text": "Skip to main content"
+	}
+}

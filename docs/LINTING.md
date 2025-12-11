@@ -80,16 +80,16 @@ git commit -m "Your message"
 
 ```bash
 # Check if in scaffold mode
-node bin/test-placeholders.js check package.json
+node scripts/test-placeholders.js check package.json
 
 # Get placeholder value
-node bin/test-placeholders.js get "{{theme_slug}}"
+node scripts/test-placeholders.js get "{{theme_slug}}"
 
 # List all placeholders
-node bin/test-placeholders.js list
+node scripts/test-placeholders.js list
 
 # Output as JSON
-node bin/test-placeholders.js json
+node scripts/test-placeholders.js json
 ```
 
 ## Rules & Standards

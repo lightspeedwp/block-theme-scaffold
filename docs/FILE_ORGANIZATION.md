@@ -65,7 +65,7 @@ block-theme-scaffold/
 **Files:**
 
 - `theme-config.schema.json` - JSON Schema defining all valid configuration options for theme generation
-- `theme-config.example.json` - Pre-filled example configuration ready to customize
+- `examples/theme-config.example.json` - Pre-filled example configuration ready to customize
 
 **Rationale:**
 
@@ -78,7 +78,7 @@ block-theme-scaffold/
 
 ```bash
 # Theme generation with config
-node bin/generate-theme.js --config .github/schemas/theme-config.example.json
+node scripts/generate-theme.js --config .github/schemas/examples/theme-config.example.json
 
 # Validate config against schema
 jq -f .github/schemas/theme-config.schema.json my-config.json
@@ -342,7 +342,7 @@ When creating files, reference related files:
 ```markdown
 See also:
 - docs/ARCHITECTURE.md - Project structure
-- bin/generate-theme.js - Generation script
+- scripts/generate-theme.js - Generation script
 - .github/instructions/generate-theme.instructions.md - Usage guide
 ```
 
@@ -373,10 +373,10 @@ Essential Reading:
    .github/schemas/theme-config.schema.json
 
 2. Create your config
-   cp .github/schemas/theme-config.example.json my-theme-config.json
+   cp .github/schemas/examples/theme-config.example.json my-theme-config.json
 
 3. Run generation script
-   node bin/generate-theme.js --config my-theme-config.json
+   node scripts/generate-theme.js --config my-theme-config.json
 
 4. Follow standards from instructions
    .github/instructions/block-theme-development.instructions.md
@@ -419,7 +419,7 @@ Essential Reading:
 | Type | Location | Examples | Audience |
 |------|----------|----------|----------|
 | Schema | `.github/schemas/` | theme-config.schema.json | Developers, Scripts |
-| Config Template | `.github/schemas/` | theme-config.example.json | Developers, AI |
+| Config Template | `.github/schemas/examples/` | theme-config.example.json | Developers, AI |
 | In-Progress Project | `.github/projects/` | context-reduction.md | Copilot, Developers |
 | Completed Report | `.github/reports/` | theme-generation-updates.md | Copilot, Developers |
 | Permanent Docs | `docs/` | GOVERNANCE.md, ARCHITECTURE.md | Everyone |

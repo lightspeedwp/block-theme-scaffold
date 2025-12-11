@@ -1,0 +1,21 @@
+name: Build Agent
+
+on:
+    push:
+        paths:
+            - 'src/**'
+            - 'templates/**'
+            - 'patterns/**'
+    workflow_dispatch:
+
+jobs:
+    build-validate:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v4
+            - uses: actions/setup-node@v4
+              with:
+                  node-version: '20'
+                  cache: npm
+            - run: npm ci
+            - run: node scripts/block-theme-build.agent.js --validate

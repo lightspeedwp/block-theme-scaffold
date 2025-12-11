@@ -1,38 +1,38 @@
 {
-  "name": "{{theme_slug}}",
-  "description": "{{description}}",
-  "type": "wordpress-theme",
-  "license": "{{license}}",
-  "authors": [
-    {
-      "name": "{{author}}",
-      "homepage": "{{author_uri}}"
-    }
-  ],
-  "support": {
-    "issues": "{{theme_repo_url}}/issues",
-    "source": "{{theme_repo_url}}"
-  },
-  "require": {
-    "php": ">=8.0"
-  },
-  "require-dev": {
-    "squizlabs/php_codesniffer": "^3.7",
-    "wp-coding-standards/wpcs": "^3.0",
-    "phpcompatibility/phpcompatibility-wp": "^2.1",
-    "dealerdirect/phpcodesniffer-composer-installer": "^1.0",
-    "phpunit/phpunit": "^9.0",
-    "yoast/phpunit-polyfills": "^1.0"
-  },
-  "scripts": {
-    "lint": "phpcs",
-    "lint:fix": "phpcbf",
-    "test": "phpunit",
-    "test:coverage": "phpunit --coverage-html coverage"
-  },
-  "config": {
-    "allow-plugins": {
-      "dealerdirect/phpcodesniffer-composer-installer": true
-    }
-  }
+	"name": "lightspeedwp/block-theme-scaffold",
+	"description": "A modern WordPress block theme scaffold with Full Site Editing support",
+	"type": "wordpress-theme",
+	"license": "GPL-2.0-or-later",
+	"authors": [
+		{
+			"name": "LightSpeed",
+			"homepage": "https://lightspeedwp.com"
+		}
+	],
+	"support": {
+		"issues": "https://github.com/lightspeedwp/block-theme-scaffold/issues",
+		"source": "https://github.com/lightspeedwp/block-theme-scaffold"
+	},
+	"require": {
+		"php": ">=8.0"
+	},
+	"require-dev": {
+		"squizlabs/php_codesniffer": "^3.7",
+		"wp-coding-standards/wpcs": "^3.0",
+		"phpcompatibility/phpcompatibility-wp": "^2.1",
+		"dealerdirect/phpcodesniffer-composer-installer": "^1.0",
+		"phpunit/phpunit": "^9.0",
+		"yoast/phpunit-polyfills": "^1.0"
+	},
+	"scripts": {
+		"lint": "phpcs",
+		"lint:fix": "phpcbf",
+		"test": "phpunit",
+		"test:coverage": "phpunit --coverage-html coverage"
+	},
+	"config": {
+		"allow-plugins": {
+			"dealerdirect/phpcodesniffer-composer-installer": true
+		}
+	}
 }

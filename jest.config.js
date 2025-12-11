@@ -7,12 +7,13 @@
 module.exports = {
 	preset: '@wordpress/jest-preset-default',
 	testEnvironment: 'jsdom',
-	setupFilesAfterEnv: [
-		'@wordpress/jest-console',
-		'@wordpress/jest-puppeteer-axe',
-		'expect-puppeteer',
+	setupFilesAfterEnv: ['<rootDir>/tests/setup.js'],
+	testPathIgnorePatterns: [
+		'/node_modules/',
+		'/vendor/',
+		'/public/',
+		'/.test-temp/',
 	],
-	testPathIgnorePatterns: ['/node_modules/', '/vendor/', '/public/'],
 	collectCoverageFrom: [
 		'src/**/*.{js,jsx}',
 		'!src/**/*.test.{js,jsx}',
@@ -24,4 +25,5 @@ module.exports = {
 		'\\.(css|scss|sass)$': '<rootDir>/tests/__mocks__/styleMock.js',
 		'\\.(jpg|jpeg|png|gif|svg)$': '<rootDir>/tests/__mocks__/fileMock.js',
 	},
+	modulePathIgnorePatterns: ['<rootDir>/.test-temp/'],
 };

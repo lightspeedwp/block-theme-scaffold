@@ -27,10 +27,10 @@ flowchart TD
 
 ## Scaffold Mode Detection
 
-The hook uses `bin/test-placeholders.js` to check if `package.json` contains mustache variables:
+The hook uses `scripts/test-placeholders.js` to check if `package.json` contains mustache variables:
 
 ```bash
-node bin/test-placeholders.js check package.json
+node scripts/test-placeholders.js check package.json
 # Exit code 0 = scaffold mode
 # Exit code 1 = generated theme mode
 ```
@@ -115,8 +115,8 @@ git commit --no-verify -m "Your message"
 | File | Purpose |
 |------|---------|
 | [.husky/pre-commit](../.husky/pre-commit) | Main hook that detects mode and routes to appropriate linter |
-| [bin/test-placeholders.js](../bin/test-placeholders.js) | Core module for scaffold detection and test values |
-| [bin/lint-dry-run.js](../bin/lint-dry-run.js) | Dry-run linting implementation for scaffold mode |
+| [scripts/test-placeholders.js](../scripts/test-placeholders.js) | Core module for scaffold detection and test values |
+| [scripts/lint-dry-run.js](../scripts/lint-dry-run.js) | Dry-run linting implementation for scaffold mode |
 | [package.json](../package.json) | Contains `lint:dry-run` npm script |
 
 ## Troubleshooting
@@ -138,7 +138,7 @@ ls -la .husky/pre-commit
 
 ```bash
 # Check what mode is detected
-node bin/test-placeholders.js check package.json
+node scripts/test-placeholders.js check package.json
 
 # Should output:
 # "true" for scaffold mode
@@ -198,7 +198,7 @@ jobs:
 
       - name: Run linting and tests (auto-detects mode)
         run: |
-          if node bin/test-placeholders.js check package.json; then
+          if node scripts/test-placeholders.js check package.json; then
             # Scaffold mode
             npm run lint:dry-run
             npm run test:scripts
@@ -222,5 +222,5 @@ jobs:
 ## See Also
 
 - [Lint Dry-Run Documentation](./LINTING.md#lint-dry-run-mode) - Detailed dry-run documentation
-- [Test Placeholders](../bin/test-placeholders.js) - Core placeholder module
+- [Test Placeholders](../scripts/test-placeholders.js) - Core placeholder module
 - [Contributing Guidelines](../CONTRIBUTING.md) - General contribution guidelines

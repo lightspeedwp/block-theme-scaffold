@@ -1,4 +1,5 @@
 ---
+name: "Report Management"
 description: "Guidelines for AI agents on generating, managing, and storing reports"
 applyTo: "**"
 ---
@@ -9,7 +10,7 @@ This document defines how AI agents and Copilot should generate, structure, and 
 
 ## Core Principles
 
-1. **Centralized Storage**: All reports MUST be stored in `.github/\.github/reports/` directory - never in repository root
+1. **Centralized Storage**: All reports MUST be stored in `.github/reports/` directory - never in repository root
 2. **Organized by Type**: Reports organized into categorical subdirectories (coverage, analysis, performance, validation, agents)
 3. **Timestamped**: All reports include ISO 8601 date in filename for versioning
 4. **Excluded from Distribution**: Reports are in `.distignore` and `.gitignore`
@@ -19,7 +20,7 @@ This document defines how AI agents and Copilot should generate, structure, and 
 ## Report Directory Structure
 
 ```
-.github/\.github/reports/
+.github/reports/
 ├── .gitkeep
 ├── README.md                          # Overview of reporting system
 ├── coverage/                          # Code coverage reports
@@ -45,6 +46,11 @@ This document defines how AI agents and Copilot should generate, structure, and 
 │   ├── 2025-12-07-bundle-size.json
 │   ├── 2025-12-07-core-web-vitals.json
 │   └── 2025-12-07-performance-budget.json
+├── projects/                          # Project progress tracking
+│   └── active/                        # Per-active-project reports
+│       └── my-project/                # Project slug
+│           ├── 2025-12-07-daily-progress.md
+│           └── 2025-12-09-weekly-summary.md
 ├── agents/                            # AI agent execution reports
 │   ├── 2025-12-07-theme-generator.json
 │   ├── 2025-12-07-build-agent.json
@@ -92,6 +98,7 @@ This document defines how AI agents and Copilot should generate, structure, and 
 | Performance   | `.json`           | JSON metrics format       |
 | Agent Output  | `.md`             | Markdown summary          |
 | Agent Output  | `.json`           | Structured results        |
+| Project Progress | `.md`          | Daily/weekly progress     |
 | Comparison    | `.json`           | Comparison data           |
 | Diff          | `.txt` or `.json` | Text or JSON diff         |
 
@@ -114,12 +121,12 @@ This document defines how AI agents and Copilot should generate, structure, and 
 
 ```bash
 # Jest generates
-\.github/reports/coverage/js/2025-12-07-coverage.html
-\.github/reports/coverage/js/2025-12-07-coverage.json
+.github/reports/coverage/js/2025-12-07-coverage.html
+.github/reports/coverage/js/2025-12-07-coverage.json
 
 # PHPUnit generates
-\.github/reports/coverage/php/2025-12-07-coverage.html
-\.github/reports/coverage/php/2025-12-07-coverage.json
+.github/reports/coverage/php/2025-12-07-coverage.html
+.github/reports/coverage/php/2025-12-07-coverage.json
 ```
 
 ### Analysis Reports (analysis/)
@@ -139,9 +146,9 @@ This document defines how AI agents and Copilot should generate, structure, and 
 **Example**:
 
 ```bash
-\.github/reports/analysis/2025-12-07-bundle-analysis.html
-\.github/reports/analysis/2025-12-07-lighthouse.json
-\.github/reports/analysis/2025-12-07-accessibility.json
+.github/reports/analysis/2025-12-07-bundle-analysis.html
+.github/reports/analysis/2025-12-07-lighthouse.json
+.github/reports/analysis/2025-12-07-accessibility.json
 ```
 
 ### Validation Reports (validation/)
@@ -161,10 +168,10 @@ This document defines how AI agents and Copilot should generate, structure, and 
 **Example**:
 
 ```bash
-\.github/reports/validation/2025-12-07-eslint-report.json
-\.github/reports/validation/2025-12-07-stylelint-report.json
-\.github/reports/validation/2025-12-07-phpcs-report.json
-\.github/reports/validation/2025-12-07-validation-summary.json
+.github/reports/validation/2025-12-07-eslint-report.json
+.github/reports/validation/2025-12-07-stylelint-report.json
+.github/reports/validation/2025-12-07-phpcs-report.json
+.github/reports/validation/2025-12-07-validation-summary.json
 ```
 
 ### Performance Reports (performance/)
@@ -184,9 +191,9 @@ This document defines how AI agents and Copilot should generate, structure, and 
 **Example**:
 
 ```bash
-\.github/reports/performance/2025-12-07-lighthouse.json
-\.github/reports/performance/2025-12-07-bundle-size.json
-\.github/reports/performance/2025-12-07-performance-budget.json
+.github/reports/performance/2025-12-07-lighthouse.json
+.github/reports/performance/2025-12-07-bundle-size.json
+.github/reports/performance/2025-12-07-performance-budget.json
 ```
 
 ### Agent Reports (agents/)
@@ -225,10 +232,100 @@ This document defines how AI agents and Copilot should generate, structure, and 
 **Example**:
 
 ```bash
-\.github/reports/agents/2025-12-07-theme-generator.json
-\.github/reports/agents/2025-12-07-theme-generator-summary.md
-\.github/reports/agents/2025-12-07-build-agent.json
+.github/reports/agents/2025-12-07-theme-generator.json
+.github/reports/agents/2025-12-07-theme-generator-summary.md
+.github/reports/agents/2025-12-07-build-agent.json
 ```
+
+**Generate-Theme Agent Report Example**:
+
+```json
+{
+  "agent": "generate-theme",
+  "timestamp": "2025-12-10T10:30:45.123Z",
+  "status": "success",
+  "summary": "Generated theme 'my-awesome-theme' from scaffold",
+  "metrics": {
+    "filesProcessed": 87,
+    "variablesReplaced": 52,
+    "duration": "1.2s",
+    "errors": 0,
+    "warnings": 0
+  },
+  "artifacts": [
+    "output-theme/",
+    "output-theme/style.css",
+    "output-theme/functions.php",
+    "output-theme/theme.json"
+  ],
+  "config": {
+    "theme_slug": "my-awesome-theme",
+    "theme_name": "My Awesome Theme",
+    "author": "Developer Name"
+  },
+  "logFile": "logs/agents/2025-12-10-generate-theme.log"
+}
+```
+
+### Project Progress Reports (projects/active/)
+
+**Purpose**: Track multi-day or multi-week progress for active projects
+**Generated By**: Project owners, delivery agents, automation tied to `.github/projects/active/`
+**When**: Daily updates and weekly rollups (week starts Monday)
+**Storage**: `.github/reports/projects/active/{project-slug}/{YYYY-MM-DD}-{cadence}.md`
+
+**Files to Generate**:
+
+- `YYYY-MM-DD-daily-progress.md` - Daily update per active project
+- `YYYY-MM-DD-weekly-summary.md` - Weekly rollup per active project (use Monday date for the week)
+
+**Daily Update Format**:
+
+```markdown
+Date: 2025-12-07
+Project: my-project
+Work Completed:
+- Task X.Y completed
+- 4 tests added to file.test.js
+- Coverage: 80% → 84% (+4%)
+Blockers:
+- None / describe blockers
+Next Steps:
+- Continue with Task X.Y+1
+Links:
+- Project doc: .github/projects/active/my-project.md
+- Logs: logs/projects/2025-12-07-my-project.log
+```
+
+**Weekly Summary Format**:
+
+```markdown
+Week of 2025-12-07
+Project: my-project
+Summary:
+- Phase X completed
+- Coverage: 82% → 86% (Δ+4%)
+- Tests added: 12
+Key Achievements:
+- [...]
+Challenges:
+- [...]
+Blockers:
+- None / [...]
+Next Steps:
+- Continue with Task X.Y+1
+Links:
+- Daily logs: .github/reports/projects/active/my-project/
+- Project doc: .github/projects/active/my-project.md
+```
+
+**Implementation Notes**:
+
+- Create per-project subdirectories under `.github/reports/projects/active/`
+- Derive project slug from `.github/projects/active/` filenames
+- Keep filenames ISO-dated and kebab-cased
+- Include coverage deltas and test counts when available
+- Link to related project docs and logs for traceability
 
 ### Comparison Reports (comparison/)
 
@@ -246,19 +343,19 @@ This document defines how AI agents and Copilot should generate, structure, and 
 **Example**:
 
 ```bash
-\.github/reports/comparison/2025-12-07-bundle-size-diff.json
-\.github/reports/comparison/2025-12-07-performance-metrics-diff.json
+.github/reports/comparison/2025-12-07-bundle-size-diff.json
+.github/reports/comparison/2025-12-07-performance-metrics-diff.json
 ```
 
 ## Report Generation Rules for AI Agents
 
-### Rule 1: Always Use \.github/reports/ Directory
+### Rule 1: Always Use .github/reports/ Directory
 
 **MUST DO:**
 
 ```javascript
-// ✅ Correct - Save to \.github/reports/ directory
-const reportPath = "./\.github/reports/analysis/2025-12-07-bundle-analysis.html";
+// ✅ Correct - Save to .github/reports/ directory
+const reportPath = "./.github/reports/analysis/2025-12-07-bundle-analysis.html";
 fs.writeFileSync(reportPath, htmlContent);
 
 // ❌ Never do this - Root directory
@@ -280,7 +377,7 @@ const date = new Date().toISOString().split("T")[0]; // 2025-12-07
 const filename = `.github/reports/coverage/js/${date}-coverage.json`;
 
 // ❌ Never omit date
-const badFilename = "\.github/reports/coverage/js/coverage.json";
+const badFilename = ".github/reports/coverage/js/coverage.json";
 
 // ❌ Never use wrong date format
 const wrongFormat = `.github/reports/coverage/js/${Date.now()}-coverage.json`;
@@ -301,7 +398,7 @@ function ensureDirectory(dirPath) {
   }
 }
 
-const reportDir = "\.github/reports/coverage/js";
+const reportDir = ".github/reports/coverage/js";
 ensureDirectory(reportDir);
 fs.writeFileSync(`${reportDir}/2025-12-07-coverage.json`, data);
 ```
@@ -325,7 +422,7 @@ const report = {
   logFile: "logs/test/2025-12-07-jest.log",
 };
 
-fs.writeFileSync("\.github/reports/coverage/js/2025-12-07-coverage.json", JSON.stringify(report, null, 2));
+fs.writeFileSync(".github/reports/coverage/js/2025-12-07-coverage.json", JSON.stringify(report, null, 2));
 ```
 
 ### Rule 5: Reference Related Logs
@@ -352,9 +449,9 @@ const report = {
 **MUST DO:**
 
 ```javascript
-// ✅ Correct - Use tmp/ for intermediate files, \.github/reports/ for results
+// ✅ Correct - Use tmp/ for intermediate files, .github/reports/ for results
 const tempFile = "tmp/intermediate-data.json";
-const reportFile = "\.github/reports/analysis/2025-12-07-analysis.json";
+const reportFile = ".github/reports/analysis/2025-12-07-analysis.json";
 
 // Process data
 const data = processData();
@@ -381,7 +478,7 @@ Reports should reference their generating processes through logs:
 ```json
 {
   "date": "2025-12-07T10:30:45.123Z",
-  "reportFile": "\.github/reports/validation/2025-12-07-eslint-report.json",
+  "reportFile": ".github/reports/validation/2025-12-07-eslint-report.json",
   "logFile": "logs/lint/2025-12-07-eslint.log",
   "processName": "eslint",
   "category": "validation"
@@ -391,7 +488,7 @@ Reports should reference their generating processes through logs:
 **Logging Should Reference Reports:**
 
 ```javascript
-logger.info("Generating report: \.github/reports/validation/2025-12-07-eslint-report.json");
+logger.info("Generating report: .github/reports/validation/2025-12-07-eslint-report.json");
 logger.debug(`Report saved with ${errorCount} issues`);
 ```
 
@@ -403,19 +500,19 @@ The `.github/reports/archived/` directory stores older reports. Consider impleme
 
 ```bash
 # Archive reports older than 30 days (weekly rotation)
-find \.github/reports/ -type f -mtime +30 -exec mv {} \.github/reports/archived/ \;
+find .github/reports/ -type f -mtime +30 -exec mv {} .github/reports/archived/ \;
 
 # Delete reports older than 90 days (quarterly cleanup)
-find \.github/reports/archived/ -type f -mtime +90 -delete
+find .github/reports/archived/ -type f -mtime +90 -delete
 ```
 
 ### Manual Archival
 
 ```bash
 # Move specific date's reports to archive
-mv \.github/reports/coverage/2025-11-30*.* \.github/reports/archived/
-mv \.github/reports/analysis/2025-11-30*.* \.github/reports/archived/
-mv \.github/reports/validation/2025-11-30*.* \.github/reports/archived/
+mv .github/reports/coverage/2025-11-30*.* .github/reports/archived/
+mv .github/reports/analysis/2025-11-30*.* .github/reports/archived/
+mv .github/reports/validation/2025-11-30*.* .github/reports/archived/
 ```
 
 ## Distignore & Gitignore Rules
@@ -424,9 +521,9 @@ mv \.github/reports/validation/2025-11-30*.* \.github/reports/archived/
 
 ```
 # Reports directory
-\.github/reports/
-!\.github/reports/README.md
-!\.github/reports/.gitkeep
+.github/reports/
+!.github/reports/README.md
+!.github/reports/.gitkeep
 
 # Temporary files
 tmp/
@@ -443,10 +540,10 @@ logs/
 
 ```bash
 # ✅ This is fine - documentation only
-git add \.github/reports/README.md
+git add .github/reports/README.md
 
 # ❌ Never commit actual reports
-git add \.github/reports/coverage/2025-12-07-coverage.html  # Don't do this!
+git add .github/reports/coverage/2025-12-07-coverage.html  # Don't do this!
 ```
 
 ## Environment Variables
@@ -456,7 +553,7 @@ If reports need special handling, configure via environment:
 ```bash
 # Control report output
 export REPORT_DIR="reports"          # Where to save reports
-export ARCHIVE_DIR="\.github/reports/archived"  # Archive location
+export ARCHIVE_DIR=".github/reports/archived"  # Archive location
 export REPORT_RETENTION_DAYS=30      # Auto-archive threshold
 export LOG_LEVEL="debug"              # Logging detail level
 ```
@@ -471,7 +568,7 @@ const path = require("path");
 
 function saveJestReport(coverageData) {
   const date = new Date().toISOString().split("T")[0];
-  const reportDir = "\.github/reports/coverage/js";
+  const reportDir = ".github/reports/coverage/js";
 
   // Ensure directory
   fs.mkdirSync(reportDir, { recursive: true });
@@ -498,7 +595,7 @@ const { ESLint } = require("eslint");
 
 async function saveESLintReport(results) {
   const date = new Date().toISOString().split("T")[0];
-  const reportDir = "\.github/reports/validation";
+  const reportDir = ".github/reports/validation";
 
   // Ensure directory
   fs.mkdirSync(reportDir, { recursive: true });
@@ -526,7 +623,7 @@ const path = require("path");
 
 function saveAgentReport(agentName, status, metrics, artifacts) {
   const date = new Date().toISOString().split("T")[0];
-  const reportDir = "\.github/reports/agents";
+  const reportDir = ".github/reports/agents";
 
   // Ensure directory
   fs.mkdirSync(reportDir, { recursive: true });
