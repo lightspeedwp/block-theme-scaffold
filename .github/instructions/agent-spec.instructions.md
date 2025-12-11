@@ -93,8 +93,8 @@ Use this instruction file when drafting or reviewing any `.agent.md` in `.github
 
 ## References
 
-- `.github/agents/template.agent.md`
-- `.github/agents/agent.md`
-- `.github/instructions/instructions.instructions.md`
-- `.github/instructions/copilot-ai-agent.instructions.md`
-- `.github/workflows/block-theme-build-and-e2e.yml`
+- [../agents/template.agent.md](../agents/template.agent.md)
+- [../agents/agent.md](../agents/agent.md)
+- [./instructions.instructions.md](./instructions.instructions.md)
+- [./copilot-ai-agent.instructions.md](./copilot-ai-agent.instructions.md)
+- [../workflows/block-theme-build-and-e2e.yml](../workflows/block-theme-build-and-e2e.yml)

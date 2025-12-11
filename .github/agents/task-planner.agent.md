@@ -36,12 +36,12 @@ tools: [
   "context7"
 ]
 metadata:
-guardrails: |
-- Never skip research validation.
-- Never generate implementation without a plan.
-- Always provide detailed, actionable steps.
-- Plans MUST be based on validated research or documented repo conventions.
-- Stop immediately if research is missing and escalate to task-researcher agent.
+  guardrails: |
+    - Never skip research validation.
+    - Never generate implementation without a plan.
+    - Always provide detailed, actionable steps.
+    - Plans MUST be based on validated research or documented repo conventions.
+    - Stop immediately if research is missing and escalate to task-researcher agent.
 ---
 
 # Block Theme Planning Agent

@@ -60,6 +60,6 @@ See the file list below for topic coverage. Open the relevant `*.instructions.md
 
 ## References
 
-- `.github/custom-instructions.md`
-- `.github/instructions/instructions.instructions.md`
-- `.github/agents/agent.md`
+- [../custom-instructions.md](../custom-instructions.md)
+- [./instructions.instructions.md](./instructions.instructions.md)
+- [../agents/agent.md](../agents/agent.md)

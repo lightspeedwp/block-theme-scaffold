@@ -363,9 +363,9 @@ Add `.editorconfig` for consistent indentation and formatting.
 
 ## References
 
-- `.github/instructions/theme-json.instructions.md`
-- `.github/instructions/wpcs-php.instructions.md`
-- `.github/instructions/javascript.instructions.md`
-- `.github/instructions/wpcs-css.instructions.md`
-- `.github/instructions/html-markup.instructions.md`
-- `.github/custom-instructions.md`
+- [./theme-json.instructions.md](./theme-json.instructions.md)
+- [./wpcs-php.instructions.md](./wpcs-php.instructions.md)
+- [./javascript.instructions.md](./javascript.instructions.md)
+- [./wpcs-css.instructions.md](./wpcs-css.instructions.md)
+- [./html-markup.instructions.md](./html-markup.instructions.md)
+- [../custom-instructions.md](../custom-instructions.md)

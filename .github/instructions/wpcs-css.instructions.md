@@ -2,8 +2,8 @@
 file_type: "instructions"
 applyTo: ["**/*.css", "**/*.scss", "**/*.sass"]
 description: "Enforce WordPress CSS coding standards, naming, specificity and formatting."
-last_updated: "2025-10-19"
-version: "v1.0"
+lastUpdated: "2025-10-19"
+version: "1.0"
 owners: ["LightSpeed Engineering"]
 ---
 
@@ -377,13 +377,13 @@ Check out the [WP Admin CSS Audit](https://wordpress.github.io/css-audit/public/
 
 - Principles of writing consistent, idiomatic CSS: [https://github.com/necolas/idiomatic-css](https://github.com/necolas/idiomatic-css).
 
-# Checklists
+## Checklists
 
 - [ ] All class names are lowercase and hyphenated.
 - [ ] Stylelint passes without errors.
 - [ ] Colours and spacing reference `theme.json` presets where available.
 
-# Examples
+## Examples
 
 - Utility class example under "Examples" shows hyphenated naming and logical property order.
 - Selector samples demonstrate correct use of attribute selectors and avoidance of over-qualification.
@@ -394,6 +394,6 @@ Check out the [WP Admin CSS Audit](https://wordpress.github.io/css-audit/public/
 - Verify class names and selectors reference existing tokens and avoid IDs or deep nesting.
 - Check contrast and spacing against `theme.json` presets when reviewing styles.
 
-# References
+## References
 
 - <https://developer.wordpress.org/coding-standards/wordpress-coding-standards/css/>

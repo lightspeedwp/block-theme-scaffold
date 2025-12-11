@@ -596,6 +596,14 @@ When creating or modifying code:
 7. **Localize nonces** properly for JavaScript usage
 8. **Use REST nonce verification** for REST API endpoints
 
+## Version History
+
+| Date       | Change                                        |
+| ---------- | --------------------------------------------- |
+| 2025-12-07 | Initial security nonce coding standards       |
+| 2025-12-07 | Added comprehensive patterns and examples     |
+| 2025-12-07 | Added testing requirements and error handling |
+
 ## References
 
 - [WordPress Nonces](https://developer.wordpress.org/apis/security/nonces/)
@@ -606,11 +614,3 @@ When creating or modifying code:
 - [VALIDATION.md](../../docs/VALIDATION.md)
 - [TESTING.md](../../docs/TESTING.md)
 - [inc/nonce.php](../../inc/nonce.php)
-
-## Version History
-
-| Date       | Change                                        |
-| ---------- | --------------------------------------------- |
-| 2025-12-07 | Initial security nonce coding standards       |
-| 2025-12-07 | Added comprehensive patterns and examples     |
-| 2025-12-07 | Added testing requirements and error handling |

@@ -850,15 +850,6 @@ grep -r "{{" --exclude-dir=node_modules --exclude-dir=vendor .
 - [ ] Font families have proper fallbacks
 - [ ] No syntax errors in theme.json
 
-## References
-
-- [GENERATE-THEME.md](../../docs/GENERATE-THEME.md) - Complete generator system documentation
-- [generate-theme.prompt.md](../prompts/generate-theme.prompt.md) - User-facing generation prompt
-- [generate-theme.agent.md](../agents/generate-theme.agent.md) - Agent specification
-- [theme-json.instructions.md](./theme-json.instructions.md) - theme.json configuration guide
-- [theme-config.schema.json](../schemas/theme-config.schema.json) - JSON Schema for validation
-- [theme-config.template.json](../../theme-config.template.json) - Template config file
-
 ## Summary
 
 As an AI agent guiding theme generation:
@@ -871,3 +862,12 @@ As an AI agent guiding theme generation:
 6. **Guide post-generation** setup and next steps
 
 **Remember:** Mustache variables are simple string replacements. Your job is to collect valid values and pass them to the generator script. The script handles the actual replacement process.
+
+## References
+
+- [GENERATE_THEME.md](../../docs/GENERATE_THEME.md) - Complete generator system documentation
+- [generate-theme.prompt.md](../prompts/generate-theme.prompt.md) - User-facing generation prompt
+- [generate-theme.agent.md](../agents/generate-theme.agent.md) - Agent specification
+- [theme-json.instructions.md](./theme-json.instructions.md) - theme.json configuration guide
+- [theme-config.schema.json](../schemas/theme-config.schema.json) - JSON Schema for validation
+- [theme-config.template.json](../../theme-config.template.json) - Template config file

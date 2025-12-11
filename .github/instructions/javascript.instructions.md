@@ -2,8 +2,8 @@
 file_type: "instructions"
 description: "JavaScript, React, and JSDoc standards for WordPress development"
 applyTo: "**/*.{js,jsx,ts,tsx,mjs,cjs}"
-version: "v2.0"
-last_updated: "2025-12-07"
+version: "2.0"
+lastUpdated: "2025-12-07"
 owners: ["LightSpeedWP Team"]
 tags: ["javascript", "react", "jsdoc", "wordpress", "blocks"]
 license: "GPL-3.0"
@@ -143,7 +143,7 @@ See [WordPress JavaScript Coding Standards](https://developer.wordpress.org/codi
 
 ## References
 
-- `.github/instructions/wpcs-php.instructions.md` (for server-side integration)
-- `.github/instructions/i18n.instructions.md`
-- `.github/instructions/naming-conventions.instructions.md`
-- WordPress JavaScript Coding Standards documentation
+- [./wpcs-php.instructions.md](./wpcs-php.instructions.md) – for server-side integration
+- [./i18n.instructions.md](./i18n.instructions.md)
+- [./naming-conventions.instructions.md](./naming-conventions.instructions.md)
+- [WordPress JavaScript Coding Standards](https://developer.wordpress.org/coding-standards/wordpress-coding-standards/javascript/)

@@ -2,8 +2,8 @@
 name: "{{theme_name}} Release Instructions"
 description: "Instructions for releasing {{theme_name}} after it is generated from the scaffold"
 applyTo: ".github/prompts/release.prompt.md"
-version: "v1.1"
-last_updated: "2025-12-12"
+version: "1.1"
+lastUpdated: "2025-12-12"
 ---
 
 # {{theme_name}} Release Instructions
@@ -101,7 +101,7 @@ grep -R "{{" .
 
 ## References
 
-- `.github/agents/release.agent.md` – release agent specification
-- `.github/prompts/release.prompt.md` – release prompt
-- `docs/RELEASE_PROCESS.md` – theme release guide
-- `docs/GENERATE_THEME.md` – mustache variable reference
+- [../agents/release.agent.md](../agents/release.agent.md) – release agent specification
+- [../prompts/release.prompt.md](../prompts/release.prompt.md) – release prompt
+- [../../docs/RELEASE_PROCESS.md](../../docs/RELEASE_PROCESS.md) – theme release guide
+- [../../docs/GENERATE_THEME.md](../../docs/GENERATE_THEME.md) – mustache variable reference

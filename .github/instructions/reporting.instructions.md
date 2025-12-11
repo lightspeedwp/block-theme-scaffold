@@ -706,8 +706,8 @@ This instructions file should be referenced in:
 
 ## References
 
-- `.github/instructions/copilot-ai-agent.instructions.md`
-- `.github/instructions/naming-conventions.instructions.md`
-- `.github/custom-instructions.md`
-- `docs/LOGGING.md`
-- `.github/workflows/block-theme-build-and-e2e.yml`
+- [./copilot-ai-agent.instructions.md](./copilot-ai-agent.instructions.md)
+- [./naming-conventions.instructions.md](./naming-conventions.instructions.md)
+- [../custom-instructions.md](../custom-instructions.md)
+- [../../docs/LOGGING.md](../../docs/LOGGING.md)
+- [../workflows/block-theme-build-and-e2e.yml](../workflows/block-theme-build-and-e2e.yml)

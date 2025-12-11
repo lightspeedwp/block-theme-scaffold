@@ -2,8 +2,8 @@
 file_type: "instructions"
 applyTo: ["**/*.php"]
 description: "Apply WordPress PHP standards (formatting, naming, security, I18N)."
-last_updated: "2025-10-19"
-version: "v1.0"
+lastUpdated: "2025-10-19"
+version: "1.0"
 owners: ["LightSpeed Engineering"]
 ---
 
@@ -1151,7 +1151,7 @@ The `@copyright` and `@license` tags are used in external libraries and scripts,
 - `@copyright` is used to specify external script copyrights.
 - `@license` is used to specify external script licenses.
 
-# Examples
+## Examples
 
 - Escaping and sanitization patterns in "Security & Data Handling" show correct use of `esc_html`, `esc_attr`, and `sanitize_text_field`.
 - Prepared statement example under "Database Operations" demonstrates `$wpdb->prepare`.
@@ -1163,7 +1163,7 @@ The `@copyright` and `@license` tags are used in external libraries and scripts,
 - Execute `phpunit` to cover nonce utilities, REST routes, and other PHP logic.
 - Verify translations via `npm run makepot`/`npm run makejson` and ensure text domains match `{{theme_slug}}`.
 
-# Checklists
+## Checklists
 
 - [ ] All database queries use prepared statements.
 - [ ] Data is sanitised on input and escaped on output.

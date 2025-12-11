@@ -163,7 +163,7 @@ Example: src/css/form-elements.scss
 - README.md
 - CONTRIBUTING.md
 - ARCHITECTURE.md
-- FOLDER-STRUCTURE.md
+- FOLDER_STRUCTURE.md
 - FILE-HANDLING.md
 
 ✗ Bad
@@ -343,7 +343,7 @@ tests/
 ```
 docs/
 ├── ARCHITECTURE.md      ← Folder structure
-├── FOLDER-STRUCTURE.md  ← Naming conventions
+├── FOLDER_STRUCTURE.md  ← Naming conventions
 ├── LOGGING.md           ← Logging standards
 ├── GOVERNANCE.md        ← Project policies
 ├── README.md            ← Documentation index
@@ -575,13 +575,6 @@ RESULT: Follow pattern for your file type
 - Scan for undesired casing: `rg "[A-Z]" src/ tests/ inc/ --iglob "*-*.*"` and fix where kebab-case is required.
 - Confirm logs/reports are ISO-dated and stored under `logs/` or `.github/reports/`.
 
-## References
-
-- `docs/ARCHITECTURE.md`
-- `docs/FOLDER-STRUCTURE.md`
-- `.github/instructions/copilot-ai-agent.instructions.md`
-- `.github/instructions/reporting.instructions.md`
-
 ## Version History
 
 | Date       | Change                                      |
@@ -589,3 +582,10 @@ RESULT: Follow pattern for your file type
 | 2025-12-07 | Initial naming conventions instruction      |
 | 2025-12-07 | Added file type examples                    |
 | 2025-12-07 | Integrated with folder structure governance |
+
+## References
+
+- [../../docs/ARCHITECTURE.md](../../docs/ARCHITECTURE.md)
+- [../../docs/FOLDER_STRUCTURE.md](../../docs/FOLDER_STRUCTURE.md)
+- [./copilot-ai-agent.instructions.md](./copilot-ai-agent.instructions.md)
+- [./reporting.instructions.md](./reporting.instructions.md)

@@ -56,6 +56,6 @@ Add pagination to the blog archive template.
 
 ## References
 
-- `.github/custom-instructions.md`
-- `.github/instructions/block-theme-development.instructions.md`
-- `.github/instructions/javascript.instructions.md`
+- [../custom-instructions.md](../custom-instructions.md)
+- [./block-theme-development.instructions.md](./block-theme-development.instructions.md)
+- [./javascript.instructions.md](./javascript.instructions.md)

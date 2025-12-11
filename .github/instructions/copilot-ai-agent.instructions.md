@@ -447,7 +447,7 @@ See: [generate-theme.agent.md](../agents/generate-theme.agent.md) for complete s
 1. Auto-fix if possible: `npm run lint -- --fix`
 2. Check config: `.eslintrc.js`, `.stylelintrc`
 3. Check affected files
-4. Review [FOLDER-STRUCTURE.md](../../docs/FOLDER-STRUCTURE.md) for conventions
+4. Review [FOLDER_STRUCTURE.md](../../docs/FOLDER_STRUCTURE.md) for conventions
 5. Check logs: `logs/lint/` for details
 
 ### Documentation Outdated
@@ -458,7 +458,7 @@ See: [generate-theme.agent.md](../agents/generate-theme.agent.md) for complete s
 
 1. Identify which docs are stale
 2. Update [ARCHITECTURE.md](../../docs/ARCHITECTURE.md) if structure changed
-3. Update [FOLDER-STRUCTURE.md](../../docs/FOLDER-STRUCTURE.md) if conventions changed
+3. Update [FOLDER_STRUCTURE.md](../../docs/FOLDER_STRUCTURE.md) if conventions changed
 4. Update [LOGGING.md](../../docs/LOGGING.md) if logging changed
 5. Update API-REFERENCE.md for API changes
 6. Add note to CHANGELOG.md
@@ -547,7 +547,7 @@ npm run lighthouse        # Lighthouse score
 
 ### For Specific Questions
 
-**About code style?** → [FOLDER-STRUCTURE.md](../../docs/FOLDER-STRUCTURE.md)
+**About code style?** → [FOLDER_STRUCTURE.md](../../docs/FOLDER_STRUCTURE.md)
 
 **About structure?** → [ARCHITECTURE.md](../../docs/ARCHITECTURE.md)
 
@@ -616,7 +616,10 @@ npm run lint -- --verbose
 
 ## References
 
-- `.github/custom-instructions.md`
-- `.github/instructions/reporting.instructions.md`
-- `.github/instructions/naming-conventions.instructions.md`
-- `docs/GOVERNANCE.md`, `docs/ARCHITECTURE.md`, `docs/FOLDER-STRUCTURE.md`, `docs/LOGGING.md`
+- [../custom-instructions.md](../custom-instructions.md)
+- [./reporting.instructions.md](./reporting.instructions.md)
+- [./naming-conventions.instructions.md](./naming-conventions.instructions.md)
+- [../../docs/GOVERNANCE.md](../../docs/GOVERNANCE.md)
+- [../../docs/ARCHITECTURE.md](../../docs/ARCHITECTURE.md)
+- [../../docs/FOLDER_STRUCTURE.md](../../docs/FOLDER_STRUCTURE.md)
+- [../../docs/LOGGING.md](../../docs/LOGGING.md)

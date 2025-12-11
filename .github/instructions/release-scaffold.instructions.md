@@ -2,7 +2,7 @@
 name: "Release Scaffold Instructions"
 description: "Guidance for maintaining the scaffold's release prompts, docs, and automation (not the generated theme releases)"
 applyTo: ".github/prompts/release-scaffold.prompt.md"
-version: "v1.0"
+version: "1.0"
 lastUpdated: "2025-12-12"
 ---
 
@@ -47,8 +47,8 @@ Use these instructions when updating the scaffold release prompt or related guid
 
 ## References
 
-- `.github/prompts/release-scaffold.prompt.md`
-- `.github/agents/release-scaffold.agent.md`
-- `docs/RELEASE_PROCESS_SCAFFOLD.md`
-- `.github/workflows/block-theme-build-and-e2e.yml`
-- `.github/instructions/release.instructions.md`
+- [../prompts/release-scaffold.prompt.md](../prompts/release-scaffold.prompt.md)
+- [../agents/release-scaffold.agent.md](../agents/release-scaffold.agent.md)
+- [../../docs/RELEASE_PROCESS_SCAFFOLD.md](../../docs/RELEASE_PROCESS_SCAFFOLD.md)
+- [../workflows/block-theme-build-and-e2e.yml](../workflows/block-theme-build-and-e2e.yml)
+- [./release.instructions.md](./release.instructions.md)

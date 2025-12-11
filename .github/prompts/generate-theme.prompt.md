@@ -6,6 +6,57 @@ description: Interactive WordPress block theme generator with config-first wizar
 
 I'll help you generate a new WordPress block theme from this scaffold using an intelligent config-first approach.
 
+## Quick Start Options
+
+### Option 1: Use Configuration File (Fastest)
+
+If you already have a configuration file that follows the schema (`.github/schemas/plugin-config.schema.json`), you can bypass the wizard entirely:
+
+```bash
+node scripts/generate-plugin.js --config path/to/your-config.json
+```
+
+**Example configuration file:**
+
+```json
+{
+  "slug": "tour-operator",
+  "name": "Tour Operator",
+  "description": "A comprehensive tour booking and display plugin",
+  "author": "LightSpeed",
+  "author_uri": "https://developer.lsdev.biz",
+  "version": "1.0.0",
+  "name_singular": "Tour",
+  "name_plural": "Tours",
+  "cpt_icon": "dashicons-palmtree",
+  "cpt_supports": ["title", "editor", "thumbnail", "custom-fields"],
+  "cpt_has_archive": true,
+  "taxonomies": [
+    {
+      "slug": "destination",
+      "singular": "Destination",
+      "plural": "Destinations",
+      "hierarchical": true
+    }
+  ],
+  "fields": [
+    {
+      "name": "price",
+      "label": "Price",
+      "type": "number"
+    }
+  ]
+}
+```
+
+See `.github/schemas/plugin-config.example.json` for a complete example.
+
+### Option 2: Interactive Wizard (Guided)
+
+If you prefer step-by-step guidance, continue with the information gathering process below.
+
+---
+
 ## Step 1: Repository Context Detection
 
 **First, let me detect your repository context...**
@@ -33,12 +84,14 @@ _(The script will auto-detect this, but I want to confirm your intention)_
 **Do you have a theme-config.json file ready?**
 
 If you have a pre-filled configuration file:
+
 - ✅ Faster generation with all your values
 - ✅ Validated against JSON Schema before generation
 - ✅ Can override specific values if needed
 - ✅ Reusable for future theme versions
 
 **Options:**
+
 - **"Yes, I have a config file"** → I'll validate and load it
 - **"No, start the wizard"** → I'll guide you step-by-step
 - **"Help me create one"** → I'll show you the template
@@ -50,6 +103,7 @@ If you have a pre-filled configuration file:
 **Please provide the path to your theme-config.json file:**
 
 Example paths:
+
 - `theme-config.json` (in current directory)
 - `/path/to/my-theme-config.json` (absolute path)
 - `../configs/tour-theme.json` (relative path)
@@ -61,6 +115,7 @@ I'll validate it against the schema at [.github/schemas/theme-config.schema.json
 ✅ **Configuration loaded successfully!**
 
 **Loaded values:**
+
 - Theme Name: {{loaded_name}}
 - Theme Slug: {{loaded_slug}}
 - Author: {{loaded_author}}
@@ -69,6 +124,7 @@ I'll validate it against the schema at [.github/schemas/theme-config.schema.json
 **Missing optional values:** {{count}}
 
 Would you like to:
+
 1. **Fill in missing values now** (recommended)
 2. **Use defaults for missing values** (quick generation)
 3. **Override any loaded values** (advanced)
@@ -80,7 +136,9 @@ Would you like to:
 **Choose your wizard complexity:**
 
 ### 🚀 Basic Wizard (Recommended for most users)
+
 Collects essential values only:
+
 - Core identity (name, slug, author)
 - Versioning (WP/PHP requirements)
 - Basic design tokens (colors, fonts)
@@ -91,7 +149,9 @@ Collects essential values only:
 **Remaining placeholders:** Filled with sensible defaults
 
 ### ⚙️ Advanced Wizard (For complete customization)
+
 Collects ALL possible values:
+
 - Everything in Basic +
 - Extended design system (dark mode, typography scale)
 - Content strings (hero, CTA, footer text)
@@ -143,12 +203,14 @@ Please provide:
 **Would you like to use default versions?**
 
 Default values:
+
 - Version: 1.0.0
 - Min WordPress: 6.5
 - Tested WordPress: 6.7
 - Min PHP: 8.0
 
 **Options:**
+
 - "yes" → Use defaults
 - "customize" → Provide custom values
 
@@ -161,6 +223,7 @@ _(If "customize", ask for each value individually)_
 **Would you like to customize colors and fonts now?**
 
 **Options:**
+
 - "skip" → Use elegant defaults
 - "customize" → Set your brand colors and fonts
 
@@ -213,18 +276,21 @@ _(Only if Advanced mode selected)_
 ### Stage 4: Extended Design System
 
 **Dark Mode Colors** (for dark style variation):
+
 1. Dark Background (default: #1a1a1a):
 2. Dark Text (default: #ffffff):
 3. Dark Primary (default: #4a9eff):
 4. Dark Accent (default: #ff8c5a):
 
 **Typography Details:**
+
 1. Heading Font Weight (default: 700):
 2. Body Line Height (default: 1.6):
 3. Heading Line Height (default: 1.2):
 4. Button Font Weight (default: 600):
 
 **Layout:**
+
 1. Content Width (default: 720px):
 2. Wide Width (default: 1200px):
 
@@ -243,6 +309,7 @@ _(Only if Advanced mode selected)_
 7. Footer Text (default: "© {{year}} {{author}}. All rights reserved."):
 
 **Content Settings:**
+
 1. Excerpt Length in words (default: 55):
 2. Excerpt More Text (default: "..."):
 3. Skip Link Text (default: "Skip to content"):
@@ -266,6 +333,7 @@ _(Only if Advanced mode selected)_
 **Would you like to customize which templates and patterns are included?**
 
 **Options:**
+
 - "use defaults" → Include all standard templates and patterns
 - "customize" → Select which ones to include
 
@@ -352,6 +420,7 @@ _Running generator script..._
 **Location:** `{{output_location}}`
 
 **What was generated:**
+
 - 📁 Complete theme structure
 - 🎨 theme.json with your design tokens
 - 📝 style.css with your metadata
@@ -361,6 +430,7 @@ _Running generator script..._
 - 📚 Documentation
 
 **Mustache Variables Replaced:**
+
 - Total variables found: 142
 - Variables replaced: {{replaced_count}}
 - Using defaults: {{defaults_count}}
@@ -369,17 +439,20 @@ _Running generator script..._
 **Next Steps:**
 
 1. **Navigate to theme directory:**
+
    ```bash
    cd {{output_dir}}
    ```
 
 2. **Install dependencies:**
+
    ```bash
    npm install
    composer install
    ```
 
 3. **Start development:**
+
    ```bash
    npm run start
    ```
@@ -412,6 +485,7 @@ If yes, I'll create a `theme-config.json` file with all your values:
 ```
 
 You can use this file next time:
+
 ```bash
 node scripts/generate-theme.js --config theme-config.json
 ```
@@ -429,6 +503,7 @@ node scripts/scan-mustache-variables.js --validate generated-theme/
 ```
 
 **Validation Results:**
+
 - ✅ All required variables replaced
 - ✅ No unreplaced placeholders found
 - ✅ Theme ready for development!
@@ -438,17 +513,20 @@ node scripts/scan-mustache-variables.js --validate generated-theme/
 ## Resources
 
 **Documentation:**
+
 - [Complete Generation Guide](../../docs/GENERATE_THEME.md)
 - [Theme JSON Configuration](../instructions/theme-json.instructions.md)
 - [Development Workflow](../../DEVELOPMENT.md)
 
 **Related Tools:**
+
 - [Generator Script](../../scripts/generate-theme.js)
 - [Variable Scanner](../../scripts/scan-mustache-variables.js)
 - [Configuration Schema](../schemas/theme-config.schema.json)
 - [Example Config](../schemas/examples/theme-config.example.json)
 
 **Next Agents:**
+
 - [Development Assistant](../agents/development-assistant.agent.md)
 - [Block Theme Build Agent](../agents/block-theme-build.agent.md)
 

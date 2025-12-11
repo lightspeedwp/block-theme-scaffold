@@ -2,8 +2,8 @@
 file_type: "instructions"
 description: "HTML markup and template standards for WordPress block themes"
 applyTo: "**/*.{html,htm,php}"
-version: "v2.0"
-last_updated: "2025-12-07"
+version: "2.0"
+lastUpdated: "2025-12-07"
 owners: ["LightSpeedWP Team"]
 tags: ["html", "template", "wordpress", "block-theme", "semantic"]
 license: "GPL-3.0"
@@ -58,5 +58,5 @@ Use these instructions whenever editing templates, template parts, or pattern ma
 ## References
 
 - [WordPress HTML Coding Standards](https://developer.wordpress.org/coding-standards/wordpress-coding-standards/html/)
-- `.github/instructions/a11y.instructions.md`
-- `.github/instructions/block-theme-development.instructions.md`
+- [./a11y.instructions.md](./a11y.instructions.md)
+- [./block-theme-development.instructions.md](./block-theme-development.instructions.md)

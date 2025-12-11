@@ -24,7 +24,9 @@ The repository is a block theme scaffold for the Site Editor with custom pattern
 - Start every instructions file with frontmatter, an H1 title, and a role declaration line following the standard pattern.
 - Keep guidance scoped to the repository; link to organisation-level standards instead of duplicating them.
 - Include the recommended sections (Overview, General Rules, Detailed Guidance, Examples, Validation, References).
+- Format the References section as markdown link bullets (prefer repo-relative paths) rather than plain text.
 - Validate JSON/PHP examples and mustache templates before committing.
+- When updating existing files, merge and de-duplicate sections instead of overwriting; preserve existing References and align them to the bottom of the file.
 
 ## Required Frontmatter & Role Declaration
 
@@ -115,6 +117,16 @@ Within each `*.instructions.md` file in this repo, use:
 4. **Detailed Guidance** – subsections for PHP, block markup, editor configuration, and styling.
 5. **Examples** – short fragments of block markup and PHP that illustrate best practices.
 6. **Validation** – commands and tools for checking the behaviour of block-related changes.
+7. **References** – bullet list of related docs as markdown links placed at the bottom of the file.
+
+## Updating Existing Instruction Files (merge-first approach)
+
+- **Preserve existing intent:** Read the whole file first to capture scope, constraints, and references; keep correct content intact.
+- **Merge, don’t overwrite:** When adding the role line or required sections, fold existing text into the recommended layout instead of deleting it. Combine duplicate sections into one concise version.
+- **Handle duplicates:** If multiple similar sections exist (e.g., two Validation blocks), merge them and retain a single instance in the standard order.
+- **Reference hygiene:** Verify existing references, keep valid links, fix or remove broken ones, and add missing related docs. Keep one `## References` section at the end as a bulleted list of markdown links (prefer repo-relative paths like `./file.md` over absolute URLs when possible).
+- **Section order:** Reorder content to match the recommended layout without dropping unique guidance—move it to the appropriate section.
+- **Stylistic alignment:** Use concise, imperative language and consistent bullets; avoid vague phrasing.
 
 ## Copilot Behaviour & Style in This Repository
 
@@ -167,15 +179,9 @@ Explain when to create a new pattern, how it fits the theme, and when a block pl
 
 - Confirm frontmatter includes `description` and `applyTo` at minimum, plus version/lastUpdated when available.
 - Ensure the role declaration follows the pattern: `You are a {{role}}... Avoid {{practices/tools}}...`.
-- Verify each instructions file contains the required sections: Overview, General Rules, Detailed Guidance, Examples, Validation, References.
+- Verify each instructions file contains the required sections: Overview, General Rules, Detailed Guidance, Examples, Validation, References (with References at the bottom as a bulleted list of markdown links).
 - Validate JSON/PHP snippets and mustache placeholders for syntax correctness.
-
-## References
-
-- `.github/custom-instructions.md`
-- `.github/instructions/block-theme-development.instructions.md`
-- `.github/instructions/copilot-ai-agent.instructions.md`
-- `.github/instructions/reporting.instructions.md`
+- Review the existing References list before edits, keep valid links, remove dead ones, ensure each entry is a markdown link, and ensure the final References block is the only one at the bottom.
 
 ## Maintenance
 
@@ -183,3 +189,10 @@ Explain when to create a new pattern, how it fits the theme, and when a block pl
 - Update examples when new block architectures, tools, or conventions are introduced.
 - Regularly audit instruction files for overlap with organisation-level instructions and remove duplication.
 - When the block theme gains or loses features, adjust instruction types and examples to match.
+
+## References
+
+- [.github/custom-instructions.md](../custom-instructions.md)
+- [.github/instructions/block-theme-development.instructions.md](./block-theme-development.instructions.md)
+- [.github/instructions/copilot-ai-agent.instructions.md](./copilot-ai-agent.instructions.md)
+- [.github/instructions/reporting.instructions.md](./reporting.instructions.md)
