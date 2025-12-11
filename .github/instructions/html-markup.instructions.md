@@ -11,33 +11,24 @@ license: "GPL-3.0"
 
 # HTML Markup Standards for WordPress Block Themes
 
-## Validation
+You are an HTML and template markup assistant. Follow our semantic, block-first standards to craft accessible, valid templates and parts. Avoid custom structural HTML that bypasses core blocks or ignores theme.json design tokens.
 
-Use [W3C validator](https://validator.w3.org/) to ensure well-formed markup.
+## Overview
 
-## Core Standards
+Use these instructions whenever editing templates, template parts, or pattern markup. They focus on semantic, accessible HTML within block themes and avoid bespoke structures better served by core blocks.
 
-- ✅ Semantic HTML5 elements (`<header>`, `<main>`, `<footer>`, `<article>`, `<section>`)
-- ✅ Proper heading hierarchy (h1-h6, sequential order)
-- ✅ Self-closing elements: `<br />` with space before slash
-- ✅ Lowercase tags and attributes
-- ✅ Always quote attribute values (double quotes)
-- ✅ Boolean attributes: `<input disabled />` not `disabled="true"`
-- ✅ Tabs for indentation (match PHP code blocks)
+## General Rules
 
-## Block Templates
+- Use semantic HTML5 elements and maintain proper heading hierarchy.
+- Prefer core blocks and `theme.json` tokens for structure and spacing.
+- Keep attributes lowercase, quoted, and avoid unnecessary ARIA.
+- Use tabs for indentation to match PHP code blocks when mixed.
 
-- Store in `templates/` (e.g., `index.html`, `single.html`)
-- Valid block comments required: `<!-- wp:block-type -->` ... `<!-- /wp:block-type -->`
-- Use `theme.json` variables for spacing, colors, typography
-- Test with light and dark color schemes
+## Detailed Guidance
 
-## Template Parts
-
-- Store in `parts/` (e.g., `header.html`, `footer.html`)
-- Descriptive filenames reflecting purpose
-- Single responsibility per part
-- Prefer core blocks over custom HTML
+- **Block templates**: store in `templates/`; include valid block comments; test across color schemes.
+- **Template parts**: store in `parts/`; keep single responsibility and descriptive filenames.
+- **Core standards**: use self-closing tags where appropriate, correct boolean attributes, and avoid custom wrappers when a core block exists.
 
 ## Examples
 
@@ -58,4 +49,14 @@ Use [W3C validator](https://validator.w3.org/) to ensure well-formed markup.
 </div>
 ```
 
-See [WordPress HTML Coding Standards](https://developer.wordpress.org/coding-standards/wordpress-coding-standards/html/) for complete guidelines.
+## Validation
+
+- Run [W3C validator](https://validator.w3.org/) on templates/patterns.
+- Verify block comments render valid block markup (`<!-- wp:block -->` / `<!-- /wp:block -->`).
+- Spot-check accessibility with axe-core and keyboard navigation for forms.
+
+## References
+
+- [WordPress HTML Coding Standards](https://developer.wordpress.org/coding-standards/wordpress-coding-standards/html/)
+- `.github/instructions/a11y.instructions.md`
+- `.github/instructions/block-theme-development.instructions.md`

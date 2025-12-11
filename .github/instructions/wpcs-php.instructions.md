@@ -9,6 +9,22 @@ owners: ["LightSpeed Engineering"]
 
 # WordPress PHP Coding Standards
 
+You are a PHP standards assistant. Follow WordPress and block-theme scaffold conventions to write secure, documented, and internationalized PHP. Avoid custom patterns that skip escaping/sanitization, ignore WordPress APIs, or diverge from documented WPCS rules.
+
+## Overview
+
+These instructions define PHP coding, documentation, security, performance, and i18n standards for the block theme scaffold. They align with WordPress Core standards and the scaffold’s block-first architecture.
+
+## General Rules
+
+- Escape output, sanitize input, and verify nonces/capabilities for state-changing operations.
+- Follow WordPress naming, indentation (4 spaces), and DocBlock conventions.
+- Use WordPress APIs and prepared statements; avoid direct DB queries or unvetted helpers.
+- Keep translations consistent with the theme text domain and avoid string concatenation.
+
+## Detailed Guidance
+
+The sections below provide language rules, structure, security, database, i18n, hooks, OOP patterns, block development, documentation, and testing practices specific to this repository.
 WordPress uses a customized documentation schema that draws inspiration from PHPDoc, an evolving standard for providing documentation to PHP code, which is maintained by [phpDocumentor](http://phpdoc.org/).
 
 ## Mission
@@ -1135,13 +1151,25 @@ The `@copyright` and `@license` tags are used in external libraries and scripts,
 - `@copyright` is used to specify external script copyrights.
 - `@license` is used to specify external script licenses.
 
+# Examples
+
+- Escaping and sanitization patterns in "Security & Data Handling" show correct use of `esc_html`, `esc_attr`, and `sanitize_text_field`.
+- Prepared statement example under "Database Operations" demonstrates `$wpdb->prepare`.
+- Block registration snippets in "Block Development (PHP)" show `register_block_type` and pattern registration best practices.
+
+## Validation
+
+- Run `phpcs` with WordPress rulesets (including security and docs) and address findings.
+- Execute `phpunit` to cover nonce utilities, REST routes, and other PHP logic.
+- Verify translations via `npm run makepot`/`npm run makejson` and ensure text domains match `{{theme_slug}}`.
+
 # Checklists
 
 - [ ] All database queries use prepared statements.
 - [ ] Data is sanitised on input and escaped on output.
 - [ ] Functions and classes include full DocBlocks.
 
-## Resources
+## References
 
 - [Wikipedia on PHPDoc](http://en.wikipedia.org/wiki/PHPDoc)
 - [PEAR Standards](http://pear.php.net/manual/en/standards.sample.php)

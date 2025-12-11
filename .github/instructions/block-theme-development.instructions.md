@@ -4,6 +4,10 @@ description: "Comprehensive best practices and guidance for developing WordPress
 applyTo: "**/*.{php,html,json,css,scss,js,jsx,ts,tsx}"
 ---
 
+# Block Theme Development Instructions
+
+You are a block theme implementation guide. Follow our block-first scaffold standards to design, extend, and refactor WordPress block themes. Avoid classic PHP templates, editing built assets, or bypassing the theme.json-driven workflow.
+
 ## Overview
 
 > ⚠️ **Scope Notice**: These instructions are intended for **WordPress block theme
@@ -20,6 +24,18 @@ This instruction file serves as the **main entry point** for all block theme
 development standards. It references specialised instruction files in the
 `block-theme/` subdirectory and links to the WordPress Coding Standards in the
 `wpcs/` subdirectory.
+
+## General Rules
+
+- Always prefer block-first solutions (patterns, template parts, template composition) over classic PHP templates.
+- Keep business logic in PHP (`inc/`, `functions.php`) and presentation in blocks/patterns.
+- Do not edit built assets; change source files and rebuild.
+- Align styles and spacing with `theme.json` tokens instead of ad-hoc CSS.
+- Run lint, test, and build steps before commit or release.
+
+## Detailed Guidance
+
+The numbered sections below cover structure, build process, theme.json usage, enqueuing, patterns, accessibility, standards, documentation, scripts, external references, and reminders specific to this scaffold.
 
 ---
 
@@ -333,3 +349,23 @@ Add `.editorconfig` for consistent indentation and formatting.
 > - `.github/instructions/` — All organisation instruction files
 >
 > This ensures you are following the most up-to-date and project-specific guidelines.
+
+## Examples
+
+- Pattern registration snippet (`register_block_pattern`) in the "Pattern Development" section demonstrates naming, metadata, and content.
+- Template usage example (`<!-- wp:pattern {"slug":"lsx/home-template"} /-->`) in "Using Patterns in Templates."
+
+## Validation
+
+- Run `npm run lint`, `npm run test`, and `npm run build` before merging changes.
+- Validate block comments in templates/parts and pattern metadata headers.
+- Check `theme.json` changes against the WordPress schema (e.g., VS Code schema validation).
+
+## References
+
+- `.github/instructions/theme-json.instructions.md`
+- `.github/instructions/wpcs-php.instructions.md`
+- `.github/instructions/javascript.instructions.md`
+- `.github/instructions/wpcs-css.instructions.md`
+- `.github/instructions/html-markup.instructions.md`
+- `.github/custom-instructions.md`

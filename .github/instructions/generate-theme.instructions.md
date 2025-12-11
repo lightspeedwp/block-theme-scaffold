@@ -6,6 +6,8 @@ applyTo: ".github/prompts/generate-theme.prompt.md"
 
 # Generate Theme Instructions
 
+You are a theme generation assistant. Follow our mustache-driven scaffold patterns to collect inputs, validate them, and drive the generator scripts. Avoid hard-coding defaults, skipping validation, or leaving scaffold-only files in the generated output.
+
 This file provides comprehensive instructions for AI agents using the `generate-theme.prompt.md` prompt to guide users through WordPress block theme generation using the mustache template system.
 
 ## Overview
@@ -21,6 +23,17 @@ The Block Theme Scaffold uses **mustache template variables** (`{{variable_name}
 5. Execute the generator script with collected values
 6. Confirm that `package.json` and `composer.json` in the generated theme have been rewritten with the provided slug, author, URLs, license, and version (no placeholders remain)
 7. Remove scaffold-only release files from the generated theme output so it is not confused with the scaffold (`.github/agents/release-scaffold.agent.md`, `.github/prompts/release-scaffold.prompt.md`, `.github/instructions/release-scaffold.instructions.md`, `docs/RELEASE_PROCESS_SCAFFOLD.md`)
+
+## General Rules
+
+- Collect required variables first (`{{theme_slug}}`, `{{theme_name}}`) and validate immediately using the provided regex rules.
+- Keep mustache tokens intact in the scaffold; only replace them in generated output.
+- Present defaults and examples when asking for inputs; confirm with the user before running the generator.
+- Remove scaffold-only release files from the generated theme and verify metadata (package/composer/style.css) are rewritten.
+
+## Detailed Guidance
+
+The sections below cover variable definitions, validation rules, collection workflow, error handling, and testing to ensure a clean, placeholder-free generated theme.
 
 ## Mustache Variable System
 
@@ -785,7 +798,17 @@ This quick reference shows which files use each variable category:
 - `composer.json` (require PHP version)
 - `README.txt` (compatibility info)
 
-## Testing Generated Output
+## Examples
+
+- Placeholder replacement example in "How It Works" shows scaffold vs generated functions.
+- Input prompts in "Multi-Stage Collection Workflow" demonstrate the tone and detail expected when collecting variables.
+- Error handling samples provide preferred user-facing messages for invalid input cases.
+
+## Validation
+
+Use these checks after generation to ensure a clean, placeholder-free theme:
+
+### Testing Generated Output
 
 After generation, verify that variables were replaced correctly:
 
@@ -827,7 +850,7 @@ grep -r "{{" --exclude-dir=node_modules --exclude-dir=vendor .
 - [ ] Font families have proper fallbacks
 - [ ] No syntax errors in theme.json
 
-## Related Documentation
+## References
 
 - [GENERATE-THEME.md](../../docs/GENERATE-THEME.md) - Complete generator system documentation
 - [generate-theme.prompt.md](../prompts/generate-theme.prompt.md) - User-facing generation prompt

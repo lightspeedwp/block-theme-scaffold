@@ -1,5 +1,5 @@
 ---
-name: "Task Researcher"
+name: "Task Researcher Agent"
 description: "Research aggregation, validation, and evidence generation for WordPress block theme planning tasks."
 target: "github-copilot"
 version: "v1.0"

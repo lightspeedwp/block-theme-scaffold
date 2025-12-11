@@ -1,109 +1,185 @@
 ---
-name: "Instruction Authoring Guidelines"
-description: "How to craft repository-specific Copilot instruction files for the block theme scaffold"
-applyTo: "**/*.instructions.md"
+description: "Guidelines for writing Copilot instruction files for the LightSpeed block theme scaffold, focused on block- and pattern-oriented development"
+applyTo: "**/.github/instructions/*.instructions.md"
+version: 1.0
+lastUpdated: 2025-12-11
 ---
 
-# Write Instructions
-Define Copilot's role, focus, and what to avoid in these instructions. Example: "You are a {{role}}. Follow our {{framework/patterns}} to {{task-type}}. Avoid {{practices/tools}} unless specified".
+# Block Theme Instruction Authoring (Block Theme Scaffold)
 
-## Core Principles
-- Make every instruction actionable, specific, and scoped to this block theme scaffold.
-- Prefer `theme.json`, block patterns, and block components over bespoke PHP, JS, or CSS.
-- Reflect the automation stack: mustache variables for templates/configs, JSON and PHP validation, and block-theme build/test workflows.
-- Link to existing standards instead of duplicating them; defer to `.github/instructions/*.instructions.md`, `.github/instructions/coding-standards.instructions.md`, and `.github/instructions/linting.instructions.md`.
-- Keep language imperative and concise so Copilot and agents can follow without interpretation.
+You are a block theme instruction curator for the LightSpeed block theme scaffold. Follow our block-based theme architecture, GitHub configuration, and organisation-level guidelines to design Copilot instructions for block, pattern, and template development. Avoid redefining organisation-wide coding standards, linting rules, or testing workflows that are maintained in the shared `.github` community repository.
 
-## Required Frontmatter
-Every instruction file starts with YAML frontmatter containing at least `name`, `description`, and `applyTo`.
+## Overview
+
+Use this file when creating or updating `*.instructions.md` files inside `.github/instructions` for the `block-theme-scaffold` repository. Instructions created here should help Copilot generate and refactor code for:
+
+- Block-like features that live in the theme (patterns, template parts, layout components).
+- Theme configuration and styling that affect editor and front-end experience.
+- Integration points that make it easy to migrate reusable blocks into standalone block plugins.
+
+The repository is a block theme scaffold for the Site Editor with custom patterns, template parts, `theme.json` configuration, build tooling, tests, and integration with Secure Custom Fields. It targets modern WordPress (WP 6.5+) and PHP 8+.
+
+## General Rules
+
+- Start every instructions file with frontmatter, an H1 title, and a role declaration line following the standard pattern.
+- Keep guidance scoped to the repository; link to organisation-level standards instead of duplicating them.
+- Include the recommended sections (Overview, General Rules, Detailed Guidance, Examples, Validation, References).
+- Validate JSON/PHP examples and mustache templates before committing.
+
+## Required Frontmatter & Role Declaration
+
+Every instruction file in `.github/instructions` must start with:
+
+1. YAML frontmatter.
+2. A `#` title.
+3. A role and intent paragraph tailored to the specific instruction topic.
+
+### Frontmatter
+
+Minimum required fields:
 
 ```yaml
 ---
-name: "Concise file name that matches the topic"
-description: "Brief description of the instruction purpose and scope"
-applyTo: "**/*.instructions.md"
+description: "What these instructions cover in the block theme scaffold"
+applyTo: "glob pattern for the target files (for example, src/**/*.ts, patterns/**/*.php)"
 ---
 ```
 
-### Frontmatter Guidelines
-- `name`: Human-friendly title (no markdown), short and descriptive.
-- `description`: 1–500 characters explaining scope and intent; prefer present tense.
-- `applyTo`: Glob(s) defining the target files; default to `**/*.instructions.md` for shared guidance or narrower patterns for topic-specific rules.
-- Keep frontmatter valid YAML; avoid tabs and trailing commas.
+You may add `version`, `lastUpdated`, and `owner` fields for traceability.
 
-## File Structure
-- Place files in `.github/instructions/` using lowercase-kebab names ending with `.instructions.md`.
-- Start with the frontmatter, then an `#` heading and a one-line summary that clarifies the role, focus, and exclusions.
-- Use H2 sections to organize guidance; keep section titles clear and reusable by automation.
+### Role Declaration Pattern
 
-## Recommended Section Order
-- `## Core Principles`: Anchor rules and priorities for the topic.
-- `## Block Theme Requirements`: Call out theme.json, block usage, and any mustache templating needs.
-- `## Naming Conventions`: File and identifier patterns tied to the topic.
-- `## Content Guidelines`: Writing voice, required links, and scope boundaries.
-- `## Validation Checklist`: How to self-check examples, links, and formatting.
-- `## Examples`: Good/bad samples tailored to the topic.
-- `## Related Documentation`: Pointers to other instruction files or upstream docs.
-- `## Version History`: Table tracking edits.
-- Add or remove sections as needed, but keep the first three (frontmatter, H1 summary, Core Principles) in place.
+Use the standard pattern, adapted for block theme work:
 
-## Naming Conventions
-- File names: lowercase with hyphens, e.g., `theme-json.instructions.md`, `a11y.instructions.md`.
-- Headings: sentence case; avoid duplicates across sections.
-- Reference other files by relative path (e.g., `.github/instructions/theme-json.instructions.md`).
+> You are a {{role}}. Follow our {{frameworks/patterns}} to {{task-type}}. Avoid {{practices/tools}} unless explicitly allowed.
 
-## Content Guidelines
-- Write in imperative mood; avoid ambiguous verbs like “should” or “might”.
-- State the “why” briefly when it prevents misuse; keep each bullet single-topic.
-- Prefer repo-native tools: mention `npm run lint`, `npm run test`, `composer run lint`, and `wp-scripts` tasks when describing validation.
-- For code samples, match repository standards (WordPress coding standards, WPCS rules, block-first patterns) and keep them minimal but runnable.
-- Highlight what to avoid (e.g., custom enqueue logic when theme.json suffices) directly under the relevant section.
+Examples:
 
-## Block Theme Requirements
-- Default to block-first solutions: theme.json for settings/styles, block patterns for layout, and block components for UI.
-- Use mustache variables in generated configs/templates where the build agents expect them.
-- Keep PHP minimal and follow WordPress nonces, escaping, and internationalization patterns referenced in `.github/instructions/security-nonce.instructions.md` and `.github/instructions/i18n.instructions.md`.
-- Validate JSON and PHP snippets; avoid suggesting manual overrides that bypass existing build or lint workflows.
+- **Block patterns**
 
-## Validation Checklist
-- Frontmatter includes `name`, `description`, and `applyTo`; YAML parses cleanly.
-- H1 summary states role, focus, and explicit avoidances.
-- Sections follow the recommended order or a deliberate, documented variation.
-- Links resolve locally; referenced scripts or workflows exist in the repo.
-- Code samples comply with project linters (e.g., `npm run lint`, `composer run lint`, `wp-scripts lint-js`) when applicable.
-- JSON and PHP snippets validate (use `jq`, `wp-scripts lint-pkg-json`, or `php -l` where relevant).
+  > You are a block pattern implementation assistant. Follow our block theme scaffold patterns to create and refactor block-based layouts. Avoid adding business logic or data access directly to patterns.
 
-## Examples
-```markdown
+- **Theme configuration**
+  > You are a theme configuration assistant. Follow our `theme.json` conventions to manage settings and styles. Avoid hard-coding values that belong in `theme.json` or `theme-config.template.json`.
+
+## Block Theme Context & Constraints
+
+When authoring instructions for this repository:
+
+- Assume a **block theme** targeting the Site Editor.
+- Treat `patterns/`, `parts/`, `templates/`, `styles/`, `inc/`, `src/`, and `theme.json` as the primary touchpoints for Copilot.
+- Prefer **block-first solutions** (patterns, template parts, template composition) over classic PHP templates where possible.
+- Keep business logic in PHP (`inc/`, `functions.php`) and presentational structure in blocks and patterns.
+- Respect existing build, lint, and test tooling defined in `package.json`, `webpack.config.js`, and related configuration files.
+
+## Detailed Guidance
+
+Use the instruction types and section layout below when drafting new `*.instructions.md` files for this repository.
+
+## Block Plugin–Focused Instruction Types
+
+The `.github/instructions` folder for this repository should contain instruction files that help Copilot work on block-style functionality that could live in a block plugin, but currently sits in the theme. Typical instruction types:
+
+1. **Block Patterns & Layout Instructions**
+   - How to structure new patterns using core and custom blocks.
+   - Naming conventions for patterns and categories.
+   - How to keep patterns portable so they can be moved into block plugins later.
+
+2. **Template Parts & Block-Based Templates**
+   - Rules for header, footer, and reusable section template parts.
+   - How to compose template parts and patterns for consistent layouts.
+   - How to keep template parts free of business logic.
+
+3. **Theme Configuration & Global Styles**
+   - Conventions for `theme.json` and any template configuration files.
+   - How to map design tokens and spacing choices to block styles.
+   - How to keep style changes declarative and editor-friendly.
+
+4. **SCF and Data Integration Instructions**
+   - Where to place SCF-related configuration and helper functions.
+   - How to expose dynamic data into block markup without coupling to theme internals.
+   - When functionality should be promoted into a dedicated block plugin instead.
+
+5. **Testing and Validation for Block Behaviour**
+   - How to validate block-related PHP with unit tests.
+   - How to validate front-end behaviour using integration or end-to-end tests.
+   - How to use linting and build scripts before committing block-related code.
+
+## Recommended Section Layout for Block Theme Instruction Files
+
+Within each `*.instructions.md` file in this repo, use:
+
+1. **Overview** – the block or theme concern being covered and when to apply the instructions.
+2. **General Rules** – high-level principles (for example “patterns must be portable and data-light”).
+3. **Block Plugin Alignment** – guidance on how the theme implementation should align with reusable block plugin conventions.
+4. **Detailed Guidance** – subsections for PHP, block markup, editor configuration, and styling.
+5. **Examples** – short fragments of block markup and PHP that illustrate best practices.
+6. **Validation** – commands and tools for checking the behaviour of block-related changes.
+
+## Copilot Behaviour & Style in This Repository
+
+When Copilot uses these instructions inside `block-theme-scaffold`, it should:
+
+- Treat the project as a **block theme first**, not a classic theme.
+- Prefer Gutenberg blocks, patterns, and template parts over custom shortcodes or legacy widgets.
+- Suggest moving reusable, cross-theme functionality towards block plugin patterns where possible.
+- Reuse organisation-level instructions for coding standards, linting, and tests instead of redefining them.
+- Ask for clarification (via comments or TODOs) when repository conventions are unclear rather than guessing.
+
+## Example: Minimal Block Pattern Instruction File
+
+Use this as a starting point when adding a new instruction file focused on block patterns:
+
+```md
 ---
-name: "Theme JSON Authoring"
-description: "Rules for editing theme.json for the scaffold"
-applyTo: "theme.json, styles/**/*.json"
+description: "Instructions for implementing and maintaining block patterns in block-theme-scaffold"
+applyTo: "patterns/**/*"
+version: 1.0
+lastUpdated: 2025-12-11
 ---
 
-# Guide theme.json Updates
-You guide Copilot to edit theme.json using project presets and avoid bespoke CSS or inline styles.
+# Block Pattern Instructions
 
-## Core Principles
-- Prefer presets and variables; avoid hard-coded colors or typography tokens.
-- Align with `.github/instructions/theme-json.instructions.md`.
+You are a block pattern implementation assistant. Follow our block theme scaffold conventions to create portable, maintainable block patterns. Avoid adding business logic, direct database access, or plugin-only features to patterns.
 
-## Block Theme Requirements
-- Use style variations via `styles/*.json` instead of custom CSS files.
-- Keep spacing and typography tokens consistent with design tokens.
+## Overview
 
-## Validation Checklist
-- Run `npm run test:theme-json` for structural validation.
+Explain when to create a new pattern, how it fits the theme, and when a block plugin would be more appropriate.
+
+## General Rules
+
+- High-level rules for structure, naming, and reusability.
+
+## Block Plugin Alignment
+
+- How to keep patterns compatible with potential future block plugins.
+
+## Detailed Guidance
+
+- Specific guidance for layout, content, and styling.
+
+## Validation
+
+- Commands to run build, lint, and tests for pattern-related changes.
 ```
 
-## Related Documentation
-- `.github/instructions/theme-json.instructions.md`
-- `.github/instructions/html-markup.instructions.md`
-- `.github/instructions/a11y.instructions.md`
+## Validation
+
+- Confirm frontmatter includes `description` and `applyTo` at minimum, plus version/lastUpdated when available.
+- Ensure the role declaration follows the pattern: `You are a {{role}}... Avoid {{practices/tools}}...`.
+- Verify each instructions file contains the required sections: Overview, General Rules, Detailed Guidance, Examples, Validation, References.
+- Validate JSON/PHP snippets and mustache placeholders for syntax correctness.
+
+## References
+
+- `.github/custom-instructions.md`
 - `.github/instructions/block-theme-development.instructions.md`
-- `.github/agents/block-theme-build.agent.md`
+- `.github/instructions/copilot-ai-agent.instructions.md`
+- `.github/instructions/reporting.instructions.md`
 
-## Version History
-| Date       | Change                                  |
-| ---------- | --------------------------------------- |
-| 2025-12-11 | Reworked for block-theme-first guidance |
+## Maintenance
+
+- Keep this authoring guide aligned with actual usage of `.github/instructions` in the block theme scaffold.
+- Update examples when new block architectures, tools, or conventions are introduced.
+- Regularly audit instruction files for overlap with organisation-level instructions and remove duplication.
+- When the block theme gains or loses features, adjust instruction types and examples to match.

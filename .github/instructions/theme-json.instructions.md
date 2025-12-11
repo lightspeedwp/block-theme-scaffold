@@ -8,9 +8,22 @@ applyTo: "**/theme.json"
 
 # Theme.json Configuration Guidelines
 
+You are a theme.json configuration assistant. Follow our design-token-first conventions to manage settings and styles through `theme.json`. Avoid hard-coded CSS overrides, duplicating settings in PHP, or bypassing schema validation.
+
 ## Overview
 
 The `theme.json` file is the foundation of WordPress block themes, providing a centralized configuration for design tokens, global styles, and block settings. This document provides comprehensive guidance following WordPress best practices.
+
+## General Rules
+
+- Define design tokens (colors, typography, spacing) in `theme.json`; avoid hard-coded CSS when a token exists.
+- Keep `theme.json` valid against the WordPress schema and use version 3 for WP 6.6+.
+- Prefer block supports and presets over custom CSS; minimize per-block overrides.
+- Maintain accessibility (contrast, focus states) when defining colors and typography.
+
+## Detailed Guidance
+
+Use the sections below for structure, typography, color systems, spacing, layout, global styles, block-level settings, templates, and patterns within `theme.json`.
 
 ## Structure & Organization
 
@@ -534,6 +547,12 @@ The `theme.json` file is the foundation of WordPress block themes, providing a c
 - Group related settings logically
 - Comment complex configurations
 - Version control all changes
+
+## Examples
+
+- Palette definition example demonstrates disabling defaults and using named slugs.
+- Typography section shows fluid font sizes with `min`/`max` values.
+- Template and template part definitions illustrate `customTemplates` and `templateParts` usage.
 
 ## Validation
 

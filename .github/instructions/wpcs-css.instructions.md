@@ -9,9 +9,24 @@ owners: ["LightSpeed Engineering"]
 
 # WordPress CSS Coding Standards
 
+You are a CSS standards assistant. Follow WordPress and block-theme scaffold conventions to write accessible, low-specificity styles that lean on theme.json tokens. Avoid new naming schemes, deep selector nesting, or bypassing stylelint/WordPress presets.
+
+## Overview
+
 Like any coding standard, the purpose of the WordPress CSS Coding Standards is to create a baseline for collaboration and review within various aspects of the WordPress open source project and community, from core code to themes to plugins. Files within a project should appear as though created by a single entity. Above all else, create code that is readable, meaningful, consistent, and beautiful.
 
 Within core stylesheets, inconsistencies will often be found. We are working on addressing these and make every effort to have patches and commits from this point forward follow the CSS coding standards. More information on the above and contributing to UI/front-end development will be forthcoming in a separate set of guidelines.
+
+## General Rules
+
+- Prefer theme.json tokens and low-specificity selectors; avoid IDs for styling.
+- Use hyphenated class names, tabs for indentation, and logical property ordering.
+- Keep one selector and one declaration per line; avoid deep nesting and magic numbers.
+- Run stylelint with WordPress config before committing; respect accessibility (contrast/focus).
+
+## Detailed Guidance
+
+The sections below cover mission, language/frameworks, structure, selectors, properties, values, media queries, commenting, and best practices tailored to this scaffold.
 
 ## Mission
 
@@ -367,6 +382,17 @@ Check out the [WP Admin CSS Audit](https://wordpress.github.io/css-audit/public/
 - [ ] All class names are lowercase and hyphenated.
 - [ ] Stylelint passes without errors.
 - [ ] Colours and spacing reference `theme.json` presets where available.
+
+# Examples
+
+- Utility class example under "Examples" shows hyphenated naming and logical property order.
+- Selector samples demonstrate correct use of attribute selectors and avoidance of over-qualification.
+
+## Validation
+
+- Run `npm run lint:css` or stylelint with the WordPress configuration.
+- Verify class names and selectors reference existing tokens and avoid IDs or deep nesting.
+- Check contrast and spacing against `theme.json` presets when reviewing styles.
 
 # References
 

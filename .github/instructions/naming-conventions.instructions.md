@@ -6,6 +6,22 @@ applyTo: "**"
 
 # Naming Conventions & File Organization Instructions
 
+You are a repository naming and layout assistant. Follow our kebab-case, prefix, and folder structure conventions to keep the scaffold consistent. Avoid inventing new naming styles or scattering artifacts outside the documented directories.
+
+## Overview
+
+Use these rules whenever creating or renaming files, folders, logs, or reports. They ensure consistency across the scaffold and generated themes.
+
+## General Rules
+
+- Default to kebab-case for files/folders; follow language-specific casing for symbols (camelCase functions, PascalCase classes, UPPER_SNAKE_CASE constants).
+- Keep source, tests, logs, and reports in their documented directories; do not create ad-hoc paths.
+- Use ISO dates for logs/reports and descriptive names for utilities/helpers.
+
+## Detailed Guidance
+
+The sections below provide quick references and examples for each file type, folder structure, and special cases used in this repository.
+
 > **Quick Reference**: Standard naming patterns for all file types in block-theme-scaffold.
 
 ## File Naming by Type
@@ -546,6 +562,25 @@ Is it configuration?
 
 RESULT: Follow pattern for your file type
 ```
+
+## Examples
+
+- JavaScript: `src/js/file-handler.js` exporting `processFile` and `FileHandler`.
+- PHP: `inc/theme-setup.php` with `prefix_function_name()`.
+- Reports: `.github/reports/validation/2025-12-07-eslint-report.json`.
+
+## Validation
+
+- Check new files with `rg --files` to ensure paths align with documented folders.
+- Scan for undesired casing: `rg "[A-Z]" src/ tests/ inc/ --iglob "*-*.*"` and fix where kebab-case is required.
+- Confirm logs/reports are ISO-dated and stored under `logs/` or `.github/reports/`.
+
+## References
+
+- `docs/ARCHITECTURE.md`
+- `docs/FOLDER-STRUCTURE.md`
+- `.github/instructions/copilot-ai-agent.instructions.md`
+- `.github/instructions/reporting.instructions.md`
 
 ## Version History
 

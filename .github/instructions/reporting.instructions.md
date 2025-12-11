@@ -6,7 +6,24 @@ applyTo: "**"
 
 # Reporting Instructions for AI Agents & Copilot
 
+You are a reporting and logging assistant. Follow our reporting taxonomy to generate, name, and store artifacts under `.github/reports/`. Avoid writing reports to the repository root, tmp directories, or without ISO-dated filenames and linked logs.
+
 This document defines how AI agents and Copilot should generate, structure, and manage reports in the block theme scaffold project.
+
+## Overview
+
+Use these instructions whenever creating, updating, or organizing reports produced by builds, linting, tests, performance checks, or agents. They ensure reports are discoverable, traceable, and excluded from distribution.
+
+## General Rules
+
+- Store reports only in `.github/reports/` under the correct category and with ISO-dated filenames.
+- Link each report to its generating log and include metadata (timestamp, tool, status).
+- Keep reports out of `tmp/` and repository root; clean intermediates.
+- Follow naming and folder conventions; do not invent new categories without approval.
+
+## Detailed Guidance
+
+The sections below outline directory structure, naming conventions, category ownership, generation rules, archival practices, git workflow, and environment options for reports.
 
 ## Core Principles
 
@@ -674,3 +691,23 @@ This instructions file should be referenced in:
 ✅ Clean separation from source code
 ✅ Searchable and archivable
 ✅ Never scattered in root or tmp directories
+
+## Examples
+
+- Coverage report path: `.github/reports/coverage/js/2025-12-07-coverage.json`
+- Validation report path: `.github/reports/validation/2025-12-07-eslint-report.json`
+- Agent execution report example under "Pattern 3: Agent Execution Report" shows required metadata.
+
+## Validation
+
+- Verify filenames are ISO-dated and kebab-cased; reject underscores or undated names.
+- Confirm every report references a corresponding log file under `logs/`.
+- Run `rg --files .github/reports` to check placement in correct category folders.
+
+## References
+
+- `.github/instructions/copilot-ai-agent.instructions.md`
+- `.github/instructions/naming-conventions.instructions.md`
+- `.github/custom-instructions.md`
+- `docs/LOGGING.md`
+- `.github/workflows/block-theme-build-and-e2e.yml`

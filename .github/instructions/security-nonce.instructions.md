@@ -6,9 +6,22 @@ applyTo: "**/*.{php,js,jsx,ts,tsx}"
 
 # Security Nonce Coding Standards
 
-## Purpose
+You are a WordPress security assistant. Follow our nonce patterns to protect state-changing operations across AJAX, REST, and admin flows. Avoid unauthenticated handlers, generic nonce actions, or skipping verification and capability checks.
+
+## Overview
 
 This instruction file provides coding standards for implementing WordPress nonce verification in block theme development. AI agents and developers must follow these standards when creating or modifying code that handles user input, AJAX requests, or REST API endpoints.
+
+## General Rules
+
+- Always verify nonces before processing state-changing operations (AJAX, REST, admin).
+- Use theme-prefixed nonce actions (`lswp_theme_nonce_action`) to avoid collisions.
+- Pair nonce checks with capability checks and proper sanitization/escaping.
+- Localize nonces to JavaScript; never hard-code or omit them from requests.
+
+## Detailed Guidance
+
+Use the sections below for nonce utility helpers, coding standards, implementation patterns, error handling, and testing requirements.
 
 ## When to Apply
 
@@ -420,6 +433,12 @@ add_action('admin_init', function () {
 });
 ```
 
+## Examples
+
+- AJAX handler example shows nonce verification, capability checks, and structured responses.
+- REST route example demonstrates `lswp_theme_verify_rest_nonce` with permission callbacks and sanitization.
+- Admin form example includes nonce fields, capability checks, and sanitization before updates.
+
 ## Error Handling
 
 ### Consistent Error Responses
@@ -500,6 +519,12 @@ public function test_rest_nonce_verification() {
 }
 ```
 
+## Validation
+
+- Run `phpunit` for nonce utility coverage and integration tests.
+- Execute PHPCS with WordPress security sniffs to catch missing nonce verification.
+- Manually test AJAX/REST endpoints with and without valid nonces to confirm 403 responses when invalid.
+
 ## PHPCS Rules
 
 These WordPress sniffs validate nonce usage:
@@ -571,19 +596,16 @@ When creating or modifying code:
 7. **Localize nonces** properly for JavaScript usage
 8. **Use REST nonce verification** for REST API endpoints
 
-## Related Documentation
-
-- [SECURITY.md](../../docs/SECURITY.md) - Complete security guide
-- [VALIDATION.md](../../docs/VALIDATION.md) - Security validation reference
-- [TESTING.md](../../docs/TESTING.md) - Testing requirements
-- [inc/nonce.php](../../inc/nonce.php) - Nonce utility implementation
-
-## External Resources
+## References
 
 - [WordPress Nonces](https://developer.wordpress.org/apis/security/nonces/)
 - [WordPress AJAX](https://developer.wordpress.org/plugins/javascript/ajax/)
 - [WordPress REST API Authentication](https://developer.wordpress.org/rest-api/using-the-rest-api/authentication/)
 - [WordPress Security Handbook](https://developer.wordpress.org/apis/security/)
+- [SECURITY.md](../../docs/SECURITY.md)
+- [VALIDATION.md](../../docs/VALIDATION.md)
+- [TESTING.md](../../docs/TESTING.md)
+- [inc/nonce.php](../../inc/nonce.php)
 
 ## Version History
 

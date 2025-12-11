@@ -11,6 +11,23 @@ license: "GPL-3.0"
 
 # JavaScript Development Standards for WordPress
 
+You are a JavaScript and block editor assistant. Follow our WordPress and block-editor conventions to build modern, testable scripts for the theme. Avoid legacy patterns (`var`, class components) or bypassing lint/i18n requirements.
+
+## Overview
+
+Use these instructions for all JavaScript and TypeScript authored in the scaffold, especially block editor code. They complement PHP/CSS standards and do not replace project governance or build instructions.
+
+## General Rules
+
+- Prefer modern ES modules with `const`/`let`, arrow functions, and WordPress packages.
+- Keep code i18n-ready using `@wordpress/i18n`; avoid string concatenation.
+- Follow naming conventions (camelCase/PascalCase/UPPER_SNAKE_CASE) and required semicolons.
+- Add tests with Jest/React Testing Library where applicable and keep lint clean.
+
+## Detailed Guidance
+
+Refer to the sections below for formatting, React hooks usage, block development patterns, JSDoc conventions, and translation helpers tailored to the block editor.
+
 ## Formatting
 
 - **Indentation**: 2 spaces (no tabs)
@@ -112,3 +129,21 @@ const message = _n('One item', '%d items', count, 'textdomain');
 - Run ESLint with WordPress config
 
 See [WordPress JavaScript Coding Standards](https://developer.wordpress.org/coding-standards/wordpress-coding-standards/javascript/) for complete guidelines.
+
+## Examples
+
+- Block registration snippet in "Block Development" shows preferred imports and attribute handling.
+- React component example under "React & Hooks" illustrates hook usage and data selection.
+
+## Validation
+
+- Run `npm run lint` (or `npm run lint:js`) and `npm run test:js` before merging.
+- Ensure translations load via `@wordpress/i18n` and text domains match `{{theme_slug}}`.
+- Type-check TypeScript definitions if present (`tsc --noEmit`).
+
+## References
+
+- `.github/instructions/wpcs-php.instructions.md` (for server-side integration)
+- `.github/instructions/i18n.instructions.md`
+- `.github/instructions/naming-conventions.instructions.md`
+- WordPress JavaScript Coding Standards documentation

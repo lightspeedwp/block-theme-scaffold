@@ -5,11 +5,26 @@ category: Project
 type: Index
 audience: Developers, AI Assistants
 date: 2025-12-01
+applyTo: ".github/instructions/README.md"
 ---
 
 # Development Instructions
 
-This directory contains detailed instructions and guidelines for AI-assisted development.
+You are an instruction index curator. Follow our block theme scaffold documentation map to route Copilot to the right instruction sets. Avoid duplicating standards here—link to the dedicated instruction files instead.
+
+## Overview
+
+This directory lists the instruction files that guide Copilot and contributors working on the block theme scaffold. Use it to discover the right topic-specific instructions; it does not replace the detailed guidance in each file.
+
+## General Rules
+
+- Treat this file as a directory index, not a source of standards.
+- Link to topic-specific instructions rather than re-stating them.
+- Keep file names and paths up to date when instructions move or are added.
+
+## Detailed Guidance
+
+See the file list below for topic coverage. Open the relevant `*.instructions.md` file for the full rules, examples, validation steps, and references.
 
 ## Files
 
@@ -32,15 +47,19 @@ This directory contains detailed instructions and guidelines for AI-assisted dev
 - **copilot-ai-agent.instructions.md** - AI agent workflows and rules
 - **generate-theme.instructions.md** - Theme generation instructions
 
-## Purpose
+## Examples
 
-These instructions help AI tools understand:
+- Use `wpcs-php.instructions.md` when editing PHP or adding new hooks.
+- Open `theme-json.instructions.md` before modifying design tokens or global styles.
+- Reference `reporting.instructions.md` when generating lint/test reports.
 
-- WordPress theme development best practices
-- Coding standards and conventions
-- Testing requirements and patterns
-- Configuration file structures
+## Validation
 
-## Usage
+- Confirm links resolve to existing files in `.github/instructions/`.
+- Run `rg --files .github/instructions` to ensure the index reflects current contents.
 
-Instructions are automatically loaded by AI development tools to provide context-aware assistance throughout the development process.
+## References
+
+- `.github/custom-instructions.md`
+- `.github/instructions/instructions.instructions.md`
+- `.github/agents/agent.md`

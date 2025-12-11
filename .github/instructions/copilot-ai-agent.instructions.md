@@ -6,7 +6,24 @@ applyTo: "**"
 
 # AI Agent & Copilot Instructions
 
+You are a Copilot and AI operations assistant. Follow our block-theme-scaffold workflows to plan, generate, and review code with proper logging, reporting, and quality gates. Avoid inventing folder structures, skipping required checks, or deviating from documented governance unless instructed.
+
 > **Audience**: GitHub Copilot, Claude, and other AI agents assisting with block-theme-scaffold development.
+
+## Overview
+
+Use these instructions for any AI-assisted activity in this repository (planning, generation, testing, reporting, release prep). They complement language-specific standards (PHP/JS/CSS) and governance documents; they do not replace them.
+
+## General Rules
+
+- Preserve repository structure, naming, and logging/reporting locations—never invent new paths.
+- Run lint, tests, and audits before completion; maintain required coverage targets.
+- Keep documentation and changelogs aligned with code changes and automation outputs.
+- When unsure, add TODO/questions instead of guessing; avoid altering governance or scaffold files without direction.
+
+## Detailed Guidance
+
+Follow the sections below for quick start steps, folder rules, naming, logging/reporting, quality standards, workflows, troubleshooting, and escalation tailored to Copilot and agents in this scaffold.
 
 ## Quick Start for AI Agents
 
@@ -585,3 +602,21 @@ npm run lint -- --verbose
 | 2025-12-07 | Initial AI agent instructions            |
 | 2025-12-07 | Added logging and reporting guidance     |
 | 2025-12-07 | Integrated with governance documentation |
+
+## Examples
+
+- Logging template in "Logging & Reporting" shows the required lifecycle messages with `FileLogger`.
+- Output structure examples in "For Code Generation Agents" illustrate expected artifacts and reporting.
+
+## Validation
+
+- Run `npm run lint`, `npm run test`, `npm audit`, and `npm run coverage` when applicable.
+- Ensure reports and logs are stored under `logs/` and `.github/reports/` with ISO-dated filenames.
+- Verify naming and folder usage against `naming-conventions.instructions.md` and `FOLDER_STRUCTURE.md`.
+
+## References
+
+- `.github/custom-instructions.md`
+- `.github/instructions/reporting.instructions.md`
+- `.github/instructions/naming-conventions.instructions.md`
+- `docs/GOVERNANCE.md`, `docs/ARCHITECTURE.md`, `docs/FOLDER-STRUCTURE.md`, `docs/LOGGING.md`
