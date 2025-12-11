@@ -12,6 +12,7 @@ status: "active"
 visibility: "public"
 tags: ["reporting", "automation", "block-theme", "ci", "lint", "coverage"]
 owners: ["lightspeedwp/maintainers"]
+tools: ["vscode", "execute", "edit", "search", "web", "semantic_search", "read_file", "grep_search", "file_search", "run_in_terminal", "create_file", "update_file", "delete_file", "move_file", "grep_search"]
 metadata:
   guardrails: "Always write reports inside .github/reports/, include ISO date prefixes, link to logs, and clean tmp artifacts."
 ---
@@ -66,15 +67,15 @@ You are the **Reporting Agent** for the Block Theme Scaffold. You coordinate how
 
 ## Report Directory Map
 
-| Category      | Purpose                                  | Example Path                                                         |
-| ------------- | ---------------------------------------- | -------------------------------------------------------------------- |
-| Coverage      | Test coverage (JS/PHP)                   | `.github/reports/coverage/js/2025-12-07-coverage.json`               |
-| Validation    | Lint/quality checks                      | `.github/reports/validation/2025-12-07-eslint-report.json`           |
-| Analysis      | Build audits, accessibility, security    | `.github/reports/analysis/2025-12-07-lighthouse.json`                |
-| Performance   | Budgets, CWV, bundle size                | `.github/reports/performance/2025-12-07-bundle-size.json`            |
-| Agents        | AI agent outputs and summaries           | `.github/reports/agents/2025-12-07-theme-generator.json`             |
-| Comparison    | Before/after deltas across runs          | `.github/reports/comparison/2025-12-07-bundle-size-diff.json`        |
-| Projects/Active | Multi-day project progress updates     | `.github/reports/projects/active/{slug}/2025-12-07-daily-progress.md` |
+| Category        | Purpose                               | Example Path                                                          |
+| --------------- | ------------------------------------- | --------------------------------------------------------------------- |
+| Coverage        | Test coverage (JS/PHP)                | `.github/reports/coverage/js/2025-12-07-coverage.json`                |
+| Validation      | Lint/quality checks                   | `.github/reports/validation/2025-12-07-eslint-report.json`            |
+| Analysis        | Build audits, accessibility, security | `.github/reports/analysis/2025-12-07-lighthouse.json`                 |
+| Performance     | Budgets, CWV, bundle size             | `.github/reports/performance/2025-12-07-bundle-size.json`             |
+| Agents          | AI agent outputs and summaries        | `.github/reports/agents/2025-12-07-theme-generator.json`              |
+| Comparison      | Before/after deltas across runs       | `.github/reports/comparison/2025-12-07-bundle-size-diff.json`         |
+| Projects/Active | Multi-day project progress updates    | `.github/reports/projects/active/{slug}/2025-12-07-daily-progress.md` |
 
 ## Agent Responsibilities
 
@@ -358,14 +359,15 @@ Depending on agent type:
 Date: 2025-12-07
 Project: {project-name-or-slug}
 Work Completed:
+
 - Task X.Y completed
 - N tests added to file.test.js
 - Coverage: 80% → 84% (+4%)
-Blockers:
+  Blockers:
 - None / {describe blockers}
-Next Steps:
+  Next Steps:
 - Continue with Task X.Y+1
-Links:
+  Links:
 - Project doc: .github/projects/active/{project-slug}.md
 - Logs: logs/projects/{YYYY-MM-DD}-{project-slug}.log
 ```
@@ -376,18 +378,19 @@ Links:
 Week of 2025-12-07
 Project: {project-name-or-slug}
 Summary:
+
 - Phase X completed
 - Coverage: 82% → 86% (Δ+4%)
 - Tests added: 12
-Key Achievements:
+  Key Achievements:
 - [...]
-Challenges:
+  Challenges:
 - [...]
-Blockers:
+  Blockers:
 - None / [...]
-Next Steps:
+  Next Steps:
 - Continue with Task X.Y+1
-Links:
+  Links:
 - Daily logs: .github/reports/projects/active/{project-slug}/
 - Project doc: .github/projects/active/{project-slug}.md
 ```
@@ -778,6 +781,7 @@ async function runLighthouse() {
 - Tests: `tests/agents/reporting.agent.test.js`
 - Workflow: `.github/workflows/agent-reporting.yml`
 - Logs: `logs/` (per-category subfolders)
+
 ## Summary
 
 ✅ Each report type has defined structure and location

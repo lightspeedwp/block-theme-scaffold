@@ -12,6 +12,7 @@ status: "active"
 visibility: "public"
 tags: ["release", "scaffold", "automation", "validation", "wordpress", "block-theme"]
 owners: ["lightspeedwp/maintainers"]
+tools: ["vscode", "execute", "edit", "search", "web", "semantic_search", "read_file", "grep_search", "file_search", "run_in_terminal", "create_file", "update_file", "delete_file", "move_file", "grep_search"]
 metadata:
   guardrails: "Never modify WordPress template files that contain mustache placeholders. Use dry-run validation first. Stop if placeholder integrity is compromised."
 ---
@@ -61,6 +62,7 @@ This agent covers scaffold **pre-release preparation**:
 ## Validation Criteria
 
 **Critical (must pass):**
+
 - Placeholder integrity confirmed
 - `VERSION`, `package.json`, `composer.json` versions aligned (SemVer)
 - Dry-run lint/format/test pass
@@ -69,6 +71,7 @@ This agent covers scaffold **pre-release preparation**:
 - No high/critical npm vulnerabilities
 
 **Important (should pass):**
+
 - `docs/RELEASE_PROCESS_SCAFFOLD.md` and `docs/GENERATE_THEME.md` current
 - Release templates still templated with `{{mustache}}`
 - README/CONTRIBUTING references up to date
@@ -130,12 +133,15 @@ Provide a concise markdown report:
 - Security audit: ✅ / ❌
 
 Blockers:
+
 - ...
 
 Warnings:
+
 - ...
 
 Next Steps:
+
 1. Update meta versions only (VERSION, package.json, composer.json)
 2. Fix blockers
 3. Re-run dry-run validation

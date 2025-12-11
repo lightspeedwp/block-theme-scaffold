@@ -12,27 +12,7 @@ entrypoint: "TBD (implementation script not yet added; update when available)"
 file_type: "agent"
 category: "research"
 visibility: "public"
-tools:
-  - changes
-  - new
-  - search/codebase
-  - search
-  - search/searchResults
-  - usages
-  - vscodeAPI
-  - fetch
-  - wordpress_docs
-  - runCommands
-  - runCommands/terminalLastCommand
-  - runCommands/terminalSelection
-  - wp_cli
-  - php_cs
-  - stylelint
-  - eslint
-  - extensions
-  - problems
-  - edit/editFiles
-  - context7
+tools: ["vscode/getProjectSetupInfo", "vscode/installExtension", "vscode/newWorkspace", "vscode/runCommand", "vscode/vscodeAPI", "vscode/extensions", "execute/getTerminalOutput", "execute/runInTerminal", "read/problems", "read/readFile", "read/terminalSelection", "read/terminalLastCommand", "edit/editFiles", "search", "web/fetch"]
 references:
   - "AGENTS.md"
   - ".github/agents/agent.md"
@@ -54,15 +34,15 @@ You are the evidence specialist for the LightSpeedWP block-theme scaffold and re
 
 ## Repository Mapping
 
-| Area              | Path/ID                                                            | Notes                                                                                         |
-| ----------------- | ------------------------------------------------------------------ | --------------------------------------------------------------------------------------------- |
-| Spec              | `.github/agents/task-researcher.agent.md`                          | This file                                                                                     |
-| Prompt            | _Not yet authored_                                                 | Add `.github/prompts/task-researcher.prompt.md` when a dedicated prompt is created            |
-| Script/Entrypoint | _Not yet implemented_                                              | Update `entrypoint` when the runnable agent script is added                                   |
-| Workflow          | `.github/workflows/block-theme-build-and-e2e.yml`                  | Downstream build/lint/test workflow that planning/implementation agents must obey             |
-| Research Output   | `.github/projects/research/YYYYMMDD-task-description-research.md`  | Destination for completed research files                                                      |
-| Reports           | `.github/reports/agents/{{date}}-task-researcher.*`               | Optional status and audit artefacts                                                           |
-| Logs              | `logs/agents/{{date}}-task-researcher.log`                        | Timestamped tool call and decision log                                                        |
+| Area              | Path/ID                                                           | Notes                                                                              |
+| ----------------- | ----------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| Spec              | `.github/agents/task-researcher.agent.md`                         | This file                                                                          |
+| Prompt            | _Not yet authored_                                                | Add `.github/prompts/task-researcher.prompt.md` when a dedicated prompt is created |
+| Script/Entrypoint | _Not yet implemented_                                             | Update `entrypoint` when the runnable agent script is added                        |
+| Workflow          | `.github/workflows/block-theme-build-and-e2e.yml`                 | Downstream build/lint/test workflow that planning/implementation agents must obey  |
+| Research Output   | `.github/projects/research/YYYYMMDD-task-description-research.md` | Destination for completed research files                                           |
+| Reports           | `.github/reports/agents/{{date}}-task-researcher.*`               | Optional status and audit artefacts                                                |
+| Logs              | `logs/agents/{{date}}-task-researcher.log`                        | Timestamped tool call and decision log                                             |
 
 ## 1. Role & Scope
 
@@ -183,14 +163,14 @@ Research is **complete** only when the following are evidence-backed and cited:
 
 **Common prompts:**
 
-| Task                       | Prompt text                                             |
-| -------------------------- | ------------------------------------------------------- |
-| Research WooCommerce       | "Research WooCommerce compatibility"                    |
-| Research theme.json schema | "Research theme.json schema requirements"               |
-| Research block patterns    | "Research block pattern best practices"                 |
-| Research accessibility     | "Research accessibility requirements for themes"        |
-| Research build pipelines   | "Research build pipeline configurations"                |
-| Research translation needs | "Research translation and text domain standards"        |
+| Task                       | Prompt text                                      |
+| -------------------------- | ------------------------------------------------ |
+| Research WooCommerce       | "Research WooCommerce compatibility"             |
+| Research theme.json schema | "Research theme.json schema requirements"        |
+| Research block patterns    | "Research block pattern best practices"          |
+| Research accessibility     | "Research accessibility requirements for themes" |
+| Research build pipelines   | "Research build pipeline configurations"         |
+| Research translation needs | "Research translation and text domain standards" |
 
 ## 14. Changelog
 

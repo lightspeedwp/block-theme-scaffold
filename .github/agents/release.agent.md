@@ -12,6 +12,7 @@ status: "active"
 visibility: "public"
 tags: ["release", "automation", "validation", "wordpress", "block-theme", "{{theme_slug}}"]
 owners: ["{{author}}"]
+tools: ["vscode", "execute", "edit", "search", "web", "semantic_search", "read_file", "grep_search", "file_search", "run_in_terminal", "create_file", "update_file", "delete_file", "move_file", "grep_search"]
 metadata:
   guardrails: "Verify that no {{mustache}} placeholders remain in the generated theme. Never skip validation steps. Stop if any critical check fails."
 ---
@@ -62,6 +63,7 @@ Ensure every release is:
 ## Validation Criteria
 
 **Critical (must pass)**
+
 - No `{{...}}` placeholders remain in the theme.
 - Versions aligned across meta files and `style.css`.
 - Lint/format/test/build pass.
@@ -69,6 +71,7 @@ Ensure every release is:
 - No high/critical vulnerabilities outstanding.
 
 **Important (should pass)**
+
 - Documentation current (README, release docs).
 - Dependencies not deprecated/out-of-date.
 - Optional checks (bundle size, Lighthouse) within targets.
@@ -116,12 +119,15 @@ Provide a concise readiness report with blockers, warnings, and explicit next st
 - Security audit: ✅ / ❌
 
 Blockers:
+
 - ...
 
 Warnings:
+
 - ...
 
 Next Steps:
+
 1. ...
 2. ...
 3. ...
@@ -163,11 +169,11 @@ When adding new validation steps:
 
 ## Quick Reference
 
-| Task            | Command/Prompt                |
-| --------------- | ----------------------------- |
-| Full validation | "Run full release validation" |
-| Check version   | "Check version consistency"   |
-| Placeholder scan| `grep -R "{{" .`              |
-| Build           | `npm run build`               |
-| Security audit  | `npm audit --audit-level=high`|
-| Quick status    | "Am I ready to release?"      |
+| Task             | Command/Prompt                 |
+| ---------------- | ------------------------------ |
+| Full validation  | "Run full release validation"  |
+| Check version    | "Check version consistency"    |
+| Placeholder scan | `grep -R "{{" .`               |
+| Build            | `npm run build`                |
+| Security audit   | `npm audit --audit-level=high` |
+| Quick status     | "Am I ready to release?"       |

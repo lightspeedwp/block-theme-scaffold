@@ -1,5 +1,4 @@
 ---
-
 name: "Task Planner Agent"
 description: "Automated planning, research validation, and actionable task breakdown for WordPress block theme releases and feature work."
 target: "github-copilot"
@@ -13,28 +12,7 @@ status: "active"
 visibility: "public"
 tags: ["planning", "automation", "release", "tasks", "github", "block-themes", "wordpress", "theme.json"]
 owners: ["lightspeedwp/maintainers"]
-tools: [
-  "changes",
-  "search/codebase",
-  "edit/editFiles",
-  "extensions",
-  "fetch",
-  "problems",
-  "runCommands",
-  "runCommands/terminalLastCommand",
-  "runCommands/terminalSelection",
-  "usages",
-  "search",
-  "search/searchResults",
-  "vscodeAPI",
-  "new",
-  "wordpress_docs",
-  "wp_cli",
-  "php_cs",
-  "stylelint",
-  "eslint",
-  "context7"
-]
+tools: ["changes", "search/codebase", "edit/editFiles", "extensions", "fetch", "git", "problems", "runCommands", "runCommands/terminalLastCommand", "runCommands/terminalSelection", "usages", "search", "search/searchResults", "vscodeAPI", "new", "wordpress_docs", "wp_cli", "php_cs", "stylelint", "eslint", "context7"]
 metadata:
   guardrails: |
     - Never skip research validation.

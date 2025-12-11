@@ -1,16 +1,7 @@
 ---
 name: "Generate Plugin"
 description: "Interactive agent that collects comprehensive requirements and generates a WordPress multi-block plugin with CPT, taxonomies, and SCF fields"
-tools:
-  - "semantic_search"
-  - "read_file"
-  - "grep_search"
-  - "file_search"
-  - "run_in_terminal"
-  - "create_file"
-  - "update_file"
-  - "delete_file"
-  - "move_file"
+tools: ["vscode", "execute", "edit", "search", "web", "semantic_search", "read_file", "grep_search", "file_search", "run_in_terminal", "create_file", "update_file", "delete_file", "move_file", "grep_search"]
 ---
 
 # Block Theme Generate Theme Agent
