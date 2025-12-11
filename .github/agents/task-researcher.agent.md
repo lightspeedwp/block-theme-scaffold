@@ -1,5 +1,5 @@
 ---
-title: "Task Researcher Agent"
+name: "Task Researcher Agent"
 description: "Research aggregation, validation, and evidence generation for WordPress block theme planning tasks."
 version: "v1.2"
 last_updated: "2025-12-11"
