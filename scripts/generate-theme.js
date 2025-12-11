@@ -15,6 +15,7 @@
 
 const fs = require('fs');
 const path = require('path');
+const { execSync } = require('child_process');
 const Ajv = require('ajv');
 
 // Initialize JSON Schema validator
@@ -24,7 +25,30 @@ const ajv = new Ajv({ allErrors: true });
 const { CONFIG_SCHEMA } = require('./lib/config-schema');
 
 const scaffoldDir = path.resolve(__dirname, '..');
-const outputDir = path.resolve(process.cwd(), 'output-theme');
+
+/**
+ * Detect if running in the scaffold repository
+ */
+function detectScaffoldRepository() {
+	try {
+		const gitRemote = execSync('git remote get-url origin 2>/dev/null', {
+			cwd: scaffoldDir,
+			encoding: 'utf8',
+		}).trim();
+
+		// Check if this is the official scaffold repository
+		return gitRemote.includes('lightspeedwp/block-theme-scaffold');
+	} catch (error) {
+		// Not a git repository or no remote configured
+		return false;
+	}
+}
+
+// Determine output directory based on repository context
+const isScaffoldRepo = detectScaffoldRepository();
+const outputDir = isScaffoldRepo
+	? path.resolve(scaffoldDir, 'generated-theme')
+	: scaffoldDir; // In new repo, generate files in current directory
 
 /**
  * Sanitize user input to prevent security vulnerabilities
@@ -422,10 +446,11 @@ EXAMPLES:
       --version "2.0.0"
 
 OUTPUT:
-  Generated theme will be in: ./output-theme/
+  - In scaffold repository: ./generated-theme/
+  - In new repository: current directory (in-place)
 
 POST-GENERATION:
-  cd output-theme
+  cd generated-theme  # (if in scaffold repo)
   npm install
   composer install
   npm run start
@@ -513,9 +538,9 @@ For more information, see:
 				fs.mkdirSync(dest);
 			}
 			for (const file of fs.readdirSync(src)) {
-				// Skip node_modules, dist, .git, output-theme
+				// Skip node_modules, dist, .git, generated-theme
 				if (
-					['node_modules', 'dist', '.git', 'output-theme'].includes(
+					['node_modules', 'dist', '.git', 'generated-theme', 'output-theme'].includes(
 						file
 					)
 				) {
@@ -546,20 +571,45 @@ For more information, see:
 			process.exit(0);
 		}
 
-		if (fs.existsSync(outputDir)) {
+		// Display repository context information
+		console.log('\n📋 Repository Context Detection\n');
+		if (isScaffoldRepo) {
+			console.log('✓ Running in block-theme-scaffold repository');
+			console.log(`✓ Output location: ${path.relative(process.cwd(), outputDir)}/`);
+			console.log('✓ Scaffold files will remain unchanged\n');
+		} else {
+			console.log('✓ Running in new theme repository');
+			console.log('✓ Files will be generated in current directory');
+			console.log('⚠️  This will replace scaffold files with your theme\n');
+
+			if (!argMap.force && !argMap.config) {
+				console.log('If this is NOT a new repository for your theme:');
+				console.log('  1. Clone block-theme-scaffold to a new location');
+				console.log('  2. Run the generator there instead\n');
+				console.log('To proceed anyway, add --force flag\n');
+				process.exit(1);
+			}
+		}
+
+		if (isScaffoldRepo && fs.existsSync(outputDir)) {
 			console.error(
-				`Output directory ${outputDir} already exists. Remove it or choose another location.`
+				`❌ Output directory ${path.basename(outputDir)} already exists. Remove it or rename it first:\n   rm -rf ${path.basename(outputDir)}`
 			);
 			process.exit(1);
 		}
-		fs.mkdirSync(outputDir);
-		// Copy everything except node_modules, dist, .git, output-theme
+
+		if (isScaffoldRepo) {
+			fs.mkdirSync(outputDir);
+		}
+
+		// Copy everything except node_modules, dist, .git, generated-theme
 		for (const file of fs.readdirSync(scaffoldDir)) {
 			if (
 				[
 					'node_modules',
 					'dist',
 					'.git',
+					'generated-theme',
 					'output-theme',
 					'bin',
 				].includes(file)
@@ -590,10 +640,22 @@ For more information, see:
 
 		updateMetadataFiles(outputDir);
 
+		const locationMsg = isScaffoldRepo
+			? `Location: ${path.relative(process.cwd(), outputDir)}/`
+			: `Location: Current directory (in-place generation)`;
+
+		const cdMsg = isScaffoldRepo
+			? `cd ${path.basename(outputDir)}`
+			: `# Already in theme directory`;
+
+		const installMsg = isScaffoldRepo
+			? `Copy ${path.basename(outputDir)}/ to wp-content/themes/`
+			: `This directory is your theme - commit to version control`;
+
 		console.log(`
 ✓ Theme generated successfully!
 
-Location: ${outputDir}
+${locationMsg}
 
 Theme Details:
   Name: ${placeholders['{{theme_name}}']}
@@ -603,7 +665,7 @@ Theme Details:
 
 Next Steps:
   1. Navigate to theme directory:
-     cd ${path.basename(outputDir)}
+     ${cdMsg}
 
   2. Install dependencies:
      npm install
@@ -616,7 +678,7 @@ Next Steps:
      npm run build
 
   5. Install in WordPress:
-     - Copy ${path.basename(outputDir)}/ to wp-content/themes/
+     - ${installMsg}
      - Activate in WordPress admin
 
 For documentation, see:

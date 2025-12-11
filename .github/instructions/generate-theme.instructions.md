@@ -20,6 +20,7 @@ The Block Theme Scaffold uses **mustache template variables** (`{{variable_name}
 4. Explain what each variable controls and where it's used
 5. Execute the generator script with collected values
 6. Confirm that `package.json` and `composer.json` in the generated theme have been rewritten with the provided slug, author, URLs, license, and version (no placeholders remain)
+7. Remove scaffold-only release files from the generated theme output so it is not confused with the scaffold (`.github/agents/release-scaffold.agent.md`, `.github/prompts/release-scaffold.prompt.md`, `.github/instructions/release-scaffold.instructions.md`, `docs/RELEASE_PROCESS_SCAFFOLD.md`)
 
 ## Mustache Variable System
 
@@ -557,10 +558,10 @@ node scripts/generate-theme.js \
 ```text
 Generating theme...
 
-✓ Theme generated successfully at: output-theme/
+✓ Theme generated successfully at: generated-theme/
 
 Next steps:
-1. cd output-theme
+1. cd generated-theme
 2. npm install
 3. composer install
 4. npm run start
@@ -617,10 +618,10 @@ Please provide a valid version:
 ```text
 ❌ Error: Output directory already exists
 
-The directory "output-theme" already exists.
+The directory "generated-theme" already exists.
 Please either:
-1. Remove it: rm -rf output-theme
-2. Move it: mv output-theme old-output-theme
+1. Remove it: rm -rf generated-theme
+2. Move it: mv generated-theme old-generated-theme
 3. Run from a different location
 
 Would you like me to help you with this?
@@ -725,11 +726,11 @@ After successful generation, guide users through next steps:
 ```text
 ✓ Theme generated successfully!
 
-Location: /path/to/output-theme
+Location: /path/to/generated-theme
 
 Next steps:
 1. Review generated files:
-   cd output-theme
+   cd generated-theme
    cat style.css
    cat functions.php
 
@@ -791,7 +792,7 @@ After generation, verify that variables were replaced correctly:
 ### Quick Checks
 
 ```bash
-cd output-theme
+cd generated-theme
 
 # Check style.css header
 head -n 20 style.css

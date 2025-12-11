@@ -19,6 +19,17 @@ The Block Theme Scaffold includes a comprehensive generator system with three ma
 
 All three methods use **mustache template variables** to create customized themes from the scaffold template.
 
+## Scaffold-Only Files to Delete After Generation
+
+When generating a new theme, the generator must remove these scaffold-only files from the output to avoid confusion with the scaffold release flow:
+
+- `.github/agents/release-scaffold.agent.md`
+- `.github/prompts/release-scaffold.prompt.md`
+- `.github/instructions/release-scaffold.instructions.md`
+- `docs/RELEASE_PROCESS_SCAFFOLD.md`
+
+The standard release files (`.github/agents/release.agent.md`, `.github/prompts/release.prompt.md`, `.github/instructions/release.instructions.md`) remain, with their `{{mustache}}` placeholders rewritten for the new theme.
+
 ## Mustache Template System
 
 ### What Are Mustache Variables?
@@ -383,7 +394,7 @@ node scripts/generate-theme.js \
 
 **Generated Output:**
 
-- Creates `output-theme/` directory in current working directory
+- Creates `generated-theme/` directory in current working directory
 - Copies all scaffold files except excluded directories
 - Replaces all mustache variables with provided values
 - Preserves file structure and permissions
@@ -615,7 +626,7 @@ node scripts/generate-theme.js \
 **7. Theme Generated Successfully:**
 
 ```text
-Theme generated at /path/to/output-theme
+Theme generated at /path/to/generated-theme
 ```
 
 ### Post-Generation Setup
@@ -625,7 +636,7 @@ After generation, follow these steps to start developing:
 **1. Navigate to Generated Theme:**
 
 ```bash
-cd output-theme
+cd generated-theme
 ```
 
 **2. Review Generated Files:**
@@ -690,7 +701,7 @@ flowchart TD
     J --> B
 
     K --> L[Replace Mustache Variables]
-    L --> M[Generate output-theme/]
+    L --> M[Generate generated-theme/]
     M --> N[Success!]
 
     N --> O[Install Dependencies]
@@ -904,7 +915,7 @@ After generating a theme, always:
 
 ```bash
 # Remove existing output directory
-rm -rf output-theme
+rm -rf generated-theme
 # Or specify a different location
 cd /path/to/different/location
 node /path/to/scaffold/scripts/generate-theme.js --slug my-theme
@@ -1052,7 +1063,7 @@ while IFS= read -r config; do
         --name "$name" \
         --author "$author"
 
-    mv output-theme "$slug"
+    mv generated-theme "$slug"
 done < <(jq -c '.[]' themes.json)
 ```
 
@@ -1094,7 +1105,7 @@ jobs:
 
       - name: Create ZIP
         run: |
-          cd output-theme
+          cd generated-theme
           zip -r ../theme.zip .
 
       - name: Upload Artifact
@@ -1160,7 +1171,7 @@ Generates a new theme by copying the scaffold and replacing all mustache placeho
 node scripts/generate-theme.js --slug my-theme --name "My Theme" --description "Description here" --author "Your Name" --author_uri "https://yourdomain.com" --version "1.0.0"
 ```
 
-- The generated theme will be placed in an `output-theme/` directory in your current working directory.
+- The generated theme will be placed in an `generated-theme/` directory in your current working directory.
 - All placeholders like `{{theme_slug}}`, `{{theme_name}}`, etc., will be replaced with your values.
 - You can safely edit the generated theme independently of the scaffold.
 
@@ -1238,7 +1249,7 @@ flowchart TD
 2. Enter the generated theme directory:
 
    ```sh
-   cd output-theme
+   cd generated-theme
    ```
 
 3. Install dependencies and initialize:
@@ -1268,7 +1279,7 @@ flowchart TD
 ## Notes
 
 - The `build.js` script expects a valid `package.json` and `style.css` in the theme root.
-- The `generate-theme.js` script will not overwrite an existing `output-theme/` directory.
+- The `generate-theme.js` script will not overwrite an existing `generated-theme/` directory.
 - For advanced usage, see comments in each script.
 
 ---

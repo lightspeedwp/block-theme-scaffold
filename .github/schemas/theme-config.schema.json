@@ -2,13 +2,19 @@
 	"$schema": "https://json-schema.org/draft/2020-12/schema",
 	"$id": "https://lightspeedwp.com/schemas/theme-config.json",
 	"title": "WordPress Block Theme Configuration",
-	"description": "Pre-filled configuration for theme generation wizard. Fill in values and pass to generate-theme with --config flag.",
+	"description": "Complete configuration for theme generation wizard. Fill in values and pass to generate-theme with --config flag. Supports 142 mustache variables discovered via scripts/scan-mustache-variables.js",
 	"type": "object",
 	"required": ["theme_slug", "theme_name", "author"],
 	"properties": {
 		"_comment": {
 			"type": "string",
 			"default": "Fill in the values below and save as theme-config.json, then run: node scripts/generate-theme.js --config theme-config.json"
+		},
+		"wizard_mode": {
+			"type": "string",
+			"description": "Wizard complexity level: 'basic' (essential values only) or 'advanced' (all customization options)",
+			"enum": ["basic", "advanced"],
+			"default": "basic"
 		},
 		"theme_slug": {
 			"type": "string",
@@ -52,6 +58,12 @@
 				"https://yourcompany.com"
 			]
 		},
+		"author_username": {
+			"type": "string",
+			"description": "WordPress.org username for theme author",
+			"default": "",
+			"examples": ["lightspeed-wp", "john-developer"]
+		},
 		"version": {
 			"type": "string",
 			"description": "Starting version number (semantic versioning)",
@@ -91,6 +103,98 @@
 			"description": "URL to full license text",
 			"format": "uri",
 			"default": "https://www.gnu.org/licenses/gpl-2.0.html"
+		},
+		"theme_uri": {
+			"type": "string",
+			"description": "Theme homepage URL",
+			"format": "uri",
+			"pattern": "^https?://",
+			"default": "https://example.com/theme"
+		},
+		"theme_tags": {
+			"type": "string",
+			"description": "Comma-separated WordPress theme tags",
+			"default": "block-patterns, block-styles, custom-colors, custom-menu, editor-style, featured-images, full-site-editing, template-editing, wide-blocks",
+			"examples": [
+				"blog, custom-header, featured-images",
+				"e-commerce, woocommerce, shop"
+			]
+		},
+		"target_audience": {
+			"type": "string",
+			"description": "Target audience description",
+			"default": "bloggers and content creators",
+			"examples": [
+				"tour operators and travel agencies",
+				"small businesses and startups",
+				"photographers and creative professionals"
+			]
+		},
+		"urls": {
+			"type": "object",
+			"description": "URLs for theme resources and support",
+			"properties": {
+				"theme_repo_url": {
+					"type": "string",
+					"description": "Git repository URL (auto-generated from author + theme_slug if not provided)",
+					"format": "uri",
+					"examples": ["https://github.com/lightspeedwp/tour-starter"]
+				},
+				"support_url": {
+					"type": "string",
+					"description": "Support forum/page URL",
+					"format": "uri",
+					"examples": ["https://wordpress.org/support/theme/tour-starter"]
+				},
+				"docs_url": {
+					"type": "string",
+					"description": "Documentation URL",
+					"format": "uri",
+					"examples": ["https://github.com/lightspeedwp/tour-starter/wiki"]
+				},
+				"changelog_url": {
+					"type": "string",
+					"description": "Changelog URL",
+					"format": "uri",
+					"examples": ["https://github.com/lightspeedwp/tour-starter/releases"]
+				},
+				"discord_url": {
+					"type": "string",
+					"description": "Discord community URL",
+					"format": "uri",
+					"default": ""
+				},
+				"premium_support_url": {
+					"type": "string",
+					"description": "Premium support page URL",
+					"format": "uri",
+					"default": ""
+				}
+			}
+		},
+		"emails": {
+			"type": "object",
+			"description": "Contact email addresses (auto-generated from author_uri domain if not provided)",
+			"properties": {
+				"support_email": {
+					"type": "string",
+					"description": "Support email address",
+					"format": "email",
+					"examples": ["support@example.com"]
+				},
+				"security_email": {
+					"type": "string",
+					"description": "Security issues email",
+					"format": "email",
+					"examples": ["security@example.com"]
+				},
+				"business_email": {
+					"type": "string",
+					"description": "Business inquiries email",
+					"format": "email",
+					"examples": ["contact@example.com"]
+				}
+			}
 		},
 		"design_system": {
 			"type": "object",
@@ -144,6 +248,32 @@
 						}
 					}
 				},
+				"dark_mode_colors": {
+					"type": "object",
+					"description": "Dark mode color palette (optional, for dark style variation)",
+					"properties": {
+						"dark_background_color": {
+							"type": "string",
+							"pattern": "^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{8})$",
+							"default": "#1a1a1a"
+						},
+						"dark_text_color": {
+							"type": "string",
+							"pattern": "^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{8})$",
+							"default": "#ffffff"
+						},
+						"dark_primary_color": {
+							"type": "string",
+							"pattern": "^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{8})$",
+							"default": "#4a9eff"
+						},
+						"dark_accent_color": {
+							"type": "string",
+							"pattern": "^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{8})$",
+							"default": "#ff8c5a"
+						}
+					}
+				},
 				"typography": {
 					"type": "object",
 					"description": "Font families and typography settings",
@@ -183,6 +313,21 @@
 							"description": "Display name for body font",
 							"default": "System Font",
 							"examples": ["Inter", "Georgia", "System Font"]
+						},
+						"mono_font_family": {
+							"type": "string",
+							"description": "CSS font stack for monospace/code text",
+							"default": "\"Fira Code\", \"Courier New\", monospace",
+							"examples": [
+								"\"Fira Code\", monospace",
+								"\"JetBrains Mono\", \"Courier New\", monospace"
+							]
+						},
+						"mono_font_name": {
+							"type": "string",
+							"description": "Display name for monospace font",
+							"default": "Monospace",
+							"examples": ["Fira Code", "JetBrains Mono"]
 						},
 						"heading_font_weight": {
 							"type": "string",
@@ -240,6 +385,130 @@
 							"examples": ["1200px", "1440px", "75rem"]
 						}
 					}
+				}
+			}
+		},
+		"images": {
+			"type": "object",
+			"description": "Image size definitions",
+			"properties": {
+				"featured_image_width": {
+					"type": "integer",
+					"description": "Featured image width in pixels",
+					"default": 1200,
+					"examples": [1200, 1920, 2400]
+				},
+				"featured_image_height": {
+					"type": "integer",
+					"description": "Featured image height in pixels",
+					"default": 675,
+					"examples": [675, 1080, 1350]
+				},
+				"thumbnail_width": {
+					"type": "integer",
+					"description": "Thumbnail width in pixels",
+					"default": 300,
+					"examples": [300, 400, 500]
+				},
+				"thumbnail_height": {
+					"type": "integer",
+					"description": "Thumbnail height in pixels",
+					"default": 300,
+					"examples": [300, 400, 500]
+				},
+				"gallery_image_width": {
+					"type": "integer",
+					"description": "Gallery image width in pixels",
+					"default": 800,
+					"examples": [800, 1024, 1200]
+				},
+				"gallery_image_height": {
+					"type": "integer",
+					"description": "Gallery image height in pixels",
+					"default": 600,
+					"examples": [600, 768, 900]
+				},
+				"logo_width": {
+					"type": "integer",
+					"description": "Custom logo width in pixels",
+					"default": 250,
+					"examples": [200, 250, 300]
+				},
+				"logo_height": {
+					"type": "integer",
+					"description": "Custom logo height in pixels",
+					"default": 100,
+					"examples": [80, 100, 120]
+				}
+			}
+		},
+		"content": {
+			"type": "object",
+			"description": "Default content strings and settings",
+			"properties": {
+				"excerpt_length": {
+					"type": "integer",
+					"description": "Number of words in excerpts",
+					"default": 55,
+					"minimum": 20,
+					"maximum": 200
+				},
+				"excerpt_more": {
+					"type": "string",
+					"description": "Excerpt 'more' text",
+					"default": "..."
+				},
+				"skip_link_text": {
+					"type": "string",
+					"description": "Skip to content link text",
+					"default": "Skip to content"
+				},
+				"button_border_radius": {
+					"type": "string",
+					"description": "Default button border radius",
+					"default": "4px",
+					"examples": ["0", "4px", "8px", "9999px"]
+				},
+				"hero_title": {
+					"type": "string",
+					"description": "Default hero section title",
+					"default": "Welcome to Your New Website",
+					"examples": ["Discover Your Next Adventure", "Transform Your Business"]
+				},
+				"hero_description": {
+					"type": "string",
+					"description": "Default hero section description",
+					"default": "This is a modern WordPress block theme built with performance and accessibility in mind.",
+					"examples": ["Explore amazing destinations with expert guides"]
+				},
+				"hero_button_text": {
+					"type": "string",
+					"description": "Default hero CTA button text",
+					"default": "Get Started",
+					"examples": ["Book Now", "Learn More", "Start Your Journey"]
+				},
+				"cta_title": {
+					"type": "string",
+					"description": "Default call-to-action section title",
+					"default": "Ready to Get Started?",
+					"examples": ["Book Your Adventure Today"]
+				},
+				"cta_description": {
+					"type": "string",
+					"description": "Default call-to-action description",
+					"default": "Join thousands of satisfied customers.",
+					"examples": ["Don't miss out on the experience of a lifetime"]
+				},
+				"cta_button_text": {
+					"type": "string",
+					"description": "Default CTA button text",
+					"default": "Contact Us",
+					"examples": ["Book Now", "Get in Touch"]
+				},
+				"footer_text": {
+					"type": "string",
+					"description": "Footer copyright text ({{year}} and {{author}} will be replaced)",
+					"default": "© {{year}} {{author}}. All rights reserved."
 				}
 			}
 		},
@@ -477,40 +746,6 @@
 					"type": "boolean",
 					"description": "Enable WooCommerce compatibility",
 					"default": false
-				}
-			}
-		},
-		"content": {
-			"type": "object",
-			"description": "Default content strings and settings",
-			"properties": {
-				"excerpt_length": {
-					"type": "integer",
-					"description": "Number of words in excerpts",
-					"default": 55,
-					"minimum": 20,
-					"maximum": 200
-				},
-				"excerpt_more": {
-					"type": "string",
-					"description": "Excerpt 'more' text",
-					"default": "..."
-				},
-				"skip_link_text": {
-					"type": "string",
-					"description": "Skip to content link text",
-					"default": "Skip to content"
-				},
-				"copyright_text": {
-					"type": "string",
-					"description": "Footer copyright text ({{year}} and {{author}} will be replaced)",
-					"default": "© {{year}} {{author}}. All rights reserved."
-				},
-				"button_border_radius": {
-					"type": "string",
-					"description": "Default button border radius",
-					"default": "4px",
-					"examples": ["0", "4px", "8px", "9999px"]
 				}
 			}
 		}
