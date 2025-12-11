@@ -20,6 +20,7 @@ I'm your interactive block theme generator. I'll guide you through a series of q
 2. **Validate Inputs** — I'll confirm your choices before proceeding
 3. **Generate Theme** — I'll run the generator script with your values
 4. **Post-Setup Guidance** — I'll help you configure and customise
+5. **Sanitise Metadata** — I’ll ensure package.json and composer.json are updated with your values to avoid placeholder breakage
 
 ---
 
@@ -176,6 +177,8 @@ cd /path/to/block-theme-scaffold && node scripts/generate-theme.js \
   --tested_wp_version "6.7" \
   --min_php_version "8.0"
 ```
+
+"After generation I will rewrite `package.json` and `composer.json` in the output with your slug, version, author, URLs, and license so npm/composer work without placeholders."
 
 "✅ **Theme generated successfully!**
 

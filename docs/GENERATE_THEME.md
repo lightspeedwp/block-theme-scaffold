@@ -739,6 +739,8 @@ node scripts/build.js version 1.2.0
 node scripts/build.js init
 ```
 
+> Metadata sanitisation: after generation the script rewrites `package.json` (name, version, author, license, homepage/repository/bugs) and `composer.json` (name, version, authors) using your provided values so npm/composer installs work without leftover mustache placeholders.
+
 ### npm Scripts
 
 The generated `package.json` includes these scripts:

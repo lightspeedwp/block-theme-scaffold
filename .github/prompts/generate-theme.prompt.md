@@ -94,6 +94,8 @@ node scripts/generate-theme.js \
   --min_php_version "{{min_php_version}}"
 ```
 
+After generation, I'll rewrite `package.json` and `composer.json` in the output folder with your slug, version, author, URLs, and license so npm/composer installs work without placeholders.
+
 ---
 
 ## Post-Generation Steps

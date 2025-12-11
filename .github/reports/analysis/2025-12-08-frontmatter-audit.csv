@@ -1,0 +1,69 @@
+Found 60 markdown files
+File,Reference Count,References,Circular,Recommendation
+"/Users/ash/Studio/tour-operator/wp-content/themes/block-theme-scaffold/AGENTS.md",0,"",NO,OK
+"/Users/ash/Studio/tour-operator/wp-content/themes/block-theme-scaffold/CHANGELOG.md",0,"",NO,OK
+"/Users/ash/Studio/tour-operator/wp-content/themes/block-theme-scaffold/CONTEXT_REDUCTION_TASKS.md",0,"",NO,OK
+"/Users/ash/Studio/tour-operator/wp-content/themes/block-theme-scaffold/CONTRIBUTING.md",0,"",NO,OK
+"/Users/ash/Studio/tour-operator/wp-content/themes/block-theme-scaffold/DEVELOPMENT.md",0,"",NO,OK
+"/Users/ash/Studio/tour-operator/wp-content/themes/block-theme-scaffold/GOVERNANCE-START-HERE.md",0,"",NO,OK
+"/Users/ash/Studio/tour-operator/wp-content/themes/block-theme-scaffold/README.md",0,"",NO,OK
+"/Users/ash/Studio/tour-operator/wp-content/themes/block-theme-scaffold/SECURITY.md",0,"",NO,OK
+"/Users/ash/Studio/tour-operator/wp-content/themes/block-theme-scaffold/SUPPORT.md",0,"",NO,OK
+"/Users/ash/Studio/tour-operator/wp-content/themes/block-theme-scaffold/WORDPRESS-PACKAGES-VALIDATION.md",0,"",NO,OK
+"/Users/ash/Studio/tour-operator/wp-content/themes/block-theme-scaffold/bin/README.md",0,"",NO,OK
+"/Users/ash/Studio/tour-operator/wp-content/themes/block-theme-scaffold/docs/AGENTS_OVERVIEW.md",0,"",NO,OK
+"/Users/ash/Studio/tour-operator/wp-content/themes/block-theme-scaffold/docs/API_REFERENCE.md",0,"",NO,OK
+"/Users/ash/Studio/tour-operator/wp-content/themes/block-theme-scaffold/docs/ARCHITECTURE.md",0,"",NO,OK
+"/Users/ash/Studio/tour-operator/wp-content/themes/block-theme-scaffold/docs/BUILD_PROCESS.md",0,"",NO,OK
+"/Users/ash/Studio/tour-operator/wp-content/themes/block-theme-scaffold/docs/CONFIGS.md",0,"",NO,OK
+"/Users/ash/Studio/tour-operator/wp-content/themes/block-theme-scaffold/docs/DEPRECATION.md",0,"",NO,OK
+"/Users/ash/Studio/tour-operator/wp-content/themes/block-theme-scaffold/docs/FOLDER_STRUCTURE.md",0,"",NO,OK
+"/Users/ash/Studio/tour-operator/wp-content/themes/block-theme-scaffold/docs/GENERATE_THEME.md",0,"",NO,OK
+"/Users/ash/Studio/tour-operator/wp-content/themes/block-theme-scaffold/docs/GOVERNANCE.md",0,"",NO,OK
+"/Users/ash/Studio/tour-operator/wp-content/themes/block-theme-scaffold/docs/HUSKY_PRECOMMIT.md",0,"",NO,OK
+"/Users/ash/Studio/tour-operator/wp-content/themes/block-theme-scaffold/docs/INTERNATIONALIZATION.md",0,"",NO,OK
+"/Users/ash/Studio/tour-operator/wp-content/themes/block-theme-scaffold/docs/LINTING.md",0,"",NO,OK
+"/Users/ash/Studio/tour-operator/wp-content/themes/block-theme-scaffold/docs/LOGGING.md",0,"",NO,OK
+"/Users/ash/Studio/tour-operator/wp-content/themes/block-theme-scaffold/docs/PERFORMANCE.md",0,"",NO,OK
+"/Users/ash/Studio/tour-operator/wp-content/themes/block-theme-scaffold/docs/README.md",0,"",NO,OK
+"/Users/ash/Studio/tour-operator/wp-content/themes/block-theme-scaffold/docs/REPORTING.md",0,"",NO,OK
+"/Users/ash/Studio/tour-operator/wp-content/themes/block-theme-scaffold/docs/SECURITY.md",0,"",NO,OK
+"/Users/ash/Studio/tour-operator/wp-content/themes/block-theme-scaffold/docs/STYLES.md",0,"",NO,OK
+"/Users/ash/Studio/tour-operator/wp-content/themes/block-theme-scaffold/docs/TESTING.md",0,"",NO,OK
+"/Users/ash/Studio/tour-operator/wp-content/themes/block-theme-scaffold/docs/VALIDATION.md",0,"",NO,OK
+"/Users/ash/Studio/tour-operator/wp-content/themes/block-theme-scaffold/docs/WORDPRESS_PACKAGES.md",0,"",NO,OK
+"/Users/ash/Studio/tour-operator/wp-content/themes/block-theme-scaffold/docs/WORKFLOWS.md",0,"",NO,OK
+"/Users/ash/Studio/tour-operator/wp-content/themes/block-theme-scaffold/docs/config/README.md",0,"",NO,OK
+"/Users/ash/Studio/tour-operator/wp-content/themes/block-theme-scaffold/docs/config/babel.md",0,"",NO,OK
+"/Users/ash/Studio/tour-operator/wp-content/themes/block-theme-scaffold/docs/config/eslint.md",0,"",NO,OK
+"/Users/ash/Studio/tour-operator/wp-content/themes/block-theme-scaffold/docs/config/jest.md",0,"",NO,OK
+"/Users/ash/Studio/tour-operator/wp-content/themes/block-theme-scaffold/docs/config/npm-package-json-lint.md",0,"",NO,OK
+"/Users/ash/Studio/tour-operator/wp-content/themes/block-theme-scaffold/docs/config/playwright.md",0,"",NO,OK
+"/Users/ash/Studio/tour-operator/wp-content/themes/block-theme-scaffold/docs/config/postcss.md",0,"",NO,OK
+"/Users/ash/Studio/tour-operator/wp-content/themes/block-theme-scaffold/docs/config/prettier.md",0,"",NO,OK
+"/Users/ash/Studio/tour-operator/wp-content/themes/block-theme-scaffold/docs/config/stylelint.md",0,"",NO,OK
+"/Users/ash/Studio/tour-operator/wp-content/themes/block-theme-scaffold/docs/config/webpack.md",0,"",NO,OK
+"/Users/ash/Studio/tour-operator/wp-content/themes/block-theme-scaffold/docs/config/wp-scripts.md",0,"",NO,OK
+"/Users/ash/Studio/tour-operator/wp-content/themes/block-theme-scaffold/inc/README.md",0,"",NO,OK
+"/Users/ash/Studio/tour-operator/wp-content/themes/block-theme-scaffold/languages/README.md",0,"",NO,OK
+"/Users/ash/Studio/tour-operator/wp-content/themes/block-theme-scaffold/parts/README.md",0,"",NO,OK
+"/Users/ash/Studio/tour-operator/wp-content/themes/block-theme-scaffold/patterns/README.md",0,"",NO,OK
+"/Users/ash/Studio/tour-operator/wp-content/themes/block-theme-scaffold/screenshot.png.md",0,"",NO,OK
+"/Users/ash/Studio/tour-operator/wp-content/themes/block-theme-scaffold/src/README.md",0,"",NO,OK
+"/Users/ash/Studio/tour-operator/wp-content/themes/block-theme-scaffold/src/css/README.md",0,"",NO,OK
+"/Users/ash/Studio/tour-operator/wp-content/themes/block-theme-scaffold/src/js/README.md",0,"",NO,OK
+"/Users/ash/Studio/tour-operator/wp-content/themes/block-theme-scaffold/styles/README.md",0,"",NO,OK
+"/Users/ash/Studio/tour-operator/wp-content/themes/block-theme-scaffold/styles/blocks/README.md",0,"",NO,OK
+"/Users/ash/Studio/tour-operator/wp-content/themes/block-theme-scaffold/styles/sections/README.md",0,"",NO,OK
+"/Users/ash/Studio/tour-operator/wp-content/themes/block-theme-scaffold/templates/README.md",0,"",NO,OK
+"/Users/ash/Studio/tour-operator/wp-content/themes/block-theme-scaffold/tests/README.md",0,"",NO,OK
+"/Users/ash/Studio/tour-operator/wp-content/themes/block-theme-scaffold/tests/bin/README.md",0,"",NO,OK
+"/Users/ash/Studio/tour-operator/wp-content/themes/block-theme-scaffold/tests/e2e/README.md",0,"",NO,OK
+"/Users/ash/Studio/tour-operator/wp-content/themes/block-theme-scaffold/tests/js/README.md",0,"",NO,OK
+
+Audit complete!
+Recommendations:
+  OK            - Reference count is reasonable (0-3)
+  REVIEW        - Consider reviewing references (4-6)
+  REDUCE        - High reference count, consider reducing (7+)
+  REMOVE-CIRCULAR - Circular reference detected, must fix

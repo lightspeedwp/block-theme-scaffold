@@ -19,6 +19,7 @@ The Block Theme Scaffold uses **mustache template variables** (`{{variable_name}
 3. Suggest sensible defaults for optional variables
 4. Explain what each variable controls and where it's used
 5. Execute the generator script with collected values
+6. Confirm that `package.json` and `composer.json` in the generated theme have been rewritten with the provided slug, author, URLs, license, and version (no placeholders remain)
 
 ## Mustache Variable System
 

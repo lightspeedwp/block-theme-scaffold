@@ -444,6 +444,68 @@ For more information, see:
 		return result;
 	}
 
+	function toPackageVendor(value) {
+		const vendor = value
+			.toLowerCase()
+			.replace(/[^a-z0-9]+/g, '-')
+			.replace(/^-+|-+$/g, '');
+		return vendor || 'theme-vendor';
+	}
+
+	function updateMetadataFiles(destRoot) {
+		// package.json metadata alignment
+		const pkgPath = path.join(destRoot, 'package.json');
+		if (fs.existsSync(pkgPath)) {
+			try {
+				const pkg = JSON.parse(fs.readFileSync(pkgPath, 'utf8'));
+				pkg.name = placeholders['{{theme_slug}}'];
+				pkg.version = placeholders['{{version}}'];
+				pkg.author = placeholders['{{author}}'];
+				pkg.license = placeholders['{{license}}'];
+				pkg.homepage = placeholders['{{theme_uri}}'];
+				pkg.repository = pkg.repository || {};
+				pkg.repository.url = placeholders['{{theme_repo_url}}'];
+				pkg.bugs = pkg.bugs || {};
+				pkg.bugs.url = `${placeholders['{{theme_repo_url}}']}/issues`;
+				pkg.themeMeta = pkg.themeMeta || {};
+				pkg.themeMeta.updated = new Date().toISOString().slice(0, 10);
+				fs.writeFileSync(pkgPath, JSON.stringify(pkg, null, 2));
+				console.log('✓ package.json metadata updated');
+			} catch (e) {
+				console.warn(`⚠️  Skipped package.json update: ${e.message}`);
+			}
+		}
+
+		// composer.json metadata alignment
+		const composerPath = path.join(destRoot, 'composer.json');
+		if (fs.existsSync(composerPath)) {
+			try {
+				const composer = JSON.parse(
+					fs.readFileSync(composerPath, 'utf8')
+				);
+				const vendor = toPackageVendor(placeholders['{{author}}']);
+				composer.name = `${vendor}/${placeholders['{{theme_slug}}']}`;
+				composer.version = placeholders['{{version}}'];
+				composer.description =
+					composer.description ||
+					`WordPress block theme: ${placeholders['{{theme_name}}']}`;
+				composer.authors = [
+					{
+						name: placeholders['{{author}}'],
+						homepage: placeholders['{{author_uri}}'],
+					},
+				];
+				fs.writeFileSync(
+					composerPath,
+					JSON.stringify(composer, null, 2)
+				);
+				console.log('✓ composer.json metadata updated');
+			} catch (e) {
+				console.warn(`⚠️  Skipped composer.json update: ${e.message}`);
+			}
+		}
+	}
+
 	function copyAndReplace(src, dest) {
 		const stat = fs.statSync(src);
 		if (stat.isDirectory()) {
@@ -525,6 +587,8 @@ For more information, see:
 			}
 			copyAndReplace(path.join(binSrc, file), path.join(binDest, file));
 		}
+
+		updateMetadataFiles(outputDir);
 
 		console.log(`
 ✓ Theme generated successfully!

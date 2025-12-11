@@ -120,6 +120,11 @@ function checkVersionConsistency() {
 		const packageFile = path.resolve(__dirname, '..', 'package.json');
 		const pkg = JSON.parse(fs.readFileSync(packageFile, 'utf8'));
 
+		// Read composer.json (optional version)
+		const composerFile = path.resolve(__dirname, '..', 'composer.json');
+		const composer = JSON.parse(fs.readFileSync(composerFile, 'utf8'));
+		const composerVersion = composer.version || null;
+
 		// Read style.css
 		const styleFile = path.resolve(__dirname, '..', 'style.css');
 		const styleContent = fs.readFileSync(styleFile, 'utf8');
@@ -135,7 +140,20 @@ function checkVersionConsistency() {
 			'style.css': styleVersion,
 		};
 
-		const allMatch = Object.values(versions).every((v) => v === version);
+		if (composerVersion) {
+			versions['composer.json'] = composerVersion;
+		} else {
+			warning('composer.json missing version field');
+			addResult(
+				'important',
+				'version',
+				'composer.json is missing a version field',
+				'warn'
+			);
+		}
+
+		const expectedVersions = Object.values(versions).filter(Boolean);
+		const allMatch = expectedVersions.every((v) => v === version);
 
 		if (allMatch) {
 			success(`Version consistency: ${version}`);
@@ -179,7 +197,7 @@ function checkQualityGates() {
 
 	// Linting
 	info('Running linting...');
-	const lintResult = runCommand('npm run lint:dry-run', { silent: true });
+	const lintResult = runCommand('npm run lint', { silent: true });
 	if (lintResult.success) {
 		success('Linting: PASSED');
 		addResult('critical', 'quality', 'Linting passed', 'pass');
@@ -210,15 +228,15 @@ function checkQualityGates() {
 		);
 	}
 
-	// Dry-run tests
-	info('Running dry-run tests...');
-	const testResult = runCommand('npm run test:dry-run:all', { silent: true });
+	// Full test suite
+	info('Running full test suite...');
+	const testResult = runCommand('npm run test', { silent: true });
 	if (testResult.success) {
 		success('Tests: PASSED');
-		addResult('critical', 'quality', 'Dry-run tests passed', 'pass');
+		addResult('critical', 'quality', 'Full test suite passed', 'pass');
 	} else {
 		error('Tests: FAILED');
-		addResult('critical', 'quality', 'Dry-run tests failed', 'fail');
+		addResult('critical', 'quality', 'Full test suite failed', 'fail');
 		allPassed = false;
 	}
 
@@ -230,6 +248,10 @@ function checkDocumentation() {
 	header('Documentation Verification');
 
 	const rootDir = path.resolve(__dirname, '..');
+	const versionFile = path.join(rootDir, 'VERSION');
+	const currentVersion = fs.existsSync(versionFile)
+		? fs.readFileSync(versionFile, 'utf8').trim()
+		: null;
 
 	// Check README.md exists and is current
 	const readmePath = path.join(rootDir, 'README.md');
@@ -287,6 +309,31 @@ function checkDocumentation() {
 				'CHANGELOG.md needs release dates',
 				'warn'
 			);
+		}
+
+		if (currentVersion) {
+			const versionEntryPattern = new RegExp(
+				`## \\[${currentVersion}\\] - \\d{4}-\\d{2}-\\d{2}`
+			);
+			if (versionEntryPattern.test(changelogContent)) {
+				success(`CHANGELOG.md includes release entry for ${currentVersion}`);
+				addResult(
+					'critical',
+					'docs',
+					`CHANGELOG.md has entry for ${currentVersion}`,
+					'pass'
+				);
+			} else {
+				error(
+					`CHANGELOG.md missing release entry for ${currentVersion} with date`
+				);
+				addResult(
+					'critical',
+					'docs',
+					`CHANGELOG.md missing entry for ${currentVersion}`,
+					'fail'
+				);
+			}
 		}
 	} else {
 		error('CHANGELOG.md not found');
@@ -381,7 +428,11 @@ function runSecurityAudit() {
 function generateReport() {
 	header('Release Readiness Report');
 
-	const version = checkVersionConsistency().version || 'Unknown';
+	const versionFile = path.resolve(__dirname, '..', 'VERSION');
+	const version = fs.existsSync(versionFile)
+		? fs.readFileSync(versionFile, 'utf8').trim()
+		: 'Unknown';
+	const releaseVersion = version === 'Unknown' ? 'X.Y.Z' : version;
 
 	console.log(
 		colors.cyan +
@@ -464,12 +515,17 @@ function generateReport() {
 	// Next steps
 	console.log('\n' + colors.bold + '### Next Steps\n' + colors.reset);
 	if (isReady) {
-		console.log('1. Review changes: git diff');
-		console.log('2. Create release branch: git checkout -b release/1.0.0');
 		console.log(
-			'3. Commit: git commit -am "chore: prepare release v1.0.0"'
+			'1. Run quality checks: npm run format && npm run test && npm run test:dry-run:all && npm audit'
 		);
-		console.log('4. Follow: docs/RELEASE_PROCESS.md');
+		console.log(`2. Create release branch: git checkout -b release/${releaseVersion}`);
+		console.log(
+			`3. Commit: git commit -am "chore: prepare release v${releaseVersion}"`
+		);
+		console.log(
+			`4. Tag: git tag -a v${releaseVersion} -m "Release v${releaseVersion}"`
+		);
+		console.log('5. Follow merge steps in docs/RELEASE_PROCESS.md');
 	} else {
 		console.log('1. Fix critical blockers listed above');
 		console.log('2. Re-run validation: npm run release:validate');

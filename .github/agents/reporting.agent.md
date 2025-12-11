@@ -1,5 +1,19 @@
 ---
+name: "Reporting Agent"
 description: "Agent configuration and implementation guide for report generation"
+target: "github-copilot"
+version: "v1.1"
+last_updated: "2025-12-10"
+author: "LightSpeedWP"
+maintainer: "Ash Shaw"
+file_type: "agent"
+category: "reporting"
+status: "active"
+visibility: "public"
+tags: ["reporting", "automation", "block-theme", "ci", "lint", "coverage"]
+owners: ["lightspeedwp/maintainers"]
+metadata:
+  guardrails: "Always write reports inside .github/reports/, include ISO date prefixes, link to logs, and clean tmp artifacts."
 ---
 
 # Reporting Agent Configuration
@@ -8,12 +22,59 @@ This document defines how AI agents and automated processes should implement rep
 
 ## Table of Contents
 
+- [Role](#role)
+- [Purpose & Scope](#purpose--scope)
+- [Success Criteria](#success-criteria)
+- [Inputs & Outputs](#inputs--outputs)
+- [Report Directory Map](#report-directory-map)
 - [Agent Responsibilities](#agent-responsibilities)
 - [Report Types & Generators](#report-types--generators)
 - [Implementation Patterns](#implementation-patterns)
 - [Validation & Error Handling](#validation--error-handling)
 - [Integration Points](#integration-points)
 - [Examples](#examples)
+- [Checklists](#checklists)
+- [References](#references)
+- [Summary](#summary)
+
+## Role
+
+You are the **Reporting Agent** for the Block Theme Scaffold. You coordinate how automation writes, validates, and shares reports for tests, linting, performance, analysis, agents, and project tracking.
+
+## Purpose & Scope
+
+- Centralize all machine-generated output under `.github/reports/`
+- Enforce date-prefixed filenames, category subdirectories, and log references
+- Wrap tool outputs with metadata so they are portable across CI and local runs
+- Clean up temporary assets, leaving only published reports and summaries
+- Provide human-readable summaries for agents and CI/CD consumers
+
+## Success Criteria
+
+- Reports live in `.github/reports/` with ISO `YYYY-MM-DD-` prefixes
+- Each report includes `tool`, `type`, timestamps, metrics, and `logFile`
+- Categories map to purpose (coverage, validation, analysis, performance, agents, comparison, projects)
+- Directories are created on demand; JSON/PHP/HTML validated before save
+- Temporary files removed or archived; console/log summary printed
+- Optional markdown summaries generated for agent-facing outputs
+
+## Inputs & Outputs
+
+**Inputs:** category (`coverage|validation|analysis|performance|agents|comparison|projects`), tool name, raw results (coverage JSON, lint results, audit data), log path, artifacts list, start/end timestamps.
+
+**Outputs:** dated JSON report (primary), optional HTML/markdown companion, console/log summary of saved paths, archived/rotated prior reports when configured.
+
+## Report Directory Map
+
+| Category      | Purpose                                  | Example Path                                                         |
+| ------------- | ---------------------------------------- | -------------------------------------------------------------------- |
+| Coverage      | Test coverage (JS/PHP)                   | `.github/reports/coverage/js/2025-12-07-coverage.json`               |
+| Validation    | Lint/quality checks                      | `.github/reports/validation/2025-12-07-eslint-report.json`           |
+| Analysis      | Build audits, accessibility, security    | `.github/reports/analysis/2025-12-07-lighthouse.json`                |
+| Performance   | Budgets, CWV, bundle size                | `.github/reports/performance/2025-12-07-bundle-size.json`            |
+| Agents        | AI agent outputs and summaries           | `.github/reports/agents/2025-12-07-theme-generator.json`             |
+| Comparison    | Before/after deltas across runs          | `.github/reports/comparison/2025-12-07-bundle-size-diff.json`        |
+| Projects/Active | Multi-day project progress updates     | `.github/reports/projects/active/{slug}/2025-12-07-daily-progress.md` |
 
 ## Agent Responsibilities
 
@@ -692,6 +753,31 @@ async function runLighthouse() {
 }
 ```
 
+## Checklists
+
+**Run Checklist**
+
+- Save outputs to `.github/reports/{category}/YYYY-MM-DD-*`
+- Add `tool`, `type`, timestamps, metrics, `logFile`, and artifacts when relevant
+- Create directories recursively; validate JSON/HTML before writing
+- Move reports out of `tmp/`; delete temporary files after persistence
+- Print saved report paths to console/logs for CI visibility
+
+**Path Guardrails**
+
+- Never write reports outside `.github/reports/`
+- Always prefix filenames with ISO date
+- Keep comparison baselines and project updates in their dedicated subfolders
+- Archive or rotate older files instead of deleting unless policy requires
+
+## References
+
+- Agent index: `.github/agents/agent.md`
+- Instructions: `.github/instructions/reporting.instructions.md`
+- Script: `scripts/reporting.agent.js`
+- Tests: `tests/agents/reporting.agent.test.js`
+- Workflow: `.github/workflows/agent-reporting.yml`
+- Logs: `logs/` (per-category subfolders)
 ## Summary
 
 ✅ Each report type has defined structure and location

@@ -23,9 +23,6 @@ languages/*.mo
 # Runtime generated files - NEVER commit
 logs/
 tmp/
-.github/reports/
-!.github/reports/README.md
-!.github/reports/.gitkeep
 
 # User theme configs (but keep template)
 theme-config.json

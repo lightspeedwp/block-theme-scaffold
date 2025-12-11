@@ -86,8 +86,8 @@ const testPlaceholders = {
 
 	// Dates
 	'2025': new Date().getFullYear().toString(),
-	'2025-12-11T11:44:47.312Z': new Date().toISOString(),
-	'2025-12-11T11:44:47.312Z': new Date().toISOString(),
+	'2025-12-11T12:06:10.210Z': new Date().toISOString(),
+	'2025-12-11T12:06:10.210Z': new Date().toISOString(),
 
 	// JavaScript/UI specific
 	'Skip to content': 'Skip to content',
