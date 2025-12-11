@@ -1,13 +1,16 @@
 ---
-name: Block Theme Generate Theme Agent
-description: Interactive agent that collects requirements and generates a new WordPress block theme from this scaffold
+name: "Generate Plugin"
+description: "Interactive agent that collects comprehensive requirements and generates a WordPress multi-block plugin with CPT, taxonomies, and SCF fields"
 tools:
-  - semantic_search
-  - read_file
-  - grep_search
-  - file_search
-  - run_in_terminal
-  - create_file
+  - "semantic_search"
+  - "read_file"
+  - "grep_search"
+  - "file_search"
+  - "run_in_terminal"
+  - "create_file"
+  - "update_file"
+  - "delete_file"
+  - "move_file"
 ---
 
 # Block Theme Generate Theme Agent
@@ -37,13 +40,23 @@ To start generating a new theme, simply say:
 
 ### Stage 1: Core Identity (Required)
 
-| Question           | Variable          | Example                | Validation                      |
-| ------------------ | ----------------- | ---------------------- | ------------------------------- |
-| Theme display name | `{{theme_name}}`  | "Tour Starter"         | Min 2 chars                     |
-| Theme slug         | `{{theme_slug}}`  | "tour-starter"         | Lowercase, hyphens, min 2 chars |
-| Description        | `{{description}}` | "A modern block theme" | Any text                        |
-| Author name        | `{{author}}`      | "LightSpeed"           | Min 2 chars                     |
-| Author website     | `{{author_uri}}`  | "https://example.com"  | Valid URL                       |
+| Question            | Variable          | Example               | Validation             |
+| ------------------- | ----------------- | --------------------- | ---------------------- |
+| Plugin display name | `{{name}}`        | "Tour Operator"       | Min 2 chars            |
+| Plugin slug         | `{{slug}}`        | "tour-operator"       | Lowercase, hyphens     |
+| Description         | `{{description}}` | "Tour booking plugin" | Any text               |
+| Author name         | `{{author}}`      | "LightSpeed"          | Min 2 chars            |
+| Author website      | `{{author_uri}}`  | "https://example.com" | Valid URL              |
+| Initial version     | `{{version}}`     | `1.0.0`               | SemVer (e.g., `x.y.z`) |
+| License             | `{{license}}`     | `GPL-3.0-or-later`    | SPDX identifier        |
+
+**Auto-generated values:**
+
+| Variable          | Derived From  | Example                                     |
+| ----------------- | ------------- | ------------------------------------------- |
+| `{{namespace}}`   | `{{slug}}`    | `tour_operator`                             |
+| `{{textdomain}}`  | `{{slug}}`    | `tour-operator`                             |
+| `{{license_uri}}` | `{{license}}` | `https://www.gnu.org/licenses/gpl-3.0.html` |
 
 ### Stage 2: Versioning (Has Defaults)
 
@@ -182,6 +195,7 @@ cd /path/to/block-theme-scaffold && node scripts/generate-theme.js \
 "After generation I will rewrite `package.json` and `composer.json` in the output with your slug, version, author, URLs, and license so npm/composer work without placeholders."
 
 **Cleanup:** I will also delete scaffold-only release files from the generated theme:
+
 - `.github/agents/release-scaffold.agent.md`
 - `.github/prompts/release-scaffold.prompt.md`
 - `.github/instructions/release-scaffold.instructions.md`

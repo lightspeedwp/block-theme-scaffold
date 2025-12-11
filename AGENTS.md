@@ -29,9 +29,14 @@ This repository is block theme–first and designed for advanced AI/Copilot/agen
 
 ## Agent Test Status
 
-| Agent | Tests | Notes |
-| ----- | ----- | ---------------------------- |
-| Generate Theme | ✅ | Passing - tests/bin/generate-theme.test.js, tests/agents/generate-theme.agent.test.js |
+| Agent                 | Tests | Notes                                                  |
+| --------------------- | ----- | ------------------------------------------------------ |
+| Block Theme Build     | ✅    | Passing - `scripts/__tests__/block-theme-build.agent.test.js` |
+| Development Assistant | ✅    | Passing - `tests/agents/development-assistant.agent.test.js` |
+| Gemini                | ✅    | Passing - `tests/agents/gemini.agent.test.js`          |
+| Generate Theme        | ✅    | Passing - `tests/agents/generate-theme.agent.test.js`  |
+| Release Manager       | ✅    | Passing - `tests/agents/release.agent.test.js`         |
+| Reporting             | ✅    | Passing - `tests/agents/reporting.agent.test.js`       |
 
 > **Note:** As agents are developed and tested, this table will be updated with their status. ✅ indicates passing tests, ❌ indicates failing tests, and ⏳ indicates tests pending implementation.
 
