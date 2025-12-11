@@ -1,7 +1,7 @@
 ---
-title: Agent Index
-description: Complete reference for automation agents
-date: 2025-12-08
+name: "Block Theme Scaffold Agent Index"
+description: "Complete reference for automation agents"
+date: "2025-12-08"
 ---
 
 # Agent Index

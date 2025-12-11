@@ -1,5 +1,5 @@
 ---
-title: "Block Theme Build Agent Spec"
+name: "Block Theme Build Agent Spec"
 description: "Specification for the build, lint, and test automation agent for block themes"
 category: "Agent"
 type: "Agent Specification"

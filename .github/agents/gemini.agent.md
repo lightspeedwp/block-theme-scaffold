@@ -1,5 +1,5 @@
 ---
-title: Gemini Agent Specification
+name: "Gemini Agent Specification"
 description: Documentation for the Gemini Master Control Program (MCP) agent
 category: Project
 type: Reference

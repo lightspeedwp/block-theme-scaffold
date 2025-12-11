@@ -1,5 +1,5 @@
 ---
-title: "Template: Agent Specification"
+name: "Template: Agent Specification"
 description: "Reusable LightSpeedWP agent spec template covering role, behaviours, tooling, schemas, safety, and validation for block-theme-scaffold."
 version: "v1.1"
 last_updated: "2025-12-11"
@@ -57,14 +57,14 @@ metadata:
 
 # Repository Mapping
 
-| Area     | Path/ID placeholder                          | Notes                                     |
-| -------- | -------------------------------------------- | ----------------------------------------- |
-| Spec     | `.github/agents/{{agent_slug}}.agent.md`     | This file                                 |
-| Prompt   | `.github/prompts/{{agent_slug}}.prompt.md`   | Input patterns, required variables        |
-| Script   | `scripts/{{agent_slug}}.agent.js`            | Implementation/entrypoint                 |
-| Tests    | `tests/agents/{{agent_slug}}.agent.test.js`  | Validation suite (unit/integration)       |
-| Workflow | `.github/workflows/{{agent_workflow}}.yml`   | CI trigger for build/lint/e2e             |
-| Reports  | `.github/reports/agents/{{date}}-{{slug}}.*` | Logs/outputs written by the agent         |
+| Area     | Path/ID placeholder                          | Notes                               |
+| -------- | -------------------------------------------- | ----------------------------------- |
+| Spec     | `.github/agents/{{agent_slug}}.agent.md`     | This file                           |
+| Prompt   | `.github/prompts/{{agent_slug}}.prompt.md`   | Input patterns, required variables  |
+| Script   | `scripts/{{agent_slug}}.agent.js`            | Implementation/entrypoint           |
+| Tests    | `tests/agents/{{agent_slug}}.agent.test.js`  | Validation suite (unit/integration) |
+| Workflow | `.github/workflows/{{agent_workflow}}.yml`   | CI trigger for build/lint/e2e       |
+| Reports  | `.github/reports/agents/{{date}}-{{slug}}.*` | Logs/outputs written by the agent   |
 
 # 1. Role & Scope
 
