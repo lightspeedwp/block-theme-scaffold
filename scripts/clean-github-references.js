@@ -3,8 +3,8 @@
 const fs = require('fs');
 const path = require('path');
 
-const root = path.resolve(__dirname, '../.github');
-const sectionsRegex = /## (?:See Also(?: [^\n]*)?|References)[\s\S]*?(?=\n## |$)/g;
+const root = path.resolve(__dirname, '..');
+const sectionsRegex = /^(## (?:See Also(?: [^\n]*)?|References))[\s\S]*?(?=\n## |$)/gm;
 
 function getMarkdownFiles(dir) {
   return fs.readdirSync(dir, { withFileTypes: true }).flatMap((entry) => {

@@ -466,10 +466,3 @@ All 9 font sizes (Tiny through Colossal) now include fluid configuration:
 - Advanced typography scales
 
 ---
-
-## References
-
-- [WordPress theme.json Documentation](https://developer.wordpress.org/themes/global-settings-and-styles/)
-- [WP 6.9 Schema](https://schemas.wp.org/wp/6.9/theme.json)
-- [WCAG 2.1 Guidelines](https://www.w3.org/WAI/WCAG21/quickref/)
-- [CSS @supports Specification](https://www.w3.org/TR/css3-conditional/)

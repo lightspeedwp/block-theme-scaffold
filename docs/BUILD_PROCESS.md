@@ -295,13 +295,6 @@ For performance monitoring, optimization strategies, and bundle analysis, see **
 
 The build system supports asset minification and compression through webpack configuration.
 
-## References
-
-- [WordPress Scripts Package](https://developer.wordpress.org/block-editor/reference-guides/packages/packages-scripts/)
-- [WordPress Theme Build Process](https://developer.wordpress.org/themes/advanced-topics/build-process/)
-- [WordPress Internationalization](https://developer.wordpress.org/themes/advanced-topics/internationalization/)
-- [Block Theme Development](https://developer.wordpress.org/themes/block-themes/)
-
 ## Related Documentation
 
 - [LINTING.md](./LINTING.md) - Code quality standards and lint dry-run mode

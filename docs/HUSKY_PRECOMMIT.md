@@ -218,9 +218,3 @@ jobs:
 5. **Type Safety**: Prevents commits with linting issues or failing tests
 6. **Comprehensive Testing**: Runs all appropriate tests before allowing commits
 7. **Fast Feedback**: Catches issues before they reach CI/CD pipeline
-
-## See Also
-
-- [Lint Dry-Run Documentation](./LINTING.md#lint-dry-run-mode) - Detailed dry-run documentation
-- [Test Placeholders](../scripts/test-placeholders.js) - Core placeholder module
-- [Contributing Guidelines](../CONTRIBUTING.md) - General contribution guidelines

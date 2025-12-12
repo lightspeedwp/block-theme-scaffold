@@ -14,8 +14,6 @@ tags:
 applyTo: '**'
 domain: meta
 stability: stable
-references:
-  - ../custom-instructions.md
 ---
 # Master Instructions Index
 

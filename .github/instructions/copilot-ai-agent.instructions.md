@@ -407,12 +407,7 @@ logs/agents/YYYY-MM-DD-generate-theme-agent.log
     "errors": 0,
     "warnings": 0
   },
-  "artifacts": [
-    "output-theme/",
-    "output-theme/style.css",
-    "output-theme/functions.php",
-    "output-theme/theme.json"
-  ],
+  "artifacts": ["output-theme/", "output-theme/style.css", "output-theme/functions.php", "output-theme/theme.json"],
   "config": {
     "theme_slug": "my-awesome-theme",
     "theme_name": "My Awesome Theme",
@@ -594,14 +589,6 @@ npm run lint -- --verbose
 **When in doubt**, reference the docs and ask for clarification rather than making assumptions.
 
 ---
-
-## Version History
-
-| Date       | Change                                   |
-| ---------- | ---------------------------------------- |
-| 2025-12-07 | Initial AI agent instructions            |
-| 2025-12-07 | Added logging and reporting guidance     |
-| 2025-12-07 | Integrated with governance documentation |
 
 ## Examples
 

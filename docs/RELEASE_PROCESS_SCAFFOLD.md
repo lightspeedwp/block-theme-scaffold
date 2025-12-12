@@ -105,12 +105,3 @@ This guide applies **only** to the **block theme scaffold repository**. Generate
 ### Generation smoke test fails
 - Review CLI output for missing replacements or build errors.
 - Fix the scaffold templates, re-run the generator, and repeat validation.
-
-## References
-
-- `.github/agents/release-scaffold.agent.md`
-- `.github/prompts/release-scaffold.prompt.md`
-- `.github/instructions/release-scaffold.instructions.md`
-- `.github/agents/release.agent.md` (templated for generated themes)
-- `docs/GENERATE_THEME.md`
-- `docs/RELEASE_PROCESS.md`
