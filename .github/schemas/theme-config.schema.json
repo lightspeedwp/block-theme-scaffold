@@ -144,19 +144,25 @@
 					"type": "string",
 					"description": "Support forum/page URL",
 					"format": "uri",
-					"examples": ["https://wordpress.org/support/theme/tour-starter"]
+					"examples": [
+						"https://wordpress.org/support/theme/tour-starter"
+					]
 				},
 				"docs_url": {
 					"type": "string",
 					"description": "Documentation URL",
 					"format": "uri",
-					"examples": ["https://github.com/lightspeedwp/tour-starter/wiki"]
+					"examples": [
+						"https://github.com/lightspeedwp/tour-starter/wiki"
+					]
 				},
 				"changelog_url": {
 					"type": "string",
 					"description": "Changelog URL",
 					"format": "uri",
-					"examples": ["https://github.com/lightspeedwp/tour-starter/releases"]
+					"examples": [
+						"https://github.com/lightspeedwp/tour-starter/releases"
+					]
 				},
 				"discord_url": {
 					"type": "string",
@@ -473,13 +479,18 @@
 					"type": "string",
 					"description": "Default hero section title",
 					"default": "Welcome to Your New Website",
-					"examples": ["Discover Your Next Adventure", "Transform Your Business"]
+					"examples": [
+						"Discover Your Next Adventure",
+						"Transform Your Business"
+					]
 				},
 				"hero_description": {
 					"type": "string",
 					"description": "Default hero section description",
 					"default": "This is a modern WordPress block theme built with performance and accessibility in mind.",
-					"examples": ["Explore amazing destinations with expert guides"]
+					"examples": [
+						"Explore amazing destinations with expert guides"
+					]
 				},
 				"hero_button_text": {
 					"type": "string",
@@ -497,7 +508,9 @@
 					"type": "string",
 					"description": "Default call-to-action description",
 					"default": "Join thousands of satisfied customers.",
-					"examples": ["Don't miss out on the experience of a lifetime"]
+					"examples": [
+						"Don't miss out on the experience of a lifetime"
+					]
 				},
 				"cta_button_text": {
 					"type": "string",
