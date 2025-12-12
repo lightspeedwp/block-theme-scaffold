@@ -5,7 +5,7 @@ const path = require('path');
 
 const root = path.resolve(__dirname, '..');
 const sectionsRegex = /## (?:See Also(?: [^\n]*)?|References)[\s\S]*?(?=\n## |$)/g;
-const instructionLinkRegex = /\.instructions\.md/;
+const instructionLinkRegex = /_index\.instructions\.md/;
 const ignoredDirs = ['node_modules', 'vendor', '.git', 'build', 'dist'];
 
 function getMarkdownFiles(dir) {
