@@ -147,11 +147,3 @@ Next Steps:
 3. Re-run dry-run validation
 4. Follow docs/RELEASE_PROCESS_SCAFFOLD.md
 ```
-
-## Related Files
-
-- `docs/RELEASE_PROCESS_SCAFFOLD.md` – scaffold-specific release guide
-- `docs/GENERATE_THEME.md` – mustache variable reference (must stay templated)
-- `.github/prompts/release-scaffold.prompt.md` – interactive scaffold release prompt
-- `.github/instructions/release-scaffold.instructions.md` – companion instructions
-- `.github/agents/release.agent.md` – templated agent kept for generated themes

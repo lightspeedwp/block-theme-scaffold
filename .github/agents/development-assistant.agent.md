@@ -130,13 +130,6 @@ Focus on Playwright, Jest, PHPUnit, and accessibility testing.
 - "Help me style the navigation menu"
 - "Add animation to the hero section"
 
-## Related Files
-
-- [Custom Instructions](../custom-instructions.md)
-- [Prompts](../prompts/prompts.md)
-- [Agent Index](./agent.md)
-- [Block Theme Build Agent](./block-theme-build.agent.md)
-
 ---
 
 I'm here to help you create an amazing WordPress block theme! 🚀

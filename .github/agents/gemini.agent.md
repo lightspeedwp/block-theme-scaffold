@@ -11,12 +11,6 @@ date: 2025-12-01
 
 This document specifies the Gemini Master Control Program (MCP) agent. This agent acts as a primary interface for leveraging Google's Gemini models for advanced code generation, refactoring, and other development tasks within this repository.
 
-**Related Files:**
-
-- [Agent Script](../../scripts/gemini.agent.js)
-- [Custom AI Instructions](../custom-instructions.md)
-- [Main Agent Index](./agent.md)
-
 ---
 
 ## Agent: Gemini MCP

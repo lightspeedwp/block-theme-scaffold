@@ -251,15 +251,3 @@ If validation fails, I'll explain the issue and ask for a corrected value:
 > Would you like to use this suggestion?
 
 ---
-
-## Related Files
-
-- [Generate Theme Script](../../scripts/generate-theme.js)
-- [Generate Theme Prompt](../prompts/generate-theme.prompt.md)
-- [Generate Theme Instructions](../instructions/generate-theme.instructions.md)
-- [Configuration Schema](../schemas/theme-config.schema.json)
-- [Configuration Template](../../theme-config.template.json)
-- [Development Assistant](./development-assistant.agent.md)
-- [Block Theme Build Agent](./block-theme-build.agent.md)
-- [Theme JSON Instructions](../instructions/theme-json.instructions.md)
-- [PHP Coding Standards](../instructions/php-wordpress.instructions.md)

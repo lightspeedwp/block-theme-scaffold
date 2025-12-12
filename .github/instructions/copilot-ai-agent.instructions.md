@@ -599,4 +599,4 @@ npm run lint -- --verbose
 
 - Run `npm run lint`, `npm run test`, `npm audit`, and `npm run coverage` when applicable.
 - Ensure reports and logs are stored under `logs/` and `.github/reports/` with ISO-dated filenames.
-- Verify naming and folder usage against `naming-conventions.instructions.md` and `FOLDER_STRUCTURE.md`.
+- Verify naming and folder usage against `naming-conventions.instructions.md`.

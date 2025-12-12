@@ -9,13 +9,6 @@ status: "draft"
 apply_to: [".github/agents/*.agent.md"]
 file_type: "template"
 tools: ["Copilot Agents"]
-references:
-  - "AGENTS.md"
-  - ".github/agents/agent.md"
-  - ".github/instructions/agent-spec.instructions.md"
-  - ".github/instructions/copilot-ai-agent.instructions.md"
-  - ".github/instructions/block-theme-development.instructions.md"
-  - ".github/workflows/block-theme-build-and-e2e.yml"
 metadata:
   guardrails: "Agents must never perform destructive or irreversible actions without explicit confirmation."
 ---
