@@ -53,9 +53,3 @@ Add pagination to the blog archive template.
 - Ensure the plan stays code-free and includes the four required sections.
 - Tie testing steps to existing commands (`npm run lint`, `npm run test`, etc.).
 - Confirm dependencies on other instruction files when relevant.
-
-## References
-
-- [../custom-instructions.md](../custom-instructions.md)
-- [./block-theme-development.instructions.md](./block-theme-development.instructions.md)
-- [./javascript.instructions.md](./javascript.instructions.md)

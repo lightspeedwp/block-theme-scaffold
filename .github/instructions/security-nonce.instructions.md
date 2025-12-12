@@ -603,14 +603,3 @@ When creating or modifying code:
 | 2025-12-07 | Initial security nonce coding standards       |
 | 2025-12-07 | Added comprehensive patterns and examples     |
 | 2025-12-07 | Added testing requirements and error handling |
-
-## References
-
-- [WordPress Nonces](https://developer.wordpress.org/apis/security/nonces/)
-- [WordPress AJAX](https://developer.wordpress.org/plugins/javascript/ajax/)
-- [WordPress REST API Authentication](https://developer.wordpress.org/rest-api/using-the-rest-api/authentication/)
-- [WordPress Security Handbook](https://developer.wordpress.org/apis/security/)
-- [SECURITY.md](../../docs/SECURITY.md)
-- [VALIDATION.md](../../docs/VALIDATION.md)
-- [TESTING.md](../../docs/TESTING.md)
-- [inc/nonce.php](../../inc/nonce.php)

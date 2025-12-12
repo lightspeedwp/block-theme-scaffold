@@ -393,7 +393,3 @@ Check out the [WP Admin CSS Audit](https://wordpress.github.io/css-audit/public/
 - Run `npm run lint:css` or stylelint with the WordPress configuration.
 - Verify class names and selectors reference existing tokens and avoid IDs or deep nesting.
 - Check contrast and spacing against `theme.json` presets when reviewing styles.
-
-## References
-
-- <https://developer.wordpress.org/coding-standards/wordpress-coding-standards/css/>

@@ -49,12 +49,4 @@ _index.instructions.md (Tier 2 navigator)
 *.instructions.md topic files (Tier 3 subjects)
 ```
 - Tier 3 files should only reference `custom-instructions.md` and `_index.instructions.md` in their metadata.
-- Keep other links in body sections such as `## See Also`, `## Examples`, or `## Resources` so the metadata graph stays clean.
-- Document new instruction files and any path changes here to keep the catalog accurate.
-
-## See Also
-- [Custom AI Instructions](../custom-instructions.md)
-- [AGENTS.md](../../AGENTS.md)
-- [Block Theme Build Agent spec](../agents/block-theme-build.agent.md)
-- [Block Theme Build & E2E workflow](../workflows/block-theme-build-and-e2e.yml)
-- [Instruction authoring guide](./instructions.instructions.md)
+- Keep other links in body sections such as `

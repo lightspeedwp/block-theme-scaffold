@@ -773,15 +773,6 @@ async function runLighthouse() {
 - Keep comparison baselines and project updates in their dedicated subfolders
 - Archive or rotate older files instead of deleting unless policy requires
 
-## References
-
-- Agent index: `.github/agents/agent.md`
-- Instructions: `.github/instructions/reporting.instructions.md`
-- Script: `scripts/reporting.agent.js`
-- Tests: `tests/agents/reporting.agent.test.js`
-- Workflow: `.github/workflows/agent-reporting.yml`
-- Logs: `logs/` (per-category subfolders)
-
 ## Summary
 
 ✅ Each report type has defined structure and location

@@ -21,6 +21,8 @@ This directory lists the instruction files that guide Copilot and contributors w
 - Treat this file as a directory index, not a source of standards.
 - Link to topic-specific instructions rather than re-stating them.
 - Keep file names and paths up to date when instructions move or are added.
+- Actively prevent circular reference loops: remove any `## References` or `## See Also` sections (or similar headings) from individual instruction files and keep their metadata limited to `custom-instructions.md` and `_index.instructions.md`.
+- Run `scripts/clean-github-references.js` from the repo root before updating `.github` instruction files so that those sections are purged consistently and only the clean hierarchy remains.
 
 ## Detailed Guidance
 
@@ -57,9 +59,4 @@ See the file list below for topic coverage. Open the relevant `*.instructions.md
 
 - Confirm links resolve to existing files in `.github/instructions/`.
 - Run `rg --files .github/instructions` to ensure the index reflects current contents.
-
-## References
-
-- [../custom-instructions.md](../custom-instructions.md)
-- [./instructions.instructions.md](./instructions.instructions.md)
-- [../agents/agent.md](../agents/agent.md)
+- After editing instructions, rerun `node scripts/fix-instruction-references.js` and `scripts/clean-github-references.js` to enforce the allowed metadata and ensure no "References" or "See Also" blocks reappear.

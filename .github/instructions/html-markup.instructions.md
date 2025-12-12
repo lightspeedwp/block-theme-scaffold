@@ -54,9 +54,3 @@ Use these instructions whenever editing templates, template parts, or pattern ma
 - Run [W3C validator](https://validator.w3.org/) on templates/patterns.
 - Verify block comments render valid block markup (`<!-- wp:block -->` / `<!-- /wp:block -->`).
 - Spot-check accessibility with axe-core and keyboard navigation for forms.
-
-## References
-
-- [WordPress HTML Coding Standards](https://developer.wordpress.org/coding-standards/wordpress-coding-standards/html/)
-- [./a11y.instructions.md](./a11y.instructions.md)
-- [./block-theme-development.instructions.md](./block-theme-development.instructions.md)

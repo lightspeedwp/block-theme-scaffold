@@ -582,10 +582,3 @@ RESULT: Follow pattern for your file type
 | 2025-12-07 | Initial naming conventions instruction      |
 | 2025-12-07 | Added file type examples                    |
 | 2025-12-07 | Integrated with folder structure governance |
-
-## References
-
-- [../../docs/ARCHITECTURE.md](../../docs/ARCHITECTURE.md)
-- [../../docs/FOLDER_STRUCTURE.md](../../docs/FOLDER_STRUCTURE.md)
-- [./copilot-ai-agent.instructions.md](./copilot-ai-agent.instructions.md)
-- [./reporting.instructions.md](./reporting.instructions.md)

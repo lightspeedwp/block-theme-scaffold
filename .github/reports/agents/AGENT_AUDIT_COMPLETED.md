@@ -368,17 +368,3 @@ npm run agents:list
 4. Keep NPM scripts organized and well-documented
 
 ---
-
-## References
-
-- [Agent Index](.github/agents/agent.md)
-- [Agents Documentation](AGENTS.md)
-- [Prompts Reference](.github/prompts/prompts.md)
-- [Test Documentation](tests/agents/README.md)
-
----
-
-**Audit Completed By:** Claude Code
-**Audit Duration:** 2025-12-11
-**Total Effort:** ~3 hours
-**Status:** ✅ **COMPLETE**
