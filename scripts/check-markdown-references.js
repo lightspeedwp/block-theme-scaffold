@@ -4,47 +4,76 @@ const fs = require('fs');
 const path = require('path');
 
 const root = path.resolve(__dirname, '..');
-const sectionsRegex = /## (?:See Also(?: [^\n]*)?|References)[\s\S]*?(?=\n## |$)/g;
-const instructionLinkRegex = /_index\.instructions\.md/;
-const ignoredDirs = ['node_modules', 'vendor', '.git', 'build', 'dist'];
+const ignoredDirs = new Set([
+  '.git',
+  'node_modules',
+  'vendor',
+  'tmp',
+  'public',
+  'dist',
+  'build',
+  '.archive',
+]);
+const headingPattern = /^## (See Also|References)\b/i;
 
-function getMarkdownFiles(dir) {
+/**
+ * List markdown files recursively, skipping ignored directories.
+ *
+ * @param {string} dir
+ * @returns {string[]}
+ */
+function listMarkdownFiles(dir) {
   return fs.readdirSync(dir, { withFileTypes: true }).flatMap((entry) => {
     const resolved = path.join(dir, entry.name);
+
     if (entry.isDirectory()) {
-      if (ignoredDirs.includes(entry.name)) {
+      if (ignoredDirs.has(entry.name)) {
         return [];
       }
-      return getMarkdownFiles(resolved);
+      return listMarkdownFiles(resolved);
     }
+
     if (entry.isFile() && entry.name.endsWith('.md')) {
       return [resolved];
     }
+
     return [];
   });
 }
 
-let violationsFound = false;
+let findings = 0;
 
-getMarkdownFiles(root).forEach((filePath) => {
+listMarkdownFiles(root).forEach((filePath) => {
   const content = fs.readFileSync(filePath, 'utf8');
-  const sections = content.match(sectionsRegex);
+  const lines = content.split('\n');
+  let inHeading = false;
 
-  if (sections) {
-    sections.forEach((section) => {
-      if (instructionLinkRegex.test(section)) {
-        violationsFound = true;
-        console.error(
-          `❌ Violation in ${path.relative(process.cwd(), filePath)}: Found link to '.instructions.md' in a 'References' or 'See Also' section.`
-        );
-      }
-    });
+  for (let i = 0; i < lines.length; i += 1) {
+    const line = lines[i];
+    const trimmed = line.trim();
+
+    if (headingPattern.test(trimmed)) {
+      inHeading = true;
+      continue;
+    }
+
+    if (inHeading && trimmed.startsWith('## ')) {
+      inHeading = false;
+    }
+
+    if (inHeading && line.includes('.instructions.md')) {
+      findings += 1;
+      const relativePath = path.relative(process.cwd(), filePath);
+      // console.log(`${relativePath}:${i + 1}: ${trimmed}`);
+    }
   }
 });
 
-if (violationsFound) {
-  console.error('\nPlease remove these references to maintain a clean hierarchy.');
-  process.exit(1);
+if (findings > 0) {
+  // console.error(
+  //   `Found ${findings} Markdown reference link(s) to .instructions.md under References/See Also headings.`
+  // );
+  process.exitCode = 1;
+} else {
+  // console.log('✅ No invalid markdown references found.');
 }
-
-console.log('✅ No invalid markdown references found.');

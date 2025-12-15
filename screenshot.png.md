@@ -51,7 +51,5 @@ convert -size 1200x900 xc:#f0f0f0 -pointsize 48 -gravity center \
   -annotate +0+0 "{{theme_name}}" screenshot.png
 ```
 
-## References
-
 - [WordPress Theme Handbook - Theme Structure](https://developer.wordpress.org/themes/core-concepts/theme-structure/)
 - [Theme Review Handbook - Required Files](https://make.wordpress.org/themes/handbook/review/required/)
