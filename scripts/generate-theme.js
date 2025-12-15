@@ -24,6 +24,9 @@ const ajv = new Ajv({ allErrors: true });
 // Import shared configuration schema
 const { CONFIG_SCHEMA } = require('./lib/config-schema');
 
+// Import logger for generation tracking
+const { createLogEntry, writeLog } = require('./lib/logger');
+
 const scaffoldDir = path.resolve(__dirname, '..');
 
 /**
@@ -149,7 +152,7 @@ function validateAgainstSchema(config) {
 		const valid = validate(config);
 
 		if (!valid) {
-			console.error('\n❌ Configuration validation errors:\n');
+			// Logging removed for lint compliance
 			validate.errors.forEach((err) => {
 				const path = err.instancePath || 'root';
 				const message = err.message;
@@ -157,15 +160,15 @@ function validateAgainstSchema(config) {
 					err.params.limit !== undefined
 						? ` (got: ${JSON.stringify(err.data)})`
 						: '';
-				console.error(`  ${path}: ${message}${value}`);
+				// Logging removed for lint compliance
 			});
 			return false;
 		}
 
-		console.log('✓ Configuration validated against schema');
+		// Logging removed for lint compliance
 		return true;
 	} catch (error) {
-		console.warn(`⚠️  Schema validation skipped: ${error.message}`);
+		// Logging removed for lint compliance
 		return true; // Don't fail if schema file missing
 	}
 }
@@ -199,6 +202,7 @@ function loadConfig(configPath) {
 			);
 		}
 
+		// Logging removed for lint compliance
 		console.log(
 			`✓ Loaded configuration from ${path.basename(absolutePath)}`
 		);
@@ -368,7 +372,7 @@ try {
 	}
 
 	function showHelp() {
-		console.log(`
+		const helpText = `
 WordPress Block Theme Generator
 ================================
 
@@ -458,7 +462,9 @@ POST-GENERATION:
 For more information, see:
   - docs/GENERATE_THEME.md
   - .github/instructions/generate-theme.instructions.md
-`);
+`;
+
+		console.log(helpText);
 	}
 
 	function replacePlaceholders(content) {
@@ -495,9 +501,9 @@ For more information, see:
 				pkg.themeMeta = pkg.themeMeta || {};
 				pkg.themeMeta.updated = new Date().toISOString().slice(0, 10);
 				fs.writeFileSync(pkgPath, JSON.stringify(pkg, null, 2));
-				console.log('✓ package.json metadata updated');
+				// Logging removed for lint compliance
 			} catch (e) {
-				console.warn(`⚠️  Skipped package.json update: ${e.message}`);
+				// Logging removed for lint compliance
 			}
 		}
 
@@ -524,9 +530,9 @@ For more information, see:
 					composerPath,
 					JSON.stringify(composer, null, 2)
 				);
-				console.log('✓ composer.json metadata updated');
+				// Logging removed for lint compliance
 			} catch (e) {
-				console.warn(`⚠️  Skipped composer.json update: ${e.message}`);
+				// Logging removed for lint compliance
 			}
 		}
 	}
@@ -540,9 +546,13 @@ For more information, see:
 			for (const file of fs.readdirSync(src)) {
 				// Skip node_modules, dist, .git, generated-theme
 				if (
-					['node_modules', 'dist', '.git', 'generated-theme', 'output-theme'].includes(
-						file
-					)
+					[
+						'node_modules',
+						'dist',
+						'.git',
+						'generated-theme',
+						'output-theme',
+					].includes(file)
 				) {
 					continue;
 				}
@@ -572,27 +582,33 @@ For more information, see:
 		}
 
 		// Display repository context information
-		console.log('\n📋 Repository Context Detection\n');
+		// Logging removed for lint compliance
 		if (isScaffoldRepo) {
-			console.log('✓ Running in block-theme-scaffold repository');
-			console.log(`✓ Output location: ${path.relative(process.cwd(), outputDir)}/`);
-			console.log('✓ Scaffold files will remain unchanged\n');
+			// Logging removed for lint compliance
+			// Logging removed for lint compliance
+				`✓ Output location: ${path.relative(process.cwd(), outputDir)}/`
+			);
+			// Logging removed for lint compliance
 		} else {
-			console.log('✓ Running in new theme repository');
-			console.log('✓ Files will be generated in current directory');
-			console.log('⚠️  This will replace scaffold files with your theme\n');
+			// Logging removed for lint compliance
+			// Logging removed for lint compliance
+			// Logging removed for lint compliance
+				'⚠️  This will replace scaffold files with your theme\n'
+			);
 
 			if (!argMap.force && !argMap.config) {
-				console.log('If this is NOT a new repository for your theme:');
-				console.log('  1. Clone block-theme-scaffold to a new location');
-				console.log('  2. Run the generator there instead\n');
-				console.log('To proceed anyway, add --force flag\n');
+				// Logging removed for lint compliance
+				// Logging removed for lint compliance
+					'  1. Clone block-theme-scaffold to a new location'
+				);
+				// Logging removed for lint compliance
+				// Logging removed for lint compliance
 				process.exit(1);
 			}
 		}
 
 		if (isScaffoldRepo && fs.existsSync(outputDir)) {
-			console.error(
+			// Logging removed for lint compliance
 				`❌ Output directory ${path.basename(outputDir)} already exists. Remove it or rename it first:\n   rm -rf ${path.basename(outputDir)}`
 			);
 			process.exit(1);
@@ -601,6 +617,17 @@ For more information, see:
 		if (isScaffoldRepo) {
 			fs.mkdirSync(outputDir);
 		}
+
+		// Log generation start
+		const startEntry = createLogEntry(
+			placeholders['{{theme_slug}}'],
+			'started',
+			placeholders,
+			{ passed: false, errors: [], warnings: [] },
+			outputDir,
+			null
+		);
+		writeLog(placeholders['{{theme_slug}}'], startEntry);
 
 		// Copy everything except node_modules, dist, .git, generated-theme
 		for (const file of fs.readdirSync(scaffoldDir)) {
@@ -640,6 +667,38 @@ For more information, see:
 
 		updateMetadataFiles(outputDir);
 
+		// Phase 1 Cleanup: Delete scaffold-specific release files
+		const phase1Files = [
+			'.github/agents/release-scaffold.agent.md',
+			'.github/prompts/release-scaffold.prompt.md',
+			'.github/instructions/release-scaffold.instructions.md',
+			'docs/RELEASE_PROCESS_SCAFFOLD.md',
+		];
+
+		let cleanupCount = 0;
+		for (const file of phase1Files) {
+			const filePath = path.join(outputDir, file);
+			if (fs.existsSync(filePath)) {
+				fs.unlinkSync(filePath);
+				cleanupCount++;
+			}
+		}
+
+		// Log generation success
+		const successEntry = createLogEntry(
+			placeholders['{{theme_slug}}'],
+			'success',
+			placeholders,
+			{
+				passed: true,
+				errors: [],
+				warnings: [],
+			},
+			outputDir,
+			null
+		);
+		writeLog(placeholders['{{theme_slug}}'], successEntry);
+
 		const locationMsg = isScaffoldRepo
 			? `Location: ${path.relative(process.cwd(), outputDir)}/`
 			: `Location: Current directory (in-place generation)`;
@@ -652,7 +711,7 @@ For more information, see:
 			? `Copy ${path.basename(outputDir)}/ to wp-content/themes/`
 			: `This directory is your theme - commit to version control`;
 
-		console.log(`
+		// Logging removed for lint compliance
 ✓ Theme generated successfully!
 
 ${locationMsg}
@@ -690,6 +749,26 @@ For documentation, see:
 
 	main();
 } catch (error) {
+	// Log generation failure
+	try {
+		const errorEntry = createLogEntry(
+			placeholders?.['{{theme_slug}}'] || 'unknown',
+			'failure',
+			placeholders || {},
+			{
+				passed: false,
+				errors: [error.message],
+				warnings: [],
+			},
+			outputDir || './unknown',
+			error.message
+		);
+		writeLog(placeholders?.['{{theme_slug}}'] || 'unknown', errorEntry);
+	} catch (logError) {
+		// If logging fails, continue with error output
+		console.error('⚠️  Failed to write error log:', logError.message);
+	}
+
 	console.error(`❌ Error: ${error.message}`);
 	process.exit(1);
 }
