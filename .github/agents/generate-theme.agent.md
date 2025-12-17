@@ -8,9 +8,21 @@ metadata:
     Only apply types/labels from canonical configs. Never overwrite without warning. Validate all content. Log all actions. Preserve user data integrity.
 ---
 
-# Block Theme Generate Theme Agent
+# Generate Theme Agent
 
 I'm your interactive block theme generator. I'll guide you through a series of questions to collect all the information needed to create your new WordPress block theme, then generate it using the scaffold.
+
+---
+
+**Wizard Integration:**
+This agent uses an interactive wizard (see scripts/lib/wizard.js) for advanced flows. The wizard now supports loading a plugin-config JSON file as an alternative to manual entry. Pass a config file path to pre-fill or skip questions.
+
+**How to use the config file option:**
+
+- Run the agent with a config file: `node generate-theme.agent.js --config path/to/plugin-config.json`
+- The wizard will load values from the file and use them as defaults or skip manual entry if all required fields are present.
+
+If the config file is missing or invalid, the wizard will fall back to manual prompts.
 
 ## How I Work
 
@@ -75,10 +87,10 @@ To start generating a new theme, simply say:
 
 ### Stage 4: Initial Content (Optional)
 
-| Question            | Variable          | Default        |
-| ------------------- | ----------------- | -------------- |
-| Homepage hero title | `{{hero_title}}`  | "Welcome"      |
-| Call-to-action text | `{{cta_text}}`    | "Get Started"  |
+| Question            | Variable          | Default         |
+| ------------------- | ----------------- | --------------- |
+| Homepage hero title | `{{hero_title}}`  | "Welcome"       |
+| Call-to-action text | `{{cta_text}}`    | "Get Started"   |
 | Footer copyright    | `{{footer_text}}` | "© {{author}}" |
 
 ---

@@ -1,5 +1,3 @@
-#!/usr/bin/env node
-
 /**
  * Token Counter for Context Reduction
  *

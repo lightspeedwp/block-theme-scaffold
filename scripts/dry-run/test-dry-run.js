@@ -3,8 +3,6 @@
  * @description Temporary replacement of mustache variables with test values for running tests.
  * @todo Add support for custom placeholder sets and dry-run modes.
  */
-#!/usr/bin/env node
-
 /**
  * scripts/test-dry-run.js
  *
@@ -22,7 +20,7 @@ const path = require( 'path' );
 const { execSync } = require( 'child_process' );
 
 // Import shared test placeholders
-const { replacePlaceholders } = require( '../test-placeholders' );
+const { replacePlaceholders } = require( '../utils/placeholders' );
 
 /**
  * Simple file logger for test operations
@@ -100,13 +98,14 @@ function copyAndReplace( src, dest ) {
 		for ( const file of files ) {
 			// Skip certain directories
 			if (
-				[
-					'node_modules',
-					'vendor',
-					'build',
-					'.git',
-					'.test-temp',
-				].includes( file )
+				   [
+					   'node_modules',
+					   'vendor',
+					   'build',
+					   '.git',
+					   '.test-temp',
+					   '.dry-run-backup', // Prevent recursive backup copying
+				   ].includes( file )
 			) {
 				continue;
 			}

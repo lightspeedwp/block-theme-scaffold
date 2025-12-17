@@ -89,13 +89,18 @@
 			}
 		],
 		"style_variations": {
-			"global": [ "dark" ],
+			"global": [
+				"dark"
+			],
 			"block_styles": [
 				"button-primary",
 				"button-rounded",
 				"heading-serif"
 			],
-			"section_styles": [ "hero-section", "content-section" ]
+			"section_styles": [
+				"hero-section",
+				"content-section"
+			]
 		}
 	},
 	"features": {

@@ -68,6 +68,17 @@ This guide applies **only** to the **block theme scaffold repository**. Generate
    npm audit --audit-level=high
    ```
 
+## Dry-run release agents
+
+Before invoking the full generation smoke test, ensure the release agents themselves operate with replaced placeholders:
+
+```bash
+npm run dry-run:release
+npm run dry-run:release-scaffold
+```
+
+These commands wrap each agent via `scripts/dry-run/with-dry-run.js` so `{{mustache}}` tokens are substituted temporarily while the agents execute.
+
 5. **Generation smoke test (required)**
 
    ```bash

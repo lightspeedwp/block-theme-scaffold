@@ -3,8 +3,6 @@
  * @description Debug entry for dry-run test runner (variant 2).
  * @todo Document differences between debug variants and consolidate if possible.
  */
-#!/usr/bin/env node
-
 console.log( 'START dry-run-test-debug2' );
 
 const { spawnSync } = require( 'child_process' );

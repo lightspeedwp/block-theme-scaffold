@@ -3,8 +3,6 @@
  * @description Debug wrapper for the dry run test runner. Adds logging and environment overrides.
  * @todo Add more granular debug levels and output options for dry-run debugging.
  */
-#!/usr/bin/env node
-
 /**
  * Debug wrapper for the dry run test runner. Keeps the original dry-run-test.js
  * logic intact while allowing additional logging or environment overrides.

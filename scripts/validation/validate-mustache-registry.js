@@ -1,5 +1,3 @@
-#!/usr/bin/env node
-
 /**
  * Validate mustache-variables-registry.json against schema
  *
@@ -14,14 +12,42 @@
 
 const fs = require( 'fs' );
 const path = require( 'path' );
-const Ajv2020 = require( 'ajv/dist/2020' );
+const fastGlob = require( 'fast-glob' );
 
 // Paths
 const registryPath = path.join( __dirname, '../../tests/fixtures/mustache-variables-registry.json' );
 const schemaPath = path.join(
 	__dirname,
-	'../.github/schemas/mustache-variables-registry.schema.json'
+	'../../.github/schemas/mustache-variables-registry.schema.json'
 );
+const ROOT_DIR = path.resolve( __dirname, '../..' );
+const SCAN_PATTERNS = [
+	'**/*.php',
+	'**/*.js',
+	'**/*.ts',
+	'**/*.tsx',
+	'**/*.json',
+	'**/*.md',
+	'**/*.css',
+	'**/*.scss',
+	'**/*.html',
+	'**/*.yml',
+	'**/*.yaml',
+	'**/*.txt',
+];
+const SCAN_IGNORE = [
+	'node_modules/**',
+	'vendor/**',
+	'build/**',
+	'dist/**',
+	'.git/**',
+	'generated-theme/**',
+	'coverage/**',
+	'logs/**',
+	'tmp/dry-run/**',
+];
+const MUSTACHE_REGEX =
+	/\{\{([a-zA-Z0-9_]+(?:\|[a-zA-Z0-9_]+)?)\}\}/g;
 
 /**
  * Structured logging helper
@@ -58,20 +84,382 @@ function loadJson( filePath ) {
 }
 
 /**
+ * Categorize a mustache variable for reporting purposes.
+ *
+ * @param {string} varName
+ * @return {string}
+ */
+function categorizeVariable( varName ) {
+	const cleanName = varName.split( '|' )[ 0 ];
+
+	if (
+		[
+			'theme_slug',
+			'theme_name',
+			'namespace',
+			'description',
+		].includes( cleanName )
+	) {
+		return 'core_identity';
+	}
+
+	if (
+		cleanName.includes( 'author' ) ||
+		cleanName.includes( 'email' ) ||
+		cleanName === 'year'
+	) {
+		return 'author_contact';
+	}
+
+	if (
+		cleanName.includes( 'version' ) ||
+		cleanName.includes( '_wp_' ) ||
+		cleanName.includes( '_php_' )
+	) {
+		return 'versioning';
+	}
+
+	if (
+		cleanName.includes( '_url' ) ||
+		cleanName.includes( '_uri' )
+	) {
+		return 'urls';
+	}
+
+	if ( cleanName.includes( 'license' ) ) {
+		return 'license';
+	}
+
+	if (
+		cleanName.includes( 'color' ) ||
+		cleanName.includes( '_colour' )
+	) {
+		return 'design_colors';
+	}
+
+	if (
+		cleanName.includes( 'font' ) ||
+		cleanName.includes( 'line_height' ) ||
+		cleanName.includes( 'weight' )
+	) {
+		return 'design_typography';
+	}
+
+	if (
+		cleanName.includes( 'width' ) ||
+		cleanName.includes( 'spacing' ) ||
+		cleanName.includes( 'size' )
+	) {
+		return 'design_layout';
+	}
+
+	if (
+		cleanName.includes( 'text' ) ||
+		cleanName.includes( 'title' ) ||
+		cleanName.includes( 'excerpt' ) ||
+		cleanName.includes( 'skip_link' ) ||
+		cleanName.includes( 'copyright' )
+	) {
+		return 'content_strings';
+	}
+
+	if (
+		cleanName.includes( 'image' ) ||
+		cleanName.includes( 'thumbnail' )
+	) {
+		return 'images';
+	}
+
+	if (
+		cleanName.includes( 'tags' ) ||
+		cleanName.includes( 'textdomain' ) ||
+		cleanName.includes( 'audience' )
+	) {
+		return 'theme_metadata';
+	}
+
+	if (
+		cleanName.includes( 'button' ) ||
+		cleanName.includes( 'border' )
+	) {
+		return 'ui_components';
+	}
+
+	return 'other';
+}
+
+function scanMustacheVariables() {
+	const summary = {
+		totalFiles: 0,
+		filesWithVariables: 0,
+		uniqueVariables: 0,
+		totalOccurrences: 0,
+	};
+	const variables = {};
+	const files = fastGlob.sync( SCAN_PATTERNS, {
+		cwd: ROOT_DIR,
+		dot: true,
+		onlyFiles: true,
+		absolute: false,
+		ignore: SCAN_IGNORE,
+	} );
+
+	summary.totalFiles = files.length;
+
+	for ( const relativePath of files ) {
+		const absolutePath = path.join( ROOT_DIR, relativePath );
+		let content;
+
+		try {
+			content = fs.readFileSync( absolutePath, 'utf8' );
+		} catch ( error ) {
+			log( 'WARN', `Unable to read ${ relativePath }: ${ error.message }` );
+			continue;
+		}
+
+		let match;
+		let fileMatches = 0;
+		const seenInFile = new Set();
+		const regex = new RegExp( MUSTACHE_REGEX );
+
+		while ( ( match = regex.exec( content ) ) !== null ) {
+			const rawName = match[ 1 ];
+			const name = rawName.split( '|' )[ 0 ];
+
+			fileMatches++;
+			summary.totalOccurrences++;
+
+			if ( ! variables[ name ] ) {
+				variables[ name ] = {
+					name,
+					category: categorizeVariable( name ),
+					files: [],
+					count: 0,
+				};
+			}
+
+			variables[ name ].count += 1;
+
+			if ( ! seenInFile.has( name ) ) {
+				variables[ name ].files.push( relativePath );
+				seenInFile.add( name );
+			}
+		}
+
+		if ( fileMatches > 0 ) {
+			summary.filesWithVariables += 1;
+		}
+	}
+
+	summary.uniqueVariables = Object.keys( variables ).length;
+
+	Object.values( variables ).forEach( ( entry ) => {
+		entry.files.sort();
+	} );
+
+	return { summary, variables };
+}
+
+function compareFileLists( registryFiles = [], scannedFiles = [] ) {
+	const registrySet = new Set( registryFiles || [] );
+	const scannedSet = new Set( scannedFiles || [] );
+
+	const missing = [];
+	const extra = [];
+
+	for ( const file of scannedSet ) {
+		if ( ! registrySet.has( file ) ) {
+			missing.push( file );
+		}
+	}
+
+	for ( const file of registrySet ) {
+		if ( ! scannedSet.has( file ) ) {
+			extra.push( file );
+		}
+	}
+
+	return { missing, extra };
+}
+
+function compareRegistryAgainstScan( registry, scanResults ) {
+	const registryVariables = registry.variables || {};
+	const scannedVariables = scanResults.variables || {};
+
+	const scannedKeys = Object.keys( scannedVariables ).sort();
+	const registryKeys = Object.keys( registryVariables ).sort();
+
+	let issues = 0;
+
+	const missingFromRegistry = scannedKeys.filter(
+		( name ) => ! registryKeys.includes( name )
+	);
+	if ( missingFromRegistry.length > 0 ) {
+		log(
+			'ERROR',
+			`❌ ${ missingFromRegistry.length } mustache variable(s) missing from registry`
+		);
+		missingFromRegistry.forEach( ( name ) => {
+			log( 'ERROR', `  - {{${ name }}} (found in templates)` );
+		} );
+		issues += missingFromRegistry.length;
+	}
+
+	const extraInRegistry = registryKeys.filter(
+		( name ) => ! scannedKeys.includes( name )
+	);
+	if ( extraInRegistry.length > 0 ) {
+		log(
+			'ERROR',
+			`❌ ${ extraInRegistry.length } stale variable(s) present in registry but not found in source`
+		);
+		extraInRegistry.forEach( ( name ) => {
+			log( 'ERROR', `  - {{${ name }}}` );
+		} );
+		issues += extraInRegistry.length;
+	}
+
+	const sharedKeys = registryKeys.filter( ( name ) =>
+		scannedKeys.includes( name )
+	);
+
+	sharedKeys.forEach( ( name ) => {
+		const registryEntry = registryVariables[ name ];
+		const scannedEntry = scannedVariables[ name ];
+
+		if ( registryEntry.count !== scannedEntry.count ) {
+			log(
+				'ERROR',
+				`❌ Count mismatch for {{${ name }}}: registry=${ registryEntry.count }, scan=${ scannedEntry.count }`
+			);
+			issues += 1;
+		}
+
+		const { missing, extra } = compareFileLists(
+			registryEntry.files,
+			scannedEntry.files
+		);
+
+		if ( missing.length > 0 || extra.length > 0 ) {
+			log(
+				'ERROR',
+				`❌ File list mismatch for {{${ name }}} (registry=${ registryEntry.files.length } files, scan=${ scannedEntry.files.length } files)`
+			);
+			if ( missing.length > 0 ) {
+				log( 'ERROR', '    Missing from registry:' );
+				missing.slice( 0, 5 ).forEach( ( file ) => {
+					log( 'ERROR', `      - ${ file }` );
+				} );
+				if ( missing.length > 5 ) {
+					log( 'ERROR', `      ...and ${ missing.length - 5 } more` );
+				}
+			}
+			if ( extra.length > 0 ) {
+				log( 'ERROR', '    Extra files in registry:' );
+				extra.slice( 0, 5 ).forEach( ( file ) => {
+					log( 'ERROR', `      - ${ file }` );
+				} );
+				if ( extra.length > 5 ) {
+					log( 'ERROR', `      ...and ${ extra.length - 5 } more` );
+				}
+			}
+			issues += 1;
+		}
+	} );
+
+	return issues;
+}
+
+function compareSummary( registrySummary = {}, scanSummary = {} ) {
+	const issues = [];
+	const checklist = [
+		'totalFiles',
+		'filesWithVariables',
+		'uniqueVariables',
+		'totalOccurrences',
+	];
+
+	checklist.forEach( ( key ) => {
+		if ( registrySummary[ key ] !== scanSummary[ key ] ) {
+			issues.push(
+				`${ key }: registry=${ registrySummary[ key ] } vs scan=${ scanSummary[ key ] }`
+			);
+		}
+	} );
+
+	return issues;
+}
+
+/**
  * Validate registry against schema
  *
  * @param {Object} registry - Registry data
  * @param {Object} schema   - JSON schema
  * @return {Object} Validation result
  */
-function validateRegistry( registry, schema ) {
-	const ajv = new Ajv2020( { allErrors: true, strict: false } );
-	const validate = ajv.compile( schema );
-	const valid = validate( registry );
+function validateRegistryStructure( registry ) {
+	const errors = [];
+
+	if ( ! registry || typeof registry !== 'object' ) {
+		errors.push( 'Registry must be an object' );
+		return { valid: false, errors };
+	}
+
+	const summary = registry.summary;
+	if ( ! summary || typeof summary !== 'object' ) {
+		errors.push( 'Missing summary section' );
+	} else {
+		[
+			'totalFiles',
+			'filesWithVariables',
+			'uniqueVariables',
+			'totalOccurrences',
+		].forEach( ( key ) => {
+			if (
+				typeof summary[ key ] !== 'number' ||
+				! Number.isFinite( summary[ key ] )
+			) {
+				errors.push( `Summary.${ key } must be a number` );
+			}
+		} );
+	}
+
+	const variables = registry.variables;
+	if ( ! variables || typeof variables !== 'object' ) {
+		errors.push( 'Missing variables map' );
+	} else {
+		Object.entries( variables ).forEach( ( [ name, variable ] ) => {
+			if ( ! variable || typeof variable !== 'object' ) {
+				errors.push( `Variable ${ name } must be an object` );
+				return;
+			}
+
+			if ( variable.name !== name ) {
+				errors.push( `Variable entry ${ name } lacks matching name property` );
+			}
+
+			if (
+				typeof variable.count !== 'number' ||
+				! Number.isFinite( variable.count )
+			) {
+				errors.push( `Variable ${ name } must declare a numeric count` );
+			}
+
+			if ( ! Array.isArray( variable.files ) ) {
+				errors.push( `Variable ${ name } must list files as an array` );
+			} else {
+				variable.files.forEach( ( file ) => {
+					if ( typeof file !== 'string' ) {
+						errors.push( `File paths for ${ name } must be strings` );
+					}
+				} );
+			}
+		} );
+	}
 
 	return {
-		valid,
-		errors: validate.errors || [],
+		valid: errors.length === 0,
+		errors,
 	};
 }
 
@@ -86,29 +474,20 @@ function main() {
 	log( 'INFO', `📄 Loading registry: ${ registryPath }` );
 	const registry = loadJson( registryPath );
 
-	// Load schema
+	// Load schema (for reference and JSON sanity)
 	log( 'INFO', `📋 Loading schema: ${ schemaPath }` );
-	const schema = loadJson( schemaPath );
+	loadJson( schemaPath );
 
-	// Validate
-	log( 'INFO', '⚙️  Validating...' );
+	// Validate registry structure
+	log( 'INFO', '⚙️  Validating registry structure...' );
 	print();
-	const result = validateRegistry( registry, schema );
+	const result = validateRegistryStructure( registry );
 
 	if ( ! result.valid ) {
 		log( 'ERROR', '❌ Validation failed!' );
 		log( 'ERROR', 'Errors:' );
 		result.errors.forEach( ( error, index ) => {
-			const instancePath = error.instancePath || 'root';
-			const message = error.message || 'Unknown error';
-			const params = error.params ? JSON.stringify( error.params ) : '';
-
-			log(
-				'ERROR',
-				`  ${ index + 1 }. ${ instancePath }: ${ message } ${
-					params ? `(${ params })` : ''
-				}`
-			);
+			log( 'ERROR', `  ${ index + 1 }. ${ error }` );
 		} );
 		print();
 		process.exit( 1 );
@@ -245,9 +624,34 @@ function main() {
 		errors += missingFiles;
 	}
 
-	// Summary
+	// Dry-run summary + scan validation
 	print( '' );
 	print( '='.repeat( 50 ) );
+	const scanResults = scanMustacheVariables();
+	const summaryIssues = compareSummary( registry.summary, scanResults.summary );
+	let scanErrors = 0;
+	if ( summaryIssues.length > 0 ) {
+		log( 'ERROR', '❌ Registry summary is out of sync with the current scan:' );
+		summaryIssues.forEach( ( issue ) => log( 'ERROR', `  - ${ issue }` ) );
+		print( '' );
+		scanErrors += summaryIssues.length;
+	}
+
+	log(
+		'INFO',
+		`🧭 Scanned ${ scanResults.summary.filesWithVariables } file(s) with ${ scanResults.summary.uniqueVariables } unique mustache variable(s)`
+	);
+	print( '' );
+	const scanComparisonErrors = compareRegistryAgainstScan(
+		registry,
+		scanResults
+	);
+	if ( scanComparisonErrors > 0 ) {
+		scanErrors += scanComparisonErrors;
+	}
+
+	errors += scanErrors;
+
 	if ( errors > 0 ) {
 		log(
 			'ERROR',
@@ -269,4 +673,10 @@ if ( require.main === module ) {
 }
 
 // Export for testing
-module.exports = { validateRegistry, loadJson };
+module.exports = {
+	validateRegistryStructure,
+	loadJson,
+	scanMustacheVariables,
+	compareRegistryAgainstScan,
+	compareSummary,
+};

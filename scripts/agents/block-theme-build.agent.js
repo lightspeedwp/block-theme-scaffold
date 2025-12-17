@@ -11,9 +11,6 @@
 
 const { execSync } = require( 'child_process' );
 
-// Canonical config schema access (if needed for validation or schema output)
-const { getCanonicalConfigSchema } = require('../lib/config-schema');
-
 function run( cmd ) {
 	console.log( `$ ${ cmd }` );
 	execSync( cmd, { stdio: 'inherit' } );

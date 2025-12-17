@@ -7,7 +7,7 @@
  * Interactive agent that gathers requirements and generates the theme.
  * Can be run interactively or with JSON input.
  *
- * Uses shared configuration schema from scripts/lib/config-schema.js
+ * Uses shared configuration schema from scripts/lib/define-config-schema.js
  *
  * Usage:
  *   Interactive: node generate-theme.agent.js
@@ -24,119 +24,51 @@
  * @module scripts/agents/generate-theme.agent
  */
 
-const readline = require( 'readline' );
-const FileLogger = require( '../lib/logger' );
+
+const FileLogger = require( '../utils/logger' );
 const minimist = require( 'minimist' );
+// Wizard module for interactive flows (placeholder)
+const { runWizard } = require( '../lib/wizard' );
 
 // Import shared configuration schema and validators
 const {
+  CONFIG_SCHEMA,
   getCanonicalConfigSchema,
   validateValue,
   validateConfig,
   applyDefaults,
   buildCommand,
   getStageQuestions,
-} = require( '../lib/config-schema' );
+} = require( '../lib/define-config-schema' );
 
 /**
  * Interactive prompt session
  * @param {FileLogger} logger - The logger instance.
+ * @todo Integrate runWizard for advanced interactive flows
  */
 async function interactiveSession( logger ) {
-	const rl = readline.createInterface( {
-		input: process.stdin,
-		output: process.stdout,
-	} );
-
-	// The logger will handle console output, so we don't need console.log here.
-	const ask = ( question ) =>
-		new Promise( ( resolve ) => rl.question( question, resolve ) );
-
-	logger.info( '🎨 Block Theme Generate Theme Agent' );
-	logger.info(
-		'This wizard will guide you through creating a new WordPress block theme.\n'
-	);
-
-	const config = {};
-
-	// Stage 1: Identity
-	logger.info( '📋 Stage 1: Theme Identity' );
-
-	for ( const q of getStageQuestions( 1 ) ) {
-		const required = q.required ? ' (required)' : '';
-		const defaultHint = q.default ? ` [${ q.default }]` : '';
-		const answer = await ask(
-			`  ${ q.description }${ required }${ defaultHint }: `
-		);
-
-		if ( answer.trim() ) {
-			config[ q.key ] = answer.trim();
-		}
+	// Use runWizard to support config file loading or manual entry
+	// If --config is provided, pass it as configPath
+	const configPath = process.argv.includes('--config')
+		? process.argv[process.argv.indexOf('--config') + 1]
+		: undefined;
+	const config = runWizard({ configPath, logger });
+	// Validate and apply defaults
+	const finalConfig = applyDefaults(config);
+	const validation = validateConfig(finalConfig);
+	if (!validation.valid) {
+		logger.error('❌ Final configuration is invalid:');
+		validation.errors.forEach((e) => logger.error(`  - ${e}`));
+		process.exit(1);
 	}
-
-	// Validate Stage 1
-	const stage1Validation = validateConfig( config );
-	if ( ! stage1Validation.valid ) {
-		logger.error( '❌ Validation errors found in Stage 1:' );
-		stage1Validation.errors.forEach( ( e ) => logger.error( `  - ${ e }` ) );
-		rl.close();
-		process.exit( 1 );
+	if (validation.warnings.length > 0) {
+		logger.warn('⚠️  Configuration warnings:');
+		validation.warnings.forEach((w) => logger.warn(`  - ${w}`));
 	}
-
-	// Stage 2: Versioning
-	const continueStage2 = await ask( '\n📋 Stage 2: Versioning (y/N): ' );
-	if ( continueStage2.toLowerCase() === 'y' ) {
-		logger.info( '\n📋 Stage 2: Versioning' );
-		for ( const q of getStageQuestions( 2 ) ) {
-			const defaultHint = q.default ? ` [${ q.default }]` : '';
-			const answer = await ask(
-				`  ${ q.description }${ defaultHint }: `
-			);
-			if ( answer.trim() ) {
-				config[ q.key ] = answer.trim();
-			}
-		}
-	}
-
-	// Stage 3: License & Repository
-	const continueStage3 = await ask(
-		'\n📋 Stage 3: License & Repository (y/N): '
-	);
-	if ( continueStage3.toLowerCase() === 'y' ) {
-		logger.info( '\n📋 Stage 3: License & Repository' );
-		for ( const q of getStageQuestions( 3 ) ) {
-			const defaultHint = q.default ? ` [${ q.default }]` : '';
-			const answer = await ask(
-				`  ${ q.description }${ defaultHint }: `
-			);
-			if ( answer.trim() ) {
-				config[ q.key ] = answer.trim();
-			}
-		}
-	}
-
-	rl.close();
-
-	// Apply defaults and validate
-	const finalConfig = applyDefaults( config );
-	const validation = validateConfig( finalConfig );
-
-	if ( ! validation.valid ) {
-		logger.error( '❌ Final configuration is invalid:' );
-		validation.errors.forEach( ( e ) => logger.error( `  - ${ e }` ) );
-		process.exit( 1 );
-	}
-
-	if ( validation.warnings.length > 0 ) {
-		logger.warn( '⚠️  Configuration warnings:' );
-		validation.warnings.forEach( ( w ) => logger.warn( `  - ${ w }` ) );
-	}
-
-	// Show summary
-	logger.info( '✅ Configuration Summary:' );
-	logger.info( `\n${ JSON.stringify( finalConfig, null, 2 ) }` );
-	logger.info( '📦 Generation Command:' );
-	logger.info( buildCommand( finalConfig ) );
+	logger.info('✅ Configuration Summary:');
+	logger.info(`\n${JSON.stringify(finalConfig, null, 2)}`);
+	logger.info('📦 Generation Command:');
+	logger.info(buildCommand(finalConfig));
 	return finalConfig;
 }
 
@@ -319,6 +251,7 @@ async function main() {
 
 // Export for testing (re-export from config-schema)
 module.exports = {
+  CONFIG_SCHEMA,
   getCanonicalConfigSchema,
   validateValue,
   validateConfig,

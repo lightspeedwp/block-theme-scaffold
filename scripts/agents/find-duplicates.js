@@ -3,7 +3,7 @@ const path = require('path');
 const crypto = require('crypto');
 const { performance } = require('perf_hooks');
 const readline = require('readline');
-const FileLogger = require('../lib/logger');
+const FileLogger = require('../utils/logger');
 
 const projectRoot = path.resolve(__dirname, '../../'); // Assumes script is in a subdirectory of root
 

@@ -22,8 +22,8 @@ describe( 'Generate Theme Agent', () => {
 				)
 				.map( ( [ key ] ) => key );
 
-			expect( requiredFields ).toContain( 'slug' );
-			expect( requiredFields ).toContain( 'name' );
+			expect( requiredFields ).toContain( 'theme_slug' );
+			expect( requiredFields ).toContain( 'theme_name' );
 		} );
 
 		it( 'should have valid default values', () => {
@@ -48,42 +48,42 @@ describe( 'Generate Theme Agent', () => {
 	} );
 
 	describe( 'validateValue', () => {
-		describe( 'slug validation', () => {
-			const slugSchema = CONFIG_SCHEMA.slug;
+		describe( 'theme_slug validation', () => {
+			const slugSchema = CONFIG_SCHEMA.theme_slug;
 
-			it( 'should accept valid slugs', () => {
+			it( 'should accept valid theme_slugs', () => {
 				expect(
-					validateValue( 'slug', 'my-theme', slugSchema )
+					validateValue( 'theme_slug', 'my-theme', slugSchema )
 				).toHaveLength( 0 );
 				expect(
-					validateValue( 'slug', 'theme-123', slugSchema )
+					validateValue( 'theme_slug', 'theme-123', slugSchema )
 				).toHaveLength( 0 );
 				expect(
-					validateValue( 'slug', 'abc', slugSchema )
+					validateValue( 'theme_slug', 'abc', slugSchema )
 				).toHaveLength( 0 );
 			} );
 
-			it( 'should reject invalid slugs', () => {
+			it( 'should reject invalid theme_slugs', () => {
 				expect(
-					validateValue( 'slug', 'My-Theme', slugSchema ).length
+					validateValue( 'theme_slug', 'My-Theme', slugSchema ).length
 				).toBeGreaterThan( 0 );
 				expect(
-					validateValue( 'slug', 'my_theme', slugSchema ).length
+					validateValue( 'theme_slug', 'my_theme', slugSchema ).length
 				).toBeGreaterThan( 0 );
 				expect(
-					validateValue( 'slug', '-theme', slugSchema ).length
+					validateValue( 'theme_slug', '-theme', slugSchema ).length
 				).toBeGreaterThan( 0 );
 				expect(
-					validateValue( 'slug', 'a', slugSchema ).length
+					validateValue( 'theme_slug', 'a', slugSchema ).length
 				).toBeGreaterThan( 0 );
 			} );
 
-			it( 'should require slug when required', () => {
-				expect( validateValue( 'slug', '', slugSchema ) ).toContain(
-					'slug is required'
+			it( 'should require theme_slug when required', () => {
+				expect( validateValue( 'theme_slug', '', slugSchema ) ).toContain(
+					'theme_slug is required'
 				);
-				expect( validateValue( 'slug', null, slugSchema ) ).toContain(
-					'slug is required'
+				expect( validateValue( 'theme_slug', null, slugSchema ) ).toContain(
+					'theme_slug is required'
 				);
 			} );
 		} );
@@ -147,8 +147,9 @@ describe( 'Generate Theme Agent', () => {
 	describe( 'validateConfig', () => {
 		it( 'should validate minimal valid config', () => {
 			const config = {
-				slug: 'my-theme',
-				name: 'My Theme',
+				theme_slug: 'my-theme',
+				theme_name: 'My Theme',
+				author: 'Test Author',
 			};
 
 			const result = validateConfig( config );
@@ -158,21 +159,22 @@ describe( 'Generate Theme Agent', () => {
 
 		it( 'should fail for missing required fields', () => {
 			const config = {
-				name: 'My Theme',
-				// slug missing
+				theme_name: 'My Theme',
+				// theme_slug missing
 			};
 
 			const result = validateConfig( config );
 			expect( result.valid ).toBe( false );
-			expect( result.errors.some( ( e ) => e.includes( 'slug' ) ) ).toBe(
+			expect( result.errors.some( ( e ) => e.includes( 'theme_slug' ) ) ).toBe(
 				true
 			);
 		} );
 
 		it( 'should report warnings for invalid optional fields', () => {
 			const config = {
-				slug: 'my-theme',
-				name: 'My Theme',
+				theme_slug: 'my-theme',
+				theme_name: 'My Theme',
+				author: 'Test Author',
 				author_uri: 'not-a-url',
 			};
 
@@ -183,8 +185,8 @@ describe( 'Generate Theme Agent', () => {
 
 		it( 'should validate complete config', () => {
 			const config = {
-				slug: 'my-theme',
-				name: 'My Theme',
+				theme_slug: 'my-theme',
+				theme_name: 'My Theme',
 				description: 'A test theme',
 				author: 'Test Author',
 				author_uri: 'https://example.com',
@@ -205,21 +207,21 @@ describe( 'Generate Theme Agent', () => {
 	describe( 'applyDefaults', () => {
 		it( 'should apply default values', () => {
 			const config = {
-				slug: 'my-theme',
-				name: 'My Theme',
+				theme_slug: 'my-theme',
+				theme_name: 'My Theme',
 			};
 
 			const result = applyDefaults( config );
 
 			expect( result.version ).toBe( '1.0.0' );
-			expect( result.min_wp_version ).toBe( '6.0' );
+			expect( result.min_wp_version ).toBe( '6.5' );
 			expect( result.license ).toBe( 'GPL-2.0-or-later' );
 		} );
 
 		it( 'should not override provided values', () => {
 			const config = {
-				slug: 'my-theme',
-				name: 'My Theme',
+				theme_slug: 'my-theme',
+				theme_name: 'My Theme',
 				version: '2.0.0',
 			};
 
@@ -228,10 +230,10 @@ describe( 'Generate Theme Agent', () => {
 			expect( result.version ).toBe( '2.0.0' );
 		} );
 
-		it( 'should derive namespace from slug', () => {
+		it( 'should derive namespace from theme_slug', () => {
 			const config = {
-				slug: 'my-theme',
-				name: 'My Theme',
+				theme_slug: 'my-theme',
+				theme_name: 'My Theme',
 			};
 
 			const result = applyDefaults( config );
@@ -239,23 +241,24 @@ describe( 'Generate Theme Agent', () => {
 			expect( result.namespace ).toBe( 'my_theme' );
 		} );
 
-		it( 'should derive theme_uri from slug', () => {
+		it( 'should derive theme_uri from theme_slug', () => {
 			const config = {
-				slug: 'my-theme',
-				name: 'My Theme',
+				theme_slug: 'my-theme',
+				theme_name: 'My Theme',
+				author: 'Test Author',
 			};
-
+			// Remove theme_uri to test default logic
+			delete config.theme_uri;
 			const result = applyDefaults( config );
-
-			expect( result.theme_uri ).toContain( 'my-theme' );
+			expect( result.theme_uri ).toBe( 'https://wordpress.org/themes/my-theme' );
 		} );
 	} );
 
 	describe( 'buildCommand', () => {
 		it( 'should generate valid command string', () => {
 			const config = {
-				slug: 'my-theme',
-				name: 'My Theme',
+				theme_slug: 'my-theme',
+				theme_name: 'My Theme',
 			};
 
 			const command = buildCommand( config );
@@ -270,8 +273,8 @@ describe( 'Generate Theme Agent', () => {
 
 		it( 'should include all provided options', () => {
 			const config = {
-				slug: 'my-theme',
-				name: 'My Theme',
+				theme_slug: 'my-theme',
+				theme_name: 'My Theme',
 				author: 'Test Author',
 				version: '1.2.3',
 			};
@@ -290,8 +293,8 @@ describe( 'Generate Theme Agent', () => {
 			const questions = getStageQuestions( 1 );
 
 			expect( questions.length ).toBeGreaterThan( 0 );
-			expect( questions.some( ( q ) => q.key === 'slug' ) ).toBe( true );
-			expect( questions.some( ( q ) => q.key === 'name' ) ).toBe( true );
+			expect( questions.some( ( q ) => q.key === 'theme_slug' ) ).toBe( true );
+			expect( questions.some( ( q ) => q.key === 'theme_name' ) ).toBe( true );
 		} );
 
 		it( 'should return questions for stage 2', () => {
@@ -325,8 +328,8 @@ describe( 'Generate Theme Agent', () => {
 
 		it( 'should handle null values', () => {
 			const config = {
-				slug: null,
-				name: null,
+				theme_slug: null,
+				theme_name: null,
 			};
 			const result = validateConfig( config );
 			expect( result.valid ).toBe( false );
@@ -334,17 +337,18 @@ describe( 'Generate Theme Agent', () => {
 
 		it( 'should handle undefined values', () => {
 			const config = {
-				slug: undefined,
-				name: undefined,
+				theme_slug: undefined,
+				theme_name: undefined,
 			};
 			const result = validateConfig( config );
 			expect( result.valid ).toBe( false );
 		} );
 
-		it( 'should handle special characters in name', () => {
+		it( 'should handle special characters in theme_name', () => {
 			const config = {
-				slug: 'my-theme',
-				name: "My Theme's Special! Name",
+				theme_slug: 'my-theme',
+				theme_name: "My Theme's Special! Name",
+				author: 'Test Author',
 			};
 			const result = validateConfig( config );
 			expect( result.valid ).toBe( true );

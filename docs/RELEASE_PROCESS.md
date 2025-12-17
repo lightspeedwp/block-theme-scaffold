@@ -219,6 +219,15 @@ npm audit                       # Check for vulnerabilities
 npm run test:dry-run:all        # Test scaffold generation
 ```
 
+Before touching the generated artifacts, dry-run the release agents with placeholder substitution:
+
+```bash
+npm run dry-run:release
+npm run dry-run:release-scaffold
+```
+
+These commands invoke `scripts/dry-run/release-dry-run.js` so the release and scaffold agents can be smoke-tested with `{{mustache}}` replacements before the real generation step.
+
 ### Step 5: Commit Changes
 
 ```bash

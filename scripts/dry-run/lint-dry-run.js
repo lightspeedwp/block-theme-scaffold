@@ -1,5 +1,3 @@
-#!/usr/bin/env node
-
 /**
  * scripts/lint-dry-run.js
  *
@@ -17,7 +15,7 @@ const path = require( 'path' );
 const { execSync } = require( 'child_process' );
 
 // Import shared test placeholders
-const { replacePlaceholders } = require( './test-placeholders' );
+const { replacePlaceholders } = require( '../utils/placeholders' );
 
 /**
  * Simple file logger for lint operations

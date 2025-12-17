@@ -1,5 +1,3 @@
-#!/usr/bin/env node
-
 /**
  * Validate agent frontmatter for `.github/agents/*.agent.md`
  *

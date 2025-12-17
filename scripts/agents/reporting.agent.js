@@ -42,9 +42,6 @@ const fs = require('fs');
 const path = require('path');
 const { execSync } = require('child_process');
 
-// Canonical config schema access (if needed for config validation or schema output)
-const { getCanonicalConfigSchema } = require('../lib/config-schema');
-
 // Color output helpers
 const colors = {
 	reset: '\x1b[0m',

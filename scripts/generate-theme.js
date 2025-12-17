@@ -33,12 +33,12 @@ let placeholders = {};
  *
  * Script to generate a new WordPress block theme from this scaffold, replacing all moustache placeholders.
  *
- * Uses shared configuration schema from scripts/lib/config-schema.js
+ * Uses shared configuration schema from scripts/lib/define-config-schema.js
  *
  * Usage:
  *   CLI Mode: node scripts/generate-theme.js --slug my-theme --name "My Theme" --author "Your Name" ...
  *   JSON Mode: node scripts/generate-theme.js --config theme-config.json
- *   Interactive: Use scripts/generate-theme.agent.js for interactive wizard
+ *   Interactive: Use scripts/generate-theme.agent.js for interactive wizard (see scripts/lib/wizard.js for wizard logic)
  */
 
 const fs = require( 'fs' );
@@ -232,10 +232,10 @@ USAGE:
 MODES:
 
   1. JSON Config Mode (Recommended for complex themes)
-     Create a theme-config.json file based on .github/schemas/examples/theme-config.template.json
+     Create a theme-config.json file based on scripts/fixtures/theme-config.template.json
 
      Example:
-       cp .github/schemas/examples/theme-config.template.json my-theme-config.json
+       cp scripts/fixtures/theme-config.template.json my-theme-config.json
        # Edit my-theme-config.json with your values
        node bin/generate-theme.js --config my-theme-config.json
 
@@ -263,7 +263,7 @@ OPTIONAL ARGUMENTS (CLI Mode):
   --min_php_version "X.Y"  Min PHP version (default: 8.0)
 
 CONFIGURATION FILE FORMAT:
-  See .github/schemas/examples/theme-config.template.json for full schema
+  See scripts/fixtures/theme-config.template.json for full schema
   See theme-config.example.json for a complete example
 
   JSON config supports:
@@ -316,11 +316,11 @@ function replacePlaceholders( content ) {
 		result = result.split( key ).join( value );
 	}
 
-	// Second pass: handle filter syntax like {{theme_slug|upper}}
+	// Second pass: handle filter syntax like PLACEHOLDER
 	result = result.replace(
 		/\{\{([^}|]+)\|upper\}\}/g,
 		( match, varName ) => {
-			const key = `{{${ varName }}}`;
+			const key = `PLACEHOLDER}`;
 			const value = placeholders[ key ];
 			return value ? value.toUpperCase().replace( /-/g, '_' ) : match;
 		}
@@ -343,15 +343,15 @@ function updateMetadataFiles( destRoot ) {
 	if ( fs.existsSync( pkgPath ) ) {
 		try {
 			const pkg = JSON.parse( fs.readFileSync( pkgPath, 'utf8' ) );
-			pkg.name = placeholders[ '{{theme_slug}}' ];
-			pkg.version = placeholders[ '{{version}}' ];
-			pkg.author = placeholders[ '{{author}}' ];
-			pkg.license = placeholders[ '{{license}}' ];
-			pkg.homepage = placeholders[ '{{theme_uri}}' ];
+			pkg.name = placeholders[ 'PLACEHOLDER' ];
+			pkg.version = placeholders[ '1.0.0' ];
+			pkg.author = placeholders[ 'Example Author' ];
+			pkg.license = placeholders[ 'GPL-2.0-or-later' ];
+			pkg.homepage = placeholders[ 'PLACEHOLDER' ];
 			pkg.repository = pkg.repository || {};
-			pkg.repository.url = placeholders[ '{{theme_repo_url}}' ];
+			pkg.repository.url = placeholders[ 'PLACEHOLDER' ];
 			pkg.bugs = pkg.bugs || {};
-			pkg.bugs.url = `${ placeholders[ '{{theme_repo_url}}' ] }/issues`;
+			pkg.bugs.url = `${ placeholders[ 'PLACEHOLDER' ] }/issues`;
 			pkg.themeMeta = pkg.themeMeta || {};
 			pkg.themeMeta.updated = new Date().toISOString().slice( 0, 10 );
 			fs.writeFileSync( pkgPath, JSON.stringify( pkg, null, 2 ) );
@@ -368,16 +368,16 @@ function updateMetadataFiles( destRoot ) {
 			const composer = JSON.parse(
 				fs.readFileSync( composerPath, 'utf8' )
 			);
-			const vendor = toPackageVendor( placeholders[ '{{author}}' ] );
-			composer.name = `${ vendor }/${ placeholders[ '{{theme_slug}}' ] }`;
-			composer.version = placeholders[ '{{version}}' ];
+			const vendor = toPackageVendor( placeholders[ 'Example Author' ] );
+			composer.name = `${ vendor }/${ placeholders[ 'PLACEHOLDER' ] }`;
+			composer.version = placeholders[ '1.0.0' ];
 			composer.description =
 				composer.description ||
-				`WordPress block theme: ${ placeholders[ '{{theme_name}}' ] }`;
+				`WordPress block theme: ${ placeholders[ 'PLACEHOLDER' ] }`;
 			composer.authors = [
 				{
-					name: placeholders[ '{{author}}' ],
-					homepage: placeholders[ '{{author_uri}}' ],
+					name: placeholders[ 'Example Author' ],
+					homepage: placeholders[ 'https://example.com' ],
 				},
 			];
 			fs.writeFileSync(
@@ -399,51 +399,51 @@ function updateMetadataFiles( destRoot ) {
 			// Replace common header fields with provided values
 			styleContent = styleContent.replace(
 				/Theme Name:.*$/m,
-				`Theme Name: ${ placeholders[ '{{theme_name}}' ] }`
+				`Theme Name: ${ placeholders[ 'PLACEHOLDER' ] }`
 			);
 			styleContent = styleContent.replace(
 				/Theme URI:.*$/m,
-				`Theme URI: ${ placeholders[ '{{theme_uri}}' ] }`
+				`Theme URI: ${ placeholders[ 'PLACEHOLDER' ] }`
 			);
 			styleContent = styleContent.replace(
 				/Author:.*$/m,
-				`Author: ${ placeholders[ '{{author}}' ] }`
+				`Author: ${ placeholders[ 'Example Author' ] }`
 			);
 			styleContent = styleContent.replace(
 				/Author URI:.*$/m,
-				`Author URI: ${ placeholders[ '{{author_uri}}' ] }`
+				`Author URI: ${ placeholders[ 'https://example.com' ] }`
 			);
 			styleContent = styleContent.replace(
 				/Description:.*$/m,
-				`Description: ${ placeholders[ '{{description}}' ] }`
+				`Description: ${ placeholders[ 'A multi-block WordPress plugin scaffold example' ] }`
 			);
 			styleContent = styleContent.replace(
 				/Version:.*$/m,
-				`Version: ${ placeholders[ '{{version}}' ] }`
+				`Version: ${ placeholders[ '1.0.0' ] }`
 			);
 			styleContent = styleContent.replace(
 				/Requires at least:.*$/m,
-				`Requires at least: ${ placeholders[ '{{min_wp_version}}' ] }`
+				`Requires at least: ${ placeholders[ 'PLACEHOLDER' ] }`
 			);
 			styleContent = styleContent.replace(
 				/Tested up to:.*$/m,
-				`Tested up to: ${ placeholders[ '{{tested_wp_version}}' ] }`
+				`Tested up to: ${ placeholders[ 'PLACEHOLDER' ] }`
 			);
 			styleContent = styleContent.replace(
 				/Requires PHP:.*$/m,
-				`Requires PHP: ${ placeholders[ '{{min_php_version}}' ] }`
+				`Requires PHP: ${ placeholders[ 'PLACEHOLDER' ] }`
 			);
 			styleContent = styleContent.replace(
 				/License:.*$/m,
-				`License: ${ placeholders[ '{{license}}' ] }`
+				`License: ${ placeholders[ 'GPL-2.0-or-later' ] }`
 			);
 			styleContent = styleContent.replace(
 				/License URI:.*$/m,
-				`License URI: ${ placeholders[ '{{license_uri}}' ] }`
+				`License URI: ${ placeholders[ 'https://www.gnu.org/licenses/gpl-2.0.html' ] }`
 			);
 			styleContent = styleContent.replace(
 				/Text Domain:.*$/m,
-				`Text Domain: ${ placeholders[ '{{theme_slug}}' ] }`
+				`Text Domain: ${ placeholders[ 'PLACEHOLDER' ] }`
 			);
 
 			// Replace any remaining mustache tokens in the file body
@@ -481,8 +481,8 @@ function copyAndReplace( src, dest ) {
 				path.join(
 					dest,
 					file.replace(
-						'{{theme_slug}}',
-						placeholders[ '{{theme_slug}}' ]
+						'PLACEHOLDER',
+						placeholders[ 'PLACEHOLDER' ]
 					)
 				)
 			);
@@ -517,7 +517,7 @@ async function main() {
 
 	fs.mkdirSync( outputDir, { recursive: true } );
 
-	logger.info( `Theme generation started: ${ placeholders[ '{{theme_slug}}' ] }` );
+	logger.info( `Theme generation started: ${ placeholders[ 'PLACEHOLDER' ] }` );
 	logger.debug( `Output directory: ${ outputDir }` );
 
 	for ( const file of fs.readdirSync( scaffoldDir ) ) {
@@ -540,8 +540,8 @@ async function main() {
 			path.join(
 				outputDir,
 				file.replace(
-					'{{theme_slug}}',
-					placeholders[ '{{theme_slug}}' ]
+					'PLACEHOLDER',
+					placeholders[ 'PLACEHOLDER' ]
 				)
 			)
 		);
@@ -583,7 +583,7 @@ async function main() {
 
 	void cleanupCount;
 
-	logger.info( `Theme generation completed successfully: ${ placeholders[ '{{theme_slug}}' ] }` );
+	logger.info( `Theme generation completed successfully: ${ placeholders[ 'PLACEHOLDER' ] }` );
 	await logger.save();
 
 	const locationMsg = `Location: ${ path.relative(
@@ -596,7 +596,7 @@ async function main() {
 	) }/ to wp-content/themes/`;
 
 	console.log(
-		`\u2713 Theme generated successfully!\n\n${ locationMsg }\n\nTheme Details:\n  Name: ${ placeholders[ '{{theme_name}}' ] }\n  Slug: ${ placeholders[ '{{theme_slug}}' ] }\n  Author: ${ placeholders[ '{{author}}' ] }\n  Version: ${ placeholders[ '{{version}}' ] }\n\nNext Steps:\n  1. Navigate to theme directory:\n     ${ cdMsg }\n\n  2. Install dependencies:\n     npm install\n     composer install\n\n  3. Start development:\n     npm run start\n\n  4. Build for production:\n     npm run build\n\n  5. Install in WordPress:\n     - ${ installMsg }\n     - Activate in WordPress admin\n\nFor documentation, see:\n  - README.md (theme overview)\n  - DEVELOPMENT.md (development workflow)\n  - docs/ (complete documentation)\n`
+		`\u2713 Theme generated successfully!\n\n${ locationMsg }\n\nTheme Details:\n  Name: ${ placeholders[ 'PLACEHOLDER' ] }\n  Slug: ${ placeholders[ 'PLACEHOLDER' ] }\n  Author: ${ placeholders[ 'Example Author' ] }\n  Version: ${ placeholders[ '1.0.0' ] }\n\nNext Steps:\n  1. Navigate to theme directory:\n     ${ cdMsg }\n\n  2. Install dependencies:\n     npm install\n     composer install\n\n  3. Start development:\n     npm run start\n\n  4. Build for production:\n     npm run build\n\n  5. Install in WordPress:\n     - ${ installMsg }\n     - Activate in WordPress admin\n\nFor documentation, see:\n  - README.md (theme overview)\n  - DEVELOPMENT.md (development workflow)\n  - docs/ (complete documentation)\n`
 	);
 }
 
@@ -658,8 +658,8 @@ async function runScript() {
 	}
 
 	placeholders = {
-		'{{theme_slug}}': themeSlug,
-		'{{theme_name}}': ( () => {
+		'PLACEHOLDER': themeSlug,
+		'PLACEHOLDER': ( () => {
 			try {
 				return (
 					sanitizeInput(
@@ -671,14 +671,14 @@ async function runScript() {
 				throw new Error( 'Invalid name' );
 			}
 		} )(),
-		'{{description}}':
+		'A multi-block WordPress plugin scaffold example':
 			sanitizeInput(
 				configData.description || argMap.description,
 				'text'
 			) || 'A WordPress block theme.',
-		'{{author}}': author,
-		'{{author_uri}}': authorUri,
-		'{{version}}': ( () => {
+		'Example Author': author,
+		'https://example.com': authorUri,
+		'1.0.0': ( () => {
 			try {
 				return (
 					sanitizeInput(
@@ -690,28 +690,28 @@ async function runScript() {
 				throw new Error( 'semantic versioning' );
 			}
 		} )(),
-		'{{theme_uri}}':
+		'PLACEHOLDER':
 			sanitizeInput(
 				configData.theme_uri || argMap.theme_uri,
 				'url'
 			) ||
 			'https://example.com/theme',
-		'{{min_wp_version}}':
+		'PLACEHOLDER':
 			sanitizeInput(
 				configData.min_wp_version || argMap.min_wp_version,
 				'version'
 			) || '6.5',
-		'{{tested_wp_version}}':
+		'PLACEHOLDER':
 			sanitizeInput(
 				configData.tested_wp_version || argMap.tested_wp_version,
 				'version'
 			) || '6.7',
-		'{{min_php_version}}':
+		'PLACEHOLDER':
 			sanitizeInput(
 				configData.min_php_version || argMap.min_php_version,
 				'version'
 			) || '8.0',
-		'{{license}}': ( () => {
+		'GPL-2.0-or-later': ( () => {
 			try {
 				return (
 					sanitizeInput(
@@ -723,93 +723,93 @@ async function runScript() {
 				return 'GPL-2.0-or-later';
 			}
 		} )(),
-		'{{license_uri}}':
+		'https://www.gnu.org/licenses/gpl-2.0.html':
 			sanitizeInput(
 				configData.license_uri || argMap.license_uri,
 				'url'
 			) || 'https://www.gnu.org/licenses/gpl-2.0.html',
-		'{{theme_repo_url}}':
+		'PLACEHOLDER':
 			sanitizeInput(
 				configData.theme_repo_url || argMap.theme_repo_url,
 				'url'
 			) || `https://github.com/${ author }/${ themeSlug }`,
-		'{{namespace}}': themeSlug.replace( /-/g, '_' ),
-		'{{support_url}}': `https://wordpress.org/support/theme/${ themeSlug }`,
-		'{{support_email}}': `support@$${
+		'example_plugin': themeSlug.replace( /-/g, '_' ),
+		'PLACEHOLDER': `https://wordpress.org/support/theme/${ themeSlug }`,
+		'PLACEHOLDER': `support@$${
 				authorUri.replace( /^https?:\/\/(www\.)?/, '' ).split( '/' )[ 0 ]
 			}`,
-		'{{security_email}}': `security@$${
+		'PLACEHOLDER': `security@$${
 				authorUri.replace( /^https?:\/\/(www\.)?/, '' ).split( '/' )[ 0 ]
 			}`,
-		'{{business_email}}': `contact@$${
+		'PLACEHOLDER': `contact@$${
 				authorUri.replace( /^https?:\/\/(www\.)?/, '' ).split( '/' )[ 0 ]
 			}`,
-		'{{docs_url}}': `https://github.com/${ author }/${ themeSlug }/wiki`,
-		'{{docs_repo_url}}': `https://github.com/${ author }/${ themeSlug }`,
-		'{{discord_url}}': authorUri,
-		'{{custom_dev_url}}': authorUri,
-		'{{premium_support_url}}': authorUri,
-		'{{primary_color}}':
+		'PLACEHOLDER': `https://github.com/${ author }/${ themeSlug }/wiki`,
+		'PLACEHOLDER': `https://github.com/${ author }/${ themeSlug }`,
+		'PLACEHOLDER': authorUri,
+		'PLACEHOLDER': authorUri,
+		'PLACEHOLDER': authorUri,
+		'PLACEHOLDER':
 			configData.design_system_colors_primary_color || '#0073aa',
-		'{{secondary_color}}':
+		'PLACEHOLDER':
 			configData.design_system_colors_secondary_color || '#005177',
-		'{{background_color}}':
+		'PLACEHOLDER':
 			configData.design_system_colors_background_color || '#ffffff',
-		'{{text_color}}':
+		'PLACEHOLDER':
 			configData.design_system_colors_text_color || '#1a1a1a',
-		'{{accent_color}}':
+		'PLACEHOLDER':
 			configData.design_system_colors_accent_color || '#ff6b35',
-		'{{neutral_color}}':
+		'PLACEHOLDER':
 			configData.design_system_colors_neutral_color || '#6c757d',
-		'{{heading_font_family}}':
+		'PLACEHOLDER':
 			configData.design_system_typography_heading_font_family ||
 			"system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
-		'{{heading_font_name}}':
+		'PLACEHOLDER':
 			configData.design_system_typography_heading_font_name ||
 			'System Font',
-		'{{body_font_family}}':
+		'PLACEHOLDER':
 			configData.design_system_typography_body_font_family ||
 			"system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
-		'{{body_font_name}}':
+		'PLACEHOLDER':
 			configData.design_system_typography_body_font_name || 'System Font',
-		'{{heading_font_weight}}':
+		'PLACEHOLDER':
 			configData.design_system_typography_heading_font_weight || '700',
-		'{{body_line_height}}':
+		'PLACEHOLDER':
 			configData.design_system_typography_body_line_height || '1.6',
-		'{{heading_line_height}}':
+		'PLACEHOLDER':
 			configData.design_system_typography_heading_line_height || '1.2',
-		'{{button_font_weight}}':
+		'PLACEHOLDER':
 			configData.design_system_typography_button_font_weight || '600',
-		'{{site_title_font_weight}}':
+		'PLACEHOLDER':
 			configData.design_system_typography_site_title_font_weight || '700',
-		'{{content_width}}':
+		'PLACEHOLDER':
 			configData.design_system_layout_content_width || '720px',
-		'{{wide_width}}':
+		'PLACEHOLDER':
 			configData.design_system_layout_wide_width || '1200px',
-		'{{content_width_px}}': (
+		'PLACEHOLDER': (
 			configData.design_system_layout_content_width || '720px'
 		).replace( /[^\d]/g, '' ),
-		'{{button_border_radius}}':
+		'PLACEHOLDER':
 			configData.content_button_border_radius || '4px',
-		'{{excerpt_more}}': configData.content_excerpt_more || '...',
-		'{{skip_link_text}}':
+		'PLACEHOLDER': configData.content_excerpt_more || '...',
+		'PLACEHOLDER':
 			configData.content_skip_link_text || 'Skip to content',
-		'{{year}}': new Date().getFullYear().toString(),
-		'{{excerpt_length}}': configData.content_excerpt_length || '55',
-		'{{thumbnail_width}}': configData.image_sizes_thumbnail_width || '150',
-		'{{thumbnail_height}}':
+		'PLACEHOLDER': new Date().getFullYear().toString(),
+		'PLACEHOLDER': configData.content_excerpt_length || '55',
+		'PLACEHOLDER': configData.image_sizes_thumbnail_width || '150',
+		'PLACEHOLDER':
 			configData.image_sizes_thumbnail_height || '150',
-		'{{featured_image_width}}':
+		'PLACEHOLDER':
 			configData.image_sizes_featured_image_width || '1200',
-		'{{featured_image_height}}':
+		'PLACEHOLDER':
 			configData.image_sizes_featured_image_height || '630',
-		'{{gallery_image_width}}':
+		'PLACEHOLDER':
 			configData.image_sizes_gallery_image_width || '800',
-		'{{gallery_image_height}}':
+		'PLACEHOLDER':
 			configData.image_sizes_gallery_image_height || '600',
 	};
 
-	if ( argMap.author && placeholders[ '{{author}}' ] === 'Author Name' ) {
+	if ( argMap.author && placeholders[ 'Example Author' ] === 'Author Name' ) {
 		throw new Error( 'Invalid author name provided' );
 	}
 

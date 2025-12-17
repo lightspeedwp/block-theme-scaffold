@@ -85,7 +85,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **Generator Phase 1 cleanup** now includes `scripts/agents/release-scaffold.agent.js` in deletion list
 - **Moved configuration files to logical locations**:
   - `dryrun-debug.log` moved to `logs/` (already ignored by .gitignore)
-  - `theme-config.template.json` moved to `.github/schemas/examples/`
+  - `theme-config.template.json` moved to `scripts/fixtures/`
   - Updated all references in documentation and scripts
   - Updated `.gitignore` to include all example JSON files in schemas
 
@@ -111,7 +111,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - JSON Schema validation for theme configuration files
 - Theme configuration template file (`theme-config.template.json`)
 - VS Code JSON schema integration for autocomplete and validation
-- Schema relationship documentation in `config-schema.js`
+- Schema relationship documentation in `validate-config-schema.js`
 - Configuration template usage guide in documentation
 - Sidebar template part and blog-with-sidebar template for layout flexibility
 - Husky pre-commit workflow to run linting and testing automatically

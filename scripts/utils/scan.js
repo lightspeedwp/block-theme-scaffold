@@ -1,15 +1,19 @@
 #!/usr/bin/env node
 
+
 /**
- * scripts/scan-mustache-variables.js
+ * scripts/scan.js
  *
- * Scans the entire repository for mustache variables {{variable_name}}
+ * Scans the entire repository for mustache variables PLACEHOLDER
  * and generates a complete registry categorized by type and usage.
  *
  * Usage:
- *   node scripts/scan-mustache-variables.js
- *   node scripts/scan-mustache-variables.js --json > variables.json
- *   node scripts/scan-mustache-variables.js --validate theme-config.json
+ *   node scripts/scan.js
+ *   node scripts/scan.js --json > variables.json
+ *   node scripts/scan.js --validate theme-config.json
+ *
+ * @fileoverview Utility to scan for mustache variables and output registry.
+ * @todo Refactor to support additional variable syntaxes if needed.
  */
 
 const fs = require('fs');
@@ -54,7 +58,7 @@ const SCAN_EXTENSIONS = [
 	'.yaml',
 ];
 
-// Mustache variable regex: {{variable_name}}
+// Mustache variable regex: PLACEHOLDER
 const MUSTACHE_REGEX = /\{\{([a-zA-Z0-9_]+(?:\|[a-zA-Z0-9_]+)?)\}\}/g;
 
 /**
@@ -102,7 +106,7 @@ function extractVariables(content) {
 	let match;
 
 	while ((match = MUSTACHE_REGEX.exec(content)) !== null) {
-		// match[1] contains the variable name (without {{ }})
+		// match[1] contains the variable name (without PLACEHOLDER)
 		variables.add(match[1]);
 	}
 
@@ -351,7 +355,7 @@ function displayResults(results, sortedVariables) {
 	for (let i = 0; i < Math.min(20, sortedVariables.length); i++) {
 		const v = sortedVariables[i];
 		// Logging removed for lint compliance
-			`  ${i + 1}. {{${v.name}}} - ${v.count} occurrences in ${v.files.length} files`
+			`  ${i + 1}. PLACEHOLDER} - ${v.count} occurrences in ${v.files.length} files`
 		// );
 	}
 

@@ -322,7 +322,7 @@ All these links are **VALID** ✅:
 - ✅ `scripts/scan-mustache-variables.js`
 - ✅ `.github/schemas/theme-config.schema.json`
 - ✅ `.github/schemas/examples/theme-config.example.json`
-- ✅ `theme-config.template.json`
+- ✅ `scripts/fixtures/theme-config.template.json`
 
 ---
 

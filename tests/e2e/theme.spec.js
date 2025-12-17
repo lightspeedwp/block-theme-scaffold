@@ -1,8 +1,14 @@
 const { test, expect } = require( '@playwright/test' );
+const {
+	assertMustacheRendered,
+	activateTheme,
+	runAccessibilityChecks,
+	verifyNavigation,
+} = require( './helpers/theme.helpers' );
 
 test.describe( '{{theme_name}} Theme E2E Tests', () => {
 	test.beforeEach( async ( { page } ) => {
-		// Go to WordPress admin and activate theme
+		// Go to WordPress admin and ensure the scaffold theme is active
 		await page.goto( '/wp-admin' );
 
 		// Login if needed (assuming wp-env default credentials)
@@ -12,18 +18,18 @@ test.describe( '{{theme_name}} Theme E2E Tests', () => {
 			await page.fill( '#user_pass', 'password' );
 			await page.click( '#wp-submit' );
 		}
+
+		await activateTheme( page );
 	} );
 
 	test( 'homepage loads correctly', async ( { page } ) => {
-		await page.goto( '/' );
+		await assertMustacheRendered( page );
+		await verifyNavigation( page );
 
 		// Check for basic theme elements
 		await expect( page.locator( 'header' ) ).toBeVisible();
 		await expect( page.locator( 'main, #main' ) ).toBeVisible();
 		await expect( page.locator( 'footer' ) ).toBeVisible();
-
-		// Check for navigation
-		await expect( page.locator( '.wp-block-navigation' ) ).toBeVisible();
 	} );
 
 	test( 'site editor loads', async ( { page } ) => {
@@ -61,6 +67,7 @@ test.describe( '{{theme_name}} Theme E2E Tests', () => {
 
 	test( 'accessibility standards', async ( { page } ) => {
 		await page.goto( '/' );
+		await runAccessibilityChecks( page );
 
 		// Check for skip link
 		const skipLink = page.locator( '.skip-link' );

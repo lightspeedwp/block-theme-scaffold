@@ -1,10 +1,19 @@
 /**
- * Pruned test utilities for block theme scaffold
- * Only exports helpers relevant for block theme scaffold tests
+ * Lightweight test utilities for the block-theme scaffold.
+ *
+ * @module scripts/utils/test-utils
  */
 
 /**
- * Retry a test operation with exponential backoff
+ * Retry an async operation with exponential backoff.
+ *
+ * @param {() => Promise<*>} operation
+ * @param {object} [options]
+ * @param {number} [options.maxRetries=3]
+ * @param {number} [options.initialDelay=1000]
+ * @param {number} [options.maxDelay=5000]
+ * @param {number} [options.backoffMultiplier=2]
+ * @param {object} [options.logger]
  */
 async function retryOperation( operation, options = {} ) {
 	const {
@@ -27,28 +36,30 @@ async function retryOperation( operation, options = {} ) {
 		} catch ( error ) {
 			lastError = error;
 			if ( logger ) {
-				logger.warn(
-					`Attempt ${ attempt } failed: ${ error.message }`
-				);
+				logger.warn( `Attempt ${ attempt } failed: ${ error.message }` );
 			}
 			if ( attempt < maxRetries ) {
 				if ( logger ) {
 					logger.info( `Retrying in ${ delay }ms` );
 				}
-				await new Promise( ( resolve ) =>
-					setTimeout( resolve, delay )
-				);
+				await new Promise( ( resolve ) => setTimeout( resolve, delay ) );
 				delay = Math.min( delay * backoffMultiplier, maxDelay );
 			}
 		}
 	}
+
 	throw new Error(
-		`Operation failed after ${ maxRetries } attempts: ${ lastError.message }`
+		`Operation failed after ${ maxRetries } attempts: ${ lastError?.message }`
 	);
 }
 
 /**
- * Assert with detailed error logging
+ * Assertion helper that logs details when failures occur.
+ *
+ * @param {boolean} condition
+ * @param {string} message
+ * @param {object} logger
+ * @param {*} [details]
  */
 function assertWithLog( condition, message, logger, details ) {
 	if ( ! condition ) {
@@ -61,23 +72,13 @@ function assertWithLog( condition, message, logger, details ) {
 		logger.info( `Assertion passed: ${ message }` );
 	}
 }
-	/**
-	 * @jest-environment node
-	 *
-	 * Test utilities for error handling and logging
-	 *
-	 * @package
-	 */
 
-	// Use file-based TestLogger for all tests
-	// Jest setup is now handled in .github/tests/jest.setup.localstorage.js
-	const TestLogger = require( './test-logger' );
-
-	/**
-	 * Assert with detailed error logging
-	 */
 /**
- * Measure test execution time
+ * Measure synchronous execution time.
+ *
+ * @param {() => *} fn
+ * @param {object} logger
+ * @returns {{result: *, duration: number}}
  */
 function measureExecutionTime( fn, logger ) {
 	const start = Date.now();
@@ -87,10 +88,6 @@ function measureExecutionTime( fn, logger ) {
 		if ( logger ) {
 			logger.info( `Execution completed in ${ duration }ms` );
 		}
-
-	/**
-	 * Measure test execution time
-	 */
 		return { result, duration };
 	} catch ( error ) {
 		const duration = Date.now() - start;
@@ -102,21 +99,21 @@ function measureExecutionTime( fn, logger ) {
 }
 
 /**
- * Create a test context with cleanup
+ * Create a cleanup-aware test context.
+ *
+ * @param {Function} setup
+ * @param {Function} cleanup
+ * @param {object} logger
  */
 function createTestContext( setup, cleanup, logger ) {
 	const context = {
 		cleanup: () => {
 			try {
-
-	/**
-	 * Create a test context with cleanup
-	 */
 				if ( cleanup ) {
 					cleanup();
-					if ( logger ) {
-						logger.info( 'Cleanup completed successfully' );
-					}
+				}
+				if ( logger ) {
+					logger.info( 'Cleanup completed successfully' );
 				}
 			} catch ( error ) {
 				if ( logger ) {
@@ -126,6 +123,7 @@ function createTestContext( setup, cleanup, logger ) {
 			}
 		},
 	};
+
 	try {
 		const setupResult = setup();
 		if ( logger ) {
@@ -142,12 +140,8 @@ function createTestContext( setup, cleanup, logger ) {
 }
 
 /**
- * Collect test metrics
+ * Basic metrics collector for tests.
  */
-
-	/**
-	 * Collect test metrics
-	 */
 class TestMetrics {
 	constructor() {
 		this.metrics = {
@@ -160,6 +154,7 @@ class TestMetrics {
 			warnings: [],
 		};
 	}
+
 	recordTest( name, status, duration, error = null ) {
 		this.metrics.totalTests++;
 		this.metrics.totalDuration += duration;
@@ -181,31 +176,32 @@ class TestMetrics {
 				break;
 		}
 	}
+
 	recordWarning( test, warning ) {
 		this.metrics.warnings.push( { test, warning } );
 	}
+
 	getSummary() {
+		const successRate =
+			this.metrics.totalTests > 0
+				? (
+						( this.metrics.passedTests /
+							this.metrics.totalTests ) *
+						100
+				  ).toFixed( 2 )
+				: '0.00';
+		const averageDuration =
+			this.metrics.totalTests > 0
+				? (
+						this.metrics.totalDuration /
+						this.metrics.totalTests
+				  ).toFixed( 2 )
+				: '0.00';
 		return {
 			...this.metrics,
-			successRate:
-				this.metrics.totalTests > 0
-					? (
-							( this.metrics.passedTests /
-								this.metrics.totalTests ) *
-							100
-					  ).toFixed( 2 )
-					: 0,
-			averageDuration:
-				this.metrics.totalTests > 0
-					? (
-							this.metrics.totalDuration / this.metrics.totalTests
-					  ).toFixed( 2 )
-					: 0,
+			successRate,
+			averageDuration,
 		};
-	}
-	printSummary() {
-		// ...existing code...
-		// No-op for lint compliance
 	}
 }
 

@@ -1,10 +1,10 @@
-// Dry run tests for validating {{mustache}} placeholder variables in scaffold files
+// Dry run tests for validating PLACEHOLDER placeholder variables in scaffold files
 const fs = require( 'fs' );
 const path = require( 'path' );
 const {
 	replaceMustacheVars,
 	DRY_RUN_VALUES,
-} = require( '../../dry-run-config' );
+} = require( '../../dry-run/dry-run-config' );
 const glob = require( 'glob' );
 
 // Use glob to find all files, including ignored ones, then filter for mustache variables

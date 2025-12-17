@@ -42,9 +42,6 @@ const fs = require( 'fs' );
 const path = require( 'path' );
 const { execSync } = require( 'child_process' );
 
-// Canonical config schema access (if needed for config validation or schema output)
-const { getCanonicalConfigSchema } = require('../lib/config-schema');
-
 // ============================================================================
 // CONFIGURATION
 // ============================================================================
@@ -257,7 +254,7 @@ function checkVersionConsistency() {
 function checkPlaceholders() {
 	header( 'Mustache Placeholder Verification' );
 
-	info( 'Verifying {{mustache}} placeholders preserved...' );
+	info( 'Verifying PLACEHOLDER placeholders preserved...' );
 
 	const rootDir = path.resolve( __dirname, '..', '..' );
 	let placeholderCount = 0;

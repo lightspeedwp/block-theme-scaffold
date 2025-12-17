@@ -1,59 +1,64 @@
 # Frontmatter Schema Reference
 
-This document summarizes the metadata schema shared by `.agent.md` specs, ensuring automation tooling (`scripts/validation/validate-agent-frontmatter.js`, lint rules, and doc readers) stays aligned.
+This document summarizes the metadata schema enforced by `.github/schemas/frontmatter.schema.json` so automation tooling stays aligned with the validator (`scripts/validation/validate-agent-frontmatter.js`).
 
-## Frontmatter Structure
+## Schema Requirements
 
-Each agent spec must include the following keys in its YAML frontmatter:
+The JSON schema requires the following shape in every `.agent.md` spec:
 
-| Field | Type | Required | Description |
-| --- | --- | --- | --- |
-| `title` | string | ✅ | Human-readable name for the agent. |
-| `description` | string | ✅ | Brief summary of the agent’s role. |
-| `version` | string | ✅ | SemVer-style identifier for the spec. |
-| `last_updated` | string | ✅ | ISO date when the spec was last refreshed. |
-| `owners` | array | ✅ | Team/person responsible for the agent. |
-| `tags` | array | ✅ | List of keywords (e.g., `["release","automation"]`). |
-| `status` | string | ✅ | Current lifecycle state (`active`, `draft`, etc.). |
-| `apply_to` | string\|array | ✅ | File glob that this spec describes. |
-| `runtime` | string | ✅ | Execution host (e.g., `node`, `github-copilot`). |
-| `entrypoint` | string | ✅ | Path or command that launches the agent. |
-| `tools` | array | ✅ | Approved tool permissions (see below). |
-| `permissions` | array | ⚪️ | Optional scopes (see “Permission Vocabulary”). |
-| `references` | array | ✅ | Related docs/tests/workflows (must include `.github/agents/agent.md`). |
-| `metadata.guardrails` | string | ✅ | Mandatory guardrail summary for safety review. |
+| Field | Type | Notes |
+| --- | --- | --- |
+| `description` | `string` | Human-readable explanation of what the agent does; this is the only required top-level string. |
+| `tools` | `array<string>` | Must be present and contain at least one string. Each entry describes the capabilities the agent may exercise (e.g., `read_file`, `run_in_terminal`). |
+| `metadata.guardrails` | `string` | Nested in the `metadata` object, this field must spell out safety guardrails. |
 
-Specs may include additional fields if required, but they must keep the above keys intact to satisfy CI validation.
+All other values (such as `name`, `title`, `version`, `last_updated`, `owners`, `tags`, `status`, `apply_to`, `runtime`, `entrypoint`, `permissions`, `references`, and the rest of `metadata`) are optional, but they are still valuable for documentation and audits.
 
-## Tool Vocabulary
+## Recommended Metadata Fields
 
-The `tools` array enumerates the agent’s allowed capabilities. Common entries include:
+It is best practice to keep the following keys even though the schema does not mark them as required:
 
-- `search`, `edit`, `fetch`, `semantic_search` for knowledge work.
-- `read_file`, `update_file`, `create_file`, `delete_file`, `move_file` for file operations.
-- `run_in_terminal`, `execute`, `execute/runTask`, etc., for CLI interactions.
-- `vscode`, `vscodeAPI`, `web`, `github:*` for IDE or API access.
+| Field | Type | Description |
+| --- | --- | --- |
+| `name`/`title` | `string` | Human-friendly identifier for the agent. Keep both when possible (`name` for scripts, `title` for docs).
+| `version` | `string` | Semantic version or revision tag for the spec.
+| `last_updated` | `string` (`date`) | ISO-formatted date (YYYY-MM-DD) to indicate spec freshness; this is enforced via the `format` property in the schema.
+| `owners` | `array<string>` | At least one owner should be listed so stakeholders know who maintains the agent.
+| `tags` | `array<string>` | Helps group agents (e.g., `release`, `validation`).
+| `status` | `string` | Lifecycle state such as `active`, `draft`, or `archived`.
+| `apply_to` | `string|array<string>` | Glob or globs describing the files/workflows this agent touches.
+| `runtime` | `string` | Host environment (`node`, `github-copilot`, etc.).
+| `entrypoint` | `string` | Command or path used to launch the agent.
+| `references` | `array<string>` | Related docs/tests/workflows (must include `.github/agents/agent.md`).
+| `permissions` | `array<string>` | Optional; see the approved vocabulary below.
+| `metadata` | `object` | Additional guardrails beyond `guardrails`; `additionalProperties` allowed by the schema.
 
-Treat each listed tool as a permission. If a tool is missing, the agent must behave as if the capability is unavailable.
+## Tools Vocabulary
 
-## Permission Vocabulary
+Every entry in `tools` must be a string. Common values we expect to see include:
 
-The new `permissions` array documents scopes beyond tooling (e.g., GitHub scopes, shell access). Keep the entries within this approved vocabulary:
+- `read_file`, `write_file`, `create_file`, `delete_file`
+- `search`, `edit`, `fetch`, `semantic_search`
+- `run_in_terminal`, `execute`, `execute/runTask`
+- `vscode`, `vscodeAPI`, `web`, `github:*`
 
-- `read`
-- `write`
-- `execute`
-- `filesystem`
-- `network`
-- `shell`
-- `github:repo`
-- `github:issues`
-- `github:pulls`
-- `github:workflows`
-- `github:checks`
-- `github:actions`
+Treat these as permissions. If a tool is omitted, operate as if that capability is unavailable.
 
-When the vocabulary grows, update this document, the schema’s enum, `.github/instructions/agent-spec.instructions.md`, and the validator before adjusting specs so validation, documentation, and automation stay in sync.
+## Permissions Vocabulary
+
+The `permissions` array (when present) accepts the following values only, mirroring the schema enum: `read`, `write`, `execute`, `filesystem`, `network`, `shell`, `github:repo`, `github:issues`, `github:pulls`, `github:workflows`, `github:checks`, `github:actions`. Entries must be unique strings.
+
+## Validator Notes
+
+- `scripts/validation/validate-agent-frontmatter.js` confirms `tools` is a non-empty array, `permissions` entries belong to the approved vocabulary, and `metadata.guardrails` exists.
+- `js-yaml` is used to parse the YAML frontmatter; keep the top/bottom `---` markers intact.
+- Additional keys outside the schema are allowed (the schema sets `additionalProperties: true`).
+
+To inspect the enforcement directly:
+
+```sh
+node scripts/validation/validate-agent-frontmatter.js
+```
 
 ## Sample Frontmatter
 
@@ -72,7 +77,7 @@ entrypoint: "scripts/validation/validate-theme-config.js"
 tools:
   - run_in_terminal
   - read_file
-  - edit
+  - update_file
 permissions:
   - read
   - write
@@ -82,15 +87,8 @@ references:
   - ".github/workflows/agent-build.yml"
 metadata:
   guardrails: "Always validate config files before generation."
+  notes: "This field may include release instructions later."
 ---
 ```
 
-## Keeping the Schema Updated
-
-*Any* addition to the tools/permissions vocabulary must:
-
-1. Update `.github/schemas/frontmatter.schema.json` so the enum includes the new value.
-2. Refresh `docs/FRONTMATTER_SCHEMA.md` to describe the new scope.
-3. Ensure validation tooling (e.g., `scripts/validation/validate-agent-frontmatter.js`) can handle the expanded values.
-
-This keeps the docs, schema, and automation grounded in the same contract.
+This example satisfies the schema because `description`, `tools`, and `metadata.guardrails` are present. The optional `permissions`, references, and metadata extensions are included for completeness.

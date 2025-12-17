@@ -1,6 +1,7 @@
-#!/usr/bin/env node
 
 /**
+ * logger.js
+ *
  * A utility class for writing structured, timestamped logs to a file.
  *
  * Conforms to the logging standards defined in the project documentation,
@@ -14,6 +15,9 @@
  * logger.info('Process starting...');
  * logger.debug('Doing some work.'); // Only logs if LOG_LEVEL is 'debug'
  * await logger.save();
+ *
+ * @fileoverview Structured file logger for project processes.
+ * @todo Add support for log rotation and async streaming if needed.
  */
 
 const fs = require( 'fs/promises' );
@@ -28,36 +32,6 @@ const LOG_LEVELS = {
 
 class FileLogger {
 	/**
-	 * @type {string[]}
-	 * @private
-	 */
-	_logBuffer = [];
-
-	/**
-	 * @type {string}
-	 * @private
-	 */
-	_processName;
-
-	/**
-	 * @type {string}
-	 * @private
-	 */
-	_category;
-
-	/**
-	 * @type {number}
-	 * @private
-	 */
-	_logLevel;
-
-	/**
-	 * @type {boolean}
-	 * @private
-	 */
-	_logToConsole;
-
-	/**
 	 * Creates a new FileLogger instance.
 	 *
 	 * @param {string} processName The name of the process, used in the log filename.
@@ -69,6 +43,7 @@ class FileLogger {
 		}
 		this._processName = processName;
 		this._category = category;
+		this._logBuffer = [];
 
 		const envLogLevel =
 			process.env.LOG_LEVEL?.toLowerCase() || 'info';

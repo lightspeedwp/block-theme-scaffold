@@ -1,5 +1,3 @@
-#!/usr/bin/env node
-
 /**
  * scripts/test-placeholders.js
  *
@@ -17,81 +15,90 @@
  */
 const PLACEHOLDER_MAP = {
 	// Theme identification
-	'{{theme_slug}}': 'block-theme-scaffold',
-	'{{theme_name}}': 'Block Theme Scaffold',
-	'{{description}}':
+	'PLACEHOLDER': 'block-theme-scaffold',
+	'PLACEHOLDER': 'Block Theme Scaffold',
+	'A multi-block WordPress plugin scaffold example':
 		'A modern WordPress block theme scaffold with full site editing support',
-	'{{author}}': 'LightSpeed',
-	'{{author_uri}}': 'https://lightspeedwp.com',
-	'{{version}}': '1.0.0',
-	'{{theme_uri}}': 'https://github.com/lightspeedwp/block-theme-scaffold',
-	'{{theme_tags}}': 'block-theme, full-site-editing, accessibility-ready',
+	'Example Author': 'LightSpeed',
+	'https://example.com': 'https://lightspeedwp.com',
+	'1.0.0': '1.0.0',
+	'PLACEHOLDER': 'https://github.com/lightspeedwp/block-theme-scaffold',
+	'PLACEHOLDER': 'block-theme, full-site-editing, accessibility-ready',
 
 	// WordPress requirements
-	'{{min_wp_version}}': '6.0',
-	'{{tested_wp_version}}': '6.9',
-	'{{min_php_version}}': '7.4',
+	'PLACEHOLDER': '6.0',
+	'PLACEHOLDER': '6.9',
+	'PLACEHOLDER': '7.4',
 
 	// License information
-	'{{license}}': 'GPL-2.0-or-later',
-	'{{license_uri}}': 'https://www.gnu.org/licenses/gpl-2.0.html',
+	'GPL-2.0-or-later': 'GPL-2.0-or-later',
+	'https://www.gnu.org/licenses/gpl-2.0.html': 'https://www.gnu.org/licenses/gpl-2.0.html',
 
 	// URLs and contact
-	'{{theme_repo_url}}':
+	'PLACEHOLDER':
 		'https://github.com/lightspeedwp/block-theme-scaffold',
-	'{{support_url}}':
+	'PLACEHOLDER':
 		'https://wordpress.org/support/theme/block-theme-scaffold',
-	'{{support_email}}': 'support@lightspeedwp.com',
-	'{{security_email}}': 'security@lightspeedwp.com',
-	'{{business_email}}': 'contact@lightspeedwp.com',
-	'{{docs_url}}': 'https://github.com/lightspeedwp/block-theme-scaffold/wiki',
-	'{{docs_repo_url}}': 'https://github.com/lightspeedwp/block-theme-scaffold',
-	'{{discord_url}}': 'https://discord.gg/lightspeedwp',
-	'{{custom_dev_url}}': 'https://lightspeedwp.com',
-	'{{premium_support_url}}': 'https://lightspeedwp.com/support',
-	'{{changelog_url}}':
+	'PLACEHOLDER': 'support@lightspeedwp.com',
+	'PLACEHOLDER': 'security@lightspeedwp.com',
+	'PLACEHOLDER': 'contact@lightspeedwp.com',
+	'PLACEHOLDER': 'https://github.com/lightspeedwp/block-theme-scaffold/wiki',
+	'PLACEHOLDER': 'https://github.com/lightspeedwp/block-theme-scaffold',
+	'PLACEHOLDER': 'https://discord.gg/lightspeedwp',
+	'PLACEHOLDER': 'https://lightspeedwp.com',
+	'PLACEHOLDER': 'https://lightspeedwp.com/support',
+	'PLACEHOLDER':
 		'https://github.com/lightspeedwp/block-theme-scaffold/blob/develop/CHANGELOG.md',
 
 	// Namespace (used in PHP and JS)
-	'{{namespace}}': 'block_theme_scaffold',
+	'example_plugin': 'block_theme_scaffold',
 
 	// Color palette
-	'{{primary_color}}': '#0073aa',
-	'{{secondary_color}}': '#005177',
-	'{{background_color}}': '#ffffff',
-	'{{text_color}}': '#1e1e1e',
-	'{{accent_color}}': '#d63638',
-	'{{neutral_color}}': '#757575',
+	'PLACEHOLDER': '#0073aa',
+	'PLACEHOLDER': '#005177',
+	'PLACEHOLDER': '#ffffff',
+	'PLACEHOLDER': '#1e1e1e',
+	'PLACEHOLDER': '#d63638',
+	'PLACEHOLDER': '#757575',
 
 	// Typography - Font families
-	'{{heading_font_family}}':
+	'PLACEHOLDER':
 		'system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
-	'{{heading_font_name}}': 'System Sans',
-	'{{body_font_family}}': 'Georgia, "Times New Roman", Times, serif',
-	'{{body_font_name}}': 'System Serif',
-	'{{mono_font_family}}': '"Courier New", Courier, monospace',
-	'{{mono_font_name}}': 'Monospace',
+	'PLACEHOLDER': 'System Sans',
+	'PLACEHOLDER': 'Georgia, "Times New Roman", Times, serif',
+	'PLACEHOLDER': 'System Serif',
+	'PLACEHOLDER': '"Courier New", Courier, monospace',
+	'PLACEHOLDER': 'Monospace',
 
 	// Typography - Font properties
-	'{{heading_font_weight}}': '700',
-	'{{heading_line_height}}': '1.2',
-	'{{body_line_height}}': '1.6',
-	'{{button_font_weight}}': '600',
-	'{{button_border_radius}}': '4px',
-	'{{site_title_font_weight}}': '700',
+	'PLACEHOLDER': '700',
+	'PLACEHOLDER': '1.2',
+	'PLACEHOLDER': '1.6',
+	'PLACEHOLDER': '600',
+	'PLACEHOLDER': '4px',
+	'PLACEHOLDER': '700',
 
 	// Layout dimensions
-	'{{content_width}}': '640px',
-	'{{wide_width}}': '1200px',
+	'PLACEHOLDER': '640px',
+	'PLACEHOLDER': '1200px',
+	'PLACEHOLDER': '640',
 
 	// Dates
-	'{{year}}': new Date().getFullYear().toString(),
-	'{{created_date}}': new Date().toISOString(),
-	'{{updated_date}}': new Date().toISOString(),
+	'PLACEHOLDER': new Date().getFullYear().toString(),
+	'PLACEHOLDER': new Date().toISOString(),
+	'PLACEHOLDER': new Date().toISOString(),
+	'PLACEHOLDER': '1200',
+	'PLACEHOLDER': '675',
+	'PLACEHOLDER': '600',
+	'PLACEHOLDER': '400',
+	'PLACEHOLDER': '1440',
+	'PLACEHOLDER': '1080',
+	'PLACEHOLDER': '32',
+	'PLACEHOLDER': '…',
 
 	// JavaScript/UI specific
-	'{{skip_link_text}}': 'Skip to content',
-	'{{theme_slug|camelCase}}': 'blockThemeScaffold',
+	'PLACEHOLDER': 'Skip to content',
+	'PLACEHOLDER': 'blockThemeScaffold',
 };
 
 /**
@@ -118,7 +125,7 @@ function isScaffoldMode( packageJsonPath ) {
 	try {
 		const fs = require( 'fs' );
 		const packageJson = fs.readFileSync( packageJsonPath, 'utf8' );
-		return packageJson.includes( '{{theme_slug}}' );
+		return packageJson.includes( 'PLACEHOLDER' );
 	} catch ( error ) {
 		if ( typeof packageJsonPath === 'string' ) {
 			const normalized = packageJsonPath.toLowerCase();
@@ -138,7 +145,7 @@ function isScaffoldMode( packageJsonPath ) {
 /**
  * Get a specific placeholder value.
  *
- * @param {string} key - The placeholder key (e.g., '{{theme_slug}}')
+ * @param {string} key - The placeholder key (e.g., 'PLACEHOLDER')
  * @return {string|undefined} The test value or undefined if not found
  */
 function getPlaceholder( key ) {
@@ -196,7 +203,7 @@ if ( require.main === module ) {
 				}
 			} else {
 				// console.error(
-				// 	'Usage: node test-placeholders.js get {{placeholder}}'
+				// 	'Usage: node test-placeholders.js get PLACEHOLDER'
 				// );
 				process.exit( 1 );
 			}
@@ -224,7 +231,7 @@ if ( require.main === module ) {
 			// 	'  node test-placeholders.js list          - List all placeholder keys'
 			// );
 			// console.log(
-			// 	'  node test-placeholders.js get {{key}}   - Get value for specific key'
+			// 	'  node test-placeholders.js get PLACEHOLDER   - Get value for specific key'
 			// );
 			// console.log(
 			// 	'  node test-placeholders.js json          - Output all as JSON'

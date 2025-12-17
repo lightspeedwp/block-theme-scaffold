@@ -40,8 +40,6 @@
  */
 
 // const fs = require('fs');
-// Canonical config schema access (if needed for config validation or schema output)
-const { getCanonicalConfigSchema } = require('../lib/config-schema');
 // const path = require('path');
 // const readline = require('readline');
 

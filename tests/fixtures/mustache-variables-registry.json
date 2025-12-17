@@ -1,1725 +1,1789 @@
 {
-	"summary": {
-		"totalFiles": 549,
-		"filesWithVariables": 221,
-		"uniqueVariables": 142,
-		"totalOccurrences": 2438
-	},
-	"variables": {
-		"theme_name": {
-			"name": "theme_name",
-			"category": "core_identity",
-			"files": [
-				".github/README.md",
-				".github/agents/development-assistant.agent.md",
-				".github/agents/generate-theme.agent.md",
-				".github/agents/release-scaffold.agent.md",
-				".github/agents/release.agent.md",
-				".github/custom-instructions.md",
-				".github/instructions/generate-theme.instructions.md",
-				".github/instructions/i18n.instructions.md",
-				".github/instructions/release-scaffold.instructions.md",
-				".github/instructions/release.instructions.md",
-				".github/prompts/generate-theme.prompt.md",
-				".github/prompts/release.prompt.md",
-				".github/reports/SETUP-SUMMARY.md",
-				".github/reports/analysis/2025-12-10-generate-theme-validation.md",
-				"CONTRIBUTING.md",
-				"DEVELOPMENT.md",
-				"README.md",
-				"README.txt",
-				"SECURITY.md",
-				"SUPPORT.md",
-				"docs/AGENTS_OVERVIEW.md",
-				"docs/API_REFERENCE.md",
-				"docs/CONFIGS.md",
-				"docs/GENERATE_THEME.md",
-				"docs/LINTING.md",
-				"docs/README.md",
-				"docs/WORKFLOWS.md",
-				"functions.php",
-				"inc/block-patterns.php",
-				"inc/block-styles.php",
-				"inc/template-functions.php",
-				"package.json",
-				"patterns/404-content.php",
-				"patterns/archive-header.php",
-				"patterns/author-header.php",
-				"patterns/call-to-action.php",
-				"patterns/features.php",
-				"patterns/footer.php",
-				"patterns/header.php",
-				"patterns/hero.php",
-				"patterns/no-search-results.php",
-				"patterns/pagination.php",
-				"patterns/post-card.php",
-				"patterns/post-meta.php",
-				"patterns/query-posts-grid.php",
-				"patterns/query-posts-list.php",
-				"patterns/single-post-content.php",
-				"patterns/testimonials.php",
-				"screenshot.png.md",
-				"scripts/generate-theme.js",
-				"scripts/test-placeholders.js",
-				"src/js/editor.js",
-				"style.css",
-				"tests/bootstrap.php",
-				"tests/e2e/theme.spec.js",
-				"tests/js/theme.test.js",
-				"tests/test-block-patterns.php",
-				"tests/test-block-styles.php",
-				"tests/test-template-functions.php",
-				"tests/test-theme-setup.php",
-				"webpack.config.js"
-			],
-			"count": 197
-		},
-		"theme_slug": {
-			"name": "theme_slug",
-			"category": "core_identity",
-			"files": [
-				".github/agents/development-assistant.agent.md",
-				".github/agents/generate-theme.agent.md",
-				".github/agents/release-scaffold.agent.md",
-				".github/agents/release.agent.md",
-				".github/custom-instructions.md",
-				".github/instructions/generate-theme.instructions.md",
-				".github/instructions/i18n.instructions.md",
-				".github/instructions/release-scaffold.instructions.md",
-				".github/prompts/generate-theme.prompt.md",
-				".github/prompts/release.prompt.md",
-				".github/reports/SETUP-SUMMARY.md",
-				".github/reports/analysis/2025-12-10-generate-theme-validation.md",
-				".github/reports/validation/wordpress-packages-validation.md",
-				".github/workflows/ci.yml",
-				".github/workflows/i18n.yml",
-				".github/workflows/release.yml",
-				"CONTRIBUTING.md",
-				"DEVELOPMENT.md",
-				"README.md",
-				"SUPPORT.md",
-				"docs/AGENTS_OVERVIEW.md",
-				"docs/ARCHITECTURE.md",
-				"docs/BUILD_PROCESS.md",
-				"docs/DEPRECATION.md",
-				"docs/GENERATE_THEME.md",
-				"docs/INTERNATIONALIZATION.md",
-				"docs/LINTING.md",
-				"docs/THEME_STRUCTURE.md",
-				"docs/WORKFLOWS.md",
-				"functions.php",
-				"inc/README.md",
-				"inc/block-patterns.php",
-				"inc/block-styles.php",
-				"inc/deprecation.php",
-				"inc/template-functions.php",
-				"languages/README.md",
-				"package-lock.json",
-				"package.json",
-				"parts/README.md",
-				"parts/comments.html",
-				"parts/footer.html",
-				"parts/header.html",
-				"parts/pagination.html",
-				"parts/post-meta.html",
-				"parts/sidebar.html",
-				"patterns/404-content.php",
-				"patterns/README.md",
-				"patterns/archive-header.php",
-				"patterns/author-header.php",
-				"patterns/call-to-action.php",
-				"patterns/comments.php",
-				"patterns/features.php",
-				"patterns/footer.php",
-				"patterns/header.php",
-				"patterns/hero.php",
-				"patterns/no-search-results.php",
-				"patterns/pagination.php",
-				"patterns/post-card.php",
-				"patterns/post-meta.php",
-				"patterns/query-posts-grid.php",
-				"patterns/query-posts-list.php",
-				"patterns/sidebar.php",
-				"patterns/single-post-content.php",
-				"patterns/testimonials.php",
-				"scripts/README.md",
-				"scripts/generate-theme.js",
-				"scripts/test-placeholders.js",
-				"src/js/README.md",
-				"src/js/editor.js",
-				"templates/404.html",
-				"templates/README.md",
-				"templates/archive.html",
-				"templates/author.html",
-				"templates/category.html",
-				"templates/front-page.html",
-				"templates/home-sidebar.html",
-				"templates/home.html",
-				"templates/index.html",
-				"templates/search.html",
-				"templates/single.html",
-				"templates/singular.html",
-				"templates/tag.html",
-				"tests/bootstrap.php",
-				"tests/test-block-patterns.php",
-				"tests/test-block-styles.php",
-				"tests/test-template-functions.php",
-				"tests/test-theme-setup.php"
-			],
-			"count": 976
-		},
-		"version": {
-			"name": "version",
-			"category": "versioning",
-			"files": [
-				".github/agents/development-assistant.agent.md",
-				".github/agents/generate-theme.agent.md",
-				".github/agents/release.agent.md",
-				".github/custom-instructions.md",
-				".github/instructions/generate-theme.instructions.md",
-				".github/instructions/release-scaffold.instructions.md",
-				".github/instructions/release.instructions.md",
-				".github/prompts/generate-theme.prompt.md",
-				".github/prompts/release.prompt.md",
-				".github/reports/SETUP-SUMMARY.md",
-				".github/reports/migration/STYLELINT-MIGRATION.md",
-				"DEVELOPMENT.md",
-				"README.md",
-				"README.txt",
-				"SECURITY.md",
-				"docs/GENERATE_THEME.md",
-				"functions.php",
-				"inc/block-patterns.php",
-				"inc/block-styles.php",
-				"inc/deprecation.php",
-				"inc/template-functions.php",
-				"package-lock.json",
-				"patterns/404-content.php",
-				"patterns/archive-header.php",
-				"patterns/author-header.php",
-				"patterns/call-to-action.php",
-				"patterns/features.php",
-				"patterns/footer.php",
-				"patterns/header.php",
-				"patterns/hero.php",
-				"patterns/no-search-results.php",
-				"patterns/pagination.php",
-				"patterns/post-card.php",
-				"patterns/post-meta.php",
-				"patterns/query-posts-grid.php",
-				"patterns/query-posts-list.php",
-				"patterns/single-post-content.php",
-				"patterns/testimonials.php",
-				"scripts/generate-theme.js",
-				"scripts/release.agent.js",
-				"scripts/test-placeholders.js",
-				"tests/test-logger.js",
-				"webpack.config.js"
-			],
-			"count": 127
-		},
-		"description": {
-			"name": "description",
-			"category": "core_identity",
-			"files": [
-				".github/agents/generate-theme.agent.md",
-				".github/custom-instructions.md",
-				".github/instructions/generate-theme.instructions.md",
-				".github/prompts/generate-theme.prompt.md",
-				"README.md",
-				"README.txt",
-				"docs/GENERATE_THEME.md",
-				"docs/LINTING.md",
-				"scripts/generate-theme.js",
-				"scripts/test-placeholders.js"
-			],
-			"count": 27
-		},
-		"author": {
-			"name": "author",
-			"category": "author_contact",
-			"files": [
-				".github/agents/generate-theme.agent.md",
-				".github/agents/release.agent.md",
-				".github/custom-instructions.md",
-				".github/instructions/generate-theme.instructions.md",
-				".github/prompts/generate-theme.prompt.md",
-				".github/schemas/examples/theme-config.example.json",
-				".github/schemas/theme-config.schema.json",
-				"README.md",
-				"README.txt",
-				"docs/GENERATE_THEME.md",
-				"package.json",
-				"scripts/generate-theme.js",
-				"scripts/test-placeholders.js",
-				"style.css"
-			],
-			"count": 55
-		},
-		"author_uri": {
-			"name": "author_uri",
-			"category": "author_contact",
-			"files": [
-				".github/agents/generate-theme.agent.md",
-				".github/instructions/generate-theme.instructions.md",
-				".github/prompts/generate-theme.prompt.md",
-				"README.md",
-				"README.txt",
-				"docs/GENERATE_THEME.md",
-				"scripts/generate-theme.js",
-				"scripts/test-placeholders.js"
-			],
-			"count": 21
-		},
-		"min_wp_version": {
-			"name": "min_wp_version",
-			"category": "versioning",
-			"files": [
-				".github/agents/generate-theme.agent.md",
-				".github/instructions/generate-theme.instructions.md",
-				".github/prompts/generate-theme.prompt.md",
-				"README.md",
-				"docs/GENERATE_THEME.md",
-				"scripts/generate-theme.js",
-				"scripts/test-placeholders.js"
-			],
-			"count": 17
-		},
-		"tested_wp_version": {
-			"name": "tested_wp_version",
-			"category": "versioning",
-			"files": [
-				".github/agents/generate-theme.agent.md",
-				".github/instructions/generate-theme.instructions.md",
-				".github/prompts/generate-theme.prompt.md",
-				"docs/GENERATE_THEME.md",
-				"scripts/generate-theme.js",
-				"scripts/test-placeholders.js"
-			],
-			"count": 16
-		},
-		"min_php_version": {
-			"name": "min_php_version",
-			"category": "versioning",
-			"files": [
-				".github/agents/generate-theme.agent.md",
-				".github/instructions/generate-theme.instructions.md",
-				".github/prompts/generate-theme.prompt.md",
-				"README.md",
-				"docs/GENERATE_THEME.md",
-				"scripts/generate-theme.js",
-				"scripts/test-placeholders.js"
-			],
-			"count": 17
-		},
-		"primary_color": {
-			"name": "primary_color",
-			"category": "design_colors",
-			"files": [
-				".github/agents/generate-theme.agent.md",
-				".github/custom-instructions.md",
-				".github/instructions/generate-theme.instructions.md",
-				".github/reports/theme-generation-updates.md",
-				"README.md",
-				"docs/GENERATE_THEME.md",
-				"docs/STYLES.md",
-				"inc/template-functions.php",
-				"scripts/generate-theme.js",
-				"scripts/test-placeholders.js",
-				"theme.json"
-			],
-			"count": 26
-		},
-		"secondary_color": {
-			"name": "secondary_color",
-			"category": "design_colors",
-			"files": [
-				".github/agents/generate-theme.agent.md",
-				".github/custom-instructions.md",
-				".github/instructions/generate-theme.instructions.md",
-				".github/reports/theme-generation-updates.md",
-				"README.md",
-				"docs/GENERATE_THEME.md",
-				"docs/STYLES.md",
-				"inc/template-functions.php",
-				"scripts/generate-theme.js",
-				"scripts/test-placeholders.js",
-				"theme.json"
-			],
-			"count": 20
-		},
-		"background_color": {
-			"name": "background_color",
-			"category": "design_colors",
-			"files": [
-				".github/agents/generate-theme.agent.md",
-				".github/custom-instructions.md",
-				".github/instructions/generate-theme.instructions.md",
-				"README.md",
-				"docs/GENERATE_THEME.md",
-				"docs/STYLES.md",
-				"inc/template-functions.php",
-				"scripts/generate-theme.js",
-				"scripts/test-placeholders.js",
-				"theme.json"
-			],
-			"count": 17
-		},
-		"text_color": {
-			"name": "text_color",
-			"category": "design_colors",
-			"files": [
-				".github/agents/generate-theme.agent.md",
-				".github/custom-instructions.md",
-				".github/instructions/generate-theme.instructions.md",
-				"README.md",
-				"docs/GENERATE_THEME.md",
-				"docs/STYLES.md",
-				"inc/template-functions.php",
-				"scripts/generate-theme.js",
-				"scripts/test-placeholders.js",
-				"theme.json"
-			],
-			"count": 17
-		},
-		"font_family": {
-			"name": "font_family",
-			"category": "design_typography",
-			"files": [
-				".github/agents/generate-theme.agent.md",
-				".github/custom-instructions.md"
-			],
-			"count": 4
-		},
-		"heading_font": {
-			"name": "heading_font",
-			"category": "design_typography",
-			"files": [
-				".github/agents/generate-theme.agent.md",
-				".github/custom-instructions.md"
-			],
-			"count": 4
-		},
-		"hero_title": {
-			"name": "hero_title",
-			"category": "content_strings",
-			"files": [
-				".github/agents/generate-theme.agent.md",
-				".github/custom-instructions.md",
-				".test-temp/inc/block-patterns.php",
-				"inc/block-patterns.php"
-			],
-			"count": 6
-		},
-		"cta_text": {
-			"name": "cta_text",
-			"category": "content_strings",
-			"files": [
-				".github/agents/generate-theme.agent.md",
-				".github/custom-instructions.md"
-			],
-			"count": 4
-		},
-		"footer_text": {
-			"name": "footer_text",
-			"category": "content_strings",
-			"files": [
-				".github/agents/generate-theme.agent.md",
-				".github/custom-instructions.md"
-			],
-			"count": 4
-		},
-		"mustache": {
-			"name": "mustache",
-			"category": "other",
-			"files": [
-				".github/agents/release-scaffold.agent.md",
-				".github/agents/release.agent.md",
-				".github/instructions/release-scaffold.instructions.md",
-				".github/prompts/release-scaffold.prompt.md",
-				"docs/GENERATE_THEME.md",
-				"docs/HUSKY_PRECOMMIT.md",
-				"docs/RELEASE_PROCESS_SCAFFOLD.md"
-			],
-			"count": 36
-		},
-		"license": {
-			"name": "license",
-			"category": "license",
-			"files": [
-				".github/custom-instructions.md",
-				"CONTRIBUTING.md",
-				"DEVELOPMENT.md",
-				"README.md",
-				"README.txt",
-				"docs/GENERATE_THEME.md",
-				"docs/README.md",
-				"package-lock.json",
-				"package.json",
-				"scripts/generate-theme.js",
-				"scripts/test-placeholders.js",
-				"style.css"
-			],
-			"count": 23
-		},
-		"variable_name": {
-			"name": "variable_name",
-			"category": "other",
-			"files": [
-				".github/instructions/generate-theme.instructions.md",
-				"docs/GENERATE_THEME.md",
-				"scripts/scan-mustache-variables.js"
-			],
-			"count": 6
-		},
-		"accent_color": {
-			"name": "accent_color",
-			"category": "design_colors",
-			"files": [
-				".github/instructions/generate-theme.instructions.md",
-				"docs/GENERATE_THEME.md",
-				"docs/STYLES.md",
-				"scripts/generate-theme.js",
-				"scripts/test-placeholders.js",
-				"theme.json"
-			],
-			"count": 11
-		},
-		"neutral_color": {
-			"name": "neutral_color",
-			"category": "design_colors",
-			"files": [
-				".github/instructions/generate-theme.instructions.md",
-				"docs/GENERATE_THEME.md",
-				"docs/STYLES.md",
-				"scripts/generate-theme.js",
-				"scripts/test-placeholders.js",
-				"theme.json"
-			],
-			"count": 11
-		},
-		"heading_font_family": {
-			"name": "heading_font_family",
-			"category": "design_typography",
-			"files": [
-				".github/instructions/generate-theme.instructions.md",
-				".github/reports/theme-generation-updates.md",
-				"docs/GENERATE_THEME.md",
-				"docs/STYLES.md",
-				"scripts/generate-theme.js",
-				"scripts/test-placeholders.js",
-				"theme.json"
-			],
-			"count": 15
-		},
-		"heading_font_name": {
-			"name": "heading_font_name",
-			"category": "design_typography",
-			"files": [
-				".github/instructions/generate-theme.instructions.md",
-				"docs/GENERATE_THEME.md",
-				"docs/STYLES.md",
-				"scripts/generate-theme.js",
-				"scripts/test-placeholders.js",
-				"theme.json"
-			],
-			"count": 13
-		},
-		"body_font_family": {
-			"name": "body_font_family",
-			"category": "design_typography",
-			"files": [
-				".github/instructions/generate-theme.instructions.md",
-				".github/reports/theme-generation-updates.md",
-				"docs/GENERATE_THEME.md",
-				"docs/STYLES.md",
-				"scripts/generate-theme.js",
-				"scripts/test-placeholders.js",
-				"theme.json"
-			],
-			"count": 13
-		},
-		"body_font_name": {
-			"name": "body_font_name",
-			"category": "design_typography",
-			"files": [
-				".github/instructions/generate-theme.instructions.md",
-				"docs/GENERATE_THEME.md",
-				"docs/STYLES.md",
-				"scripts/generate-theme.js",
-				"scripts/test-placeholders.js",
-				"theme.json"
-			],
-			"count": 11
-		},
-		"heading_font_weight": {
-			"name": "heading_font_weight",
-			"category": "design_typography",
-			"files": [
-				".github/instructions/generate-theme.instructions.md",
-				".github/reports/theme-generation-updates.md",
-				"docs/GENERATE_THEME.md",
-				"docs/STYLES.md",
-				"scripts/generate-theme.js",
-				"scripts/test-placeholders.js",
-				"theme.json"
-			],
-			"count": 16
-		},
-		"body_line_height": {
-			"name": "body_line_height",
-			"category": "design_typography",
-			"files": [
-				".github/instructions/generate-theme.instructions.md",
-				".github/reports/theme-generation-updates.md",
-				"docs/GENERATE_THEME.md",
-				"docs/STYLES.md",
-				"scripts/generate-theme.js",
-				"scripts/test-placeholders.js",
-				"theme.json"
-			],
-			"count": 11
-		},
-		"heading_line_height": {
-			"name": "heading_line_height",
-			"category": "design_typography",
-			"files": [
-				".github/instructions/generate-theme.instructions.md",
-				"docs/GENERATE_THEME.md",
-				"docs/STYLES.md",
-				"scripts/generate-theme.js",
-				"scripts/test-placeholders.js",
-				"theme.json"
-			],
-			"count": 14
-		},
-		"button_font_weight": {
-			"name": "button_font_weight",
-			"category": "design_typography",
-			"files": [
-				".github/instructions/generate-theme.instructions.md",
-				"docs/GENERATE_THEME.md",
-				"docs/STYLES.md",
-				"scripts/generate-theme.js",
-				"scripts/test-placeholders.js",
-				"theme.json"
-			],
-			"count": 9
-		},
-		"site_title_font_weight": {
-			"name": "site_title_font_weight",
-			"category": "design_typography",
-			"files": [
-				".github/instructions/generate-theme.instructions.md",
-				"docs/GENERATE_THEME.md",
-				"docs/STYLES.md",
-				"scripts/generate-theme.js",
-				"scripts/test-placeholders.js",
-				"theme.json"
-			],
-			"count": 9
-		},
-		"content_width": {
-			"name": "content_width",
-			"category": "design_layout",
-			"files": [
-				".github/instructions/generate-theme.instructions.md",
-				".github/reports/theme-generation-updates.md",
-				"docs/GENERATE_THEME.md",
-				"docs/STYLES.md",
-				"scripts/generate-theme.js",
-				"scripts/test-placeholders.js",
-				"theme.json"
-			],
-			"count": 15
-		},
-		"wide_width": {
-			"name": "wide_width",
-			"category": "design_layout",
-			"files": [
-				".github/instructions/generate-theme.instructions.md",
-				".github/reports/theme-generation-updates.md",
-				"docs/GENERATE_THEME.md",
-				"docs/STYLES.md",
-				"scripts/generate-theme.js",
-				"scripts/test-placeholders.js",
-				"theme.json"
-			],
-			"count": 13
-		},
-		"content_width_px": {
-			"name": "content_width_px",
-			"category": "design_layout",
-			"files": [
-				".github/instructions/generate-theme.instructions.md",
-				".test-temp/scripts/generate-theme.js",
-				"docs/GENERATE_THEME.md",
-				"functions.php",
-				"scripts/generate-theme.js"
-			],
-			"count": 9
-		},
-		"namespace": {
-			"name": "namespace",
-			"category": "core_identity",
-			"files": [
-				".github/instructions/generate-theme.instructions.md",
-				".github/instructions/i18n.instructions.md",
-				".github/reports/SETUP-SUMMARY.md",
-				"docs/GENERATE_THEME.md",
-				"docs/THEME_STRUCTURE.md",
-				"package.json",
-				"scripts/generate-theme.js",
-				"scripts/test-placeholders.js"
-			],
-			"count": 16
-		},
-		"theme_repo_url": {
-			"name": "theme_repo_url",
-			"category": "urls",
-			"files": [
-				".github/instructions/generate-theme.instructions.md",
-				"CONTRIBUTING.md",
-				"README.md",
-				"SUPPORT.md",
-				"docs/GENERATE_THEME.md",
-				"package.json",
-				"scripts/generate-theme.js",
-				"scripts/test-placeholders.js"
-			],
-			"count": 26
-		},
-		"support_url": {
-			"name": "support_url",
-			"category": "urls",
-			"files": [
-				".github/instructions/generate-theme.instructions.md",
-				".github/workflows/i18n.yml",
-				"README.txt",
-				"docs/GENERATE_THEME.md",
-				"docs/INTERNATIONALIZATION.md",
-				"package.json",
-				"scripts/generate-theme.js",
-				"scripts/test-placeholders.js"
-			],
-			"count": 12
-		},
-		"docs_url": {
-			"name": "docs_url",
-			"category": "urls",
-			"files": [
-				".github/instructions/generate-theme.instructions.md",
-				"README.txt",
-				"SUPPORT.md",
-				"docs/GENERATE_THEME.md",
-				"docs/INTERNATIONALIZATION.md",
-				"package.json",
-				"scripts/generate-theme.js",
-				"scripts/test-placeholders.js"
-			],
-			"count": 15
-		},
-		"support_email": {
-			"name": "support_email",
-			"category": "author_contact",
-			"files": [
-				".github/instructions/generate-theme.instructions.md",
-				"SUPPORT.md",
-				"docs/GENERATE_THEME.md",
-				"scripts/generate-theme.js",
-				"scripts/test-placeholders.js"
-			],
-			"count": 7
-		},
-		"security_email": {
-			"name": "security_email",
-			"category": "author_contact",
-			"files": [
-				".github/instructions/generate-theme.instructions.md",
-				"CONTRIBUTING.md",
-				"SECURITY.md",
-				"SUPPORT.md",
-				"docs/GENERATE_THEME.md",
-				"scripts/generate-theme.js",
-				"scripts/test-placeholders.js"
-			],
-			"count": 10
-		},
-		"business_email": {
-			"name": "business_email",
-			"category": "author_contact",
-			"files": [
-				".github/instructions/generate-theme.instructions.md",
-				"SUPPORT.md",
-				"docs/GENERATE_THEME.md",
-				"scripts/generate-theme.js",
-				"scripts/test-placeholders.js"
-			],
-			"count": 7
-		},
-		"year": {
-			"name": "year",
-			"category": "author_contact",
-			"files": [
-				".github/instructions/generate-theme.instructions.md",
-				".github/schemas/examples/theme-config.example.json",
-				".github/schemas/theme-config.schema.json",
-				"README.txt",
-				"docs/GENERATE_THEME.md",
-				"scripts/test-placeholders.js",
-				"style.css"
-			],
-			"count": 13
-		},
-		"collected_slug": {
-			"name": "collected_slug",
-			"category": "other",
-			"files": [ ".github/instructions/generate-theme.instructions.md" ],
-			"count": 2
-		},
-		"collected_name": {
-			"name": "collected_name",
-			"category": "other",
-			"files": [ ".github/instructions/generate-theme.instructions.md" ],
-			"count": 2
-		},
-		"collected_description": {
-			"name": "collected_description",
-			"category": "other",
-			"files": [ ".github/instructions/generate-theme.instructions.md" ],
-			"count": 2
-		},
-		"collected_author": {
-			"name": "collected_author",
-			"category": "author_contact",
-			"files": [ ".github/instructions/generate-theme.instructions.md" ],
-			"count": 2
-		},
-		"collected_author_uri": {
-			"name": "collected_author_uri",
-			"category": "author_contact",
-			"files": [ ".github/instructions/generate-theme.instructions.md" ],
-			"count": 2
-		},
-		"collected_version": {
-			"name": "collected_version",
-			"category": "versioning",
-			"files": [ ".github/instructions/generate-theme.instructions.md" ],
-			"count": 2
-		},
-		"prefix": {
-			"name": "prefix",
-			"category": "other",
-			"files": [ ".github/instructions/i18n.instructions.md" ],
-			"count": 4
-		},
-		"role": {
-			"name": "role",
-			"category": "other",
-			"files": [ ".github/instructions/instructions.instructions.md" ],
-			"count": 2
-		},
-		"placeholders": {
-			"name": "placeholders",
-			"category": "other",
-			"files": [
-				".github/reports/integration/2025-12-09-precommit-testing-integration.md",
-				"docs/LINTING.md"
-			],
-			"count": 6
-		},
-		"slug": {
-			"name": "slug",
-			"category": "other",
-			"files": [ ".github/reports/migration/STYLELINT-MIGRATION.md" ],
-			"count": 2
-		},
-		"skip_link_text": {
-			"name": "skip_link_text",
-			"category": "content_strings",
-			"files": [
-				".github/reports/validation/wordpress-packages-validation.md",
-				"docs/GENERATE_THEME.md",
-				"scripts/generate-theme.js",
-				"scripts/test-placeholders.js",
-				"src/js/theme.js"
-			],
-			"count": 10
-		},
-		"github_org": {
-			"name": "github_org",
-			"category": "other",
-			"files": [ ".github/workflows/deploy.yml" ],
-			"count": 2
-		},
-		"hero_description": {
-			"name": "hero_description",
-			"category": "other",
-			"files": [
-				".test-temp/inc/block-patterns.php",
-				"inc/block-patterns.php"
-			],
-			"count": 2
-		},
-		"hero_button_text": {
-			"name": "hero_button_text",
-			"category": "content_strings",
-			"files": [
-				".test-temp/inc/block-patterns.php",
-				"inc/block-patterns.php"
-			],
-			"count": 2
-		},
-		"cta_title": {
-			"name": "cta_title",
-			"category": "content_strings",
-			"files": [
-				".test-temp/inc/block-patterns.php",
-				"inc/block-patterns.php"
-			],
-			"count": 2
-		},
-		"cta_description": {
-			"name": "cta_description",
-			"category": "other",
-			"files": [
-				".test-temp/inc/block-patterns.php",
-				"inc/block-patterns.php"
-			],
-			"count": 2
-		},
-		"cta_button_text": {
-			"name": "cta_button_text",
-			"category": "content_strings",
-			"files": [
-				".test-temp/inc/block-patterns.php",
-				"inc/block-patterns.php"
-			],
-			"count": 2
-		},
-		"team_title": {
-			"name": "team_title",
-			"category": "content_strings",
-			"files": [
-				".test-temp/inc/block-patterns.php",
-				"inc/block-patterns.php"
-			],
-			"count": 2
-		},
-		"team_description": {
-			"name": "team_description",
-			"category": "other",
-			"files": [
-				".test-temp/inc/block-patterns.php",
-				"inc/block-patterns.php"
-			],
-			"count": 2
-		},
-		"team_member_1_name": {
-			"name": "team_member_1_name",
-			"category": "other",
-			"files": [
-				".test-temp/inc/block-patterns.php",
-				"inc/block-patterns.php"
-			],
-			"count": 2
-		},
-		"team_member_1_role": {
-			"name": "team_member_1_role",
-			"category": "other",
-			"files": [
-				".test-temp/inc/block-patterns.php",
-				"inc/block-patterns.php"
-			],
-			"count": 2
-		},
-		"team_member_2_name": {
-			"name": "team_member_2_name",
-			"category": "other",
-			"files": [
-				".test-temp/inc/block-patterns.php",
-				"inc/block-patterns.php"
-			],
-			"count": 2
-		},
-		"team_member_2_role": {
-			"name": "team_member_2_role",
-			"category": "other",
-			"files": [
-				".test-temp/inc/block-patterns.php",
-				"inc/block-patterns.php"
-			],
-			"count": 2
-		},
-		"team_member_3_name": {
-			"name": "team_member_3_name",
-			"category": "other",
-			"files": [
-				".test-temp/inc/block-patterns.php",
-				"inc/block-patterns.php"
-			],
-			"count": 2
-		},
-		"team_member_3_role": {
-			"name": "team_member_3_role",
-			"category": "other",
-			"files": [
-				".test-temp/inc/block-patterns.php",
-				"inc/block-patterns.php"
-			],
-			"count": 2
-		},
-		"theme_slug|upper": {
-			"name": "theme_slug|upper",
-			"category": "core_identity",
-			"files": [
-				".test-temp/inc/template-functions.php",
-				".test-temp/tests/test-theme-setup.php",
-				"docs/GENERATE_THEME.md",
-				"functions.php",
-				"inc/template-functions.php",
-				"tests/test-theme-setup.php"
-			],
-			"count": 137
-		},
-		"logo_height": {
-			"name": "logo_height",
-			"category": "other",
-			"files": [
-				".test-temp/inc/template-functions.php",
-				"inc/template-functions.php"
-			],
-			"count": 2
-		},
-		"logo_width": {
-			"name": "logo_width",
-			"category": "design_layout",
-			"files": [
-				".test-temp/inc/template-functions.php",
-				"inc/template-functions.php"
-			],
-			"count": 2
-		},
-		"archive_excerpt_length": {
-			"name": "archive_excerpt_length",
-			"category": "content_strings",
-			"files": [
-				".test-temp/inc/template-functions.php",
-				"inc/template-functions.php"
-			],
-			"count": 2
-		},
-		"excerpt_more": {
-			"name": "excerpt_more",
-			"category": "content_strings",
-			"files": [
-				".test-temp/scripts/generate-theme.js",
-				"docs/GENERATE_THEME.md",
-				"functions.php",
-				"scripts/generate-theme.js"
-			],
-			"count": 5
-		},
-		"placeholder": {
-			"name": "placeholder",
-			"category": "other",
-			"files": [
-				".test-temp/scripts/test-placeholders.js",
-				"scripts/test-placeholders.js"
-			],
-			"count": 2
-		},
-		"key": {
-			"name": "key",
-			"category": "other",
-			"files": [
-				".test-temp/scripts/test-placeholders.js",
-				"scripts/test-placeholders.js"
-			],
-			"count": 2
-		},
-		"button_style_primary_title": {
-			"name": "button_style_primary_title",
-			"category": "content_strings",
-			"files": [
-				".test-temp/styles/blocks/button-primary.json",
-				"styles/blocks/button-primary.json"
-			],
-			"count": 3
-		},
-		"button_style_rounded_title": {
-			"name": "button_style_rounded_title",
-			"category": "content_strings",
-			"files": [
-				".test-temp/styles/blocks/button-rounded.json",
-				"styles/blocks/button-rounded.json"
-			],
-			"count": 3
-		},
-		"heading_style_serif_title": {
-			"name": "heading_style_serif_title",
-			"category": "content_strings",
-			"files": [
-				".test-temp/styles/blocks/heading-serif.json",
-				"styles/blocks/heading-serif.json"
-			],
-			"count": 3
-		},
-		"dark_mode_title": {
-			"name": "dark_mode_title",
-			"category": "content_strings",
-			"files": [ ".test-temp/styles/dark.json", "styles/dark.json" ],
-			"count": 3
-		},
-		"dark_background_color": {
-			"name": "dark_background_color",
-			"category": "design_colors",
-			"files": [ ".test-temp/styles/dark.json", "styles/dark.json" ],
-			"count": 3
-		},
-		"dark_text_color": {
-			"name": "dark_text_color",
-			"category": "design_colors",
-			"files": [ ".test-temp/styles/dark.json", "styles/dark.json" ],
-			"count": 3
-		},
-		"dark_primary_color": {
-			"name": "dark_primary_color",
-			"category": "design_colors",
-			"files": [ ".test-temp/styles/dark.json", "styles/dark.json" ],
-			"count": 3
-		},
-		"dark_primary_light_color": {
-			"name": "dark_primary_light_color",
-			"category": "design_colors",
-			"files": [ ".test-temp/styles/dark.json", "styles/dark.json" ],
-			"count": 3
-		},
-		"dark_primary_dark_color": {
-			"name": "dark_primary_dark_color",
-			"category": "design_colors",
-			"files": [ ".test-temp/styles/dark.json", "styles/dark.json" ],
-			"count": 3
-		},
-		"dark_cta_color": {
-			"name": "dark_cta_color",
-			"category": "design_colors",
-			"files": [ ".test-temp/styles/dark.json", "styles/dark.json" ],
-			"count": 3
-		},
-		"dark_neutral_100_color": {
-			"name": "dark_neutral_100_color",
-			"category": "design_colors",
-			"files": [ ".test-temp/styles/dark.json", "styles/dark.json" ],
-			"count": 3
-		},
-		"dark_neutral_200_color": {
-			"name": "dark_neutral_200_color",
-			"category": "design_colors",
-			"files": [ ".test-temp/styles/dark.json", "styles/dark.json" ],
-			"count": 3
-		},
-		"dark_neutral_300_color": {
-			"name": "dark_neutral_300_color",
-			"category": "design_colors",
-			"files": [ ".test-temp/styles/dark.json", "styles/dark.json" ],
-			"count": 3
-		},
-		"dark_neutral_400_color": {
-			"name": "dark_neutral_400_color",
-			"category": "design_colors",
-			"files": [ ".test-temp/styles/dark.json", "styles/dark.json" ],
-			"count": 3
-		},
-		"dark_neutral_500_color": {
-			"name": "dark_neutral_500_color",
-			"category": "design_colors",
-			"files": [ ".test-temp/styles/dark.json", "styles/dark.json" ],
-			"count": 3
-		},
-		"dark_neutral_600_color": {
-			"name": "dark_neutral_600_color",
-			"category": "design_colors",
-			"files": [ ".test-temp/styles/dark.json", "styles/dark.json" ],
-			"count": 3
-		},
-		"dark_neutral_700_color": {
-			"name": "dark_neutral_700_color",
-			"category": "design_colors",
-			"files": [ ".test-temp/styles/dark.json", "styles/dark.json" ],
-			"count": 3
-		},
-		"dark_neutral_800_color": {
-			"name": "dark_neutral_800_color",
-			"category": "design_colors",
-			"files": [ ".test-temp/styles/dark.json", "styles/dark.json" ],
-			"count": 3
-		},
-		"dark_neutral_900_color": {
-			"name": "dark_neutral_900_color",
-			"category": "design_colors",
-			"files": [ ".test-temp/styles/dark.json", "styles/dark.json" ],
-			"count": 3
-		},
-		"dark_accent_100_color": {
-			"name": "dark_accent_100_color",
-			"category": "design_colors",
-			"files": [ ".test-temp/styles/dark.json", "styles/dark.json" ],
-			"count": 3
-		},
-		"dark_accent_200_color": {
-			"name": "dark_accent_200_color",
-			"category": "design_colors",
-			"files": [ ".test-temp/styles/dark.json", "styles/dark.json" ],
-			"count": 3
-		},
-		"dark_accent_300_color": {
-			"name": "dark_accent_300_color",
-			"category": "design_colors",
-			"files": [ ".test-temp/styles/dark.json", "styles/dark.json" ],
-			"count": 3
-		},
-		"dark_accent_400_color": {
-			"name": "dark_accent_400_color",
-			"category": "design_colors",
-			"files": [ ".test-temp/styles/dark.json", "styles/dark.json" ],
-			"count": 3
-		},
-		"dark_accent_500_color": {
-			"name": "dark_accent_500_color",
-			"category": "design_colors",
-			"files": [ ".test-temp/styles/dark.json", "styles/dark.json" ],
-			"count": 3
-		},
-		"dark_accent_600_color": {
-			"name": "dark_accent_600_color",
-			"category": "design_colors",
-			"files": [ ".test-temp/styles/dark.json", "styles/dark.json" ],
-			"count": 3
-		},
-		"dark_accent_700_color": {
-			"name": "dark_accent_700_color",
-			"category": "design_colors",
-			"files": [ ".test-temp/styles/dark.json", "styles/dark.json" ],
-			"count": 3
-		},
-		"dark_accent_800_color": {
-			"name": "dark_accent_800_color",
-			"category": "design_colors",
-			"files": [ ".test-temp/styles/dark.json", "styles/dark.json" ],
-			"count": 3
-		},
-		"dark_accent_900_color": {
-			"name": "dark_accent_900_color",
-			"category": "design_colors",
-			"files": [ ".test-temp/styles/dark.json", "styles/dark.json" ],
-			"count": 3
-		},
-		"content_section_style_title": {
-			"name": "content_section_style_title",
-			"category": "content_strings",
-			"files": [
-				".test-temp/styles/sections/content-section.json",
-				"styles/sections/content-section.json"
-			],
-			"count": 3
-		},
-		"hero_section_style_title": {
-			"name": "hero_section_style_title",
-			"category": "content_strings",
-			"files": [
-				".test-temp/styles/sections/hero-section.json",
-				"styles/sections/hero-section.json"
-			],
-			"count": 3
-		},
-		"license_uri": {
-			"name": "license_uri",
-			"category": "urls",
-			"files": [
-				"DEVELOPMENT.md",
-				"README.md",
-				"README.txt",
-				"docs/GENERATE_THEME.md",
-				"scripts/generate-theme.js",
-				"scripts/test-placeholders.js"
-			],
-			"count": 9
-		},
-		"body_font": {
-			"name": "body_font",
-			"category": "design_typography",
-			"files": [ "README.md" ],
-			"count": 1
-		},
-		"author_username": {
-			"name": "author_username",
-			"category": "author_contact",
-			"files": [ "README.txt", "docs/GENERATE_THEME.md" ],
-			"count": 3
-		},
-		"wp_version_min": {
-			"name": "wp_version_min",
-			"category": "versioning",
-			"files": [ "README.txt" ],
-			"count": 1
-		},
-		"wp_version_max": {
-			"name": "wp_version_max",
-			"category": "versioning",
-			"files": [ "README.txt" ],
-			"count": 1
-		},
-		"php_version_min": {
-			"name": "php_version_min",
-			"category": "versioning",
-			"files": [ "README.txt" ],
-			"count": 1
-		},
-		"theme_tags": {
-			"name": "theme_tags",
-			"category": "theme_metadata",
-			"files": [
-				"README.txt",
-				"docs/GENERATE_THEME.md",
-				"scripts/test-placeholders.js"
-			],
-			"count": 6
-		},
-		"target_audience": {
-			"name": "target_audience",
-			"category": "theme_metadata",
-			"files": [ "README.txt", "docs/GENERATE_THEME.md" ],
-			"count": 3
-		},
-		"textdomain": {
-			"name": "textdomain",
-			"category": "content_strings",
-			"files": [ "README.txt", "docs/GENERATE_THEME.md" ],
-			"count": 4
-		},
-		"date": {
-			"name": "date",
-			"category": "other",
-			"files": [ "README.txt", "docs/CONFIGS.md" ],
-			"count": 3
-		},
-		"repo_url": {
-			"name": "repo_url",
-			"category": "urls",
-			"files": [ "README.txt" ],
-			"count": 1
-		},
-		"theme_uri": {
-			"name": "theme_uri",
-			"category": "urls",
-			"files": [
-				"README.txt",
-				"docs/GENERATE_THEME.md",
-				"package.json",
-				"scripts/generate-theme.js",
-				"scripts/test-placeholders.js"
-			],
-			"count": 12
-		},
-		"discord_url": {
-			"name": "discord_url",
-			"category": "urls",
-			"files": [
-				"SUPPORT.md",
-				"docs/GENERATE_THEME.md",
-				"scripts/generate-theme.js",
-				"scripts/test-placeholders.js"
-			],
-			"count": 5
-		},
-		"premium_support_url": {
-			"name": "premium_support_url",
-			"category": "urls",
-			"files": [
-				"SUPPORT.md",
-				"docs/GENERATE_THEME.md",
-				"scripts/generate-theme.js",
-				"scripts/test-placeholders.js"
-			],
-			"count": 5
-		},
-		"custom_dev_url": {
-			"name": "custom_dev_url",
-			"category": "urls",
-			"files": [
-				"SUPPORT.md",
-				"scripts/generate-theme.js",
-				"scripts/test-placeholders.js"
-			],
-			"count": 3
-		},
-		"docs_repo_url": {
-			"name": "docs_repo_url",
-			"category": "urls",
-			"files": [
-				"SUPPORT.md",
-				"scripts/generate-theme.js",
-				"scripts/test-placeholders.js"
-			],
-			"count": 3
-		},
-		"variable": {
-			"name": "variable",
-			"category": "other",
-			"files": [ "docs/GENERATE_THEME.md", "docs/STYLES.md" ],
-			"count": 6
-		},
-		"created_date": {
-			"name": "created_date",
-			"category": "other",
-			"files": [
-				"docs/GENERATE_THEME.md",
-				"package.json",
-				"scripts/test-placeholders.js"
-			],
-			"count": 4
-		},
-		"updated_date": {
-			"name": "updated_date",
-			"category": "other",
-			"files": [
-				"docs/GENERATE_THEME.md",
-				"package.json",
-				"scripts/test-placeholders.js"
-			],
-			"count": 4
-		},
-		"changelog_url": {
-			"name": "changelog_url",
-			"category": "urls",
-			"files": [
-				"docs/GENERATE_THEME.md",
-				"package.json",
-				"scripts/test-placeholders.js"
-			],
-			"count": 4
-		},
-		"mono_font_family": {
-			"name": "mono_font_family",
-			"category": "design_typography",
-			"files": [
-				"docs/GENERATE_THEME.md",
-				"scripts/test-placeholders.js"
-			],
-			"count": 3
-		},
-		"mono_font_name": {
-			"name": "mono_font_name",
-			"category": "design_typography",
-			"files": [
-				"docs/GENERATE_THEME.md",
-				"scripts/test-placeholders.js"
-			],
-			"count": 3
-		},
-		"button_border_radius": {
-			"name": "button_border_radius",
-			"category": "ui_components",
-			"files": [
-				"docs/GENERATE_THEME.md",
-				"scripts/generate-theme.js",
-				"scripts/test-placeholders.js",
-				"theme.json"
-			],
-			"count": 5
-		},
-		"excerpt_length": {
-			"name": "excerpt_length",
-			"category": "content_strings",
-			"files": [ "docs/GENERATE_THEME.md", "functions.php" ],
-			"count": 3
-		},
-		"featured_image_width": {
-			"name": "featured_image_width",
-			"category": "design_layout",
-			"files": [ "docs/GENERATE_THEME.md", "functions.php" ],
-			"count": 3
-		},
-		"featured_image_height": {
-			"name": "featured_image_height",
-			"category": "images",
-			"files": [ "docs/GENERATE_THEME.md", "functions.php" ],
-			"count": 3
-		},
-		"thumbnail_width": {
-			"name": "thumbnail_width",
-			"category": "design_layout",
-			"files": [ "docs/GENERATE_THEME.md", "functions.php" ],
-			"count": 3
-		},
-		"thumbnail_height": {
-			"name": "thumbnail_height",
-			"category": "images",
-			"files": [ "docs/GENERATE_THEME.md", "functions.php" ],
-			"count": 3
-		},
-		"gallery_image_width": {
-			"name": "gallery_image_width",
-			"category": "design_layout",
-			"files": [ "docs/GENERATE_THEME.md", "functions.php" ],
-			"count": 3
-		},
-		"gallery_image_height": {
-			"name": "gallery_image_height",
-			"category": "images",
-			"files": [ "docs/GENERATE_THEME.md", "functions.php" ],
-			"count": 3
-		},
-		"ThemeSlug": {
-			"name": "ThemeSlug",
-			"category": "other",
-			"files": [ "docs/GENERATE_THEME.md" ],
-			"count": 2
-		},
-		"color1": {
-			"name": "color1",
-			"category": "design_colors",
-			"files": [ "docs/GENERATE_THEME.md" ],
-			"count": 2
-		},
-		"custom_variable": {
-			"name": "custom_variable",
-			"category": "other",
-			"files": [ "docs/GENERATE_THEME.md" ],
-			"count": 4
-		},
-		"theme_slug|camel": {
-			"name": "theme_slug|camel",
-			"category": "core_identity",
-			"files": [ "docs/GENERATE_THEME.md" ],
-			"count": 44
-		},
-		"org": {
-			"name": "org",
-			"category": "other",
-			"files": [ "docs/WORKFLOWS.md" ],
-			"count": 4
-		},
-		"repo": {
-			"name": "repo",
-			"category": "other",
-			"files": [ "docs/WORKFLOWS.md" ],
-			"count": 4
-		},
-		"theme_slug|camelCase": {
-			"name": "theme_slug|camelCase",
-			"category": "core_identity",
-			"files": [
-				"scripts/test-placeholders.js",
-				"src/js/editor.js",
-				"src/js/theme.js",
-				"tests/js/theme.test.js"
-			],
-			"count": 65
-		}
-	},
-	"filesByCategory": {},
-	"categories": {
-		"core_identity": {
-			"variables": [
-				"theme_name",
-				"theme_slug",
-				"description",
-				"namespace",
-				"theme_slug|upper",
-				"theme_slug|camel",
-				"theme_slug|camelCase"
-			],
-			"count": 7
-		},
-		"versioning": {
-			"variables": [
-				"version",
-				"min_wp_version",
-				"tested_wp_version",
-				"min_php_version",
-				"collected_version",
-				"wp_version_min",
-				"wp_version_max",
-				"php_version_min"
-			],
-			"count": 8
-		},
-		"author_contact": {
-			"variables": [
-				"author",
-				"author_uri",
-				"support_email",
-				"security_email",
-				"business_email",
-				"year",
-				"collected_author",
-				"collected_author_uri",
-				"author_username"
-			],
-			"count": 9
-		},
-		"design_colors": {
-			"variables": [
-				"primary_color",
-				"secondary_color",
-				"background_color",
-				"text_color",
-				"accent_color",
-				"neutral_color",
-				"dark_background_color",
-				"dark_text_color",
-				"dark_primary_color",
-				"dark_primary_light_color",
-				"dark_primary_dark_color",
-				"dark_cta_color",
-				"dark_neutral_100_color",
-				"dark_neutral_200_color",
-				"dark_neutral_300_color",
-				"dark_neutral_400_color",
-				"dark_neutral_500_color",
-				"dark_neutral_600_color",
-				"dark_neutral_700_color",
-				"dark_neutral_800_color",
-				"dark_neutral_900_color",
-				"dark_accent_100_color",
-				"dark_accent_200_color",
-				"dark_accent_300_color",
-				"dark_accent_400_color",
-				"dark_accent_500_color",
-				"dark_accent_600_color",
-				"dark_accent_700_color",
-				"dark_accent_800_color",
-				"dark_accent_900_color",
-				"color1"
-			],
-			"count": 31
-		},
-		"design_typography": {
-			"variables": [
-				"font_family",
-				"heading_font",
-				"heading_font_family",
-				"heading_font_name",
-				"body_font_family",
-				"body_font_name",
-				"heading_font_weight",
-				"body_line_height",
-				"heading_line_height",
-				"button_font_weight",
-				"site_title_font_weight",
-				"body_font",
-				"mono_font_family",
-				"mono_font_name"
-			],
-			"count": 14
-		},
-		"content_strings": {
-			"variables": [
-				"hero_title",
-				"cta_text",
-				"footer_text",
-				"skip_link_text",
-				"hero_button_text",
-				"cta_title",
-				"cta_button_text",
-				"team_title",
-				"archive_excerpt_length",
-				"excerpt_more",
-				"button_style_primary_title",
-				"button_style_rounded_title",
-				"heading_style_serif_title",
-				"dark_mode_title",
-				"content_section_style_title",
-				"hero_section_style_title",
-				"textdomain",
-				"excerpt_length"
-			],
-			"count": 18
-		},
-		"other": {
-			"variables": [
-				"mustache",
-				"variable_name",
-				"collected_slug",
-				"collected_name",
-				"collected_description",
-				"prefix",
-				"role",
-				"placeholders",
-				"slug",
-				"github_org",
-				"hero_description",
-				"cta_description",
-				"team_description",
-				"team_member_1_name",
-				"team_member_1_role",
-				"team_member_2_name",
-				"team_member_2_role",
-				"team_member_3_name",
-				"team_member_3_role",
-				"logo_height",
-				"placeholder",
-				"key",
-				"date",
-				"variable",
-				"created_date",
-				"updated_date",
-				"ThemeSlug",
-				"custom_variable",
-				"org",
-				"repo"
-			],
-			"count": 30
-		},
-		"license": {
-			"variables": [ "license" ],
-			"count": 1
-		},
-		"design_layout": {
-			"variables": [
-				"content_width",
-				"wide_width",
-				"content_width_px",
-				"logo_width",
-				"featured_image_width",
-				"thumbnail_width",
-				"gallery_image_width"
-			],
-			"count": 7
-		},
-		"urls": {
-			"variables": [
-				"theme_repo_url",
-				"support_url",
-				"docs_url",
-				"license_uri",
-				"repo_url",
-				"theme_uri",
-				"discord_url",
-				"premium_support_url",
-				"custom_dev_url",
-				"docs_repo_url",
-				"changelog_url"
-			],
-			"count": 11
-		},
-		"theme_metadata": {
-			"variables": [ "theme_tags", "target_audience" ],
-			"count": 2
-		},
-		"ui_components": {
-			"variables": [ "button_border_radius" ],
-			"count": 1
-		},
-		"images": {
-			"variables": [
-				"featured_image_height",
-				"thumbnail_height",
-				"gallery_image_height"
-			],
-			"count": 3
-		}
-	}
+  "summary": {
+    "totalFiles": 331,
+    "filesWithVariables": 122,
+    "uniqueVariables": 162,
+    "totalOccurrences": 1320
+  },
+  "variables": {
+    "ThemeSlug": {
+      "name": "ThemeSlug",
+      "category": "other",
+      "files": [
+        "docs/GENERATE_THEME.md"
+      ],
+      "count": 1
+    },
+    "YYYYMMDD": {
+      "name": "YYYYMMDD",
+      "category": "other",
+      "files": [
+        ".github/agents/task-researcher.agent.md"
+      ],
+      "count": 3
+    },
+    "accent_color": {
+      "name": "accent_color",
+      "category": "design_colors",
+      "files": [
+        ".github/instructions/generate-theme.instructions.md",
+        "docs/GENERATE_THEME.md",
+        "scripts/generate-theme.js",
+        "scripts/utils/placeholders.js",
+        "theme.json"
+      ],
+      "count": 5
+    },
+    "agent_role": {
+      "name": "agent_role",
+      "category": "other",
+      "files": [
+        ".github/agents/template.agent.md"
+      ],
+      "count": 1
+    },
+    "agent_slug": {
+      "name": "agent_slug",
+      "category": "other",
+      "files": [
+        ".github/agents/template.agent.md",
+        ".github/instructions/agent-spec.instructions.md"
+      ],
+      "count": 11
+    },
+    "agent_summary": {
+      "name": "agent_summary",
+      "category": "other",
+      "files": [
+        ".github/agents/template.agent.md"
+      ],
+      "count": 1
+    },
+    "agent_title": {
+      "name": "agent_title",
+      "category": "content_strings",
+      "files": [
+        ".github/agents/template.agent.md"
+      ],
+      "count": 1
+    },
+    "agent_version": {
+      "name": "agent_version",
+      "category": "versioning",
+      "files": [
+        ".github/agents/template.agent.md",
+        ".github/instructions/agent-spec.instructions.md"
+      ],
+      "count": 2
+    },
+    "agent_workflow": {
+      "name": "agent_workflow",
+      "category": "other",
+      "files": [
+        ".github/agents/template.agent.md"
+      ],
+      "count": 2
+    },
+    "archive_excerpt_length": {
+      "name": "archive_excerpt_length",
+      "category": "content_strings",
+      "files": [
+        "inc/template-functions.php"
+      ],
+      "count": 1
+    },
+    "author": {
+      "name": "author",
+      "category": "author_contact",
+      "files": [
+        ".github/agents/generate-theme.agent.md",
+        ".github/agents/release.agent.md",
+        ".github/custom-instructions.md",
+        ".github/instructions/generate-theme.instructions.md",
+        ".github/projects/plans/2025-12-12-generator-logging-schema-cleanup-design.md",
+        ".github/prompts/generate-theme.prompt.md",
+        ".github/schemas/examples/theme-config.example.json",
+        ".github/schemas/theme-config.schema.json",
+        "README.md",
+        "README.txt",
+        "docs/GENERATE_THEME.md",
+        "package.json",
+        "scripts/generate-theme.js",
+        "scripts/utils/placeholders.js",
+        "style.css",
+        "theme-config.mock.json"
+      ],
+      "count": 37
+    },
+    "author_uri": {
+      "name": "author_uri",
+      "category": "author_contact",
+      "files": [
+        ".github/agents/generate-theme.agent.md",
+        ".github/instructions/generate-theme.instructions.md",
+        "README.md",
+        "README.txt",
+        "docs/GENERATE_THEME.md",
+        "scripts/generate-theme.js",
+        "scripts/utils/placeholders.js"
+      ],
+      "count": 13
+    },
+    "author_username": {
+      "name": "author_username",
+      "category": "author_contact",
+      "files": [
+        "README.txt",
+        "docs/GENERATE_THEME.md",
+        "docs/RELEASE_PROCESS.md"
+      ],
+      "count": 3
+    },
+    "background_color": {
+      "name": "background_color",
+      "category": "design_colors",
+      "files": [
+        ".github/agents/generate-theme.agent.md",
+        ".github/custom-instructions.md",
+        ".github/instructions/generate-theme.instructions.md",
+        "README.md",
+        "docs/GENERATE_THEME.md",
+        "inc/template-functions.php",
+        "scripts/generate-theme.js",
+        "scripts/utils/placeholders.js",
+        "theme.json"
+      ],
+      "count": 9
+    },
+    "body_font": {
+      "name": "body_font",
+      "category": "design_typography",
+      "files": [
+        "README.md"
+      ],
+      "count": 1
+    },
+    "body_font_family": {
+      "name": "body_font_family",
+      "category": "design_typography",
+      "files": [
+        ".github/instructions/generate-theme.instructions.md",
+        ".github/reports/theme-generation-updates.md",
+        "docs/GENERATE_THEME.md",
+        "scripts/generate-theme.js",
+        "scripts/utils/placeholders.js",
+        "theme.json"
+      ],
+      "count": 6
+    },
+    "body_font_name": {
+      "name": "body_font_name",
+      "category": "design_typography",
+      "files": [
+        ".github/instructions/generate-theme.instructions.md",
+        "docs/GENERATE_THEME.md",
+        "scripts/generate-theme.js",
+        "scripts/utils/placeholders.js"
+      ],
+      "count": 4
+    },
+    "body_line_height": {
+      "name": "body_line_height",
+      "category": "design_typography",
+      "files": [
+        ".github/instructions/generate-theme.instructions.md",
+        ".github/reports/theme-generation-updates.md",
+        "docs/GENERATE_THEME.md",
+        "scripts/generate-theme.js",
+        "scripts/utils/placeholders.js",
+        "theme.json"
+      ],
+      "count": 6
+    },
+    "boundaries_and_context": {
+      "name": "boundaries_and_context",
+      "category": "content_strings",
+      "files": [
+        ".github/agents/template.agent.md"
+      ],
+      "count": 1
+    },
+    "business_email": {
+      "name": "business_email",
+      "category": "author_contact",
+      "files": [
+        ".github/instructions/generate-theme.instructions.md",
+        "SUPPORT.md",
+        "docs/GENERATE_THEME.md",
+        "scripts/generate-theme.js",
+        "scripts/utils/placeholders.js"
+      ],
+      "count": 5
+    },
+    "button_border_radius": {
+      "name": "button_border_radius",
+      "category": "ui_components",
+      "files": [
+        "docs/GENERATE_THEME.md",
+        "scripts/generate-theme.js",
+        "scripts/utils/placeholders.js",
+        "theme.json"
+      ],
+      "count": 4
+    },
+    "button_font_weight": {
+      "name": "button_font_weight",
+      "category": "design_typography",
+      "files": [
+        ".github/instructions/generate-theme.instructions.md",
+        "docs/GENERATE_THEME.md",
+        "scripts/generate-theme.js",
+        "scripts/utils/placeholders.js",
+        "theme.json"
+      ],
+      "count": 5
+    },
+    "button_style_primary_title": {
+      "name": "button_style_primary_title",
+      "category": "content_strings",
+      "files": [
+        "styles/blocks/button-primary.json"
+      ],
+      "count": 1
+    },
+    "button_style_rounded_title": {
+      "name": "button_style_rounded_title",
+      "category": "content_strings",
+      "files": [
+        "styles/blocks/button-rounded.json"
+      ],
+      "count": 1
+    },
+    "capabilities": {
+      "name": "capabilities",
+      "category": "other",
+      "files": [
+        ".github/agents/template.agent.md"
+      ],
+      "count": 1
+    },
+    "changelog_url": {
+      "name": "changelog_url",
+      "category": "urls",
+      "files": [
+        "docs/GENERATE_THEME.md",
+        "package.json",
+        "scripts/utils/placeholders.js"
+      ],
+      "count": 3
+    },
+    "collected_author": {
+      "name": "collected_author",
+      "category": "author_contact",
+      "files": [
+        ".github/instructions/generate-theme.instructions.md"
+      ],
+      "count": 1
+    },
+    "collected_author_uri": {
+      "name": "collected_author_uri",
+      "category": "author_contact",
+      "files": [
+        ".github/instructions/generate-theme.instructions.md"
+      ],
+      "count": 1
+    },
+    "collected_description": {
+      "name": "collected_description",
+      "category": "other",
+      "files": [
+        ".github/instructions/generate-theme.instructions.md"
+      ],
+      "count": 1
+    },
+    "collected_name": {
+      "name": "collected_name",
+      "category": "other",
+      "files": [
+        ".github/instructions/generate-theme.instructions.md"
+      ],
+      "count": 1
+    },
+    "collected_slug": {
+      "name": "collected_slug",
+      "category": "other",
+      "files": [
+        ".github/instructions/generate-theme.instructions.md"
+      ],
+      "count": 1
+    },
+    "collected_version": {
+      "name": "collected_version",
+      "category": "versioning",
+      "files": [
+        ".github/instructions/generate-theme.instructions.md"
+      ],
+      "count": 1
+    },
+    "color1": {
+      "name": "color1",
+      "category": "design_colors",
+      "files": [
+        "docs/GENERATE_THEME.md"
+      ],
+      "count": 1
+    },
+    "content_section_style_title": {
+      "name": "content_section_style_title",
+      "category": "content_strings",
+      "files": [
+        "styles/sections/content-section.json"
+      ],
+      "count": 1
+    },
+    "content_width": {
+      "name": "content_width",
+      "category": "design_layout",
+      "files": [
+        ".github/instructions/generate-theme.instructions.md",
+        ".github/prompts/generate-theme.prompt.md",
+        ".github/reports/theme-generation-updates.md",
+        "docs/GENERATE_THEME.md",
+        "scripts/generate-theme.js",
+        "scripts/utils/placeholders.js",
+        "theme.json"
+      ],
+      "count": 9
+    },
+    "content_width_px": {
+      "name": "content_width_px",
+      "category": "design_layout",
+      "files": [
+        ".github/instructions/generate-theme.instructions.md",
+        "docs/GENERATE_THEME.md",
+        "functions.php",
+        "scripts/generate-theme.js",
+        "scripts/utils/placeholders.js"
+      ],
+      "count": 6
+    },
+    "created_date": {
+      "name": "created_date",
+      "category": "other",
+      "files": [
+        "docs/GENERATE_THEME.md",
+        "package.json",
+        "scripts/utils/placeholders.js"
+      ],
+      "count": 3
+    },
+    "cta_button_text": {
+      "name": "cta_button_text",
+      "category": "content_strings",
+      "files": [
+        ".github/prompts/generate-theme.prompt.md",
+        "inc/block-patterns.php"
+      ],
+      "count": 2
+    },
+    "cta_description": {
+      "name": "cta_description",
+      "category": "other",
+      "files": [
+        "inc/block-patterns.php"
+      ],
+      "count": 1
+    },
+    "cta_text": {
+      "name": "cta_text",
+      "category": "content_strings",
+      "files": [
+        ".github/agents/generate-theme.agent.md",
+        ".github/custom-instructions.md"
+      ],
+      "count": 2
+    },
+    "cta_title": {
+      "name": "cta_title",
+      "category": "content_strings",
+      "files": [
+        "inc/block-patterns.php"
+      ],
+      "count": 1
+    },
+    "custom_dev_url": {
+      "name": "custom_dev_url",
+      "category": "urls",
+      "files": [
+        "SUPPORT.md",
+        "scripts/generate-theme.js",
+        "scripts/utils/placeholders.js"
+      ],
+      "count": 3
+    },
+    "custom_variable": {
+      "name": "custom_variable",
+      "category": "other",
+      "files": [
+        "docs/GENERATE_THEME.md"
+      ],
+      "count": 2
+    },
+    "dark_accent_100_color": {
+      "name": "dark_accent_100_color",
+      "category": "design_colors",
+      "files": [
+        "styles/dark.json"
+      ],
+      "count": 1
+    },
+    "dark_accent_200_color": {
+      "name": "dark_accent_200_color",
+      "category": "design_colors",
+      "files": [
+        "styles/dark.json"
+      ],
+      "count": 1
+    },
+    "dark_accent_300_color": {
+      "name": "dark_accent_300_color",
+      "category": "design_colors",
+      "files": [
+        "styles/dark.json"
+      ],
+      "count": 1
+    },
+    "dark_accent_400_color": {
+      "name": "dark_accent_400_color",
+      "category": "design_colors",
+      "files": [
+        "styles/dark.json"
+      ],
+      "count": 1
+    },
+    "dark_accent_500_color": {
+      "name": "dark_accent_500_color",
+      "category": "design_colors",
+      "files": [
+        "styles/dark.json"
+      ],
+      "count": 1
+    },
+    "dark_accent_600_color": {
+      "name": "dark_accent_600_color",
+      "category": "design_colors",
+      "files": [
+        "styles/dark.json"
+      ],
+      "count": 1
+    },
+    "dark_accent_700_color": {
+      "name": "dark_accent_700_color",
+      "category": "design_colors",
+      "files": [
+        "styles/dark.json"
+      ],
+      "count": 1
+    },
+    "dark_accent_800_color": {
+      "name": "dark_accent_800_color",
+      "category": "design_colors",
+      "files": [
+        "styles/dark.json"
+      ],
+      "count": 1
+    },
+    "dark_accent_900_color": {
+      "name": "dark_accent_900_color",
+      "category": "design_colors",
+      "files": [
+        "styles/dark.json"
+      ],
+      "count": 1
+    },
+    "dark_background_color": {
+      "name": "dark_background_color",
+      "category": "design_colors",
+      "files": [
+        "styles/dark.json"
+      ],
+      "count": 1
+    },
+    "dark_cta_color": {
+      "name": "dark_cta_color",
+      "category": "design_colors",
+      "files": [
+        "styles/dark.json"
+      ],
+      "count": 1
+    },
+    "dark_mode_title": {
+      "name": "dark_mode_title",
+      "category": "content_strings",
+      "files": [
+        "styles/dark.json"
+      ],
+      "count": 1
+    },
+    "dark_neutral_100_color": {
+      "name": "dark_neutral_100_color",
+      "category": "design_colors",
+      "files": [
+        "styles/dark.json"
+      ],
+      "count": 1
+    },
+    "dark_neutral_200_color": {
+      "name": "dark_neutral_200_color",
+      "category": "design_colors",
+      "files": [
+        "styles/dark.json"
+      ],
+      "count": 1
+    },
+    "dark_neutral_300_color": {
+      "name": "dark_neutral_300_color",
+      "category": "design_colors",
+      "files": [
+        "styles/dark.json"
+      ],
+      "count": 1
+    },
+    "dark_neutral_400_color": {
+      "name": "dark_neutral_400_color",
+      "category": "design_colors",
+      "files": [
+        "styles/dark.json"
+      ],
+      "count": 1
+    },
+    "dark_neutral_500_color": {
+      "name": "dark_neutral_500_color",
+      "category": "design_colors",
+      "files": [
+        "styles/dark.json"
+      ],
+      "count": 1
+    },
+    "dark_neutral_600_color": {
+      "name": "dark_neutral_600_color",
+      "category": "design_colors",
+      "files": [
+        "styles/dark.json"
+      ],
+      "count": 1
+    },
+    "dark_neutral_700_color": {
+      "name": "dark_neutral_700_color",
+      "category": "design_colors",
+      "files": [
+        "styles/dark.json"
+      ],
+      "count": 1
+    },
+    "dark_neutral_800_color": {
+      "name": "dark_neutral_800_color",
+      "category": "design_colors",
+      "files": [
+        "styles/dark.json"
+      ],
+      "count": 1
+    },
+    "dark_neutral_900_color": {
+      "name": "dark_neutral_900_color",
+      "category": "design_colors",
+      "files": [
+        "styles/dark.json"
+      ],
+      "count": 1
+    },
+    "dark_primary_color": {
+      "name": "dark_primary_color",
+      "category": "design_colors",
+      "files": [
+        "styles/dark.json"
+      ],
+      "count": 1
+    },
+    "dark_primary_dark_color": {
+      "name": "dark_primary_dark_color",
+      "category": "design_colors",
+      "files": [
+        "styles/dark.json"
+      ],
+      "count": 1
+    },
+    "dark_primary_light_color": {
+      "name": "dark_primary_light_color",
+      "category": "design_colors",
+      "files": [
+        "styles/dark.json"
+      ],
+      "count": 1
+    },
+    "dark_text_color": {
+      "name": "dark_text_color",
+      "category": "design_colors",
+      "files": [
+        "styles/dark.json"
+      ],
+      "count": 1
+    },
+    "date": {
+      "name": "date",
+      "category": "other",
+      "files": [
+        ".github/agents/task-researcher.agent.md",
+        ".github/agents/template.agent.md",
+        "README.txt"
+      ],
+      "count": 8
+    },
+    "description": {
+      "name": "description",
+      "category": "core_identity",
+      "files": [
+        ".github/agents/generate-theme.agent.md",
+        ".github/custom-instructions.md",
+        ".github/instructions/generate-theme.instructions.md",
+        "README.md",
+        "README.txt",
+        "docs/GENERATE_THEME.md",
+        "scripts/generate-theme.js",
+        "scripts/utils/placeholders.js"
+      ],
+      "count": 15
+    },
+    "discord_url": {
+      "name": "discord_url",
+      "category": "urls",
+      "files": [
+        "SUPPORT.md",
+        "docs/GENERATE_THEME.md",
+        "scripts/generate-theme.js",
+        "scripts/utils/placeholders.js"
+      ],
+      "count": 4
+    },
+    "docs_repo_url": {
+      "name": "docs_repo_url",
+      "category": "urls",
+      "files": [
+        "SUPPORT.md",
+        "scripts/generate-theme.js",
+        "scripts/utils/placeholders.js"
+      ],
+      "count": 3
+    },
+    "docs_url": {
+      "name": "docs_url",
+      "category": "urls",
+      "files": [
+        ".github/instructions/generate-theme.instructions.md",
+        "README.txt",
+        "SUPPORT.md",
+        "docs/GENERATE_THEME.md",
+        "package.json",
+        "scripts/generate-theme.js",
+        "scripts/utils/placeholders.js"
+      ],
+      "count": 11
+    },
+    "domain": {
+      "name": "domain",
+      "category": "other",
+      "files": [
+        ".github/agents/template.agent.md"
+      ],
+      "count": 1
+    },
+    "excerpt_length": {
+      "name": "excerpt_length",
+      "category": "content_strings",
+      "files": [
+        "docs/GENERATE_THEME.md",
+        "functions.php",
+        "scripts/generate-theme.js",
+        "scripts/utils/placeholders.js"
+      ],
+      "count": 4
+    },
+    "excerpt_more": {
+      "name": "excerpt_more",
+      "category": "content_strings",
+      "files": [
+        "docs/GENERATE_THEME.md",
+        "functions.php",
+        "scripts/generate-theme.js",
+        "scripts/utils/placeholders.js"
+      ],
+      "count": 4
+    },
+    "featured_image_height": {
+      "name": "featured_image_height",
+      "category": "images",
+      "files": [
+        "docs/GENERATE_THEME.md",
+        "functions.php",
+        "scripts/generate-theme.js",
+        "scripts/utils/placeholders.js"
+      ],
+      "count": 4
+    },
+    "featured_image_width": {
+      "name": "featured_image_width",
+      "category": "design_layout",
+      "files": [
+        ".github/prompts/generate-theme.prompt.md",
+        "docs/GENERATE_THEME.md",
+        "functions.php",
+        "scripts/generate-theme.js",
+        "scripts/utils/placeholders.js"
+      ],
+      "count": 5
+    },
+    "font_family": {
+      "name": "font_family",
+      "category": "design_typography",
+      "files": [
+        ".github/agents/generate-theme.agent.md",
+        ".github/custom-instructions.md"
+      ],
+      "count": 2
+    },
+    "footer_text": {
+      "name": "footer_text",
+      "category": "content_strings",
+      "files": [
+        ".github/agents/generate-theme.agent.md",
+        ".github/custom-instructions.md",
+        ".github/prompts/generate-theme.prompt.md"
+      ],
+      "count": 3
+    },
+    "gallery_image_height": {
+      "name": "gallery_image_height",
+      "category": "images",
+      "files": [
+        ".github/prompts/generate-theme.prompt.md",
+        "docs/GENERATE_THEME.md",
+        "functions.php",
+        "scripts/generate-theme.js",
+        "scripts/utils/placeholders.js"
+      ],
+      "count": 5
+    },
+    "gallery_image_width": {
+      "name": "gallery_image_width",
+      "category": "design_layout",
+      "files": [
+        "docs/GENERATE_THEME.md",
+        "functions.php",
+        "scripts/generate-theme.js",
+        "scripts/utils/placeholders.js"
+      ],
+      "count": 4
+    },
+    "github_org": {
+      "name": "github_org",
+      "category": "other",
+      "files": [
+        ".github/workflows/deploy.yml"
+      ],
+      "count": 1
+    },
+    "heading_font": {
+      "name": "heading_font",
+      "category": "design_typography",
+      "files": [
+        ".github/agents/generate-theme.agent.md",
+        ".github/custom-instructions.md"
+      ],
+      "count": 2
+    },
+    "heading_font_family": {
+      "name": "heading_font_family",
+      "category": "design_typography",
+      "files": [
+        ".github/instructions/generate-theme.instructions.md",
+        ".github/prompts/generate-theme.prompt.md",
+        ".github/reports/theme-generation-updates.md",
+        "docs/GENERATE_THEME.md",
+        "scripts/generate-theme.js",
+        "scripts/utils/placeholders.js",
+        "theme.json"
+      ],
+      "count": 8
+    },
+    "heading_font_name": {
+      "name": "heading_font_name",
+      "category": "design_typography",
+      "files": [
+        ".github/instructions/generate-theme.instructions.md",
+        "docs/GENERATE_THEME.md",
+        "scripts/generate-theme.js",
+        "scripts/utils/placeholders.js"
+      ],
+      "count": 5
+    },
+    "heading_font_weight": {
+      "name": "heading_font_weight",
+      "category": "design_typography",
+      "files": [
+        ".github/instructions/generate-theme.instructions.md",
+        ".github/reports/theme-generation-updates.md",
+        "docs/GENERATE_THEME.md",
+        "scripts/generate-theme.js",
+        "scripts/utils/placeholders.js",
+        "theme.json"
+      ],
+      "count": 11
+    },
+    "heading_line_height": {
+      "name": "heading_line_height",
+      "category": "design_typography",
+      "files": [
+        ".github/instructions/generate-theme.instructions.md",
+        "docs/GENERATE_THEME.md",
+        "scripts/generate-theme.js",
+        "scripts/utils/placeholders.js",
+        "theme.json"
+      ],
+      "count": 10
+    },
+    "heading_style_serif_title": {
+      "name": "heading_style_serif_title",
+      "category": "content_strings",
+      "files": [
+        "styles/blocks/heading-serif.json"
+      ],
+      "count": 1
+    },
+    "hero_button_text": {
+      "name": "hero_button_text",
+      "category": "content_strings",
+      "files": [
+        "inc/block-patterns.php"
+      ],
+      "count": 1
+    },
+    "hero_description": {
+      "name": "hero_description",
+      "category": "other",
+      "files": [
+        "inc/block-patterns.php"
+      ],
+      "count": 1
+    },
+    "hero_section_style_title": {
+      "name": "hero_section_style_title",
+      "category": "content_strings",
+      "files": [
+        "styles/sections/hero-section.json"
+      ],
+      "count": 1
+    },
+    "hero_title": {
+      "name": "hero_title",
+      "category": "content_strings",
+      "files": [
+        ".github/agents/generate-theme.agent.md",
+        ".github/custom-instructions.md",
+        ".github/prompts/generate-theme.prompt.md",
+        "inc/block-patterns.php"
+      ],
+      "count": 4
+    },
+    "key": {
+      "name": "key",
+      "category": "other",
+      "files": [
+        "scripts/utils/placeholders.js"
+      ],
+      "count": 1
+    },
+    "last_updated": {
+      "name": "last_updated",
+      "category": "other",
+      "files": [
+        ".github/agents/template.agent.md"
+      ],
+      "count": 1
+    },
+    "license": {
+      "name": "license",
+      "category": "license",
+      "files": [
+        ".github/agents/generate-theme.agent.md",
+        ".github/custom-instructions.md",
+        "CONTRIBUTING.md",
+        "DEVELOPMENT.md",
+        "README.md",
+        "README.txt",
+        "docs/GENERATE_THEME.md",
+        "package-lock.json",
+        "package.json",
+        "scripts/generate-theme.js",
+        "scripts/utils/placeholders.js",
+        "style.css"
+      ],
+      "count": 20
+    },
+    "license_uri": {
+      "name": "license_uri",
+      "category": "urls",
+      "files": [
+        ".github/agents/generate-theme.agent.md",
+        "DEVELOPMENT.md",
+        "README.md",
+        "README.txt",
+        "docs/GENERATE_THEME.md",
+        "scripts/generate-theme.js",
+        "scripts/utils/placeholders.js"
+      ],
+      "count": 9
+    },
+    "limitations": {
+      "name": "limitations",
+      "category": "other",
+      "files": [
+        ".github/agents/template.agent.md"
+      ],
+      "count": 1
+    },
+    "logo_height": {
+      "name": "logo_height",
+      "category": "other",
+      "files": [
+        "inc/template-functions.php"
+      ],
+      "count": 1
+    },
+    "logo_width": {
+      "name": "logo_width",
+      "category": "design_layout",
+      "files": [
+        "inc/template-functions.php"
+      ],
+      "count": 1
+    },
+    "min_php_version": {
+      "name": "min_php_version",
+      "category": "versioning",
+      "files": [
+        ".github/agents/generate-theme.agent.md",
+        ".github/instructions/generate-theme.instructions.md",
+        "README.md",
+        "docs/GENERATE_THEME.md",
+        "scripts/generate-theme.js",
+        "scripts/utils/placeholders.js"
+      ],
+      "count": 10
+    },
+    "min_wp_version": {
+      "name": "min_wp_version",
+      "category": "versioning",
+      "files": [
+        ".github/agents/generate-theme.agent.md",
+        ".github/instructions/generate-theme.instructions.md",
+        "README.md",
+        "docs/GENERATE_THEME.md",
+        "scripts/generate-theme.js",
+        "scripts/utils/placeholders.js"
+      ],
+      "count": 10
+    },
+    "mono_font_family": {
+      "name": "mono_font_family",
+      "category": "design_typography",
+      "files": [
+        "docs/GENERATE_THEME.md",
+        "scripts/utils/placeholders.js"
+      ],
+      "count": 2
+    },
+    "mono_font_name": {
+      "name": "mono_font_name",
+      "category": "design_typography",
+      "files": [
+        "docs/GENERATE_THEME.md",
+        "scripts/utils/placeholders.js"
+      ],
+      "count": 2
+    },
+    "mustache": {
+      "name": "mustache",
+      "category": "other",
+      "files": [
+        ".github/agents/release-scaffold.agent.md",
+        ".github/agents/release.agent.md",
+        ".github/custom-instructions.md",
+        ".github/instructions/folder-structure.instructions.md",
+        ".github/prompts/release-scaffold.prompt.md",
+        ".github/reports/projects/active.md",
+        ".github/reports/research/build-dry-run-practices.md",
+        ".github/reports/research/placeholder-strategies.md",
+        ".github/workflows/release.yml",
+        "CHANGELOG.md",
+        "docs/GENERATE_THEME.md",
+        "docs/RELEASE_PROCESS.md",
+        "docs/RELEASE_PROCESS_SCAFFOLD.md",
+        "scripts/agents/__tests__/mustache-vars.test.js",
+        "scripts/agents/release-scaffold.agent.js",
+        "scripts/dry-run/README.md"
+      ],
+      "count": 27
+    },
+    "name": {
+      "name": "name",
+      "category": "other",
+      "files": [
+        ".github/agents/generate-theme.agent.md",
+        "ISSUES_REPORT.md",
+        "scripts/agents/__tests__/config.test.js",
+        "styles/colors/palette.json",
+        "styles/presets/dark.json",
+        "styles/typography/serif-titles.json"
+      ],
+      "count": 10
+    },
+    "namespace": {
+      "name": "namespace",
+      "category": "core_identity",
+      "files": [
+        ".github/agents/generate-theme.agent.md",
+        ".github/instructions/generate-theme.instructions.md",
+        ".github/instructions/i18n.instructions.md",
+        ".github/reports/SETUP-SUMMARY.md",
+        "docs/GENERATE_THEME.md",
+        "package.json",
+        "scripts/generate-theme.js",
+        "scripts/utils/placeholders.js",
+        "styles/colors/palette.json",
+        "styles/presets/dark.json",
+        "styles/typography/serif-titles.json"
+      ],
+      "count": 12
+    },
+    "neutral_color": {
+      "name": "neutral_color",
+      "category": "design_colors",
+      "files": [
+        ".github/instructions/generate-theme.instructions.md",
+        "docs/GENERATE_THEME.md",
+        "scripts/generate-theme.js",
+        "scripts/utils/placeholders.js",
+        "theme.json"
+      ],
+      "count": 5
+    },
+    "owner": {
+      "name": "owner",
+      "category": "other",
+      "files": [
+        ".github/agents/template.agent.md"
+      ],
+      "count": 1
+    },
+    "php_version_min": {
+      "name": "php_version_min",
+      "category": "versioning",
+      "files": [
+        "README.txt"
+      ],
+      "count": 1
+    },
+    "placeholder": {
+      "name": "placeholder",
+      "category": "other",
+      "files": [
+        "scripts/utils/placeholders.js"
+      ],
+      "count": 1
+    },
+    "placeholders": {
+      "name": "placeholders",
+      "category": "other",
+      "files": [
+        ".github/agents/template.agent.md",
+        "scripts/agents/template.agent.js"
+      ],
+      "count": 2
+    },
+    "prefix": {
+      "name": "prefix",
+      "category": "other",
+      "files": [
+        ".github/instructions/i18n.instructions.md"
+      ],
+      "count": 2
+    },
+    "premium_support_url": {
+      "name": "premium_support_url",
+      "category": "urls",
+      "files": [
+        "SUPPORT.md",
+        "docs/GENERATE_THEME.md",
+        "scripts/generate-theme.js",
+        "scripts/utils/placeholders.js"
+      ],
+      "count": 4
+    },
+    "primary_color": {
+      "name": "primary_color",
+      "category": "design_colors",
+      "files": [
+        ".github/agents/generate-theme.agent.md",
+        ".github/custom-instructions.md",
+        ".github/instructions/generate-theme.instructions.md",
+        ".github/prompts/generate-theme.prompt.md",
+        ".github/reports/theme-generation-updates.md",
+        "README.md",
+        "docs/GENERATE_THEME.md",
+        "inc/template-functions.php",
+        "scripts/generate-theme.js",
+        "scripts/utils/placeholders.js",
+        "theme.json"
+      ],
+      "count": 14
+    },
+    "repo_url": {
+      "name": "repo_url",
+      "category": "urls",
+      "files": [
+        "README.txt"
+      ],
+      "count": 1
+    },
+    "role": {
+      "name": "role",
+      "category": "other",
+      "files": [
+        ".github/instructions/instructions.instructions.md"
+      ],
+      "count": 2
+    },
+    "runtime_or_host": {
+      "name": "runtime_or_host",
+      "category": "other",
+      "files": [
+        ".github/agents/template.agent.md"
+      ],
+      "count": 1
+    },
+    "script_path_or_command": {
+      "name": "script_path_or_command",
+      "category": "other",
+      "files": [
+        ".github/agents/template.agent.md"
+      ],
+      "count": 1
+    },
+    "secondary_color": {
+      "name": "secondary_color",
+      "category": "design_colors",
+      "files": [
+        ".github/agents/generate-theme.agent.md",
+        ".github/custom-instructions.md",
+        ".github/instructions/generate-theme.instructions.md",
+        ".github/reports/theme-generation-updates.md",
+        "README.md",
+        "docs/GENERATE_THEME.md",
+        "inc/template-functions.php",
+        "scripts/generate-theme.js",
+        "scripts/utils/placeholders.js",
+        "theme.json"
+      ],
+      "count": 11
+    },
+    "security_email": {
+      "name": "security_email",
+      "category": "author_contact",
+      "files": [
+        ".github/instructions/generate-theme.instructions.md",
+        "CONTRIBUTING.md",
+        "SECURITY.md",
+        "SUPPORT.md",
+        "docs/GENERATE_THEME.md",
+        "scripts/generate-theme.js",
+        "scripts/utils/placeholders.js"
+      ],
+      "count": 8
+    },
+    "short_guardrail_summary": {
+      "name": "short_guardrail_summary",
+      "category": "other",
+      "files": [
+        ".github/agents/template.agent.md"
+      ],
+      "count": 1
+    },
+    "site_title_font_weight": {
+      "name": "site_title_font_weight",
+      "category": "design_typography",
+      "files": [
+        ".github/instructions/generate-theme.instructions.md",
+        "docs/GENERATE_THEME.md",
+        "scripts/generate-theme.js",
+        "scripts/utils/placeholders.js",
+        "theme.json"
+      ],
+      "count": 5
+    },
+    "skip_link_text": {
+      "name": "skip_link_text",
+      "category": "content_strings",
+      "files": [
+        "docs/GENERATE_THEME.md",
+        "scripts/generate-theme.js",
+        "scripts/utils/placeholders.js",
+        "src/js/theme.js"
+      ],
+      "count": 5
+    },
+    "slug": {
+      "name": "slug",
+      "category": "other",
+      "files": [
+        ".github/agents/generate-theme.agent.md",
+        ".github/agents/template.agent.md",
+        ".github/projects/plans/2025-12-12-generator-logging-schema-cleanup-design.md",
+        ".github/projects/plans/2025-12-15-implementation-plan.md",
+        "scripts/agents/__tests__/config.test.js"
+      ],
+      "count": 23
+    },
+    "status": {
+      "name": "status",
+      "category": "other",
+      "files": [
+        ".github/agents/template.agent.md"
+      ],
+      "count": 1
+    },
+    "support_email": {
+      "name": "support_email",
+      "category": "author_contact",
+      "files": [
+        ".github/instructions/generate-theme.instructions.md",
+        "SUPPORT.md",
+        "docs/GENERATE_THEME.md",
+        "scripts/generate-theme.js",
+        "scripts/utils/placeholders.js"
+      ],
+      "count": 5
+    },
+    "support_url": {
+      "name": "support_url",
+      "category": "urls",
+      "files": [
+        ".github/instructions/generate-theme.instructions.md",
+        ".github/workflows/i18n.yml",
+        "README.txt",
+        "docs/GENERATE_THEME.md",
+        "package.json",
+        "scripts/generate-theme.js",
+        "scripts/utils/placeholders.js"
+      ],
+      "count": 7
+    },
+    "systems_repos_apis": {
+      "name": "systems_repos_apis",
+      "category": "other",
+      "files": [
+        ".github/agents/template.agent.md"
+      ],
+      "count": 1
+    },
+    "target_audience": {
+      "name": "target_audience",
+      "category": "theme_metadata",
+      "files": [
+        "README.txt",
+        "docs/GENERATE_THEME.md"
+      ],
+      "count": 2
+    },
+    "team": {
+      "name": "team",
+      "category": "other",
+      "files": [
+        ".github/agents/template.agent.md"
+      ],
+      "count": 1
+    },
+    "team_description": {
+      "name": "team_description",
+      "category": "other",
+      "files": [
+        "inc/block-patterns.php"
+      ],
+      "count": 1
+    },
+    "team_member_1_name": {
+      "name": "team_member_1_name",
+      "category": "other",
+      "files": [
+        "inc/block-patterns.php"
+      ],
+      "count": 1
+    },
+    "team_member_1_role": {
+      "name": "team_member_1_role",
+      "category": "other",
+      "files": [
+        "inc/block-patterns.php"
+      ],
+      "count": 1
+    },
+    "team_member_2_name": {
+      "name": "team_member_2_name",
+      "category": "other",
+      "files": [
+        "inc/block-patterns.php"
+      ],
+      "count": 1
+    },
+    "team_member_2_role": {
+      "name": "team_member_2_role",
+      "category": "other",
+      "files": [
+        "inc/block-patterns.php"
+      ],
+      "count": 1
+    },
+    "team_member_3_name": {
+      "name": "team_member_3_name",
+      "category": "other",
+      "files": [
+        "inc/block-patterns.php"
+      ],
+      "count": 1
+    },
+    "team_member_3_role": {
+      "name": "team_member_3_role",
+      "category": "other",
+      "files": [
+        "inc/block-patterns.php"
+      ],
+      "count": 1
+    },
+    "team_title": {
+      "name": "team_title",
+      "category": "content_strings",
+      "files": [
+        "inc/block-patterns.php"
+      ],
+      "count": 1
+    },
+    "test_var": {
+      "name": "test_var",
+      "category": "other",
+      "files": [
+        ".github/projects/plans/2025-12-12-generator-logging-schema-cleanup-design.md"
+      ],
+      "count": 1
+    },
+    "tested_wp_version": {
+      "name": "tested_wp_version",
+      "category": "versioning",
+      "files": [
+        ".github/agents/generate-theme.agent.md",
+        ".github/instructions/generate-theme.instructions.md",
+        "docs/GENERATE_THEME.md",
+        "scripts/generate-theme.js",
+        "scripts/utils/placeholders.js"
+      ],
+      "count": 9
+    },
+    "text_color": {
+      "name": "text_color",
+      "category": "design_colors",
+      "files": [
+        ".github/agents/generate-theme.agent.md",
+        ".github/custom-instructions.md",
+        ".github/instructions/generate-theme.instructions.md",
+        "README.md",
+        "docs/GENERATE_THEME.md",
+        "inc/template-functions.php",
+        "scripts/generate-theme.js",
+        "scripts/utils/placeholders.js",
+        "theme.json"
+      ],
+      "count": 9
+    },
+    "textdomain": {
+      "name": "textdomain",
+      "category": "content_strings",
+      "files": [
+        ".github/agents/generate-theme.agent.md",
+        "README.txt",
+        "docs/GENERATE_THEME.md"
+      ],
+      "count": 4
+    },
+    "theme_name": {
+      "name": "theme_name",
+      "category": "core_identity",
+      "files": [
+        ".github/README.md",
+        ".github/agents/development-assistant.agent.md",
+        ".github/agents/release-scaffold.agent.md",
+        ".github/agents/release.agent.md",
+        ".github/custom-instructions.md",
+        ".github/instructions/generate-theme.instructions.md",
+        ".github/instructions/i18n.instructions.md",
+        ".github/instructions/phpunit-tests.instructions.md",
+        ".github/instructions/release.instructions.md",
+        ".github/prompts/generate-theme.prompt.md",
+        ".github/prompts/release.prompt.md",
+        ".github/reports/SETUP-SUMMARY.md",
+        ".github/workflows/release-scaffold.yml",
+        ".github/workflows/release.yml",
+        "CHANGELOG.md",
+        "CONTRIBUTING.md",
+        "DEVELOPMENT.md",
+        "ISSUES_REPORT.md",
+        "README.md",
+        "README.txt",
+        "SECURITY.md",
+        "SUPPORT.md",
+        "docs/GENERATE_THEME.md",
+        "docs/RELEASE_PROCESS.md",
+        "docs/RELEASE_PROCESS_SCAFFOLD.md",
+        "functions.php",
+        "inc/block-patterns.php",
+        "inc/block-styles.php",
+        "inc/template-functions.php",
+        "package.json",
+        "patterns/404-content.php",
+        "patterns/archive-header.php",
+        "patterns/author-header.php",
+        "patterns/call-to-action.php",
+        "patterns/features.php",
+        "patterns/footer.php",
+        "patterns/header.php",
+        "patterns/hero.php",
+        "patterns/no-search-results.php",
+        "patterns/pagination.php",
+        "patterns/post-card.php",
+        "patterns/post-meta.php",
+        "patterns/query-posts-grid.php",
+        "patterns/query-posts-list.php",
+        "patterns/single-post-content.php",
+        "patterns/testimonials.php",
+        "screenshot.png.md",
+        "scripts/agents/__tests__/release-scaffold.agent.test.js",
+        "scripts/generate-theme.js",
+        "scripts/utils/placeholders.js",
+        "src/js/editor.js",
+        "style.css",
+        "tests/bootstrap.php",
+        "tests/e2e/theme.spec.js",
+        "tests/php/test-block-patterns.php",
+        "tests/php/test-block-styles.php",
+        "tests/php/test-template-functions.php",
+        "tests/php/test-theme-setup.php",
+        "webpack.config.js"
+      ],
+      "count": 133
+    },
+    "theme_prefix": {
+      "name": "theme_prefix",
+      "category": "other",
+      "files": [
+        ".github/projects/plans/2025-12-12-generator-logging-schema-cleanup-design.md"
+      ],
+      "count": 1
+    },
+    "theme_repo_url": {
+      "name": "theme_repo_url",
+      "category": "urls",
+      "files": [
+        ".github/instructions/generate-theme.instructions.md",
+        ".github/prompts/generate-theme.prompt.md",
+        "CONTRIBUTING.md",
+        "README.md",
+        "SUPPORT.md",
+        "docs/GENERATE_THEME.md",
+        "docs/RELEASE_PROCESS.md",
+        "package.json",
+        "scripts/generate-theme.js",
+        "scripts/utils/placeholders.js"
+      ],
+      "count": 28
+    },
+    "theme_slug": {
+      "name": "theme_slug",
+      "category": "core_identity",
+      "files": [
+        ".github/agents/development-assistant.agent.md",
+        ".github/agents/release-scaffold.agent.md",
+        ".github/agents/release.agent.md",
+        ".github/custom-instructions.md",
+        ".github/instructions/generate-theme.instructions.md",
+        ".github/instructions/i18n.instructions.md",
+        ".github/instructions/javascript.instructions.md",
+        ".github/instructions/wpcs-php.instructions.md",
+        ".github/prompts/generate-theme.prompt.md",
+        ".github/prompts/release.prompt.md",
+        ".github/reports/SETUP-SUMMARY.md",
+        ".github/workflows/ci.yml",
+        ".github/workflows/i18n.yml",
+        ".github/workflows/release.yml",
+        "CHANGELOG.md",
+        "CONTRIBUTING.md",
+        "DEVELOPMENT.md",
+        "README.md",
+        "SUPPORT.md",
+        "docs/GENERATE_THEME.md",
+        "docs/RELEASE_PROCESS.md",
+        "functions.php",
+        "inc/block-patterns.php",
+        "inc/block-styles.php",
+        "inc/deprecation.php",
+        "inc/template-functions.php",
+        "package.json",
+        "parts/comments.html",
+        "parts/footer.html",
+        "parts/header.html",
+        "parts/pagination.html",
+        "parts/post-meta.html",
+        "parts/sidebar.html",
+        "patterns/404-content.php",
+        "patterns/archive-header.php",
+        "patterns/author-header.php",
+        "patterns/call-to-action.php",
+        "patterns/comments.php",
+        "patterns/features.php",
+        "patterns/footer.php",
+        "patterns/header.php",
+        "patterns/hero.php",
+        "patterns/no-search-results.php",
+        "patterns/pagination.php",
+        "patterns/post-card.php",
+        "patterns/post-meta.php",
+        "patterns/query-posts-grid.php",
+        "patterns/query-posts-list.php",
+        "patterns/sidebar.php",
+        "patterns/single-post-content.php",
+        "patterns/testimonials.php",
+        "scripts/agents/__tests__/release-scaffold.agent.test.js",
+        "scripts/dry-run/dry-run-config.js",
+        "scripts/generate-theme.js",
+        "scripts/utils/placeholders.js",
+        "src/js/editor.js",
+        "templates/404.html",
+        "templates/archive.html",
+        "templates/author.html",
+        "templates/category.html",
+        "templates/front-page.html",
+        "templates/home-sidebar.html",
+        "templates/home.html",
+        "templates/index.html",
+        "templates/search.html",
+        "templates/single.html",
+        "templates/singular.html",
+        "templates/tag.html",
+        "tests/bootstrap.php",
+        "tests/php/test-block-patterns.php",
+        "tests/php/test-block-styles.php",
+        "tests/php/test-template-functions.php",
+        "tests/php/test-theme-setup.php"
+      ],
+      "count": 453
+    },
+    "theme_tags": {
+      "name": "theme_tags",
+      "category": "theme_metadata",
+      "files": [
+        "README.txt",
+        "docs/GENERATE_THEME.md",
+        "scripts/utils/placeholders.js"
+      ],
+      "count": 4
+    },
+    "theme_uri": {
+      "name": "theme_uri",
+      "category": "urls",
+      "files": [
+        ".github/prompts/generate-theme.prompt.md",
+        "README.txt",
+        "docs/GENERATE_THEME.md",
+        "package.json",
+        "scripts/generate-theme.js",
+        "scripts/utils/placeholders.js"
+      ],
+      "count": 11
+    },
+    "thumbnail_height": {
+      "name": "thumbnail_height",
+      "category": "images",
+      "files": [
+        "docs/GENERATE_THEME.md",
+        "functions.php",
+        "scripts/generate-theme.js",
+        "scripts/utils/placeholders.js"
+      ],
+      "count": 4
+    },
+    "thumbnail_width": {
+      "name": "thumbnail_width",
+      "category": "design_layout",
+      "files": [
+        "docs/GENERATE_THEME.md",
+        "functions.php",
+        "scripts/generate-theme.js",
+        "scripts/utils/placeholders.js"
+      ],
+      "count": 4
+    },
+    "undocumented_test_var": {
+      "name": "undocumented_test_var",
+      "category": "other",
+      "files": [
+        ".github/projects/plans/2025-12-15-implementation-plan.md"
+      ],
+      "count": 1
+    },
+    "undocumented_var": {
+      "name": "undocumented_var",
+      "category": "other",
+      "files": [
+        ".github/projects/plans/2025-12-15-implementation-plan.md"
+      ],
+      "count": 1
+    },
+    "updated_date": {
+      "name": "updated_date",
+      "category": "other",
+      "files": [
+        "docs/GENERATE_THEME.md",
+        "package.json",
+        "scripts/utils/placeholders.js"
+      ],
+      "count": 3
+    },
+    "variable": {
+      "name": "variable",
+      "category": "other",
+      "files": [
+        ".github/prompts/generate-theme.prompt.md",
+        "docs/GENERATE_THEME.md",
+        "scripts/dry-run/dry-run-config.js",
+        "scripts/validation/validate-mustache-schema.js"
+      ],
+      "count": 5
+    },
+    "variable_name": {
+      "name": "variable_name",
+      "category": "other",
+      "files": [
+        ".github/instructions/generate-theme.instructions.md",
+        "docs/GENERATE_THEME.md",
+        "scripts/utils/scan.js"
+      ],
+      "count": 4
+    },
+    "variables": {
+      "name": "variables",
+      "category": "other",
+      "files": [
+        ".github/instructions/folder-structure.instructions.md"
+      ],
+      "count": 4
+    },
+    "version": {
+      "name": "version",
+      "category": "versioning",
+      "files": [
+        ".github/agents/development-assistant.agent.md",
+        ".github/agents/generate-theme.agent.md",
+        ".github/agents/release.agent.md",
+        ".github/custom-instructions.md",
+        ".github/instructions/generate-theme.instructions.md",
+        ".github/instructions/release.instructions.md",
+        ".github/prompts/release.prompt.md",
+        ".github/reports/SETUP-SUMMARY.md",
+        "DEVELOPMENT.md",
+        "README.md",
+        "README.txt",
+        "SECURITY.md",
+        "docs/GENERATE_THEME.md",
+        "docs/RELEASE_PROCESS.md",
+        "functions.php",
+        "inc/block-patterns.php",
+        "inc/block-styles.php",
+        "inc/deprecation.php",
+        "inc/template-functions.php",
+        "patterns/404-content.php",
+        "patterns/archive-header.php",
+        "patterns/author-header.php",
+        "patterns/call-to-action.php",
+        "patterns/features.php",
+        "patterns/footer.php",
+        "patterns/header.php",
+        "patterns/hero.php",
+        "patterns/no-search-results.php",
+        "patterns/pagination.php",
+        "patterns/post-card.php",
+        "patterns/post-meta.php",
+        "patterns/query-posts-grid.php",
+        "patterns/query-posts-list.php",
+        "patterns/single-post-content.php",
+        "patterns/testimonials.php",
+        "scripts/agents/release.agent.js",
+        "scripts/generate-theme.js",
+        "scripts/utils/placeholders.js",
+        "webpack.config.js"
+      ],
+      "count": 93
+    },
+    "wide_width": {
+      "name": "wide_width",
+      "category": "design_layout",
+      "files": [
+        ".github/instructions/generate-theme.instructions.md",
+        ".github/prompts/generate-theme.prompt.md",
+        ".github/reports/theme-generation-updates.md",
+        "docs/GENERATE_THEME.md",
+        "scripts/generate-theme.js",
+        "scripts/utils/placeholders.js",
+        "theme.json"
+      ],
+      "count": 8
+    },
+    "wp_version_max": {
+      "name": "wp_version_max",
+      "category": "versioning",
+      "files": [
+        "README.txt"
+      ],
+      "count": 1
+    },
+    "wp_version_min": {
+      "name": "wp_version_min",
+      "category": "versioning",
+      "files": [
+        "README.txt"
+      ],
+      "count": 1
+    },
+    "year": {
+      "name": "year",
+      "category": "author_contact",
+      "files": [
+        ".github/instructions/generate-theme.instructions.md",
+        ".github/schemas/examples/theme-config.example.json",
+        ".github/schemas/theme-config.schema.json",
+        "README.txt",
+        "docs/GENERATE_THEME.md",
+        "scripts/generate-theme.js",
+        "scripts/utils/placeholders.js",
+        "style.css",
+        "theme-config.mock.json"
+      ],
+      "count": 10
+    }
+  }
 }
