@@ -2,13 +2,13 @@
 
 const fs = require( 'fs' );
 const path = require( 'path' );
-const { scanMustacheVariables } = require( '../validation/validate-mustache-registry' );
+const { scanMustacheVariables } = require( './scan' );
 const { PLACEHOLDER_MAP } = require( './placeholders' );
 
 const ROOT_DIR = path.resolve( __dirname, '..', '..' );
 const REGISTRY_PATH = path.join(
 	ROOT_DIR,
-	'tests/fixtures/mustache-variables-registry.json'
+	'scripts/mustache-variables-registry.json'
 );
 const REGISTRY_SCHEMA_PATH = path.join(
 	ROOT_DIR,

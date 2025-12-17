@@ -1,501 +1,351 @@
 #!/usr/bin/env node
 
-
 /**
- * scripts/scan.js
+ * scripts/utils/scan.js
  *
- * Scans the entire repository for mustache variables PLACEHOLDER
- * and generates a complete registry categorized by type and usage.
- *
- * Usage:
- *   node scripts/scan.js
- *   node scripts/scan.js --json > variables.json
- *   node scripts/scan.js --validate theme-config.json
- *
- * @fileoverview Utility to scan for mustache variables and output registry.
- * @todo Refactor to support additional variable syntaxes if needed.
+ * Scans the repository for mustache placeholders and provides a reusable
+ * result set for registry generation, validation, and debugging.
  */
 
-const fs = require('fs');
-const path = require('path');
+const fs = require( 'fs' );
+const path = require( 'path' );
+const fastGlob = require( 'fast-glob' );
 
-// Directories to scan
-const SCAN_DIRS = [
-	'.',
-	'patterns',
-	'parts',
-	'templates',
-	'styles',
-	'src',
-	'.github',
-	'docs',
+const ROOT_DIR = path.resolve( __dirname, '..', '..' );
+const SCAN_PATTERNS = [
+	'**/*.php',
+	'**/*.js',
+	'**/*.ts',
+	'**/*.tsx',
+	'**/*.json',
+	'**/*.md',
+	'**/*.css',
+	'**/*.scss',
+	'**/*.html',
+	'**/*.yml',
+	'**/*.yaml',
+	'**/*.txt',
 ];
-
-// Directories to exclude from scanning
-const EXCLUDE_DIRS = [
-	'node_modules',
-	'vendor',
-	'dist',
-	'build',
-	'output-theme',
-	'.git',
-	'coverage',
-	'test-results',
-	'artifacts',
+const SCAN_IGNORE = [
+	'node_modules/**',
+	'vendor/**',
+	'build/**',
+	'dist/**',
+	'.git/**',
+	'generated-theme/**',
+	'coverage/**',
+	'logs/**',
+	'tmp/dry-run/**',
+	'scripts/mustache-variables-registry.json',
+	'tests/fixtures/**',
 ];
-
-// File extensions to scan
-const SCAN_EXTENSIONS = [
-	'.php',
-	'.js',
-	'.json',
-	'.md',
-	'.css',
-	'.scss',
-	'.html',
-	'.txt',
-	'.yml',
-	'.yaml',
-];
-
-// Mustache variable regex: PLACEHOLDER
 const MUSTACHE_REGEX = /\{\{([a-zA-Z0-9_]+(?:\|[a-zA-Z0-9_]+)?)\}\}/g;
 
-/**
- * Recursively scan directory for files
- * @param dir
- * @param basePath
- */
-function scanDirectory(dir, basePath = '') {
-	const files = [];
-	const entries = fs.readdirSync(dir, { withFileTypes: true });
+function categorizeVariable( varName ) {
+	const cleanName = varName.split( '|' )[ 0 ];
 
-	for (const entry of entries) {
-		const fullPath = path.join(dir, entry.name);
-		const relativePath = path.join(basePath, entry.name);
-
-		if (entry.isDirectory()) {
-			// Skip excluded directories
-			if (EXCLUDE_DIRS.includes(entry.name)) {
-				continue;
-			}
-			// Recursively scan subdirectory
-			files.push(...scanDirectory(fullPath, relativePath));
-		} else if (entry.isFile()) {
-			// Check if file extension should be scanned
-			const ext = path.extname(entry.name);
-			if (SCAN_EXTENSIONS.includes(ext)) {
-				files.push({
-					path: relativePath,
-					fullPath,
-					ext,
-				});
-			}
-		}
-	}
-
-	return files;
-}
-
-/**
- * Extract mustache variables from file content
- * @param content
- */
-function extractVariables(content) {
-	const variables = new Set();
-	let match;
-
-	while ((match = MUSTACHE_REGEX.exec(content)) !== null) {
-		// match[1] contains the variable name (without PLACEHOLDER)
-		variables.add(match[1]);
-	}
-
-	return Array.from(variables);
-}
-
-/**
- * Categorize variable by name pattern
- * @param varName
- */
-function categorizeVariable(varName) {
-	// Remove transformation suffix (e.g., variable|upper -> variable)
-	const cleanName = varName.split('|')[0];
-
-	// Core identity
-	if (
-		['theme_slug', 'theme_name', 'namespace', 'description'].includes(
-			cleanName
-		)
-	) {
+	if ( [ 'theme_slug', 'theme_name', 'namespace', 'description' ].includes( cleanName ) ) {
 		return 'core_identity';
 	}
 
-	// Author & contact
-	if (
-		cleanName.includes('author') ||
-		cleanName.includes('email') ||
-		cleanName === 'year'
-	) {
+	if ( cleanName.includes( 'author' ) || cleanName.includes( 'email' ) || cleanName === 'year' ) {
 		return 'author_contact';
 	}
 
-	// Versioning
-	if (
-		cleanName.includes('version') ||
-		cleanName.includes('_wp_') ||
-		cleanName.includes('_php_')
-	) {
+	if ( cleanName.includes( 'version' ) || cleanName.includes( '_wp_' ) || cleanName.includes( '_php_' ) ) {
 		return 'versioning';
 	}
 
-	// URLs
-	if (cleanName.includes('_url') || cleanName.includes('_uri')) {
+	if ( cleanName.includes( '_url' ) || cleanName.includes( '_uri' ) ) {
 		return 'urls';
 	}
 
-	// License
-	if (cleanName.includes('license')) {
+	if ( cleanName.includes( 'license' ) ) {
 		return 'license';
 	}
 
-	// Colors
-	if (cleanName.includes('color') || cleanName.includes('_colour')) {
+	if ( cleanName.includes( 'color' ) || cleanName.includes( '_colour' ) ) {
 		return 'design_colors';
 	}
 
-	// Typography
-	if (
-		cleanName.includes('font') ||
-		cleanName.includes('line_height') ||
-		cleanName.includes('weight')
-	) {
+	if ( cleanName.includes( 'font' ) || cleanName.includes( 'line_height' ) || cleanName.includes( 'weight' ) ) {
 		return 'design_typography';
 	}
 
-	// Layout
-	if (
-		cleanName.includes('width') ||
-		cleanName.includes('spacing') ||
-		cleanName.includes('size')
-	) {
+	if ( cleanName.includes( 'width' ) || cleanName.includes( 'spacing' ) || cleanName.includes( 'size' ) ) {
 		return 'design_layout';
 	}
 
-	// Content strings
 	if (
-		cleanName.includes('text') ||
-		cleanName.includes('title') ||
-		cleanName.includes('excerpt') ||
-		cleanName.includes('skip_link') ||
-		cleanName.includes('copyright')
+		cleanName.includes( 'text' ) ||
+		cleanName.includes( 'title' ) ||
+		cleanName.includes( 'excerpt' ) ||
+		cleanName.includes( 'skip_link' ) ||
+		cleanName.includes( 'copyright' )
 	) {
 		return 'content_strings';
 	}
 
-	// Images
-	if (cleanName.includes('image') || cleanName.includes('thumbnail')) {
+	if ( cleanName.includes( 'image' ) || cleanName.includes( 'thumbnail' ) ) {
 		return 'images';
 	}
 
-	// Theme tags and metadata
-	if (
-		cleanName.includes('tags') ||
-		cleanName.includes('textdomain') ||
-		cleanName.includes('audience')
-	) {
+	if ( cleanName.includes( 'tags' ) || cleanName.includes( 'textdomain' ) || cleanName.includes( 'audience' ) ) {
 		return 'theme_metadata';
 	}
 
-	// UI components
-	if (cleanName.includes('button') || cleanName.includes('border')) {
+	if ( cleanName.includes( 'button' ) || cleanName.includes( 'border' ) ) {
 		return 'ui_components';
 	}
 
 	return 'other';
 }
 
-/**
- * Main scan function
- */
-function scanRepository() {
-	// Logging removed for lint compliance
-
-	const results = {
-		summary: {
-			totalFiles: 0,
-			filesWithVariables: 0,
-			uniqueVariables: 0,
-			totalOccurrences: 0,
-		},
-		variables: {},
-		filesByCategory: {},
-		categories: {},
-	};
-
-	// Scan all configured directories
-	const allFiles = [];
-	for (const dir of SCAN_DIRS) {
-		const dirPath = path.resolve(__dirname, '..', dir);
-		if (fs.existsSync(dirPath)) {
-			allFiles.push(...scanDirectory(dirPath, dir === '.' ? '' : dir));
-		}
-	}
-
-	results.summary.totalFiles = allFiles.length;
-
-	// Process each file
-	for (const file of allFiles) {
-		try {
-			const content = fs.readFileSync(file.fullPath, 'utf8');
-			const variables = extractVariables(content);
-
-			if (variables.length > 0) {
-				results.summary.filesWithVariables++;
-
-				for (const varName of variables) {
-					// Initialize variable entry if not exists
-					if (!results.variables[varName]) {
-						const category = categorizeVariable(varName);
-						results.variables[varName] = {
-							name: varName,
-							category,
-							files: [],
-							count: 0,
-						};
-
-						// Initialize category
-						if (!results.categories[category]) {
-							results.categories[category] = {
-								variables: [],
-								count: 0,
-							};
-						}
-						results.categories[category].variables.push(varName);
-					}
-
-					// Add file reference
-					if (!results.variables[varName].files.includes(file.path)) {
-						results.variables[varName].files.push(file.path);
-					}
-
-					// Count occurrences
-					const occurrences = (
-						content.match(
-							new RegExp(`\\{\\{${varName}\\}\\}`, 'g')
-						) || []
-					).length;
-					results.variables[varName].count += occurrences;
-					results.summary.totalOccurrences += occurrences;
-				}
-			}
-		} catch (error) {
-			// Logging removed for lint compliance
-		}
-	}
-
-	// Calculate summary statistics
-	results.summary.uniqueVariables = Object.keys(results.variables).length;
-
-	// Sort variables by usage count
-	const sortedVariables = Object.values(results.variables).sort(
-		(a, b) => b.count - a.count
-	);
-
-	// Count variables per category
-	for (const category of Object.keys(results.categories)) {
-		results.categories[category].count =
-			results.categories[category].variables.length;
-	}
-
-	return { results, sortedVariables };
-}
-
-/**
- * Display results in human-readable format
- * @param results
- * @param sortedVariables
- */
-function displayResults(results, sortedVariables) {
-	// Logging removed for lint compliance
-	// Logging removed for lint compliance
-	// Logging removed for lint compliance
-	// Logging removed for lint compliance
-		`  Files with variables: ${results.summary.filesWithVariables}`
-	// );
-	// Logging removed for lint compliance
-	// Logging removed for lint compliance
-
-	// Logging removed for lint compliance
-	const categoryOrder = [
-		'core_identity',
-		'author_contact',
-		'versioning',
-		'urls',
-		'license',
-		'design_colors',
-		'design_typography',
-		'design_layout',
-		'content_strings',
-		'ui_components',
-		'images',
-		'theme_metadata',
-		'other',
+function isDerivedVariable( varName ) {
+	const derived = [
+		'namespace',
+		'support_url',
+		'support_email',
+		'security_email',
+		'business_email',
+		'docs_url',
+		'docs_repo_url',
+		'content_width_px',
+		'year',
+		'created_date',
+		'updated_date',
 	];
 
-	for (const category of categoryOrder) {
-		if (results.categories[category]) {
-			// ...existing code...
-			// Logging removed for lint compliance
-			// Logging removed for lint compliance
-			// Logging removed for lint compliance
-		}
-	}
-
-	// Logging removed for lint compliance
-	for (let i = 0; i < Math.min(20, sortedVariables.length); i++) {
-		const v = sortedVariables[i];
-		// Logging removed for lint compliance
-			`  ${i + 1}. PLACEHOLDER} - ${v.count} occurrences in ${v.files.length} files`
-		// );
-	}
-
-	// Logging removed for lint compliance
+	return derived.includes( varName );
 }
 
-/**
- * Validate theme-config.json against discovered variables
- * @param configPath
- * @param results
- */
-function validateConfig(configPath, results) {
-	// Logging removed for lint compliance
-
-	try {
-		const config = JSON.parse(fs.readFileSync(configPath, 'utf8'));
-		const flatConfig = flattenConfig(config);
-		const configKeys = new Set(Object.keys(flatConfig));
-		   const discoveredVars = new Set(
-			   Object.keys(results.variables).map((v) => v.split('|')[0])
-		   );
-
-		const missing = [];
-		const extra = [];
-
-		// Check for missing required variables
-		for (const varName of discoveredVars) {
-			if (!configKeys.has(varName)) {
-				// Check if it's a derived variable
-				if (!isDerivedVariable(varName)) {
-					missing.push(varName);
-				}
-			}
-		}
-
-		// Check for extra variables in config
-		for (const key of configKeys) {
-			if (
-				!discoveredVars.has(key) &&
-				!key.startsWith('_') &&
-				key !== 'design_system' &&
-				key !== 'theme_structure' &&
-				key !== 'features' &&
-				key !== 'content'
-			) {
-				extra.push(key);
-			}
-		}
-
-		// Logging removed for lint compliance
-		// Logging removed for lint compliance
-		// Logging removed for lint compliance
-
-		   if (missing.length > 0) {
-			   // Logging removed for lint compliance
-			   // (removed unreachable parenthesis and code)
-		   }
-
-		   if (extra.length > 0) {
-			   // Logging removed for lint compliance
-			   // (removed unreachable parenthesis and code)
-		   }
-
-		   if (missing.length === 0 && extra.length === 0) {
-			   // Logging removed for lint compliance
-		   }
-	} catch (error) {
-		// Logging removed for lint compliance
-		process.exit(1);
-	}
-}
-
-/**
- * Flatten nested config object
- * @param config
- * @param prefix
- */
-function flattenConfig(config, prefix = '') {
+function flattenConfig( config, prefix = '' ) {
 	const flattened = {};
 
-	for (const [key, value] of Object.entries(config)) {
-		const newKey = prefix ? `${prefix}_${key}` : key;
+	for ( const [ key, value ] of Object.entries( config ) ) {
+		const newKey = prefix ? `${ prefix }_${ key }` : key;
 
-		if (value && typeof value === 'object' && !Array.isArray(value)) {
-			Object.assign(flattened, flattenConfig(value, newKey));
-		} else if (!Array.isArray(value)) {
-			flattened[newKey] = value;
+		if ( value && typeof value === 'object' && !Array.isArray( value ) ) {
+			Object.assign( flattened, flattenConfig( value, newKey ) );
+		} else if ( !Array.isArray( value ) ) {
+			flattened[ newKey ] = value;
 		}
 	}
 
 	return flattened;
 }
 
-/**
- * Check if variable is auto-derived from other variables
- * @param varName
- */
-function isDerivedVariable(varName) {
-	const derived = [
-		'namespace', // Derived from theme_slug
-		'support_url', // Derived from theme_slug
-		'support_email', // Derived from author_uri
-		'security_email', // Derived from author_uri
-		'business_email', // Derived from author_uri
-		'docs_url', // Derived from author + theme_slug
-		'docs_repo_url', // Derived from theme_repo_url
-		'content_width_px', // Derived from content_width
-		'year', // Auto-generated
-		'created_date', // Auto-generated
-		'updated_date', // Auto-generated
-	];
+function scanMustacheVariables( options = {} ) {
+	const root = options.root || ROOT_DIR;
+	const patterns = options.patterns || SCAN_PATTERNS;
+	const ignore = options.ignore || SCAN_IGNORE;
 
-	return derived.includes(varName);
+	const files = fastGlob.sync( patterns, {
+		cwd: root,
+		dot: true,
+		onlyFiles: true,
+		absolute: false,
+		ignore,
+	} );
+
+	const summary = {
+		totalFiles: files.length,
+		filesWithVariables: 0,
+		uniqueVariables: 0,
+		totalOccurrences: 0,
+	};
+	const variables = {};
+	const categories = {};
+
+	for ( const relativePath of files ) {
+		const absolutePath = path.join( root, relativePath );
+		let content;
+
+		try {
+			content = fs.readFileSync( absolutePath, 'utf8' );
+		} catch ( error ) {
+			continue;
+		}
+
+		const regex = new RegExp( MUSTACHE_REGEX );
+		const seenInFile = new Set();
+		let match;
+
+		while ( ( match = regex.exec( content ) ) !== null ) {
+			const rawName = match[ 1 ];
+			const name = rawName.split( '|' )[ 0 ];
+
+			summary.totalOccurrences += 1;
+
+			if ( ! variables[ name ] ) {
+				const category = categorizeVariable( name );
+				variables[ name ] = {
+					name,
+					category,
+					files: [],
+					count: 0,
+				};
+
+				if ( ! categories[ category ] ) {
+					categories[ category ] = {
+						variables: [],
+						count: 0,
+					};
+				}
+				categories[ category ].variables.push( name );
+			}
+
+			variables[ name ].count += 1;
+
+			if ( ! seenInFile.has( name ) ) {
+				variables[ name ].files.push( relativePath );
+				seenInFile.add( name );
+			}
+		}
+
+		if ( seenInFile.size > 0 ) {
+			summary.filesWithVariables += 1;
+		}
+	}
+
+	summary.uniqueVariables = Object.keys( variables ).length;
+
+	Object.values( variables ).forEach( ( entry ) => entry.files.sort() );
+	Object.values( categories ).forEach( ( category ) => {
+		category.count = category.variables.length;
+	} );
+
+	return {
+		summary,
+		variables,
+		categories,
+	};
 }
 
-module.exports = {
-	scanDirectory,
-	extractVariables,
-	categorizeVariable,
-};
+function displayResults( results, sortedVariables ) {
+	console.log( 'Mustache Variable Scan Report' );
+	console.log( '=============================' );
+	console.log( `Files scanned: ${ results.summary.totalFiles }` );
+	console.log( `Files with variables: ${ results.summary.filesWithVariables }` );
+	console.log( `Unique variables: ${ results.summary.uniqueVariables }` );
+	console.log( `Total occurrences: ${ results.summary.totalOccurrences }` );
+	console.log( '' );
 
+	const categoryEntries = Object.entries( results.categories ).sort(
+		( [, a ], [, b ] ) => b.count - a.count
+	);
 
-// Main execution
-function main() {
-	const args = process.argv.slice(2);
-	const outputJson = args.includes('--json');
-	const validateIndex = args.indexOf('--validate');
+	if ( categoryEntries.length > 0 ) {
+		console.log( 'Category distribution:' );
+		categoryEntries.forEach( ( [ category, data ] ) => {
+			console.log( `  - ${ category }: ${ data.count } variable${ data.count === 1 ? '' : 's' }` );
+		} );
+		console.log( '' );
+	}
 
-	const { results, sortedVariables } = scanRepository();
+	if ( sortedVariables.length === 0 ) {
+		console.log( 'No mustache variables discovered.' );
+		return;
+	}
 
-	if (validateIndex !== -1 && args[validateIndex + 1]) {
-		// Validate config mode
-		validateConfig(args[validateIndex + 1], results);
-	} else if (outputJson) {
-		// JSON output mode
-		// Logging removed for lint compliance
-	} else {
-		// Human-readable output mode
-		displayResults(results, sortedVariables);
+	console.log( 'Top variables:' );
+	const limit = Math.min( 15, sortedVariables.length );
+	for ( let i = 0; i < limit; i += 1 ) {
+		const variable = sortedVariables[ i ];
+		console.log(
+			`  ${ i + 1 }. {{${ variable.name }}} — ${ variable.count } occurrences in ${ variable.files.length } file${ variable.files.length === 1 ? '' : 's' }`
+		);
+	}
+
+	if ( sortedVariables.length > limit ) {
+		console.log( `  ...and ${ sortedVariables.length - limit } more variables.` );
 	}
 }
 
-main();
+function validateConfig( configPath, results ) {
+	try {
+		const config = JSON.parse( fs.readFileSync( configPath, 'utf8' ) );
+		const flatConfig = flattenConfig( config );
+		const configKeys = new Set( Object.keys( flatConfig ) );
+		const discoveredVars = new Set( Object.keys( results.variables ).map( ( name ) => name.split( '|' )[ 0 ] ) );
+
+		const missing = [];
+		const extra = [];
+
+		for ( const varName of discoveredVars ) {
+			if ( ! configKeys.has( varName ) && ! isDerivedVariable( varName ) ) {
+				missing.push( varName );
+			}
+		}
+
+		for ( const key of configKeys ) {
+			if (
+				! discoveredVars.has( key ) &&
+				! key.startsWith( '_' ) &&
+				key !== 'design_system' &&
+				key !== 'theme_structure' &&
+				key !== 'features' &&
+				key !== 'content'
+			) {
+				extra.push( key );
+			}
+		}
+
+		if ( missing.length > 0 ) {
+			console.error( 'Missing theme config keys for discovered placeholders:' );
+			missing.forEach( ( name ) => console.error( `  - ${ name }` ) );
+		}
+
+		if ( extra.length > 0 ) {
+			console.error( 'Theme config contains extra keys that are not used in templates:' );
+			extra.forEach( ( key ) => console.error( `  - ${ key }` ) );
+		}
+
+		if ( missing.length > 0 || extra.length > 0 ) {
+			process.exit( 1 );
+		}
+
+		console.log( '✅ Theme config contains every discovered placeholder.' );
+	} catch ( error ) {
+		console.error( `Unable to validate config: ${ error.message }` );
+		process.exit( 1 );
+	}
+}
+
+function main() {
+	const args = process.argv.slice( 2 );
+	const outputJson = args.includes( '--json' );
+	const validateIndex = args.indexOf( '--validate' );
+
+	const { summary, variables, categories } = scanMustacheVariables();
+	const latestResults = { summary, variables, categories };
+	const sortedVariables = Object.values( variables ).sort( ( a, b ) => b.count - a.count );
+
+	if ( validateIndex !== -1 ) {
+		const configPath = args[ validateIndex + 1 ];
+		if ( ! configPath ) {
+			console.error( 'Please provide the path to theme config after --validate' );
+			process.exit( 1 );
+		}
+		validateConfig( configPath, latestResults );
+		return;
+	}
+
+	if ( outputJson ) {
+		console.log( JSON.stringify( latestResults, null, 2 ) );
+		return;
+	}
+
+	displayResults( latestResults, sortedVariables );
+}
+
+module.exports = {
+	scanMustacheVariables,
+	categorizeVariable,
+	flattenConfig,
+	isDerivedVariable,
+};
+
+if ( require.main === module ) {
+	main();
+}
