@@ -60,6 +60,12 @@ This guide applies **only** to the **block theme scaffold repository**. Generate
 
    Ensures all 89 mustache variables are documented and no undocumented variables exist in templates.
 
+### Keep the placeholder registry in sync
+
+- After introducing, removing, or renaming any `{{mustache}}` placeholders, rerun `node scripts/utils/scan.js --json` so you capture the fresh list of tokens that the schema test depends on.
+- Use that output (or `node scripts/utils/update-mustache-registry.js`) to refresh the fixture at `scripts/mustache-variables-registry.json` and the schema at `.github/schemas/mustache-variables-registry.schema.json`, then update any documentation that lists placeholder examples (like `docs/GENERATE_THEME.md` or the release templates).
+- Re-run `npm run test:schema` after syncing the registry so the schema test and released docs stay aligned with the current placeholders.
+
 4. **Run quality gates (dry-run)**
    ```bash
    npm run lint:dry-run

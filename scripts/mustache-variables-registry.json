@@ -1,9 +1,9 @@
 {
   "summary": {
-    "totalFiles": 352,
-    "filesWithVariables": 112,
+    "totalFiles": 365,
+    "filesWithVariables": 114,
     "uniqueVariables": 160,
-    "totalOccurrences": 1153
+    "totalOccurrences": 1167
   },
   "variables": {
     "ThemeSlug": {
@@ -121,7 +121,7 @@
         "README.txt",
         "docs/GENERATE_THEME.md"
       ],
-      "count": 9
+      "count": 10
     },
     "author_username": {
       "name": "author_username",
@@ -145,7 +145,7 @@
         "inc/template-functions.php",
         "theme.json"
       ],
-      "count": 7
+      "count": 8
     },
     "body_font": {
       "name": "body_font",
@@ -372,10 +372,9 @@
       "name": "cta_text",
       "category": "content_strings",
       "files": [
-        ".github/agents/generate-theme.agent.md",
         ".github/custom-instructions.md"
       ],
-      "count": 2
+      "count": 1
     },
     "cta_title": {
       "name": "cta_title",
@@ -622,7 +621,7 @@
         "README.txt",
         "docs/GENERATE_THEME.md"
       ],
-      "count": 12
+      "count": 13
     },
     "discord_url": {
       "name": "discord_url",
@@ -705,17 +704,16 @@
         ".github/agents/generate-theme.agent.md",
         ".github/custom-instructions.md"
       ],
-      "count": 2
+      "count": 3
     },
     "footer_text": {
       "name": "footer_text",
       "category": "content_strings",
       "files": [
-        ".github/agents/generate-theme.agent.md",
         ".github/custom-instructions.md",
         ".github/prompts/generate-theme.prompt.md"
       ],
-      "count": 3
+      "count": 2
     },
     "gallery_image_height": {
       "name": "gallery_image_height",
@@ -751,7 +749,7 @@
         ".github/agents/generate-theme.agent.md",
         ".github/custom-instructions.md"
       ],
-      "count": 2
+      "count": 3
     },
     "heading_font_family": {
       "name": "heading_font_family",
@@ -836,7 +834,7 @@
         ".github/prompts/generate-theme.prompt.md",
         "inc/block-patterns.php"
       ],
-      "count": 4
+      "count": 5
     },
     "last_updated": {
       "name": "last_updated",
@@ -873,7 +871,7 @@
         "README.txt",
         "docs/GENERATE_THEME.md"
       ],
-      "count": 6
+      "count": 7
     },
     "limitations": {
       "name": "limitations",
@@ -908,7 +906,7 @@
         "README.md",
         "docs/GENERATE_THEME.md"
       ],
-      "count": 7
+      "count": 8
     },
     "min_wp_version": {
       "name": "min_wp_version",
@@ -919,7 +917,7 @@
         "README.md",
         "docs/GENERATE_THEME.md"
       ],
-      "count": 7
+      "count": 8
     },
     "mono_font_family": {
       "name": "mono_font_family",
@@ -954,9 +952,11 @@
         "docs/GENERATE_THEME.md",
         "docs/RELEASE_PROCESS.md",
         "docs/RELEASE_PROCESS_SCAFFOLD.md",
+        "scripts/agents/release-scaffold.questions.js",
+        "scripts/agents/release.questions.js",
         "scripts/dry-run/README.md"
       ],
-      "count": 25
+      "count": 26
     },
     "name": {
       "name": "name",
@@ -968,7 +968,7 @@
         "styles/presets/dark.json",
         "styles/typography/serif-titles.json"
       ],
-      "count": 7
+      "count": 8
     },
     "namespace": {
       "name": "namespace",
@@ -984,7 +984,7 @@
         "styles/presets/dark.json",
         "styles/typography/serif-titles.json"
       ],
-      "count": 10
+      "count": 11
     },
     "neutral_color": {
       "name": "neutral_color",
@@ -1051,7 +1051,7 @@
         "inc/template-functions.php",
         "theme.json"
       ],
-      "count": 12
+      "count": 13
     },
     "repo_url": {
       "name": "repo_url",
@@ -1098,7 +1098,7 @@
         "inc/template-functions.php",
         "theme.json"
       ],
-      "count": 9
+      "count": 10
     },
     "security_email": {
       "name": "security_email",
@@ -1149,7 +1149,7 @@
         ".github/projects/plans/2025-12-15-implementation-plan.md",
         ".github/projects/plans/2025-12-17-docker-implementation-plan.md"
       ],
-      "count": 23
+      "count": 24
     },
     "status": {
       "name": "status",
@@ -1286,7 +1286,7 @@
         ".github/instructions/generate-theme.instructions.md",
         "docs/GENERATE_THEME.md"
       ],
-      "count": 6
+      "count": 7
     },
     "text_color": {
       "name": "text_color",
@@ -1300,7 +1300,7 @@
         "inc/template-functions.php",
         "theme.json"
       ],
-      "count": 7
+      "count": 8
     },
     "textdomain": {
       "name": "textdomain",
@@ -1310,7 +1310,7 @@
         "README.txt",
         "docs/GENERATE_THEME.md"
       ],
-      "count": 4
+      "count": 5
     },
     "theme_name": {
       "name": "theme_name",
@@ -1373,7 +1373,7 @@
         "tests/php/test-theme-setup.php",
         "webpack.config.js"
       ],
-      "count": 126
+      "count": 125
     },
     "theme_prefix": {
       "name": "theme_prefix",
@@ -1604,7 +1604,7 @@
         "patterns/testimonials.php",
         "webpack.config.js"
       ],
-      "count": 86
+      "count": 85
     },
     "wide_width": {
       "name": "wide_width",

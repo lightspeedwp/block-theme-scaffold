@@ -6,22 +6,55 @@ description: Scaffold-only release prompt that preserves {{mustache}} placeholde
 
 Use this prompt to prepare the **block theme scaffold** for release. Do **not** use it for generated themes; those should use `release.prompt.md` after placeholders are rewritten.
 
+## 🚀 Release Scaffold Wizard
+
+Follow this step-by-step wizard to prepare the scaffold for release. This wizard is referenced by all `release-scaffold.*` files and should be used for every scaffold release.
+
+**Step 1: Confirm Version & Placeholder Safety**
+
+**Step 2: Placeholder Integrity Scan**
+
+- `style.css`, `functions.php`, `theme.json`, `inc/`, `patterns/`, `templates/`, `parts/`
+
+**Step 3: Meta Version Alignment**
+
+**Step 4: Templated Release File Check**
+
+**Step 5: Dry-Run Quality Gates**
+
+- `npm run lint:dry-run`
+- `npm run format -- --check`
+- `npm run test:dry-run:all`
+- `npm audit --audit-level=high`
+
+**Step 6 (Optional): Generation Smoke Test**
+
+**Step 7: Release Readiness Report**
+
+- Placeholder integrity status
+- Meta version alignment
+- Lint/format/test/security results
+- Generation smoke test outcome
+- Next steps (see `docs/RELEASE_PROCESS_SCAFFOLD.md`)
+
 ## Quick Start Prompts
 
-- "Prepare scaffold release vX.Y.Z (protect placeholders)"
-- "Run scaffold release validation without changing WordPress files"
-- "Check placeholder integrity before scaffold release"
-- "Generate scaffold release readiness report for vX.Y.Z"
+> **Wizard Reference:** All `release-scaffold.*` files should reference the above Release Scaffold Wizard for step-by-step guidance.
 
-## Conversation Flow
+## Wizard Integration
 
-1. Confirm the target version from `VERSION` and restate the placeholder safety rules.
-2. Run a placeholder integrity scan across `style.css`, `functions.php`, `theme.json`, `inc/`, `patterns/`, `templates/`, and `parts/`.
-3. Verify meta versions align (`VERSION`, `package.json`, `composer.json`) and follow SemVer.
-4. Confirm release templates remain templated with `{{mustache}}` (`.github/agents/release.agent.md`, `.github/prompts/release.prompt.md`, `.github/instructions/release.instructions.md`, `docs/GENERATE_THEME.md`).
-5. Run dry-run quality gates: `npm run lint:dry-run`, `npm run format -- --check`, `npm run test:dry-run:all`, `npm audit --audit-level=high`.
-6. Optional: run a generation smoke test with sample values to ensure placeholders replace correctly and the output theme builds.
-7. Deliver a release readiness report with blockers, warnings, and next steps limited to meta file updates and documented processes.
+This prompt invokes the release-scaffold agent, which uses the pluggable wizard.js system for configuration. You can run the wizard in interactive (cli) mode or dry-run (mock) mode:
+
+- **Interactive:**
+  ```sh
+  node scripts/agents/release-scaffold.agent.js
+  ```
+- **Dry-run:**
+  ```sh
+  WIZARD_MODE=mock node scripts/agents/release-scaffold.agent.js
+  ```
+
+The agent's questions array is passed to runWizard(), and the mode can be set via the WIZARD_MODE environment variable.
 
 ## Mustache Safety Guard
 

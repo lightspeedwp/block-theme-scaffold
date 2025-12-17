@@ -1,21 +1,21 @@
-// scripts/agents/template.agent.js
+// scripts/agents/code-quality.agent.js
 /**
- * Template Agent (stub)
+ * Code Quality Agent
  * Uses wizard.js for interactive configuration.
  * Supports: cli, mock
  */
 const { runWizard } = require('../lib/wizard');
 
 const questions = [
-  { name: 'templateType', type: 'list', choices: ['page', 'post', 'custom'], default: 'page', message: 'Template type:' },
-  { name: 'outputPath', type: 'input', message: 'Output path:' },
+  { name: 'checkType', type: 'list', choices: ['lint', 'test', 'coverage'], default: 'lint', message: 'Check type:' },
+  { name: 'target', type: 'input', message: 'Target file or folder:' },
 ];
 
 async function main() {
   const mode = process.env.WIZARD_MODE || 'cli';
   const config = await runWizard({ mode, questions });
-  // TODO: Implement template generation logic using config
-  console.log('Template Agent config:', config);
+  // TODO: Implement code quality logic using config
+  console.log('Code Quality Agent config:', config);
 }
 
 if (require.main === module) main();

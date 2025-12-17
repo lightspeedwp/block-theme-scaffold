@@ -22,32 +22,58 @@ metadata:
 
 # Block Theme Scaffold Release Agent
 
-## Agent Script
+## Wizard Integration & Advanced Features
 
-This agent has an accompanying JavaScript implementation:
-- **Script**: `scripts/agents/release-scaffold.agent.js`
-- **NPM Commands**:
-  - `npm run release:scaffold:validate` - Run full validation suite
-  - `npm run release:scaffold:report` - Generate readiness report
-  - `npm run release:scaffold:placeholders` - Check placeholder integrity
-  - `npm run release:scaffold:schema` - Validate mustache variable schema
+This agent supports an interactive and automated wizard for release preparation:
 
-To use this agent, invoke the script via npm commands or directly:
-```bash
-node scripts/agents/release-scaffold.agent.js validate
+- **Conditional Logic:**
+  - Only prompts for advanced checks (e.g., smoke test, schema validation) if user opts in or config enables them.
+- **Config File Automation:**
+  - Accepts a config file to automate release checks and reporting:
+    - `node scripts/agents/release-scaffold.agent.js --config path/to/release-config.json`
+  - Config can specify which checks to run, custom version, or skip optional steps.
+- **Dry-Run/Mock Mode:**
+  - Use `WIZARD_MODE=mock` or `--dry-run` to simulate all checks and reporting without modifying files.
+  - Useful for CI, validation, and pre-release rehearsal.
+- **Validation & Error Recovery:**
+  - Each step validates its outcome (e.g., placeholder integrity, version alignment).
+  - If a check fails, the wizard reports the error, suggests fixes, and can re-run after correction.
+- **Explicit Mapping:**
+  - Each wizard step maps to a config schema field and release check (see below).
+
+### Example: Using a Config File
+
+```json
+{
+  "target_version": "1.2.3",
+  "run_smoke_test": true,
+  "skip_schema_validation": false
+}
 ```
+
+Run:
+
+```
+node scripts/agents/release-scaffold.agent.js --config ./release-config.json
+```
+
+### Example: Dry-Run/Mock Mode
+
+```
+WIZARD_MODE=mock node scripts/agents/release-scaffold.agent.js --config ./release-config.json
+# or
+node scripts/agents/release-scaffold.agent.js --dry-run
+```
+
+This will run all validation and show the steps, but will not write or modify any files.
+
+---
 
 ## Role
 
 You are the **Scaffold Release Preparation Agent**. You prepare the **block theme scaffold repository** for release while safeguarding all `{{mustache}}` placeholders and ensuring the release templates remain ready for generated themes.
 
 ## Critical Rules
-
-- **Never replace or remove `{{...}}` placeholders** in WordPress source files (`style.css`, `functions.php`, `theme.json`, `inc/`, `patterns/`, `templates/`, `parts/`).
-- Keep these templated files intact for generated themes: `.github/agents/release.agent.md`, `.github/prompts/release.prompt.md`, `.github/instructions/release.instructions.md`, `docs/GENERATE_THEME.md`.
-- Scaffold-only files (`release-scaffold.agent.md`, `release-scaffold.prompt.md`, `release-scaffold.instructions.md`, `docs/RELEASE_PROCESS_SCAFFOLD.md`) stay in this repository but **must be deleted by the generator** in new theme repositories.
-- Prefer **dry-run** commands and validation scripts that do not write to template files.
-- If placeholder integrity is broken, **stop and restore** before proceeding.
 
 ## Scope
 
@@ -109,6 +135,7 @@ This agent covers scaffold **pre-release preparation**:
 - **Quality gates:** `npm run lint:dry-run`, `npm run format -- --check`, `npm run test:dry-run:all`
 - **Security:** `npm audit --audit-level=high`
 - **Generation test (sample):**
+
   ```bash
   node scripts/generate-theme.js \
     --slug "scaffold-release-check" \

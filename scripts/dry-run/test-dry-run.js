@@ -78,7 +78,7 @@ const logger = {
 	},
 };
 
-const scaffoldDir = path.resolve( __dirname, '..' );
+const scaffoldDir = path.resolve( __dirname, '../..' );
 const tempDir = path.join( scaffoldDir, '.test-temp' );
 
 /**
@@ -181,6 +181,7 @@ function main() {
 		// Copy essential files for testing
 		const filesToCopy = [
 			'package.json',
+			'jest.config.js',
 			'style.css',
 			'theme.json',
 			'src',
@@ -191,6 +192,9 @@ function main() {
 			'styles',
 			'tests',
 			'scripts',
+			'.github/tests',
+			'.github/prompts',
+			'.github/agents',
 			'.eslintrc.js',
 			'.stylelintrc.js',
 			'phpcs.xml',
@@ -213,8 +217,10 @@ function main() {
 
 		if ( testType === 'jest' || testType === 'all' ) {
 			logger.info( 'JavaScript tests started (Jest)' );
+			const jestCommand =
+				'npx jest scripts/dry-run/__tests__ --config jest.config.js --testPathIgnorePatterns="^$"';
 			try {
-				execSync( 'npm run test:scripts', {
+				execSync( jestCommand, {
 					cwd: tempDir,
 					stdio: 'inherit',
 				} );
@@ -223,6 +229,39 @@ function main() {
 				logger.error( 'JavaScript tests: ✗ failed' );
 				success = false;
 			}
+
+			const filesToCheck = [
+				'.github/prompts/create-release-scaffold.prompt.md',
+				'.github/prompts/create-release.prompt.md',
+				'.github/agents/release.agent.md',
+				'.github/agents/release-scaffold.agent.md',
+				'.github/agents/generate-theme.agent.md',
+				'scripts/agents/generate-theme.questions.js',
+				'scripts/agents/generate-theme.agent.js',
+				'scripts/agents/release-scaffold.questions.js',
+				'scripts/agents/release-scaffold.agent.js',
+				'scripts/agents/release.questions.js',
+				'scripts/agents/release.agent.js',
+			];
+
+			filesToCheck.forEach( ( relPath ) => {
+				const absPath = path.join( tempDir, relPath );
+				if ( fs.existsSync( absPath ) ) {
+					logger.info( `File exists: ${ relPath }` );
+					if ( relPath.endsWith( '.js' ) ) {
+						try {
+							require( absPath );
+							logger.info( `JS file loads: ${ relPath }` );
+						} catch ( e ) {
+							logger.error( `JS file failed to load: ${ relPath } - ${ e.message }` );
+							success = false;
+						}
+					}
+				} else {
+					logger.error( `File missing: ${ relPath }` );
+					success = false;
+				}
+			} );
 		}
 
 		if ( testType === 'phpunit' || testType === 'all' ) {
@@ -239,7 +278,6 @@ function main() {
 			}
 		}
 
-		logger.info( 'Test dry-run complete' );
 		process.exit( success ? 0 : 1 );
 	} catch ( error ) {
 		logger.error( `Error during test dry-run: ${ error.message }` );

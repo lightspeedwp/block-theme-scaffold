@@ -14,15 +14,100 @@ I'm your interactive block theme generator. I'll guide you through a series of q
 
 ---
 
-**Wizard Integration:**
-This agent uses an interactive wizard (see scripts/lib/wizard.js) for advanced flows. The wizard now supports loading a plugin-config JSON file as an alternative to manual entry. Pass a config file path to pre-fill or skip questions.
+## Mustache Variables Reference
 
-**How to use the config file option:**
+The following mustache variables are available for use in the theme scaffold. These are populated by the wizard, config file, or automation:
 
-- Run the agent with a config file: `node generate-theme.agent.js --config path/to/plugin-config.json`
-- The wizard will load values from the file and use them as defaults or skip manual entry if all required fields are present.
+| Variable                | Description                               | Example Value                               |
+| ----------------------- | ----------------------------------------- | ------------------------------------------- |
+| `{{name}}`              | Theme display name                        | "Tour Operator"                             |
+| `{{slug}}`              | Theme slug (URL-safe, lowercase, hyphens) | "tour-operator"                             |
+| `{{author}}`            | Author name                               | "LightSpeed"                                |
+| `{{author_uri}}`        | Author website URL                        | "https://lightspeedwp.agency/"              |
+| `{{description}}`       | Theme description                         | "A modern block theme for travel sites"     |
+| `{{namespace}}`         | PHP namespace (auto from slug)            | "tour_operator"                             |
+| `{{textdomain}}`        | Text domain (auto from slug)              | "tour-operator"                             |
+| `{{license}}`           | License short name                        | "GPL-3.0-or-later"                          |
+| `{{license_uri}}`       | License URL                               | "https://www.gnu.org/licenses/gpl-3.0.html" |
+| `{{version}}`           | Initial version (semver)                  | "1.0.0"                                     |
+| `{{min_wp_version}}`    | Minimum WordPress version                 | "6.5"                                       |
+| `{{tested_wp_version}}` | Tested up to WordPress version            | "6.7"                                       |
+| `{{min_php_version}}`   | Minimum PHP version                       | "8.0"                                       |
+| `{{primary_color}}`     | Primary brand color (hex)                 | "#0073aa"                                   |
+| `{{secondary_color}}`   | Secondary color (hex)                     | "#005177"                                   |
+| `{{background_color}}`  | Background color (hex)                    | "#ffffff"                                   |
+| `{{text_color}}`        | Text color (hex)                          | "#1a1a1a"                                   |
+| `{{font_family}}`       | Body font family (CSS)                    | "system-ui"                                 |
+| `{{heading_font}}`      | Heading font family (CSS)                 | "inherit"                                   |
+| `{{hero_title}}`        | Homepage hero title                       | "Welcome"                                   |
 
-If the config file is missing or invalid, the wizard will fall back to manual prompts.
+---
+
+---
+
+## Wizard Integration & Advanced Features
+
+This agent uses an interactive, multi-stage wizard (see `scripts/lib/wizard.js`) with the following advanced features:
+
+- **Conditional Logic:**
+  - Optional questions (e.g., design tokens, initial content) are only asked if the user opts in.
+  - The wizard adapts based on previous answers (e.g., skips font/color questions if user says "skip").
+- **Config File Automation:**
+  - You can provide a config file to pre-fill or fully automate the wizard:
+    - `node generate-theme.agent.js --config path/to/theme-config.json`
+  - The wizard will use values from the config file as defaults, skipping prompts for fields that are present and valid.
+  - If required fields are missing or invalid, the wizard will prompt only for those.
+- **Dry-Run/Mock Mode:**
+  - Run with `WIZARD_MODE=mock` or `--dry-run` to simulate the wizard and generation process without writing files.
+  - Useful for CI, validation, and testing automation.
+- **Validation & Error Recovery:**
+  - Each answer is validated (see Validation Rules below).
+  - If a value is invalid, the wizard will explain the error and prompt for correction or suggest a fix.
+  - For config files, invalid or missing fields are reported with actionable errors.
+- **Explicit Mapping:**
+  - Every wizard step maps directly to a mustache variable and config schema field (see tables below).
+  - The config file can include any/all variables; missing optional fields use defaults.
+
+### Example: Using a Config File
+
+```json
+{
+  "name": "Safari Lodge Theme",
+  "slug": "safari-lodge",
+  "author": "LightSpeed",
+  "author_uri": "https://lightspeedwp.agency/",
+  "description": "A luxurious WordPress theme for safari lodges and eco-tourism",
+  "version": "1.0.0",
+  "min_wp_version": "6.5",
+  "tested_wp_version": "6.7",
+  "min_php_version": "8.0",
+  "primary_color": "#0073aa",
+  "secondary_color": "#005177",
+  "background_color": "#ffffff",
+  "text_color": "#1a1a1a",
+  "font_family": "system-ui",
+  "heading_font": "inherit",
+  "hero_title": "Welcome"
+}
+```
+
+Run:
+
+```
+node generate-theme.agent.js --config ./theme-config.json
+```
+
+### Example: Dry-Run/Mock Mode
+
+```
+WIZARD_MODE=mock node generate-theme.agent.js --config ./theme-config.json
+# or
+node generate-theme.agent.js --dry-run
+```
+
+This will run all validation and show the steps, but will not write or modify any files.
+
+---
 
 ## How I Work
 
@@ -43,19 +128,17 @@ To start generating a new theme, simply say:
 
 ---
 
-## Question Stages
+## Question Stages & Variable Mapping
 
 ### Stage 1: Core Identity (Required)
 
-| Question            | Variable          | Example               | Validation             |
-| ------------------- | ----------------- | --------------------- | ---------------------- |
-| Plugin display name | `{{name}}`        | "Tour Operator"       | Min 2 chars            |
-| Plugin slug         | `{{slug}}`        | "tour-operator"       | Lowercase, hyphens     |
-| Description         | `{{description}}` | "Tour booking plugin" | Any text               |
-| Author name         | `{{author}}`      | "LightSpeed"          | Min 2 chars            |
-| Author website      | `{{author_uri}}`  | "https://example.com" | Valid URL              |
-| Initial version     | `{{version}}`     | `1.0.0`               | SemVer (e.g., `x.y.z`) |
-| License             | `{{license}}`     | `GPL-3.0-or-later`    | SPDX identifier        |
+| Question           | Variable          | Example                        | Validation         |
+| ------------------ | ----------------- | ------------------------------ | ------------------ |
+| Theme display name | `{{name}}`        | "Tour Operator"                | Min 2 chars        |
+| Theme slug         | `{{slug}}`        | "tour-operator"                | Lowercase, hyphens |
+| Author name        | `{{author}}`      | "LightSpeed"                   | Min 2 chars        |
+| Author URI         | `{{author_uri}}`  | "https://lightspeedwp.agency/" | Valid URL          |
+| Description        | `{{description}}` | "A modern block theme"         | Min 5 chars        |
 
 **Auto-generated values:**
 
@@ -65,7 +148,7 @@ To start generating a new theme, simply say:
 | `{{textdomain}}`  | `{{slug}}`    | `tour-operator`                             |
 | `{{license_uri}}` | `{{license}}` | `https://www.gnu.org/licenses/gpl-3.0.html` |
 
-### Stage 2: Versioning (Has Defaults)
+### Stage 2: Versioning (Defaults Provided)
 
 | Question          | Variable                | Default | Notes                     |
 | ----------------- | ----------------------- | ------- | ------------------------- |
@@ -87,11 +170,11 @@ To start generating a new theme, simply say:
 
 ### Stage 4: Initial Content (Optional)
 
-| Question            | Variable          | Default         |
-| ------------------- | ----------------- | --------------- |
-| Homepage hero title | `{{hero_title}}`  | "Welcome"       |
-| Call-to-action text | `{{cta_text}}`    | "Get Started"   |
-| Footer copyright    | `{{footer_text}}` | "© {{author}}" |
+| Question            | Variable         | Example   |
+| ------------------- | ---------------- | --------- |
+| Homepage hero title | `{{hero_title}}` | "Welcome" |
+
+---
 
 ---
 
@@ -246,6 +329,18 @@ Would you like me to help you with any of these steps?"
 
 - Must be valid hex colour (#RGB or #RRGGBB)
 - Examples: #fff, #ffffff, #0073aa
+
+### Mustache Variable Mapping
+
+All variables above are available for use in:
+
+- `style.css` (theme header)
+- `functions.php` (theme setup)
+- `theme.json` (theme config)
+- `inc/*.php` (utility and setup)
+- Documentation and config files
+
+---
 
 ---
 

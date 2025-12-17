@@ -7,7 +7,7 @@ audience: AI Assistants, Developers
 date: 2025-12-01
 ---
 
-> **Status**: ✅ All audit remediation tasks completed (21/21)
+> **Status**: ⚠️ Base audit checklist complete (21/21) but wizard/agent automation work remains
 
 ## 1. Missing Files
 
@@ -234,6 +234,22 @@ date: 2025-12-01
 
 ---
 
+## 8. Wizard & Agent Automation Enhancements
+
+**Status**: ⚪️ Proposed
+
+- [ ] Expand `scripts/lib/wizard.js` so the shared `runWizard()` supports multi-stage, conditional question flows, optional sections, JSON/YAML config pre-fill, validation helpers (slug, version, color suggestions), summary/confirmation prompts, dry-run/mock responses, and clearer error handling/reporting for invalid answers.
+- [ ] Wire `generate-theme` agent assets (`scripts/agents/generate-theme.agent.js`, `scripts/agents/generate-theme.questions.js`, `scripts/lib/define-config-schema.js`, and `.github/agents/generate-theme.agent.md`) into the new wizard capabilities: staged identity/version/design/content sections, `--config`/`WIZARD_MODE=mock` support, validation+correction suggestions, a final summary confirmation, and dry-run/mock reporting before any generation steps.
+- [ ] Revamp the release-scaffold agent (`scripts/agents/release-scaffold.agent.js`, `scripts/agents/release-scaffold.questions.js`, `.github/agents/release-scaffold.agent.md`) so the wizard runs a checklist (placeholder audits, version alignment, schema validation, dry-run quality gates, generation smoke tests), can execute shell commands as steps, outputs a markdown pass/fail report with blockers and next steps, and honours mock/dry-run modes for CI.
+- [ ] Enhance the release-agent wizard (`scripts/agents/release.agent.js`, `scripts/agents/release.questions.js`, `.github/agents/release.agent.md`) to cover release readiness (version prompts, placeholder scans, meta alignment, lint/build/test runs, security audits), allow config-driven runs, summarize status before proceeding, and support dry-run/mock validation.
+- [ ] Update the associated prompt files (`.github/prompts/generate-theme.prompt.md`, `.github/prompts/release-scaffold.prompt.md`, `.github/prompts/release.prompt.md`) to document both interactive and dry-run usage, highlight the new staged wizard flows, mention config file support (`--config path`), and include dry-run/mock command examples.
+- [ ] Refresh specs/tests so every agent imports `runWizard()` with the staged question arrays, passes `mode: 'mock'` during test runs, and asserts the validation/summary flow; extend `scripts/lib/tests/wizard.test.js` or agent-specific tests to cover config, summary, and error scenarios.
+- [ ] Document the implementation plan: confirm each agent script now imports `runWizard()` from `wizard.js`, feeds it the orchestrated stage questions, allows config file and mock mode overrides, and surfaces the summary/confirmation output before running real work.
+
+**Impact**: ⚠️ Adds a validated, config-aware wizard foundation for the generate-theme, release-scaffold, and release agents while enabling interactive and CI-friendly dry-run flows.
+
+---
+
 ## Summary
 
 | Category | Status | Impact |
@@ -245,10 +261,11 @@ date: 2025-12-01
 | Accessibility | ✅ Completed | High |
 | Build Scripts | ✅ Completed | High |
 | Performance Monitoring | ✅ Completed | Medium |
+| Wizard & Agent Automation | ⚪️ Proposed | High |
 
-**Overall Status**: ✅ **21/21 tasks completed**
+**Overall Status**: ⚠️ Wizard and agent automation work pending (21/21 audit tasks + new enhancements)
 
-All critical and high-priority issues have been resolved. The theme scaffold is now production-ready with comprehensive security, testing, and performance monitoring.
+All critical and high-priority issues have been resolved. The base scaffold is production-ready with comprehensive security, testing, and performance monitoring, and the wizard/agent automation enhancements are outlined above for next steps.
 
 ---
 

@@ -31,10 +31,12 @@ This file is **templated** inside the scaffold. When you generate **{{theme_name
 This agent is for **generated themes** created from the scaffold.
 
 **If you are releasing the scaffold repository**, use:
+
 - `.github/agents/release-scaffold.agent.md`
 - `.github/workflows/release-scaffold.yml`
 
 The release workflows (`.github/workflows/release.yml` and `agent-release.yml`) include verification steps that will fail if:
+
 1. Scaffold-specific files are detected (`release-scaffold.agent.md`, `scripts/generate-theme.js`, etc.)
 2. The workflow still contains unreplaced `{{theme_name}}` placeholders
 
@@ -63,19 +65,52 @@ Ensure every release is:
 5. **Security:** `npm audit --audit-level=high` (and composer audit if applicable).
 6. **Reporting:** concise readiness report with blockers, warnings, and next steps.
 
-## Workflow
+## Wizard Integration & Advanced Features
 
-1. **Confirm target version** from `VERSION` or user input; enforce SemVer.
-2. **Placeholder check:** ensure no `{{...}}` placeholders remain in the generated theme (fail fast).
-3. **Version consistency:** compare `VERSION`, `package.json`, `composer.json`, and `style.css`.
-4. **Quality gates (generated theme):**
-   - `npm run lint`
-   - `npm run format -- --check`
-   - `npm run test` (or suite available for the theme)
-5. **Documentation review:** `CHANGELOG.md` has `[{{version}}] - YYYY-MM-DD` and links; `README.md` references `{{theme_name}}`; `docs/RELEASE_PROCESS.md` is current.
-6. **Build validation:** `npm run build` (or equivalent) succeeds; `theme.json` passes validation.
-7. **Security:** `npm audit --audit-level=high` (and `composer audit` if available).
-8. **Report:** Summarise PASS/FAIL, blockers, warnings, and recommended next actions.
+This agent supports both interactive and automated wizard-driven release validation:
+
+- **Conditional Logic:**
+  - Prompts for optional checks (e.g., security audit, documentation review) only if user opts in or config enables them.
+- **Config File Automation:**
+  - Accepts a config file to automate release validation and reporting:
+    - `node scripts/agents/release.agent.js --config path/to/release-config.json`
+  - Config can specify which checks to run, custom version, or skip optional steps.
+- **Dry-Run/Mock Mode:**
+  - Use `WIZARD_MODE=mock` or `--dry-run` to simulate all checks and reporting without modifying files.
+  - Useful for CI, validation, and pre-release rehearsal.
+- **Validation & Error Recovery:**
+  - Each step validates its outcome (e.g., placeholder-free, version alignment, build success).
+  - If a check fails, the wizard reports the error, suggests fixes, and can re-run after correction.
+- **Explicit Mapping:**
+  - Each wizard step maps to a config schema field and release check (see below).
+
+### Example: Using a Config File
+
+```json
+{
+  "target_version": "1.2.3",
+  "run_security_audit": true,
+  "skip_optional_checks": false
+}
+```
+
+Run:
+
+```
+node scripts/agents/release.agent.js --config ./release-config.json
+```
+
+### Example: Dry-Run/Mock Mode
+
+```
+WIZARD_MODE=mock node scripts/agents/release.agent.js --config ./release-config.json
+# or
+node scripts/agents/release.agent.js --dry-run
+```
+
+This will run all validation and show the steps, but will not write or modify any files.
+
+---
 
 ## Validation Criteria
 
