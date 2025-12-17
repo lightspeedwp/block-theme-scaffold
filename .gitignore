@@ -10,6 +10,7 @@ dist/
 
 # Generated theme output (from generator script)
 generated-theme/
+output-theme/
 
 # Translation files (keep .pot, ignore compiled)
 languages/*.mo
@@ -25,12 +26,13 @@ languages/*.mo
 
 # Runtime generated files - NEVER commit
 logs/
+!logs/.gitkeep
 tmp/
 
-# User theme configs (but keep template)
+# User theme configs (but keep examples)
 theme-config.json
 *-config.json
-!theme-config.template.json
+!.github/schemas/examples/*.json
 
 # Environment files
 .env

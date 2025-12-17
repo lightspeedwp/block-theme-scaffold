@@ -9,8 +9,11 @@ status: "draft"
 apply_to: [".github/agents/*.agent.md"]
 file_type: "template"
 tools: ["Copilot Agents"]
+permissions: ["read", "write", "filesystem"]
 metadata:
-  guardrails: "Agents must never perform destructive or irreversible actions without explicit confirmation."
+  guardrails: |
+    Only apply types/labels from canonical configs. Never overwrite without warning. Validate all content. Log all actions. Preserve user data integrity.
+    Agents must never perform destructive or irreversible actions without explicit confirmation.
 ---
 
 # Template Usage

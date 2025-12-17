@@ -9,7 +9,20 @@ date: 2025-12-10
 
 # Release Process Guide
 
-This guide covers the complete release process for the Block Theme Scaffold, following semantic versioning and the governance standards defined in [GOVERNANCE.md](GOVERNANCE.md).
+This guide covers the complete release process for **{{theme_name}}**, following semantic versioning and the governance standards defined in [GOVERNANCE.md](GOVERNANCE.md).
+
+> **Note:** This file contains `{{mustache}}` placeholders that are replaced when the theme is generated from the scaffold. If you see unreplaced placeholders like `{{theme_name}}`, this indicates a generation issue.
+
+## ⚠️ Important: This Is For Generated Themes Only
+
+This release process is for **generated themes** created from the scaffold.
+
+**If you are releasing the scaffold itself**, use:
+- Agent: `.github/agents/release-scaffold.agent.md`
+- Workflow: `.github/workflows/release-scaffold.yml`
+- Documentation: `docs/RELEASE_PROCESS_SCAFFOLD.md`
+
+The release workflows include safeguards that will prevent execution if scaffold-specific files are detected.
 
 ## Table of Contents
 
@@ -136,8 +149,8 @@ Update these files with the new version:
 
 ```json
 {
-  "name": "block-theme-scaffold",
-  "version": "1.0.0",
+  "name": "{{theme_slug}}",
+  "version": "{{version}}",
   ...
 }
 ```
@@ -146,8 +159,8 @@ Update these files with the new version:
 
 ```json
 {
-  "name": "lightspeedwp/block-theme-scaffold",
-  "version": "1.0.0",
+  "name": "{{author_username}}/{{theme_slug}}",
+  "version": "{{version}}",
   ...
 }
 ```
@@ -156,8 +169,8 @@ Update these files with the new version:
 
 ```css
 /*
-Theme Name: Block Theme Scaffold
-Version: 1.0.0
+Theme Name: {{theme_name}}
+Version: {{version}}
 ...
 */
 ```
@@ -173,16 +186,16 @@ Transform the `[Unreleased]` section:
 
 - Placeholder for future changes
 
-## [1.0.0] - 2025-12-10
+## [{{version}}] - YYYY-MM-DD
 
 ### Added
 
-- Initial theme scaffold
+- Initial release of {{theme_name}}
 - Full Site Editing support
 ...
 
-[Unreleased]: https://github.com/lightspeedwp/block-theme-scaffold/compare/v1.0.0...HEAD
-[1.0.0]: https://github.com/lightspeedwp/block-theme-scaffold/releases/tag/v1.0.0
+[Unreleased]: {{theme_repo_url}}/compare/v{{version}}...HEAD
+[{{version}}]: {{theme_repo_url}}/releases/tag/v{{version}}
 ```
 
 ### Step 4: Run Quality Checks
@@ -210,7 +223,7 @@ npm run test:dry-run:all        # Test scaffold generation
 
 ```bash
 git add VERSION package.json composer.json style.css CHANGELOG.md
-git commit -m "chore: prepare release v1.0.0"
+git commit -m "chore: prepare release v{{version}}"
 ```
 
 ### Step 6: Merge to Main and Develop
@@ -235,10 +248,10 @@ git push origin --delete release/1.0.0
 
 ```bash
 # Create annotated tag
-git tag -a v1.0.0 -m "Release v1.0.0"
+git tag -a v{{version}} -m "Release v{{version}}"
 
 # Push tag
-git push origin v1.0.0
+git push origin v{{version}}
 
 # Or push all tags
 git push origin --tags
@@ -249,16 +262,16 @@ git push origin --tags
 **Using GitHub CLI:**
 
 ```bash
-gh release create v1.0.0 \
-  --title "v1.0.0" \
+gh release create v{{version}} \
+  --title "v{{version}}" \
   --notes-file CHANGELOG.md
 ```
 
 **Using GitHub UI:**
 
-1. Go to <https://github.com/lightspeedwp/block-theme-scaffold/releases/new>
-2. Select tag: `v1.0.0`
-3. Title: `v1.0.0`
+1. Go to `{{theme_repo_url}}/releases/new`
+2. Select tag: `v{{version}}`
+3. Title: `v{{version}}`
 4. Description: Copy from CHANGELOG.md
 5. Attach any assets if needed
 6. Click "Publish release"
@@ -319,7 +332,7 @@ After releasing:
 
 ### 1. Verify Release
 
-- [ ] Tag visible on GitHub: `https://github.com/lightspeedwp/block-theme-scaffold/releases`
+- [ ] Tag visible on GitHub: `{{theme_repo_url}}/releases`
 - [ ] CHANGELOG links work
 - [ ] Release notes complete
 - [ ] Assets attached (if any)
@@ -351,7 +364,7 @@ grep '"version"' package.json
 grep 'Version:' style.css
 
 # Re-run release script
-npm run prepare:release -- 1.0.0
+npm run prepare:release -- {{version}}
 ```
 
 ### Failed Tests
@@ -381,10 +394,10 @@ git merge --abort
 
 # Resolve conflicts manually
 git checkout main
-git merge release/1.0.0
+git merge release/{{version}}
 # Fix conflicts
 git add .
-git commit -m "chore: merge release/1.0.0 into main"
+git commit -m "chore: merge release/{{version}} into main"
 ```
 
 ## Related Documentation

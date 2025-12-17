@@ -1,15 +1,41 @@
 #!/usr/bin/env node
-// agent-script.js
-// Minimal working agent script for demonstration and extension.
+/**
+ * Lightweight wrapper that reports argument and environment details.
+ * The tests rely on the structured output to determine the script behavior.
+ */
 
-const args = process.argv.slice(2);
-console.log('Agent Script Running');
-console.log('Arguments:', args);
-console.log('Environment:', {
-	DRY_RUN: process.env.DRY_RUN,
-	VERBOSE: process.env.VERBOSE,
-	GITHUB_TOKEN: process.env.GITHUB_TOKEN ? '***' : undefined,
-});
+const args = process.argv.slice( 2 );
+const sensitivePattern = /(token|secret|password|key)/i;
 
-// Example: exit with success
-process.exit(0);
+const maskValue = ( key, value ) =>
+	sensitivePattern.test( key ) ? '***' : value;
+
+const printArguments = () => {
+	console.log( 'Arguments:' );
+
+	if ( args.length === 0 ) {
+		console.log( '  (none)' );
+		return;
+	}
+
+	args.forEach( ( arg ) => {
+		console.log( `  ${ arg }` );
+	} );
+};
+
+const printEnvironment = () => {
+	console.log( 'Environment:' );
+
+	Object.keys( process.env )
+		.sort()
+		.forEach( ( key ) => {
+			const value = maskValue( key, process.env[ key ] );
+			console.log( `  ${ key }=${ value }` );
+		} );
+};
+
+console.log( 'Agent Script Running' );
+printArguments();
+printEnvironment();
+
+process.exit( 0 );

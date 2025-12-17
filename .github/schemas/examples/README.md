@@ -272,7 +272,7 @@ node scripts/generate-theme.js --config my-theme.json
 
 - [GENERATE_THEME.md](../../docs/GENERATE_THEME.md) - Complete theme generation guide
 - [theme-config.schema.json](../theme-config.schema.json) - JSON Schema definition
-- [theme-config.template.json](../../theme-config.template.json) - Blank template
+- [theme-config.template.json](./theme-config.template.json) - Blank template
 - [generate-theme.instructions.md](../instructions/generate-theme.instructions.md) - Detailed instructions
 
 ---

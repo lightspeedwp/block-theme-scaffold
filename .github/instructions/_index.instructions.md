@@ -18,7 +18,7 @@ Highlight the instructions you find yourself referencing the most in this reposi
 
 - `block-theme-development.instructions.md` – block-theme-first patterns, theme scaffolding, and template best practices.
 - `theme-json.instructions.md` – design tokens, global styles, and theme configuration via `theme.json`.
-- `copilot-ai-agent.instructions.md` – how agents and Copilot should behave while touching the codebase.
+- `naming-conventions.instructions.md` – how agents and Copilot should behave, plus file and code naming standards.
 - `generate-theme.instructions.md` – rules for regenerating the scaffold while preserving Mustache placeholders.
 - `wpcs-php.instructions.md`, `wpcs-css.instructions.md`, and `javascript.instructions.md` – WordPress coding standards for PHP, CSS/SCSS, and JS.
 - `a11y.instructions.md` – accessibility guardrails for block themes.

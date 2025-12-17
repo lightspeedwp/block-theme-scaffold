@@ -6,8 +6,8 @@
  * - @wordpress/a11y: For accessibility announcements
  */
 
-import { escapeHTML } from '@wordpress/escape-html';
-import { announce } from '@wordpress/a11y';
+const { escapeHTML } = require('@wordpress/escape-html');
+const { announce } = require('@wordpress/a11y');
 
 // Skip link functionality
 document.addEventListener( 'DOMContentLoaded', function () {
@@ -67,7 +67,7 @@ document.addEventListener( 'DOMContentLoaded', function () {
 } );
 
 // Theme utilities
-const {{theme_slug|camelCase}} = {
+const themeUtils = {
 	/**
 	 * Initialize theme features
 	 */
@@ -125,5 +125,5 @@ const {{theme_slug|camelCase}} = {
 
 // Initialize theme
 document.addEventListener( 'DOMContentLoaded', () => {
-	{{theme_slug|camelCase}}.init();
+	themeUtils.init();
 } );

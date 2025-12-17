@@ -17,4 +17,4 @@ jobs:
                   node-version: '20'
                   cache: npm
             - run: npm ci
-            - run: node scripts/reporting.agent.js --workflow "${{ github.event.workflow_run.name }}"
+            - run: node scripts/agents/reporting.agent.js --workflow "${{ github.event.workflow_run.name }}"

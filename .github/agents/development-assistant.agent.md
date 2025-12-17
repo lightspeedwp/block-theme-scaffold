@@ -2,6 +2,10 @@
 name: Block Theme Development Assistant
 description: AI development assistant for WordPress block theme development
 tools: ["search", "edit", "fetch", "semantic_search", "read_file", "grep_search", "file_search", "run_in_terminal", "grep_search", "file_search", "run_in_terminal", file_search, run_in_terminal]
+permissions: ["read", "write", "execute", "filesystem", "network", "shell"]
+metadata:
+  guardrails: |
+    Only apply types/labels from canonical configs. Never overwrite without warning. Validate all content. Log all actions. Preserve user data integrity.
 ---
 
 # Block Theme Development Assistant

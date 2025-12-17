@@ -1,0 +1,41 @@
+{
+	"$schema": "http://json-schema.org/draft-07/schema#",
+	"$id": "https://schemas.wp.org/trunk/theme.json",
+	"title": "WordPress Block Theme JSON Schema",
+	"description": "Schema for WordPress block theme global settings and styles (theme.json)",
+	"type": "object",
+	"properties": {
+		"version": {
+			"type": "integer",
+			"description": "Schema version. Use 2 for WP 6.1–6.5, 3 for WP 6.6+.",
+			"enum": [ 2, 3 ]
+		},
+		"$schema": {
+			"type": "string",
+			"description": "URL to the JSON schema. Should point to the canonical schema."
+		},
+		"title": {
+			"type": "string"
+		},
+		"description": {
+			"type": "string"
+		},
+		"settings": {
+			"type": "object"
+		},
+		"styles": {
+			"type": "object"
+		},
+		"customTemplates": {
+			"type": "array"
+		},
+		"templateParts": {
+			"type": "array"
+		},
+		"patterns": {
+			"type": "array"
+		}
+	},
+	"required": [ "version" ],
+	"additionalProperties": true
+}

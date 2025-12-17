@@ -13,8 +13,10 @@ file_type: "agent"
 category: "research"
 visibility: "public"
 tools: ["vscode/getProjectSetupInfo", "vscode/installExtension", "vscode/newWorkspace", "vscode/runCommand", "vscode/vscodeAPI", "vscode/extensions", "execute/getTerminalOutput", "execute/runInTerminal", "read/problems", "read/readFile", "read/terminalSelection", "read/terminalLastCommand", "edit/editFiles", "search", "web/fetch"]
+permissions: ["read", "write", "execute", "filesystem", "network", "shell"]
 metadata:
   guardrails: |
+    Only apply types/labels from canonical configs. Never overwrite without warning. Validate all content. Log all actions. Preserve user data integrity.
     - Never invent information; base all findings on repository files, official WordPress/Gutenberg documentation, or other cited sources.
     - Halt and mark research incomplete when evidence is missing, contradictory, or unverifiable.
     - Keep actions read-only except for writing research files and logs; never modify theme code, configuration, or content.

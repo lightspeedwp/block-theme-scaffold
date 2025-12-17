@@ -23,6 +23,7 @@ Use this instruction file when drafting or reviewing any `.agent.md` in `.github
 - Treat tools as permissions: if a tool is not listed, the agent must ignore it.
 - Use mustache placeholders (`{{agent_slug}}`, `{{agent_version}}`, etc.) in templates and prompts.
 - Align with block theme conventions: prefer `theme.json`, block components, patterns, and template parts over bespoke PHP.
+- Ensure each spec's `metadata.guardrails` begins with the canonical reminder: "Only apply types/labels from canonical configs. Never overwrite without warning. Validate all content. Log all actions. Preserve user data integrity." Extend the guardrails with any role-specific constraints afterward.
 
 ## Structure & Frontmatter
 
@@ -57,6 +58,8 @@ Use this instruction file when drafting or reviewing any `.agent.md` in `.github
 - Enumerate every allowed tool or integration (GitHub scopes, CLI commands, internal scripts).
 - List required environment variable names; never include values.
 - If a tool is missing from the list, the agent must assume it is unavailable.
+- Declare the optional `permissions` array (when applicable) and align its values with the approved vocabulary in `docs/FRONTMATTER_SCHEMA.md` and `.github/schemas/frontmatter.schema.json` so validation tooling can enforce the scopes.
+- Approved permission scopes: `read`, `write`, `execute`, `filesystem`, `network`, `shell`, `github:repo`, `github:issues`, `github:pulls`, `github:workflows`, `github:checks`, and `github:actions`. Update this instructions file, the schema, `docs/FRONTMATTER_SCHEMA.md`, and `scripts/validation/validate-agent-frontmatter.js` before introducing any new scope so tooling, docs, and automation stay aligned.
 
 ## Observability & Logging
 
@@ -89,4 +92,6 @@ Use this instruction file when drafting or reviewing any `.agent.md` in `.github
 - [ ] Failure/rollback behaviour is documented.
 - [ ] Three validation tasks cover typical, edge, and failure cases.
 - [ ] Observability requirements (logs/reports) are included.
+- [ ] Optional `permissions` array declared with values from `docs/FRONTMATTER_SCHEMA.md` (when needed).
+- [ ] Guardrails begin with canonical config reminder and document any additional role-specific constraints.
 - [ ] Changelog updated and references (prompt/script/tests/workflow) are accurate.

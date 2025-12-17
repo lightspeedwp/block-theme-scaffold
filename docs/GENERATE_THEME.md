@@ -525,7 +525,7 @@ For complex themes with many customizations, use the template config file:
 **1. Copy the template:**
 
 ```bash
-cp theme-config.template.json my-theme-config.json
+cp .github/schemas/examples/theme-config.template.json my-theme-config.json
 ```
 
 **2. Edit with your values:**
@@ -560,7 +560,7 @@ node scripts/generate-theme.js --config my-theme-config.json
 
 **Configuration File Format:**
 
-See [theme-config.template.json](../theme-config.template.json) for full schema and [.github/schemas/theme-config.schema.json](.github/schemas/theme-config.schema.json) for JSON Schema validation details.
+See [theme-config.template.json](../.github/schemas/examples/theme-config.template.json) for full schema and [.github/schemas/theme-config.schema.json](../.github/schemas/theme-config.schema.json) for JSON Schema validation details.
 
 ## Complete Workflow Example
 

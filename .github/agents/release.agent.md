@@ -13,8 +13,11 @@ visibility: "public"
 tags: ["release", "automation", "validation", "wordpress", "block-theme", "{{theme_slug}}"]
 owners: ["{{author}}"]
 tools: ["vscode", "execute", "edit", "search", "web", "semantic_search", "read_file", "grep_search", "file_search", "run_in_terminal", "create_file", "update_file", "delete_file", "move_file", "grep_search"]
+permissions: ["read", "write", "execute", "filesystem", "network", "shell"]
 metadata:
-  guardrails: "Verify that no {{mustache}} placeholders remain in the generated theme. Never skip validation steps. Stop if any critical check fails."
+  guardrails: |
+    Only apply types/labels from canonical configs. Never overwrite without warning. Validate all content. Log all actions. Preserve user data integrity.
+    Verify that no {{mustache}} placeholders remain in the generated theme. Never skip validation steps. Stop if any critical check fails.
 ---
 
 # {{theme_name}} Release Agent
@@ -22,6 +25,20 @@ metadata:
 ## Template Note
 
 This file is **templated** inside the scaffold. When you generate **{{theme_name}}**, all `{{...}}` placeholders should be rewritten. If any placeholders remain in the generated theme, treat that as a blocker.
+
+## ⚠️ Important: For Generated Themes Only
+
+This agent is for **generated themes** created from the scaffold.
+
+**If you are releasing the scaffold repository**, use:
+- `.github/agents/release-scaffold.agent.md`
+- `.github/workflows/release-scaffold.yml`
+
+The release workflows (`.github/workflows/release.yml` and `agent-release.yml`) include verification steps that will fail if:
+1. Scaffold-specific files are detected (`release-scaffold.agent.md`, `scripts/generate-theme.js`, etc.)
+2. The workflow still contains unreplaced `{{theme_name}}` placeholders
+
+This prevents accidental use of generated theme release processes in the scaffold repository.
 
 ## Role
 

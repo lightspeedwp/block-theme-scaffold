@@ -187,6 +187,7 @@ Edit `theme.json` to customize:
 ## Testing
 
 - **JavaScript**: Jest unit tests with coverage
+- **Script helpers**: The scripts/`__tests__/` helpers are driven by `npm run test:scripts` (or `npm run test:scripts:coverage`) from the repo root, emit V8 coverage for `<rootDir>/scripts/**/*.js`, and drop every artifact (including `coverage/scripts/lcov.info`) into `coverage/scripts` so new helper modules stay part of the reports.
 - **PHP**: PHPUnit tests with WordPress testing framework
 - **End-to-End**: Playwright tests
 - **Accessibility**: Automated a11y testing with axe-core
