@@ -5,6 +5,11 @@ category: Project
 type: Reference
 audience: AI Assistants, Developers
 date: 2025-12-01
+tools: ["search", "edit", "fetch", "web"]
+permissions: ["read", "write", "network", "shell", "filesystem"]
+metadata:
+  guardrails: |
+    Only apply types/labels from canonical configs. Never overwrite without warning. Validate all content. Log all actions. Preserve user data integrity.
 ---
 
 ## Overview

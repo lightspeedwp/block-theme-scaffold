@@ -1,0 +1,77 @@
+{
+	"title": "WordPress block.json Schema",
+	"type": "object",
+	"required": [ "name" ],
+	"properties": {
+		"$schema": {
+			"type": "string"
+		},
+		"apiVersion": {
+			"type": "integer",
+			"minimum": 1
+		},
+		"name": {
+			"type": "string",
+			"pattern": "^[a-z0-9\\-]+\\/[a-z0-9\\-]+$"
+		},
+		"title": {
+			"type": "string"
+		},
+		"category": {
+			"type": "string"
+		},
+		"description": {
+			"type": "string"
+		},
+		"icon": {
+			"anyOf": [
+				{ "type": "string" },
+				{
+					"type": "object",
+					"additionalProperties": true
+				}
+			]
+		},
+		"textdomain": {
+			"type": "string"
+		},
+		"supports": {
+			"type": "object",
+			"additionalProperties": true
+		},
+		"attributes": {
+			"type": "object",
+			"additionalProperties": true
+		},
+		"editorScript": {
+			"$ref": "#/definitions/asset"
+		},
+		"editorStyle": {
+			"$ref": "#/definitions/asset"
+		},
+		"script": {
+			"$ref": "#/definitions/asset"
+		},
+		"style": {
+			"$ref": "#/definitions/asset"
+		},
+		"version": {
+			"type": "string"
+		}
+	},
+	"definitions": {
+		"asset": {
+			"anyOf": [
+				{ "type": "string" },
+				{
+					"type": "object",
+					"properties": {
+						"src": { "type": "string" }
+					},
+					"additionalProperties": true
+				}
+			]
+		}
+	},
+	"additionalProperties": true
+}

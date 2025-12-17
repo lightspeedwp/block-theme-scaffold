@@ -13,8 +13,10 @@ visibility: "public"
 tags: ["planning", "automation", "release", "tasks", "github", "block-themes", "wordpress", "theme.json"]
 owners: ["lightspeedwp/maintainers"]
 tools: ["changes", "search/codebase", "edit/editFiles", "extensions", "fetch", "git", "problems", "runCommands", "runCommands/terminalLastCommand", "runCommands/terminalSelection", "usages", "search", "search/searchResults", "vscodeAPI", "new", "wordpress_docs", "wp_cli", "php_cs", "stylelint", "eslint", "context7"]
+permissions: ["read", "write", "filesystem"]
 metadata:
   guardrails: |
+    Only apply types/labels from canonical configs. Never overwrite without warning. Validate all content. Log all actions. Preserve user data integrity.
     - Never skip research validation.
     - Never generate implementation without a plan.
     - Always provide detailed, actionable steps.

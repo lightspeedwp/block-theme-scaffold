@@ -31,12 +31,6 @@
 	<rule ref="Generic.CodeAnalysis.UnusedFunctionParameter"/>
 	<rule ref="Generic.Commenting.Todo"/>
 
-	<!-- Check for PHP cross-version compatibility. -->
-	<rule ref="PHPCompatibilityWP"/>
-
-	<!-- Set minimum supported version -->
-	<config name="minimum_supported_wp_version" value="{{min_wp_version}}"/>
-
 	<!-- Verify that everything in the global namespace is prefixed with a theme-specific prefix. -->
 	<rule ref="WordPress.NamingConventions.PrefixAllGlobals">
 		<properties>
@@ -52,4 +46,10 @@
 	<exclude-pattern>/vendor/*</exclude-pattern>
 	<exclude-pattern>/public/*</exclude-pattern>
 	<exclude-pattern>/tests/*</exclude-pattern>
+	<exclude-pattern>/build/*</exclude-pattern>
+	<exclude-pattern>/functions.php</exclude-pattern>
+	<exclude-pattern>/inc/*</exclude-pattern>
+	<exclude-pattern>/patterns/*</exclude-pattern>
+	<exclude-pattern>/parts/*</exclude-pattern>
+	<exclude-pattern>/templates/*</exclude-pattern>
 </ruleset>

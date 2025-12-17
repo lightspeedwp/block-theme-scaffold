@@ -1,6 +1,8 @@
-name: Release Management
+name: '{{theme_name}} Release Management'
 
-# Automated version bumping and changelog generation for themes
+# Automated version bumping and changelog generation for {{theme_name}}
+# This file is templated and should have all {{mustache}} placeholders replaced
+# If you see unreplaced placeholders, this indicates a generation issue
 
 on:
     workflow_dispatch:
@@ -27,9 +29,68 @@ env:
     THEME_SLUG: '{{theme_slug}}'
 
 jobs:
+    verify-generated-theme:
+        name: Verify This Is A Generated Theme
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Checkout code
+              uses: actions/checkout@v4
+
+            - name: Check for scaffold-specific files
+              run: |
+                  echo "🔍 Verifying this is a generated theme (not the scaffold)..."
+
+                  # Files that should NOT exist in generated themes
+                  SCAFFOLD_FILES=(
+                    ".github/agents/release-scaffold.agent.md"
+                    "docs/RELEASE_PROCESS_SCAFFOLD.md"
+                    "scripts/generate-theme.js"
+                  )
+
+                  FOUND_SCAFFOLD_FILES=0
+                  for file in "${SCAFFOLD_FILES[@]}"; do
+                    if [ -f "$file" ]; then
+                      echo "❌ Found scaffold-specific file: $file"
+                      FOUND_SCAFFOLD_FILES=1
+                    fi
+                  done
+
+                  if [ $FOUND_SCAFFOLD_FILES -eq 1 ]; then
+                    echo ""
+                    echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+                    echo "❌ ERROR: This workflow is for GENERATED THEMES only!"
+                    echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+                    echo ""
+                    echo "This appears to be the block-theme-scaffold repository."
+                    echo ""
+                    echo "For scaffold releases, use:"
+                    echo "  .github/workflows/release-scaffold.yml"
+                    echo ""
+                    echo "This workflow should only run AFTER:"
+                    echo "  1. Running: node scripts/generate-theme.js"
+                    echo "  2. Phase 1 cleanup deleted scaffold-specific files"
+                    echo "  3. All {{mustache}} placeholders replaced"
+                    echo ""
+                    echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+                    exit 1
+                  fi
+
+                  echo "✅ Verified: This is a generated theme"
+
+            - name: Verify no mustache placeholders in workflow name
+              run: |
+                  if grep -q "{{theme_name}}" .github/workflows/release.yml; then
+                    echo "❌ ERROR: Workflow still contains unreplaced {{theme_name}} placeholder"
+                    echo "This indicates the theme was not properly generated from the scaffold"
+                    exit 1
+                  fi
+                  echo "✅ Workflow name has been replaced"
+
     version-bump:
         name: Bump Version
         runs-on: ubuntu-latest
+        needs: verify-generated-theme
         outputs:
             new_version: ${{ steps.bump.outputs.new_version }}
             old_version: ${{ steps.bump.outputs.old_version }}
@@ -124,7 +185,7 @@ jobs:
     generate-changelog:
         name: Generate Changelog
         runs-on: ubuntu-latest
-        needs: version-bump
+        needs: [verify-generated-theme, version-bump]
         outputs:
             changelog: ${{ steps.changelog.outputs.changelog }}
 
@@ -189,7 +250,7 @@ jobs:
     create-release:
         name: Create GitHub Release
         runs-on: ubuntu-latest
-        needs: [version-bump, generate-changelog]
+        needs: [verify-generated-theme, version-bump, generate-changelog]
         if: ${{ inputs.create_release }}
 
         steps:
@@ -209,6 +270,16 @@ jobs:
 
             - name: Build theme
               run: npm run build
+
+            - name: Verify no mustache placeholders remain
+              run: |
+                  echo "🔍 Checking for unreplaced mustache placeholders..."
+                  if grep -r "{{" . --exclude-dir=node_modules --exclude-dir=.git --exclude-dir=dist --exclude="*.yml" --exclude="*.yaml"; then
+                    echo "❌ FAIL: Mustache placeholders found in theme files"
+                    echo "This indicates the theme was not properly generated from the scaffold"
+                    exit 1
+                  fi
+                  echo "✅ No mustache placeholders found"
 
             - name: Create theme ZIP
               run: |
@@ -243,7 +314,7 @@ jobs:
     update-changelog-file:
         name: Update CHANGELOG.md
         runs-on: ubuntu-latest
-        needs: [version-bump, generate-changelog]
+        needs: [verify-generated-theme, version-bump, generate-changelog]
 
         steps:
             - name: Checkout code

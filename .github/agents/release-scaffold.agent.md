@@ -13,11 +13,29 @@ visibility: "public"
 tags: ["release", "scaffold", "automation", "validation", "wordpress", "block-theme"]
 owners: ["lightspeedwp/maintainers"]
 tools: ["vscode", "execute", "edit", "search", "web", "semantic_search", "read_file", "grep_search", "file_search", "run_in_terminal", "create_file", "update_file", "delete_file", "move_file", "grep_search"]
+permissions: ["read", "write", "execute", "filesystem", "network", "shell"]
 metadata:
-  guardrails: "Never modify WordPress template files that contain mustache placeholders. Use dry-run validation first. Stop if placeholder integrity is compromised."
+  guardrails: |
+    Only apply types/labels from canonical configs. Never overwrite without warning. Validate all content. Log all actions. Preserve user data integrity.
+    Never modify WordPress template files that contain mustache placeholders. Use dry-run validation first. Stop if placeholder integrity is compromised.
 ---
 
 # Block Theme Scaffold Release Agent
+
+## Agent Script
+
+This agent has an accompanying JavaScript implementation:
+- **Script**: `scripts/agents/release-scaffold.agent.js`
+- **NPM Commands**:
+  - `npm run release:scaffold:validate` - Run full validation suite
+  - `npm run release:scaffold:report` - Generate readiness report
+  - `npm run release:scaffold:placeholders` - Check placeholder integrity
+  - `npm run release:scaffold:schema` - Validate mustache variable schema
+
+To use this agent, invoke the script via npm commands or directly:
+```bash
+node scripts/agents/release-scaffold.agent.js validate
+```
 
 ## Role
 
@@ -47,17 +65,20 @@ This agent covers scaffold **pre-release preparation**:
 1. **Confirm target version** from `VERSION`.
 2. **Placeholder sweep:** `grep -R "{{" style.css functions.php theme.json inc patterns templates parts` and flag missing matches.
 3. **Meta version check:** ensure `VERSION`, `package.json`, and `composer.json` share the same semantic version.
-4. **Release template sanity:** verify `.github/agents/release.agent.md`, `.github/prompts/release.prompt.md`, `.github/instructions/release.instructions.md`, and `docs/GENERATE_THEME.md` still contain `{{mustache}}` variables.
-5. **Quality gates (dry-run only):**
+4. **Schema validation:** Run `npm run test:schema` to ensure all mustache variables are documented and synced with codebase.
+5. **Release template sanity:** verify `.github/agents/release.agent.md`, `.github/prompts/release.prompt.md`, `.github/instructions/release.instructions.md`, and `docs/GENERATE_THEME.md` still contain `{{mustache}}` variables.
+6. **Quality gates (dry-run only):**
    - `npm run lint:dry-run`
    - `npm run format -- --check`
    - `npm run test:dry-run:all`
    - `npm audit --audit-level=high`
-6. **Generation smoke test (optional but recommended):**
+7. **Generation smoke test (required):**
    - Run `node scripts/generate-theme.js` with sample values
-   - Ensure output theme has **no** `{{...}}` placeholders
-   - Run `npm install`, `npm run lint`, `npm run build` inside the output to confirm health
-7. **Report:** Summarise PASS/FAIL, blockers, warnings, and explicit file boundaries (meta files only).
+   - Ensure output theme has **no** `{{...}}` placeholders (check with `grep -R "{{" output-theme`)
+   - Verify Phase 1 cleanup deleted scaffold-specific files
+   - Check log file created at `logs/generate-theme-{slug}.log`
+   - Run `npm install && npm run build` inside the output to confirm health
+8. **Report:** Summarise PASS/FAIL, blockers, warnings, and explicit file boundaries (meta files only).
 
 ## Validation Criteria
 
@@ -65,6 +86,9 @@ This agent covers scaffold **pre-release preparation**:
 
 - Placeholder integrity confirmed
 - `VERSION`, `package.json`, `composer.json` versions aligned (SemVer)
+- **Schema validation passes** (`npm run test:schema`)
+- **Phase 1 cleanup verified** (scaffold-specific files deleted in generated theme)
+- **Generation log created** (`logs/generate-theme-{slug}.log`)
 - Dry-run lint/format/test pass
 - CHANGELOG entry for the release
 - Generation smoke test passes (no placeholders in output)
@@ -81,6 +105,7 @@ This agent covers scaffold **pre-release preparation**:
 
 - **Placeholder integrity:** `grep -R "{{" style.css functions.php theme.json inc patterns templates parts`
 - **Meta versions:** `cat VERSION`, `jq '.version' package.json`, `jq '.version' composer.json`
+- **Schema validation:** `npm run test:schema`
 - **Quality gates:** `npm run lint:dry-run`, `npm run format -- --check`, `npm run test:dry-run:all`
 - **Security:** `npm audit --audit-level=high`
 - **Generation test (sample):**
@@ -91,6 +116,14 @@ This agent covers scaffold **pre-release preparation**:
     --author "Scaffold QA" \
     --author_uri "https://example.com" \
     --version "1.0.0"
+
+  # Verify output
+  test ! -f output-theme/.github/agents/release-scaffold.agent.md && echo "✓ Phase 1 cleanup verified"
+  test -f logs/generate-theme-scaffold-release-check.log && echo "✓ Log created"
+  ! grep -R "{{" output-theme && echo "✓ No placeholders remain"
+
+  # Test build
+  cd output-theme && npm install && npm run build
   ```
 
 ## What the Agent Does
@@ -126,10 +159,13 @@ Provide a concise markdown report:
 
 - Placeholder integrity: ✅ / ❌ (details)
 - Meta versions aligned: ✅ / ❌
+- Schema validation: ✅ / ❌
 - Lint/format/test (dry-run): ✅ / ❌
 - CHANGELOG updated: ✅ / ❌
 - Release templates templated: ✅ / ❌
 - Generation smoke test: ✅ / ❌
+- Phase 1 cleanup verified: ✅ / ❌
+- Generation log created: ✅ / ❌
 - Security audit: ✅ / ❌
 
 Blockers:

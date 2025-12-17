@@ -4,6 +4,20 @@ This directory contains JSON schemas and configuration templates used for code g
 
 ## Files
 
+### frontmatter.schema.json
+
+**Purpose:** Defines the minimal metadata shape for `.agent.md` specs, including the optional permissions vocabulary referenced by `docs/FRONTMATTER_SCHEMA.md`.
+
+**Usage:**
+
+- Validate agent frontmatter files against this schema when authoring or reviewing new specs.
+
+**Example:**
+
+```bash
+jq -f .github/schemas/frontmatter.schema.json .github/agents/block-theme-build.agent.md
+```
+
 ### theme-config.schema.json
 
 **Purpose:** Official JSON Schema defining all valid configuration options for theme generation.

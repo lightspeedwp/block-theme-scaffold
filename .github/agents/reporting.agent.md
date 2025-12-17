@@ -13,8 +13,11 @@ visibility: "public"
 tags: ["reporting", "automation", "block-theme", "ci", "lint", "coverage"]
 owners: ["lightspeedwp/maintainers"]
 tools: ["vscode", "execute", "edit", "search", "web", "semantic_search", "read_file", "grep_search", "file_search", "run_in_terminal", "create_file", "update_file", "delete_file", "move_file", "grep_search"]
+permissions: ["read", "write", "execute", "filesystem", "shell"]
 metadata:
-  guardrails: "Always write reports inside .github/reports/, include ISO date prefixes, link to logs, and clean tmp artifacts."
+  guardrails: |
+    Only apply types/labels from canonical configs. Never overwrite without warning. Validate all content. Log all actions. Preserve user data integrity.
+    Always write reports inside .github/reports/, include ISO date prefixes, link to logs, and clean tmp artifacts.
 ---
 
 # Reporting Agent Configuration

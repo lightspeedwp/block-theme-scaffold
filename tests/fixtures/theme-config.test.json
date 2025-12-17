@@ -1,0 +1,27 @@
+{
+    "slug": "theme-test",
+    "textdomain": "theme-test",
+    "namespace": "theme_test",
+    "author": "LightSpeedWP",
+    "author_uri": "https://example.com",
+    "version": "1.0.0",
+    "fields": [
+        {
+            "name": "field_one",
+            "type": "text"
+        }
+    ],
+    "taxonomies": [
+        {
+            "slug": "genre",
+            "singular": "Genre",
+            "plural": "Genres"
+        }
+    ],
+    "blocks": [
+        "core/paragraph"
+    ],
+    "templates": [
+        "default"
+    ]
+}

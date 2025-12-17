@@ -1,51 +1,53 @@
-const { test, expect } = require('@playwright/test');
+const { test, expect } = require( '@playwright/test' );
 
-test.describe('{{theme_name}} Theme E2E Tests', () => {
-	test.beforeEach(async ({ page }) => {
+test.describe( '{{theme_name}} Theme E2E Tests', () => {
+	test.beforeEach( async ( { page } ) => {
 		// Go to WordPress admin and activate theme
-		await page.goto('/wp-admin');
+		await page.goto( '/wp-admin' );
 
 		// Login if needed (assuming wp-env default credentials)
-		const loginForm = page.locator('#loginform');
-		if (await loginForm.isVisible()) {
-			await page.fill('#user_login', 'admin');
-			await page.fill('#user_pass', 'password');
-			await page.click('#wp-submit');
+		const loginForm = page.locator( '#loginform' );
+		if ( await loginForm.isVisible() ) {
+			await page.fill( '#user_login', 'admin' );
+			await page.fill( '#user_pass', 'password' );
+			await page.click( '#wp-submit' );
 		}
-	});
+	} );
 
-	test('homepage loads correctly', async ({ page }) => {
-		await page.goto('/');
+	test( 'homepage loads correctly', async ( { page } ) => {
+		await page.goto( '/' );
 
 		// Check for basic theme elements
-		await expect(page.locator('header')).toBeVisible();
-		await expect(page.locator('main, #main')).toBeVisible();
-		await expect(page.locator('footer')).toBeVisible();
+		await expect( page.locator( 'header' ) ).toBeVisible();
+		await expect( page.locator( 'main, #main' ) ).toBeVisible();
+		await expect( page.locator( 'footer' ) ).toBeVisible();
 
 		// Check for navigation
-		await expect(page.locator('.wp-block-navigation')).toBeVisible();
-	});
+		await expect( page.locator( '.wp-block-navigation' ) ).toBeVisible();
+	} );
 
-	test('site editor loads', async ({ page }) => {
-		await page.goto('/wp-admin/site-editor.php');
+	test( 'site editor loads', async ( { page } ) => {
+		await page.goto( '/wp-admin/site-editor.php' );
 
 		// Wait for editor to load
-		await page.waitForSelector('.edit-site-layout__content');
+		await page.waitForSelector( '.edit-site-layout__content' );
 
 		// Check editor is functional
-		await expect(page.locator('.edit-site-layout__content')).toBeVisible();
-	});
+		await expect(
+			page.locator( '.edit-site-layout__content' )
+		).toBeVisible();
+	} );
 
-	test('mobile navigation works', async ({ page }) => {
+	test( 'mobile navigation works', async ( { page } ) => {
 		// Set mobile viewport
-		await page.setViewportSize({ width: 375, height: 667 });
-		await page.goto('/');
+		await page.setViewportSize( { width: 375, height: 667 } );
+		await page.goto( '/' );
 
 		// Check if mobile menu toggle exists
 		const menuToggle = page.locator(
 			'.wp-block-navigation__responsive-container-open'
 		);
-		if (await menuToggle.isVisible()) {
+		if ( await menuToggle.isVisible() ) {
 			await menuToggle.click();
 
 			// Check if menu opens
@@ -55,35 +57,35 @@ test.describe('{{theme_name}} Theme E2E Tests', () => {
 				)
 			).toBeVisible();
 		}
-	});
+	} );
 
-	test('accessibility standards', async ({ page }) => {
-		await page.goto('/');
+	test( 'accessibility standards', async ( { page } ) => {
+		await page.goto( '/' );
 
 		// Check for skip link
-		const skipLink = page.locator('.skip-link');
-		await expect(skipLink).toBeHidden();
+		const skipLink = page.locator( '.skip-link' );
+		await expect( skipLink ).toBeHidden();
 
 		// Focus skip link
-		await page.keyboard.press('Tab');
-		await expect(skipLink).toBeVisible();
+		await page.keyboard.press( 'Tab' );
+		await expect( skipLink ).toBeVisible();
 
 		// Check heading hierarchy
-		const h1 = page.locator('h1');
-		await expect(h1).toHaveCount(1);
+		const h1 = page.locator( 'h1' );
+		await expect( h1 ).toHaveCount( 1 );
 
 		// Check for alt text on images
-		const images = page.locator('img');
+		const images = page.locator( 'img' );
 		const count = await images.count();
-		for (let i = 0; i < count; i++) {
-			const img = images.nth(i);
-			const alt = await img.getAttribute('alt');
-			expect(alt).toBeDefined();
+		for ( let i = 0; i < count; i++ ) {
+			const img = images.nth( i );
+			const alt = await img.getAttribute( 'alt' );
+			expect( alt ).toBeDefined();
 		}
-	});
+	} );
 
-	test('responsive design', async ({ page }) => {
-		await page.goto('/');
+	test( 'responsive design', async ( { page } ) => {
+		await page.goto( '/' );
 
 		// Test different viewport sizes
 		const viewports = [
@@ -92,30 +94,30 @@ test.describe('{{theme_name}} Theme E2E Tests', () => {
 			{ width: 1200, height: 800 }, // Desktop
 		];
 
-		for (const viewport of viewports) {
-			await page.setViewportSize(viewport);
+		for ( const viewport of viewports ) {
+			await page.setViewportSize( viewport );
 
 			// Check layout doesn't break
-			await expect(page.locator('body')).toBeVisible();
+			await expect( page.locator( 'body' ) ).toBeVisible();
 
 			// Check no horizontal scroll
 			const bodyWidth = await page.evaluate(
 				() => document.body.scrollWidth
 			);
 			const viewportWidth = viewport.width;
-			expect(bodyWidth).toBeLessThanOrEqual(viewportWidth + 20); // Allow small tolerance
+			expect( bodyWidth ).toBeLessThanOrEqual( viewportWidth + 20 ); // Allow small tolerance
 		}
-	});
+	} );
 
-	test('block patterns work', async ({ page }) => {
-		await page.goto('/wp-admin/post-new.php?post_type=page');
+	test( 'block patterns work', async ( { page } ) => {
+		await page.goto( '/wp-admin/post-new.php?post_type=page' );
 
 		// Wait for editor to load
-		await page.waitForSelector('.block-editor-writing-flow');
+		await page.waitForSelector( '.block-editor-writing-flow' );
 
 		// Open patterns panel
-		await page.click('button[aria-label="Add block"]');
-		await page.click('button[aria-label="Patterns"]');
+		await page.click( 'button[aria-label="Add block"]' );
+		await page.click( 'button[aria-label="Patterns"]' );
 
 		// Look for theme patterns
 		const themePatterns = page.locator(
@@ -123,18 +125,18 @@ test.describe('{{theme_name}} Theme E2E Tests', () => {
 		);
 		const patternCount = await themePatterns.count();
 
-		expect(patternCount).toBeGreaterThan(0);
-	});
+		expect( patternCount ).toBeGreaterThan( 0 );
+	} );
 
-	test('style variations work', async ({ page }) => {
-		await page.goto('/wp-admin/site-editor.php');
+	test( 'style variations work', async ( { page } ) => {
+		await page.goto( '/wp-admin/site-editor.php' );
 
 		// Wait for editor to load
-		await page.waitForSelector('.edit-site-layout__content');
+		await page.waitForSelector( '.edit-site-layout__content' );
 
 		// Open global styles
-		const stylesButton = page.locator('button:has-text("Styles")');
-		if (await stylesButton.isVisible()) {
+		const stylesButton = page.locator( 'button:has-text("Styles")' );
+		if ( await stylesButton.isVisible() ) {
 			await stylesButton.click();
 
 			// Check for style variations
@@ -143,7 +145,7 @@ test.describe('{{theme_name}} Theme E2E Tests', () => {
 			);
 			const variationCount = await variations.count();
 
-			expect(variationCount).toBeGreaterThan(1); // Should have at least default + variations
+			expect( variationCount ).toBeGreaterThan( 1 ); // Should have at least default + variations
 		}
-	});
-});
+	} );
+} );

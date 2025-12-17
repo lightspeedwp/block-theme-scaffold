@@ -1,0 +1,1 @@
+// LocalStorage setup for Jest. Move from .github/tests/ here.

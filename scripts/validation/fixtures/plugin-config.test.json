@@ -1,0 +1,11 @@
+{
+  "name": "Plugin Scaffold",
+  "slug": "example-plugin",
+  "author": "Example Author",
+  "version": "1.0.0",
+  "description": "Test plugin configuration",
+  "fields": [],
+  "taxonomies": [],
+  "blocks": [],
+  "templates": []
+}

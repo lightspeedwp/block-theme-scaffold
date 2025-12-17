@@ -7,6 +7,10 @@ audience: "Developers, AI Agents"
 model: "GPT-4.1"
 date: 2025-12-01
 tools: ["search", "edit", "fetch"]
+permissions: ["read", "write", "execute", "filesystem", "network", "shell"]
+metadata:
+  guardrails: |
+    Only apply types/labels from canonical configs. Never overwrite without warning. Validate all content. Log all actions. Preserve user data integrity.
 ---
 
 # Block Theme Build Agent Spec
