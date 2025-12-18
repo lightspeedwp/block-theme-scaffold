@@ -6067,6 +6067,36 @@
         }
       ]
     },
+    "tags": {
+      "name": "tags",
+      "category": "theme_metadata",
+      "type": "string",
+      "files": [
+        "style.css"
+      ],
+      "count": 1,
+      "usage": [
+        {
+          "file": "style.css",
+          "line": 15
+        }
+      ]
+    },
+    "network": {
+      "name": "network",
+      "category": "theme_metadata",
+      "type": "string",
+      "files": [
+        "style.css"
+      ],
+      "count": 1,
+      "usage": [
+        {
+          "file": "style.css",
+          "line": 16
+        }
+      ]
+    },
     "theme_uri": {
       "name": "theme_uri",
       "category": "urls",
