@@ -11,7 +11,7 @@ if (!defined('ABSPATH')) {
  */
 
 function lswp_theme_nonce_action($suffix = '') {
-    $base = 'block-theme';
+    $base = '{{theme_slug}}';
     return $suffix ? $base . ':' . $suffix : $base;
 }
 
@@ -70,7 +70,7 @@ if (function_exists('add_action')) {
 
 // Example: AJAX handler with nonce verification
 if (function_exists('add_action')) {
-    call_user_func('add_action', 'wp_ajax_block_theme_example', function () {
+    call_user_func('add_action', 'wp_ajax_{{theme_slug}}_example', function () {
         if (!lswp_theme_verify_request_nonce(lswp_theme_nonce_action('frontend'))) {
             if (function_exists('wp_send_json_error')) {
                 call_user_func('wp_send_json_error', array('message' => 'Invalid nonce'), 403);

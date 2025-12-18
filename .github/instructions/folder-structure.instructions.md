@@ -6,6 +6,9 @@ applyTo: "**"
 
 # Folder Structure Instructions
 
+> **Critical Rule:**
+> Never strip or replace `{{mustache}}` placeholders in the scaffold repository. Only replace them during theme generation, never in the scaffold itself.
+
 ## Overview
 
 This document provides a comprehensive reference for the block-theme-scaffold project's folder structure, naming conventions, and organization principles.
@@ -66,23 +69,27 @@ block-theme-scaffold/
 Contains all GitHub-specific and AI agent configuration files.
 
 #### .github/agents/
+
 - **Purpose:** AI agent specification documents
 - **Naming:** `[agent-name].agent.md`
 - **Contents:** Agent behavior, capabilities, and constraints
 - **Mustache:** Contains `{{variables}}` in scaffold, replaced in generated themes
 
 **Files:**
+
 - `generate-theme.agent.md` - Theme generator agent spec
 - `release.agent.md` - Release preparation agent (templated)
 - `release-scaffold.agent.md` - Scaffold release agent (deleted in generated themes)
 
 #### .github/instructions/
+
 - **Purpose:** Detailed instructions for AI agents
 - **Naming:** `[topic].instructions.md`
 - **Contents:** How-to guides for specific tasks
 - **Mustache:** May contain `{{variables}}` where appropriate
 
 **Key Files:**
+
 - `reporting.instructions.md` - Report generation and storage
 - `release.instructions.md` - Release process (templated)
 - `generate-theme.instructions.md` - Theme generation guide
@@ -92,6 +99,7 @@ Contains all GitHub-specific and AI agent configuration files.
 - `temp-files.instructions.md` - Temporary file handling
 
 #### .github/projects/
+
 - **Purpose:** Project management and planning
 - **Structure:**
   ```
@@ -102,12 +110,14 @@ Contains all GitHub-specific and AI agent configuration files.
   ```
 
 #### .github/prompts/
+
 - **Purpose:** AI prompt templates
 - **Naming:** `[prompt-name].prompt.md`
 - **Contents:** Structured prompts for AI assistants
 - **Mustache:** Contains `{{variables}}` in scaffold
 
 #### .github/reports/
+
 - **Purpose:** Generated reports and analysis outputs
 - **Structure:**
   ```
@@ -126,10 +136,12 @@ Contains all GitHub-specific and AI agent configuration files.
 - **Gitignored:** Yes (except README and .gitkeep)
 
 #### .github/schemas/
+
 - **Purpose:** JSON schemas for validation
 - **Naming:** `[schema-name].schema.json`
 
 **Files:**
+
 - `theme-config.schema.json` - Theme configuration schema
 - `frontmatter.schema.json` - Agent frontmatter schema
 - `mustache-variables-registry.schema.json` - Mustache variable registry
@@ -137,21 +149,26 @@ Contains all GitHub-specific and AI agent configuration files.
 ### scripts/ - Build and Automation Scripts
 
 #### scripts/agents/
+
 - **Purpose:** Agent implementation scripts
 - **Naming:** `[agent-name].agent.js`
 
 #### scripts/lib/
+
 - **Purpose:** Shared libraries and utilities
 - **Naming:** Descriptive names with action prefix
 
 **Files:**
+
 - `define-config-schema.js` - Theme configuration schema definition
 
 #### scripts/validation/
+
 - **Purpose:** Validation scripts
 - **Naming:** `validate-[what].js` or `audit-[what].js`
 
 **Files:**
+
 - `validate-mustache-schema.js` - Mustache variable validation
 - `validate-agent-frontmatter.js` - Agent frontmatter validation
 - `validate-config-schema.js` - Configuration validation wrapper
@@ -164,6 +181,7 @@ User-facing documentation and guides.
 **Naming:** `[TOPIC_NAME].md` (uppercase with underscores)
 
 **Files:**
+
 - `GENERATE_THEME.md` - Theme generation guide
 - `RELEASE_PROCESS.md` - Release process (templated)
 - `RELEASE_PROCESS_SCAFFOLD.md` - Scaffold release (deleted in generated themes)
@@ -176,6 +194,7 @@ User-facing documentation and guides.
 Runtime logs from scripts and agents.
 
 **Structure:**
+
 ```
 logs/
 ├── agents/         # Agent execution logs
@@ -198,16 +217,16 @@ logs/
 
 ### Files
 
-| Type | Convention | Example |
-|------|------------|---------|
-| Documentation | `UPPERCASE_WITH_UNDERSCORES.md` | `GENERATE_THEME.md` |
-| Instructions | `kebab-case.instructions.md` | `release.instructions.md` |
-| Agents | `kebab-case.agent.md/js` | `generate-theme.agent.js` |
-| Schemas | `kebab-case.schema.json` | `theme-config.schema.json` |
-| Reports | `YYYY-MM-DD-kebab-case.ext` | `2025-12-17-coverage.html` |
-| Logs | `YYYY-MM-DD-kebab-case.log` | `2025-12-17-build.log` |
-| Plans | `YYYY-MM-DD-kebab-case.md` | `2025-12-17-feature-plan.md` |
-| Scripts | `action-subject.js` | `validate-mustache-schema.js` |
+| Type          | Convention                      | Example                       |
+| ------------- | ------------------------------- | ----------------------------- |
+| Documentation | `UPPERCASE_WITH_UNDERSCORES.md` | `GENERATE_THEME.md`           |
+| Instructions  | `kebab-case.instructions.md`    | `release.instructions.md`     |
+| Agents        | `kebab-case.agent.md/js`        | `generate-theme.agent.js`     |
+| Schemas       | `kebab-case.schema.json`        | `theme-config.schema.json`    |
+| Reports       | `YYYY-MM-DD-kebab-case.ext`     | `2025-12-17-coverage.html`    |
+| Logs          | `YYYY-MM-DD-kebab-case.log`     | `2025-12-17-build.log`        |
+| Plans         | `YYYY-MM-DD-kebab-case.md`      | `2025-12-17-feature-plan.md`  |
+| Scripts       | `action-subject.js`             | `validate-mustache-schema.js` |
 
 ### Script Naming Actions
 
@@ -218,9 +237,9 @@ logs/
 
 ### Directories
 
-| Type | Convention | Example |
-|------|------------|---------|
-| Standard | `kebab-case` | `.github/instructions/` |
+| Type       | Convention              | Example                        |
+| ---------- | ----------------------- | ------------------------------ |
+| Standard   | `kebab-case`            | `.github/instructions/`        |
 | Namespaced | `category/subcategory/` | `.github/reports/coverage/js/` |
 
 ## Gitignore Rules
@@ -268,6 +287,7 @@ output-theme/
 ### In Scaffold Repository
 
 Files containing mustache variables:
+
 - `style.css`
 - `functions.php`
 - `theme.json`
@@ -279,22 +299,26 @@ Files containing mustache variables:
 ### After Generation
 
 All `{{variables}}` replaced except in:
+
 - Documentation examples (intentional)
 - Archived/deleted scaffold-specific files
 
 ## Workflow Integration
 
 ### Build Process
+
 ```
 src/ → (webpack/sass) → build/ → (package) → dist/
 ```
 
 ### Generation Process
+
 ```
 scaffold/ → (generate-theme.js) → output-theme/
 ```
 
 ### Testing Process
+
 ```
 src/ + tests/ → (jest/phpunit/playwright) → .github/reports/coverage/
 ```

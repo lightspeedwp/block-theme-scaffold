@@ -24,22 +24,18 @@ metadata:
 
 ## Wizard Integration & Advanced Features
 
-This agent supports an interactive and automated wizard for release preparation:
+This agent is tightly integrated with the **Release Scaffold Wizard** defined in `.github/prompts/create-release-scaffold.prompt.md` and implemented via `scripts/lib/wizard.js`.
 
-- **Conditional Logic:**
-  - Only prompts for advanced checks (e.g., smoke test, schema validation) if user opts in or config enables them.
-- **Config File Automation:**
-  - Accepts a config file to automate release checks and reporting:
-    - `node scripts/agents/release-scaffold.agent.js --config path/to/release-config.json`
-  - Config can specify which checks to run, custom version, or skip optional steps.
-- **Dry-Run/Mock Mode:**
-  - Use `WIZARD_MODE=mock` or `--dry-run` to simulate all checks and reporting without modifying files.
-  - Useful for CI, validation, and pre-release rehearsal.
-- **Validation & Error Recovery:**
-  - Each step validates its outcome (e.g., placeholder integrity, version alignment).
-  - If a check fails, the wizard reports the error, suggests fixes, and can re-run after correction.
-- **Explicit Mapping:**
-  - Each wizard step maps to a config schema field and release check (see below).
+- **Wizard Prompt:** All release-scaffold processes must use the wizard steps and config schema defined in `.github/prompts/create-release-scaffold.prompt.md`.
+- **Wizard Interface:** Supports CLI, JSON, ENV, mock, and other interfaces as defined in `scripts/lib/wizard.js`.
+- **Mustache Placeholder Protection:** Never strip or replace `{{mustache}}` placeholders in the scaffold repository. Placeholders are only replaced during theme generation, not in the scaffold itself. Validate placeholder presence before every release.
+- **Conditional Logic:** Prompts for advanced checks (e.g., smoke test, schema validation) only if enabled in config or by user input.
+- **Config File Automation:** Accepts a config file to automate release checks and reporting. See wizard prompt for schema.
+- **Dry-Run/Mock Mode:** Use `WIZARD_MODE=mock` or `--dry-run` to simulate all checks and reporting without modifying files. Useful for CI, validation, and pre-release rehearsal.
+- **Validation & Error Recovery:** Each step validates its outcome (e.g., placeholder integrity, version alignment). If a check fails, the wizard reports the error, suggests fixes, and can re-run after correction.
+- **Explicit Mapping:** Each wizard step maps to a config schema field and release check (see wizard prompt).
+
+See `.github/prompts/create-release-scaffold.prompt.md` for the canonical wizard steps and config schema.
 
 ### Example: Using a Config File
 

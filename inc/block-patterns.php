@@ -27,11 +27,11 @@ function {{theme_slug}}_register_hero_pattern() {
 	<!-- wp:heading {"textAlign":"center","level":1,"fontSize":"xx-large"} -->
 	<h1 class="wp-block-heading has-text-align-center has-xx-large-font-size">{{hero_title}}</h1>
 	<!-- /wp:heading -->
-	
+
 	<!-- wp:paragraph {"align":"center","fontSize":"large"} -->
 	<p class="has-text-align-center has-large-font-size">{{hero_description}}</p>
 	<!-- /wp:paragraph -->
-	
+
 	<!-- wp:buttons {"layout":{"type":"flex","justifyContent":"center"},"style":{"spacing":{"margin":{"top":"var:preset|spacing|medium"}}}} -->
 	<div class="wp-block-buttons" style="margin-top:var(--wp--preset--spacing--medium)">
 		<!-- wp:button {"backgroundColor":"background","textColor":"primary","className":"is-style-fill"} -->
@@ -62,11 +62,11 @@ function {{theme_slug}}_register_cta_pattern() {
 	<!-- wp:heading {"textAlign":"center","level":2} -->
 	<h2 class="wp-block-heading has-text-align-center">{{cta_title}}</h2>
 	<!-- /wp:heading -->
-	
+
 	<!-- wp:paragraph {"align":"center"} -->
 	<p class="has-text-align-center">{{cta_description}}</p>
 	<!-- /wp:paragraph -->
-	
+
 	<!-- wp:buttons {"layout":{"type":"flex","justifyContent":"center"}} -->
 	<div class="wp-block-buttons">
 		<!-- wp:button -->
@@ -97,11 +97,11 @@ function {{theme_slug}}_register_team_pattern() {
 	<!-- wp:heading {"textAlign":"center","level":2} -->
 	<h2 class="wp-block-heading has-text-align-center">{{team_title}}</h2>
 	<!-- /wp:heading -->
-	
+
 	<!-- wp:paragraph {"align":"center"} -->
 	<p class="has-text-align-center">{{team_description}}</p>
 	<!-- /wp:paragraph -->
-	
+
 	<!-- wp:columns {"style":{"spacing":{"blockGap":{"top":"var:preset|spacing|medium","left":"var:preset|spacing|medium"}}}} -->
 	<div class="wp-block-columns">
 		<!-- wp:column -->
@@ -109,43 +109,43 @@ function {{theme_slug}}_register_team_pattern() {
 			<!-- wp:image {"aspectRatio":"1","scale":"cover","sizeSlug":"large","linkDestination":"none","style":{"border":{"radius":"50%"}}} -->
 			<figure class="wp-block-image size-large has-custom-border"><img alt="" style="border-radius:50%;aspect-ratio:1;object-fit:cover"/></figure>
 			<!-- /wp:image -->
-			
+
 			<!-- wp:heading {"textAlign":"center","level":3} -->
 			<h3 class="wp-block-heading has-text-align-center">{{team_member_1_name}}</h3>
 			<!-- /wp:heading -->
-			
+
 			<!-- wp:paragraph {"align":"center","textColor":"neutral"} -->
 			<p class="has-text-align-center has-neutral-color has-text-color">{{team_member_1_role}}</p>
 			<!-- /wp:paragraph -->
 		</div>
 		<!-- /wp:column -->
-		
+
 		<!-- wp:column -->
 		<div class="wp-block-column">
 			<!-- wp:image {"aspectRatio":"1","scale":"cover","sizeSlug":"large","linkDestination":"none","style":{"border":{"radius":"50%"}}} -->
 			<figure class="wp-block-image size-large has-custom-border"><img alt="" style="border-radius:50%;aspect-ratio:1;object-fit:cover"/></figure>
 			<!-- /wp:image -->
-			
+
 			<!-- wp:heading {"textAlign":"center","level":3} -->
 			<h3 class="wp-block-heading has-text-align-center">{{team_member_2_name}}</h3>
 			<!-- /wp:heading -->
-			
+
 			<!-- wp:paragraph {"align":"center","textColor":"neutral"} -->
 			<p class="has-text-align-center has-neutral-color has-text-color">{{team_member_2_role}}</p>
 			<!-- /wp:paragraph -->
 		</div>
 		<!-- /wp:column -->
-		
+
 		<!-- wp:column -->
 		<div class="wp-block-column">
 			<!-- wp:image {"aspectRatio":"1","scale":"cover","sizeSlug":"large","linkDestination":"none","style":{"border":{"radius":"50%"}}} -->
 			<figure class="wp-block-image size-large has-custom-border"><img alt="" style="border-radius:50%;aspect-ratio:1;object-fit:cover"/></figure>
 			<!-- /wp:image -->
-			
+
 			<!-- wp:heading {"textAlign":"center","level":3} -->
 			<h3 class="wp-block-heading has-text-align-center">{{team_member_3_name}}</h3>
 			<!-- /wp:heading -->
-			
+
 			<!-- wp:paragraph {"align":"center","textColor":"neutral"} -->
 			<p class="has-text-align-center has-neutral-color has-text-color">{{team_member_3_role}}</p>
 			<!-- /wp:paragraph -->

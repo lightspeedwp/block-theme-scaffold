@@ -50,15 +50,15 @@ add_action( 'wp_head', '{{theme_slug}}_viewport_meta', 1 );
  * Add theme support for custom logo.
  */
 function {{theme_slug}}_custom_logo_setup() {
-	add_theme_support(
-		'custom-logo',
-		array(
-			'height'      => {{logo_height}},
-			'width'       => {{logo_width}},
-			'flex-width'  => true,
-			'flex-height' => true,
-		)
-	);
+       add_theme_support(
+	       'custom-logo',
+	       array(
+		       'height'      => {{logo_height}},
+		       'width'       => {{logo_width}},
+		       'flex-width'  => true,
+		       'flex-height' => true,
+	       )
+       );
 }
 add_action( 'after_setup_theme', '{{theme_slug}}_custom_logo_setup' );
 
@@ -66,31 +66,31 @@ add_action( 'after_setup_theme', '{{theme_slug}}_custom_logo_setup' );
  * Add editor color palette support.
  */
 function {{theme_slug}}_editor_color_palette() {
-	add_theme_support(
-		'editor-color-palette',
-		array(
-			array(
-				'name'  => __( 'Primary', '{{theme_slug}}' ),
-				'slug'  => 'primary',
-				'color' => '{{primary_color}}',
-			),
-			array(
-				'name'  => __( 'Secondary', '{{theme_slug}}' ),
-				'slug'  => 'secondary',
-				'color' => '{{secondary_color}}',
-			),
-			array(
-				'name'  => __( 'Background', '{{theme_slug}}' ),
-				'slug'  => 'background',
-				'color' => '{{background_color}}',
-			),
-			array(
-				'name'  => __( 'Foreground', '{{theme_slug}}' ),
-				'slug'  => 'foreground',
-				'color' => '{{text_color}}',
-			),
-		)
-	);
+       add_theme_support(
+	       'editor-color-palette',
+	       array(
+		       array(
+			       'name'  => __( 'Primary', '{{theme_slug}}' ),
+			       'slug'  => 'primary',
+			       'color' => '{{primary_color}}',
+		       ),
+		       array(
+			       'name'  => __( 'Secondary', '{{theme_slug}}' ),
+			       'slug'  => 'secondary',
+			       'color' => '{{secondary_color}}',
+		       ),
+		       array(
+			       'name'  => __( 'Background', '{{theme_slug}}' ),
+			       'slug'  => 'background',
+			       'color' => '{{background_color}}',
+		       ),
+		       array(
+			       'name'  => __( 'Foreground', '{{theme_slug}}' ),
+			       'slug'  => 'foreground',
+			       'color' => '{{text_color}}',
+		       ),
+	       )
+       );
 }
 add_action( 'after_setup_theme', '{{theme_slug}}_editor_color_palette' );
 
@@ -105,9 +105,9 @@ function {{theme_slug}}_custom_excerpt_length( $length ) {
 		return $length;
 	}
 
-	if ( is_home() || is_archive() ) {
-		return {{archive_excerpt_length}};
-	}
+	       if ( is_home() || is_archive() ) {
+		       return {{archive_excerpt_length}};
+	       }
 
 	return $length;
 }

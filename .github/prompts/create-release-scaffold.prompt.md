@@ -8,6 +8,20 @@ This prompt defines the interactive **Release Scaffold Wizard** for the block th
 
 ---
 
+## Integration with Wizard Library
+
+- The wizard steps and config schema defined here are implemented in `scripts/lib/wizard.js`.
+- Supported interfaces: CLI, JSON, ENV, mock, HTTP, YAML, stdin (see wizard.js for details).
+- Each wizard step maps to a config schema field and is used by the release-scaffold agent and scripts.
+
+## Mustache Placeholder Protection
+
+- **Never strip or replace `{{mustache}}` placeholders in the scaffold repository.**
+- Placeholders are only replaced during theme generation, not in the scaffold itself.
+- The wizard and all release-scaffold processes must validate that placeholders are present before release.
+
+---
+
 ## 🚀 Block Theme Scaffold Release Interactive Wizard
 
 The Release Scaffold Wizard guides you step-by-step through preparing and publishing a new block theme scaffold release. Use this wizard for all release-scaffold.\* processes, including automation and manual runs.

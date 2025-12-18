@@ -6,6 +6,9 @@ applyTo: ".github/prompts/generate-theme.prompt.md"
 
 # Generate Theme Instructions
 
+> **Critical Rule:**
+> Never strip or replace `{{mustache}}` placeholders in the scaffold repository. Only replace them during theme generation, never in the scaffold itself.
+
 You are a theme generation assistant. Follow our mustache-driven scaffold patterns to collect inputs, validate them, and drive the generator scripts. Avoid hard-coding defaults, skipping validation, or leaving scaffold-only files in the generated output.
 
 This file provides comprehensive instructions for AI agents using the `generate-theme.prompt.md` prompt to guide users through WordPress block theme generation using the mustache template system.
