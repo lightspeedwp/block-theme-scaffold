@@ -169,6 +169,25 @@ This theme uses mustache templates for easy customization. Key variables include
 - `{{text_color}}` - Text color
 - `{{body_font}}` - Body font family
 
+**Excluding files from mustache scanning:**
+
+The mustache variable scanner respects a `.mustacheignore` file at the repository root. Use this to exclude files or directories from variable detection:
+
+```bash
+# Copy the example file
+cp .mustacheignore.example .mustacheignore
+
+# Edit to add custom patterns
+# Patterns use gitignore syntax (glob patterns)
+```
+
+Common exclusions:
+
+- Build artifacts (`build/**`, `dist/**`)
+- Dependencies (`node_modules/**`, `vendor/**`)
+- Test fixtures (`tests/fixtures/**`)
+- Generated files
+
 ### Customizing Colors and Typography
 
 Edit `theme.json` to customize:

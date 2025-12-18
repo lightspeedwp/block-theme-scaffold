@@ -14,7 +14,7 @@ const questions = [
   {
     type: 'confirm',
     name: 'runPlaceholderCheck',
-    message: 'Run placeholder integrity check (scan for {{mustache}} tokens)?',
+    message: 'Run placeholder integrity check (scan for PLACEHOLDER tokens)?',
     default: true
   },
   // Meta version alignment

@@ -14,7 +14,7 @@ const questions = [
   {
     type: 'confirm',
     name: 'runPlaceholderCheck',
-    message: 'Check for remaining {{mustache}} placeholders in theme?',
+    message: 'Check for remaining PLACEHOLDER placeholders in theme?',
     default: true
   },
   // Version alignment

@@ -26,7 +26,8 @@ const SCAN_PATTERNS = [
 	'**/*.yaml',
 	'**/*.txt',
 ];
-const SCAN_IGNORE = [
+const MUSTACHEIGNORE_PATH = path.resolve(ROOT_DIR, '.mustacheignore');
+let SCAN_IGNORE = [
 	'node_modules/**',
 	'vendor/**',
 	'build/**',
@@ -39,7 +40,34 @@ const SCAN_IGNORE = [
 	'scripts/mustache-variables-registry.json',
 	'tests/fixtures/**',
 ];
+// Load custom ignore patterns from .mustacheignore if present
+if (fs.existsSync(MUSTACHEIGNORE_PATH)) {
+	const customIgnores = fs.readFileSync(MUSTACHEIGNORE_PATH, 'utf8')
+		 .split(/\r?\n/)
+		 .map((line) => line.trim())
+		 .filter((line) => line && !line.startsWith('#'));
+	if (customIgnores.length > 0) {
+		 SCAN_IGNORE = customIgnores;
+	}
+}
 const MUSTACHE_REGEX = /\{\{([a-zA-Z0-9_]+(?:\|[a-zA-Z0-9_]+)?)\}\}/g;
+
+// Infer variable type/format from name
+function inferVariableType(varName) {
+	const n = varName.toLowerCase();
+	if (n.includes('color') || n.includes('colour')) return 'color';
+	if (n.includes('url') || n.includes('uri')) return 'url';
+	if (n.includes('email')) return 'email';
+	if (n.includes('date') || n === 'year') return 'date';
+	if (n.includes('font') || n.includes('weight') || n.includes('line_height')) return 'font';
+	if (n.includes('image') || n.includes('thumbnail')) return 'image';
+	if (n.includes('version')) return 'version';
+	if (n.includes('slug')) return 'slug';
+	if (n.includes('name') || n.includes('title')) return 'string';
+	if (n.includes('width') || n.includes('size') || n.includes('spacing')) return 'number';
+	if (n.includes('bool') || n.startsWith('is_') || n.startsWith('has_')) return 'boolean';
+	return 'string';
+}
 
 function categorizeVariable( varName ) {
 	const cleanName = varName.split( '|' )[ 0 ];
@@ -157,56 +185,65 @@ function scanMustacheVariables( options = {} ) {
 	const variables = {};
 	const categories = {};
 
-	for ( const relativePath of files ) {
-		const absolutePath = path.join( root, relativePath );
-		let content;
 
-		try {
-			content = fs.readFileSync( absolutePath, 'utf8' );
-		} catch ( error ) {
-			continue;
-		}
+		       for ( const relativePath of files ) {
+			       const absolutePath = path.join( root, relativePath );
+			       let content;
 
-		const regex = new RegExp( MUSTACHE_REGEX );
-		const seenInFile = new Set();
-		let match;
+			       try {
+				       content = fs.readFileSync( absolutePath, 'utf8' );
+			       } catch ( error ) {
+				       continue;
+			       }
 
-		while ( ( match = regex.exec( content ) ) !== null ) {
-			const rawName = match[ 1 ];
-			const name = rawName.split( '|' )[ 0 ];
+			       const lines = content.split(/\r?\n/);
+			       const seenInFile = new Set();
+			       for (let lineNum = 0; lineNum < lines.length; lineNum++) {
+				       let line = lines[lineNum];
+				       let match;
+				       const regex = new RegExp(MUSTACHE_REGEX, 'g');
+				       while ((match = regex.exec(line)) !== null) {
+					       const rawName = match[1];
+					       const name = rawName.split('|')[0];
 
-			summary.totalOccurrences += 1;
+					       summary.totalOccurrences += 1;
 
-			if ( ! variables[ name ] ) {
-				const category = categorizeVariable( name );
-				variables[ name ] = {
-					name,
-					category,
-					files: [],
-					count: 0,
-				};
+					       if (!variables[name]) {
+						       const category = categorizeVariable(name);
+						       const type = inferVariableType(name);
+						       variables[name] = {
+							       name,
+							       category,
+							       type,
+							       files: [],
+							       count: 0,
+							       usage: []
+						       };
 
-				if ( ! categories[ category ] ) {
-					categories[ category ] = {
-						variables: [],
-						count: 0,
-					};
-				}
-				categories[ category ].variables.push( name );
-			}
+						       if (!categories[category]) {
+							       categories[category] = {
+								       variables: [],
+								       count: 0,
+							       };
+						       }
+						       categories[category].variables.push(name);
+					       }
 
-			variables[ name ].count += 1;
+					       variables[name].count += 1;
 
-			if ( ! seenInFile.has( name ) ) {
-				variables[ name ].files.push( relativePath );
-				seenInFile.add( name );
-			}
-		}
+					       // Track usage context (file and line number)
+					       variables[name].usage.push({ file: relativePath, line: lineNum + 1 });
 
-		if ( seenInFile.size > 0 ) {
-			summary.filesWithVariables += 1;
-		}
-	}
+					       if (!seenInFile.has(name)) {
+						       variables[name].files.push(relativePath);
+						       seenInFile.add(name);
+					       }
+				       }
+			       }
+			       if (seenInFile.size > 0) {
+				       summary.filesWithVariables += 1;
+			       }
+		       }
 
 	summary.uniqueVariables = Object.keys( variables ).length;
 
@@ -215,14 +252,47 @@ function scanMustacheVariables( options = {} ) {
 		category.count = category.variables.length;
 	} );
 
+	// Detect undocumented and unused variables
+	const variablesInCode = new Set(Object.keys(variables));
+	let variablesInRegistry = new Set();
+	let undocumented = [];
+	let unused = [];
+
+	// Try to load existing registry to compare
+	const registryPath = path.resolve(root, 'scripts/mustache-variables-registry.json');
+	if (fs.existsSync(registryPath)) {
+		try {
+			const registry = JSON.parse(fs.readFileSync(registryPath, 'utf8'));
+			if (registry.variables) {
+				variablesInRegistry = new Set(Object.keys(registry.variables));
+			}
+		} catch (error) {
+			// If registry doesn't exist or is invalid, skip comparison
+		}
+	}
+
+	// Calculate undocumented (in code but not in registry)
+	// and unused (in registry but not in code)
+	if (variablesInRegistry.size > 0) {
+		undocumented = Array.from(variablesInCode).filter(v => !variablesInRegistry.has(v));
+		unused = Array.from(variablesInRegistry).filter(v => !variablesInCode.has(v));
+	}
+
 	return {
 		summary,
 		variables,
 		categories,
+		meta: {
+			undocumented,
+			unused,
+			scannedAt: new Date().toISOString()
+		}
 	};
 }
 
-function displayResults( results, sortedVariables ) {
+function displayResults( results, sortedVariables, options = {} ) {
+	const { showUsage = false, showTypes = false } = options;
+
 	console.log( 'Mustache Variable Scan Report' );
 	console.log( '=============================' );
 	console.log( `Files scanned: ${ results.summary.totalFiles }` );
@@ -230,6 +300,38 @@ function displayResults( results, sortedVariables ) {
 	console.log( `Unique variables: ${ results.summary.uniqueVariables }` );
 	console.log( `Total occurrences: ${ results.summary.totalOccurrences }` );
 	console.log( '' );
+
+	// Display undocumented/unused variables if present
+	if (results.meta) {
+		if (results.meta.undocumented && results.meta.undocumented.length > 0) {
+			console.log( `⚠️  Undocumented variables (${results.meta.undocumented.length}):` );
+			results.meta.undocumented.slice(0, 10).forEach(v => {
+				const usage = results.variables[v]?.usage?.[0];
+				const location = usage ? ` (found in ${usage.file}:${usage.line})` : '';
+				console.log( `  - ${v}${location}` );
+			});
+			if (results.meta.undocumented.length > 10) {
+				console.log( `  ...and ${results.meta.undocumented.length - 10} more` );
+			}
+			console.log( '' );
+		}
+
+		if (results.meta.unused && results.meta.unused.length > 0) {
+			console.log( `📋 Unused variables in registry (${results.meta.unused.length}):` );
+			results.meta.unused.slice(0, 10).forEach(v => {
+				console.log( `  - ${v}` );
+			});
+			if (results.meta.unused.length > 10) {
+				console.log( `  ...and ${results.meta.unused.length - 10} more` );
+			}
+			console.log( '' );
+		}
+
+		if (results.meta.undocumented.length === 0 && results.meta.unused.length === 0) {
+			console.log( '✅ All variables are documented and in use.' );
+			console.log( '' );
+		}
+	}
 
 	const categoryEntries = Object.entries( results.categories ).sort(
 		( [, a ], [, b ] ) => b.count - a.count
@@ -252,9 +354,25 @@ function displayResults( results, sortedVariables ) {
 	const limit = Math.min( 15, sortedVariables.length );
 	for ( let i = 0; i < limit; i += 1 ) {
 		const variable = sortedVariables[ i ];
-		console.log(
-			`  ${ i + 1 }. {{${ variable.name }}} — ${ variable.count } occurrences in ${ variable.files.length } file${ variable.files.length === 1 ? '' : 's' }`
-		);
+		let output = `  ${ i + 1 }. {{${ variable.name }}}`;
+
+		if ( showTypes && variable.type ) {
+			output += ` [${variable.type}]`;
+		}
+
+		output += ` — ${ variable.count } occurrences in ${ variable.files.length } file${ variable.files.length === 1 ? '' : 's' }`;
+		console.log( output );
+
+		if ( showUsage && variable.usage && variable.usage.length > 0 ) {
+			const usageLimit = Math.min( 3, variable.usage.length );
+			for ( let j = 0; j < usageLimit; j += 1 ) {
+				const usage = variable.usage[ j ];
+				console.log( `     - ${usage.file}:${usage.line}` );
+			}
+			if ( variable.usage.length > usageLimit ) {
+				console.log( `     ...and ${variable.usage.length - usageLimit} more locations` );
+			}
+		}
 	}
 
 	if ( sortedVariables.length > limit ) {
@@ -315,10 +433,12 @@ function validateConfig( configPath, results ) {
 function main() {
 	const args = process.argv.slice( 2 );
 	const outputJson = args.includes( '--json' );
+	const showUsage = args.includes( '--show-usage' );
+	const showTypes = args.includes( '--show-types' );
 	const validateIndex = args.indexOf( '--validate' );
 
-	const { summary, variables, categories } = scanMustacheVariables();
-	const latestResults = { summary, variables, categories };
+	const { summary, variables, categories, meta } = scanMustacheVariables();
+	const latestResults = { summary, variables, categories, meta };
 	const sortedVariables = Object.values( variables ).sort( ( a, b ) => b.count - a.count );
 
 	if ( validateIndex !== -1 ) {
@@ -336,7 +456,7 @@ function main() {
 		return;
 	}
 
-	displayResults( latestResults, sortedVariables );
+	displayResults( latestResults, sortedVariables, { showUsage, showTypes } );
 }
 
 module.exports = {

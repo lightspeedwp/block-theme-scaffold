@@ -1,0 +1,32 @@
+# .mustacheignore.example
+# Example ignore patterns for mustache variable scanning
+# Copy this file to .mustacheignore and customize as needed
+
+# Dependencies
+node_modules/**
+vendor/**
+
+# Build outputs
+build/**
+dist/**
+generated-theme/**
+
+# Version control
+.git/**
+
+# Testing and coverage
+coverage/**
+tests/fixtures/**
+tests/**/*.mock.json
+
+# Logs and temporary files
+logs/**
+tmp/**
+*.log
+
+# Registry file (don't scan the registry itself)
+scripts/mustache-variables-registry.json
+
+# Documentation (optional - uncomment if you don't want to scan docs)
+# docs/**
+# *.md

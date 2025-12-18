@@ -114,13 +114,15 @@ const wizardInterfaces = {
    * Return mock/default values for all questions (for tests/dry-run).
    * @async
    */
-  mock: async (questions, options = {}) => {
+  mock: async (questions = [], options = {}) => {
     const { logger = console } = options;
     logger.info('Using mock wizard mode (for tests/dry-run)...');
     const config = {};
-    for (const q of questions) {
-      const key = q.name || q;
-      config[key] = q.default || 'mock-value';
+    if (Array.isArray(questions)) {
+      for (const q of questions) {
+        const key = q.name || q;
+        config[key] = q.default || 'mock-value';
+      }
     }
     return config;
   },

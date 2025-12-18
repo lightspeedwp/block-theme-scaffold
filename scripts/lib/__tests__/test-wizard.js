@@ -26,9 +26,9 @@ describe( 'runWizard', () => {
 		fs.unlinkSync( testConfigPath );
 	} );
 
-	it( 'loads config from JSON file if provided', () => {
+	it( 'loads config from JSON file if provided', async () => {
 		const logger = createLogger();
-		const config = runWizard( { configPath: testConfigPath, logger } );
+		const config = await runWizard( { mode: 'json', configPath: testConfigPath, logger } );
 		expect( config.slug ).toBe( 'test-theme' );
 		expect( config.name ).toBe( 'Test Theme' );
 		expect( config.version ).toBe( '1.2.3' );
@@ -36,15 +36,15 @@ describe( 'runWizard', () => {
 		expect( config.author_uri ).toBe( 'https://example.com' );
 	} );
 
-	it( 'returns empty config if no file provided', () => {
+	it( 'returns empty object in mock mode with no questions', async () => {
 		const logger = createLogger();
-		const config = runWizard( { logger } );
+		const config = await runWizard( { mode: 'mock', logger } );
 		expect( config ).toEqual( {} );
+		expect( logger.info ).toHaveBeenCalledWith( 'Using mock wizard mode (for tests/dry-run)...' );
 	} );
 
-	it( 'falls back to manual if file missing', () => {
+	it( 'throws error if file missing in json mode', async () => {
 		const logger = createLogger();
-		const config = runWizard( { configPath: 'nonexistent.json', logger } );
-		expect( config ).toEqual( {} );
+		await expect( runWizard( { mode: 'json', configPath: 'nonexistent.json', logger } ) ).rejects.toThrow();
 	} );
 } );
