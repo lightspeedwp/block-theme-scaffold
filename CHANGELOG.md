@@ -14,6 +14,7 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+
 ## [Unreleased]
 
 ### Added
@@ -81,6 +82,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
     - `test-mustache-schema.test.js` - Mustache schema structure tests (new)
 
 ### Changed
+
+- Changelog updated on 2025-12-19 to document recent improvements to mustache variable registry scan, update, and reporting, and to clarify validation/reporting workflow for continuous integration.
 
 - Updated mustache variable registry and validation report as of 2025-12-18 scan:
   - Registry date updated to `2025-12-18T00:00:00Z`.
