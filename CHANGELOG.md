@@ -18,6 +18,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- Automated mustache variable registry scan, update, and reporting:
+  - Recursively scans all source, config, and documentation files for `{{mustache}}` variables.
+  - Compares discovered variables to the canonical registry (`scripts/mustache-variables-registry.json`).
+  - Auto-updates the registry to add new variables (with placeholder metadata), remove missing ones, and update changed entries.
+  - Generates a dated validation report in `.github/reports/validation/` summarizing new, removed, updated, and unchanged variables.
+  - Ensures all changes are tracked and reported for auditability and theme generation integrity.
+  - Registry and report update is fully automated and non-interactive, supporting continuous validation workflows.
+  - Husky pre-commit hooks and CI workflows now validate registry and report consistency before commit.
+
 - Complete Phase 6 integration testing for logging and schema validation system
 - Missing mustache variables: `year`, `excerpt_length`, `thumbnail_width`, `thumbnail_height`, `featured_image_width`, `featured_image_height`, `gallery_image_width`, `gallery_image_height`
 - Support for mustache filter syntax (e.g., `{{theme_slug|upper}}`)
@@ -72,6 +81,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
     - `test-mustache-schema.test.js` - Mustache schema structure tests (new)
 
 ### Changed
+
+- Updated mustache variable registry and validation report as of 2025-12-18 scan:
+  - Registry date updated to `2025-12-18T00:00:00Z`.
+  - No new, missing, or changed variables detected in this scan; registry is current.
+  - Validation report generated at `.github/reports/validation/2025-12-18-mustache-registry-scan.json`.
+  - Improved documentation and traceability for mustache variable management.
 
 - Documented script helper coverage improvements: `scripts/__tests__/jest.config.js` now anchors `<rootDir>` at the repo root, locks `roots` to the scripts tree, reuses CSS/file mocks from `tests/__mocks__`, routes coverage into `coverage/scripts`, and emits V8 reports that feed `coverage/scripts/lcov.info`.
 - Generator now excludes `scripts/` and `logs/` directories from generated themes
