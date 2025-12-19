@@ -1,4 +1,3 @@
-
 // Demo code for manual testing (commented out for lint compliance)
 // if (require.main === module) {
 //   const logger = new TestLogger('example');

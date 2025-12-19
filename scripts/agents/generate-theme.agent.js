@@ -1,6 +1,5 @@
 // TODO: Implement cached schema loading and canonical JSON-backed config definition.
 
-
 /**
  * Generate Theme Agent for Block Theme
  *
@@ -24,29 +23,28 @@
  * @module scripts/agents/generate-theme.agent
  */
 
-
-const FileLogger = require( '../utils/logger' );
-const minimist = require( 'minimist' );
+const FileLogger = require('../utils/logger');
+const minimist = require('minimist');
 // Wizard module for interactive flows (placeholder)
-const { runWizard } = require( '../lib/wizard' );
+const { runWizard } = require('../lib/wizard');
 
 // Import shared configuration schema and validators
 const {
-  CONFIG_SCHEMA,
-  getCanonicalConfigSchema,
-  validateValue,
-  validateConfig,
-  applyDefaults,
-  buildCommand,
-  getStageQuestions,
-} = require( '../lib/define-config-schema' );
+	CONFIG_SCHEMA,
+	getCanonicalConfigSchema,
+	validateValue,
+	validateConfig,
+	applyDefaults,
+	buildCommand,
+	getStageQuestions,
+} = require('../lib/define-config-schema');
 
 /**
  * Interactive prompt session
  * @param {FileLogger} logger - The logger instance.
  * @todo Integrate runWizard for advanced interactive flows
  */
-async function interactiveSession( logger ) {
+async function interactiveSession(logger) {
 	// Use runWizard to support config file loading or manual entry
 	// If --config is provided, pass it as configPath
 	const configPath = process.argv.includes('--config')
@@ -76,21 +74,21 @@ async function interactiveSession( logger ) {
  * Process JSON input from stdin
  */
 async function processJsonInput() {
-	return new Promise( ( resolve, reject ) => {
+	return new Promise((resolve, reject) => {
 		let data = '';
-		process.stdin.setEncoding( 'utf8' );
-		process.stdin.on( 'data', ( chunk ) => {
+		process.stdin.setEncoding('utf8');
+		process.stdin.on('data', (chunk) => {
 			data += chunk;
-		} );
-		process.stdin.on( 'end', () => {
+		});
+		process.stdin.on('end', () => {
 			try {
-				const config = JSON.parse( data );
-				resolve( config );
-			} catch ( e ) {
-				reject( new Error( `Invalid JSON: ${ e.message }` ) );
+				const config = JSON.parse(data);
+				resolve(config);
+			} catch (e) {
+				reject(new Error(`Invalid JSON: ${e.message}`));
 			}
-		} );
-	} );
+		});
+	});
 }
 
 /**
@@ -113,7 +111,7 @@ Options:
 
 If no options are provided, the agent will start in interactive mode.
 `;
-	console.log( message );
+	console.log(message);
 }
 
 /**
@@ -122,44 +120,44 @@ If no options are provided, the agent will start in interactive mode.
  * @param {FileLogger} logger - The logger instance.
  * @returns {Promise<object>} The validated and final configuration object.
  */
-async function handleFileConfigMode( configPath, logger ) {
-	if ( ! configPath || typeof configPath !== 'string' ) {
-		logger.error( '--config requires a file path argument.' );
-		process.exit( 1 );
+async function handleFileConfigMode(configPath, logger) {
+	if (!configPath || typeof configPath !== 'string') {
+		logger.error('--config requires a file path argument.');
+		process.exit(1);
 	}
 
 	try {
-		const fs = require( 'fs' );
-		logger.info( `Loading configuration from ${ configPath }...` );
-		const configContent = fs.readFileSync( configPath, 'utf8' );
-		const config = JSON.parse( configContent );
-		const finalConfig = applyDefaults( config );
-		const validation = validateConfig( finalConfig );
+		const fs = require('fs');
+		logger.info(`Loading configuration from ${configPath}...`);
+		const configContent = fs.readFileSync(configPath, 'utf8');
+		const config = JSON.parse(configContent);
+		const finalConfig = applyDefaults(config);
+		const validation = validateConfig(finalConfig);
 
-		if ( ! validation.valid ) {
-			logger.error( '❌ Configuration from file is invalid:' );
-			validation.errors.forEach( ( e ) => logger.error( `  - ${ e }` ) );
-			process.exit( 1 );
+		if (!validation.valid) {
+			logger.error('❌ Configuration from file is invalid:');
+			validation.errors.forEach((e) => logger.error(`  - ${e}`));
+			process.exit(1);
 		}
 
-		if ( validation.warnings.length > 0 ) {
-			logger.warn( '⚠️  Configuration warnings:' );
-			validation.warnings.forEach( ( w ) => logger.warn( `  - ${ w }` ) );
+		if (validation.warnings.length > 0) {
+			logger.warn('⚠️  Configuration warnings:');
+			validation.warnings.forEach((w) => logger.warn(`  - ${w}`));
 		}
 
-		logger.info( '✅ Configuration Summary:' );
-		logger.info( `\n${ JSON.stringify( finalConfig, null, 2 ) }` );
+		logger.info('✅ Configuration Summary:');
+		logger.info(`\n${JSON.stringify(finalConfig, null, 2)}`);
 
 		return finalConfig;
-	} catch ( e ) {
-		if ( e.code === 'ENOENT' ) {
-			logger.error( `Config file not found at: ${ configPath }` );
-		} else if ( e instanceof SyntaxError ) {
-			logger.error( `Invalid JSON in config file: ${ e.message }` );
+	} catch (e) {
+		if (e.code === 'ENOENT') {
+			logger.error(`Config file not found at: ${configPath}`);
+		} else if (e instanceof SyntaxError) {
+			logger.error(`Invalid JSON in config file: ${e.message}`);
 		} else {
-			logger.error( `Failed to process config file: ${ e.message }` );
+			logger.error(`Failed to process config file: ${e.message}`);
 		}
-		process.exit( 1 );
+		process.exit(1);
 	}
 }
 
@@ -168,107 +166,107 @@ async function handleFileConfigMode( configPath, logger ) {
  */
 async function main() {
 	let finalConfig = null;
-	const logger = new FileLogger( 'generate-theme-agent', 'agents' );
-	logger.info( 'Generate Theme Agent started.' );
-	const args = minimist( process.argv.slice( 2 ), {
-		string: [ 'validate', 'validate-json', 'config' ],
-		boolean: [ 'help', 'schema', 'json', 'dry-run' ],
+	const logger = new FileLogger('generate-theme-agent', 'agents');
+	logger.info('Generate Theme Agent started.');
+	const args = minimist(process.argv.slice(2), {
+		string: ['validate', 'validate-json', 'config'],
+		boolean: ['help', 'schema', 'json', 'dry-run'],
 		alias: { h: 'help' },
-	} );
+	});
 
-	if ( args[ 'dry-run' ] ) {
-		logger.info( 'Running in --dry-run mode. No files will be generated.' );
+	if (args['dry-run']) {
+		logger.info('Running in --dry-run mode. No files will be generated.');
 	}
 
-	if ( args.help ) {
+	if (args.help) {
 		printHelp();
 		return;
 	}
 
-	if ( args.schema ) {
+	if (args.schema) {
 		const schema = getCanonicalConfigSchema();
-		console.log( JSON.stringify( schema, null, 2 ) );
+		console.log(JSON.stringify(schema, null, 2));
 		return;
 	}
 
-	if ( args[ 'validate-json' ] ) {
-		if ( typeof args[ 'validate-json' ] !== 'string' ) {
-			logger.error( '--validate-json requires a JSON argument' );
-			process.exit( 1 );
+	if (args['validate-json']) {
+		if (typeof args['validate-json'] !== 'string') {
+			logger.error('--validate-json requires a JSON argument');
+			process.exit(1);
 		}
 		try {
-			const config = JSON.parse( args[ 'validate-json' ] );
-			const result = validateConfig( config );
-			console.log( JSON.stringify( result, null, 2 ) );
+			const config = JSON.parse(args['validate-json']);
+			const result = validateConfig(config);
+			console.log(JSON.stringify(result, null, 2));
 			process.exitCode = result.valid ? 0 : 1;
-		} catch ( e ) {
-			console.error( `Invalid JSON: ${ e.message }` );
-			process.exit( 1 );
+		} catch (e) {
+			console.error(`Invalid JSON: ${e.message}`);
+			process.exit(1);
 		}
 		return;
 	}
 
-	if ( args.validate ) {
+	if (args.validate) {
 		try {
-			const fs = require( 'fs' );
-			const configContent = fs.readFileSync( args.validate, 'utf8' );
-			const config = JSON.parse( configContent );
-			const validation = validateConfig( config );
-			console.log( JSON.stringify( validation, null, 2 ) );
-			process.exit( validation.valid ? 0 : 1 );
-		} catch ( e ) {
-			console.error( `Invalid config: ${ e.message }` );
-			process.exit( 1 );
+			const fs = require('fs');
+			const configContent = fs.readFileSync(args.validate, 'utf8');
+			const config = JSON.parse(configContent);
+			const validation = validateConfig(config);
+			console.log(JSON.stringify(validation, null, 2));
+			process.exit(validation.valid ? 0 : 1);
+		} catch (e) {
+			console.error(`Invalid config: ${e.message}`);
+			process.exit(1);
 		}
 		return;
 	}
 
-	if ( args.config ) {
-		finalConfig = await handleFileConfigMode( args.config, logger );
-	} else if ( args.json ) {
+	if (args.config) {
+		finalConfig = await handleFileConfigMode(args.config, logger);
+	} else if (args.json) {
 		try {
 			const config = await processJsonInput();
-			finalConfig = applyDefaults( config );
-			const validation = validateConfig( finalConfig );
-			console.log( JSON.stringify( validation, null, 2 ) );
+			finalConfig = applyDefaults(config);
+			const validation = validateConfig(finalConfig);
+			console.log(JSON.stringify(validation, null, 2));
 			process.exitCode = validation.valid ? 0 : 1;
-		} catch ( e ) {
-			logger.error( `Failed to process JSON input: ${ e.message }` );
-			process.exit( 1 );
+		} catch (e) {
+			logger.error(`Failed to process JSON input: ${e.message}`);
+			process.exit(1);
 		}
 	} else {
 		// Interactive mode is the default
-		finalConfig = await interactiveSession( logger );
+		finalConfig = await interactiveSession(logger);
 	}
 
 	// In a real execution, the `finalConfig` would be passed to a generation function.
 	// For now, the agent's job is complete after displaying the summary.
 	// The --dry-run flag is in place for when execution logic is added.
-	if ( ! args[ 'dry-run' ] ) {
+	if (!args['dry-run']) {
 		// Example: await generateTheme(finalConfig, logger);
 	}
 }
 
 // Export for testing (re-export from config-schema)
 module.exports = {
-  CONFIG_SCHEMA,
-  getCanonicalConfigSchema,
-  validateValue,
-  validateConfig,
-  applyDefaults,
-  buildCommand,
-  getStageQuestions,
+	CONFIG_SCHEMA,
+	getCanonicalConfigSchema,
+	validateValue,
+	validateConfig,
+	applyDefaults,
+	buildCommand,
+	getStageQuestions,
 };
 
 // Run if executed directly
-if ( require.main === module ) {
-	( async () => {
-		const logger = new FileLogger( 'generate-theme-agent' );
+if (require.main === module) {
+	(async () => {
+		const logger = new FileLogger('generate-theme-agent');
 		try {
 			await main();
-		} catch ( e ) {
-			logger.error( `Unhandled exception: ${ e.message }` );
+		} catch (e) {
+			logger.error(`Unhandled exception: ${e.message}`);
 			process.exitCode = 1;
 		}
-	} )();
+	})();
 }

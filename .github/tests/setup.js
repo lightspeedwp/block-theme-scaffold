@@ -5,11 +5,11 @@
  */
 // eslint-env jest
 
-const fs = require( 'fs' );
-const path = require( 'path' );
+const fs = require('fs');
+const path = require('path');
 
 // Only setup browser-specific globals if we're in a jsdom environment
-if ( typeof window !== 'undefined' ) {
+if (typeof window !== 'undefined') {
 	// Ensure local storage directory for @wordpress/jest-preset-default
 	const localStorageDir = path.join(
 		__dirname,
@@ -18,23 +18,23 @@ if ( typeof window !== 'undefined' ) {
 		'.test-temp',
 		'localstorage'
 	);
-	fs.mkdirSync( localStorageDir, { recursive: true } );
+	fs.mkdirSync(localStorageDir, { recursive: true });
 	process.env.LOCAL_STORAGE_DIRECTORY = localStorageDir;
-	const localStorageFile = path.join( localStorageDir, 'localstorage.json' );
-	fs.writeFileSync( localStorageFile, '', { flag: 'a' } );
+	const localStorageFile = path.join(localStorageDir, 'localstorage.json');
+	fs.writeFileSync(localStorageFile, '', { flag: 'a' });
 	process.env.LOCAL_STORAGE_FILE = localStorageFile;
 
 	// Mock WordPress dependencies
-	jest.mock( '@wordpress/i18n', () => ( {
-		__: jest.fn( ( text ) => text ),
-		_x: jest.fn( ( text ) => text ),
-		_n: jest.fn( ( single, plural, number ) =>
+	jest.mock('@wordpress/i18n', () => ({
+		__: jest.fn((text) => text),
+		_x: jest.fn((text) => text),
+		_n: jest.fn((single, plural, number) =>
 			number === 1 ? single : plural
 		),
-		sprintf: jest.fn( ( format, ...args ) => {
-			return format.replace( /%[sdifF%]/g, () => args.shift() );
-		} ),
-	} ) );
+		sprintf: jest.fn((format, ...args) => {
+			return format.replace(/%[sdifF%]/g, () => args.shift());
+		}),
+	}));
 
 	// Mock console methods to reduce noise in tests
 	global.console = {
@@ -47,9 +47,9 @@ if ( typeof window !== 'undefined' ) {
 	// Set up global test environment
 	global.wp = {
 		i18n: {
-			__: jest.fn( ( text ) => text ),
-			_x: jest.fn( ( text ) => text ),
-			_n: jest.fn( ( single, plural, number ) =>
+			__: jest.fn((text) => text),
+			_x: jest.fn((text) => text),
+			_n: jest.fn((single, plural, number) =>
 				number === 1 ? single : plural
 			),
 			sprintf: jest.fn(),
@@ -57,15 +57,15 @@ if ( typeof window !== 'undefined' ) {
 	};
 
 	// Mock fetch for API calls
-	global.fetch = jest.fn( () =>
-		Promise.resolve( {
+	global.fetch = jest.fn(() =>
+		Promise.resolve({
 			ok: true,
-			json: () => Promise.resolve( {} ),
-		} )
+			json: () => Promise.resolve({}),
+		})
 	);
 
 	// Reset mocks after each test
-	afterEach( () => {
+	afterEach(() => {
 		jest.clearAllMocks();
-	} );
+	});
 }

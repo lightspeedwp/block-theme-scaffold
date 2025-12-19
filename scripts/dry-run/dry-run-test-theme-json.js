@@ -1,4 +1,3 @@
-
 /**
  * @file dry-run-test-theme-json.js
  * @description Dry-run script for theme.json validation tests.

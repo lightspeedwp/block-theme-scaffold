@@ -1,7 +1,7 @@
 {
 	"title": "WordPress block.json Schema",
 	"type": "object",
-	"required": [ "name" ],
+	"required": ["name"],
 	"properties": {
 		"$schema": {
 			"type": "string"

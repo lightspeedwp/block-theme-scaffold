@@ -12,10 +12,10 @@ module.exports = {
 		'eslint:recommended',
 		'prettier',
 	],
-	plugins: [ 'jest' ],
+	plugins: ['jest'],
 	overrides: [
 		{
-			files: [ 'tests/**/*.js' ],
+			files: ['tests/**/*.js'],
 			env: {
 				jest: true,
 			},

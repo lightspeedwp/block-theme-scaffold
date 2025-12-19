@@ -1,4 +1,3 @@
-
 /**
  * @file dry-run-test-performance.js
  * @description Dry-run script for performance tests.

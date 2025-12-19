@@ -1,0 +1,17 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: {{theme_name}} {{version}}\n"
+"POT-Creation-Date: 2025-12-18 00:00+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: GitHub Copilot\n"
+"X-Domain: {{theme_slug}}\n"
+
+# Example translation string
+#: functions.php:1
+msgid "Read more"
+msgstr ""

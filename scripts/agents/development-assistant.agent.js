@@ -1,6 +1,5 @@
 // TODO: Add CLI doc/help sync when new mode flags are added.
 
-
 /**
  * Development Assistant Agent Implementation
  *
@@ -55,31 +54,31 @@ const colors = {
 	bold: '\x1b[1m',
 };
 
-function log( color, ...args ) {
+function log(color, ...args) {
 	void color;
 	void args;
 	// TODO: restore logging output with sanitized logger when compliance allows.
 	// Logging removed for lint compliance
 }
 
-function error( ...args ) {
-	log( colors.red, '❌', ...args );
+function error(...args) {
+	log(colors.red, '❌', ...args);
 }
 
-function success( ...args ) {
-	log( colors.green, '✅', ...args );
+function success(...args) {
+	log(colors.green, '✅', ...args);
 }
 
-function warning( ...args ) {
-	log( colors.yellow, '⚠️ ', ...args );
+function warning(...args) {
+	log(colors.yellow, '⚠️ ', ...args);
 }
 
-function info( ...args ) {
-	log( colors.blue, 'ℹ️ ', ...args );
+function info(...args) {
+	log(colors.blue, 'ℹ️ ', ...args);
 }
 
-function header( text ) {
-	log( colors.magenta + colors.bold, text );
+function header(text) {
+	log(colors.magenta + colors.bold, text);
 	// TODO: publish header formatting through logger when permitted.
 }
 
@@ -98,8 +97,8 @@ function showHelp(topic = null) {
 
 	header('Development Assistant - Help');
 
-	info( 'Current Mode:', colors.cyan + currentMode + colors.reset );
-	warning( 'Logging output suppressed until sanitization is restored.' );
+	info('Current Mode:', colors.cyan + currentMode + colors.reset);
+	warning('Logging output suppressed until sanitization is restored.');
 }
 
 function showTopicHelp(topic) {
@@ -236,35 +235,35 @@ styles/
 		// Logging removed for lint compliance
 	}
 
-		// TODO: emit example help output when the logging layer is restored.
-		if (topicData.examples) {
+	// TODO: emit example help output when the logging layer is restored.
+	if (topicData.examples) {
+		// Logging removed for lint compliance
+		topicData.examples.forEach((example) => {
+			void example;
 			// Logging removed for lint compliance
-			topicData.examples.forEach((example) => {
-				void example;
-				// Logging removed for lint compliance
-			});
-			// Logging removed for lint compliance
-		}
+		});
+		// Logging removed for lint compliance
+	}
 
-		// TODO: print command tips once log sanitization is available.
-		if (topicData.commands) {
+	// TODO: print command tips once log sanitization is available.
+	if (topicData.commands) {
+		// Logging removed for lint compliance
+		topicData.commands.forEach((cmd) => {
+			void cmd;
 			// Logging removed for lint compliance
-			topicData.commands.forEach((cmd) => {
-				void cmd;
-				// Logging removed for lint compliance
-			});
-			// Logging removed for lint compliance
-		}
+		});
+		// Logging removed for lint compliance
+	}
 
-		// TODO: display info snippets after logging support returns.
-		if (topicData.info) {
+	// TODO: display info snippets after logging support returns.
+	if (topicData.info) {
+		// Logging removed for lint compliance
+		topicData.info.forEach((item) => {
+			void item;
 			// Logging removed for lint compliance
-			topicData.info.forEach((item) => {
-				void item;
-				// Logging removed for lint compliance
-			});
-			// Logging removed for lint compliance
-		}
+		});
+		// Logging removed for lint compliance
+	}
 
 	// Logging removed for lint compliance
 }
@@ -644,7 +643,6 @@ async function main() {
 if (require.main === module) {
 	main();
 }
-
 
 module.exports = {
 	showHelp,

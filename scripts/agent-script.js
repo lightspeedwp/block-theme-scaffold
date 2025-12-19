@@ -4,38 +4,37 @@
  * The tests rely on the structured output to determine the script behavior.
  */
 
-const args = process.argv.slice( 2 );
+const args = process.argv.slice(2);
 const sensitivePattern = /(token|secret|password|key)/i;
 
-const maskValue = ( key, value ) =>
-	sensitivePattern.test( key ) ? '***' : value;
+const maskValue = (key, value) => (sensitivePattern.test(key) ? '***' : value);
 
 const printArguments = () => {
-	console.log( 'Arguments:' );
+	console.log('Arguments:');
 
-	if ( args.length === 0 ) {
-		console.log( '  (none)' );
+	if (args.length === 0) {
+		console.log('  (none)');
 		return;
 	}
 
-	args.forEach( ( arg ) => {
-		console.log( `  ${ arg }` );
-	} );
+	args.forEach((arg) => {
+		console.log(`  ${arg}`);
+	});
 };
 
 const printEnvironment = () => {
-	console.log( 'Environment:' );
+	console.log('Environment:');
 
-	Object.keys( process.env )
+	Object.keys(process.env)
 		.sort()
-		.forEach( ( key ) => {
-			const value = maskValue( key, process.env[ key ] );
-			console.log( `  ${ key }=${ value }` );
-		} );
+		.forEach((key) => {
+			const value = maskValue(key, process.env[key]);
+			console.log(`  ${key}=${value}`);
+		});
 };
 
-console.log( 'Agent Script Running' );
+console.log('Agent Script Running');
 printArguments();
 printEnvironment();
 
-process.exit( 0 );
+process.exit(0);

@@ -1,4 +1,3 @@
-
 /**
  * @file dry-run-test-scripts.js
  * @description Dry-run script for scripts/__tests__ Jest tests.

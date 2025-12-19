@@ -9,27 +9,27 @@
  */
 // Usage: node scripts/agents/block-theme-build.agent.js
 
-const { execSync } = require( 'child_process' );
+const { execSync } = require('child_process');
 
-function run( cmd ) {
-	console.log( `$ ${ cmd }` );
-	execSync( cmd, { stdio: 'inherit' } );
+function run(cmd) {
+	console.log(`$ ${cmd}`);
+	execSync(cmd, { stdio: 'inherit' });
 }
 
 function main() {
-	console.log( 'Block theme build agent starting...' );
+	console.log('Block theme build agent starting...');
 
 	// 1. Install dependencies
-	run( 'npm ci' );
+	run('npm ci');
 
 	// 2. Lint
-	run( 'npm run lint' );
+	run('npm run lint');
 
 	// 3. Build
-	run( 'npm run build' );
+	run('npm run build');
 
 	// 4. Test
-	run( 'npm test' );
+	run('npm test');
 
 	// 5. Report success
 	console.log(
@@ -42,6 +42,6 @@ module.exports = {
 	run,
 };
 
-if ( require.main === module ) {
+if (require.main === module) {
 	main();
 }

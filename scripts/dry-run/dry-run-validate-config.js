@@ -1,4 +1,3 @@
-
 /**
  * @file dry-run-validate-config.js
  * @description Dry-run script for config validation.

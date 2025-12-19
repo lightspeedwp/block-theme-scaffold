@@ -13,16 +13,16 @@
  * @package
  */
 
-const { PLACEHOLDER_MAP } = require( '../utils/placeholders' );
+const { PLACEHOLDER_MAP } = require('../utils/placeholders');
 
 /**
  * Default mustache variable values for dry-run testing
  */
 const PLACEHOLDER_VALUES = Object.fromEntries(
-	Object.entries( PLACEHOLDER_MAP ).map( ( [ key, value ] ) => [
-		key.replace( /^\{\{|\}\}$/g, '' ),
+	Object.entries(PLACEHOLDER_MAP).map(([key, value]) => [
+		key.replace(/^\{\{|\}\}$/g, ''),
 		value,
-	] )
+	])
 );
 
 const DRY_RUN_VALUES = {
@@ -84,8 +84,8 @@ function getDryRunConfig() {
  * @param {*}      defaultValue - Default value if key not found
  * @return {*} The configuration value
  */
-function getDryRunValue( key, defaultValue = '' ) {
-	return DRY_RUN_VALUES[ key ] ?? defaultValue;
+function getDryRunValue(key, defaultValue = '') {
+	return DRY_RUN_VALUES[key] ?? defaultValue;
 }
 
 /**
@@ -104,32 +104,29 @@ function isDryRun() {
  * @param {Object} values  - Optional custom values (defaults to DRY_RUN_VALUES)
  * @return {string} Content with variables replaced
  */
-function replaceMustacheVars( content, values = DRY_RUN_VALUES ) {
+function replaceMustacheVars(content, values = DRY_RUN_VALUES) {
 	let result = content;
 
 	// Replace all PLACEHOLDER patterns
-	Object.entries( values ).forEach( ( [ key, value ] ) => {
-		const regex = new RegExp( `\\{\\{${ key }\\}\\}`, 'g' );
-		result = result.replace( regex, value );
-	} );
+	Object.entries(values).forEach(([key, value]) => {
+		const regex = new RegExp(`\\{\\{${key}\\}\\}`, 'g');
+		result = result.replace(regex, value);
+	});
 
 	// Support upper filter syntax (e.g., PLACEHOLDER)
-	result = result.replace(
-		/\{\{([^}|]+)\|upper\}\}/g,
-		( match, varName ) => {
-			const key = `PLACEHOLDER}`;
-			const value = values[ key ] ?? DRY_RUN_VALUES[ key ];
+	result = result.replace(/\{\{([^}|]+)\|upper\}\}/g, (match, varName) => {
+		const key = `PLACEHOLDER}`;
+		const value = values[key] ?? DRY_RUN_VALUES[key];
 
-			if ( ! value ) {
-				return match;
-			}
-
-			return value.toUpperCase().replace( /-/g, '_' );
+		if (!value) {
+			return match;
 		}
-	);
+
+		return value.toUpperCase().replace(/-/g, '_');
+	});
 
 	// Replace any remaining placeholders with a safe fallback to avoid leaking PLACEHOLDER tokens.
-	result = result.replace( /\{\{[^}]+\}\}/g, 'PLACEHOLDER' );
+	result = result.replace(/\{\{[^}]+\}\}/g, 'PLACEHOLDER');
 
 	return result;
 }
@@ -141,10 +138,10 @@ function replaceMustacheVars( content, values = DRY_RUN_VALUES ) {
  * @param {Object} values   - Optional custom values
  * @return {string} Content with variables replaced
  */
-function replaceMustacheVarsInFile( filePath, values = DRY_RUN_VALUES ) {
-	const fs = require( 'fs' );
-	const content = fs.readFileSync( filePath, 'utf8' );
-	return replaceMustacheVars( content, values );
+function replaceMustacheVarsInFile(filePath, values = DRY_RUN_VALUES) {
+	const fs = require('fs');
+	const content = fs.readFileSync(filePath, 'utf8');
+	return replaceMustacheVars(content, values);
 }
 
 /**
@@ -156,30 +153,30 @@ function replaceMustacheVarsInFile( filePath, values = DRY_RUN_VALUES ) {
 function getFilesWithMustacheVars(
 	pattern = '**/*.{js,jsx,php,json,scss,css,html}'
 ) {
-	const glob = require( 'glob' );
-	const fs = require( 'fs' );
-	const path = require( 'path' );
+	const glob = require('glob');
+	const fs = require('fs');
+	const path = require('path');
 
-	const baseDir = path.resolve( __dirname, '..' );
-	const matches = glob.sync( pattern, {
+	const baseDir = path.resolve(__dirname, '..');
+	const matches = glob.sync(pattern, {
 		cwd: baseDir,
-		ignore: [ 'node_modules/**', 'vendor/**', 'build/**', '.git/**' ],
+		ignore: ['node_modules/**', 'vendor/**', 'build/**', '.git/**'],
 		nodir: true,
 		follow: true,
-	} );
+	});
 
 	return matches
-		.map( ( relativePath ) => path.join( baseDir, relativePath ) )
-		.filter( ( absolutePath ) => {
-			const stat = fs.statSync( absolutePath );
-			if ( ! stat.isFile() ) {
+		.map((relativePath) => path.join(baseDir, relativePath))
+		.filter((absolutePath) => {
+			const stat = fs.statSync(absolutePath);
+			if (!stat.isFile()) {
 				return false;
 			}
-			const content = fs.readFileSync( absolutePath, 'utf8' );
-			return /\{\{[a-z_]+\}\}/i.test( content );
-		} )
-		.map( ( absolutePath ) =>
-			path.relative( baseDir, absolutePath ).replace( /\\/g, '/' )
+			const content = fs.readFileSync(absolutePath, 'utf8');
+			return /\{\{[a-z_]+\}\}/i.test(content);
+		})
+		.map((absolutePath) =>
+			path.relative(baseDir, absolutePath).replace(/\\/g, '/')
 		);
 }
 
@@ -199,8 +196,8 @@ module.exports = {
  * @param {string} level
  * @param {string} message
  */
-function log( level, message ) {
-	process.stdout.write( `[${ level }] ${ message }\n` );
+function log(level, message) {
+	process.stdout.write(`[${level}] ${message}\n`);
 }
 
 /**
@@ -208,34 +205,34 @@ function log( level, message ) {
  *
  * @param {string} message
  */
-function print( message = '' ) {
-	process.stdout.write( `${ message }\n` );
+function print(message = '') {
+	process.stdout.write(`${message}\n`);
 }
 
 // CLI usage
-if ( require.main === module ) {
-	const args = process.argv.slice( 2 );
-	const command = args[ 0 ];
+if (require.main === module) {
+	const args = process.argv.slice(2);
+	const command = args[0];
 
-	switch ( command ) {
+	switch (command) {
 		case 'config':
-			print( JSON.stringify( getDryRunConfig(), null, 2 ) );
+			print(JSON.stringify(getDryRunConfig(), null, 2));
 			break;
 
 		case 'value':
-			print( getDryRunValue( args[ 1 ] ) );
+			print(getDryRunValue(args[1]));
 			break;
 
 		case 'files':
-			print( getFilesWithMustacheVars( args[ 1 ] ).join( '\n' ) );
+			print(getFilesWithMustacheVars(args[1]).join('\n'));
 			break;
 
 		case 'replace':
-			if ( args[ 1 ] ) {
-				print( replaceMustacheVarsInFile( args[ 1 ] ) );
+			if (args[1]) {
+				print(replaceMustacheVarsInFile(args[1]));
 			} else {
-				log( 'ERROR', 'Please provide a file path for replacement' );
-				process.exit( 1 );
+				log('ERROR', 'Please provide a file path for replacement');
+				process.exit(1);
 			}
 			break;
 
@@ -260,8 +257,8 @@ Examples:
   node scripts/dry-run/dry-run-config.js replace src/index.js
 				`.trim()
 			);
-			if ( args.length === 0 ) {
-				process.exit( 0 );
+			if (args.length === 0) {
+				process.exit(0);
 			}
 			break;
 	}

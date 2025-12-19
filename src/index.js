@@ -39,7 +39,7 @@ const getWpBlocks = () => {
 	return wp.blocks ?? {};
 };
 
-function buildSettings( definition ) {
+function buildSettings(definition) {
 	return {
 		apiVersion: 2,
 		title: definition.title,
@@ -52,14 +52,14 @@ function buildSettings( definition ) {
 function registerThemeBlocks() {
 	const blocks = getWpBlocks();
 	const register = blocks.registerBlockType;
-	if ( typeof register !== 'function' ) {
+	if (typeof register !== 'function') {
 		return [];
 	}
 
-	return blockDefinitions.map( ( config ) => {
-		register( config.name, buildSettings( config ) );
+	return blockDefinitions.map((config) => {
+		register(config.name, buildSettings(config));
 		return config.name;
-	} );
+	});
 }
 
 registerThemeBlocks();

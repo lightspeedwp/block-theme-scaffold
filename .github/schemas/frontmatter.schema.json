@@ -62,27 +62,27 @@
 			},
 			"minItems": 1
 		},
-    "permissions": {
-      "type": "array",
-      "items": {
-        "type": "string",
-        "enum": [
-          "read",
-          "write",
-          "execute",
-          "filesystem",
-          "network",
-          "shell",
-          "github:repo",
-          "github:issues",
-          "github:pulls",
-          "github:workflows",
-          "github:checks",
-          "github:actions"
-        ]
-      },
-      "uniqueItems": true
-    },
+		"permissions": {
+			"type": "array",
+			"items": {
+				"type": "string",
+				"enum": [
+					"read",
+					"write",
+					"execute",
+					"filesystem",
+					"network",
+					"shell",
+					"github:repo",
+					"github:issues",
+					"github:pulls",
+					"github:workflows",
+					"github:checks",
+					"github:actions"
+				]
+			},
+			"uniqueItems": true
+		},
 		"references": {
 			"type": "array",
 			"items": {
@@ -96,10 +96,10 @@
 					"type": "string"
 				}
 			},
-			"required": [ "guardrails" ],
+			"required": ["guardrails"],
 			"additionalProperties": true
 		}
 	},
-	"required": [ "description", "tools", "metadata" ],
+	"required": ["description", "tools", "metadata"],
 	"additionalProperties": true
 }

@@ -50,10 +50,10 @@ function {{theme_slug}}_enqueue_assets() {
 	if ( file_exists( $asset_file ) ) {
 		$asset = include $asset_file;
 		       wp_enqueue_style(
-			       '{{theme_slug}}-style',
+				   '{{asset_slug}}-style',
 			       get_theme_file_uri( 'build/css/style.css' ),
 			       $asset['dependencies'] ?? array(),
-			       $asset['version'] ?? {{theme_slug|upper}}_VERSION
+				   $asset['version'] ?? {{theme_slug|upper}}_VERSION
 		       );
 	}
 
@@ -62,17 +62,17 @@ function {{theme_slug}}_enqueue_assets() {
 	if ( file_exists( $js_asset_file ) ) {
 		$js_asset = include $js_asset_file;
 		       wp_enqueue_script(
-			       '{{theme_slug}}-script',
+				   '{{asset_slug}}-script',
 			       get_theme_file_uri( 'build/js/theme.js' ),
 			       $js_asset['dependencies'] ?? array(),
-			       $js_asset['version'] ?? {{theme_slug|upper}}_VERSION,
+				   $js_asset['version'] ?? {{theme_slug|upper}}_VERSION,
 			       true
 		       );
 
 		// Set script translations.
 		       wp_set_script_translations(
-			       '{{theme_slug}}-script',
-			       '{{theme_slug}}',
+				   '{{asset_slug}}-script',
+				   '{{theme_slug}}',
 			       get_theme_file_path( 'languages' )
 		       );
 	}
@@ -87,10 +87,10 @@ function {{theme_slug}}_enqueue_editor_assets() {
 	if ( file_exists( $editor_asset_file ) ) {
 		$editor_asset = include $editor_asset_file;
 		       wp_enqueue_style(
-			       '{{theme_slug}}-editor-style',
+				   '{{asset_slug}}-editor-style',
 			       get_theme_file_uri( 'build/css/editor-style.css' ),
 			       $editor_asset['dependencies'] ?? array(),
-			       $editor_asset['version'] ?? {{theme_slug|upper}}_VERSION
+				   $editor_asset['version'] ?? {{theme_slug|upper}}_VERSION
 		       );
 	}
 
@@ -99,17 +99,17 @@ function {{theme_slug}}_enqueue_editor_assets() {
 	if ( file_exists( $editor_js_asset_file ) ) {
 		$editor_js_asset = include $editor_js_asset_file;
 		       wp_enqueue_script(
-			       '{{theme_slug}}-editor-script',
+				   '{{asset_slug}}-editor-script',
 			       get_theme_file_uri( 'build/js/editor.js' ),
 			       $editor_js_asset['dependencies'] ?? array(),
-			       $editor_js_asset['version'] ?? {{theme_slug|upper}}_VERSION,
+				   $editor_js_asset['version'] ?? {{theme_slug|upper}}_VERSION,
 			       true
 		       );
 
 		// Set script translations for editor.
 		       wp_set_script_translations(
-			       '{{theme_slug}}-editor-script',
-			       '{{theme_slug}}',
+				   '{{asset_slug}}-editor-script',
+				   '{{theme_slug}}',
 			       get_theme_file_path( 'languages' )
 		       );
 	}
@@ -120,14 +120,14 @@ add_action( 'enqueue_block_editor_assets', '{{theme_slug}}_enqueue_editor_assets
  * Register block pattern categories.
  */
 function {{theme_slug}}_register_pattern_categories() {
-	       $categories = array(
-		       '{{theme_slug}}-hero'    => array( 'label' => __( '{{theme_name}} Hero', '{{theme_slug}}' ) ),
-		       '{{theme_slug}}-about'   => array( 'label' => __( '{{theme_name}} About', '{{theme_slug}}' ) ),
-		       '{{theme_slug}}-contact' => array( 'label' => __( '{{theme_name}} Contact', '{{theme_slug}}' ) ),
-		       '{{theme_slug}}-cta'     => array( 'label' => __( '{{theme_name}} Call to Action', '{{theme_slug}}' ) ),
-		       '{{theme_slug}}-gallery' => array( 'label' => __( '{{theme_name}} Gallery', '{{theme_slug}}' ) ),
-		       '{{theme_slug}}-team'    => array( 'label' => __( '{{theme_name}} Team', '{{theme_slug}}' ) ),
-	       );
+		       $categories = array(
+			       '{{pattern_slug}}-hero'    => array( 'label' => __( '{{theme_name}} Hero', '{{theme_slug}}' ) ),
+			       '{{pattern_slug}}-about'   => array( 'label' => __( '{{theme_name}} About', '{{theme_slug}}' ) ),
+			       '{{pattern_slug}}-contact' => array( 'label' => __( '{{theme_name}} Contact', '{{theme_slug}}' ) ),
+			       '{{pattern_slug}}-cta'     => array( 'label' => __( '{{theme_name}} Call to Action', '{{theme_slug}}' ) ),
+			       '{{pattern_slug}}-gallery' => array( 'label' => __( '{{theme_name}} Gallery', '{{theme_slug}}' ) ),
+			       '{{pattern_slug}}-team'    => array( 'label' => __( '{{theme_name}} Team', '{{theme_slug}}' ) ),
+		       );
 
 	foreach ( $categories as $slug => $args ) {
 		register_block_pattern_category( $slug, $args );
@@ -155,9 +155,9 @@ foreach ( $theme_includes as $file ) {
  * Add custom image sizes.
  */
 function {{theme_slug}}_add_image_sizes() {
-	add_image_size( '{{theme_slug}}-featured', {{featured_image_width}}, {{featured_image_height}}, true );
-	add_image_size( '{{theme_slug}}-thumbnail', {{thumbnail_width}}, {{thumbnail_height}}, true );
-	add_image_size( '{{theme_slug}}-gallery', {{gallery_image_width}}, {{gallery_image_height}}, true );
+	add_image_size( '{{asset_slug}}-featured', {{featured_image_width}}, {{featured_image_height}}, true );
+	add_image_size( '{{asset_slug}}-thumbnail', {{thumbnail_width}}, {{thumbnail_height}}, true );
+	add_image_size( '{{asset_slug}}-gallery', {{gallery_image_width}}, {{gallery_image_height}}, true );
 }
 add_action( 'after_setup_theme', '{{theme_slug}}_add_image_sizes' );
 

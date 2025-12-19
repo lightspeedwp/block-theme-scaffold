@@ -316,11 +316,11 @@ function replacePlaceholders( content ) {
 		result = result.split( key ).join( value );
 	}
 
-	// Second pass: handle filter syntax like PLACEHOLDER
+	// Second pass: handle filter syntax like {{theme_slug|upper}}
 	result = result.replace(
 		/\{\{([^}|]+)\|upper\}\}/g,
 		( match, varName ) => {
-			const key = `PLACEHOLDER}`;
+			const key = `{{${varName}}}`;
 			const value = placeholders[ key ];
 			return value ? value.toUpperCase().replace( /-/g, '_' ) : match;
 		}
@@ -343,15 +343,15 @@ function updateMetadataFiles( destRoot ) {
 	if ( fs.existsSync( pkgPath ) ) {
 		try {
 			const pkg = JSON.parse( fs.readFileSync( pkgPath, 'utf8' ) );
-			pkg.name = placeholders[ 'PLACEHOLDER' ];
-			pkg.version = placeholders[ '1.0.0' ];
-			pkg.author = placeholders[ 'Example Author' ];
-			pkg.license = placeholders[ 'GPL-2.0-or-later' ];
-			pkg.homepage = placeholders[ 'PLACEHOLDER' ];
+			pkg.name = placeholders['{{theme_slug}}'];
+			pkg.version = placeholders['{{version}}'];
+			pkg.author = placeholders['{{author}}'];
+			pkg.license = placeholders['{{license}}'];
+			pkg.homepage = placeholders['{{theme_uri}}'];
 			pkg.repository = pkg.repository || {};
-			pkg.repository.url = placeholders[ 'PLACEHOLDER' ];
+			pkg.repository.url = placeholders['{{theme_repo_url}}'];
 			pkg.bugs = pkg.bugs || {};
-			pkg.bugs.url = `${ placeholders[ 'PLACEHOLDER' ] }/issues`;
+			pkg.bugs.url = `${placeholders['{{theme_repo_url}}']}/issues`;
 			pkg.themeMeta = pkg.themeMeta || {};
 			pkg.themeMeta.updated = new Date().toISOString().slice( 0, 10 );
 			fs.writeFileSync( pkgPath, JSON.stringify( pkg, null, 2 ) );
@@ -368,18 +368,18 @@ function updateMetadataFiles( destRoot ) {
 			const composer = JSON.parse(
 				fs.readFileSync( composerPath, 'utf8' )
 			);
-			const vendor = toPackageVendor( placeholders[ 'Example Author' ] );
-			composer.name = `${ vendor }/${ placeholders[ 'PLACEHOLDER' ] }`;
-			composer.version = placeholders[ '1.0.0' ];
-			composer.description =
-				composer.description ||
-				`WordPress block theme: ${ placeholders[ 'PLACEHOLDER' ] }`;
-			composer.authors = [
-				{
-					name: placeholders[ 'Example Author' ],
-					homepage: placeholders[ 'https://example.com' ],
-				},
-			];
+			       const vendor = toPackageVendor(placeholders['{{author}}']);
+			       composer.name = `${vendor}/${placeholders['{{theme_slug}}']}`;
+			       composer.version = placeholders['{{version}}'];
+			       composer.description =
+				       composer.description ||
+				       `WordPress block theme: ${placeholders['{{theme_name}}']}`;
+			       composer.authors = [
+				       {
+					       name: placeholders['{{author}}'],
+					       homepage: placeholders['{{author_uri}}'],
+				       },
+			       ];
 			fs.writeFileSync(
 				composerPath,
 				JSON.stringify( composer, null, 2 )
@@ -399,51 +399,51 @@ function updateMetadataFiles( destRoot ) {
 			// Replace common header fields with provided values
 			styleContent = styleContent.replace(
 				/Theme Name:.*$/m,
-				`Theme Name: ${ placeholders[ 'PLACEHOLDER' ] }`
+				   `Theme Name: ${ placeholders['{{theme_name}}'] }`
 			);
 			styleContent = styleContent.replace(
 				/Theme URI:.*$/m,
-				`Theme URI: ${ placeholders[ 'PLACEHOLDER' ] }`
+				   `Theme URI: ${ placeholders['{{theme_uri}}'] }`
 			);
 			styleContent = styleContent.replace(
 				/Author:.*$/m,
-				`Author: ${ placeholders[ 'Example Author' ] }`
+				   `Author: ${ placeholders['{{author}}'] }`
 			);
 			styleContent = styleContent.replace(
 				/Author URI:.*$/m,
-				`Author URI: ${ placeholders[ 'https://example.com' ] }`
+				   `Author URI: ${ placeholders['{{author_uri}}'] }`
 			);
 			styleContent = styleContent.replace(
 				/Description:.*$/m,
-				`Description: ${ placeholders[ 'A multi-block WordPress plugin scaffold example' ] }`
+				   `Description: ${ placeholders['{{description}}'] }`
 			);
 			styleContent = styleContent.replace(
 				/Version:.*$/m,
-				`Version: ${ placeholders[ '1.0.0' ] }`
+				   `Version: ${ placeholders['{{version}}'] }`
 			);
 			styleContent = styleContent.replace(
 				/Requires at least:.*$/m,
-				`Requires at least: ${ placeholders[ 'PLACEHOLDER' ] }`
+				   `Requires at least: ${ placeholders['{{min_wp_version}}'] }`
 			);
 			styleContent = styleContent.replace(
 				/Tested up to:.*$/m,
-				`Tested up to: ${ placeholders[ 'PLACEHOLDER' ] }`
+				   `Tested up to: ${ placeholders['{{tested_wp_version}}'] }`
 			);
 			styleContent = styleContent.replace(
 				/Requires PHP:.*$/m,
-				`Requires PHP: ${ placeholders[ 'PLACEHOLDER' ] }`
+				   `Requires PHP: ${ placeholders['{{min_php_version}}'] }`
 			);
 			styleContent = styleContent.replace(
 				/License:.*$/m,
-				`License: ${ placeholders[ 'GPL-2.0-or-later' ] }`
+				   `License: ${ placeholders['{{license}}'] }`
 			);
 			styleContent = styleContent.replace(
 				/License URI:.*$/m,
-				`License URI: ${ placeholders[ 'https://www.gnu.org/licenses/gpl-2.0.html' ] }`
+				   `License URI: ${ placeholders['{{license_uri}}'] }`
 			);
 			styleContent = styleContent.replace(
 				/Text Domain:.*$/m,
-				`Text Domain: ${ placeholders[ 'PLACEHOLDER' ] }`
+				   `Text Domain: ${ placeholders['{{theme_slug}}'] }`
 			);
 
 			// Replace any remaining mustache tokens in the file body
@@ -480,16 +480,16 @@ function copyAndReplace( src, dest ) {
 				path.join( src, file ),
 				path.join(
 					dest,
-					file.replace(
-						'PLACEHOLDER',
-						placeholders[ 'PLACEHOLDER' ]
-					)
+					       file.replace(
+						       'PLACEHOLDER',
+						       placeholders['{{theme_slug}}']
+					       )
 				)
 			);
 		}
 	} else {
 		let content = fs.readFileSync( src, 'utf8' );
-		content = replacePlaceholders( content );
+			   content = replacePlaceholders( content );
 		fs.writeFileSync( dest, content );
 	}
 }
@@ -517,7 +517,7 @@ async function main() {
 
 	fs.mkdirSync( outputDir, { recursive: true } );
 
-	logger.info( `Theme generation started: ${ placeholders[ 'PLACEHOLDER' ] }` );
+	logger.info( `Theme generation started: ${ placeholders['{{theme_slug}}'] }` );
 	logger.debug( `Output directory: ${ outputDir }` );
 
 	for ( const file of fs.readdirSync( scaffoldDir ) ) {
@@ -540,8 +540,8 @@ async function main() {
 			path.join(
 				outputDir,
 				file.replace(
-					'PLACEHOLDER',
-					placeholders[ 'PLACEHOLDER' ]
+					'{{theme_slug}}',
+					placeholders['{{theme_slug}}']
 				)
 			)
 		);
@@ -583,7 +583,7 @@ async function main() {
 
 	void cleanupCount;
 
-	logger.info( `Theme generation completed successfully: ${ placeholders[ 'PLACEHOLDER' ] }` );
+	logger.info( `Theme generation completed successfully: ${ placeholders['{{theme_slug}}'] }` );
 	await logger.save();
 
 	const locationMsg = `Location: ${ path.relative(
@@ -595,9 +595,9 @@ async function main() {
 		outputDir
 	) }/ to wp-content/themes/`;
 
-	console.log(
-		`\u2713 Theme generated successfully!\n\n${ locationMsg }\n\nTheme Details:\n  Name: ${ placeholders[ 'PLACEHOLDER' ] }\n  Slug: ${ placeholders[ 'PLACEHOLDER' ] }\n  Author: ${ placeholders[ 'Example Author' ] }\n  Version: ${ placeholders[ '1.0.0' ] }\n\nNext Steps:\n  1. Navigate to theme directory:\n     ${ cdMsg }\n\n  2. Install dependencies:\n     npm install\n     composer install\n\n  3. Start development:\n     npm run start\n\n  4. Build for production:\n     npm run build\n\n  5. Install in WordPress:\n     - ${ installMsg }\n     - Activate in WordPress admin\n\nFor documentation, see:\n  - README.md (theme overview)\n  - DEVELOPMENT.md (development workflow)\n  - docs/ (complete documentation)\n`
-	);
+	       console.log(
+		       `\u2713 Theme generated successfully!\n\n${ locationMsg }\n\nTheme Details:\n  Name: ${ placeholders['{{theme_name}}'] }\n  Slug: ${ placeholders['{{theme_slug}}'] }\n  Author: ${ placeholders['{{author}}'] }\n  Version: ${ placeholders['{{version}}'] }\n\nNext Steps:\n  1. Navigate to theme directory:\n     ${ cdMsg }\n\n  2. Install dependencies:\n     npm install\n     composer install\n\n  3. Start development:\n     npm run start\n\n  4. Build for production:\n     npm run build\n\n  5. Install in WordPress:\n     - ${ installMsg }\n     - Activate in WordPress admin\n\nFor documentation, see:\n  - README.md (theme overview)\n  - DEVELOPMENT.md (development workflow)\n  - docs/ (complete documentation)\n`
+	       );
 }
 
 async function runScript() {
@@ -638,176 +638,55 @@ async function runScript() {
 		}
 	} catch ( e ) {
 		if ( e.message === 'protocol' ) {
-			throw new Error( 'protocol' );
-		}
-		throw new Error( 'Invalid URL' );
-	}
-
-	try {
-		if ( configData.theme_slug || argMap.slug ) {
-			themeSlug = sanitizeInput(
-				configData.theme_slug || argMap.slug,
-				'slug'
-			);
-		}
-	} catch ( e ) {
-		if ( e.message === 'path traversal' ) {
-			throw new Error( 'path traversal' );
-		}
-		throw new Error( 'Invalid slug' );
-	}
-
-	placeholders = {
-		'PLACEHOLDER': themeSlug,
-		'PLACEHOLDER': ( () => {
-			try {
-				return (
-					sanitizeInput(
-						configData.theme_name || argMap.name,
-						'name'
-					) || 'My Theme'
-				);
-			} catch ( e ) {
-				throw new Error( 'Invalid name' );
-			}
-		} )(),
-		'A multi-block WordPress plugin scaffold example':
-			sanitizeInput(
-				configData.description || argMap.description,
-				'text'
-			) || 'A WordPress block theme.',
-		'Example Author': author,
-		'https://example.com': authorUri,
-		'1.0.0': ( () => {
-			try {
-				return (
-					sanitizeInput(
-						configData.version || argMap.version,
-						'version'
-					) || '1.0.0'
-				);
-			} catch ( e ) {
-				throw new Error( 'semantic versioning' );
-			}
-		} )(),
-		'PLACEHOLDER':
-			sanitizeInput(
-				configData.theme_uri || argMap.theme_uri,
-				'url'
-			) ||
-			'https://example.com/theme',
-		'PLACEHOLDER':
-			sanitizeInput(
-				configData.min_wp_version || argMap.min_wp_version,
-				'version'
-			) || '6.5',
-		'PLACEHOLDER':
-			sanitizeInput(
-				configData.tested_wp_version || argMap.tested_wp_version,
-				'version'
-			) || '6.7',
-		'PLACEHOLDER':
-			sanitizeInput(
-				configData.min_php_version || argMap.min_php_version,
-				'version'
-			) || '8.0',
-		'GPL-2.0-or-later': ( () => {
-			try {
-				return (
-					sanitizeInput(
-						configData.license || argMap.license,
-						'license'
-					) || 'GPL-2.0-or-later'
-				);
-			} catch ( e ) {
-				return 'GPL-2.0-or-later';
-			}
-		} )(),
-		'https://www.gnu.org/licenses/gpl-2.0.html':
-			sanitizeInput(
-				configData.license_uri || argMap.license_uri,
-				'url'
-			) || 'https://www.gnu.org/licenses/gpl-2.0.html',
-		'PLACEHOLDER':
-			sanitizeInput(
-				configData.theme_repo_url || argMap.theme_repo_url,
-				'url'
-			) || `https://github.com/${ author }/${ themeSlug }`,
-		'example_plugin': themeSlug.replace( /-/g, '_' ),
-		'PLACEHOLDER': `https://wordpress.org/support/theme/${ themeSlug }`,
-		'PLACEHOLDER': `support@$${
-				authorUri.replace( /^https?:\/\/(www\.)?/, '' ).split( '/' )[ 0 ]
-			}`,
-		'PLACEHOLDER': `security@$${
-				authorUri.replace( /^https?:\/\/(www\.)?/, '' ).split( '/' )[ 0 ]
-			}`,
-		'PLACEHOLDER': `contact@$${
-				authorUri.replace( /^https?:\/\/(www\.)?/, '' ).split( '/' )[ 0 ]
-			}`,
-		'PLACEHOLDER': `https://github.com/${ author }/${ themeSlug }/wiki`,
-		'PLACEHOLDER': `https://github.com/${ author }/${ themeSlug }`,
-		'PLACEHOLDER': authorUri,
-		'PLACEHOLDER': authorUri,
-		'PLACEHOLDER': authorUri,
-		'PLACEHOLDER':
-			configData.design_system_colors_primary_color || '#0073aa',
-		'PLACEHOLDER':
-			configData.design_system_colors_secondary_color || '#005177',
-		'PLACEHOLDER':
-			configData.design_system_colors_background_color || '#ffffff',
-		'PLACEHOLDER':
-			configData.design_system_colors_text_color || '#1a1a1a',
-		'PLACEHOLDER':
-			configData.design_system_colors_accent_color || '#ff6b35',
-		'PLACEHOLDER':
-			configData.design_system_colors_neutral_color || '#6c757d',
-		'PLACEHOLDER':
-			configData.design_system_typography_heading_font_family ||
-			"system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
-		'PLACEHOLDER':
-			configData.design_system_typography_heading_font_name ||
-			'System Font',
-		'PLACEHOLDER':
-			configData.design_system_typography_body_font_family ||
-			"system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
-		'PLACEHOLDER':
-			configData.design_system_typography_body_font_name || 'System Font',
-		'PLACEHOLDER':
-			configData.design_system_typography_heading_font_weight || '700',
-		'PLACEHOLDER':
-			configData.design_system_typography_body_line_height || '1.6',
-		'PLACEHOLDER':
-			configData.design_system_typography_heading_line_height || '1.2',
-		'PLACEHOLDER':
-			configData.design_system_typography_button_font_weight || '600',
-		'PLACEHOLDER':
-			configData.design_system_typography_site_title_font_weight || '700',
-		'PLACEHOLDER':
-			configData.design_system_layout_content_width || '720px',
-		'PLACEHOLDER':
-			configData.design_system_layout_wide_width || '1200px',
-		'PLACEHOLDER': (
-			configData.design_system_layout_content_width || '720px'
-		).replace( /[^\d]/g, '' ),
-		'PLACEHOLDER':
-			configData.content_button_border_radius || '4px',
-		'PLACEHOLDER': configData.content_excerpt_more || '...',
-		'PLACEHOLDER':
-			configData.content_skip_link_text || 'Skip to content',
-		'PLACEHOLDER': new Date().getFullYear().toString(),
-		'PLACEHOLDER': configData.content_excerpt_length || '55',
-		'PLACEHOLDER': configData.image_sizes_thumbnail_width || '150',
-		'PLACEHOLDER':
-			configData.image_sizes_thumbnail_height || '150',
-		'PLACEHOLDER':
-			configData.image_sizes_featured_image_width || '1200',
-		'PLACEHOLDER':
-			configData.image_sizes_featured_image_height || '630',
-		'PLACEHOLDER':
-			configData.image_sizes_gallery_image_width || '800',
-		'PLACEHOLDER':
-			configData.image_sizes_gallery_image_height || '600',
-	};
+				       placeholders = {
+					       '{{theme_name}}': sanitizeInput(configData.theme_name || argMap.name, 'name') || 'My Theme',
+					       '{{theme_slug}}': themeSlug,
+					       '{{description}}': sanitizeInput(configData.description || argMap.description, 'text') || 'A WordPress block theme.',
+					       '{{author}}': author,
+					       '{{author_uri}}': authorUri,
+					       '{{version}}': sanitizeInput(configData.version || argMap.version, 'version') || '1.0.0',
+					       '{{theme_uri}}': sanitizeInput(configData.theme_uri || argMap.theme_uri, 'url') || 'https://example.com/theme',
+					       '{{min_wp_version}}': sanitizeInput(configData.min_wp_version || argMap.min_wp_version, 'version') || '6.5',
+					       '{{tested_wp_version}}': sanitizeInput(configData.tested_wp_version || argMap.tested_wp_version, 'version') || '6.7',
+					       '{{min_php_version}}': sanitizeInput(configData.min_php_version || argMap.min_php_version, 'version') || '8.0',
+					       '{{license}}': sanitizeInput(configData.license || argMap.license, 'license') || 'GPL-2.0-or-later',
+					       '{{license_uri}}': sanitizeInput(configData.license_uri || argMap.license_uri, 'url') || 'https://www.gnu.org/licenses/gpl-2.0.html',
+					       '{{theme_repo_url}}': sanitizeInput(configData.theme_repo_url || argMap.theme_repo_url, 'url') || `https://github.com/${author}/${themeSlug}`,
+					       '{{support_url}}': `https://wordpress.org/support/theme/${themeSlug}`,
+					       '{{docs_url}}': `https://github.com/${author}/${themeSlug}/wiki`,
+					       '{{changelog_url}}': `https://github.com/${author}/${themeSlug}`,
+					       '{{security_email}}': `security@${authorUri.replace(/^https?:\/\/(www\.)?/, '').split('/')[0]}`,
+					       '{{contact_email}}': `contact@${authorUri.replace(/^https?:\/\/(www\.)?/, '').split('/')[0]}`,
+					       '{{year}}': new Date().getFullYear().toString(),
+					       '{{primary_color}}': configData.design_system_colors_primary_color || '#0073aa',
+					       '{{secondary_color}}': configData.design_system_colors_secondary_color || '#005177',
+					       '{{background_color}}': configData.design_system_colors_background_color || '#ffffff',
+					       '{{text_color}}': configData.design_system_colors_text_color || '#1a1a1a',
+					       '{{accent_color}}': configData.design_system_colors_accent_color || '#ff6b35',
+					       '{{neutral_color}}': configData.design_system_colors_neutral_color || '#6c757d',
+					       '{{heading_font_family}}': configData.design_system_typography_heading_font_family || "system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
+					       '{{heading_font_name}}': configData.design_system_typography_heading_font_name || 'System Font',
+					       '{{body_font_family}}': configData.design_system_typography_body_font_family || "system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
+					       '{{body_font_name}}': configData.design_system_typography_body_font_name || 'System Font',
+					       '{{heading_font_weight}}': configData.design_system_typography_heading_font_weight || '700',
+					       '{{body_line_height}}': configData.design_system_typography_body_line_height || '1.6',
+					       '{{heading_line_height}}': configData.design_system_typography_heading_line_height || '1.2',
+					       '{{button_font_weight}}': configData.design_system_typography_button_font_weight || '600',
+					       '{{site_title_font_weight}}': configData.design_system_typography_site_title_font_weight || '700',
+					       '{{content_width_px}}': configData.design_system_layout_content_width || '720px',
+					       '{{wide_width_px}}': configData.design_system_layout_wide_width || '1200px',
+					       '{{content_width_num}}': (configData.design_system_layout_content_width || '720px').replace(/[^\d]/g, ''),
+					       '{{button_border_radius}}': configData.content_button_border_radius || '4px',
+					       '{{excerpt_more}}': configData.content_excerpt_more || '...',
+					       '{{skip_link_text}}': configData.content_skip_link_text || 'Skip to content',
+					       '{{excerpt_length}}': configData.content_excerpt_length || '55',
+					       '{{thumbnail_width}}': configData.image_sizes_thumbnail_width || '150',
+					       '{{thumbnail_height}}': configData.image_sizes_thumbnail_height || '150',
+					       '{{featured_image_width}}': configData.image_sizes_featured_image_width || '1200',
+					       '{{featured_image_height}}': configData.image_sizes_featured_image_height || '630',
+					       '{{gallery_image_width}}': configData.image_sizes_gallery_image_width || '800',
+					       '{{gallery_image_height}}': configData.image_sizes_gallery_image_height || '600',
+				       };
 
 	if ( argMap.author && placeholders[ 'Example Author' ] === 'Author Name' ) {
 		throw new Error( 'Invalid author name provided' );

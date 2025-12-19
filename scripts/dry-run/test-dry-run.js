@@ -27,10 +27,7 @@ const { replacePlaceholders } = require('../utils/placeholders');
  */
 
 // Unified logger for dry-run: always logs to logs/dryrun-debug.log
-const DRYRUN_LOG_PATH = path.resolve(
-	__dirname,
-	'../../logs/dryrun-debug.log'
-);
+const DRYRUN_LOG_PATH = path.resolve(__dirname, '../../logs/dryrun-debug.log');
 function formatLogMessage(level, message) {
 	const timestamp = new Date().toISOString();
 	return `[${timestamp}] [${level}] [dry-run] ${message}`;
@@ -221,8 +218,7 @@ function main() {
 		if (testType === 'jest' || testType === 'all') {
 			logger.info('JavaScript tests started (Jest)');
 			const jestConfigPath = path.join(tempDir, 'jest.config.js');
-			const jestCommand =
-				`npx jest scripts/dry-run/__tests__ --config "${jestConfigPath}" --testPathIgnorePatterns="^$"`;
+			const jestCommand = `npx jest scripts/dry-run/__tests__ --config "${jestConfigPath}" --testPathIgnorePatterns="^$"`;
 			try {
 				execSync(jestCommand, {
 					cwd: tempDir,
@@ -257,7 +253,9 @@ function main() {
 							require(absPath);
 							logger.info(`JS file loads: ${relPath}`);
 						} catch (e) {
-							logger.error(`JS file failed to load: ${relPath} - ${e.message}`);
+							logger.error(
+								`JS file failed to load: ${relPath} - ${e.message}`
+							);
 							success = false;
 						}
 					}
@@ -277,7 +275,9 @@ function main() {
 				const installCommand =
 					'composer install --no-interaction --prefer-dist --ansi --no-progress';
 				try {
-					logger.info('Installing PHP dependencies (composer install)');
+					logger.info(
+						'Installing PHP dependencies (composer install)'
+					);
 					execSync(installCommand, {
 						cwd: tempDir,
 						stdio: 'inherit',

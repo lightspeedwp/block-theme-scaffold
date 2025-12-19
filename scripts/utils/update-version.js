@@ -6,9 +6,8 @@
  * @package
  */
 
-const fs = require( 'fs' );
-const path = require( 'path' );
-
+const fs = require('fs');
+const path = require('path');
 
 const newVersion = process.argv[2];
 function log(level, message) {
@@ -20,11 +19,13 @@ if (!newVersion) {
 }
 const semverRegex = /^\d+\.\d+\.\d+(-[a-zA-Z0-9.-]+)?$/;
 if (!semverRegex.test(newVersion)) {
-	log('ERROR', 'Invalid version format. Use semantic versioning (e.g., 1.0.0)');
+	log(
+		'ERROR',
+		'Invalid version format. Use semantic versioning (e.g., 1.0.0)'
+	);
 	process.exit(1);
 }
 const rootDir = path.resolve(__dirname, '../..');
-
 
 const filesToUpdate = [
 	// Scaffold and generated theme meta files
@@ -35,18 +36,27 @@ const filesToUpdate = [
 	},
 	{
 		file: path.join(rootDir, 'package.json'),
-		update: (content) => content.replace(/"version":\s*"[^"]+"/, `"version": "${newVersion}"`),
+		update: (content) =>
+			content.replace(
+				/"version":\s*"[^"]+"/,
+				`"version": "${newVersion}"`
+			),
 		label: 'package.json',
 	},
 	{
 		file: path.join(rootDir, 'composer.json'),
-		update: (content) => content.replace(/"version":\s*"[^"]+"/, `"version": "${newVersion}"`),
+		update: (content) =>
+			content.replace(
+				/"version":\s*"[^"]+"/,
+				`"version": "${newVersion}"`
+			),
 		label: 'composer.json',
 	},
 	// For generated themes: style.css header
 	{
 		file: path.join(rootDir, 'style.css'),
-		update: (content) => content.replace(/Version:\s*[^\n]+/, `Version:     ${newVersion}`),
+		update: (content) =>
+			content.replace(/Version:\s*[^\n]+/, `Version:     ${newVersion}`),
 		label: 'style.css',
 	},
 ];
@@ -93,8 +103,14 @@ outputMetaFiles.forEach((relPath) => {
 		return;
 	}
 	// Try to update version in YAML frontmatter or version fields
-	let updated = content.replace(/version:\s*"[^"]+"/i, `version: "${newVersion}"`);
-	updated = updated.replace(/last_updated:\s*"[^"]+"/i, `last_updated: "${new Date().toISOString().slice(0,10)}"`);
+	let updated = content.replace(
+		/version:\s*"[^"]+"/i,
+		`version: "${newVersion}"`
+	);
+	updated = updated.replace(
+		/last_updated:\s*"[^"]+"/i,
+		`last_updated: "${new Date().toISOString().slice(0, 10)}"`
+	);
 	if (content !== updated) {
 		fs.writeFileSync(file, updated);
 		log('INFO', `Updated: ${relPath}`);

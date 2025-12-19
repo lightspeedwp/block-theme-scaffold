@@ -34,7 +34,10 @@ function compareRegistries(oldRegistry, newRegistry) {
 				name: key,
 				type: varData.type || 'string',
 				category: varData.category || 'other',
-				usage: varData.usage && varData.usage.length > 0 ? varData.usage[0] : null
+				usage:
+					varData.usage && varData.usage.length > 0
+						? varData.usage[0]
+						: null,
 			});
 		}
 	}
@@ -45,7 +48,7 @@ function compareRegistries(oldRegistry, newRegistry) {
 			removed.push({
 				name: key,
 				type: oldVars[key].type || 'string',
-				category: oldVars[key].category || 'other'
+				category: oldVars[key].category || 'other',
 			});
 		}
 	}
@@ -63,7 +66,7 @@ function compareRegistries(oldRegistry, newRegistry) {
 				changes.push({
 					field: 'type',
 					oldValue: oldVar.type,
-					newValue: newVar.type
+					newValue: newVar.type,
 				});
 			}
 
@@ -72,7 +75,7 @@ function compareRegistries(oldRegistry, newRegistry) {
 				changes.push({
 					field: 'category',
 					oldValue: oldVar.category,
-					newValue: newVar.category
+					newValue: newVar.category,
 				});
 			}
 
@@ -81,14 +84,14 @@ function compareRegistries(oldRegistry, newRegistry) {
 				changes.push({
 					field: 'count',
 					oldValue: oldVar.count || 0,
-					newValue: newVar.count || 0
+					newValue: newVar.count || 0,
 				});
 			}
 
 			if (changes.length > 0) {
 				modified.push({
 					name: key,
-					changes
+					changes,
 				});
 			}
 		}
@@ -102,8 +105,8 @@ function compareRegistries(oldRegistry, newRegistry) {
 			addedCount: added.length,
 			removedCount: removed.length,
 			modifiedCount: modified.length,
-			totalChanges: added.length + removed.length + modified.length
-		}
+			totalChanges: added.length + removed.length + modified.length,
+		},
 	};
 }
 
@@ -131,8 +134,10 @@ function generateMarkdownReport(diff, timestamp = new Date().toISOString()) {
 	// Added variables
 	if (diff.added.length > 0) {
 		report += `## Added Variables (${diff.added.length})\n\n`;
-		diff.added.forEach(v => {
-			const location = v.usage ? ` - Found in \`${v.usage.file}:${v.usage.line}\`` : '';
+		diff.added.forEach((v) => {
+			const location = v.usage
+				? ` - Found in \`${v.usage.file}:${v.usage.line}\``
+				: '';
 			report += `- \`${v.name}\` (${v.type})${location}\n`;
 		});
 		report += '\n';
@@ -141,7 +146,7 @@ function generateMarkdownReport(diff, timestamp = new Date().toISOString()) {
 	// Removed variables
 	if (diff.removed.length > 0) {
 		report += `## Removed Variables (${diff.removed.length})\n\n`;
-		diff.removed.forEach(v => {
+		diff.removed.forEach((v) => {
 			report += `- \`${v.name}\` (${v.type}) - No longer found in codebase\n`;
 		});
 		report += '\n';
@@ -150,9 +155,9 @@ function generateMarkdownReport(diff, timestamp = new Date().toISOString()) {
 	// Modified variables
 	if (diff.modified.length > 0) {
 		report += `## Modified Variables (${diff.modified.length})\n\n`;
-		diff.modified.forEach(v => {
+		diff.modified.forEach((v) => {
 			report += `- \`${v.name}\`:\n`;
-			v.changes.forEach(change => {
+			v.changes.forEach((change) => {
 				report += `  - ${change.field}: \`${change.oldValue}\` → \`${change.newValue}\`\n`;
 			});
 		});
@@ -181,8 +186,10 @@ function generateConsoleSummary(diff) {
 
 	if (diff.added.length > 0) {
 		output += `✨ Added (${diff.added.length}):\n`;
-		diff.added.slice(0, 5).forEach(v => {
-			const location = v.usage ? ` (${v.usage.file}:${v.usage.line})` : '';
+		diff.added.slice(0, 5).forEach((v) => {
+			const location = v.usage
+				? ` (${v.usage.file}:${v.usage.line})`
+				: '';
 			output += `  + ${v.name} [${v.type}]${location}\n`;
 		});
 		if (diff.added.length > 5) {
@@ -193,7 +200,7 @@ function generateConsoleSummary(diff) {
 
 	if (diff.removed.length > 0) {
 		output += `🗑️  Removed (${diff.removed.length}):\n`;
-		diff.removed.slice(0, 5).forEach(v => {
+		diff.removed.slice(0, 5).forEach((v) => {
 			output += `  - ${v.name} [${v.type}]\n`;
 		});
 		if (diff.removed.length > 5) {
@@ -204,9 +211,9 @@ function generateConsoleSummary(diff) {
 
 	if (diff.modified.length > 0) {
 		output += `📝 Modified (${diff.modified.length}):\n`;
-		diff.modified.slice(0, 5).forEach(v => {
+		diff.modified.slice(0, 5).forEach((v) => {
 			output += `  ~ ${v.name}\n`;
-			v.changes.forEach(change => {
+			v.changes.forEach((change) => {
 				output += `    ${change.field}: ${change.oldValue} → ${change.newValue}\n`;
 			});
 		});
@@ -221,7 +228,7 @@ function generateConsoleSummary(diff) {
 module.exports = {
 	compareRegistries,
 	generateMarkdownReport,
-	generateConsoleSummary
+	generateConsoleSummary,
 };
 
 // CLI usage
@@ -229,7 +236,9 @@ if (require.main === module) {
 	const args = process.argv.slice(2);
 
 	if (args.length < 2) {
-		console.error('Usage: node registry-diff.js <old-registry.json> <new-registry.json>');
+		console.error(
+			'Usage: node registry-diff.js <old-registry.json> <new-registry.json>'
+		);
 		process.exit(1);
 	}
 

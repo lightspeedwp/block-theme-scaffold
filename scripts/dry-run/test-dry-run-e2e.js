@@ -16,14 +16,30 @@ function copyAndReplace(src, dest) {
 		if (!fs.existsSync(dest)) fs.mkdirSync(dest, { recursive: true });
 		const files = fs.readdirSync(src);
 		for (const file of files) {
-			if ([
-				'node_modules', 'vendor', 'build', '.git', '.test-temp-e2e', '.dry-run-backup',
-			].includes(file)) continue;
+			if (
+				[
+					'node_modules',
+					'vendor',
+					'build',
+					'.git',
+					'.test-temp-e2e',
+					'.dry-run-backup',
+				].includes(file)
+			)
+				continue;
 			copyAndReplace(path.join(src, file), path.join(dest, file));
 		}
 	} else {
 		const ext = path.extname(src);
-		const textExtensions = ['.js', '.json', '.php', '.css', '.md', '.txt', '.html'];
+		const textExtensions = [
+			'.js',
+			'.json',
+			'.php',
+			'.css',
+			'.md',
+			'.txt',
+			'.html',
+		];
 		if (textExtensions.includes(ext)) {
 			let content = fs.readFileSync(src, 'utf8');
 			content = replacePlaceholders(content);
@@ -35,14 +51,28 @@ function copyAndReplace(src, dest) {
 }
 
 function cleanup() {
-	if (fs.existsSync(tempDir)) fs.rmSync(tempDir, { recursive: true, force: true });
+	if (fs.existsSync(tempDir))
+		fs.rmSync(tempDir, { recursive: true, force: true });
 }
 
 function main() {
 	cleanup();
 	fs.mkdirSync(tempDir, { recursive: true });
 	const filesToCopy = [
-		'package.json', 'style.css', 'theme.json', 'src', 'inc', 'patterns', 'parts', 'templates', 'styles', 'tests', 'scripts', '.eslintrc.js', '.stylelintrc.js', 'phpcs.xml',
+		'package.json',
+		'style.css',
+		'theme.json',
+		'src',
+		'inc',
+		'patterns',
+		'parts',
+		'templates',
+		'styles',
+		'tests',
+		'scripts',
+		'.eslintrc.js',
+		'.stylelintrc.js',
+		'phpcs.xml',
 	];
 	for (const file of filesToCopy) {
 		const srcPath = path.join(scaffoldDir, file);

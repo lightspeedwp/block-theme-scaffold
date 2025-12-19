@@ -18,6 +18,6 @@
 			"plural": "Genres"
 		}
 	],
-	"blocks": [ "core/paragraph" ],
-	"templates": [ "default" ]
+	"blocks": ["core/paragraph"],
+	"templates": ["default"]
 }

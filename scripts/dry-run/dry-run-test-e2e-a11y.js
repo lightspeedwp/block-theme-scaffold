@@ -1,4 +1,3 @@
-
 /**
  * @file dry-run-test-e2e-a11y.js
  * @description Dry-run script for E2E accessibility tests.

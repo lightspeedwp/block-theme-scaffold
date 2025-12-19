@@ -4,11 +4,11 @@
  * @see https://jestjs.io/docs/configuration
  */
 
-const fs = require( 'fs' );
-const path = require( 'path' );
+const fs = require('fs');
+const path = require('path');
 
-const localStorageDir = path.join( __dirname, '.test-temp', 'localstorage' );
-fs.mkdirSync( localStorageDir, { recursive: true } );
+const localStorageDir = path.join(__dirname, '.test-temp', 'localstorage');
+fs.mkdirSync(localStorageDir, { recursive: true });
 process.env.LOCAL_STORAGE_DIRECTORY =
 	process.env.LOCAL_STORAGE_DIRECTORY || localStorageDir;
 
@@ -20,10 +20,10 @@ const moduleNameMapper = {
 module.exports = {
 	preset: '@wordpress/jest-preset-default',
 	testEnvironment: 'jsdom',
-	       setupFilesAfterEnv: [
-		       '<rootDir>/.github/tests/setup.js',
-		       '<rootDir>/.github/tests/jest.setup.localstorage.js',
-	       ],
+	setupFilesAfterEnv: [
+		'<rootDir>/.github/tests/setup.js',
+		'<rootDir>/.github/tests/jest.setup.localstorage.js',
+	],
 	testPathIgnorePatterns: [
 		'/node_modules/',
 		'/vendor/',
@@ -38,7 +38,7 @@ module.exports = {
 		'!src/**/*.stories.{js,jsx}',
 	],
 	coverageDirectory: 'coverage',
-	coverageReporters: [ 'text', 'lcov', 'html' ],
+	coverageReporters: ['text', 'lcov', 'html'],
 	moduleNameMapper,
 	modulePathIgnorePatterns: [
 		'<rootDir>/.test-temp/',

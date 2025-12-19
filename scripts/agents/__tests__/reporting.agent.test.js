@@ -3,19 +3,16 @@
  * @jest-environment jsdom
  */
 
-const {
-	ReportGenerator,
-	AgentReportGenerator,
-} = require( '../reporting.agent' );
+const { ReportGenerator, AgentReportGenerator } = require('../reporting.agent');
 
-describe( 'Reporting Agent', () => {
-	test( 'ReportGenerator class exists', () => {
-		expect( typeof ReportGenerator ).toBe( 'function' );
-	} );
+describe('Reporting Agent', () => {
+	test('ReportGenerator class exists', () => {
+		expect(typeof ReportGenerator).toBe('function');
+	});
 
-	test( 'AgentReportGenerator class exists', () => {
-		expect( typeof AgentReportGenerator ).toBe( 'function' );
-	} );
+	test('AgentReportGenerator class exists', () => {
+		expect(typeof AgentReportGenerator).toBe('function');
+	});
 
 	// TODO: Add tests for report generation
-} );
+});

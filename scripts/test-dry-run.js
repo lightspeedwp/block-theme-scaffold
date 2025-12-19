@@ -7,4 +7,4 @@
  * implementation to `scripts/dry-run/test-dry-run.js`.
  */
 
-require( './dry-run/test-dry-run.js' );
+require('./dry-run/test-dry-run.js');

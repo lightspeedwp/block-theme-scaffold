@@ -24,9 +24,12 @@ metadata:
 
 ## Wizard Integration & Advanced Features
 
-This agent is tightly integrated with the **Release Scaffold Wizard** defined in `.github/prompts/create-release-scaffold.prompt.md` and implemented via `scripts/lib/wizard.js`.
+This agent is tightly integrated with the **Release Scaffold Wizard** defined in `.github/prompts/release-scaffold.prompt.md` and implemented via `scripts/lib/wizard.js`.
 
-- **Wizard Prompt:** All release-scaffold processes must use the wizard steps and config schema defined in `.github/prompts/create-release-scaffold.prompt.md`.
+- **Wizard Prompts:** All release-scaffold processes must use the canonical prompts:
+  - `.github/prompts/release-scaffold.prompt.md` (main release wizard)
+  - `.github/prompts/pre-release-scaffold-validation.prompt.md` (pre-release validation)
+- **Wizard Steps:** All wizard steps and config schema are now defined in `release-scaffold.prompt.md`. Do not reference or use `create-release-scaffold.prompt.md`—it has been merged.
 - **Wizard Interface:** Supports CLI, JSON, ENV, mock, and other interfaces as defined in `scripts/lib/wizard.js`.
 - **Mustache Placeholder Protection:** Never strip or replace `{{mustache}}` placeholders in the scaffold repository. Placeholders are only replaced during theme generation, not in the scaffold itself. Validate placeholder presence before every release.
 - **Conditional Logic:** Prompts for advanced checks (e.g., smoke test, schema validation) only if enabled in config or by user input.
@@ -35,7 +38,7 @@ This agent is tightly integrated with the **Release Scaffold Wizard** defined in
 - **Validation & Error Recovery:** Each step validates its outcome (e.g., placeholder integrity, version alignment). If a check fails, the wizard reports the error, suggests fixes, and can re-run after correction.
 - **Explicit Mapping:** Each wizard step maps to a config schema field and release check (see wizard prompt).
 
-See `.github/prompts/create-release-scaffold.prompt.md` for the canonical wizard steps and config schema.
+See `.github/prompts/release-scaffold.prompt.md` and `.github/prompts/pre-release-scaffold-validation.prompt.md` for the canonical prompts and wizard steps.
 
 ### Example: Using a Config File
 
@@ -81,6 +84,33 @@ This agent covers scaffold **pre-release preparation**:
 4. Quality gates using dry-run lint/format/test commands
 5. Optional generation smoke test to confirm placeholders replace correctly
 6. Release readiness reporting (no git pushes, tags, or merges)
+
+## Modes: Pre-Release Validation vs. Full Release
+
+The release-scaffold agent supports two primary modes, each with its own prompt and workflow:
+
+### 1. Pre-Release Validation Mode
+
+- **Prompt:** `.github/prompts/pre-release-scaffold-validation.prompt.md`
+- **How to select:** Use the wizard mode selector, or pass `--validation`/`--validate` on the CLI.
+- **What it does:**
+  - Runs all validation steps: placeholder checks, version alignment, schema validation, dry-run lint/format/test, documentation checks, generation smoke test, and security audit.
+  - **Does not** update the changelog, stage/commit changes, or perform any release actions.
+  - Produces a readiness report only. No files are modified.
+
+### 2. Full Release Mode
+
+- **Prompt:** `.github/prompts/release-scaffold.prompt.md`
+- **How to select:** Use the wizard mode selector, or run without validation flags (default).
+- **What it does:**
+  - Runs all validation steps as above.
+  - Updates the `CHANGELOG.md` with a new release entry if needed.
+  - Stages all changes, runs husky pre-commit hooks, and commits changes to git.
+  - Produces a readiness report and prepares the repository for release.
+
+The agent uses `scripts/utils/mode-detector.js` to determine the mode and `scripts/utils/logger.js` for structured logging.
+
+---
 
 ## Workflow
 

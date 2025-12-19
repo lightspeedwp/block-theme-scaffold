@@ -5,8 +5,8 @@
  */
 // eslint-env jest
 
-const fs = require( 'fs' );
-const path = require( 'path' );
+const fs = require('fs');
+const path = require('path');
 
 // Ensure local storage directory for @wordpress/jest-preset-default
 const localStorageDir = path.join(
@@ -15,30 +15,28 @@ const localStorageDir = path.join(
 	'.test-temp',
 	'localstorage'
 );
-fs.mkdirSync( localStorageDir, { recursive: true } );
+fs.mkdirSync(localStorageDir, { recursive: true });
 process.env.LOCAL_STORAGE_DIRECTORY = localStorageDir;
-const localStorageFile = path.join( localStorageDir, 'localstorage.json' );
-fs.writeFileSync( localStorageFile, '', { flag: 'a' } );
+const localStorageFile = path.join(localStorageDir, 'localstorage.json');
+fs.writeFileSync(localStorageFile, '', { flag: 'a' });
 process.env.LOCAL_STORAGE_FILE = localStorageFile;
 
 // Import test logger
-const TestLogger = require( './test-logger' );
-const logger = new TestLogger( 'jest' );
+const TestLogger = require('./test-logger');
+const logger = new TestLogger('jest');
 
 // Log test session start
-logger.info( 'Jest test session started' );
+logger.info('Jest test session started');
 
 // Mock WordPress dependencies
-jest.mock( '@wordpress/i18n', () => ( {
-	__: jest.fn( ( text ) => text ),
-	_x: jest.fn( ( text ) => text ),
-	_n: jest.fn( ( single, plural, number ) =>
-		number === 1 ? single : plural
-	),
-	sprintf: jest.fn( ( format, ...args ) => {
-		return format.replace( /%[sdifF%]/g, () => args.shift() );
-	} ),
-} ) );
+jest.mock('@wordpress/i18n', () => ({
+	__: jest.fn((text) => text),
+	_x: jest.fn((text) => text),
+	_n: jest.fn((single, plural, number) => (number === 1 ? single : plural)),
+	sprintf: jest.fn((format, ...args) => {
+		return format.replace(/%[sdifF%]/g, () => args.shift());
+	}),
+}));
 
 // Mock console methods to reduce noise in tests
 global.console = {
@@ -51,9 +49,9 @@ global.console = {
 // Set up global test environment
 global.wp = {
 	i18n: {
-		__: jest.fn( ( text ) => text ),
-		_x: jest.fn( ( text ) => text ),
-		_n: jest.fn( ( single, plural, number ) =>
+		__: jest.fn((text) => text),
+		_x: jest.fn((text) => text),
+		_n: jest.fn((single, plural, number) =>
 			number === 1 ? single : plural
 		),
 		sprintf: jest.fn(),
@@ -61,22 +59,22 @@ global.wp = {
 };
 
 // Mock fetch for API calls
-global.fetch = jest.fn( () =>
-	Promise.resolve( {
+global.fetch = jest.fn(() =>
+	Promise.resolve({
 		ok: true,
-		json: () => Promise.resolve( {} ),
-	} )
+		json: () => Promise.resolve({}),
+	})
 );
 
 // Reset mocks after each test
-afterEach( () => {
+afterEach(() => {
 	jest.clearAllMocks();
-} );
+});
 
 // Log test completion
-afterAll( () => {
-	logger.info( 'Jest test session completed' );
-} );
+afterAll(() => {
+	logger.info('Jest test session completed');
+});
 
 // Export logger for use in tests
 global.testLogger = logger;

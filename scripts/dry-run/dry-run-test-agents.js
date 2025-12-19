@@ -1,4 +1,3 @@
-
 /**
  * @file dry-run-test-agents.js
  * @description Dry-run script for agent Jest tests.

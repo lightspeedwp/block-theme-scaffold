@@ -8,7 +8,7 @@
 		"version": {
 			"type": "integer",
 			"description": "Schema version. Use 2 for WP 6.1–6.5, 3 for WP 6.6+.",
-			"enum": [ 2, 3 ]
+			"enum": [2, 3]
 		},
 		"$schema": {
 			"type": "string",
@@ -36,6 +36,6 @@
 			"type": "array"
 		}
 	},
-	"required": [ "version" ],
+	"required": ["version"],
 	"additionalProperties": true
 }

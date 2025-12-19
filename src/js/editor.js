@@ -9,8 +9,8 @@ const editorUtils = {
 		addFilter(
 			'blocks.getSaveContent.extraProps',
 			'{{theme_slug}}/add-block-classes',
-			( props, blockType, attributes ) => {
-				if ( blockType.name === 'core/group' && attributes.className ) {
+			(props, blockType, attributes) => {
+				if (blockType.name === 'core/group' && attributes.className) {
 					props.className = attributes.className;
 				}
 				return props;
@@ -31,12 +31,12 @@ const editorUtils = {
 				PluginSidebar,
 				{
 					name: '{{theme_slug}}-sidebar',
-					title: __( '{{theme_name}} Settings', '{{theme_slug}}' ),
+					title: __('{{theme_name}} Settings', '{{theme_slug}}'),
 					icon: 'admin-appearance',
 				},
 				wp.element.createElement(
 					PanelBody,
-					{ title: __( 'Theme Options', '{{theme_slug}}' ) },
+					{ title: __('Theme Options', '{{theme_slug}}') },
 					wp.element.createElement(
 						'p',
 						null,
@@ -46,15 +46,15 @@ const editorUtils = {
 			);
 		};
 
-		registerPlugin( '{{theme_slug}}-sidebar', {
+		registerPlugin('{{theme_slug}}-sidebar', {
 			icon: 'admin-appearance',
 			render: Sidebar,
-		} );
+		});
 	},
 };
 
 // Initialize editor enhancements
-wp.domReady( function () {
+wp.domReady(function () {
 	editorUtils.addBlockClasses();
 	editorUtils.customizeSidebar();
-} );
+});

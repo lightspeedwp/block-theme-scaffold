@@ -6,6 +6,12 @@ description: Scaffold-only release prompt that preserves {{mustache}} placeholde
 
 Use this prompt to prepare the **block theme scaffold** for release. Do **not** use it for generated themes; those should use `release.prompt.md` after placeholders are rewritten.
 
+- **Relationship to Pre-Release Validation:**
+
+- This prompt is paired with `.github/prompts/pre-release-scaffold-validation.prompt.md`, which is used for pre-release validation (dry-run, checks only).
+- Both prompts invoke the release-scaffold agent and the interactive wizard (see `scripts/lib/wizard.js`).
+- To run a dry-run validation before a full release, use the pre-release validation prompt; return here for the actual release process after all checks pass.
+
 ## 🚀 Release Scaffold Wizard
 
 Follow this step-by-step wizard to prepare the scaffold for release. This wizard is referenced by all `release-scaffold.*` files and should be used for every scaffold release.
@@ -41,20 +47,30 @@ Follow this step-by-step wizard to prepare the scaffold for release. This wizard
 
 > **Wizard Reference:** All `release-scaffold.*` files should reference the above Release Scaffold Wizard for step-by-step guidance.
 
-## Wizard Integration
+## Wizard/Agent Integration
 
-This prompt invokes the release-scaffold agent, which uses the pluggable wizard.js system for configuration. You can run the wizard in interactive (cli) mode or dry-run (mock) mode:
+This prompt and the pre-release validation prompt both invoke:
+
+- `scripts/agents/release-scaffold.agent.js` (agent implementation)
+- `scripts/agents/release-scaffold.questions.js` (wizard questions/config)
+- `scripts/lib/wizard.js` (wizard logic)
+
+You can run the wizard in interactive (cli) mode or dry-run (mock) mode:
 
 - **Interactive:**
   ```sh
   node scripts/agents/release-scaffold.agent.js
   ```
-- **Dry-run:**
+- **Dry-run (pre-release validation):**
   ```sh
   WIZARD_MODE=mock node scripts/agents/release-scaffold.agent.js
   ```
 
 The agent's questions array is passed to runWizard(), and the mode can be set via the WIZARD_MODE environment variable.
+
+---
+
+_See also: `.github/prompts/pre-release-scaffold-validation.prompt.md` for the dry-run validation workflow preceding a full release._
 
 ## Mustache Safety Guard
 

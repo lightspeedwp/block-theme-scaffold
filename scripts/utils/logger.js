@@ -1,4 +1,3 @@
-
 /**
  * logger.js
  *
@@ -20,8 +19,8 @@
  * @todo Add support for log rotation and async streaming if needed.
  */
 
-const fs = require( 'fs/promises' );
-const path = require( 'path' );
+const fs = require('fs/promises');
+const path = require('path');
 
 const LOG_LEVELS = {
 	debug: 0,
@@ -37,17 +36,16 @@ class FileLogger {
 	 * @param {string} processName The name of the process, used in the log filename.
 	 * @param {string} [category='agents'] The category for the log (e.g., 'agents', 'build').
 	 */
-	constructor( processName, category = 'agents' ) {
-		if ( ! processName ) {
-			throw new Error( 'FileLogger requires a processName.' );
+	constructor(processName, category = 'agents') {
+		if (!processName) {
+			throw new Error('FileLogger requires a processName.');
 		}
 		this._processName = processName;
 		this._category = category;
 		this._logBuffer = [];
 
-		const envLogLevel =
-			process.env.LOG_LEVEL?.toLowerCase() || 'info';
-		this._logLevel = LOG_LEVELS[ envLogLevel ] ?? LOG_LEVELS.info;
+		const envLogLevel = process.env.LOG_LEVEL?.toLowerCase() || 'info';
+		this._logLevel = LOG_LEVELS[envLogLevel] ?? LOG_LEVELS.info;
 		this._logToConsole = process.env.LOG_TO_CONSOLE !== 'false';
 	}
 
@@ -55,32 +53,32 @@ class FileLogger {
 	 * Adds an INFO level message to the log buffer.
 	 * @param {string} message The message to log.
 	 */
-	info( message ) {
-		this._log( 'INFO', message );
+	info(message) {
+		this._log('INFO', message);
 	}
 
 	/**
 	 * Adds a DEBUG level message to the log buffer.
 	 * @param {string} message The message to log.
 	 */
-	debug( message ) {
-		this._log( 'DEBUG', message );
+	debug(message) {
+		this._log('DEBUG', message);
 	}
 
 	/**
 	 * Adds a WARN level message to the log buffer.
 	 * @param {string} message The message to log.
 	 */
-	warn( message ) {
-		this._log( 'WARN', message );
+	warn(message) {
+		this._log('WARN', message);
 	}
 
 	/**
 	 * Adds an ERROR level message to the log buffer.
 	 * @param {string} message The message to log.
 	 */
-	error( message ) {
-		this._log( 'ERROR', message );
+	error(message) {
+		this._log('ERROR', message);
 	}
 
 	/**
@@ -89,22 +87,24 @@ class FileLogger {
 	 * @param {string} message The log message.
 	 * @private
 	 */
-	_log( level, message ) {
-		const numericLevel = LOG_LEVELS[ level.toLowerCase() ];
-		if ( numericLevel < this._logLevel ) {
+	_log(level, message) {
+		const numericLevel = LOG_LEVELS[level.toLowerCase()];
+		if (numericLevel < this._logLevel) {
 			return;
 		}
 
 		const timestamp = new Date().toISOString();
-		const formattedMessage = `[${ timestamp }] [${ level }] ${ message }`;
-		this._logBuffer.push( formattedMessage );
+		const formattedMessage = `[${timestamp}] [${level}] ${message}`;
+		this._logBuffer.push(formattedMessage);
 
-		if ( this._logToConsole ) {
+		if (this._logToConsole) {
 			const consoleMethod =
 				level === 'ERROR'
 					? console.error
-					: level === 'WARN' ? console.warn : console.log;
-			consoleMethod( formattedMessage );
+					: level === 'WARN'
+						? console.warn
+						: console.log;
+			consoleMethod(formattedMessage);
 		}
 	}
 
@@ -125,31 +125,34 @@ class FileLogger {
 	}
 
 	_getLogFilePath() {
-		const date = new Date().toISOString().split( 'T' )[ 0 ]; // YYYY-MM-DD
-		const filename = `${ date }-${ this._processName }.log`;
-		return path.resolve( this._getLogRootDir(), this._category, filename );
+		const date = new Date().toISOString().split('T')[0]; // YYYY-MM-DD
+		const filename = `${date}-${this._processName}.log`;
+		return path.resolve(this._getLogRootDir(), this._category, filename);
 	}
 
 	/**
 	 * Asynchronously saves all buffered log messages to the log file.
 	 */
 	async save() {
-		if ( this._logBuffer.length === 0 ) {
+		if (this._logBuffer.length === 0) {
 			return;
 		}
 
 		const filePath = this._getLogFilePath();
-		const logDir = path.dirname( filePath );
+		const logDir = path.dirname(filePath);
 
 		try {
-			await fs.mkdir( logDir, { recursive: true } );
+			await fs.mkdir(logDir, { recursive: true });
 			// Log rotation: delete logs older than retention days
 			await this._rotateLogs(logDir);
-			const logContent = this._logBuffer.join( '\n' ) + '\n';
-			await fs.writeFile( filePath, logContent, { flag: 'a' } );
+			const logContent = this._logBuffer.join('\n') + '\n';
+			await fs.writeFile(filePath, logContent, { flag: 'a' });
 			this._logBuffer = [];
-		} catch ( err ) {
-			console.error( `[FATAL] Failed to write log file to ${ filePath }`, err );
+		} catch (err) {
+			console.error(
+				`[FATAL] Failed to write log file to ${filePath}`,
+				err
+			);
 		}
 	}
 
@@ -158,7 +161,8 @@ class FileLogger {
 	 * @private
 	 */
 	async _rotateLogs(logDir) {
-		const retentionDays = parseInt(process.env.LOG_RETENTION_DAYS, 10) || 30;
+		const retentionDays =
+			parseInt(process.env.LOG_RETENTION_DAYS, 10) || 30;
 		const now = Date.now();
 		try {
 			const files = await fs.readdir(logDir);
@@ -168,7 +172,8 @@ class FileLogger {
 				if (!match) continue;
 				const fileDate = new Date(match[1]);
 				if (isNaN(fileDate)) continue;
-				const ageDays = (now - fileDate.getTime()) / (1000 * 60 * 60 * 24);
+				const ageDays =
+					(now - fileDate.getTime()) / (1000 * 60 * 60 * 24);
 				if (ageDays > retentionDays) {
 					try {
 						await fs.unlink(path.join(logDir, file));

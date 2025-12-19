@@ -1,6 +1,5 @@
 // TODO: Add log rotation and environment overrides for reporting logs.
 
-
 /**
  * Reporting Agent Implementation
  *
@@ -56,7 +55,7 @@ const colors = {
 
 // Logging removed for lint compliance
 
-function log( color, symbol, ...args ) {
+function log(color, symbol, ...args) {
 	void color;
 	void symbol;
 	void args;
@@ -80,12 +79,12 @@ function info(...args) {
 }
 
 function header(text) {
-	       // TODO: emit styled headers once logging reappears.
-	       // Logging removed for lint compliance
-	       // '\n' + colors.magenta + colors.bold + '═'.repeat(60) + colors.reset
-	       log(colors.magenta + colors.bold, text);
-	       // Logging removed for lint compliance
-	       // colors.magenta + colors.bold + '═'.repeat(60) + colors.reset + '\n'
+	// TODO: emit styled headers once logging reappears.
+	// Logging removed for lint compliance
+	// '\n' + colors.magenta + colors.bold + '═'.repeat(60) + colors.reset
+	log(colors.magenta + colors.bold, text);
+	// Logging removed for lint compliance
+	// colors.magenta + colors.bold + '═'.repeat(60) + colors.reset + '\n'
 }
 
 /**
@@ -535,13 +534,13 @@ function generateSummary() {
 			.readdirSync(categoryPath)
 			.filter((f) => f.endsWith('.json'));
 
-		   // Logging removed for lint compliance
-		   // (removed unreachable parenthesis and code)
+		// Logging removed for lint compliance
+		// (removed unreachable parenthesis and code)
 
-		   if (files.length > 0) {
-			   // const latest = files.sort().reverse()[0];
-			   // Logging removed for lint compliance
-		   }
+		if (files.length > 0) {
+			// const latest = files.sort().reverse()[0];
+			// Logging removed for lint compliance
+		}
 	});
 
 	success('Summary generated');
@@ -731,25 +730,25 @@ function main() {
 				generateSummary();
 				break;
 
-			   case 'archive': {
-				   const daysOld = parseInt(args[1]) || 30;
-				   archiveReports(daysOld);
-				   break;
-			   }
+			case 'archive': {
+				const daysOld = parseInt(args[1]) || 30;
+				archiveReports(daysOld);
+				break;
+			}
 
-			   case 'validate': {
-				   const isValid = validateReports();
-				   process.exit(isValid ? 0 : 1);
-				   break;
-			   }
+			case 'validate': {
+				const isValid = validateReports();
+				process.exit(isValid ? 0 : 1);
+				break;
+			}
 
-			   case 'help':
-			   case '--help':
-			   case '-h':
-				   // Intentionally no-op for help cases (logging removed)
-				   // Logging removed for lint compliance
-				   // (removed unreachable parenthesis and code)
-				   break;
+			case 'help':
+			case '--help':
+			case '-h':
+				// Intentionally no-op for help cases (logging removed)
+				// Logging removed for lint compliance
+				// (removed unreachable parenthesis and code)
+				break;
 
 			default:
 				error(`Unknown command: ${command}`);
@@ -767,7 +766,6 @@ function main() {
 if (require.main === module) {
 	main();
 }
-
 
 module.exports = {
 	ReportGenerator,

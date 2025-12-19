@@ -1,4 +1,3 @@
-
 /**
  * @file dry-run-validate-config-schema.js
  * @description Dry-run script for config schema validation.

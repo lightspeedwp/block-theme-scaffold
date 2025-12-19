@@ -77,12 +77,18 @@ async function findDuplicates(rootDir) {
 			'\n⚠️  --delete flag is enabled. Duplicate files will be removed, keeping one copy.'
 		);
 		if (forceDelete) {
-			logger.warn('⚡ --force flag detected. Deletion will be automatic.');
+			logger.warn(
+				'⚡ --force flag detected. Deletion will be automatic.'
+			);
 		}
 	}
 
-	const rl = readline.createInterface({ input: process.stdin, output: process.stdout });
-	const ask = (question) => new Promise((resolve) => rl.question(question, resolve));
+	const rl = readline.createInterface({
+		input: process.stdin,
+		output: process.stdout,
+	});
+	const ask = (question) =>
+		new Promise((resolve) => rl.question(question, resolve));
 
 	const allFiles = getAllFiles(rootDir);
 	const hashes = new Map();
@@ -105,14 +111,20 @@ async function findDuplicates(rootDir) {
 			duplicatesFound = true;
 			const [fileToKeep, ...filesToDelete] = files;
 
-			logger.info(`\n[!] Found ${files.length} identical files (hash: ${hash.substring(0, 12)}...):`);
+			logger.info(
+				`\n[!] Found ${files.length} identical files (hash: ${hash.substring(0, 12)}...):`
+			);
 			logger.info(`  - ✅ Keeping: ${fileToKeep}`);
-			filesToDelete.forEach((file) => logger.warn(`  - 🗑️  To be deleted: ${file}`));
+			filesToDelete.forEach((file) =>
+				logger.warn(`  - 🗑️  To be deleted: ${file}`)
+			);
 
 			if (shouldDelete) {
 				let confirmed = forceDelete;
 				if (!forceDelete) {
-					const answer = await ask('  -> Proceed with deletion? (y/N): ');
+					const answer = await ask(
+						'  -> Proceed with deletion? (y/N): '
+					);
 					confirmed = answer.toLowerCase() === 'y';
 				}
 
@@ -122,7 +134,9 @@ async function findDuplicates(rootDir) {
 							fs.unlinkSync(path.join(rootDir, file));
 							logger.info(`    -> Successfully deleted ${file}`);
 						} catch (err) {
-							logger.error(`    -> ❌ Error deleting ${file}: ${err.message}`);
+							logger.error(
+								`    -> ❌ Error deleting ${file}: ${err.message}`
+							);
 						}
 					});
 				} else {
@@ -145,7 +159,9 @@ async function findDuplicates(rootDir) {
 	}
 
 	const endTime = performance.now();
-	logger.info(`\n✨ Scan complete in ${((endTime - startTime) / 1000).toFixed(2)}s. Found ${allFiles.length} files.`);
+	logger.info(
+		`\n✨ Scan complete in ${((endTime - startTime) / 1000).toFixed(2)}s. Found ${allFiles.length} files.`
+	);
 	await logger.save();
 }
 

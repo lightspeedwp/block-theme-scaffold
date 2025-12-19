@@ -8,11 +8,16 @@ lastUpdated: "2025-12-12"
 
 # Release Scaffold Instructions
 
-You are a scaffold release assistant. Follow our block-theme scaffold frameworks to maintain the release prompts, docs, and automation that ship with the scaffold. Avoid applying generated-theme release steps here or stripping required mustache placeholders used in downstream theme generation.
+You are a scaffold release assistant. Maintain only the canonical scaffold release prompts and automation:
+
+- `.github/prompts/release-scaffold.prompt.md` (main release wizard prompt)
+- `.github/prompts/pre-release-scaffold-validation.prompt.md` (pre-release validation prompt)
+
+All previous or alternate prompts (such as `create-release-scaffold.prompt.md`) have been merged into the above files. Do not reference or use `create-release-scaffold.prompt.md`—all wizard steps and release workflow logic now reside in `release-scaffold.prompt.md`.
 
 ## Overview
 
-Use these instructions when updating the scaffold release prompt or related guidance in this repository. The goal is to keep the scaffold's release assets current without impacting the release process that runs in generated themes.
+Use these instructions when updating the scaffold release prompts or related guidance. The goal is to keep the scaffold's release assets current and avoid duplication or confusion with deprecated prompt files.
 
 ## General Rules
 
@@ -20,16 +25,17 @@ Use these instructions when updating the scaffold release prompt or related guid
 - Scope changes to scaffold assets only; defer generated-theme steps to `release.instructions.md`.
 - Reference organisation coding, linting, and testing standards instead of redefining them.
 - Document any automation changes in the changelog and agent notes.
+- Use only `.github/prompts/release-scaffold.prompt.md` and `.github/prompts/pre-release-scaffold-validation.prompt.md` for all scaffold release and validation workflows.
 
 ## Scaffold vs Generated Themes
 
-- **Scaffold artifacts**: `.github/prompts/release-scaffold.prompt.md`, `.github/agents/release-scaffold.agent.md`, and docs/RELEASE_PROCESS_SCAFFOLD.md.
+- **Scaffold artifacts**: `.github/prompts/release-scaffold.prompt.md`, `.github/prompts/pre-release-scaffold-validation.prompt.md`, `.github/agents/release-scaffold.agent.md`, and `docs/RELEASE_PROCESS_SCAFFOLD.md`.
 - **Generated theme artifacts**: use `.github/prompts/release.prompt.md` and `release.instructions.md` after placeholders are replaced.
 - Never copy scaffold-only files into generated theme releases; remind agents to remove them during generation.
 
 ## Detailed Guidance
 
-- **Templates & Prompts**: Ensure prompts describe placeholder cleanup, version alignment, and dependency checks without hard-coding theme names.
+- **Templates & Prompts**: Ensure prompts describe placeholder cleanup, version alignment, and dependency checks without hard-coding theme names. All wizard steps for release are now in `release-scaffold.prompt.md`.
 - **Automation Hooks**: Align with `.github/workflows/block-theme-build-and-e2e.yml` for validation steps and keep command examples current.
 - **Changelog Notes**: When scaffold release behaviour changes, add concise entries to `CHANGELOG.md` under the scaffold section.
 

@@ -21,17 +21,17 @@
  * @param {string[]} args - Process argv.slice(2)
  * @return {Object} Parsed arguments map
  */
-function parseArguments( args ) {
+function parseArguments(args) {
 	const argMap = {};
-	for ( let i = 0; i < args.length; i++ ) {
-		if ( args[ i ].startsWith( '--' ) ) {
-			const key = args[ i ].replace( '--', '' );
-			const value = args[ i + 1 ];
-			if ( value && ! value.startsWith( '--' ) ) {
-				argMap[ key ] = value;
+	for (let i = 0; i < args.length; i++) {
+		if (args[i].startsWith('--')) {
+			const key = args[i].replace('--', '');
+			const value = args[i + 1];
+			if (value && !value.startsWith('--')) {
+				argMap[key] = value;
 				i++;
 			} else {
-				argMap[ key ] = true;
+				argMap[key] = true;
 			}
 		}
 	}
@@ -45,31 +45,31 @@ function parseArguments( args ) {
  * @param {boolean}  hasStdin - Whether stdin is available (piped data)
  * @return {string} Mode name: 'help', 'schema', 'validate', 'json-stdin', 'json-config', or 'cli'
  */
-function detectMode( args, hasStdin = false ) {
+function detectMode(args, hasStdin = false) {
 	// Help takes priority
-	if ( args.includes( '--help' ) || args.includes( '-h' ) ) {
+	if (args.includes('--help') || args.includes('-h')) {
 		return 'help';
 	}
 
 	// Schema output
-	if ( args.includes( '--schema' ) ) {
+	if (args.includes('--schema')) {
 		return 'schema';
 	}
 
 	// Validate mode
-	const validateIndex = args.indexOf( '--validate' );
-	if ( validateIndex !== -1 ) {
+	const validateIndex = args.indexOf('--validate');
+	if (validateIndex !== -1) {
 		return 'validate';
 	}
 
 	// JSON stdin mode
-	if ( args.includes( '--json' ) && hasStdin ) {
+	if (args.includes('--json') && hasStdin) {
 		return 'json-stdin';
 	}
 
 	// JSON config file mode
-	const argMap = parseArguments( args );
-	if ( argMap.config ) {
+	const argMap = parseArguments(args);
+	if (argMap.config) {
 		return 'json-config';
 	}
 
@@ -83,7 +83,7 @@ function detectMode( args, hasStdin = false ) {
  * @param {string} mode - Mode name
  * @return {boolean} True if mode expects stdin
  */
-function requiresStdin( mode ) {
+function requiresStdin(mode) {
 	return mode === 'json-stdin' || mode === 'validate';
 }
 
@@ -93,7 +93,7 @@ function requiresStdin( mode ) {
  * @param {string} mode - Mode name
  * @return {string} Description of the mode
  */
-function getModeDescription( mode ) {
+function getModeDescription(mode) {
 	const descriptions = {
 		help: 'Show help message and usage examples',
 		schema: 'Output configuration schema as JSON',
@@ -103,7 +103,7 @@ function getModeDescription( mode ) {
 		'json-config': 'Read configuration from JSON file and generate theme',
 		cli: 'Generate theme using CLI arguments (--slug, --name, etc.)',
 	};
-	return descriptions[ mode ] || 'Unknown mode';
+	return descriptions[mode] || 'Unknown mode';
 }
 
 /**
@@ -113,10 +113,10 @@ function getModeDescription( mode ) {
  * @param {Object} argMap - Parsed arguments
  * @return {Object} Validation result: { valid: boolean, error: string|null }
  */
-function validateModeArguments( mode, argMap ) {
-	switch ( mode ) {
+function validateModeArguments(mode, argMap) {
+	switch (mode) {
 		case 'validate':
-			if ( ! argMap.validate ) {
+			if (!argMap.validate) {
 				return {
 					valid: false,
 					error: '--validate requires a JSON argument',
@@ -125,7 +125,7 @@ function validateModeArguments( mode, argMap ) {
 			return { valid: true };
 
 		case 'json-config':
-			if ( ! argMap.config ) {
+			if (!argMap.config) {
 				return {
 					valid: false,
 					error: 'Config file path is required',
@@ -147,7 +147,7 @@ function validateModeArguments( mode, argMap ) {
 			return { valid: true };
 
 		default:
-			return { valid: false, error: `Unknown mode: ${ mode }` };
+			return { valid: false, error: `Unknown mode: ${mode}` };
 	}
 }
 
@@ -158,26 +158,20 @@ function validateModeArguments( mode, argMap ) {
  * @param {Object} argMap - Parsed arguments
  * @return {string} Formatted mode info
  */
-function formatModeInfo( mode, argMap ) {
-	const info = [
-		`Mode: ${ mode }`,
-		`Description: ${ getModeDescription( mode ) }`,
-	];
+function formatModeInfo(mode, argMap) {
+	const info = [`Mode: ${mode}`, `Description: ${getModeDescription(mode)}`];
 
-	if ( Object.keys( argMap ).length > 0 ) {
-		const relevantArgs = Object.entries( argMap )
-			.filter( ( [ key ] ) => key !== 'help' && key !== 'h' )
-			.map(
-				( [ key, val ] ) =>
-					`--${ key }${ val === true ? '' : ` ${ val }` }`
-			)
-			.join( ', ' );
-		if ( relevantArgs ) {
-			info.push( `Arguments: ${ relevantArgs }` );
+	if (Object.keys(argMap).length > 0) {
+		const relevantArgs = Object.entries(argMap)
+			.filter(([key]) => key !== 'help' && key !== 'h')
+			.map(([key, val]) => `--${key}${val === true ? '' : ` ${val}`}`)
+			.join(', ');
+		if (relevantArgs) {
+			info.push(`Arguments: ${relevantArgs}`);
 		}
 	}
 
-	return info.join( '\n' );
+	return info.join('\n');
 }
 
 // Export for use in other scripts
@@ -191,7 +185,7 @@ module.exports = {
 };
 
 // If run directly, show mode examples
-if ( require.main === module ) {
+if (require.main === module) {
 	// console.log('Mode Detection Examples:\n');
 	// console.log('1. Help:');
 	// console.log('   node generate-theme.js --help\n');
