@@ -326,6 +326,16 @@ function replacePlaceholders( content ) {
 		}
 	);
 
+	// Third pass: handle phpCase filter syntax like {{theme_slug|phpCase}}
+	result = result.replace(
+		/\{\{([^}|]+)\|phpCase\}\}/g,
+		( match, varName ) => {
+			const key = `{{${varName}}}`;
+			const value = placeholders[ key ];
+			return value ? value.toLowerCase().replace( /-/g, '_' ) : match;
+		}
+	);
+
 	return result;
 }
 
