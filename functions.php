@@ -19,7 +19,7 @@ define( '{{theme_slug|upper}}_VERSION', '{{version}}' );
 /**
  * Theme setup.
  */
-function {{theme_slug}}_setup() {
+function {{theme_slug|phpCase}}_setup() {
 	// Make theme available for translation.
 	load_theme_textdomain( '{{theme_slug}}', get_template_directory() . '/languages' );
 
@@ -39,12 +39,12 @@ function {{theme_slug}}_setup() {
 	// Set content width.
 	$GLOBALS['content_width'] = apply_filters( '{{theme_slug}}_content_width', {{content_width_px}} );
 }
-add_action( 'after_setup_theme', '{{theme_slug}}_setup' );
+add_action( 'after_setup_theme', '{{theme_slug|phpCase}}_setup' );
 
 /**
  * Enqueue theme assets.
  */
-function {{theme_slug}}_enqueue_assets() {
+function {{theme_slug|phpCase}}_enqueue_assets() {
 	// Main stylesheet.
 	$asset_file = get_theme_file_path( 'build/css/style.asset.php' );
 	if ( file_exists( $asset_file ) ) {
@@ -77,12 +77,12 @@ function {{theme_slug}}_enqueue_assets() {
 		       );
 	}
 }
-add_action( 'wp_enqueue_scripts', '{{theme_slug}}_enqueue_assets' );
+add_action( 'wp_enqueue_scripts', '{{theme_slug|phpCase}}_enqueue_assets' );
 
 /**
  * Enqueue editor assets.
  */
-function {{theme_slug}}_enqueue_editor_assets() {
+function {{theme_slug|phpCase}}_enqueue_editor_assets() {
 	$editor_asset_file = get_theme_file_path( 'build/css/editor-style.asset.php' );
 	if ( file_exists( $editor_asset_file ) ) {
 		$editor_asset = include $editor_asset_file;
@@ -114,12 +114,12 @@ function {{theme_slug}}_enqueue_editor_assets() {
 		       );
 	}
 }
-add_action( 'enqueue_block_editor_assets', '{{theme_slug}}_enqueue_editor_assets' );
+add_action( 'enqueue_block_editor_assets', '{{theme_slug|phpCase}}_enqueue_editor_assets' );
 
 /**
  * Register block pattern categories.
  */
-function {{theme_slug}}_register_pattern_categories() {
+function {{theme_slug|phpCase}}_register_pattern_categories() {
 		       $categories = array(
 			       '{{pattern_slug}}-hero'    => array( 'label' => __( '{{theme_name}} Hero', '{{theme_slug}}' ) ),
 			       '{{pattern_slug}}-about'   => array( 'label' => __( '{{theme_name}} About', '{{theme_slug}}' ) ),
@@ -133,7 +133,7 @@ function {{theme_slug}}_register_pattern_categories() {
 		register_block_pattern_category( $slug, $args );
 	}
 }
-add_action( 'init', '{{theme_slug}}_register_pattern_categories' );
+add_action( 'init', '{{theme_slug|phpCase}}_register_pattern_categories' );
 
 /**
  * Load theme includes.
@@ -154,25 +154,25 @@ foreach ( $theme_includes as $file ) {
 /**
  * Add custom image sizes.
  */
-function {{theme_slug}}_add_image_sizes() {
+function {{theme_slug|phpCase}}_add_image_sizes() {
 	add_image_size( '{{asset_slug}}-featured', {{featured_image_width}}, {{featured_image_height}}, true );
 	add_image_size( '{{asset_slug}}-thumbnail', {{thumbnail_width}}, {{thumbnail_height}}, true );
 	add_image_size( '{{asset_slug}}-gallery', {{gallery_image_width}}, {{gallery_image_height}}, true );
 }
-add_action( 'after_setup_theme', '{{theme_slug}}_add_image_sizes' );
+add_action( 'after_setup_theme', '{{theme_slug|phpCase}}_add_image_sizes' );
 
 /**
  * Modify excerpt length.
  */
-function {{theme_slug}}_excerpt_length( $length ) {
+function {{theme_slug|phpCase}}_excerpt_length( $length ) {
 	return {{excerpt_length}};
 }
-add_filter( 'excerpt_length', '{{theme_slug}}_excerpt_length' );
+add_filter( 'excerpt_length', '{{theme_slug|phpCase}}_excerpt_length' );
 
 /**
  * Modify excerpt more.
  */
-function {{theme_slug}}_excerpt_more( $more ) {
+function {{theme_slug|phpCase}}_excerpt_more( $more ) {
 	return '{{excerpt_more}}';
 }
-add_filter( 'excerpt_more', '{{theme_slug}}_excerpt_more' );
+add_filter( 'excerpt_more', '{{theme_slug|phpCase}}_excerpt_more' );

@@ -14,7 +14,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Register custom block styles.
  */
-function {{theme_slug}}_register_block_styles() {
+function {{theme_slug|phpCase}}_register_block_styles() {
 	// Button styles.
 	register_block_style(
 		'core/button',
@@ -76,4 +76,4 @@ function {{theme_slug}}_register_block_styles() {
 		)
 	);
 }
-add_action( 'init', '{{theme_slug}}_register_block_styles' );
+add_action( 'init', '{{theme_slug|phpCase}}_register_block_styles' );

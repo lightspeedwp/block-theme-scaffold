@@ -12,7 +12,7 @@ class Test_Template_Functions extends WP_UnitTestCase {
 	 */
 	public function test_get_version_function_exists() {
 		$this->assertTrue(
-			function_exists( '{{theme_slug}}_get_version' ),
+			function_exists( '{{theme_slug|phpCase}}_get_version' ),
 			'Get version function should exist'
 		);
 	}
@@ -22,7 +22,7 @@ class Test_Template_Functions extends WP_UnitTestCase {
 	 */
 	public function test_get_version_returns_string() {
 		try {
-			$version = {{theme_slug}}_get_version();
+			$version = {{theme_slug|phpCase}}_get_version();
 
 			$this->assertIsString( $version, 'Version should be a string' );
 			$this->assertNotEmpty( $version, 'Version should not be empty' );
