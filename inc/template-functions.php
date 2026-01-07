@@ -41,7 +41,7 @@ add_filter( 'body_class', '{{theme_slug|phpCase}}_body_classes' );
 /**
  * Add viewport meta tag for mobile.
  */
-function {{theme_slug}}_viewport_meta() {
+function {{theme_slug|phpCase}}_viewport_meta() {
 	echo '<meta name="viewport" content="width=device-width, initial-scale=1">';
 }
 add_action( 'wp_head', '{{theme_slug|phpCase}}_viewport_meta', 1 );
