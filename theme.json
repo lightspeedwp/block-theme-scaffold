@@ -68,8 +68,16 @@
 				"minViewportWidth": "320px"
 			},
 			"fontFamilies": [
-				"{{heading_font_family}}",
-				"{{body_font_family}}"
+				{
+					"slug": "body",
+					"fontFamily": "{{body_font_family}}",
+					"name": "Body"
+				},
+				{
+					"slug": "heading",
+					"fontFamily": "{{heading_font_family}}",
+					"name": "Heading"
+				}
 			],
 			"fontSizes": [
 				{
