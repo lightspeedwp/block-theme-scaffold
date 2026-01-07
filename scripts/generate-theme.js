@@ -326,9 +326,9 @@ function replacePlaceholders( content ) {
 		}
 	);
 
-	// Third pass: handle phpCase filter syntax like {{theme_slug|phpCase}}
+	// Third pass: handle snakeCase filter syntax like {{theme_slug|snakeCase}}
 	result = result.replace(
-		/\{\{([^}|]+)\|phpCase\}\}/g,
+		/\{\{([^}|]+)\|snakeCase\}\}/g,
 		( match, varName ) => {
 			const key = `{{${varName}}}`;
 			const value = placeholders[ key ];

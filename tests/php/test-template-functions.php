@@ -12,7 +12,7 @@ class Test_Template_Functions extends WP_UnitTestCase {
 	 */
 	public function test_get_version_function_exists() {
 		$this->assertTrue(
-			function_exists( '{{theme_slug|phpCase}}_get_version' ),
+			function_exists( '{{theme_slug|snakeCase}}_get_version' ),
 			'Get version function should exist'
 		);
 	}
@@ -22,7 +22,7 @@ class Test_Template_Functions extends WP_UnitTestCase {
 	 */
 	public function test_get_version_returns_string() {
 		try {
-			$version = {{theme_slug|phpCase}}_get_version();
+			$version = {{theme_slug|snakeCase}}_get_version();
 
 			$this->assertIsString( $version, 'Version should be a string' );
 			$this->assertNotEmpty( $version, 'Version should not be empty' );
@@ -42,7 +42,7 @@ class Test_Template_Functions extends WP_UnitTestCase {
 
 		try {
 			set_theme_mod( '{{theme_slug}}_test', 'test_value' );
-			$value = {{theme_slug|phpCase}}_get_theme_mod( 'test', 'default' );
+			$value = {{theme_slug|snakeCase}}_get_theme_mod( 'test', 'default' );
 
 			$this->assertEquals( 'test_value', $value, 'Should return theme mod value' );
 
@@ -58,7 +58,7 @@ class Test_Template_Functions extends WP_UnitTestCase {
 	 */
 	public function test_footer_text_function() {
 		$this->assertTrue(
-			function_exists( '{{theme_slug|phpCase}}_footer_text' ),
+			function_exists( '{{theme_slug|snakeCase}}_footer_text' ),
 			'Footer text function should exist'
 		);
 
@@ -83,7 +83,7 @@ class Test_Template_Functions extends WP_UnitTestCase {
 	 */
 	public function test_show_social_links() {
 		$this->assertTrue(
-			function_exists( '{{theme_slug|phpCase}}_show_social_links' ),
+			function_exists( '{{theme_slug|snakeCase}}_show_social_links' ),
 			'Show social links function should exist'
 		);
 
@@ -106,13 +106,13 @@ class Test_Template_Functions extends WP_UnitTestCase {
 	 */
 	public function test_header_layout_class() {
 		$this->assertTrue(
-			function_exists( '{{theme_slug|phpCase}}_get_header_layout_class' ),
+			function_exists( '{{theme_slug|snakeCase}}_get_header_layout_class' ),
 			'Get header layout class function should exist'
 		);
 
 		try {
 			set_theme_mod( '{{theme_slug}}_header_layout', 'centered' );
-			$class = {{theme_slug|phpCase}}_get_header_layout_class();
+			$class = {{theme_slug|snakeCase}}_get_header_layout_class();
 
 			$this->assertEquals( 'header-layout-centered', $class, 'Should return correct class name' );
 
@@ -128,12 +128,12 @@ class Test_Template_Functions extends WP_UnitTestCase {
 	 */
 	public function test_body_classes_filter() {
 		$this->assertTrue(
-			function_exists( '{{theme_slug|phpCase}}_body_classes' ),
+			function_exists( '{{theme_slug|snakeCase}}_body_classes' ),
 			'Body classes function should exist'
 		);
 
 		try {
-			$classes = {{theme_slug|phpCase}}_body_classes( [] );
+			$classes = {{theme_slug|snakeCase}}_body_classes( [] );
 
 			$this->assertIsArray( $classes, 'Should return array' );
 			$this->assertNotEmpty( $classes, 'Should add classes' );
@@ -158,7 +158,7 @@ class Test_Template_Functions extends WP_UnitTestCase {
 	 */
 	public function test_viewport_meta_function_exists() {
 		$this->assertTrue(
-			function_exists( '{{theme_slug|phpCase}}_viewport_meta' ),
+			function_exists( '{{theme_slug|snakeCase}}_viewport_meta' ),
 			'Viewport meta function should exist'
 		);
 	}
@@ -168,7 +168,7 @@ class Test_Template_Functions extends WP_UnitTestCase {
 	 */
 	public function test_custom_logo_setup_exists() {
 		$this->assertTrue(
-			function_exists( '{{theme_slug|phpCase}}_custom_logo_setup' ),
+			function_exists( '{{theme_slug|snakeCase}}_custom_logo_setup' ),
 			'Custom logo setup function should exist'
 		);
 	}
@@ -178,7 +178,7 @@ class Test_Template_Functions extends WP_UnitTestCase {
 	 */
 	public function test_editor_color_palette_exists() {
 		$this->assertTrue(
-			function_exists( '{{theme_slug|phpCase}}_editor_color_palette' ),
+			function_exists( '{{theme_slug|snakeCase}}_editor_color_palette' ),
 			'Editor color palette function should exist'
 		);
 	}
@@ -188,14 +188,14 @@ class Test_Template_Functions extends WP_UnitTestCase {
 	 */
 	public function test_custom_excerpt_length() {
 		$this->assertTrue(
-			function_exists( '{{theme_slug|phpCase}}_custom_excerpt_length' ),
+			function_exists( '{{theme_slug|snakeCase}}_custom_excerpt_length' ),
 			'Custom excerpt length function should exist'
 		);
 
 		try {
 			// Test admin context (should not modify)
 			set_current_screen( 'edit' );
-			$length = {{theme_slug|phpCase}}_custom_excerpt_length( 55 );
+			$length = {{theme_slug|snakeCase}}_custom_excerpt_length( 55 );
 			$this->assertEquals( 55, $length, 'Should not modify length in admin' );
 
 			// Clean up
@@ -210,12 +210,12 @@ class Test_Template_Functions extends WP_UnitTestCase {
 	 */
 	public function test_remove_version() {
 		$this->assertTrue(
-			function_exists( '{{theme_slug|phpCase}}_remove_version' ),
+			function_exists( '{{theme_slug|snakeCase}}_remove_version' ),
 			'Remove version function should exist'
 		);
 
 		try {
-			$result = {{theme_slug|phpCase}}_remove_version();
+			$result = {{theme_slug|snakeCase}}_remove_version();
 			$this->assertEquals( '', $result, 'Should return empty string' );
 		} catch ( Exception $e ) {
 			$this->fail( 'Error testing remove version: ' . $e->getMessage() );
@@ -227,7 +227,7 @@ class Test_Template_Functions extends WP_UnitTestCase {
 	 */
 	public function test_security_headers_function_exists() {
 		$this->assertTrue(
-			function_exists( '{{theme_slug|phpCase}}_security_headers' ),
+			function_exists( '{{theme_slug|snakeCase}}_security_headers' ),
 			'Security headers function should exist'
 		);
 	}

@@ -22,7 +22,7 @@ class Test_Block_Styles extends WP_UnitTestCase {
 	 */
 	public function test_block_styles_function_exists() {
 		$this->assertTrue(
-			function_exists( '{{theme_slug|phpCase}}_register_block_styles' ),
+			function_exists( '{{theme_slug|snakeCase}}_register_block_styles' ),
 			'Block styles registration function should exist'
 		);
 	}

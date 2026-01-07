@@ -11,7 +11,7 @@ class Test_Theme_Setup extends WP_UnitTestCase {
 	 * Test theme setup function exists
 	 */
 	public function test_theme_setup_function_exists() {
-		$this->assertTrue( function_exists( '{{theme_slug|phpCase}}_setup' ) );
+		$this->assertTrue( function_exists( '{{theme_slug|snakeCase}}_setup' ) );
 	}
 
 	/**
@@ -49,9 +49,9 @@ class Test_Theme_Setup extends WP_UnitTestCase {
 	 * Test theme includes are loaded
 	 */
 	public function test_theme_includes() {
-		$this->assertTrue( function_exists( '{{theme_slug|phpCase}}_register_pattern_categories' ) );
-		$this->assertTrue( function_exists( '{{theme_slug|phpCase}}_enqueue_assets' ) );
-		$this->assertTrue( function_exists( '{{theme_slug|phpCase}}_enqueue_editor_assets' ) );
+		$this->assertTrue( function_exists( '{{theme_slug|snakeCase}}_register_pattern_categories' ) );
+		$this->assertTrue( function_exists( '{{theme_slug|snakeCase}}_enqueue_assets' ) );
+		$this->assertTrue( function_exists( '{{theme_slug|snakeCase}}_enqueue_editor_assets' ) );
 	}
 
 	/**

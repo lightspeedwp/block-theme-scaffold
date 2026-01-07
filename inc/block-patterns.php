@@ -14,7 +14,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Register hero section pattern.
  */
-function {{theme_slug|phpCase}}_register_hero_pattern() {
+function {{theme_slug|snakeCase}}_register_hero_pattern() {
 	register_block_pattern(
 		'{{theme_slug}}/hero-section',
 		array(
@@ -44,12 +44,12 @@ function {{theme_slug|phpCase}}_register_hero_pattern() {
 		)
 	);
 }
-add_action( 'init', '{{theme_slug|phpCase}}_register_hero_pattern' );
+add_action( 'init', '{{theme_slug|snakeCase}}_register_hero_pattern' );
 
 /**
  * Register call to action pattern.
  */
-function {{theme_slug|phpCase}}_register_cta_pattern() {
+function {{theme_slug|snakeCase}}_register_cta_pattern() {
 	register_block_pattern(
 		'{{theme_slug}}/call-to-action',
 		array(
@@ -79,12 +79,12 @@ function {{theme_slug|phpCase}}_register_cta_pattern() {
 		)
 	);
 }
-add_action( 'init', '{{theme_slug|phpCase}}_register_cta_pattern' );
+add_action( 'init', '{{theme_slug|snakeCase}}_register_cta_pattern' );
 
 /**
  * Register team section pattern.
  */
-function {{theme_slug|phpCase}}_register_team_pattern() {
+function {{theme_slug|snakeCase}}_register_team_pattern() {
 	register_block_pattern(
 		'{{theme_slug}}/team-section',
 		array(
@@ -158,4 +158,4 @@ function {{theme_slug|phpCase}}_register_team_pattern() {
 		)
 	);
 }
-add_action( 'init', '{{theme_slug|phpCase}}_register_team_pattern' );
+add_action( 'init', '{{theme_slug|snakeCase}}_register_team_pattern' );
