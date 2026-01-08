@@ -37,11 +37,22 @@ composer install
 
 **Interactive prompts (easiest)**
 
-Add the folder to the chat to your IDE, and select the "Generate Theme Agent" from the agent dropdown, or if you cannot see it in the dropdown, add the js file to the chat as well.
+Add the folder to the chat to your IDE, and select the "Generate Theme Agent" from the agent dropdown, 
 
 Then simply ask the agent to generate a theme, it will prompt you for the basic placeholder replacements.
 
+```bash
+Please generate a theme for me
+```
+
+If you cannot see it in the dropdown, add the js file to the chat as well.
 Agent Location: `scripts\agents\generate-theme.agent.js`
+
+```bash
+Please use the attached agent and folder, and generate a theme for me.
+```
+
+
 
 **CLI Mode**
 ```bash
@@ -53,9 +64,10 @@ node scripts/generate-theme.js --slug my-theme --name "My Theme" --author  "Your
 node scripts/generate-theme.js --config theme-config.json
 ```
 
-#### Copy the theme to your site.
-Navigate to `output-theme` and copy and paste that in your `themes` directory. Rename it to the same as your Theme Slug.
+#### 4. Copy the theme to your site.
+Copy the `output-theme` directory the will be generated in your repository and copy and paste that in your `themes` directory. 
 
+Make sure to rename it to the same value as your Theme Slug.
 
 ### Available Scripts
 - `npm run build` - Build for development
