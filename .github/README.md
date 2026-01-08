@@ -1,18 +1,77 @@
 ---
-title: GitHub Configuration
-description: GitHub-specific configuration and workflow files
-category: Project
-type: Index
+title: Block Theme Scaffold
+description: Generate a block theme for WordPress
+category: Tool
+type: Generate
 audience: Developers
-date: 2025-12-01
+date: 2026-01-10
 ---
 
-# GitHub Configuration
+## Getting Started
 
+### Prerequisites
+Make sure you have the following installed:
+
+- Node.js (check .nvmrc for the required version)
+- Composer (for PHP dependencies)
+- A WordPress environment with a DataBase.
+
+### Installation Steps
+
+#### 1. Clone the Repository
+```bash
+git clone https://github.com/lightspeedwp/block-theme-scaffold.git
+cd block-theme-scaffold
+```
+
+#### 2. Install Dependencies
+```bash
+# Install Node.js dependencies
+npm install
+
+# Install PHP/Composer dependencies
+composer install
+```
+
+#### 3. Generate your theme
+
+**Interactive prompts (easiest)**
+
+Add the folder to the chat to your IDE, and select the "Generate Theme Agent" from the agent dropdown, or if you cannot see it in the dropdown, add the js file to the chat as well.
+
+Then simply ask the agent to generate a theme, it will prompt you for the basic placeholder replacements.
+
+Agent Location: `scripts\agents\generate-theme.agent.js`
+
+**CLI Mode**
+```bash
+node scripts/generate-theme.js --slug my-theme --name "My Theme" --author  "Your Name" ...
+```
+
+**JSON Mode**
+```bash
+node scripts/generate-theme.js --config theme-config.json
+```
+
+#### Copy the theme to your site.
+Navigate to `output-theme` and copy and paste that in your `themes` directory. Rename it to the same as your Theme Slug.
+
+
+### Available Scripts
+- `npm run build` - Build for development
+- `npm run watch` - Watch for changes during development
+- `npm run lint`  - Run linters
+- `npm test`      - Run tests
+
+
+## Importing Design Tokens
+
+🚧 **Coming Soon** 🚧
+
+## GitHub Configuration
 This directory contains GitHub-specific configuration files for the {{theme_name}} theme.
 
-## Contents
-
+### Contents
 - **agents/** - AI agent configurations for automated development tasks
 - **instructions/** - Development instructions and guidelines for AI tools
 - **projects/** - Active Copilot projects and in-progress work
@@ -23,11 +82,10 @@ This directory contains GitHub-specific configuration files for the {{theme_name
 - `copilot-tasks.md` - Copilot task definitions and specifications
 - `custom-instructions.md` - Custom AI instructions for Copilot
 
-## Documentation
-
+### Documentation
 Permanent user-facing documentation is stored in the [docs/](../docs/) folder. See [docs/FILE_ORGANIZATION.md](../docs/FILE_ORGANIZATION.md) for the complete file organization guide.
 
-## Workflows
+### Workflows
 
 | Workflow | Description |
 |----------|-------------|
@@ -35,19 +93,3 @@ Permanent user-facing documentation is stored in the [docs/](../docs/) folder. S
 | `code-quality.yml` | Code coverage, quality gates, bundle analysis |
 | `deploy-wporg.yml` | Automated WordPress.org theme directory deployment |
 | `release.yml` | Version bumping, changelog generation, releases |
-
-## Purpose
-
-These files enable:
-
-- Automated build and test workflows
-- Code coverage tracking with Codecov
-- Quality gates for PRs
-- AI-assisted development with context-specific instructions
-- Consistent code review and quality checks
-- Automated release and deployment processes
-- WordPress.org theme directory deployment
-
-## Usage
-
-These files are automatically used by GitHub Actions and compatible AI development tools. They are excluded from theme distribution packages via `.distignore`.
