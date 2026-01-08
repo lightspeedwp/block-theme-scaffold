@@ -712,6 +712,9 @@ async function runScript() {
 		'{{featured_image_height}}': configData.image_sizes_featured_image_height || '630',
 		'{{gallery_image_width}}': configData.image_sizes_gallery_image_width || '800',
 		'{{gallery_image_height}}': configData.image_sizes_gallery_image_height || '600',
+		'{{logo_width}}': configData.images_logo_width || '250',
+		'{{logo_height}}': configData.images_logo_height || '100',
+		'{{archive_excerpt_length}}': configData.content_archive_excerpt_length || '40',
 	};
 	if ( argMap.author && placeholders[ 'Example Author' ] === 'Author Name' ) {
 		throw new Error( 'Invalid author name provided' );
