@@ -296,7 +296,6 @@
 			"backgroundImage": true,
 			"backgroundSize": true
 		},
-		"color": true,
 		"radius": true,
 		"style": true,
 		"width": true,
