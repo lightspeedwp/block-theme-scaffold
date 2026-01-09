@@ -121,12 +121,12 @@ add_action( 'enqueue_block_editor_assets', '{{theme_slug|snakeCase}}_enqueue_edi
  */
 function {{theme_slug|snakeCase}}_register_pattern_categories() {
 		       $categories = array(
-			       '{{pattern_slug}}-hero'    => array( 'label' => __( '{{theme_name}} Hero', '{{theme_slug}}' ) ),
-			       '{{pattern_slug}}-about'   => array( 'label' => __( '{{theme_name}} About', '{{theme_slug}}' ) ),
-			       '{{pattern_slug}}-contact' => array( 'label' => __( '{{theme_name}} Contact', '{{theme_slug}}' ) ),
-			       '{{pattern_slug}}-cta'     => array( 'label' => __( '{{theme_name}} Call to Action', '{{theme_slug}}' ) ),
-			       '{{pattern_slug}}-gallery' => array( 'label' => __( '{{theme_name}} Gallery', '{{theme_slug}}' ) ),
-			       '{{pattern_slug}}-team'    => array( 'label' => __( '{{theme_name}} Team', '{{theme_slug}}' ) ),
+			       '{{theme_slug}}-hero'    => array( 'label' => __( '{{theme_name}} Hero', '{{theme_slug}}' ) ),
+			       '{{theme_slug}}-about'   => array( 'label' => __( '{{theme_name}} About', '{{theme_slug}}' ) ),
+			       '{{theme_slug}}-contact' => array( 'label' => __( '{{theme_name}} Contact', '{{theme_slug}}' ) ),
+			       '{{theme_slug}}-cta'     => array( 'label' => __( '{{theme_name}} Call to Action', '{{theme_slug}}' ) ),
+			       '{{theme_slug}}-gallery' => array( 'label' => __( '{{theme_name}} Gallery', '{{theme_slug}}' ) ),
+			       '{{theme_slug}}-team'    => array( 'label' => __( '{{theme_name}} Team', '{{theme_slug}}' ) ),
 		       );
 
 	foreach ( $categories as $slug => $args ) {
