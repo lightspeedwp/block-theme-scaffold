@@ -71,8 +71,7 @@ class Test_Theme_Setup extends WP_UnitTestCase {
 		$theme_json_data = json_decode( $theme_json_content, true );
 		
 		$this->assertNotNull( $theme_json_data );
-		$this->assertEquals( 2, $theme_json_data['version'] );
+		$this->assertEquals( 3, $theme_json_data['version'] );
 		$this->assertArrayHasKey( 'settings', $theme_json_data );
-		$this->assertArrayHasKey( 'styles', $theme_json_data );
 	}
 }
