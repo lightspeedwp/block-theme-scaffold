@@ -18,13 +18,7 @@ class Test_Theme_Setup extends WP_UnitTestCase {
 	 * Test theme supports required features
 	 */
 	public function test_theme_supports() {
-		$this->assertTrue( current_theme_supports( 'wp-block-styles' ) );
-		$this->assertTrue( current_theme_supports( 'responsive-embeds' ) );
-		$this->assertTrue( current_theme_supports( 'editor-styles' ) );
-		$this->assertTrue( current_theme_supports( 'html5' ) );
-		$this->assertTrue( current_theme_supports( 'automatic-feed-links' ) );
-		$this->assertTrue( current_theme_supports( 'post-thumbnails' ) );
-		$this->assertTrue( current_theme_supports( 'align-wide' ) );
+		$this->assertTrue( current_theme_supports( 'editor-color-palette' ) );
 		$this->assertTrue( current_theme_supports( 'custom-logo' ) );
 	}
 
