@@ -37,7 +37,7 @@ function {{theme_slug|snakeCase}}_setup() {
 	add_editor_style( 'build/css/editor-style.css' );
 
 	// Set content width.
-	$GLOBALS['content_width'] = apply_filters( '{{theme_slug}}_content_width', '{{content_width_px}}' );
+	$GLOBALS['content_width'] = apply_filters( '{{theme_slug}}_content_width', {{content_width_num}} );
 }
 add_action( 'after_setup_theme', '{{theme_slug|snakeCase}}_setup' );
 

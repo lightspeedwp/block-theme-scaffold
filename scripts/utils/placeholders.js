@@ -75,7 +75,7 @@ const PLACEHOLDER_MAP = {
   // Layout dimensions
   '{{content_width_px}}': '640px',
   '{{wide_width_px}}': '1200px',
-  '{{content_width_num}}': '640',
+  '{{content_width_num}}': 640,
 
   // Dates
   '{{year}}': new Date().getFullYear().toString(),
