@@ -9,6 +9,13 @@ date: 2026-01-10
 
 ## Getting Started
 
+Advanced documentation on the theme generation is provided [here](../docs/GENERATE_THEME.md)
+
+### Visual Studio Code
+
+This tool is ment to be used on its own, and not inside a WordPress install. We suggest creating a "tools" folder at the root of your hosting applications folder (where all the sites are housed).
+You can then clone your it to your tools folder, and re-use it everytime you need a new theme.
+
 ### Prerequisites
 Make sure you have the following installed:
 
