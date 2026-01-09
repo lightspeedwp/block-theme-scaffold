@@ -14,7 +14,7 @@ Make sure you have the following installed:
 
 - Node.js (check .nvmrc for the required version)
 - Composer (for PHP dependencies)
-- A WordPress environment with a DataBase.
+- A WordPress environment with a database.
 
 ### Installation Steps
 
@@ -46,7 +46,7 @@ Please generate a theme for me
 ```
 
 If you cannot see it in the dropdown, add the js file to the chat as well.
-Agent Location: `scripts\agents\generate-theme.agent.js`
+Agent Location: `scripts/agents/generate-theme.agent.js`
 
 ```bash
 Please use the attached agent and folder, and generate a theme for me.
@@ -65,7 +65,7 @@ node scripts/generate-theme.js --config theme-config.json
 ```
 
 #### 4. Copy the theme to your site.
-Copy the `output-theme` directory the will be generated in your repository and copy and paste that in your `themes` directory. 
+Copy the `output-theme` directory that will be generated in your repository and copy and paste that in your `themes` directory. 
 
 Make sure to rename it to the same value as your Theme Slug.
 
