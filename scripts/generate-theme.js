@@ -316,23 +316,32 @@ function replacePlaceholders( content ) {
 		result = result.split( key ).join( value );
 	}
 
-	// Second pass: handle filter syntax like {{theme_slug|upper}}
+	// Single pass: handle all placeholder formats with optional filters
 	result = result.replace(
-		/\{\{([^}|]+)\|upper\}\}/g,
-		( match, varName ) => {
+		/\{\{([^}|]+)(\|([^}]+))?\}\}/g,
+		( match, varName, filterPart, filterName ) => {
 			const key = `{{${varName}}}`;
 			const value = placeholders[ key ];
-			return value ? value.toUpperCase().replace( /-/g, '_' ) : match;
-		}
-	);
-
-	// Third pass: handle snakeCase filter syntax like {{theme_slug|snakeCase}}
-	result = result.replace(
-		/\{\{([^}|]+)\|snakeCase\}\}/g,
-		( match, varName ) => {
-			const key = `{{${varName}}}`;
-			const value = placeholders[ key ];
-			return value ? value.toLowerCase().replace( /-/g, '_' ) : match;
+			
+			if ( ! value ) {
+				return match;
+			}
+			
+			// Apply filter if present
+			if ( filterName ) {
+				switch ( filterName.trim() ) {
+					case 'upper':
+						return value.toUpperCase().replace( /-/g, '_' );
+					case 'snakeCase':
+						return value.toLowerCase().replace( /-/g, '_' );
+					case 'phpCase':
+						return value.toLowerCase().replace( /-/g, '_' );
+					default:
+						return value;
+				}
+			}
+			
+			return value;
 		}
 	);
 
