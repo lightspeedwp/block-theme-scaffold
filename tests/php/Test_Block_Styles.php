@@ -33,7 +33,7 @@ class Test_Block_Styles extends WP_UnitTestCase {
 	public function test_button_styles_registered() {
 		try {
 			$registry = WP_Block_Styles_Registry::get_instance();
-			$button_styles = $registry->get_registered_styles( 'core/button' );
+			$button_styles = $registry->get_registered_styles_for_block( 'core/button' );
 
 			$this->assertNotEmpty( $button_styles, 'Button block should have styles' );
 
@@ -51,7 +51,7 @@ class Test_Block_Styles extends WP_UnitTestCase {
 	public function test_quote_styles_registered() {
 		try {
 			$registry = WP_Block_Styles_Registry::get_instance();
-			$quote_styles = $registry->get_registered_styles( 'core/quote' );
+			$quote_styles = $registry->get_registered_styles_for_block( 'core/quote' );
 
 			$this->assertNotEmpty( $quote_styles, 'Quote block should have styles' );
 
@@ -68,7 +68,7 @@ class Test_Block_Styles extends WP_UnitTestCase {
 	public function test_group_styles_registered() {
 		try {
 			$registry = WP_Block_Styles_Registry::get_instance();
-			$group_styles = $registry->get_registered_styles( 'core/group' );
+			$group_styles = $registry->get_registered_styles_for_block( 'core/group' );
 
 			$this->assertNotEmpty( $group_styles, 'Group block should have styles' );
 
@@ -86,7 +86,7 @@ class Test_Block_Styles extends WP_UnitTestCase {
 	public function test_image_styles_registered() {
 		try {
 			$registry = WP_Block_Styles_Registry::get_instance();
-			$image_styles = $registry->get_registered_styles( 'core/image' );
+			$image_styles = $registry->get_registered_styles_for_block( 'core/image' );
 
 			$this->assertNotEmpty( $image_styles, 'Image block should have styles' );
 
@@ -103,7 +103,7 @@ class Test_Block_Styles extends WP_UnitTestCase {
 	public function test_post_title_styles_registered() {
 		try {
 			$registry = WP_Block_Styles_Registry::get_instance();
-			$post_title_styles = $registry->get_registered_styles( 'core/post-title' );
+			$post_title_styles = $registry->get_registered_styles_for_block( 'core/post-title' );
 
 			$this->assertNotEmpty( $post_title_styles, 'Post title block should have styles' );
 
@@ -123,7 +123,7 @@ class Test_Block_Styles extends WP_UnitTestCase {
 			$blocks = [ 'core/button', 'core/quote', 'core/group', 'core/image', 'core/post-title' ];
 
 			foreach ( $blocks as $block ) {
-				$styles = $registry->get_registered_styles( $block );
+				$styles = $registry->get_registered_styles_for_block( $block );
 
 				foreach ( $styles as $style ) {
 					$this->assertNotEmpty(
