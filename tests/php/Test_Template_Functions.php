@@ -36,7 +36,7 @@ class Test_Template_Functions extends WP_UnitTestCase {
 	 */
 	public function test_get_theme_mod_wrapper() {
 		$this->assertTrue(
-			function_exists( '{{theme_slug}}_get_theme_mod' ),
+			function_exists( '{{theme_slug|snakeCase}}_get_theme_mod' ),
 			'Get theme mod wrapper should exist'
 		);
 
@@ -66,7 +66,7 @@ class Test_Template_Functions extends WP_UnitTestCase {
 			set_theme_mod( '{{theme_slug}}_footer_text', 'Test Footer' );
 
 			ob_start();
-			{{theme_slug}}_footer_text();
+			{{theme_slug|snakeCase}}_footer_text();
 			$output = ob_get_clean();
 
 			$this->assertEquals( 'Test Footer', $output, 'Should output footer text' );
@@ -89,10 +89,10 @@ class Test_Template_Functions extends WP_UnitTestCase {
 
 		try {
 			set_theme_mod( '{{theme_slug}}_show_social_links', false );
-			$this->assertFalse( {{theme_slug}}_show_social_links() );
+			$this->assertFalse( {{theme_slug|snakeCase}}_show_social_links() );
 
 			set_theme_mod( '{{theme_slug}}_show_social_links', true );
-			$this->assertTrue( {{theme_slug}}_show_social_links() );
+			$this->assertTrue( {{theme_slug|snakeCase}}_show_social_links() );
 
 			// Clean up
 			remove_theme_mod( '{{theme_slug}}_show_social_links' );

@@ -27,7 +27,7 @@ class Test_Block_Patterns extends WP_UnitTestCase {
 	 */
 	public function test_hero_pattern_function_exists() {
 		$this->assertTrue(
-			function_exists( '{{theme_slug}}_register_hero_pattern' ),
+			function_exists( '{{theme_slug|snakeCase}}_register_hero_pattern' ),
 			'Hero pattern registration function should exist'
 		);
 	}
@@ -37,7 +37,7 @@ class Test_Block_Patterns extends WP_UnitTestCase {
 	 */
 	public function test_cta_pattern_function_exists() {
 		$this->assertTrue(
-			function_exists( '{{theme_slug}}_register_cta_pattern' ),
+			function_exists( '{{theme_slug|snakeCase}}_register_cta_pattern' ),
 			'CTA pattern registration function should exist'
 		);
 	}
@@ -47,7 +47,7 @@ class Test_Block_Patterns extends WP_UnitTestCase {
 	 */
 	public function test_team_pattern_function_exists() {
 		$this->assertTrue(
-			function_exists( '{{theme_slug}}_register_team_pattern' ),
+			function_exists( '{{theme_slug|snakeCase}}_register_team_pattern' ),
 			'Team pattern registration function should exist'
 		);
 	}
