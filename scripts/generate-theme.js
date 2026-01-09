@@ -336,6 +336,11 @@ function replacePlaceholders( content ) {
 						return value.toLowerCase().replace( /-/g, '_' );
 					case 'phpCase':
 						return value.toLowerCase().replace( /-/g, '_' );
+					case 'pascalCase':
+						return value.split('-').map(part => part.charAt(0).toUpperCase() + part.slice(1)).join('');
+					case 'camelCase':
+						const parts = value.split('-');
+						return parts[0] + parts.slice(1).map(part => part.charAt(0).toUpperCase() + part.slice(1)).join('');
 					default:
 						return value;
 				}
@@ -725,7 +730,7 @@ async function runScript() {
 		'{{logo_height}}': configData.images_logo_height || '100',
 		'{{archive_excerpt_length}}': configData.content_archive_excerpt_length || '40',
 	};
-	if ( argMap.author && placeholders[ 'Example Author' ] === 'Author Name' ) {
+	if ( argMap.author && placeholders[ '{{author}}' ] === 'Author Name' ) {
 		throw new Error( 'Invalid author name provided' );
 	}
 

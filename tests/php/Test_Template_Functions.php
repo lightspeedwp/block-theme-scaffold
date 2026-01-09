@@ -107,7 +107,7 @@ class Test_Template_Functions extends WP_UnitTestCase {
 			$this->assertEquals( 55, $length, 'Should not modify length in admin' );
 
 			// Clean up
-			set_current_screen( 'front' );
+			set_current_screen( 'home' );
 		} catch ( Exception $e ) {
 			$this->fail( 'Error testing excerpt length: ' . $e->getMessage() );
 		}
