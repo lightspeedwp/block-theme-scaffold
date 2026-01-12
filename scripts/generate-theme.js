@@ -338,9 +338,10 @@ function replacePlaceholders( content ) {
 						return value.toLowerCase().replace( /-/g, '_' );
 					case 'pascalCase':
 						return value.split('-').map(part => part.charAt(0).toUpperCase() + part.slice(1)).join('');
-					case 'camelCase':
-						const parts = value.split('-');
-						return parts[0] + parts.slice(1).map(part => part.charAt(0).toUpperCase() + part.slice(1)).join('');
+				case 'camelCase': {
+					const parts = value.split('-');
+					return parts[0] + parts.slice(1).map(part => part.charAt(0).toUpperCase() + part.slice(1)).join('');
+				}
 					default:
 						return value;
 				}

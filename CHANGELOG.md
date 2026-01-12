@@ -16,7 +16,67 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+- **PHP Naming Convention Standardization**: All theme functions and hooks now use `{{theme_slug|phpCase}}` placeholder filter for consistent snake_case naming
+  - Updated `functions.php` - theme setup, asset enqueue, and utility functions
+  - Updated `inc/block-patterns.php` - pattern registration functions
+  - Updated `inc/block-styles.php` - block style registration functions  
+  - Updated `inc/template-functions.php` - template helper functions
+  - All function names now follow WordPress coding standards (e.g., `my_theme_setup()` instead of `my-theme_setup()`)
+
+- **Asset Handle Unification**: Standardized all asset handles to use `{{theme_slug}}` prefix
+  - Style handles: `{{theme_slug}}-style`, `{{theme_slug}}-editor-style`
+  - Script handles: `{{theme_slug}}-script`, `{{theme_slug}}-editor-script`
+  - Image size names: `{{theme_slug}}-featured`, `{{theme_slug}}-thumbnail`, `{{theme_slug}}-gallery`
+
+- **Theme Generator Improvements**: Enhanced placeholder replacement system in `scripts/generate-theme.js`
+  - Added support for multiple filter types: `upper`, `snakeCase`, `phpCase`, `pascalCase`, `camelCase`
+  - Consolidated placeholder replacement into single-pass regex for better performance
+  - Improved error handling and validation for theme slug and author URI
+  - Better error messages for invalid inputs
+  - Protocol validation for author URIs (must start with http:// or https://)
+
+- **theme.json Structure Updates**: Improved typography configuration
+  - Font families now use proper object structure with `slug`, `fontFamily`, and `name` properties
+  - Changed from array of strings to array of objects for better WordPress compatibility
+  - Removed redundant top-level `color` setting
+
+- **Test Suite Modernization**: Updated all PHPUnit tests to reflect new naming conventions
+  - Updated test discovery to use `Test_` prefix in `phpunit.xml`
+  - Fixed block style registry method calls to use `get_registered_styles_for_block()`
+  - Updated theme.json version assertion from 2 to 3
+  - Aligned test structure with WordPress coding standards
+
 ### Added
+
+- **New Placeholder Variables**:
+  - `{{logo_width}}` - Logo width dimension (default: 250)
+  - `{{logo_height}}` - Logo height dimension (default: 100)
+  - `{{archive_excerpt_length}}` - Excerpt length for archive/listing pages (default: 40)
+  - `{{content_width_num}}` - Numeric content width without units
+
+- **Schema Enhancements**: Added `archive_excerpt_length` configuration option
+  - Type: integer, default: 40, range: 20-200
+  - Controls excerpt length specifically for archive and listing pages
+
+- **Documentation Improvements**: Enhanced `.github/README.md`
+  - Clearer installation instructions
+  - Multiple theme generation methods (Interactive, CLI, JSON)
+  - Available scripts reference
+  - Prerequisites section
+  - Better structure and organization
+
+### Fixed
+
+- **Content Width Type Bug**: Fixed critical bug where `$GLOBALS['content_width']` was incorrectly set as string instead of integer
+  - Changed from `'{{content_width_px}}'` to `{{content_width_num}}`
+  - Now properly passes integer value to WordPress for embed/media width calculations
+  - Fixes PHPUnit test assertions for `assertIsInt($content_width)`
+
+- **Placeholder Type Consistency**: Improved type handling in theme generator
+  - Added string coercion for `content_width_num` calculation to prevent errors when config value is numeric
+  - Better handling of missing or invalid placeholder values
 
 - Automated mustache variable registry scan, update, and reporting:
   - Recursively scans all source, config, and documentation files for `{{mustache}}` variables.
