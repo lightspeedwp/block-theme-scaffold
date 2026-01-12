@@ -1,6 +1,6 @@
 {
 	"name": "block-theme-scaffold",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"description": "A modern WordPress block theme scaffold with Full Site Editing support",
 	"author": "{{author}}",
 	"license": "{{license}}",
