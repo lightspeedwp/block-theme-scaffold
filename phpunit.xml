@@ -9,7 +9,7 @@
 	>
 	<testsuites>
 		<testsuite name="{{theme_name}} Test Suite">
-			<directory prefix="test-" suffix=".php">./tests/</directory>
+			<directory prefix="Test_" suffix=".php">./tests/php/</directory>
 		</testsuite>
 	</testsuites>
 	<coverage includeUncoveredFiles="true">

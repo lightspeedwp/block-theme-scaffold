@@ -316,13 +316,38 @@ function replacePlaceholders( content ) {
 		result = result.split( key ).join( value );
 	}
 
-	// Second pass: handle filter syntax like {{theme_slug|upper}}
+	// Single pass: handle all placeholder formats with optional filters
 	result = result.replace(
-		/\{\{([^}|]+)\|upper\}\}/g,
-		( match, varName ) => {
+		/\{\{([^}|]+)(\|([^}]+))?\}\}/g,
+		( match, varName, filterPart, filterName ) => {
 			const key = `{{${varName}}}`;
 			const value = placeholders[ key ];
-			return value ? value.toUpperCase().replace( /-/g, '_' ) : match;
+			
+			if ( ! value ) {
+				return match;
+			}
+			
+			// Apply filter if present
+			if ( filterName ) {
+				switch ( filterName.trim() ) {
+					case 'upper':
+						return value.toUpperCase().replace( /-/g, '_' );
+					case 'snakeCase':
+						return value.toLowerCase().replace( /-/g, '_' );
+					case 'phpCase':
+						return value.toLowerCase().replace( /-/g, '_' );
+					case 'pascalCase':
+						return value.split('-').map(part => part.charAt(0).toUpperCase() + part.slice(1)).join('');
+				case 'camelCase': {
+					const parts = value.split('-');
+					return parts[0] + parts.slice(1).map(part => part.charAt(0).toUpperCase() + part.slice(1)).join('');
+				}
+					default:
+						return value;
+				}
+			}
+			
+			return value;
 		}
 	);
 
@@ -638,57 +663,75 @@ async function runScript() {
 		}
 	} catch ( e ) {
 		if ( e.message === 'protocol' ) {
-				       placeholders = {
-					       '{{theme_name}}': sanitizeInput(configData.theme_name || argMap.name, 'name') || 'My Theme',
-					       '{{theme_slug}}': themeSlug,
-					       '{{description}}': sanitizeInput(configData.description || argMap.description, 'text') || 'A WordPress block theme.',
-					       '{{author}}': author,
-					       '{{author_uri}}': authorUri,
-					       '{{version}}': sanitizeInput(configData.version || argMap.version, 'version') || '1.0.0',
-					       '{{theme_uri}}': sanitizeInput(configData.theme_uri || argMap.theme_uri, 'url') || 'https://example.com/theme',
-					       '{{min_wp_version}}': sanitizeInput(configData.min_wp_version || argMap.min_wp_version, 'version') || '6.5',
-					       '{{tested_wp_version}}': sanitizeInput(configData.tested_wp_version || argMap.tested_wp_version, 'version') || '6.7',
-					       '{{min_php_version}}': sanitizeInput(configData.min_php_version || argMap.min_php_version, 'version') || '8.0',
-					       '{{license}}': sanitizeInput(configData.license || argMap.license, 'license') || 'GPL-2.0-or-later',
-					       '{{license_uri}}': sanitizeInput(configData.license_uri || argMap.license_uri, 'url') || 'https://www.gnu.org/licenses/gpl-2.0.html',
-					       '{{theme_repo_url}}': sanitizeInput(configData.theme_repo_url || argMap.theme_repo_url, 'url') || `https://github.com/${author}/${themeSlug}`,
-					       '{{support_url}}': `https://wordpress.org/support/theme/${themeSlug}`,
-					       '{{docs_url}}': `https://github.com/${author}/${themeSlug}/wiki`,
-					       '{{changelog_url}}': `https://github.com/${author}/${themeSlug}`,
-					       '{{security_email}}': `security@${authorUri.replace(/^https?:\/\/(www\.)?/, '').split('/')[0]}`,
-					       '{{contact_email}}': `contact@${authorUri.replace(/^https?:\/\/(www\.)?/, '').split('/')[0]}`,
-					       '{{year}}': new Date().getFullYear().toString(),
-					       '{{primary_color}}': configData.design_system_colors_primary_color || '#0073aa',
-					       '{{secondary_color}}': configData.design_system_colors_secondary_color || '#005177',
-					       '{{background_color}}': configData.design_system_colors_background_color || '#ffffff',
-					       '{{text_color}}': configData.design_system_colors_text_color || '#1a1a1a',
-					       '{{accent_color}}': configData.design_system_colors_accent_color || '#ff6b35',
-					       '{{neutral_color}}': configData.design_system_colors_neutral_color || '#6c757d',
-					       '{{heading_font_family}}': configData.design_system_typography_heading_font_family || "system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
-					       '{{heading_font_name}}': configData.design_system_typography_heading_font_name || 'System Font',
-					       '{{body_font_family}}': configData.design_system_typography_body_font_family || "system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
-					       '{{body_font_name}}': configData.design_system_typography_body_font_name || 'System Font',
-					       '{{heading_font_weight}}': configData.design_system_typography_heading_font_weight || '700',
-					       '{{body_line_height}}': configData.design_system_typography_body_line_height || '1.6',
-					       '{{heading_line_height}}': configData.design_system_typography_heading_line_height || '1.2',
-					       '{{button_font_weight}}': configData.design_system_typography_button_font_weight || '600',
-					       '{{site_title_font_weight}}': configData.design_system_typography_site_title_font_weight || '700',
-					       '{{content_width_px}}': configData.design_system_layout_content_width || '720px',
-					       '{{wide_width_px}}': configData.design_system_layout_wide_width || '1200px',
-					       '{{content_width_num}}': (configData.design_system_layout_content_width || '720px').replace(/[^\d]/g, ''),
-					       '{{button_border_radius}}': configData.content_button_border_radius || '4px',
-					       '{{excerpt_more}}': configData.content_excerpt_more || '...',
-					       '{{skip_link_text}}': configData.content_skip_link_text || 'Skip to content',
-					       '{{excerpt_length}}': configData.content_excerpt_length || '55',
-					       '{{thumbnail_width}}': configData.image_sizes_thumbnail_width || '150',
-					       '{{thumbnail_height}}': configData.image_sizes_thumbnail_height || '150',
-					       '{{featured_image_width}}': configData.image_sizes_featured_image_width || '1200',
-					       '{{featured_image_height}}': configData.image_sizes_featured_image_height || '630',
-					       '{{gallery_image_width}}': configData.image_sizes_gallery_image_width || '800',
-					       '{{gallery_image_height}}': configData.image_sizes_gallery_image_height || '600',
-				       };
+			throw new Error( 'Invalid author URI: must start with http:// or https://' );
+		}
+		throw new Error( 'Invalid author URI provided' );
+	}
 
-	if ( argMap.author && placeholders[ 'Example Author' ] === 'Author Name' ) {
+	try {
+		if ( configData.theme_slug || argMap.slug ) {
+			themeSlug = sanitizeInput(
+				configData.theme_slug || argMap.slug,
+				'slug'
+			);
+		}
+	} catch ( e ) {
+		throw new Error( 'Invalid theme slug provided' );
+	}
+
+	placeholders = {
+		'{{theme_name}}': sanitizeInput(configData.theme_name || argMap.name, 'name') || 'My Theme',
+		'{{theme_slug}}': themeSlug,
+		'{{description}}': sanitizeInput(configData.description || argMap.description, 'text') || 'A WordPress block theme.',
+		'{{author}}': author,
+		'{{author_uri}}': authorUri,
+		'{{version}}': sanitizeInput(configData.version || argMap.version, 'version') || '1.0.0',
+		'{{theme_uri}}': sanitizeInput(configData.theme_uri || argMap.theme_uri, 'url') || 'https://example.com/theme',
+		'{{min_wp_version}}': sanitizeInput(configData.min_wp_version || argMap.min_wp_version, 'version') || '6.5',
+		'{{tested_wp_version}}': sanitizeInput(configData.tested_wp_version || argMap.tested_wp_version, 'version') || '6.7',
+		'{{min_php_version}}': sanitizeInput(configData.min_php_version || argMap.min_php_version, 'version') || '8.0',
+		'{{license}}': sanitizeInput(configData.license || argMap.license, 'license') || 'GPL-2.0-or-later',
+		'{{license_uri}}': sanitizeInput(configData.license_uri || argMap.license_uri, 'url') || 'https://www.gnu.org/licenses/gpl-2.0.html',
+		'{{theme_repo_url}}': sanitizeInput(configData.theme_repo_url || argMap.theme_repo_url, 'url') || `https://github.com/${author}/${themeSlug}`,
+		'{{support_url}}': `https://wordpress.org/support/theme/${themeSlug}`,
+		'{{docs_url}}': `https://github.com/${author}/${themeSlug}/wiki`,
+		'{{changelog_url}}': `https://github.com/${author}/${themeSlug}`,
+		'{{security_email}}': `security@${authorUri.replace(/^https?:\/\/(www\.)?/, '').split('/')[0]}`,
+		'{{contact_email}}': `contact@${authorUri.replace(/^https?:\/\/(www\.)?/, '').split('/')[0]}`,
+		'{{year}}': new Date().getFullYear().toString(),
+		'{{primary_color}}': configData.design_system_colors_primary_color || '#0073aa',
+		'{{secondary_color}}': configData.design_system_colors_secondary_color || '#005177',
+		'{{background_color}}': configData.design_system_colors_background_color || '#ffffff',
+		'{{text_color}}': configData.design_system_colors_text_color || '#1a1a1a',
+		'{{accent_color}}': configData.design_system_colors_accent_color || '#ff6b35',
+		'{{neutral_color}}': configData.design_system_colors_neutral_color || '#6c757d',
+		'{{heading_font_family}}': configData.design_system_typography_heading_font_family || "system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
+		'{{heading_font_name}}': configData.design_system_typography_heading_font_name || 'System Font',
+		'{{body_font_family}}': configData.design_system_typography_body_font_family || "system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
+		'{{body_font_name}}': configData.design_system_typography_body_font_name || 'System Font',
+		'{{heading_font_weight}}': configData.design_system_typography_heading_font_weight || '700',
+		'{{body_line_height}}': configData.design_system_typography_body_line_height || '1.6',
+		'{{heading_line_height}}': configData.design_system_typography_heading_line_height || '1.2',
+		'{{button_font_weight}}': configData.design_system_typography_button_font_weight || '600',
+		'{{site_title_font_weight}}': configData.design_system_typography_site_title_font_weight || '700',
+		'{{content_width_px}}': configData.design_system_layout_content_width || '720px',
+		'{{wide_width_px}}': configData.design_system_layout_wide_width || '1200px',
+		'{{content_width_num}}': String(configData.design_system_layout_content_width || 720).replace(/[^\d]/g, ''),
+		'{{button_border_radius}}': configData.content_button_border_radius || '4px',
+		'{{excerpt_more}}': configData.content_excerpt_more || '...',
+		'{{skip_link_text}}': configData.content_skip_link_text || 'Skip to content',
+		'{{excerpt_length}}': configData.content_excerpt_length || '55',
+		'{{thumbnail_width}}': configData.image_sizes_thumbnail_width || '150',
+		'{{thumbnail_height}}': configData.image_sizes_thumbnail_height || '150',
+		'{{featured_image_width}}': configData.image_sizes_featured_image_width || '1200',
+		'{{featured_image_height}}': configData.image_sizes_featured_image_height || '630',
+		'{{gallery_image_width}}': configData.image_sizes_gallery_image_width || '800',
+		'{{gallery_image_height}}': configData.image_sizes_gallery_image_height || '600',
+		'{{logo_width}}': configData.images_logo_width || '250',
+		'{{logo_height}}': configData.images_logo_height || '100',
+		'{{archive_excerpt_length}}': configData.content_archive_excerpt_length || '40',
+	};
+	if ( argMap.author && placeholders[ '{{author}}' ] === 'Author Name' ) {
 		throw new Error( 'Invalid author name provided' );
 	}
 

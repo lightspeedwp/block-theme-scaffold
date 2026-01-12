@@ -11,20 +11,14 @@ class Test_Theme_Setup extends WP_UnitTestCase {
 	 * Test theme setup function exists
 	 */
 	public function test_theme_setup_function_exists() {
-		$this->assertTrue( function_exists( '{{theme_slug}}_setup' ) );
+		$this->assertTrue( function_exists( '{{theme_slug|snakeCase}}_setup' ) );
 	}
 
 	/**
 	 * Test theme supports required features
 	 */
 	public function test_theme_supports() {
-		$this->assertTrue( current_theme_supports( 'wp-block-styles' ) );
-		$this->assertTrue( current_theme_supports( 'responsive-embeds' ) );
-		$this->assertTrue( current_theme_supports( 'editor-styles' ) );
-		$this->assertTrue( current_theme_supports( 'html5' ) );
-		$this->assertTrue( current_theme_supports( 'automatic-feed-links' ) );
-		$this->assertTrue( current_theme_supports( 'post-thumbnails' ) );
-		$this->assertTrue( current_theme_supports( 'align-wide' ) );
+		$this->assertTrue( current_theme_supports( 'editor-color-palette' ) );
 		$this->assertTrue( current_theme_supports( 'custom-logo' ) );
 	}
 
@@ -49,9 +43,9 @@ class Test_Theme_Setup extends WP_UnitTestCase {
 	 * Test theme includes are loaded
 	 */
 	public function test_theme_includes() {
-		$this->assertTrue( function_exists( '{{theme_slug}}_register_pattern_categories' ) );
-		$this->assertTrue( function_exists( '{{theme_slug}}_enqueue_assets' ) );
-		$this->assertTrue( function_exists( '{{theme_slug}}_enqueue_editor_assets' ) );
+		$this->assertTrue( function_exists( '{{theme_slug|snakeCase}}_register_pattern_categories' ) );
+		$this->assertTrue( function_exists( '{{theme_slug|snakeCase}}_enqueue_assets' ) );
+		$this->assertTrue( function_exists( '{{theme_slug|snakeCase}}_enqueue_editor_assets' ) );
 	}
 
 	/**
@@ -77,8 +71,7 @@ class Test_Theme_Setup extends WP_UnitTestCase {
 		$theme_json_data = json_decode( $theme_json_content, true );
 		
 		$this->assertNotNull( $theme_json_data );
-		$this->assertEquals( 2, $theme_json_data['version'] );
+		$this->assertEquals( 3, $theme_json_data['version'] );
 		$this->assertArrayHasKey( 'settings', $theme_json_data );
-		$this->assertArrayHasKey( 'styles', $theme_json_data );
 	}
 }

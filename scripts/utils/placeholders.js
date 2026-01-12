@@ -75,20 +75,27 @@ const PLACEHOLDER_MAP = {
   // Layout dimensions
   '{{content_width_px}}': '640px',
   '{{wide_width_px}}': '1200px',
-  '{{content_width_num}}': '640',
+  '{{content_width_num}}': 640,
 
   // Dates
   '{{year}}': new Date().getFullYear().toString(),
   '{{iso_date}}': new Date().toISOString(),
   '{{iso_date2}}': new Date().toISOString(),
+
+  // Image sizes
   '{{featured_image_width}}': '1200',
   '{{featured_image_height}}': '675',
   '{{gallery_image_width}}': '600',
   '{{gallery_image_height}}': '400',
   '{{thumbnail_width}}': '1440',
   '{{thumbnail_height}}': '1080',
+  '{{logo_width}}': '250',
+  '{{logo_height}}': '100',
+
+  // Excerpt settings
   '{{excerpt_length}}': '32',
   '{{excerpt_more}}': '…',
+  '{{archive_excerpt_length}}': '32',
 
   // JavaScript/UI specific
   '{{skip_link_text}}': 'Skip to content',

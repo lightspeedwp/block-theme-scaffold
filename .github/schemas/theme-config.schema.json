@@ -459,6 +459,13 @@
 					"minimum": 20,
 					"maximum": 200
 				},
+				"archive_excerpt_length": {
+					"type": "integer",
+					"description": "Number of words in archive/listing excerpts",
+					"default": 40,
+					"minimum": 20,
+					"maximum": 200
+				},
 				"excerpt_more": {
 					"type": "string",
 					"description": "Excerpt 'more' text",
