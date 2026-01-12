@@ -716,7 +716,7 @@ async function runScript() {
 		'{{site_title_font_weight}}': configData.design_system_typography_site_title_font_weight || '700',
 		'{{content_width_px}}': configData.design_system_layout_content_width || '720px',
 		'{{wide_width_px}}': configData.design_system_layout_wide_width || '1200px',
-		'{{content_width_num}}': (configData.design_system_layout_content_width || 720).replace(/[^\d]/g, ''),
+		'{{content_width_num}}': String(configData.design_system_layout_content_width || 720).replace(/[^\d]/g, ''),
 		'{{button_border_radius}}': configData.content_button_border_radius || '4px',
 		'{{excerpt_more}}': configData.content_excerpt_more || '...',
 		'{{skip_link_text}}': configData.content_skip_link_text || 'Skip to content',
