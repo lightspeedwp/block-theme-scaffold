@@ -13,7 +13,7 @@ Advanced documentation on the theme generation is provided [here](../docs/GENERA
 
 ### Visual Studio Code
 
-This tool is ment to be used on its own, and not inside a WordPress install. We suggest creating a "tools" folder at the root of your hosting applications folder (where all the sites are housed).
+This tool is meant to be used on its own, and not inside a WordPress install. We suggest creating a "tools" folder at the root of your hosting applications folder (where all the sites are housed).
 You can then clone your it to your tools folder, and re-use it everytime you need a new theme.
 
 ### Prerequisites
