@@ -31,7 +31,7 @@ async function promptForVariableMeta(name, existing = {}) {
       name: 'name',
       message: `Variable name:`,
       default: name,
-      validate: (input) => input.match(/^[a-zA-Z0-9_\-]+$/) ? true : 'Invalid variable name.'
+      validate: (input) => input.match(/^[a-zA-Z0-9_-]+$/) ? true : 'Invalid variable name.'
     },
     {
       type: 'input',

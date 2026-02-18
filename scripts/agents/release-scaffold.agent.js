@@ -40,7 +40,6 @@
 const fs = require('fs');
 const path = require('path');
 const { execSync } = require('child_process');
-const modeDetector = require('../utils/mode-detector');
 const FileLogger = require('../utils/logger');
 // Wizard integration
 const questions = require('./release-scaffold.questions');
@@ -793,35 +792,6 @@ function generateReport() {
 // ============================================================================
 // MAIN COMMAND ROUTER
 // ============================================================================
-
-function showHelp() {
-	console.log(`
-${colors.cyan}${colors.bold}Release Scaffold Agent${colors.reset}
-
-${colors.bold}Usage:${colors.reset}
-  node scripts/agents/release-scaffold.agent.js [command]
-
-${colors.bold}Commands:${colors.reset}
-  validate      - Run full validation suite (default)
-  version       - Check version consistency
-  placeholders  - Verify mustache placeholders preserved
-  schema        - Validate mustache variable schema
-  quality       - Run quality gates (lint, format, test)
-  docs          - Verify documentation
-  generate      - Test theme generation (smoke test)
-  security      - Run security audit
-  report        - Generate full readiness report
-  help          - Show this help text
-
-${colors.bold}NPM Scripts:${colors.reset}
-  npm run release:scaffold:validate
-  npm run release:scaffold:report
-
-${colors.bold}Specification:${colors.reset}
-  .github/agents/release-scaffold.agent.md
-  docs/RELEASE_PROCESS_SCAFFOLD.md
-`);
-}
 
 async function main() {
 	const args = process.argv.slice(2);

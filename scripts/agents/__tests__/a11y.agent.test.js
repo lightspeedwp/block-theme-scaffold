@@ -1,5 +1,5 @@
 // __tests__/a11y.agent.test.js
-const { main, questions } = require('../a11y.agent');
+const { questions } = require('../a11y.agent');
 const { wizardInterfaces } = require('../../lib/wizard');
 
 test('a11y agent runs with mock wizard', async () => {

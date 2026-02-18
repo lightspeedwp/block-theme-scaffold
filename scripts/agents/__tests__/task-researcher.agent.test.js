@@ -1,5 +1,5 @@
 // __tests__/task-researcher.agent.test.js
-const { main, questions } = require('../task-researcher.agent');
+const { questions } = require('../task-researcher.agent');
 const { wizardInterfaces } = require('../../lib/wizard');
 
 test('task researcher agent runs with mock wizard', async () => {

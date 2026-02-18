@@ -17,7 +17,7 @@ const questions = [
 		name: 'slug',
 		message: 'Theme slug (lowercase, hyphens):',
 		validate: (val) =>
-			/^[a-z0-9\-]{2,}$/.test(val)
+			/^[a-z0-9-]{2,}$/.test(val)
 				? true
 				: 'Slug must be lowercase, hyphens, min 2 chars.',
 	},

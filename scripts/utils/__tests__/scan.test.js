@@ -11,7 +11,7 @@ const path = require('path');
 describe('Mustache scan enhancements', () => {
 	it('should detect all mustache variables and usage context', () => {
 		const { variables } = scanMustacheVariables();
-		for (const [name, entry] of Object.entries(variables)) {
+		for (const entry of Object.values(variables)) {
 			expect(entry).toHaveProperty('usage');
 			expect(Array.isArray(entry.usage)).toBe(true);
 			expect(entry).toHaveProperty('type');

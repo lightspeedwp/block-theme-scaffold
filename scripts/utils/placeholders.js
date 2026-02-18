@@ -126,7 +126,7 @@ function isScaffoldMode(packageJsonPath) {
 	try {
 		const fs = require('fs');
 		const packageJson = fs.readFileSync(packageJsonPath, 'utf8');
-		return packageJson.includes('PLACEHOLDER');
+		return packageJson.includes('{{');
 	} catch (error) {
 		if (typeof packageJsonPath === 'string') {
 			const normalized = packageJsonPath.toLowerCase();

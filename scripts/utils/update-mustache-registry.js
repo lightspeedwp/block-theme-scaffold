@@ -24,19 +24,6 @@ const VARIABLES_SCHEMA_PATH = path.join(
 	'.github/schemas/mustache-variables.schema.json'
 );
 
-// Compare two variable sets and summarize changes
-function summarizeRegistryChanges(oldVars, newVars) {
-	const oldKeys = new Set(Object.keys(oldVars));
-	const newKeys = new Set(Object.keys(newVars));
-	const added = Array.from(newKeys).filter((k) => !oldKeys.has(k));
-	const removed = Array.from(oldKeys).filter((k) => !newKeys.has(k));
-	const changed = Array.from(newKeys).filter(
-		(k) =>
-			oldKeys.has(k) &&
-			JSON.stringify(oldVars[k]) !== JSON.stringify(newVars[k])
-	);
-	return { added, removed, changed };
-}
 
 function writeJsonFile(filePath, value) {
 	fs.writeFileSync(filePath, JSON.stringify(value, null, 2) + '\n', 'utf8');
@@ -203,7 +190,9 @@ function main() {
 	let prevRegistry = null;
 	try {
 		prevRegistry = require(REGISTRY_PATH);
-	} catch (e) {}
+	} catch (e) {
+		// Previous registry not found, continuing with scan results
+	}
 	const registry = updateRegistryFixture(scanResults);
 	const schema = updateRegistrySchema(scanResults);
 	updateVariablesSchema(Object.keys(schema.properties).sort());

@@ -47,9 +47,8 @@ describe('wizardInterfaces', () => {
 	});
 
 	it('yaml loads config from file', async () => {
-		let yaml;
 		try {
-			yaml = require('js-yaml');
+			require('js-yaml');
 		} catch (e) {
 			return; // skip if js-yaml not installed
 		}
@@ -84,15 +83,15 @@ describe('wizardInterfaces', () => {
 
 	it('http throws if node-fetch not installed', async () => {
 		// This test only checks error if node-fetch is missing
-		let fetchFn;
 		try {
-			fetchFn = require('node-fetch');
+			require('node-fetch');
+			return; // skip test if node-fetch is installed
 		} catch (e) {
-			await expect(
-				wizardInterfaces.http([], { url: 'http://localhost', logger })
-			).rejects.toThrow('node-fetch is not installed');
-			return;
+			// node-fetch not installed, test the error
 		}
+		await expect(
+			wizardInterfaces.http([], { url: 'http://localhost', logger })
+		).rejects.toThrow('node-fetch is not installed');
 		// If node-fetch is installed, skip (integration test would be needed)
 	});
 });

@@ -15,6 +15,7 @@ This file serves as an index for all prompt templates used by AI agents and assi
 | Prompt                                                                 | Description                   | Usage                                     |
 | ---------------------------------------------------------------------- | ----------------------------- | ----------------------------------------- |
 | generate-theme.prompt.md                 | Interactive theme generator   | Start with "Generate a new block theme"   |
+| extract-design-tokens.prompt.md       | Extract design tokens from styleguides | Ask "Extract design tokens from [URL]" |
 | block-theme-build.prompt.md           | Build and validation prompts  | Ask "Run full build validation"           |
 | development-assistant.prompt.md   | Development assistant prompts | Ask "Switch to theme.json editing mode"   |
 | release.prompt.md                               | Release workflow prompts      | Ask "Run release validation"              |
@@ -27,6 +28,7 @@ This file serves as an index for all prompt templates used by AI agents and assi
 | Prompt | Description | Usage |
 |--------|-------------|-------|
 | [generate-theme.prompt.md](./generate-theme.prompt.md) | Interactive theme generator | Start with "Generate a new block theme" |
+| [extract-design-tokens.prompt.md](./extract-design-tokens.prompt.md) | Extract design tokens from Figma/styleguides | Ask "Extract design tokens from [URL]" |
 | [block-theme-build.prompt.md](./block-theme-build.prompt.md) | Build and validation prompts | Ask "Run full build validation" |
 | [development-assistant.prompt.md](./development-assistant.prompt.md) | Development assistant prompts | Ask "Switch to theme.json editing mode" |
 | [release.prompt.md](./release.prompt.md) | Release workflow prompts | Ask "Run release validation" |

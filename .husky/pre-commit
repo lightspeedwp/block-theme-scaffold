@@ -4,10 +4,8 @@
 # Intelligently handles both scaffold mode and generated theme mode
 # Runs linting and tests before allowing commits
 
-. "$(dirname -- "$0")/_/husky.sh"
-
 # Check if we're in scaffold mode (has mustache variables)
-if node scripts/test-placeholders.js check package.json 2>/dev/null; then
+if node scripts/utils/placeholders.js check package.json 2>/dev/null; then
     echo "🔍 Scaffold mode detected - using dry-run linting and testing..."
     echo ""
 

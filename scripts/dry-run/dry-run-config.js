@@ -114,7 +114,7 @@ function replaceMustacheVars(content, values = DRY_RUN_VALUES) {
 	});
 
 	// Support upper filter syntax (e.g., PLACEHOLDER)
-	result = result.replace(/\{\{([^}|]+)\|upper\}\}/g, (match, varName) => {
+	result = result.replace(/\{\{([^}|]+)\|upper\}\}/g, (match) => {
 		const key = `PLACEHOLDER}`;
 		const value = values[key] ?? DRY_RUN_VALUES[key];
 

@@ -1,5 +1,5 @@
 // __tests__/code-quality.agent.test.js
-const { main, questions } = require('../code-quality.agent');
+const { questions } = require('../code-quality.agent');
 const { wizardInterfaces } = require('../../lib/wizard');
 
 test('code-quality agent runs with mock wizard', async () => {
