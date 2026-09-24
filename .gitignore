@@ -24,6 +24,11 @@ languages/*.mo
 *.tmp
 *.temp
 
+# Reproducible installs: the manifests' lockfiles are committed so `npm ci`,
+# `composer install` and setup-node npm caching work out of the box.
+!/package-lock.json
+!/composer.lock
+
 # Runtime generated files - NEVER commit
 logs/
 !logs/.gitkeep
@@ -91,9 +96,8 @@ wp-content/backup-*/
 *.7z
 *.rar
 
-# Package manager files
-package-lock.json
-composer.lock
+# Package manager files (package-lock.json and composer.lock are
+# re-included above so reproducible installs keep working)
 yarn.lock
 
 # Miscellaneous

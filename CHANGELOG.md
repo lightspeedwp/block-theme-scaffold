@@ -69,6 +69,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+- **Committed Lockfiles**: Added `package-lock.json` and `composer.lock` to version control (no longer ignored in `.gitignore`), so `npm ci`, `composer install` and setup-node npm caching install reproducibly in the scaffold, its CI, and generated themes
+  - Generated themes inherit both lockfiles; generation only rewrites manifest metadata, which does not invalidate the locked dependency graph
+
 - **Content Width Type Bug**: Fixed critical bug where `$GLOBALS['content_width']` was incorrectly set as string instead of integer
   - Changed from `'{{content_width_px}}'` to `{{content_width_num}}`
   - Now properly passes integer value to WordPress for embed/media width calculations
