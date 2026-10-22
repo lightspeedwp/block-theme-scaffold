@@ -31,7 +31,7 @@ let placeholders = {};
 /**
  * scripts/generate-theme.js
  *
- * Script to generate a new WordPress block theme from this scaffold, replacing all moustache placeholders.
+ * Script to generate a new WordPress block theme from the theme-template/ folder, replacing all moustache placeholders.
  *
  * Uses shared configuration schema from scripts/lib/define-config-schema.js
  *
@@ -59,7 +59,9 @@ const validateAgainstSchema = ajv.compile( themeConfigSchema );
 const FileLogger = require( './utils/logger' );
 const logger = new FileLogger( 'generate-theme', 'generation' );
 
-const scaffoldDir = path.resolve( __dirname, '..' );
+// All files that make up a generated theme live in theme-template/.
+// Everything else in this repository is generator tooling and is never copied.
+const templateDir = path.resolve( __dirname, '..', 'theme-template' );
 
 // Use a predictable output directory for generation (matches test expectations)
 const outputDir = path.resolve( process.cwd(), 'output-theme' ); // Always use ./output-theme for generation
@@ -217,7 +219,7 @@ function showHelp() {
 WordPress Block Theme Generator
 ================================
 
-Generate a custom WordPress block theme from the scaffold.
+Generate a custom WordPress block theme from the theme-template/ folder.
 
 USAGE:
   JSON Config Mode (Recommended):
@@ -290,12 +292,15 @@ EXAMPLES:
       --config theme-config.json \\
       --version "2.0.0"
 
+TEMPLATE:
+  All generated files come from theme-template/. Edit that folder to change
+  what a generated theme contains.
+
 OUTPUT:
-  - In scaffold repository: ./generated-theme/
-  - In new repository: current directory (in-place)
+  ./output-theme/ (relative to the current working directory)
 
 POST-GENERATION:
-  cd generated-theme  # (if in scaffold repo)
+  cd output-theme
   npm install
   composer install
   npm run start
@@ -481,6 +486,9 @@ function updateMetadataFiles( destRoot ) {
 	}
 }
 
+// Local build/dependency artefacts that may exist inside theme-template/ but never belong in a generated theme
+const IGNORED_ENTRIES = [ 'node_modules', 'vendor', 'build', 'dist', '.DS_Store' ];
+
 function copyAndReplace( src, dest ) {
 	const stat = fs.statSync( src );
 	if ( stat.isDirectory() ) {
@@ -488,27 +496,16 @@ function copyAndReplace( src, dest ) {
 			fs.mkdirSync( dest );
 		}
 		for ( const file of fs.readdirSync( src ) ) {
-			if (
-				[
-					'node_modules',
-					'dist',
-					'.git',
-					'generated-theme',
-					'output-theme',
-					'scripts',
-					'logs',
-				].includes( file )
-			) {
+			if ( IGNORED_ENTRIES.includes( file ) ) {
 				continue;
 			}
 			copyAndReplace(
 				path.join( src, file ),
 				path.join(
 					dest,
-					       file.replace(
-						       'PLACEHOLDER',
-						       placeholders['{{theme_slug}}']
-					       )
+					file
+						.replace( 'PLACEHOLDER', placeholders['{{theme_slug}}'] )
+						.replace( '{{theme_slug}}', placeholders['{{theme_slug}}'] )
 				)
 			);
 		}
@@ -529,6 +526,10 @@ async function main() {
 		`✓ Output location: ${ path.relative( process.cwd(), outputDir ) }/`
 	);
 
+	if ( ! fs.existsSync( templateDir ) ) {
+		throw new Error( `Theme template folder not found: ${ templateDir }` );
+	}
+
 	if ( fs.existsSync( outputDir ) ) {
 		console.error(
 			`❌ Error: Output directory ${ path.basename(
@@ -545,23 +546,14 @@ async function main() {
 	logger.info( `Theme generation started: ${ placeholders['{{theme_slug}}'] }` );
 	logger.debug( `Output directory: ${ outputDir }` );
 
-	for ( const file of fs.readdirSync( scaffoldDir ) ) {
-		if (
-			[
-				'node_modules',
-				'dist',
-				'.git',
-				'generated-theme',
-				'output-theme',
-				'bin',
-				'scripts',
-				'logs',
-			].includes( file )
-		) {
+	logger.debug( `Template directory: ${ templateDir }` );
+
+	for ( const file of fs.readdirSync( templateDir ) ) {
+		if ( IGNORED_ENTRIES.includes( file ) ) {
 			continue;
 		}
 		copyAndReplace(
-			path.join( scaffoldDir, file ),
+			path.join( templateDir, file ),
 			path.join(
 				outputDir,
 				file.replace(
@@ -572,41 +564,7 @@ async function main() {
 		);
 	}
 
-	const binSrc = path.join( scaffoldDir, 'bin' );
-	const binDest = path.join( outputDir, 'bin' );
-	if ( fs.existsSync( binSrc ) ) {
-		fs.mkdirSync( binDest, { recursive: true } );
-		for ( const file of fs.readdirSync( binSrc ) ) {
-			if ( file === 'generate-theme.js' ) {
-				continue;
-			}
-			copyAndReplace(
-				path.join( binSrc, file ),
-				path.join( binDest, file )
-			);
-		}
-	}
-
 	updateMetadataFiles( outputDir );
-
-	const phase1Files = [
-		'.github/agents/release-scaffold.agent.md',
-		'.github/prompts/release-scaffold.prompt.md',
-		'.github/instructions/release-scaffold.instructions.md',
-		'docs/RELEASE_PROCESS_SCAFFOLD.md',
-		'scripts/agents/release-scaffold.agent.js',
-	];
-
-	let cleanupCount = 0;
-	for ( const file of phase1Files ) {
-		const filePath = path.join( outputDir, file );
-		if ( fs.existsSync( filePath ) ) {
-			fs.unlinkSync( filePath );
-			cleanupCount++;
-		}
-	}
-
-	void cleanupCount;
 
 	logger.info( `Theme generation completed successfully: ${ placeholders['{{theme_slug}}'] }` );
 	await logger.save();

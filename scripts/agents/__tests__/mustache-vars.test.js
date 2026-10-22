@@ -30,7 +30,7 @@ function findMustacheFilesGlob(rootDir) {
 			cwd: baseDir,
 			absolute: true,
 			dot: true,
-			ignore: [], // Don't ignore anything
+			ignore: ['**/node_modules/**', '**/vendor/**'],
 			nodir: true,
 			follow: true,
 		});
@@ -51,7 +51,7 @@ function findMustacheFilesGlob(rootDir) {
 }
 
 describe('Dry Run Mustache Variable Validation', () => {
-	const ROOT_DIR = path.resolve(__dirname, '../../..');
+	const ROOT_DIR = path.resolve(__dirname, '../../../theme-template');
 
 	test('All scaffold files with mustache variables are detected', () => {
 		const files = findMustacheFilesGlob(ROOT_DIR);

@@ -69,8 +69,15 @@ class LintLogger {
 
 const logger = new LintLogger();
 
-const scaffoldDir = path.resolve(__dirname, '..');
+const scaffoldDir = path.resolve(__dirname, '..', '..');
 const tempDir = path.join(scaffoldDir, '.lint-temp');
+
+// Theme files live in theme-template/; tooling files stay at the repository root.
+const templateDir = path.join(scaffoldDir, 'theme-template');
+const resolveSource = (file) =>
+	fs.existsSync(path.join(templateDir, file))
+		? path.join(templateDir, file)
+		: path.join(scaffoldDir, file);
 
 /**
  * Copy and replace files
@@ -170,7 +177,7 @@ function main() {
 		];
 
 		for (const file of filesToCopy) {
-			const srcPath = path.join(scaffoldDir, file);
+			const srcPath = resolveSource(file);
 			const destPath = path.join(tempDir, file);
 
 			if (fs.existsSync(srcPath)) {

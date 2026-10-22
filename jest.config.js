@@ -29,13 +29,13 @@ module.exports = {
 		'/vendor/',
 		'/public/',
 		'/output-theme/',
+		'/theme-template/',
 		'/.test-temp/',
 		'/.github/',
 	],
 	collectCoverageFrom: [
-		'src/**/*.{js,jsx}',
-		'!src/**/*.test.{js,jsx}',
-		'!src/**/*.stories.{js,jsx}',
+		'scripts/**/*.js',
+		'!scripts/**/__tests__/**',
 	],
 	coverageDirectory: 'coverage',
 	coverageReporters: ['text', 'lcov', 'html'],
@@ -43,5 +43,6 @@ module.exports = {
 	modulePathIgnorePatterns: [
 		'<rootDir>/.test-temp/',
 		'<rootDir>/output-theme/',
+		'<rootDir>/theme-template/',
 	],
 };

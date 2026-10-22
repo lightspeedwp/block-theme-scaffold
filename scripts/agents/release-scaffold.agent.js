@@ -51,13 +51,13 @@ const { runWizard } = require('../lib/wizard');
 // ============================================================================
 
 const SCAFFOLD_FILES_TO_PRESERVE = [
-	'style.css',
-	'functions.php',
-	'theme.json',
-	'inc/',
-	'patterns/',
-	'templates/',
-	'parts/',
+	'theme-template/style.css',
+	'theme-template/functions.php',
+	'theme-template/theme.json',
+	'theme-template/inc/',
+	'theme-template/patterns/',
+	'theme-template/templates/',
+	'theme-template/parts/',
 	'.github/agents/release.agent.md',
 	'.github/prompts/release.prompt.md',
 	'.github/instructions/release.instructions.md',
@@ -200,9 +200,11 @@ function checkVersionConsistency() {
 		const pkg = JSON.parse(fs.readFileSync(packageFile, 'utf8'));
 
 		// Read composer.json
+		// composer.json belongs to the theme template, so it is optional at the root
 		const composerFile = path.join(rootDir, 'composer.json');
-		const composer = JSON.parse(fs.readFileSync(composerFile, 'utf8'));
-		const composerVersion = composer.version || null;
+		const composerVersion = fs.existsSync(composerFile)
+			? JSON.parse(fs.readFileSync(composerFile, 'utf8')).version || null
+			: null;
 
 		// Compare versions
 		const versions = {

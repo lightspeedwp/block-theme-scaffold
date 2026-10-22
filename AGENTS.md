@@ -44,6 +44,8 @@ This repository is block theme–first and designed for advanced AI/Copilot/agen
 
 ## Block Theme Automation Guidelines
 
+All theme files live in [`theme-template/`](theme-template/). The generator copies only that folder; the repository root holds the tooling (`scripts/`, `.github/`, `docs/`). Add or edit theme files in `theme-template/`, never at the root.
+
 For block theme–specific automation:
 
 - Prefer `theme.json` and block components over bespoke code

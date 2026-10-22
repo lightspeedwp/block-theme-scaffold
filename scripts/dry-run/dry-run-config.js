@@ -157,7 +157,7 @@ function getFilesWithMustacheVars(
 	const fs = require('fs');
 	const path = require('path');
 
-	const baseDir = path.resolve(__dirname, '..');
+	const baseDir = path.resolve(__dirname, '..', '..', 'theme-template');
 	const matches = glob.sync(pattern, {
 		cwd: baseDir,
 		ignore: ['node_modules/**', 'vendor/**', 'build/**', '.git/**'],
