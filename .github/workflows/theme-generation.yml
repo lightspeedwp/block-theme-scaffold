@@ -1,0 +1,109 @@
+name: Theme generation check
+
+# Generates a theme from each fixture config in tests/fixtures/generation/
+# and runs the generated theme's own checks, as its CI would: no leftover
+# {{placeholder}}, lint, unit tests, build, PHP lint, PHPStan, PHPUnit and
+# the Playwright end-to-end tests. ls-test-theme.json is the config of
+# lightspeedwp/ls-test-theme, where these checks were first proven.
+
+on:
+  pull_request:
+  push:
+    branches:
+      - develop
+      - main
+
+permissions:
+  contents: read
+
+concurrency:
+  group: theme-generation-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  generate:
+    name: ${{ matrix.fixture }} (${{ matrix.checks }})
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    strategy:
+      fail-fast: false
+      matrix:
+        fixture: [ls-test-theme, tour-operator]
+        checks: [static, e2e]
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version-file: theme-template/.nvmrc
+
+      # The generator needs only these two packages from the root manifest.
+      - name: Install the generator's dependencies
+        run: npm install --no-save --no-package-lock --no-audit --no-fund ajv@8.17.1 ajv-formats@3.0.1
+
+      - name: Generate the theme
+        env:
+          FIXTURE: ${{ matrix.fixture }}
+        run: |
+          mkdir -p "$RUNNER_TEMP/generated"
+          cd "$RUNNER_TEMP/generated"
+          node "$GITHUB_WORKSPACE/scripts/generate-theme.js" --config "$GITHUB_WORKSPACE/tests/fixtures/generation/$FIXTURE.json"
+          echo "THEME_DIR=$RUNNER_TEMP/generated/output-theme" >> "$GITHUB_ENV"
+
+      # A mustache token has no spaces; GitHub Actions ${{ }} expressions do.
+      - name: No placeholder is left
+        working-directory: ${{ env.THEME_DIR }}
+        run: |
+          if grep -rnoE '\{\{\{?[^{}[:space:]]+\}?\}\}' . ; then
+            echo "::error::Unreplaced placeholders in the generated theme."
+            exit 1
+          fi
+
+      - name: Install the theme's npm dependencies
+        working-directory: ${{ env.THEME_DIR }}
+        run: npm install --no-audit --no-fund
+
+      - name: Lint, unit test and build
+        if: matrix.checks == 'static'
+        working-directory: ${{ env.THEME_DIR }}
+        run: |
+          npm run lint
+          npm run test:unit
+          npm run build
+          missing=0
+          for file in $(grep -oE "build/[a-z/.-]*\.(css|js|php)" functions.php | sort -u); do
+            [ -f "$file" ] || { echo "::error::$file is enqueued but was not built."; missing=1; }
+          done
+          exit "$missing"
+
+      - uses: shivammathur/setup-php@f3e473d116dcccaddc5834248c87452386958240 # 2.37.2
+        if: matrix.checks == 'static'
+        with:
+          php-version: '8.4'
+          tools: composer
+
+      - name: PHPCS, PHPStan and PHPUnit
+        if: matrix.checks == 'static'
+        working-directory: ${{ env.THEME_DIR }}
+        run: |
+          composer install --no-interaction --no-progress
+          composer run lint
+          composer run phpstan
+          composer run test
+
+      - name: End-to-end tests
+        if: matrix.checks == 'e2e'
+        working-directory: ${{ env.THEME_DIR }}
+        run: |
+          npm run build
+          npx playwright install --with-deps chromium
+          npm run env:start
+          npm run test:e2e
+
+      - if: failure() && matrix.checks == 'e2e'
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: e2e-artifacts-${{ matrix.fixture }}
+          path: ${{ env.THEME_DIR }}/artifacts/
+          retention-days: 7

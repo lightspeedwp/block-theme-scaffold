@@ -25,6 +25,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Vitest unit tests with a coverage gate, PHPUnit tests with Brain Monkey (no database), PHPStan level 6
   - Playwright tests: front end and built assets, every template in the Site Editor with valid blocks, axe WCAG 2.2 AA on three viewports
   - A Husky pre-commit hook: branch name, changelog entry, build, lint-staged
+- `.github/workflows/theme-generation.yml`: on every pull request, generates a theme from each config in `tests/fixtures/generation/` (LS Test Theme and Tour Operator) and runs its checks: no leftover placeholder, lint, unit tests, build and enqueued files, PHPCS, PHPStan, PHPUnit, and the end-to-end tests on wp-env
 
 ### Changed
 
