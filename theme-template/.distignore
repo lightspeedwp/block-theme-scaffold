@@ -1,58 +1,74 @@
-# Files to exclude from distribution
+# Files left out of a theme release (bin/package-release.js).
+
+# Git and GitHub
 .git/
 .github/
+.gitignore
+.gitattributes
+
+# Dependencies
 node_modules/
 vendor/
+
+# Source (build/ ships)
 src/
+
+# Tests and their output
 tests/
 coverage/
 artifacts/
 test-results/
 playwright-report/
-bin/
-docs/
+.phpunit.cache/
+.phpunit.result.cache
 
-# Runtime logs and temporary files
-logs/
-tmp/
-.github/reports/
-!.github/reports/README.md
-!.github/reports/.gitkeep
-
-.devcontainer/
-*.log
-*.lock
-.DS_Store
-
-# Performance monitoring
-lighthouse-reports/
-.lighthouserc.js
-.size-limit.json
-webpack-stats.json
-stats.json
-
-# Other system files
-Thumbs.db
-.env
-.env.*
-*.md
-!README.md
-!README.txt
-!CHANGELOG.md
+# Tool configuration
 package.json
 package-lock.json
 composer.json
 composer.lock
 webpack.config.js
-postcss.config.js
-stylelint.config.js
-eslint.config.js
-jest.config.js
+eslint.config.cjs
+.prettierrc.js
+.prettierignore
+.stylelintrc.json
+.stylelintignore
+.browserslistrc
+.editorconfig
+.npmrc
+.nvmrc
+vitest.config.mjs
 playwright.config.js
-phpunit.xml
 phpcs.xml
+phpstan.neon
+phpunit.xml
 .wp-env.json
-.distignore
-.gitignore
+.lighthouserc.js
+.size-limit.json
 .husky/
-.vscode/
+
+# Build scripts, generator config and release output
+bin/
+dist/
+{{theme_slug}}-config.json
+
+# Documentation (README.txt, readme and changelog ship)
+*.md
+!README.md
+!CHANGELOG.md
+docs/
+
+# Logs, caches and system files
+*.log
+*.lock
+.cache/
+tmp/
+logs/
+lighthouse-reports/
+.DS_Store
+Thumbs.db
+.env
+.env.*
+
+# This file
+.distignore

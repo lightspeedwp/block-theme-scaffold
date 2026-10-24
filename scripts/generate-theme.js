@@ -384,7 +384,7 @@ function updateMetadataFiles( destRoot ) {
 			pkg.bugs.url = `${placeholders['{{theme_repo_url}}']}/issues`;
 			pkg.themeMeta = pkg.themeMeta || {};
 			pkg.themeMeta.updated = new Date().toISOString().slice( 0, 10 );
-			fs.writeFileSync( pkgPath, JSON.stringify( pkg, null, 2 ) );
+			fs.writeFileSync( pkgPath, JSON.stringify( pkg, null, '\t' ) + '\n' );
 			// Logging removed for lint compliance
 		} catch ( e ) {
 			// Logging removed for lint compliance
@@ -412,7 +412,7 @@ function updateMetadataFiles( destRoot ) {
 			       ];
 			fs.writeFileSync(
 				composerPath,
-				JSON.stringify( composer, null, 2 )
+				JSON.stringify( composer, null, '\t' ) + '\n'
 			);
 			// Logging removed for lint compliance
 		} catch ( e ) {
@@ -496,7 +496,8 @@ function copyAndReplace( src, dest ) {
 			fs.mkdirSync( dest );
 		}
 		for ( const file of fs.readdirSync( src ) ) {
-			if ( IGNORED_ENTRIES.includes( file ) ) {
+			// Only skip build output at the template root; tests/php/fixtures/build/ ships.
+			if ( file === '.DS_Store' || ( src === templateDir && IGNORED_ENTRIES.includes( file ) ) ) {
 				continue;
 			}
 			copyAndReplace(

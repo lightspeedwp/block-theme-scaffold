@@ -26,8 +26,8 @@ $testimonial_3_text   = esc_html__( '"Outstanding quality and exceptional custom
 $testimonial_3_author = esc_html__( 'Sarah Johnson', '{{theme_slug}}' );
 $testimonial_3_role   = esc_html__( 'Small Business Owner', '{{theme_slug}}' );
 ?>
-<!-- wp:group {"align":"full","style":{"spacing":{"padding":{"top":"var:preset|spacing|60","bottom":"var:preset|spacing|60"}}},"backgroundColor":"neutral","layout":{"type":"constrained"}} -->
-<div class="wp-block-group alignfull has-neutral-background-color has-background" style="padding-top:var(--wp--preset--spacing--60);padding-bottom:var(--wp--preset--spacing--60)">
+<!-- wp:group {"align":"full","style":{"spacing":{"padding":{"top":"var:preset|spacing|60","bottom":"var:preset|spacing|60"}}},"backgroundColor":"surface","layout":{"type":"constrained"}} -->
+<div class="wp-block-group alignfull has-surface-background-color has-background" style="padding-top:var(--wp--preset--spacing--60);padding-bottom:var(--wp--preset--spacing--60)">
 	<!-- wp:heading {"textAlign":"center","level":2,"style":{"spacing":{"margin":{"bottom":"var:preset|spacing|50"}}}} -->
 	<h2 class="wp-block-heading has-text-align-center" style="margin-bottom:var(--wp--preset--spacing--50)"><?php echo esc_html( $section_title ); ?></h2>
 	<!-- /wp:heading -->
@@ -43,7 +43,7 @@ $testimonial_3_role   = esc_html__( 'Small Business Owner', '{{theme_slug}}' );
 				<!-- /wp:paragraph -->
 
 				<!-- wp:separator {"style":{"spacing":{"margin":{"top":"var:preset|spacing|20","bottom":"var:preset|spacing|20"}}},"className":"is-style-wide"} -->
-				<hr class="wp-block-separator has-alpha-channel-opacity is-style-wide" style="margin-top:var(--wp--preset--spacing--20);margin-bottom:var(--wp--preset--spacing--20)" aria-hidden="true"/>
+				<hr class="wp-block-separator has-alpha-channel-opacity is-style-wide" style="margin-top:var(--wp--preset--spacing--20);margin-bottom:var(--wp--preset--spacing--20)"/>
 				<!-- /wp:separator -->
 
 				<!-- wp:paragraph {"fontSize":"small"} -->
@@ -63,7 +63,7 @@ $testimonial_3_role   = esc_html__( 'Small Business Owner', '{{theme_slug}}' );
 				<!-- /wp:paragraph -->
 
 				<!-- wp:separator {"style":{"spacing":{"margin":{"top":"var:preset|spacing|20","bottom":"var:preset|spacing|20"}}},"className":"is-style-wide"} -->
-				<hr class="wp-block-separator has-alpha-channel-opacity is-style-wide" style="margin-top:var(--wp--preset--spacing--20);margin-bottom:var(--wp--preset--spacing--20)" aria-hidden="true"/>
+				<hr class="wp-block-separator has-alpha-channel-opacity is-style-wide" style="margin-top:var(--wp--preset--spacing--20);margin-bottom:var(--wp--preset--spacing--20)"/>
 				<!-- /wp:separator -->
 
 				<!-- wp:paragraph {"fontSize":"small"} -->
@@ -83,7 +83,7 @@ $testimonial_3_role   = esc_html__( 'Small Business Owner', '{{theme_slug}}' );
 				<!-- /wp:paragraph -->
 
 				<!-- wp:separator {"style":{"spacing":{"margin":{"top":"var:preset|spacing|20","bottom":"var:preset|spacing|20"}}},"className":"is-style-wide"} -->
-				<hr class="wp-block-separator has-alpha-channel-opacity is-style-wide" style="margin-top:var(--wp--preset--spacing--20);margin-bottom:var(--wp--preset--spacing--20)" aria-hidden="true"/>
+				<hr class="wp-block-separator has-alpha-channel-opacity is-style-wide" style="margin-top:var(--wp--preset--spacing--20);margin-bottom:var(--wp--preset--spacing--20)"/>
 				<!-- /wp:separator -->
 
 				<!-- wp:paragraph {"fontSize":"small"} -->

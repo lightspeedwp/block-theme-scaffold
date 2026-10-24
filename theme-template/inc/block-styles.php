@@ -13,6 +13,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 /**
  * Register custom block styles.
+ *
+ * @return void
  */
 function {{theme_slug|snakeCase}}_register_block_styles() {
 	// Button styles.

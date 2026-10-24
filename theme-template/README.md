@@ -99,27 +99,27 @@ This theme uses `@wordpress/scripts` for a modern build workflow:
 
 #### Build Commands
 
-- `npm run start` - Start development mode with hot reloading and watch mode
-- `npm run build` - Build optimized production assets
-- `npm run build:production` - Alternative production build
+- `npm run start` - Start development mode with watch mode
+- `npm run build` - Build production assets into `build/` (the files `functions.php` enqueues)
 
 #### Code Quality
 
-- `npm run lint` - Run all linters (JavaScript, CSS, PHP)
-- `npm run lint:js` - Lint JavaScript files
-- `npm run lint:js:fix` - Auto-fix JavaScript issues
-- `npm run lint:css` - Lint CSS/Sass files
-- `npm run lint:css:fix` - Auto-fix CSS issues
-- `npm run lint:php` - Lint PHP files
-- `npm run format` - Format all files with Prettier
+- `npm run lint` - Run the JavaScript, CSS, `package.json` and theme JSON checks
+- `npm run lint:js` - Lint JavaScript files (add `-- --fix` to fix)
+- `npm run lint:css` - Lint CSS/Sass files (add `-- --fix` to fix)
+- `npm run lint:json` - Validate `theme.json` and `styles/**/*.json` against the WordPress schema
+- `npm run lint:pkg` - Lint `package.json`
+- `composer run lint` - Lint PHP files with PHPCS (`composer run lint:fix` to fix)
+- `composer run phpstan` - Static analysis with PHPStan
+- `npm run format` - Format files with Prettier
 
 #### Testing
 
-- `npm run test` - Run all tests (JavaScript + PHP)
-- `npm run test:js` - Run JavaScript unit tests
-- `npm run test:js:watch` - Run Jest in watch mode
-- `npm run test:php` - Run PHP unit tests
-- `npm run test:e2e` - Run end-to-end tests with Playwright
+- `npm run test:unit` - JavaScript unit tests (Vitest) with a coverage gate
+- `composer run test` - PHP unit tests (PHPUnit with Brain Monkey; no database needed)
+- `npm run test:e2e` - End-to-end tests with Playwright against wp-env (`npm run env:start` first)
+
+The same checks run in `.github/workflows/ci.yml` on every pull request, and the pre-commit hook in `.husky/pre-commit` runs the linters on staged files.
 
 #### Internationalization
 
@@ -205,11 +205,10 @@ Edit `theme.json` to customize:
 
 ## Testing
 
-- **JavaScript**: Jest unit tests with coverage
-- **Script helpers**: The scripts/`__tests__/` helpers are driven by `npm run test:scripts` (or `npm run test:scripts:coverage`) from the repo root, emit V8 coverage for `<rootDir>/scripts/**/*.js`, and drop every artifact (including `coverage/scripts/lcov.info`) into `coverage/scripts` so new helper modules stay part of the reports.
-- **PHP**: PHPUnit tests with WordPress testing framework
-- **End-to-End**: Playwright tests
-- **Accessibility**: Automated a11y testing with axe-core
+- **JavaScript**: Vitest unit tests in `tests/js/`, failing below 70% branches or 80% statements and functions
+- **PHP**: PHPUnit unit tests in `tests/php/`, with Brain Monkey stubbing WordPress
+- **End-to-End**: Playwright tests in `tests/e2e/`: the front end and its built assets, and every template in the Site Editor with valid blocks
+- **Accessibility**: an axe-core WCAG 2.2 AA scan on mobile, tablet and desktop viewports
 - **Performance**: Lighthouse CI and Core Web Vitals monitoring
 - **Coverage**: Codecov integration with quality gates
 

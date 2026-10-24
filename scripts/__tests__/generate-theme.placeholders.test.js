@@ -1,5 +1,6 @@
 /**
  * Generation leaves no unreplaced {{placeholder}} in a generated theme.
+ * GitHub Actions expressions (${{ github.ref }}) have spaces and are not placeholders.
  *
  * Runs scripts/generate-theme.js in a temporary directory with the mock
  * config and with only the required keys, then scans every generated file.
@@ -38,7 +39,7 @@ function leftovers(dir) {
 		const file = path.join(entry.parentPath, entry.name);
 		const tokens = fs
 			.readFileSync(file, 'utf8')
-			.match(/\{\{\{?[^{}]+\}?\}\}/g);
+			.match(/\{\{\{?[^{}\s]+\}?\}\}/g);
 		if (tokens) {
 			found.push(`${path.relative(dir, file)}: ${tokens.join(' ')}`);
 		}

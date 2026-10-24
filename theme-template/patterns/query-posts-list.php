@@ -28,14 +28,14 @@ $no_posts_text   = esc_html__( 'No posts found.', '{{theme_slug}}' );
 			<!-- wp:post-title {"isLink":true,"level":2,"style":{"typography":{"fontStyle":"normal","fontWeight":"600"}},"fontSize":"large"} /-->
 
 			<!-- wp:group {"layout":{"type":"flex","flexWrap":"wrap"},"style":{"spacing":{"blockGap":"var:preset|spacing|10"}},"fontSize":"small"} -->
-			<div class="wp-block-group has-small-font-size" aria-label="<?php esc_attr_e( 'Post metadata', '{{theme_slug}}' ); ?>">
+			<div class="wp-block-group has-small-font-size">
 				<!-- wp:post-date {"isLink":true} /-->
 				<!-- wp:paragraph {"fontSize":"small"} -->
-				<p class="has-small-font-size" aria-hidden="true">·</p>
+				<p class="has-small-font-size">·</p>
 				<!-- /wp:paragraph -->
 				<!-- wp:post-author {"showAvatar":false,"showBio":false,"byline":"","isLink":true} /-->
 				<!-- wp:paragraph {"fontSize":"small"} -->
-				<p class="has-small-font-size" aria-hidden="true">·</p>
+				<p class="has-small-font-size">·</p>
 				<!-- /wp:paragraph -->
 				<!-- wp:post-terms {"term":"category"} /-->
 			</div>

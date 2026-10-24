@@ -16,8 +16,23 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- Generated themes get CI and local checks, proven first in [lightspeedwp/ls-test-theme](https://github.com/lightspeedwp/ls-test-theme) (#1 to #3) and moved back into `theme-template/` ([BTS-5](https://linear.app/lightspeedwp/issue/BTS-5)). Regenerating LS Test Theme reproduces it with 0 differences:
+  - `.github/workflows/ci.yml`: JS (lint, unit tests, build, enqueued build files exist), PHP 8.4 and 8.5 (PHPCS, PHPStan, PHPUnit) and E2E (wp-env, Playwright) jobs
+  - `.github/workflows/changelog.yml` and a tag-driven `.github/workflows/release.yml` (`bin/package-release.js`, `.distignore`)
+  - `npm run lint:json`: `theme.json` and `styles/**/*.json` validated against the WordPress 6.9 schema
+  - Vitest unit tests with a coverage gate, PHPUnit tests with Brain Monkey (no database), PHPStan level 6
+  - Playwright tests: front end and built assets, every template in the Site Editor with valid blocks, axe WCAG 2.2 AA on three viewports
+  - A Husky pre-commit hook: branch name, changelog entry, build, lint-staged
+
 ### Changed
 
+- Generated themes use `@wordpress/scripts` 36 and Node.js 24, with one config per tool (`eslint.config.cjs`, `.stylelintrc.json`, `.prettierrc.js`, `playwright.config.js`, `vitest.config.mjs`) and the standard command aliases
+- `theme-template/phpcs.xml` checks every theme PHP file (it excluded them all)
+- `styles/blocks/` and `styles/sections/` are block style variations; `styles/colors/` and `styles/typography/` are `theme.json` partials
+- The generator writes `package.json` and `composer.json` with tabs and a final newline
+- Template docs name the commands that exist
 - **Theme template folder**: All files used to generate a theme now live in `theme-template/`, separate from the generator tooling at the repository root
   - `scripts/generate-theme.js` copies only `theme-template/`; root tooling (`scripts/`, `.github/`, `docs/`) is no longer copied into generated themes
   - `package.json` split into a tooling `package.json` (root) and a theme `package.json` (`theme-template/`)
@@ -27,6 +42,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+- Generated themes: the front-end stylesheet is built at the path `functions.php` enqueues; `theme.json` `styles`, `customTemplates` and `templateParts` are no longer nested in `settings`; invalid block markup in 11 patterns; WCAG AA colour contrast; an undefined `__` in `editor.js`; a broken skip link and a throw on `href="#"` in `theme.js`; the archive excerpt length being overridden; a duplicate viewport meta tag
 - Generated themes no longer contain unreplaced `{{placeholders}}` (66 tokens in 17 files, including `theme.json` `contentSize`/`wideSize` and every `styles/dark.json` colour). Template aliases now use the generator's keys, and the generator gives every remaining token a value or default. `scripts/__tests__/generate-theme.placeholders.test.js` fails on any leftover token ([BTS-5](https://linear.app/lightspeedwp/issue/BTS-5))
 - The generator reads `urls.*`, `emails.*` and `design_system.dark_mode_colors.*` from a JSON config, so `urls.theme_repo_url` sets the theme's repository URL
 - `theme.json` points `$schema` at `https://schemas.wp.org/wp/6.9/theme.json`; `styles/dark.json` uses the `background` and `foreground` slugs from `theme.json`; `style.css` no longer has a plugin-only `Network:` header

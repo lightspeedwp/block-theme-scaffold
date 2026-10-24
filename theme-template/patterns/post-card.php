@@ -27,11 +27,11 @@ $read_more_label = esc_html__( 'Continue reading', '{{theme_slug}}' );
 		<!-- wp:post-excerpt {"moreText":"<?php echo esc_attr( $read_more_label ); ?>","excerptLength":20} /-->
 
 		<!-- wp:separator {"className":"is-style-wide","style":{"spacing":{"margin":{"top":"var:preset|spacing|20","bottom":"var:preset|spacing|20"}}}} -->
-		<hr class="wp-block-separator has-alpha-channel-opacity is-style-wide" style="margin-top:var(--wp--preset--spacing--20);margin-bottom:var(--wp--preset--spacing--20)" aria-hidden="true"/>
+		<hr class="wp-block-separator has-alpha-channel-opacity is-style-wide" style="margin-top:var(--wp--preset--spacing--20);margin-bottom:var(--wp--preset--spacing--20)"/>
 		<!-- /wp:separator -->
 
 		<!-- wp:group {"layout":{"type":"flex","flexWrap":"nowrap","justifyContent":"space-between"},"fontSize":"small"} -->
-		<div class="wp-block-group has-small-font-size" aria-label="<?php esc_attr_e( 'Post metadata', '{{theme_slug}}' ); ?>">
+		<div class="wp-block-group has-small-font-size">
 			<!-- wp:post-date /-->
 			<!-- wp:post-author {"showAvatar":false,"showBio":false,"isLink":true} /-->
 		</div>

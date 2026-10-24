@@ -23,8 +23,8 @@ function {{theme_slug|snakeCase}}_get_version() {
 /**
  * Add body classes.
  *
- * @param array $classes Existing classes.
- * @return array
+ * @param string[] $classes Existing classes.
+ * @return string[]
  */
 function {{theme_slug|snakeCase}}_body_classes( $classes ) {
 
@@ -39,82 +39,27 @@ function {{theme_slug|snakeCase}}_body_classes( $classes ) {
 add_filter( 'body_class', '{{theme_slug|snakeCase}}_body_classes' );
 
 /**
- * Add viewport meta tag for mobile.
- */
-function {{theme_slug|snakeCase}}_viewport_meta() {
-	echo '<meta name="viewport" content="width=device-width, initial-scale=1">';
-}
-add_action( 'wp_head', '{{theme_slug|snakeCase}}_viewport_meta', 1 );
-
-/**
  * Add theme support for custom logo.
+ *
+ * @return void
  */
 function {{theme_slug|snakeCase}}_custom_logo_setup() {
-       add_theme_support(
-	       'custom-logo',
-	       array(
-		       'height'      => {{logo_height}},
-		       'width'       => {{logo_width}},
-		       'flex-width'  => true,
-		       'flex-height' => true,
-	       )
-       );
+		add_theme_support(
+			'custom-logo',
+			array(
+				'height'      => {{logo_height}},
+				'width'       => {{logo_width}},
+				'flex-width'  => true,
+				'flex-height' => true,
+			)
+		);
 }
 add_action( 'after_setup_theme', '{{theme_slug|snakeCase}}_custom_logo_setup' );
 
 /**
- * Add editor color palette support.
- */
-function {{theme_slug|snakeCase}}_editor_color_palette() {
-       add_theme_support(
-	       'editor-color-palette',
-	       array(
-		       array(
-			       'name'  => __( 'Primary', '{{theme_slug}}' ),
-			       'slug'  => 'primary',
-			       'color' => '{{primary_color}}',
-		       ),
-		       array(
-			       'name'  => __( 'Secondary', '{{theme_slug}}' ),
-			       'slug'  => 'secondary',
-			       'color' => '{{secondary_color}}',
-		       ),
-		       array(
-			       'name'  => __( 'Background', '{{theme_slug}}' ),
-			       'slug'  => 'background',
-			       'color' => '{{background_color}}',
-		       ),
-		       array(
-			       'name'  => __( 'Foreground', '{{theme_slug}}' ),
-			       'slug'  => 'foreground',
-			       'color' => '{{text_color}}',
-		       ),
-	       )
-       );
-}
-add_action( 'after_setup_theme', '{{theme_slug|snakeCase}}_editor_color_palette' );
-
-/**
- * Custom excerpt length for different post types.
- *
- * @param int $length Current excerpt length.
- * @return int
- */
-function {{theme_slug|snakeCase}}_custom_excerpt_length( $length ) {
-	if ( is_admin() ) {
-		return $length;
-	}
-
-	       if ( is_home() || is_archive() ) {
-		       return {{archive_excerpt_length}};
-	       }
-
-	return $length;
-}
-add_filter( 'excerpt_length', '{{theme_slug|snakeCase}}_custom_excerpt_length' );
-
-/**
  * Remove unnecessary generator meta tags.
+ *
+ * @return string
  */
 function {{theme_slug|snakeCase}}_remove_version() {
 	return '';
@@ -123,6 +68,8 @@ add_filter( 'the_generator', '{{theme_slug|snakeCase}}_remove_version' );
 
 /**
  * Add security headers.
+ *
+ * @return void
  */
 function {{theme_slug|snakeCase}}_security_headers() {
 	if ( ! is_admin() ) {
