@@ -19,16 +19,16 @@ The Block Theme Scaffold includes a comprehensive generator system with three ma
 
 All three methods use **mustache template variables** to create customized themes from the scaffold template.
 
-## Scaffold-Only Files to Delete After Generation
+## The `theme-template/` Folder
 
-When generating a new theme, the generator must remove these scaffold-only files from the output to avoid confusion with the scaffold release flow:
+Every file the generator uses to build a theme lives in `theme-template/`. The generator copies that folder's contents into the output directory and replaces the `{{mustache}}` placeholders; nothing outside `theme-template/` is copied.
 
-- `.github/agents/release-scaffold.agent.md`
-- `.github/prompts/release-scaffold.prompt.md`
-- `.github/instructions/release-scaffold.instructions.md`
-- `docs/RELEASE_PROCESS_SCAFFOLD.md`
+- **`theme-template/`**: the theme. This includes `functions.php`, `style.css`, `theme.json`, `inc/`, `parts/`, `patterns/`, `templates/`, `styles/`, `src/`, `languages/`, the theme's own `tests/` (PHPUnit and Playwright), its `package.json`, `composer.json`, build and lint configs, `README.md`, `README.txt` and project docs.
+- **Repository root**: the tooling. This includes `scripts/` (generator, agents, dry-run and validation), `.github/` (agents, prompts, instructions, schemas, workflows), `docs/`, and the tooling's own `package.json` and tests.
 
-The standard release files (`.github/agents/release.agent.md`, `.github/prompts/release.prompt.md`, `.github/instructions/release.instructions.md`) remain, with their `{{mustache}}` placeholders rewritten for the new theme.
+To change what a generated theme contains, edit `theme-template/`. Do not add theme files to the repository root.
+
+Local artefacts inside `theme-template/` (`node_modules/`, `vendor/`, `build/`, `dist/`, `.DS_Store`) are never copied.
 
 ## Mustache Template System
 
@@ -347,7 +347,7 @@ The core implementation that performs the actual theme generation.
 - Interactive CLI with command-line arguments
 - Input validation and sanitization for security
 - Recursive file copying with mustache replacement
-- Exclusion of development files (node_modules, .git, etc.)
+- Copies only `theme-template/`, skipping local artefacts (node_modules, vendor, build, etc.)
 - Error handling with descriptive messages
 
 **Security Features:**
@@ -394,8 +394,8 @@ node scripts/generate-theme.js \
 
 **Generated Output:**
 
-- Creates `generated-theme/` directory in current working directory
-- Copies all scaffold files except excluded directories
+- Creates `output-theme/` directory in current working directory
+- Copies the contents of `theme-template/` (and nothing else)
 - Replaces all mustache variables with provided values
 - Preserves file structure and permissions
 

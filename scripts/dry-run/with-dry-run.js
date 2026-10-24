@@ -6,7 +6,8 @@ const {
 	replaceMustacheVars,
 } = require('./dry-run-config');
 
-const rootDir = path.resolve(__dirname, '..');
+// Mustache-containing theme files live in theme-template/
+const rootDir = path.resolve(__dirname, '..', '..', 'theme-template');
 const TARGET_EXTENSIONS = new Set(['.js', '.jsx', '.ts', '.tsx', '.scss']);
 
 function filterTargetFiles(files) {
@@ -17,7 +18,7 @@ function filterTargetFiles(files) {
 }
 
 function resolveFilePaths(files) {
-	return files.map((relative) => path.join(rootDir, relative));
+	return files.map((relative) => path.resolve(rootDir, relative));
 }
 
 function replaceFiles(filePaths) {

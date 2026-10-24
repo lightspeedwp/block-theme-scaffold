@@ -1,0 +1,40 @@
+# Node & PHP dependencies
+node_modules/
+vendor/
+
+# Build output
+build/
+dist/
+
+# Translation files (keep .pot, ignore compiled)
+languages/*.mo
+
+# Cache, temp and log files
+.cache/
+.tmp/
+tmp/
+logs/
+*.log
+*.tmp
+
+# Environment files
+.env
+.env.*
+!.env.example
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# IDE/editor files
+.vscode/
+.idea/
+*.swp
+
+# Test, coverage & performance output
+coverage/
+artifacts/
+test-results/
+playwright-report/
+lighthouse-reports/
+.phpunit.result.cache

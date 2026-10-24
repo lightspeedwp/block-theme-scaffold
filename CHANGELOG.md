@@ -18,6 +18,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- **Theme template folder**: All files used to generate a theme now live in `theme-template/`, separate from the generator tooling at the repository root
+  - `scripts/generate-theme.js` copies only `theme-template/`; root tooling (`scripts/`, `.github/`, `docs/`) is no longer copied into generated themes
+  - `package.json` split into a tooling `package.json` (root) and a theme `package.json` (`theme-template/`)
+  - New root `README.md` for the scaffold; the theme's README moved to `theme-template/README.md`
+  - Dry-run helpers and the release-scaffold agent now resolve theme files from `theme-template/`
+  - Pre-commit hook now checks the tooling (lint plus related Jest tests) instead of linting the root as a theme
+
+### Fixed
+
+- Generated themes now rename nested `{{theme_slug}}` file names (e.g. `languages/{{theme_slug}}.pot`)
+- `npm run test:agents` pointed at a non-existent `tests/agents/` path, which made Jest run every suite and recursively spawn the dry-run tests; it now runs `scripts/agents`
+- Dry-run helpers resolved their base directory to `scripts/`, so they substituted placeholders in the tooling's own source files
+
 - **PHP Naming Convention Standardization**: All theme functions and hooks now use `{{theme_slug|phpCase}}` placeholder filter for consistent snake_case naming
   - Updated `functions.php` - theme setup, asset enqueue, and utility functions
   - Updated `inc/block-patterns.php` - pattern registration functions

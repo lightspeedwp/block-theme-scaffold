@@ -7,8 +7,15 @@ const path = require('path');
 const { execSync } = require('child_process');
 const { replacePlaceholders } = require('../utils/placeholders');
 
-const scaffoldDir = path.resolve(__dirname, '..');
+const scaffoldDir = path.resolve(__dirname, '..', '..');
 const tempDir = path.join(scaffoldDir, '.test-temp-e2e');
+
+// Theme files live in theme-template/; tooling files stay at the repository root.
+const templateDir = path.join(scaffoldDir, 'theme-template');
+const resolveSource = (file) =>
+	fs.existsSync(path.join(templateDir, file))
+		? path.join(templateDir, file)
+		: path.join(scaffoldDir, file);
 
 function copyAndReplace(src, dest) {
 	const stat = fs.statSync(src);
@@ -75,7 +82,7 @@ function main() {
 		'phpcs.xml',
 	];
 	for (const file of filesToCopy) {
-		const srcPath = path.join(scaffoldDir, file);
+		const srcPath = resolveSource(file);
 		const destPath = path.join(tempDir, file);
 		if (fs.existsSync(srcPath)) copyAndReplace(srcPath, destPath);
 	}

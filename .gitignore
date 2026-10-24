@@ -10,7 +10,7 @@ dist/
 
 # Generated theme output (from generator script)
 generated-theme/
-output-theme/
+output-theme*/
 
 # Translation files (keep .pot, ignore compiled)
 languages/*.mo
