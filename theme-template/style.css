@@ -12,8 +12,7 @@ Requires PHP: {{min_php_version}}
 License: {{license}}
 License URI: {{license_uri}}
 Text Domain: {{theme_slug}}
-Tags: {{tags}}
-Network: {{network}}
+Tags: {{theme_tags}}
 
 {{theme_name}} WordPress Theme, Copyright (C) {{year}} {{author}}
 {{theme_name}} is distributed under the terms of the {{license}}

@@ -391,3 +391,6 @@ scripts/dry-run/.dry-run-backup/__tests__/config.test.js
 scripts/dry-run/.dry-run-backup/__tests__/dry-run-config.test.js
 scripts/dry-run/.dry-run-backup/__tests__/dry-run-mustache-vars.test.js
 scripts/dry-run/.dry-run-backup/__tests__/mustache-vars.test.js
+
+# Jest localStorage shim output
+.test-temp/

@@ -1,7 +1,7 @@
 {
 	"scope": "preset",
-	"name": "{{namespace}}-preset-dark",
-	"label": "{{name}} Dark Preset",
+	"name": "{{theme_slug}}-preset-dark",
+	"label": "{{theme_name}} Dark Preset",
 	"description": "Pre-configured dark mode preset.",
 	"fonts": {
 		"body": "var:preset|font-family|body",

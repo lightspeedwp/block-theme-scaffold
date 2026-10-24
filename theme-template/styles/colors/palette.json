@@ -1,7 +1,7 @@
 {
 	"scope": "color",
-	"name": "{{namespace}}-palette",
-	"label": "{{name}} Colour Palette",
+	"name": "{{theme_slug}}-palette",
+	"label": "{{theme_name}} Colour Palette",
 	"description": "Core colour tokens used through the plugin.",
 	"colors": {
 		"base": "#0f172a",

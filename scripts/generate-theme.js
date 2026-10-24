@@ -650,10 +650,10 @@ async function runScript() {
 		'{{min_php_version}}': sanitizeInput(configData.min_php_version || argMap.min_php_version, 'version') || '8.0',
 		'{{license}}': sanitizeInput(configData.license || argMap.license, 'license') || 'GPL-2.0-or-later',
 		'{{license_uri}}': sanitizeInput(configData.license_uri || argMap.license_uri, 'url') || 'https://www.gnu.org/licenses/gpl-2.0.html',
-		'{{theme_repo_url}}': sanitizeInput(configData.theme_repo_url || argMap.theme_repo_url, 'url') || `https://github.com/${author}/${themeSlug}`,
-		'{{support_url}}': `https://wordpress.org/support/theme/${themeSlug}`,
-		'{{docs_url}}': `https://github.com/${author}/${themeSlug}/wiki`,
-		'{{changelog_url}}': `https://github.com/${author}/${themeSlug}`,
+		'{{theme_repo_url}}': sanitizeInput(configData.theme_repo_url || configData.urls_theme_repo_url || argMap.theme_repo_url, 'url') || `https://github.com/${author.toLowerCase().replace(/[^a-z0-9]+/g, '')}/${themeSlug}`,
+		'{{support_url}}': configData.urls_support_url || `https://wordpress.org/support/theme/${themeSlug}`,
+		'{{docs_url}}': configData.urls_docs_url || '',
+		'{{changelog_url}}': configData.urls_changelog_url || '',
 		'{{security_email}}': `security@${authorUri.replace(/^https?:\/\/(www\.)?/, '').split('/')[0]}`,
 		'{{contact_email}}': `contact@${authorUri.replace(/^https?:\/\/(www\.)?/, '').split('/')[0]}`,
 		'{{year}}': new Date().getFullYear().toString(),
@@ -689,6 +689,73 @@ async function runScript() {
 		'{{logo_height}}': configData.images_logo_height || '100',
 		'{{archive_excerpt_length}}': configData.content_archive_excerpt_length || '40',
 	};
+
+	// Placeholders derived from the values above, or from nested config keys
+	// (urls.*, emails.*, design_system.dark_mode_colors.*), which flattenConfig()
+	// prefixes. Every {{token}} in theme-template/ must have a value here.
+	const themeName = placeholders['{{theme_name}}'];
+	const repoUrl = placeholders['{{theme_repo_url}}'];
+	const authorDomain = authorUri.replace( /^https?:\/\/(www\.)?/, '' ).split( '/' )[ 0 ];
+	const today = new Date().toISOString().slice( 0, 10 );
+	const dark = ( key, fallback ) =>
+		configData[ `design_system_dark_mode_colors_${ key }` ] || fallback;
+	placeholders['{{docs_url}}'] = placeholders['{{docs_url}}'] || `${ repoUrl }/wiki`;
+	placeholders['{{changelog_url}}'] = placeholders['{{changelog_url}}'] || `${ repoUrl }/blob/develop/CHANGELOG.md`;
+	Object.assign( placeholders, {
+		'{{theme_name_xml}}': themeName
+			.replace( /&/g, '&amp;' )
+			.replace( /</g, '&lt;' )
+			.replace( />/g, '&gt;' )
+			.replace( /"/g, '&quot;' ),
+		'{{theme_tags}}': sanitizeInput( configData.theme_tags, 'text' ) || 'full-site-editing, block-patterns, block-styles, wide-blocks, editor-style, style-variations',
+		'{{target_audience}}': sanitizeInput( configData.target_audience, 'text' ) || 'businesses and publishers',
+		'{{author_username}}': sanitizeInput( configData.author_username, 'text' ) || author.toLowerCase().replace( /[^a-z0-9]+/g, '' ),
+		'{{date}}': today,
+		'{{created_date}}': today,
+		'{{support_email}}': configData.emails_support_email || `support@${ authorDomain }`,
+		'{{business_email}}': configData.emails_business_email || `contact@${ authorDomain }`,
+		'{{discord_url}}': configData.urls_discord_url || `${ repoUrl }/discussions`,
+		'{{premium_support_url}}': configData.urls_premium_support_url || authorUri,
+		'{{custom_dev_url}}': configData.urls_custom_dev_url || authorUri,
+		'{{docs_repo_url}}': placeholders['{{docs_url}}'] || `${ repoUrl }/wiki`,
+		'{{hero_title}}': `Welcome to ${ themeName }`,
+		'{{hero_description}}': placeholders['{{description}}'],
+		'{{hero_button_text}}': 'Get started',
+		'{{cta_title}}': 'Ready to get started?',
+		'{{cta_description}}': 'Tell us about your project and we will be in touch.',
+		'{{cta_button_text}}': 'Contact us',
+		'{{team_title}}': 'Meet the team',
+		'{{team_description}}': `The people behind ${ themeName }.`,
+		'{{team_member_1_name}}': 'Team member',
+		'{{team_member_1_role}}': 'Role',
+		'{{team_member_2_name}}': 'Team member',
+		'{{team_member_2_role}}': 'Role',
+		'{{team_member_3_name}}': 'Team member',
+		'{{team_member_3_role}}': 'Role',
+		'{{dark_mode_title}}': 'Dark',
+		'{{button_style_primary_title}}': 'Primary',
+		'{{button_style_rounded_title}}': 'Rounded',
+		'{{heading_style_serif_title}}': 'Serif',
+		'{{hero_section_style_title}}': 'Hero section',
+		'{{content_section_style_title}}': 'Content section',
+		'{{dark_background_color}}': dark( 'dark_background_color', '#0f172a' ),
+		'{{dark_text_color}}': dark( 'dark_text_color', '#f8fafc' ),
+		'{{dark_primary_color}}': dark( 'dark_primary_color', '#38bdf8' ),
+		'{{dark_primary_light_color}}': dark( 'dark_primary_light_color', '#7dd3fc' ),
+		'{{dark_primary_dark_color}}': dark( 'dark_primary_dark_color', '#0284c7' ),
+		'{{dark_cta_color}}': dark( 'dark_accent_color', '#f97316' ),
+	} );
+	// Neutral and accent scales for the dark style: slate and orange, light to dark.
+	const darkScales = {
+		neutral: [ '#f1f5f9', '#e2e8f0', '#cbd5e1', '#94a3b8', '#64748b', '#475569', '#334155', '#1e293b', '#0f172a' ],
+		accent: [ '#ffedd5', '#fed7aa', '#fdba74', '#fb923c', '#f97316', '#ea580c', '#c2410c', '#9a3412', '#7c2d12' ],
+	};
+	for ( const [ scale, colors ] of Object.entries( darkScales ) ) {
+		colors.forEach( ( color, index ) => {
+			const key = `dark_${ scale }_${ ( index + 1 ) * 100 }_color`;
+			placeholders[ `{{${ key }}}` ] = dark( key, color );
+		} );
+	}
 	if ( argMap.author && placeholders[ '{{author}}' ] === 'Author Name' ) {
 		throw new Error( 'Invalid author name provided' );
 	}

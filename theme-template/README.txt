@@ -1,9 +1,9 @@
 === {{theme_name}} ===
 
 Contributors: {{author_username}}
-Requires at least: {{wp_version_min}}
-Tested up to: {{wp_version_max}}
-Requires PHP: {{php_version_min}}
+Requires at least: {{min_wp_version}}
+Tested up to: {{tested_wp_version}}
+Requires PHP: {{min_php_version}}
 Stable tag: {{version}}
 License: {{license}}
 License URI: {{license_uri}}
@@ -24,7 +24,7 @@ Tags: {{theme_tags}}
 * **Responsive Design**: Mobile-first approach ensuring great looks on all devices
 * **Accessibility Ready**: WCAG 2.1 AA compliant
 * **Performance Optimized**: Fast loading times with minimal dependencies
-* **Translation Ready**: Full internationalization support with {{textdomain}} text domain
+* **Translation Ready**: Full internationalization support with {{theme_slug}} text domain
 * **Custom Templates**: Specialized templates for various content types
 * **Block Styles**: Custom block styling options
 * **Dark Mode**: Built-in dark mode style variation
@@ -95,7 +95,7 @@ You can add custom CSS through:
 
 = Is the theme translation ready? =
 
-Yes, the theme is fully translation ready with the `{{textdomain}}` text domain. Translation files should be placed in the `languages/` folder.
+Yes, the theme is fully translation ready with the `{{theme_slug}}` text domain. Translation files should be placed in the `languages/` folder.
 
 == Changelog ==
 
@@ -135,7 +135,7 @@ This theme bundles the following third-party resources:
 For support, documentation, and updates, visit:
 * Documentation: {{docs_url}}
 * Support Forum: {{support_url}}
-* GitHub Repository: {{repo_url}}
+* GitHub Repository: {{theme_repo_url}}
 
 == Credits ==
 
