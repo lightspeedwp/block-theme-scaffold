@@ -19,7 +19,8 @@ const moduleNameMapper = {
 
 module.exports = {
 	preset: '@wordpress/jest-preset-default',
-	testEnvironment: 'jsdom',
+	// The tooling is Node code; its tests need no DOM.
+	testEnvironment: 'node',
 	setupFilesAfterEnv: [
 		'<rootDir>/.github/tests/setup.js',
 		'<rootDir>/.github/tests/jest.setup.localstorage.js',

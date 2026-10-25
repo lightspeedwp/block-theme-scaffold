@@ -29,6 +29,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- The root `package.json` lists only what the tooling uses (Node.js 24.18+); theme build and runtime packages live in `theme-template/package.json`. `test:js` runs Jest through `wp-scripts test-unit-jest` in the Node environment. Removed npm scripts and dry-run wrappers that pointed at commands or test files that no longer exist (`dry-run:build`, `dry-run:start`, `test:templates`, `test:theme-json`, `test:e2e:debug`, the markdown-reference scripts (their checker is an empty stub and the cleaner does not exist), and the performance, e2e-a11y, templates and theme-json dry-run tests)
 - Generated themes use `@wordpress/scripts` 36 and Node.js 24, with one config per tool (`eslint.config.cjs`, `.stylelintrc.json`, `.prettierrc.js`, `playwright.config.js`, `vitest.config.mjs`) and the standard command aliases
 - `theme-template/phpcs.xml` checks every theme PHP file (it excluded them all)
 - `styles/blocks/` and `styles/sections/` are block style variations; `styles/colors/` and `styles/typography/` are `theme.json` partials
@@ -43,6 +44,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+- The scaffold's own pre-commit hook works again: the root tooling uses `@wordpress/scripts` 36 (ESLint 9/10) with one flat `eslint.config.cjs` for `scripts/`, replacing `.eslintrc.js`, `.eslint.config.cjs` and `.eslintignore`. Under `@wordpress/scripts` 31, `lint:js` crashed (TypeScript 7 with `@typescript-eslint` 6), so every scaffold commit needed `--no-verify`. The hook drops the Husky v8 lines that fail in Husky 10, and runs lint, lint-staged and the tests related to staged scripts
+- Running the scaffold's tests no longer rewrites `theme-template/`: `scripts/dry-run/with-dry-run.js` renders a temporary copy (`DRY_RUN_THEME_DIR`) instead of replacing placeholders in place and restoring them, which corrupted template files whenever Jest ran two dry-run tests at once. The dry-run wrappers now return the wrapped command's exit code
+- All 107 scaffold Jest tests pass (3 failed before): the wizard's `stdin` and `http` interfaces accept an injected stream and fetch function, the mock wizard keeps `false` defaults and calls function defaults, the release-scaffold agent exports its questions, and the scan test scans a temporary folder
+- Code damaged by an old global `{{...}}` → `PLACEHOLDER` replacement is restored (`dry-run-config.js` `|upper` filter, `isScaffoldMode()`, the scan test fixture)
+- `release-scaffold.agent.js` awaits `logger.save()` and waits for `main()` before choosing its exit code; `--help` prints its help
+- `scripts/mustache-variables-registry.json` is valid JSON again (regenerated with `scripts/utils/update-mustache-registry.js`)
 - Generated themes: the front-end stylesheet is built at the path `functions.php` enqueues; `theme.json` `styles`, `customTemplates` and `templateParts` are no longer nested in `settings`; invalid block markup in 11 patterns; WCAG AA colour contrast; an undefined `__` in `editor.js`; a broken skip link and a throw on `href="#"` in `theme.js`; the archive excerpt length being overridden; a duplicate viewport meta tag
 - Generated themes no longer contain unreplaced `{{placeholders}}` (66 tokens in 17 files, including `theme.json` `contentSize`/`wideSize` and every `styles/dark.json` colour). Template aliases now use the generator's keys, and the generator gives every remaining token a value or default. `scripts/__tests__/generate-theme.placeholders.test.js` fails on any leftover token ([BTS-5](https://linear.app/lightspeedwp/issue/BTS-5))
 - The generator reads `urls.*`, `emails.*` and `design_system.dark_mode_colors.*` from a JSON config, so `urls.theme_repo_url` sets the theme's repository URL
