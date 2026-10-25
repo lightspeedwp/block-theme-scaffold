@@ -2,27 +2,29 @@
  * @file test-dry-run-e2e.js
  * @description Dry-run for E2E tests with mustache placeholder replacement.
  */
-const fs = require('fs');
-const path = require('path');
-const { execSync } = require('child_process');
-const { replacePlaceholders } = require('../utils/placeholders');
+const fs = require( 'fs' );
+const path = require( 'path' );
+const { execSync } = require( 'child_process' );
+const { replacePlaceholders } = require( '../utils/placeholders' );
 
-const scaffoldDir = path.resolve(__dirname, '..', '..');
-const tempDir = path.join(scaffoldDir, '.test-temp-e2e');
+const scaffoldDir = path.resolve( __dirname, '..', '..' );
+const tempDir = path.join( scaffoldDir, '.test-temp-e2e' );
 
 // Theme files live in theme-template/; tooling files stay at the repository root.
-const templateDir = path.join(scaffoldDir, 'theme-template');
-const resolveSource = (file) =>
-	fs.existsSync(path.join(templateDir, file))
-		? path.join(templateDir, file)
-		: path.join(scaffoldDir, file);
+const templateDir = path.join( scaffoldDir, 'theme-template' );
+const resolveSource = ( file ) =>
+	fs.existsSync( path.join( templateDir, file ) )
+		? path.join( templateDir, file )
+		: path.join( scaffoldDir, file );
 
-function copyAndReplace(src, dest) {
-	const stat = fs.statSync(src);
-	if (stat.isDirectory()) {
-		if (!fs.existsSync(dest)) fs.mkdirSync(dest, { recursive: true });
-		const files = fs.readdirSync(src);
-		for (const file of files) {
+function copyAndReplace( src, dest ) {
+	const stat = fs.statSync( src );
+	if ( stat.isDirectory() ) {
+		if ( ! fs.existsSync( dest ) ) {
+			fs.mkdirSync( dest, { recursive: true } );
+		}
+		const files = fs.readdirSync( src );
+		for ( const file of files ) {
 			if (
 				[
 					'node_modules',
@@ -31,13 +33,14 @@ function copyAndReplace(src, dest) {
 					'.git',
 					'.test-temp-e2e',
 					'.dry-run-backup',
-				].includes(file)
-			)
+				].includes( file )
+			) {
 				continue;
-			copyAndReplace(path.join(src, file), path.join(dest, file));
+			}
+			copyAndReplace( path.join( src, file ), path.join( dest, file ) );
 		}
 	} else {
-		const ext = path.extname(src);
+		const ext = path.extname( src );
 		const textExtensions = [
 			'.js',
 			'.json',
@@ -47,24 +50,25 @@ function copyAndReplace(src, dest) {
 			'.txt',
 			'.html',
 		];
-		if (textExtensions.includes(ext)) {
-			let content = fs.readFileSync(src, 'utf8');
-			content = replacePlaceholders(content);
-			fs.writeFileSync(dest, content);
+		if ( textExtensions.includes( ext ) ) {
+			let content = fs.readFileSync( src, 'utf8' );
+			content = replacePlaceholders( content );
+			fs.writeFileSync( dest, content );
 		} else {
-			fs.copyFileSync(src, dest);
+			fs.copyFileSync( src, dest );
 		}
 	}
 }
 
 function cleanup() {
-	if (fs.existsSync(tempDir))
-		fs.rmSync(tempDir, { recursive: true, force: true });
+	if ( fs.existsSync( tempDir ) ) {
+		fs.rmSync( tempDir, { recursive: true, force: true } );
+	}
 }
 
 function main() {
 	cleanup();
-	fs.mkdirSync(tempDir, { recursive: true });
+	fs.mkdirSync( tempDir, { recursive: true } );
 	const filesToCopy = [
 		'package.json',
 		'style.css',
@@ -81,15 +85,17 @@ function main() {
 		'.stylelintrc.js',
 		'phpcs.xml',
 	];
-	for (const file of filesToCopy) {
-		const srcPath = resolveSource(file);
-		const destPath = path.join(tempDir, file);
-		if (fs.existsSync(srcPath)) copyAndReplace(srcPath, destPath);
+	for ( const file of filesToCopy ) {
+		const srcPath = resolveSource( file );
+		const destPath = path.join( tempDir, file );
+		if ( fs.existsSync( srcPath ) ) {
+			copyAndReplace( srcPath, destPath );
+		}
 	}
 	try {
-		execSync('wp-scripts test-e2e', { cwd: tempDir, stdio: 'inherit' });
-	} catch (error) {
-		process.exit(1);
+		execSync( 'wp-scripts test-e2e', { cwd: tempDir, stdio: 'inherit' } );
+	} catch {
+		process.exit( 1 );
 	}
 	cleanup();
 }
