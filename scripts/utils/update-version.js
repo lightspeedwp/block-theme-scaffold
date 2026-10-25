@@ -6,81 +6,84 @@
  * @package
  */
 
-const fs = require('fs');
-const path = require('path');
+const fs = require( 'fs' );
+const path = require( 'path' );
 
-const newVersion = process.argv[2];
-function log(level, message) {
-	process.stdout.write(`[${level}] ${message}\n`);
+const newVersion = process.argv[ 2 ];
+function log( level, message ) {
+	process.stdout.write( `[${ level }] ${ message }\n` );
 }
-if (!newVersion) {
-	log('ERROR', 'Usage: node scripts/update-version.js <new-version>');
-	process.exit(1);
+if ( ! newVersion ) {
+	log( 'ERROR', 'Usage: node scripts/update-version.js <new-version>' );
+	process.exit( 1 );
 }
 const semverRegex = /^\d+\.\d+\.\d+(-[a-zA-Z0-9.-]+)?$/;
-if (!semverRegex.test(newVersion)) {
+if ( ! semverRegex.test( newVersion ) ) {
 	log(
 		'ERROR',
 		'Invalid version format. Use semantic versioning (e.g., 1.0.0)'
 	);
-	process.exit(1);
+	process.exit( 1 );
 }
-const rootDir = path.resolve(__dirname, '../..');
+const rootDir = path.resolve( __dirname, '../..' );
 
 const filesToUpdate = [
 	// Scaffold and generated theme meta files
 	{
-		file: path.join(rootDir, 'VERSION'),
+		file: path.join( rootDir, 'VERSION' ),
 		update: () => newVersion + '\n',
 		label: 'VERSION',
 	},
 	{
-		file: path.join(rootDir, 'package.json'),
-		update: (content) =>
+		file: path.join( rootDir, 'package.json' ),
+		update: ( content ) =>
 			content.replace(
 				/"version":\s*"[^"]+"/,
-				`"version": "${newVersion}"`
+				`"version": "${ newVersion }"`
 			),
 		label: 'package.json',
 	},
 	{
-		file: path.join(rootDir, 'composer.json'),
-		update: (content) =>
+		file: path.join( rootDir, 'composer.json' ),
+		update: ( content ) =>
 			content.replace(
 				/"version":\s*"[^"]+"/,
-				`"version": "${newVersion}"`
+				`"version": "${ newVersion }"`
 			),
 		label: 'composer.json',
 	},
 	// For generated themes: style.css header
 	{
-		file: path.join(rootDir, 'style.css'),
-		update: (content) =>
-			content.replace(/Version:\s*[^\n]+/, `Version:     ${newVersion}`),
+		file: path.join( rootDir, 'style.css' ),
+		update: ( content ) =>
+			content.replace(
+				/Version:\s*[^\n]+/,
+				`Version:     ${ newVersion }`
+			),
 		label: 'style.css',
 	},
 ];
 
-log('INFO', `Updating version to ${newVersion}...`);
-filesToUpdate.forEach(({ file, update, label }) => {
-	if (!fs.existsSync(file)) {
-		log('WARN', `File not found: ${file}`);
+log( 'INFO', `Updating version to ${ newVersion }...` );
+filesToUpdate.forEach( ( { file, update, label } ) => {
+	if ( ! fs.existsSync( file ) ) {
+		log( 'WARN', `File not found: ${ file }` );
 		return;
 	}
-	const content = fs.readFileSync(file, 'utf8');
+	const content = fs.readFileSync( file, 'utf8' );
 	// Skip files with mustache placeholders
-	if (/\{\{.*\}\}/.test(content)) {
-		log('SKIP', `${label} contains mustache placeholders, skipping.`);
+	if ( /\{\{.*\}\}/.test( content ) ) {
+		log( 'SKIP', `${ label } contains mustache placeholders, skipping.` );
 		return;
 	}
-	const updated = update(content);
-	if (content !== updated) {
-		fs.writeFileSync(file, updated);
-		log('INFO', `Updated: ${path.relative(rootDir, file)}`);
+	const updated = update( content );
+	if ( content !== updated ) {
+		fs.writeFileSync( file, updated );
+		log( 'INFO', `Updated: ${ path.relative( rootDir, file ) }` );
 	} else {
-		log('INFO', `No changes: ${path.relative(rootDir, file)}`);
+		log( 'INFO', `No changes: ${ path.relative( rootDir, file ) }` );
 	}
-});
+} );
 
 // Output-theme meta files (release.agent.md, etc.)
 const outputMetaFiles = [
@@ -93,30 +96,32 @@ const outputMetaFiles = [
 	'docs/RELEASE_PROCESS.md',
 	'docs/RELEASE_PROCESS_SCAFFOLD.md',
 ];
-outputMetaFiles.forEach((relPath) => {
-	const file = path.join(rootDir, relPath);
-	if (!fs.existsSync(file)) return;
-	const content = fs.readFileSync(file, 'utf8');
+outputMetaFiles.forEach( ( relPath ) => {
+	const file = path.join( rootDir, relPath );
+	if ( ! fs.existsSync( file ) ) {
+		return;
+	}
+	const content = fs.readFileSync( file, 'utf8' );
 	// Only update if no mustache placeholders
-	if (/\{\{.*\}\}/.test(content)) {
-		log('SKIP', `${relPath} contains mustache placeholders, skipping.`);
+	if ( /\{\{.*\}\}/.test( content ) ) {
+		log( 'SKIP', `${ relPath } contains mustache placeholders, skipping.` );
 		return;
 	}
 	// Try to update version in YAML frontmatter or version fields
 	let updated = content.replace(
 		/version:\s*"[^"]+"/i,
-		`version: "${newVersion}"`
+		`version: "${ newVersion }"`
 	);
 	updated = updated.replace(
 		/last_updated:\s*"[^"]+"/i,
-		`last_updated: "${new Date().toISOString().slice(0, 10)}"`
+		`last_updated: "${ new Date().toISOString().slice( 0, 10 ) }"`
 	);
-	if (content !== updated) {
-		fs.writeFileSync(file, updated);
-		log('INFO', `Updated: ${relPath}`);
+	if ( content !== updated ) {
+		fs.writeFileSync( file, updated );
+		log( 'INFO', `Updated: ${ relPath }` );
 	} else {
-		log('INFO', `No changes: ${relPath}`);
+		log( 'INFO', `No changes: ${ relPath }` );
 	}
-});
+} );
 
-log('SUCCESS', 'Version update complete!');
+log( 'SUCCESS', 'Version update complete!' );

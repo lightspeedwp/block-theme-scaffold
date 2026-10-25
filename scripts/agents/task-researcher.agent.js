@@ -4,14 +4,14 @@
  * Uses wizard.js for interactive configuration.
  * Supports: cli, mock
  */
-const { runWizard } = require('../lib/wizard');
+const { runWizard } = require( '../lib/wizard' );
 
 const questions = [
 	{ name: 'researchTopic', type: 'input', message: 'Research topic:' },
 	{
 		name: 'depth',
 		type: 'list',
-		choices: ['summary', 'detailed'],
+		choices: [ 'summary', 'detailed' ],
 		default: 'summary',
 		message: 'Depth:',
 	},
@@ -19,10 +19,12 @@ const questions = [
 
 async function main() {
 	const mode = process.env.WIZARD_MODE || 'cli';
-	const config = await runWizard({ mode, questions });
+	const config = await runWizard( { mode, questions } );
 	// TODO: Implement research logic using config
-	console.log('Task Researcher config:', config);
+	console.log( 'Task Researcher config:', config );
 }
 
-if (require.main === module) main();
+if ( require.main === module ) {
+	main();
+}
 module.exports = { main, questions };

@@ -6,11 +6,11 @@
  * TODO: Add more schema/example pairs as new schemas are added.
  */
 
-const fs = require('fs');
-const path = require('path');
+const fs = require( 'fs' );
+const path = require( 'path' );
 
-const Ajv = require('ajv/dist/2020').default;
-const addFormats = require('ajv-formats');
+const Ajv = require( 'ajv/dist/2020' ).default;
+const addFormats = require( 'ajv-formats' );
 
 const EXAMPLE_VALIDATIONS = [
 	{
@@ -81,20 +81,24 @@ const EXAMPLE_VALIDATIONS = [
 	},
 ];
 
-describe('Schema Example Validation', () => {
-	EXAMPLE_VALIDATIONS.forEach(({ name, examplePath, schemaPath }) => {
-		it(`${name} should validate against ${path.relative(__dirname, schemaPath)}`, () => {
-			const example = JSON.parse(fs.readFileSync(examplePath, 'utf8'));
-			const schema = JSON.parse(fs.readFileSync(schemaPath, 'utf8'));
-			const ajv = new Ajv({ allErrors: true });
-			addFormats(ajv);
-			if (schema.$schema) delete schema.$schema;
-			const validate = ajv.compile(schema);
-			const valid = validate(example);
-			if (!valid) {
-				console.error(validate.errors);
+describe( 'Schema Example Validation', () => {
+	EXAMPLE_VALIDATIONS.forEach( ( { name, examplePath, schemaPath } ) => {
+		it( `${ name } should validate against ${ path.relative( __dirname, schemaPath ) }`, () => {
+			const example = JSON.parse(
+				fs.readFileSync( examplePath, 'utf8' )
+			);
+			const schema = JSON.parse( fs.readFileSync( schemaPath, 'utf8' ) );
+			const ajv = new Ajv( { allErrors: true } );
+			addFormats( ajv );
+			if ( schema.$schema ) {
+				delete schema.$schema;
 			}
-			expect(valid).toBe(true);
-		});
-	});
-});
+			const validate = ajv.compile( schema );
+			const valid = validate( example );
+			if ( ! valid ) {
+				console.error( validate.errors );
+			}
+			expect( valid ).toBe( true );
+		} );
+	} );
+} );

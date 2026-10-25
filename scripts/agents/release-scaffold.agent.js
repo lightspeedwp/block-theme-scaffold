@@ -37,14 +37,13 @@
  * @module scripts/agents/release-scaffold.agent
  */
 
-const fs = require('fs');
-const path = require('path');
-const { execSync } = require('child_process');
-const modeDetector = require('../utils/mode-detector');
-const FileLogger = require('../utils/logger');
+const fs = require( 'fs' );
+const path = require( 'path' );
+const { execSync } = require( 'child_process' );
+const FileLogger = require( '../utils/logger' );
 // Wizard integration
-const questions = require('./release-scaffold.questions');
-const { runWizard } = require('../lib/wizard');
+const questions = require( './release-scaffold.questions' );
+const { runWizard } = require( '../lib/wizard' );
 
 // ============================================================================
 // CONFIGURATION
@@ -80,31 +79,31 @@ const colors = {
 	bold: '\x1b[1m',
 };
 
-function log(color, symbol, ...args) {
-	console.log(color + symbol + colors.reset, ...args);
+function log( color, symbol, ...args ) {
+	console.log( color + symbol + colors.reset, ...args );
 }
 
-function error(...args) {
-	log(colors.red, '❌', ...args);
+function error( ...args ) {
+	log( colors.red, '❌', ...args );
 }
 
-function success(...args) {
-	log(colors.green, '✅', ...args);
+function success( ...args ) {
+	log( colors.green, '✅', ...args );
 }
 
-function warning(...args) {
-	log(colors.yellow, '⚠️ ', ...args);
+function warning( ...args ) {
+	log( colors.yellow, '⚠️ ', ...args );
 }
 
-function info(...args) {
-	log(colors.blue, 'ℹ', ...args);
+function info( ...args ) {
+	log( colors.blue, 'ℹ', ...args );
 }
 
-function header(text) {
-	const line = '='.repeat(60);
-	console.log('\n' + colors.cyan + colors.bold + line);
-	console.log(' ' + text);
-	console.log(line + colors.reset + '\n');
+function header( text ) {
+	const line = '='.repeat( 60 );
+	console.log( '\n' + colors.cyan + colors.bold + line );
+	console.log( ' ' + text );
+	console.log( line + colors.reset + '\n' );
 }
 
 // ============================================================================
@@ -118,18 +117,18 @@ const validationResults = {
 	failed: [],
 };
 
-function addResult(type, category, message, status = 'pass') {
+function addResult( type, category, message, status = 'pass' ) {
 	const result = { category, message, status, type };
 
-	if (status === 'pass') {
-		validationResults.passed.push(result);
-	} else if (status === 'fail') {
-		validationResults.failed.push(result);
-		if (type === 'critical') {
-			validationResults.critical.push(result);
+	if ( status === 'pass' ) {
+		validationResults.passed.push( result );
+	} else if ( status === 'fail' ) {
+		validationResults.failed.push( result );
+		if ( type === 'critical' ) {
+			validationResults.critical.push( result );
 		}
-	} else if (status === 'warn') {
-		validationResults.warnings.push(result);
+	} else if ( status === 'warn' ) {
+		validationResults.warnings.push( result );
 	}
 }
 
@@ -144,16 +143,16 @@ function resetResults() {
 // COMMAND EXECUTION HELPERS
 // ============================================================================
 
-function runCommand(command, options = {}) {
+function runCommand( command, options = {} ) {
 	try {
-		const output = execSync(command, {
+		const output = execSync( command, {
 			encoding: 'utf8',
 			stdio: options.silent ? 'pipe' : 'inherit',
 			cwd: options.cwd || process.cwd(),
 			...options,
-		});
+		} );
 		return { success: true, output };
-	} catch (err) {
+	} catch ( err ) {
 		return {
 			success: false,
 			error: err.message,
@@ -162,19 +161,19 @@ function runCommand(command, options = {}) {
 	}
 }
 
-function fileExists(filePath) {
+function fileExists( filePath ) {
 	try {
-		return fs.existsSync(filePath);
+		return fs.existsSync( filePath );
 	} catch {
 		return false;
 	}
 }
 
-function readFile(filePath) {
+function readFile( filePath ) {
 	try {
-		const content = fs.readFileSync(filePath, 'utf8');
+		const content = fs.readFileSync( filePath, 'utf8' );
 		return { success: true, content };
-	} catch (err) {
+	} catch ( err ) {
 		return { success: false, error: err.message };
 	}
 }
@@ -184,26 +183,27 @@ function readFile(filePath) {
 // ============================================================================
 
 function checkVersionConsistency() {
-	header('Version Consistency Check');
+	header( 'Version Consistency Check' );
 
-	info('Checking version alignment across meta files...');
+	info( 'Checking version alignment across meta files...' );
 
 	try {
-		const rootDir = path.resolve(__dirname, '..', '..');
+		const rootDir = path.resolve( __dirname, '..', '..' );
 
 		// Read VERSION file
-		const versionFile = path.join(rootDir, 'VERSION');
-		const version = fs.readFileSync(versionFile, 'utf8').trim();
+		const versionFile = path.join( rootDir, 'VERSION' );
+		const version = fs.readFileSync( versionFile, 'utf8' ).trim();
 
 		// Read package.json
-		const packageFile = path.join(rootDir, 'package.json');
-		const pkg = JSON.parse(fs.readFileSync(packageFile, 'utf8'));
+		const packageFile = path.join( rootDir, 'package.json' );
+		const pkg = JSON.parse( fs.readFileSync( packageFile, 'utf8' ) );
 
 		// Read composer.json
 		// composer.json belongs to the theme template, so it is optional at the root
-		const composerFile = path.join(rootDir, 'composer.json');
-		const composerVersion = fs.existsSync(composerFile)
-			? JSON.parse(fs.readFileSync(composerFile, 'utf8')).version || null
+		const composerFile = path.join( rootDir, 'composer.json' );
+		const composerVersion = fs.existsSync( composerFile )
+			? JSON.parse( fs.readFileSync( composerFile, 'utf8' ) ).version ||
+				null
 			: null;
 
 		// Compare versions
@@ -212,36 +212,41 @@ function checkVersionConsistency() {
 			'package.json': pkg.version,
 		};
 
-		if (composerVersion) {
-			versions['composer.json'] = composerVersion;
+		if ( composerVersion ) {
+			versions[ 'composer.json' ] = composerVersion;
 		}
 
-		const expectedVersions = Object.values(versions).filter(Boolean);
-		const allMatch = expectedVersions.every((v) => v === version);
+		const expectedVersions = Object.values( versions ).filter( Boolean );
+		const allMatch = expectedVersions.every( ( v ) => v === version );
 
-		if (allMatch) {
-			success(`All meta versions match: ${version}`);
+		if ( allMatch ) {
+			success( `All meta versions match: ${ version }` );
 			addResult(
 				'critical',
 				'version',
-				`Version consistency: ${version}`,
+				`Version consistency: ${ version }`,
 				'pass'
 			);
 			return { success: true, version };
 		}
 
-		error('Version mismatch detected:');
-		Object.entries(versions).forEach(([file, ver]) => {
-			console.log(`  ${file}: ${ver || 'missing'}`);
-		});
-		addResult('critical', 'version', 'Version files do not match', 'fail');
-		return { success: false, versions };
-	} catch (err) {
-		error(`Failed to check versions: ${err.message}`);
+		error( 'Version mismatch detected:' );
+		Object.entries( versions ).forEach( ( [ file, ver ] ) => {
+			console.log( `  ${ file }: ${ ver || 'missing' }` );
+		} );
 		addResult(
 			'critical',
 			'version',
-			`Version check failed: ${err.message}`,
+			'Version files do not match',
+			'fail'
+		);
+		return { success: false, versions };
+	} catch ( err ) {
+		error( `Failed to check versions: ${ err.message }` );
+		addResult(
+			'critical',
+			'version',
+			`Version check failed: ${ err.message }`,
 			'fail'
 		);
 		return { success: false, error: err.message };
@@ -253,59 +258,61 @@ function checkVersionConsistency() {
 // ============================================================================
 
 function checkPlaceholders() {
-	header('Mustache Placeholder Verification');
+	header( 'Mustache Placeholder Verification' );
 
-	info('Verifying PLACEHOLDER placeholders preserved...');
+	info( 'Verifying PLACEHOLDER placeholders preserved...' );
 
-	const rootDir = path.resolve(__dirname, '..', '..');
+	const rootDir = path.resolve( __dirname, '..', '..' );
 	let placeholderCount = 0;
 
 	// Check each scaffold file for placeholders
-	SCAFFOLD_FILES_TO_PRESERVE.forEach((file) => {
-		const filePath = path.join(rootDir, file);
+	SCAFFOLD_FILES_TO_PRESERVE.forEach( ( file ) => {
+		const filePath = path.join( rootDir, file );
 
-		if (fs.lstatSync(filePath, { throwIfNoEntry: false })?.isDirectory()) {
+		if (
+			fs.lstatSync( filePath, { throwIfNoEntry: false } )?.isDirectory()
+		) {
 			// For directories, check all files within
-			const files = fs.readdirSync(filePath, { recursive: true });
-			files.forEach((subFile) => {
-				const subFilePath = path.join(filePath, subFile);
+			const files = fs.readdirSync( filePath, { recursive: true } );
+			files.forEach( ( subFile ) => {
+				const subFilePath = path.join( filePath, subFile );
 				if (
-					fs.lstatSync(subFilePath).isFile() &&
-					(subFile.endsWith('.php') ||
-						subFile.endsWith('.json') ||
-						subFile.endsWith('.css'))
+					fs.lstatSync( subFilePath ).isFile() &&
+					( subFile.endsWith( '.php' ) ||
+						subFile.endsWith( '.json' ) ||
+						subFile.endsWith( '.css' ) )
 				) {
-					const content = fs.readFileSync(subFilePath, 'utf8');
-					const matches = content.match(/\{\{[^}]+\}\}/g);
-					if (matches) {
+					const content = fs.readFileSync( subFilePath, 'utf8' );
+					const matches = content.match( /\{\{[^}]+\}\}/g );
+					if ( matches ) {
 						placeholderCount += matches.length;
 					}
 				}
-			});
-		} else if (fileExists(filePath)) {
-			const content = fs.readFileSync(filePath, 'utf8');
-			const matches = content.match(/\{\{[^}]+\}\}/g);
-			if (matches) {
+			} );
+		} else if ( fileExists( filePath ) ) {
+			const content = fs.readFileSync( filePath, 'utf8' );
+			const matches = content.match( /\{\{[^}]+\}\}/g );
+			if ( matches ) {
 				placeholderCount += matches.length;
-				info(`  Found ${matches.length} placeholders in ${file}`);
+				info( `  Found ${ matches.length } placeholders in ${ file }` );
 			} else {
-				warning(`  No placeholders found in ${file}`);
+				warning( `  No placeholders found in ${ file }` );
 			}
 		}
-	});
+	} );
 
-	if (placeholderCount > 0) {
-		success(`Placeholders preserved: ${placeholderCount} found`);
+	if ( placeholderCount > 0 ) {
+		success( `Placeholders preserved: ${ placeholderCount } found` );
 		addResult(
 			'critical',
 			'placeholders',
-			`${placeholderCount} mustache placeholders preserved`,
+			`${ placeholderCount } mustache placeholders preserved`,
 			'pass'
 		);
 		return true;
 	}
 
-	error('No mustache placeholders found in scaffold files!');
+	error( 'No mustache placeholders found in scaffold files!' );
 	addResult(
 		'critical',
 		'placeholders',
@@ -320,14 +327,14 @@ function checkPlaceholders() {
 // ============================================================================
 
 function checkSchema() {
-	header('Schema Validation');
+	header( 'Schema Validation' );
 
-	info('Running mustache variable schema validation...');
+	info( 'Running mustache variable schema validation...' );
 
-	const result = runCommand('npm run test:schema', { silent: true });
+	const result = runCommand( 'npm run test:schema', { silent: true } );
 
-	if (result.success) {
-		success('Schema validation: PASSED');
+	if ( result.success ) {
+		success( 'Schema validation: PASSED' );
 		addResult(
 			'critical',
 			'schema',
@@ -337,9 +344,9 @@ function checkSchema() {
 		return true;
 	}
 
-	error('Schema validation: FAILED');
-	if (result.output) {
-		console.log('\n' + result.output);
+	error( 'Schema validation: FAILED' );
+	if ( result.output ) {
+		console.log( '\n' + result.output );
 	}
 	addResult(
 		'critical',
@@ -355,35 +362,35 @@ function checkSchema() {
 // ============================================================================
 
 function checkQualityGates() {
-	header('Quality Gates (Dry-Run)');
+	header( 'Quality Gates (Dry-Run)' );
 
 	let allPassed = true;
 
 	// Lint dry-run
-	info('Running lint dry-run...');
-	const lintResult = runCommand('npm run lint:dry-run', { silent: true });
-	if (lintResult.success) {
-		success('Linting (dry-run): PASSED');
-		addResult('critical', 'quality', 'Lint dry-run passed', 'pass');
+	info( 'Running lint dry-run...' );
+	const lintResult = runCommand( 'npm run lint:dry-run', { silent: true } );
+	if ( lintResult.success ) {
+		success( 'Linting (dry-run): PASSED' );
+		addResult( 'critical', 'quality', 'Lint dry-run passed', 'pass' );
 	} else {
-		error('Linting (dry-run): FAILED');
-		addResult('critical', 'quality', 'Lint dry-run failed', 'fail');
+		error( 'Linting (dry-run): FAILED' );
+		addResult( 'critical', 'quality', 'Lint dry-run failed', 'fail' );
 		allPassed = false;
 	}
 
 	// Format check
-	info('Checking code formatting...');
-	const formatResult = runCommand('npm run format -- --check', {
+	info( 'Checking code formatting...' );
+	const formatResult = runCommand( 'npm run format -- --check', {
 		silent: true,
-	});
+	} );
 	if (
 		formatResult.success ||
-		formatResult.output?.includes('All matched files')
+		formatResult.output?.includes( 'All matched files' )
 	) {
-		success('Formatting: PASSED');
-		addResult('important', 'quality', 'Code properly formatted', 'pass');
+		success( 'Formatting: PASSED' );
+		addResult( 'important', 'quality', 'Code properly formatted', 'pass' );
 	} else {
-		warning('Formatting: needs attention');
+		warning( 'Formatting: needs attention' );
 		addResult(
 			'important',
 			'quality',
@@ -393,16 +400,16 @@ function checkQualityGates() {
 	}
 
 	// Test dry-run
-	info('Running test dry-run...');
-	const testResult = runCommand('npm run test:dry-run:all', {
+	info( 'Running test dry-run...' );
+	const testResult = runCommand( 'npm run test:dry-run:all', {
 		silent: true,
-	});
-	if (testResult.success) {
-		success('Tests (dry-run): PASSED');
-		addResult('critical', 'quality', 'Test dry-run passed', 'pass');
+	} );
+	if ( testResult.success ) {
+		success( 'Tests (dry-run): PASSED' );
+		addResult( 'critical', 'quality', 'Test dry-run passed', 'pass' );
 	} else {
-		error('Tests (dry-run): FAILED');
-		addResult('critical', 'quality', 'Test dry-run failed', 'fail');
+		error( 'Tests (dry-run): FAILED' );
+		addResult( 'critical', 'quality', 'Test dry-run failed', 'fail' );
 		allPassed = false;
 	}
 
@@ -414,17 +421,17 @@ function checkQualityGates() {
 // ============================================================================
 
 function checkDocumentation() {
-	header('Documentation Verification');
+	header( 'Documentation Verification' );
 
-	const rootDir = path.resolve(__dirname, '..', '..');
+	const rootDir = path.resolve( __dirname, '..', '..' );
 
 	// Check CHANGELOG.md
-	const changelogPath = path.join(rootDir, 'CHANGELOG.md');
-	if (fileExists(changelogPath)) {
-		const changelogContent = fs.readFileSync(changelogPath, 'utf8');
+	const changelogPath = path.join( rootDir, 'CHANGELOG.md' );
+	if ( fileExists( changelogPath ) ) {
+		const changelogContent = fs.readFileSync( changelogPath, 'utf8' );
 
-		if (changelogContent.includes('## [Unreleased]')) {
-			success('CHANGELOG.md has Unreleased section');
+		if ( changelogContent.includes( '## [Unreleased]' ) ) {
+			success( 'CHANGELOG.md has Unreleased section' );
 			addResult(
 				'critical',
 				'docs',
@@ -432,7 +439,7 @@ function checkDocumentation() {
 				'pass'
 			);
 		} else {
-			error('CHANGELOG.md missing Unreleased section');
+			error( 'CHANGELOG.md missing Unreleased section' );
 			addResult(
 				'critical',
 				'docs',
@@ -441,8 +448,8 @@ function checkDocumentation() {
 			);
 		}
 	} else {
-		error('CHANGELOG.md not found');
-		addResult('critical', 'docs', 'CHANGELOG.md missing', 'fail');
+		error( 'CHANGELOG.md not found' );
+		addResult( 'critical', 'docs', 'CHANGELOG.md missing', 'fail' );
 	}
 
 	// Check RELEASE_PROCESS_SCAFFOLD.md
@@ -451,12 +458,22 @@ function checkDocumentation() {
 		'docs',
 		'RELEASE_PROCESS_SCAFFOLD.md'
 	);
-	if (fileExists(releaseDocsPath)) {
-		success('RELEASE_PROCESS_SCAFFOLD.md exists');
-		addResult('important', 'docs', 'Scaffold release docs present', 'pass');
+	if ( fileExists( releaseDocsPath ) ) {
+		success( 'RELEASE_PROCESS_SCAFFOLD.md exists' );
+		addResult(
+			'important',
+			'docs',
+			'Scaffold release docs present',
+			'pass'
+		);
 	} else {
-		error('RELEASE_PROCESS_SCAFFOLD.md not found');
-		addResult('important', 'docs', 'Scaffold release docs missing', 'fail');
+		error( 'RELEASE_PROCESS_SCAFFOLD.md not found' );
+		addResult(
+			'important',
+			'docs',
+			'Scaffold release docs missing',
+			'fail'
+		);
 	}
 
 	// Check that template release docs still have placeholders
@@ -465,10 +482,10 @@ function checkDocumentation() {
 		'docs',
 		'RELEASE_PROCESS.md'
 	);
-	if (fileExists(templateReleaseDocsPath)) {
-		const content = fs.readFileSync(templateReleaseDocsPath, 'utf8');
-		if (content.includes('{{')) {
-			success('RELEASE_PROCESS.md has mustache placeholders');
+	if ( fileExists( templateReleaseDocsPath ) ) {
+		const content = fs.readFileSync( templateReleaseDocsPath, 'utf8' );
+		if ( content.includes( '{{' ) ) {
+			success( 'RELEASE_PROCESS.md has mustache placeholders' );
 			addResult(
 				'critical',
 				'docs',
@@ -476,7 +493,7 @@ function checkDocumentation() {
 				'pass'
 			);
 		} else {
-			error('RELEASE_PROCESS.md missing mustache placeholders!');
+			error( 'RELEASE_PROCESS.md missing mustache placeholders!' );
 			addResult(
 				'critical',
 				'docs',
@@ -492,17 +509,16 @@ function checkDocumentation() {
 // ============================================================================
 
 function testThemeGeneration() {
-	header('Theme Generation Smoke Test');
+	header( 'Theme Generation Smoke Test' );
 
-	const rootDir = path.resolve(__dirname, '..', '..');
-	const outputDir = path.join(rootDir, 'output-theme');
-	const logsDir = path.join(rootDir, 'logs');
+	const rootDir = path.resolve( __dirname, '..', '..' );
+	const outputDir = path.join( rootDir, 'output-theme' );
 
-	info('Running generation with test values...');
+	info( 'Running generation with test values...' );
 
 	// Clean up previous test output
-	if (fileExists(outputDir)) {
-		fs.rmSync(outputDir, { recursive: true, force: true });
+	if ( fileExists( outputDir ) ) {
+		fs.rmSync( outputDir, { recursive: true, force: true } );
 	}
 
 	// Generate test theme
@@ -516,8 +532,8 @@ function testThemeGeneration() {
 		{ silent: false }
 	);
 
-	if (!generateResult.success) {
-		error('Theme generation: FAILED');
+	if ( ! generateResult.success ) {
+		error( 'Theme generation: FAILED' );
 		addResult(
 			'critical',
 			'generation',
@@ -528,32 +544,38 @@ function testThemeGeneration() {
 	}
 
 	// Verify Phase 1 cleanup
-	info('Verifying Phase 1 cleanup...');
+	info( 'Verifying Phase 1 cleanup...' );
 	const scaffoldAgentPath = path.join(
 		outputDir,
 		'.github',
 		'agents',
 		'release-scaffold.agent.md'
 	);
-	if (!fileExists(scaffoldAgentPath)) {
-		success('Phase 1 cleanup: scaffold files deleted');
-		addResult('critical', 'generation', 'Phase 1 cleanup verified', 'pass');
+	if ( ! fileExists( scaffoldAgentPath ) ) {
+		success( 'Phase 1 cleanup: scaffold files deleted' );
+		addResult(
+			'critical',
+			'generation',
+			'Phase 1 cleanup verified',
+			'pass'
+		);
 	} else {
-		error('Phase 1 cleanup: scaffold files still present');
-		addResult('critical', 'generation', 'Phase 1 cleanup failed', 'fail');
+		error( 'Phase 1 cleanup: scaffold files still present' );
+		addResult( 'critical', 'generation', 'Phase 1 cleanup failed', 'fail' );
 		return false;
 	}
 
 	// Verify logging
-	info('Verifying generation log...');
+	info( 'Verifying generation log...' );
+	const logsDir = path.join( rootDir, 'logs' );
 	const logPath = path.join(
 		logsDir,
 		'generate-theme-scaffold-release-test.log'
 	);
-	if (fileExists(logPath)) {
-		const logContent = fs.readFileSync(logPath, 'utf8');
-		if (logContent.includes('"status":"success"')) {
-			success('Generation log: success status recorded');
+	if ( fileExists( logPath ) ) {
+		const logContent = fs.readFileSync( logPath, 'utf8' );
+		if ( logContent.includes( '"status":"success"' ) ) {
+			success( 'Generation log: success status recorded' );
 			addResult(
 				'critical',
 				'generation',
@@ -561,7 +583,7 @@ function testThemeGeneration() {
 				'pass'
 			);
 		} else {
-			error('Generation log: missing success status');
+			error( 'Generation log: missing success status' );
 			addResult(
 				'critical',
 				'generation',
@@ -571,20 +593,20 @@ function testThemeGeneration() {
 			return false;
 		}
 	} else {
-		error('Generation log: file not created');
-		addResult('critical', 'generation', 'Generation log missing', 'fail');
+		error( 'Generation log: file not created' );
+		addResult( 'critical', 'generation', 'Generation log missing', 'fail' );
 		return false;
 	}
 
 	// Verify no placeholders in generated theme
-	info('Checking for unreplaced placeholders...');
+	info( 'Checking for unreplaced placeholders...' );
 	const grepResult = runCommand(
-		`grep -r "{{" ${outputDir} --exclude-dir=node_modules --exclude-dir=.git || true`,
+		`grep -r "{{" ${ outputDir } --exclude-dir=node_modules --exclude-dir=.git || true`,
 		{ silent: true }
 	);
 
-	if (!grepResult.output || grepResult.output.trim() === '') {
-		success('No mustache placeholders in generated theme');
+	if ( ! grepResult.output || grepResult.output.trim() === '' ) {
+		success( 'No mustache placeholders in generated theme' );
 		addResult(
 			'critical',
 			'generation',
@@ -592,8 +614,8 @@ function testThemeGeneration() {
 			'pass'
 		);
 	} else {
-		error('Found unreplaced placeholders in generated theme!');
-		console.log(grepResult.output);
+		error( 'Found unreplaced placeholders in generated theme!' );
+		console.log( grepResult.output );
 		addResult(
 			'critical',
 			'generation',
@@ -604,13 +626,13 @@ function testThemeGeneration() {
 	}
 
 	// Test build in generated theme
-	info('Testing build in generated theme...');
-	const installResult = runCommand('npm install', {
+	info( 'Testing build in generated theme...' );
+	const installResult = runCommand( 'npm install', {
 		cwd: outputDir,
 		silent: true,
-	});
-	if (!installResult.success) {
-		error('npm install failed in generated theme');
+	} );
+	if ( ! installResult.success ) {
+		error( 'npm install failed in generated theme' );
 		addResult(
 			'critical',
 			'generation',
@@ -620,15 +642,15 @@ function testThemeGeneration() {
 		return false;
 	}
 
-	const buildResult = runCommand('npm run build', {
+	const buildResult = runCommand( 'npm run build', {
 		cwd: outputDir,
 		silent: true,
-	});
-	if (buildResult.success) {
-		success('Generated theme builds successfully');
-		addResult('critical', 'generation', 'Generated theme builds', 'pass');
+	} );
+	if ( buildResult.success ) {
+		success( 'Generated theme builds successfully' );
+		addResult( 'critical', 'generation', 'Generated theme builds', 'pass' );
 	} else {
-		error('Generated theme build failed');
+		error( 'Generated theme build failed' );
 		addResult(
 			'critical',
 			'generation',
@@ -639,11 +661,11 @@ function testThemeGeneration() {
 	}
 
 	// Clean up
-	info('Cleaning up test output...');
-	fs.rmSync(outputDir, { recursive: true, force: true });
-	fs.rmSync(logPath, { force: true });
+	info( 'Cleaning up test output...' );
+	fs.rmSync( outputDir, { recursive: true, force: true } );
+	fs.rmSync( logPath, { force: true } );
 
-	success('Theme generation: PASSED');
+	success( 'Theme generation: PASSED' );
 	return true;
 }
 
@@ -652,15 +674,18 @@ function testThemeGeneration() {
 // ============================================================================
 
 function runSecurityAudit() {
-	header('Security Audit');
+	header( 'Security Audit' );
 
-	info('Running npm audit...');
-	const result = runCommand('npm audit --audit-level=high', {
+	info( 'Running npm audit...' );
+	const result = runCommand( 'npm audit --audit-level=high', {
 		silent: true,
-	});
+	} );
 
-	if (result.success || result.output?.includes('found 0 vulnerabilities')) {
-		success('Security audit: No high/critical vulnerabilities');
+	if (
+		result.success ||
+		result.output?.includes( 'found 0 vulnerabilities' )
+	) {
+		success( 'Security audit: No high/critical vulnerabilities' );
 		addResult(
 			'critical',
 			'security',
@@ -670,9 +695,9 @@ function runSecurityAudit() {
 		return true;
 	}
 
-	error('Security audit: Vulnerabilities found');
-	if (result.output) {
-		console.log('\n' + result.output);
+	error( 'Security audit: Vulnerabilities found' );
+	if ( result.output ) {
+		console.log( '\n' + result.output );
 	}
 	addResult(
 		'critical',
@@ -688,18 +713,18 @@ function runSecurityAudit() {
 // ============================================================================
 
 function generateReport() {
-	header('Scaffold Release Readiness Report');
+	header( 'Scaffold Release Readiness Report' );
 
-	const versionFile = path.resolve(__dirname, '..', '..', 'VERSION');
-	const version = fileExists(versionFile)
-		? fs.readFileSync(versionFile, 'utf8').trim()
+	const versionFile = path.resolve( __dirname, '..', '..', 'VERSION' );
+	const version = fileExists( versionFile )
+		? fs.readFileSync( versionFile, 'utf8' ).trim()
 		: 'Unknown';
 
 	console.log(
 		'\n' +
 			colors.cyan +
 			colors.bold +
-			`## Release Readiness for block-theme-scaffold v${version}\n` +
+			`## Release Readiness for block-theme-scaffold v${ version }\n` +
 			colors.reset
 	);
 
@@ -708,23 +733,23 @@ function generateReport() {
 		validationResults.failed.length +
 		validationResults.warnings.length;
 
-	console.log(colors.bold + '📊 Summary\n' + colors.reset);
-	console.log(`Total checks: ${totalChecks}`);
-	success(`Passed: ${validationResults.passed.length}`);
-	warning(`Warnings: ${validationResults.warnings.length}`);
-	error(`Failed: ${validationResults.failed.length}`);
+	console.log( colors.bold + '📊 Summary\n' + colors.reset );
+	console.log( `Total checks: ${ totalChecks }` );
+	success( `Passed: ${ validationResults.passed.length }` );
+	warning( `Warnings: ${ validationResults.warnings.length }` );
+	error( `Failed: ${ validationResults.failed.length }` );
 
 	const isReady = validationResults.critical.length === 0;
 
-	console.log('\n' + colors.bold + '🎯 Status\n' + colors.reset);
-	if (isReady) {
-		success('✓ READY TO RELEASE SCAFFOLD');
+	console.log( '\n' + colors.bold + '🎯 Status\n' + colors.reset );
+	if ( isReady ) {
+		success( '✓ READY TO RELEASE SCAFFOLD' );
 	} else {
-		error('✗ RELEASE BLOCKED');
+		error( '✗ RELEASE BLOCKED' );
 	}
 
 	// Passed checks
-	if (validationResults.passed.length > 0) {
+	if ( validationResults.passed.length > 0 ) {
 		console.log(
 			'\n' +
 				colors.green +
@@ -732,13 +757,13 @@ function generateReport() {
 				'### ✅ Passed Checks\n' +
 				colors.reset
 		);
-		validationResults.passed.forEach((result) => {
-			console.log(`  ✓ [${result.category}] ${result.message}`);
-		});
+		validationResults.passed.forEach( ( result ) => {
+			console.log( `  ✓ [${ result.category }] ${ result.message }` );
+		} );
 	}
 
 	// Warnings
-	if (validationResults.warnings.length > 0) {
+	if ( validationResults.warnings.length > 0 ) {
 		console.log(
 			'\n' +
 				colors.yellow +
@@ -746,13 +771,13 @@ function generateReport() {
 				'### ⚠️  Warnings\n' +
 				colors.reset
 		);
-		validationResults.warnings.forEach((result) => {
-			console.log(`  ⚠  [${result.category}] ${result.message}`);
-		});
+		validationResults.warnings.forEach( ( result ) => {
+			console.log( `  ⚠  [${ result.category }] ${ result.message }` );
+		} );
 	}
 
 	// Blockers
-	if (validationResults.critical.length > 0) {
+	if ( validationResults.critical.length > 0 ) {
 		console.log(
 			'\n' +
 				colors.red +
@@ -760,34 +785,34 @@ function generateReport() {
 				'### ❌ Critical Blockers\n' +
 				colors.reset
 		);
-		validationResults.critical.forEach((result) => {
-			console.log(`  ✗ [${result.category}] ${result.message}`);
-		});
+		validationResults.critical.forEach( ( result ) => {
+			console.log( `  ✗ [${ result.category }] ${ result.message }` );
+		} );
 	}
 
 	// Next steps
-	console.log('\n' + colors.bold + '📋 Next Steps\n' + colors.reset);
-	if (isReady) {
-		console.log('  1. Review the changes: git diff');
+	console.log( '\n' + colors.bold + '📋 Next Steps\n' + colors.reset );
+	if ( isReady ) {
+		console.log( '  1. Review the changes: git diff' );
 		console.log(
 			'  2. Commit changes: git commit -am "chore: prepare release v' +
 				version +
 				'"'
 		);
 		console.log(
-			`  3. Create release branch: git checkout -b release/${version}`
+			`  3. Create release branch: git checkout -b release/${ version }`
 		);
 		console.log(
-			`  4. Tag release: git tag -a v${version} -m "Release v${version}"`
+			`  4. Tag release: git tag -a v${ version } -m "Release v${ version }"`
 		);
-		console.log('  5. Push tag: git push origin v' + version);
+		console.log( '  5. Push tag: git push origin v' + version );
 	} else {
-		console.log('  1. Review critical blockers above');
-		console.log('  2. Fix issues and re-run validation');
-		console.log('  3. Run: npm run release:scaffold:validate');
+		console.log( '  1. Review critical blockers above' );
+		console.log( '  2. Fix issues and re-run validation' );
+		console.log( '  3. Run: npm run release:scaffold:validate' );
 	}
 
-	console.log(''); // Empty line
+	console.log( '' ); // Empty line
 
 	return isReady;
 }
@@ -797,13 +822,13 @@ function generateReport() {
 // ============================================================================
 
 function showHelp() {
-	console.log(`
-${colors.cyan}${colors.bold}Release Scaffold Agent${colors.reset}
+	console.log( `
+${ colors.cyan }${ colors.bold }Release Scaffold Agent${ colors.reset }
 
-${colors.bold}Usage:${colors.reset}
+${ colors.bold }Usage:${ colors.reset }
   node scripts/agents/release-scaffold.agent.js [command]
 
-${colors.bold}Commands:${colors.reset}
+${ colors.bold }Commands:${ colors.reset }
   validate      - Run full validation suite (default)
   version       - Check version consistency
   placeholders  - Verify mustache placeholders preserved
@@ -815,49 +840,60 @@ ${colors.bold}Commands:${colors.reset}
   report        - Generate full readiness report
   help          - Show this help text
 
-${colors.bold}NPM Scripts:${colors.reset}
+${ colors.bold }NPM Scripts:${ colors.reset }
   npm run release:scaffold:validate
   npm run release:scaffold:report
 
-${colors.bold}Specification:${colors.reset}
+${ colors.bold }Specification:${ colors.reset }
   .github/agents/release-scaffold.agent.md
   docs/RELEASE_PROCESS_SCAFFOLD.md
-`);
+` );
 }
 
 async function main() {
-	const args = process.argv.slice(2);
-	const logger = new FileLogger('release-scaffold', 'agents');
+	const args = process.argv.slice( 2 );
+	if ( args.includes( '--help' ) || args.includes( '-h' ) ) {
+		showHelp();
+		return true;
+	}
+	const logger = new FileLogger( 'release-scaffold', 'agents' );
 
 	// Determine wizard mode from CLI args or env
 	let wizardMode = 'cli';
-	if (args.includes('--mock') || args.includes('--dry-run'))
+	if ( args.includes( '--mock' ) || args.includes( '--dry-run' ) ) {
 		wizardMode = 'mock';
-	if (args.includes('--json')) wizardMode = 'json';
-	if (args.includes('--env')) wizardMode = 'env';
-	if (args.includes('--stdin')) wizardMode = 'stdin';
+	}
+	if ( args.includes( '--json' ) ) {
+		wizardMode = 'json';
+	}
+	if ( args.includes( '--env' ) ) {
+		wizardMode = 'env';
+	}
+	if ( args.includes( '--stdin' ) ) {
+		wizardMode = 'stdin';
+	}
 
 	// Run the wizard to get config/answers
 	let config = {};
 	try {
-		config = await runWizard({ mode: wizardMode, questions, logger });
-	} catch (err) {
-		error('Wizard failed:', err.message);
-		process.exit(1);
+		config = await runWizard( { mode: wizardMode, questions, logger } );
+	} catch ( err ) {
+		error( 'Wizard failed:', err.message );
+		process.exit( 1 );
 	}
 
 	// Determine release mode from config or fallback to CLI args
 	let releaseMode = config.releaseMode || 'release';
-	if (args.includes('--validation') || args.includes('--validate')) {
+	if ( args.includes( '--validation' ) || args.includes( '--validate' ) ) {
 		releaseMode = 'validation';
 	}
 
-	logger.info(`Release mode: ${releaseMode}`);
+	logger.info( `Release mode: ${ releaseMode }` );
 
 	// Branch workflow for validation vs release
-	if (releaseMode === 'validation') {
+	if ( releaseMode === 'validation' ) {
 		resetResults();
-		logger.info('Running pre-release validation steps...');
+		logger.info( 'Running pre-release validation steps...' );
 		checkVersionConsistency();
 		checkPlaceholders();
 		checkSchema();
@@ -865,14 +901,14 @@ async function main() {
 		checkDocumentation();
 		testThemeGeneration();
 		runSecurityAudit();
-		logger.info('Validation complete.');
-		(await logger.save) && logger.save();
+		logger.info( 'Validation complete.' );
+		await logger.save();
 		return generateReport();
 	}
 
 	// Full release mode
 	resetResults();
-	logger.info('Running full release workflow...');
+	logger.info( 'Running full release workflow...' );
 	checkVersionConsistency();
 	checkPlaceholders();
 	checkSchema();
@@ -885,34 +921,34 @@ async function main() {
 	);
 
 	// Update CHANGELOG.md (append release entry if needed)
-	const rootDir = path.resolve(__dirname, '..', '..');
-	const changelogPath = path.join(rootDir, 'CHANGELOG.md');
-	const versionFile = path.join(rootDir, 'VERSION');
-	const version = fs.readFileSync(versionFile, 'utf8').trim();
-	let changelogContent = fs.readFileSync(changelogPath, 'utf8');
-	if (changelogContent.includes('## [Unreleased]')) {
-		const today = new Date().toISOString().split('T')[0];
+	const rootDir = path.resolve( __dirname, '..', '..' );
+	const changelogPath = path.join( rootDir, 'CHANGELOG.md' );
+	const versionFile = path.join( rootDir, 'VERSION' );
+	const version = fs.readFileSync( versionFile, 'utf8' ).trim();
+	let changelogContent = fs.readFileSync( changelogPath, 'utf8' );
+	if ( changelogContent.includes( '## [Unreleased]' ) ) {
+		const today = new Date().toISOString().split( 'T' )[ 0 ];
 		changelogContent = changelogContent.replace(
 			'## [Unreleased]',
-			`## [Unreleased]\n\n## [${version}] - ${today}`
+			`## [Unreleased]\n\n## [${ version }] - ${ today }`
 		);
-		fs.writeFileSync(changelogPath, changelogContent, 'utf8');
-		logger.info(`CHANGELOG.md updated for version ${version}`);
+		fs.writeFileSync( changelogPath, changelogContent, 'utf8' );
+		logger.info( `CHANGELOG.md updated for version ${ version }` );
 	}
 
 	// Stage all changes
-	logger.info('Staging all changes...');
-	runCommand('git add .');
+	logger.info( 'Staging all changes...' );
+	runCommand( 'git add .' );
 
 	// Run husky pre-commit hooks
-	logger.info('Running husky pre-commit hooks...');
-	runCommand('npx husky run pre-commit');
+	logger.info( 'Running husky pre-commit hooks...' );
+	runCommand( 'npx husky run pre-commit' );
 
 	// Commit changes
-	logger.info('Committing changes...');
-	runCommand(`git commit -m "chore: prepare release v${version}"`);
+	logger.info( 'Committing changes...' );
+	runCommand( `git commit -m "chore: prepare release v${ version }"` );
 
-	(await logger.save) && logger.save();
+	await logger.save();
 	return generateReport();
 }
 
@@ -920,12 +956,13 @@ async function main() {
 // EXPORTS & EXECUTION
 // ============================================================================
 
-if (require.main === module) {
-	const success = main();
-	process.exit(success ? 0 : 1);
+if ( require.main === module ) {
+	// main() is async: wait for its result before choosing the exit code.
+	main().then( ( ok ) => process.exit( ok ? 0 : 1 ) );
 }
 
 module.exports = {
+	questions,
 	checkVersionConsistency,
 	checkPlaceholders,
 	checkSchema,

@@ -4,13 +4,13 @@
  * Uses wizard.js for interactive configuration.
  * Supports: cli, mock
  */
-const { runWizard } = require('../lib/wizard');
+const { runWizard } = require( '../lib/wizard' );
 
 const questions = [
 	{
 		name: 'checkType',
 		type: 'list',
-		choices: ['lint', 'test', 'coverage'],
+		choices: [ 'lint', 'test', 'coverage' ],
 		default: 'lint',
 		message: 'Check type:',
 	},
@@ -19,10 +19,12 @@ const questions = [
 
 async function main() {
 	const mode = process.env.WIZARD_MODE || 'cli';
-	const config = await runWizard({ mode, questions });
+	const config = await runWizard( { mode, questions } );
 	// TODO: Implement code quality logic using config
-	console.log('Code Quality Agent config:', config);
+	console.log( 'Code Quality Agent config:', config );
 }
 
-if (require.main === module) main();
+if ( require.main === module ) {
+	main();
+}
 module.exports = { main, questions };
