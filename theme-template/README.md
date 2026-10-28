@@ -118,12 +118,14 @@ This theme uses `@wordpress/scripts` for a modern build workflow:
 - `npm run test:unit` - JavaScript unit tests (Vitest) with a coverage gate
 - `composer run test` - PHP unit tests (PHPUnit with Brain Monkey; no database needed)
 - `npm run test:e2e` - End-to-end tests with Playwright against wp-env (`npm run env:start` first)
+- `npm run size-limit` - Check the built scripts and stylesheets against the limits in `.size-limit.json` (after `npm run build`)
+- `npm run lighthouse` - Lighthouse CI against wp-env (`npm run env:start` first, or set `WP_BASE_URL`); accessibility and layout shift fail, the rest warn
 
 The same checks run in `.github/workflows/ci.yml` on every pull request, and the pre-commit hook in `.husky/pre-commit` runs the linters on staged files.
 
 #### Internationalization
 
-- `npm run makepot` - Generate translation POT file
+- `npm run makepot` - Generate `languages/{{theme_slug}}.pot` with WP-CLI (not committed; the release workflow builds it for the zip)
 - `npm run makejson` - Generate JSON translation files
 - `npm run i18n` - Complete i18n workflow (makepot + makejson)
 
@@ -209,8 +211,7 @@ Edit `theme.json` to customize:
 - **PHP**: PHPUnit unit tests in `tests/php/`, with Brain Monkey stubbing WordPress
 - **End-to-End**: Playwright tests in `tests/e2e/`: the front end and its built assets, and every template in the Site Editor with valid blocks
 - **Accessibility**: an axe-core WCAG 2.2 AA scan on mobile, tablet and desktop viewports
-- **Performance**: Lighthouse CI and Core Web Vitals monitoring
-- **Coverage**: Codecov integration with quality gates
+- **Performance**: size-limit on the built assets in CI, and Lighthouse CI on request (`npm run lighthouse`)
 
 ## Docker Development
 

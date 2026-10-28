@@ -17,7 +17,7 @@ Generator and agent tooling for creating new WordPress block themes. The theme i
 block-theme-scaffold/
 ├── theme-template/     # The theme template: every file here is copied into a generated theme
 │   ├── functions.php, style.css, theme.json
-│   ├── inc/ parts/ patterns/ templates/ styles/ src/ languages/
+│   ├── inc/ parts/ patterns/ templates/ styles/ src/
 │   ├── tests/          # PHPUnit and Playwright tests for the generated theme
 │   └── package.json, composer.json, build/lint configs, README.md, README.txt
 ├── scripts/            # Generator, agents, dry-run, validation and utility scripts

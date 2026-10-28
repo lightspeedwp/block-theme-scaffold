@@ -23,7 +23,7 @@ All three methods use **mustache template variables** to create customized theme
 
 Every file the generator uses to build a theme lives in `theme-template/`. The generator copies that folder's contents into the output directory and replaces the `{{mustache}}` placeholders; nothing outside `theme-template/` is copied.
 
-- **`theme-template/`**: the theme. This includes `functions.php`, `style.css`, `theme.json`, `inc/`, `parts/`, `patterns/`, `templates/`, `styles/`, `src/`, `languages/`, the theme's own `tests/` (PHPUnit and Playwright), its `package.json`, `composer.json`, build and lint configs, `README.md`, `README.txt` and project docs.
+- **`theme-template/`**: the theme. This includes `functions.php`, `style.css`, `theme.json`, `inc/`, `parts/`, `patterns/`, `templates/`, `styles/`, `src/`, the theme's own `tests/` (PHPUnit and Playwright), its `package.json`, `composer.json`, build and lint configs, `README.md`, `README.txt` and project docs.
 - **Repository root**: the tooling. This includes `scripts/` (generator, agents, dry-run and validation), `.github/` (agents, prompts, instructions, schemas, workflows), `docs/`, and the tooling's own `package.json` and tests.
 
 To change what a generated theme contains, edit `theme-template/`. Do not add theme files to the repository root.

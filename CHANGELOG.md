@@ -26,6 +26,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Playwright tests: front end and built assets, every template in the Site Editor with valid blocks, axe WCAG 2.2 AA on three viewports
   - A Husky pre-commit hook: branch name, changelog entry, build, lint-staged
 - `.github/workflows/theme-generation.yml`: on every pull request, generates a theme from each config in `tests/fixtures/generation/` (LS Test Theme and Tour Operator) and runs its checks: no leftover placeholder, lint, unit tests, build and enqueued files, PHPCS, PHPStan, PHPUnit, and the end-to-end tests on wp-env
+- Generated themes get `.github/dependabot.yml` (weekly npm, Composer and GitHub Actions updates, five open pull requests each), and CI runs `npm run size-limit` after the build and `npm run makepot` with WP-CLI ([BTS-8](https://linear.app/lightspeedwp/issue/BTS-8), proven in lightspeedwp/ls-test-theme#4)
 
 ### Changed
 
@@ -35,6 +36,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `styles/blocks/` and `styles/sections/` are block style variations; `styles/colors/` and `styles/typography/` are `theme.json` partials
 - The generator writes `package.json` and `composer.json` with tabs and a final newline
 - Template docs name the commands that exist
+- Generated themes load `szepeviktor/phpstan-wordpress` through `phpstan/extension-installer`
+- Generated themes no longer ship a `languages/*.pot`: the release workflow runs `npm run makepot` and puts the result in the zip (the template's `.pot` was a hand-written stub with one string)
+- `.size-limit.json` checks the files the build writes (`build/js/`, `build/css/`); it used an option that needs an uninstalled plugin, so `npm run size-limit` failed
+- `.lighthouserc.js` works with Lighthouse 12 (no `budgets` or `emulatedFormFactor`) and follows `WP_BASE_URL`, like the Playwright tests
 - **Theme template folder**: All files used to generate a theme now live in `theme-template/`, separate from the generator tooling at the repository root
   - `scripts/generate-theme.js` copies only `theme-template/`; root tooling (`scripts/`, `.github/`, `docs/`) is no longer copied into generated themes
   - `package.json` split into a tooling `package.json` (root) and a theme `package.json` (`theme-template/`)
@@ -44,6 +49,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+- The root pre-commit hook ran the `lint-staged` tasks in `theme-template/package.json` on staged template files, where `wp-scripts` fails on the `{{theme_slug}}` package name; it now uses only the root config
 - The scaffold's own pre-commit hook works again: the root tooling uses `@wordpress/scripts` 36 (ESLint 9/10) with one flat `eslint.config.cjs` for `scripts/`, replacing `.eslintrc.js`, `.eslint.config.cjs` and `.eslintignore`. Under `@wordpress/scripts` 31, `lint:js` crashed (TypeScript 7 with `@typescript-eslint` 6), so every scaffold commit needed `--no-verify`. The hook drops the Husky v8 lines that fail in Husky 10, and runs lint, lint-staged and the tests related to staged scripts
 - Running the scaffold's tests no longer rewrites `theme-template/`: `scripts/dry-run/with-dry-run.js` renders a temporary copy (`DRY_RUN_THEME_DIR`) instead of replacing placeholders in place and restoring them, which corrupted template files whenever Jest ran two dry-run tests at once. The dry-run wrappers now return the wrapped command's exit code
 - All 107 scaffold Jest tests pass (3 failed before): the wizard's `stdin` and `http` interfaces accept an injected stream and fetch function, the mock wizard keeps `false` defaults and calls function defaults, the release-scaffold agent exports its questions, and the scan test scans a temporary folder

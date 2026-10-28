@@ -65,6 +65,7 @@ docs/
 tmp/
 logs/
 lighthouse-reports/
+.lighthouseci/
 .DS_Store
 Thumbs.db
 .env
