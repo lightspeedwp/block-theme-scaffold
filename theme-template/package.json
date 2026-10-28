@@ -12,7 +12,7 @@
 		"full-site-editing",
 		"fse",
 		"{{theme_slug}}",
-		"{{namespace}}"
+		"{{theme_slug}}"
 	],
 	"homepage": "{{theme_uri}}",
 	"repository": {
@@ -125,7 +125,7 @@
 	},
 	"themeMeta": {
 		"displayName": "{{theme_name}}",
-		"namespace": "{{namespace}}",
+		"namespace": "{{theme_slug}}",
 		"website": "{{theme_uri}}",
 		"docs": "{{docs_url}}",
 		"support": "{{support_url}}",

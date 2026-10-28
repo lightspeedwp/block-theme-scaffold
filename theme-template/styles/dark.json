@@ -6,12 +6,12 @@
 		"color": {
 			"palette": [
 				{
-					"slug": "base",
+					"slug": "background",
 					"color": "{{dark_background_color}}",
 					"name": "Base"
 				},
 				{
-					"slug": "contrast",
+					"slug": "foreground",
 					"color": "{{dark_text_color}}",
 					"name": "Contrast"
 				},

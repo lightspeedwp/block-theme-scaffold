@@ -167,7 +167,7 @@ This theme uses mustache templates for easy customization. Key variables include
 - `{{secondary_color}}` - Secondary color
 - `{{background_color}}` - Background color
 - `{{text_color}}` - Text color
-- `{{body_font}}` - Body font family
+- `{{body_font_name}}` - Body font family
 
 **Excluding files from mustache scanning:**
 

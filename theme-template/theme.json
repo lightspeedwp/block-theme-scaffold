@@ -1,5 +1,5 @@
 {
-	"$schema": ".github/schemas/theme.6.9.json",
+	"$schema": "https://schemas.wp.org/wp/6.9/theme.json",
 	"version": 3,
 	"settings": {
 		"appearanceTools": true,
@@ -227,8 +227,8 @@
 			]
 		},
 		"layout": {
-			"contentSize": "{{content_width}}",
-			"wideSize": "{{wide_width}}"
+			"contentSize": "{{content_width_px}}",
+			"wideSize": "{{wide_width_px}}"
 		},
 		"dimensions": {
 			"aspectRatio": true,

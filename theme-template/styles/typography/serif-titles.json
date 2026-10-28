@@ -1,7 +1,7 @@
 {
 	"scope": "typography",
-	"name": "{{namespace}}-serif-titles",
-	"label": "{{name}} Serif Typography",
+	"name": "{{theme_slug}}-serif-titles",
+	"label": "{{theme_name}} Serif Typography",
 	"description": "Typography tokens for serif-heavy headings.",
 	"tokens": {
 		"headingFont": "var:preset|font-family|serif",

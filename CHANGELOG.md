@@ -27,6 +27,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+- Generated themes no longer contain unreplaced `{{placeholders}}` (66 tokens in 17 files, including `theme.json` `contentSize`/`wideSize` and every `styles/dark.json` colour). Template aliases now use the generator's keys, and the generator gives every remaining token a value or default. `scripts/__tests__/generate-theme.placeholders.test.js` fails on any leftover token ([BTS-5](https://linear.app/lightspeedwp/issue/BTS-5))
+- The generator reads `urls.*`, `emails.*` and `design_system.dark_mode_colors.*` from a JSON config, so `urls.theme_repo_url` sets the theme's repository URL
+- `theme.json` points `$schema` at `https://schemas.wp.org/wp/6.9/theme.json`; `styles/dark.json` uses the `background` and `foreground` slugs from `theme.json`; `style.css` no longer has a plugin-only `Network:` header
 - Generated themes now rename nested `{{theme_slug}}` file names (e.g. `languages/{{theme_slug}}.pot`)
 - `npm run test:agents` pointed at a non-existent `tests/agents/` path, which made Jest run every suite and recursively spawn the dry-run tests; it now runs `scripts/agents`
 - Dry-run helpers resolved their base directory to `scripts/`, so they substituted placeholders in the tooling's own source files
