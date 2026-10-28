@@ -1,0 +1,11 @@
+{
+  "theme_slug": "ls-test-theme",
+  "theme_name": "LS Test Theme",
+  "description": "A LightSpeed test block theme generated from block-theme-scaffold, used to prove CI and tooling changes.",
+  "author": "LightSpeed",
+  "author_uri": "https://lightspeedwp.agency",
+  "version": "1.0.0",
+  "license": "GPL-2.0-or-later",
+  "theme_uri": "https://github.com/lightspeedwp/ls-test-theme",
+  "urls": { "theme_repo_url": "https://github.com/lightspeedwp/ls-test-theme" }
+}
