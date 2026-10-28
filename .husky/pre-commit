@@ -1,23 +1,23 @@
-#!/usr/bin/env sh
+# Pre-commit checks for the block theme scaffold tooling (scripts/).
+# Theme files live in theme-template/ and contain {{placeholders}}, so they
+# are checked in a generated theme (.github/workflows/theme-generation.yml),
+# not here. Skip with `git commit --no-verify`.
 
-# Pre-commit hook for the block theme scaffold tooling.
-# Theme files live in theme-template/ and contain mustache placeholders,
-# so they are validated by the generator tests rather than linted directly.
-
-. "$(dirname -- "$0")/_/husky.sh"
-
-echo "🟡 Linting tooling scripts..."
-npm run lint || {
-    echo "❌ Linting failed. Run 'npm run lint:js:fix' to auto-fix many issues."
-    echo "💡 To bypass this check (not recommended), use: git commit --no-verify"
-    exit 1
+echo "Linting the tooling..."
+npm run lint --silent || {
+	echo "pre-commit: lint failed. Run 'npm run lint:js:fix' to fix what it can." >&2
+	exit 1
 }
 
-echo "🧪 Running tests related to staged changes..."
-npx jest --runInBand --bail --findRelatedTests --passWithNoTests $(git diff --cached --name-only --diff-filter=ACM -- 'scripts/*.js' 'scripts/**/*.js') || {
-    echo "❌ Tests failed. Run 'npm test' to see all failures."
-    echo "💡 To bypass this check (not recommended), use: git commit --no-verify"
-    exit 1
-}
+echo "Formatting staged files..."
+npx lint-staged || exit 1
 
-echo "✅ Pre-commit checks passed!"
+staged=$(git diff --cached --name-only --diff-filter=ACM -- 'scripts/*.js' 'scripts/**/*.js')
+if [ -n "$staged" ]; then
+	echo "Running the tests related to staged scripts..."
+	# shellcheck disable=SC2086 # one argument per file
+	npm run test:js --silent -- --bail --findRelatedTests --passWithNoTests $staged || {
+		echo "pre-commit: tests failed. Run 'npm test' to see every failure." >&2
+		exit 1
+	}
+fi

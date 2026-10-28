@@ -1,11 +1,11 @@
-const fs = require('fs');
-const path = require('path');
-const { URL } = require('url');
+const fs = require( 'fs' );
+const path = require( 'path' );
+const { URL } = require( 'url' );
 
 let _cachedJsonSchema = null;
 
 function loadCanonicalJsonSchema() {
-	if (_cachedJsonSchema) {
+	if ( _cachedJsonSchema ) {
 		return _cachedJsonSchema;
 	}
 
@@ -18,10 +18,10 @@ function loadCanonicalJsonSchema() {
 		'theme-config.schema.json'
 	);
 	try {
-		const raw = fs.readFileSync(schemaPath, 'utf8');
-		_cachedJsonSchema = JSON.parse(raw);
+		const raw = fs.readFileSync( schemaPath, 'utf8' );
+		_cachedJsonSchema = JSON.parse( raw );
 		return _cachedJsonSchema;
-	} catch (err) {
+	} catch {
 		return null;
 	}
 }
@@ -172,40 +172,42 @@ const CLI_KEY_MAP = {
 	theme_name: 'name',
 };
 
-function toCliKey(key) {
-	return CLI_KEY_MAP[key] ?? key;
+function toCliKey( key ) {
+	return CLI_KEY_MAP[ key ] ?? key;
 }
 
-function validateValue(key, value, schema) {
+function validateValue( key, value, schema ) {
 	const errors = [];
 
-	if (schema.required && !value) {
-		errors.push(`${key} is required`);
+	if ( schema.required && ! value ) {
+		errors.push( `${ key } is required` );
 		return errors;
 	}
 
-	if (!value && !schema.required) {
+	if ( ! value && ! schema.required ) {
 		return errors;
 	}
 
-	switch (schema.type) {
+	switch ( schema.type ) {
 		case 'string': {
-			if (typeof value !== 'string') {
-				errors.push(`${key} must be a string`);
+			if ( typeof value !== 'string' ) {
+				errors.push( `${ key } must be a string` );
 				return errors;
 			}
 
-			if (schema.pattern && !schema.pattern.test(value)) {
-				errors.push(`${key} must match pattern: ${schema.pattern}`);
-			}
-			if (schema.minLength && value.length < schema.minLength) {
+			if ( schema.pattern && ! schema.pattern.test( value ) ) {
 				errors.push(
-					`${key} must be at least ${schema.minLength} characters`
+					`${ key } must match pattern: ${ schema.pattern }`
 				);
 			}
-			if (schema.maxLength && value.length > schema.maxLength) {
+			if ( schema.minLength && value.length < schema.minLength ) {
 				errors.push(
-					`${key} must be at most ${schema.maxLength} characters`
+					`${ key } must be at least ${ schema.minLength } characters`
+				);
+			}
+			if ( schema.maxLength && value.length > schema.maxLength ) {
+				errors.push(
+					`${ key } must be at most ${ schema.maxLength } characters`
 				);
 			}
 			break;
@@ -213,27 +215,27 @@ function validateValue(key, value, schema) {
 
 		case 'url': {
 			try {
-				const url = new URL(value);
-				if (!['http:', 'https:'].includes(url.protocol)) {
-					errors.push(`${key} must use http or https protocol`);
+				const url = new URL( value );
+				if ( ! [ 'http:', 'https:' ].includes( url.protocol ) ) {
+					errors.push( `${ key } must use http or https protocol` );
 				}
-			} catch (err) {
-				errors.push(`${key} must be a valid URL`);
+			} catch {
+				errors.push( `${ key } must be a valid URL` );
 			}
 			break;
 		}
 
 		case 'semver': {
-			if (!/^\d+\.\d+\.\d+(-[a-zA-Z0-9.-]+)?$/.test(value)) {
-				errors.push(`${key} must be valid semver (e.g., 1.0.0)`);
+			if ( ! /^\d+\.\d+\.\d+(-[a-zA-Z0-9.-]+)?$/.test( value ) ) {
+				errors.push( `${ key } must be valid semver (e.g., 1.0.0)` );
 			}
 			break;
 		}
 
 		case 'version': {
-			if (!/^\d+\.\d+(\.\d+)?$/.test(value)) {
+			if ( ! /^\d+\.\d+(\.\d+)?$/.test( value ) ) {
 				errors.push(
-					`${key} must be a valid version (e.g., 6.0 or 8.0.0)`
+					`${ key } must be a valid version (e.g., 6.0 or 8.0.0)`
 				);
 			}
 			break;
@@ -243,19 +245,19 @@ function validateValue(key, value, schema) {
 	return errors;
 }
 
-function validateConfig(config) {
+function validateConfig( config ) {
 	const errors = [];
 	const warnings = [];
 
-	for (const [key, schema] of Object.entries(CONFIG_SCHEMA)) {
-		const value = config[key];
-		const fieldErrors = validateValue(key, value, schema);
+	for ( const [ key, schema ] of Object.entries( CONFIG_SCHEMA ) ) {
+		const value = config[ key ];
+		const fieldErrors = validateValue( key, value, schema );
 
-		if (fieldErrors.length > 0) {
-			if (schema.required) {
-				errors.push(...fieldErrors);
+		if ( fieldErrors.length > 0 ) {
+			if ( schema.required ) {
+				errors.push( ...fieldErrors );
 			} else {
-				warnings.push(...fieldErrors);
+				warnings.push( ...fieldErrors );
 			}
 		}
 	}
@@ -267,61 +269,61 @@ function validateConfig(config) {
 	};
 }
 
-function applyDefaults(config) {
+function applyDefaults( config ) {
 	const result = { ...config };
 
-	for (const [key, schema] of Object.entries(CONFIG_SCHEMA)) {
-		if (result[key] === undefined && schema.default !== null) {
-			result[key] = schema.default;
+	for ( const [ key, schema ] of Object.entries( CONFIG_SCHEMA ) ) {
+		if ( result[ key ] === undefined && schema.default !== null ) {
+			result[ key ] = schema.default;
 		}
 	}
 
-	if (result.theme_slug && !result.namespace) {
-		result.namespace = result.theme_slug.replace(/-/g, '_');
+	if ( result.theme_slug && ! result.namespace ) {
+		result.namespace = result.theme_slug.replace( /-/g, '_' );
 	}
 
 	// Only set theme_uri if not already set (null/undefined/empty string)
 	if (
 		result.theme_slug &&
-		(result.theme_uri === undefined ||
+		( result.theme_uri === undefined ||
 			result.theme_uri === null ||
-			result.theme_uri === '')
+			result.theme_uri === '' )
 	) {
-		result.theme_uri = `https://wordpress.org/themes/${result.theme_slug}`;
+		result.theme_uri = `https://wordpress.org/themes/${ result.theme_slug }`;
 	}
 
-	if (result.theme_slug && result.author && !result.theme_repo_url) {
-		result.theme_repo_url = `https://github.com/${result.author
+	if ( result.theme_slug && result.author && ! result.theme_repo_url ) {
+		result.theme_repo_url = `https://github.com/${ result.author
 			.toLowerCase()
-			.replace(/\s+/g, '')}/${result.theme_slug}`;
+			.replace( /\s+/g, '' ) }/${ result.theme_slug }`;
 	}
 
 	return result;
 }
 
-function getStageQuestions(stage) {
-	return Object.entries(CONFIG_SCHEMA)
-		.filter(([, schema]) => schema.stage === stage)
-		.map(([key, schema]) => ({
+function getStageQuestions( stage ) {
+	return Object.entries( CONFIG_SCHEMA )
+		.filter( ( [ , schema ] ) => schema.stage === stage )
+		.map( ( [ key, schema ] ) => ( {
 			key,
 			...schema,
-		}));
+		} ) );
 }
 
-function buildCommandArgs(config) {
+function buildCommandArgs( config ) {
 	const args = [];
 
-	for (const [key, value] of Object.entries(config)) {
-		if (value !== undefined && value !== null) {
-			args.push(`--${toCliKey(key)}`, value);
+	for ( const [ key, value ] of Object.entries( config ) ) {
+		if ( value !== undefined && value !== null ) {
+			args.push( `--${ toCliKey( key ) }`, value );
 		}
 	}
 
-	return args.join(' ');
+	return args.join( ' ' );
 }
 
-function buildCommand(config, scriptPath = 'scripts/generate-theme.js') {
-	return `node ${scriptPath} ${buildCommandArgs(config)}`;
+function buildCommand( config, scriptPath = 'scripts/generate-theme.js' ) {
+	return `node ${ scriptPath } ${ buildCommandArgs( config ) }`;
 }
 
 module.exports = {
@@ -336,34 +338,34 @@ module.exports = {
 	loadCanonicalJsonSchema,
 };
 
-if (require.main === module) {
-	const args = process.argv.slice(2);
-	const command = args[0];
+if ( require.main === module ) {
+	const args = process.argv.slice( 2 );
+	const command = args[ 0 ];
 
-	switch (command) {
+	switch ( command ) {
 		case '--schema':
-			console.log(JSON.stringify(CONFIG_SCHEMA, null, 2));
+			console.log( JSON.stringify( CONFIG_SCHEMA, null, 2 ) );
 			break;
 
 		case '--stages': {
 			const stages = new Set(
-				Object.values(CONFIG_SCHEMA).map((s) => s.stage)
+				Object.values( CONFIG_SCHEMA ).map( ( s ) => s.stage )
 			);
 			console.log(
 				'Available stages:',
-				Array.from(stages).sort().join(', ')
+				Array.from( stages ).sort().join( ', ' )
 			);
 			break;
 		}
 
 		case '--keys':
-			console.log(Object.keys(CONFIG_SCHEMA).join('\n'));
+			console.log( Object.keys( CONFIG_SCHEMA ).join( '\n' ) );
 			break;
 
 		default:
-			console.log('Config Schema Utilities');
-			console.log('');
-			console.log('Usage:');
+			console.log( 'Config Schema Utilities' );
+			console.log( '' );
+			console.log( 'Usage:' );
 			console.log(
 				'  node scripts/lib/define-config-schema.js --schema     Output schema as JSON'
 			);

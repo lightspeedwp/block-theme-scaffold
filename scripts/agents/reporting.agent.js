@@ -37,9 +37,9 @@
  * @module scripts/agents/reporting.agent
  */
 
-const fs = require('fs');
-const path = require('path');
-const { execSync } = require('child_process');
+const fs = require( 'fs' );
+const path = require( 'path' );
+const { execSync } = require( 'child_process' );
 
 // Color output helpers
 const colors = {
@@ -55,34 +55,34 @@ const colors = {
 
 // Logging removed for lint compliance
 
-function log(color, symbol, ...args) {
+function log( color, symbol, ...args ) {
 	void color;
 	void symbol;
 	void args;
 	// TODO: reconnect reporting output once logging can be shared safely.
 }
 
-function error(...args) {
-	log(colors.red, '❌', ...args);
+function error( ...args ) {
+	log( colors.red, '❌', ...args );
 }
 
-function success(...args) {
-	log(colors.green, '✅', ...args);
+function success( ...args ) {
+	log( colors.green, '✅', ...args );
 }
 
-function warning(...args) {
-	log(colors.yellow, '⚠️ ', ...args);
+function warning( ...args ) {
+	log( colors.yellow, '⚠️ ', ...args );
 }
 
-function info(...args) {
-	log(colors.blue, 'ℹ️ ', ...args);
+function info( ...args ) {
+	log( colors.blue, 'ℹ️ ', ...args );
 }
 
-function header(text) {
+function header( text ) {
 	// TODO: emit styled headers once logging reappears.
 	// Logging removed for lint compliance
 	// '\n' + colors.magenta + colors.bold + '═'.repeat(60) + colors.reset
-	log(colors.magenta + colors.bold, text);
+	log( colors.magenta + colors.bold, text );
 	// Logging removed for lint compliance
 	// colors.magenta + colors.bold + '═'.repeat(60) + colors.reset + '\n'
 }
@@ -92,12 +92,12 @@ function header(text) {
  * Implements the ReportGenerator pattern from the spec
  */
 class ReportGenerator {
-	constructor(category, tool, type) {
+	constructor( category, tool, type ) {
 		this.category = category;
 		this.tool = tool;
 		this.type = type;
-		this.date = new Date().toISOString().split('T')[0];
-		this.rootDir = path.resolve(__dirname, '..');
+		this.date = new Date().toISOString().split( 'T' )[ 0 ];
+		this.rootDir = path.resolve( __dirname, '..' );
 		this.reportDir = path.join(
 			this.rootDir,
 			'.github',
@@ -109,25 +109,25 @@ class ReportGenerator {
 	/**
 	 * Validate report path
 	 * @param {string} filePath - The file path to validate.
-	 * @returns {boolean}
+	 * @return {boolean}
 	 */
-	validatePath(filePath) {
+	validatePath( filePath ) {
 		const normalizedPath = path
-			.relative(this.rootDir, filePath)
-			.replace(/\\/g, '/');
+			.relative( this.rootDir, filePath )
+			.replace( /\\/g, '/' );
 
-		if (!normalizedPath.startsWith('.github/reports/')) {
+		if ( ! normalizedPath.startsWith( '.github/reports/' ) ) {
 			throw new Error(
-				`❌ Invalid path: ${filePath}. Must be in .github/reports/ directory`
+				`❌ Invalid path: ${ filePath }. Must be in .github/reports/ directory`
 			);
 		}
 
 		// Check date format in filename
-		const filename = path.basename(filePath);
+		const filename = path.basename( filePath );
 		const dateRegex = /^\d{4}-\d{2}-\d{2}-/;
-		if (!dateRegex.test(filename)) {
+		if ( ! dateRegex.test( filename ) ) {
 			throw new Error(
-				`❌ Invalid filename: ${filename}. Must start with YYYY-MM-DD-`
+				`❌ Invalid filename: ${ filename }. Must start with YYYY-MM-DD-`
 			);
 		}
 
@@ -138,36 +138,36 @@ class ReportGenerator {
 	 * Ensure directory exists
 	 * @param {string} dirPath - The directory path to ensure exists.
 	 */
-	ensureDirectory(dirPath) {
-		if (!fs.existsSync(dirPath)) {
-			fs.mkdirSync(dirPath, { recursive: true });
-			info(`Created directory: ${dirPath}`);
+	ensureDirectory( dirPath ) {
+		if ( ! fs.existsSync( dirPath ) ) {
+			fs.mkdirSync( dirPath, { recursive: true } );
+			info( `Created directory: ${ dirPath }` );
 		}
 	}
 
 	/**
 	 * Save report to file
 	 * @param {string} filename - The filename to save the report as.
-	 * @param {object} data - The report data to save.
-	 * @returns {string} The file path of the saved report.
+	 * @param {Object} data     - The report data to save.
+	 * @return {string} The file path of the saved report.
 	 */
-	save(filename, data) {
-		this.ensureDirectory(this.reportDir);
+	save( filename, data ) {
+		this.ensureDirectory( this.reportDir );
 
-		const filePath = path.join(this.reportDir, filename);
-		this.validatePath(filePath);
+		const filePath = path.join( this.reportDir, filename );
+		this.validatePath( filePath );
 
 		const report = {
 			date: new Date().toISOString(),
 			tool: this.tool,
 			type: this.type,
 			...data,
-			logFile: `logs/${this.category}/${this.date}-${this.tool}.log`,
+			logFile: `logs/${ this.category }/${ this.date }-${ this.tool }.log`,
 		};
 
-		fs.writeFileSync(filePath, JSON.stringify(report, null, 2));
+		fs.writeFileSync( filePath, JSON.stringify( report, null, 2 ) );
 
-		success(`Report saved: ${path.relative(this.rootDir, filePath)}`);
+		success( `Report saved: ${ path.relative( this.rootDir, filePath ) }` );
 		return filePath;
 	}
 }
@@ -177,46 +177,46 @@ class ReportGenerator {
  * For tracking agent execution and artifacts
  */
 class AgentReportGenerator {
-	constructor(agentName) {
+	constructor( agentName ) {
 		this.agentName = agentName;
 		this.startTime = Date.now();
 		this.artifacts = [];
 		this.warnings = [];
 		this.errors = [];
-		this.rootDir = path.resolve(__dirname, '..');
+		this.rootDir = path.resolve( __dirname, '..' );
 	}
 
 	/**
 	 * Add an artifact to the report.
-	 * @param {string} filePath - The file path of the artifact.
+	 * @param {string} filePath              - The file path of the artifact.
 	 * @param {string} [operation='created'] - The operation performed on the artifact.
 	 */
-	addArtifact(filePath, operation = 'created') {
-		this.artifacts.push({ filePath, operation });
+	addArtifact( filePath, operation = 'created' ) {
+		this.artifacts.push( { filePath, operation } );
 	}
 
 	/**
 	 * Add a warning message to the report.
 	 * @param {string} message - The warning message.
 	 */
-	addWarning(message) {
-		this.warnings.push(message);
+	addWarning( message ) {
+		this.warnings.push( message );
 	}
 
 	/**
 	 * Add an error message to the report.
 	 * @param {string} message - The error message.
 	 */
-	addError(message) {
-		this.errors.push(message);
+	addError( message ) {
+		this.errors.push( message );
 	}
 
 	/**
 	 * Save the agent report to disk.
-	 * @returns {{jsonFile: string, mdFile: string}} The file paths of the saved report and summary.
+	 * @return {{jsonFile: string, mdFile: string}} The file paths of the saved report and summary.
 	 */
 	saveReport() {
-		const date = new Date().toISOString().split('T')[0];
+		const date = new Date().toISOString().split( 'T' )[ 0 ];
 		const reportDir = path.join(
 			this.rootDir,
 			'.github',
@@ -225,12 +225,12 @@ class AgentReportGenerator {
 		);
 
 		// Ensure directory
-		if (!fs.existsSync(reportDir)) {
-			fs.mkdirSync(reportDir, { recursive: true });
+		if ( ! fs.existsSync( reportDir ) ) {
+			fs.mkdirSync( reportDir, { recursive: true } );
 		}
 
 		const duration =
-			((Date.now() - this.startTime) / 1000).toFixed(1) + 's';
+			( ( Date.now() - this.startTime ) / 1000 ).toFixed( 1 ) + 's';
 		const status = this.errors.length > 0 ? 'failure' : 'success';
 
 		// Generate JSON report
@@ -238,64 +238,67 @@ class AgentReportGenerator {
 			agent: this.agentName,
 			timestamp: new Date().toISOString(),
 			status,
-			summary: `Agent completed with ${this.artifacts.length} artifacts`,
+			summary: `Agent completed with ${ this.artifacts.length } artifacts`,
 			metrics: {
 				filesCreated: this.artifacts.filter(
-					(a) => a.operation === 'created'
+					( a ) => a.operation === 'created'
 				).length,
 				filesModified: this.artifacts.filter(
-					(a) => a.operation === 'modified'
+					( a ) => a.operation === 'modified'
 				).length,
 				duration,
 				errors: this.errors.length,
 				warnings: this.warnings.length,
 			},
-			artifacts: this.artifacts.map((a) => a.filePath),
+			artifacts: this.artifacts.map( ( a ) => a.filePath ),
 			warnings: this.warnings,
 			errors: this.errors,
-			logFile: `logs/agents/${date}-${this.agentName}.log`,
+			logFile: `logs/agents/${ date }-${ this.agentName }.log`,
 		};
 
 		// Save JSON report
-		const jsonFile = path.join(reportDir, `${date}-${this.agentName}.json`);
-		fs.writeFileSync(jsonFile, JSON.stringify(report, null, 2));
-		success(`Report: ${path.relative(this.rootDir, jsonFile)}`);
+		const jsonFile = path.join(
+			reportDir,
+			`${ date }-${ this.agentName }.json`
+		);
+		fs.writeFileSync( jsonFile, JSON.stringify( report, null, 2 ) );
+		success( `Report: ${ path.relative( this.rootDir, jsonFile ) }` );
 
 		// Generate markdown summary
-		const summary = `# ${this.agentName} Report
+		const summary = `# ${ this.agentName } Report
 
-Date: ${new Date().toISOString()}
-Status: **${status.toUpperCase()}**
+Date: ${ new Date().toISOString() }
+Status: **${ status.toUpperCase() }**
 
 ## Summary
 
-${report.summary}
+${ report.summary }
 
 ## Metrics
 
-- Files Created: ${report.metrics.filesCreated}
-- Files Modified: ${report.metrics.filesModified}
-- Duration: ${report.metrics.duration}
-- Errors: ${report.metrics.errors}
-- Warnings: ${report.metrics.warnings}
+- Files Created: ${ report.metrics.filesCreated }
+- Files Modified: ${ report.metrics.filesModified }
+- Duration: ${ report.metrics.duration }
+- Errors: ${ report.metrics.errors }
+- Warnings: ${ report.metrics.warnings }
 
 ## Artifacts
 
-${this.artifacts.map((a) => `- \`${a.filePath}\` (${a.operation})`).join('\n') || 'None'}
+${ this.artifacts.map( ( a ) => `- \`${ a.filePath }\` (${ a.operation })` ).join( '\n' ) || 'None' }
 
-${this.warnings.length > 0 ? `## Warnings\n\n${this.warnings.map((w) => `- ${w}`).join('\n')}` : ''}
+${ this.warnings.length > 0 ? `## Warnings\n\n${ this.warnings.map( ( w ) => `- ${ w }` ).join( '\n' ) }` : '' }
 
-${this.errors.length > 0 ? `## Errors\n\n${this.errors.map((e) => `- ${e}`).join('\n')}` : ''}
+${ this.errors.length > 0 ? `## Errors\n\n${ this.errors.map( ( e ) => `- ${ e }` ).join( '\n' ) }` : '' }
 
-Log: \`logs/agents/${date}-${this.agentName}.log\`
+Log: \`logs/agents/${ date }-${ this.agentName }.log\`
 `;
 
 		const mdFile = path.join(
 			reportDir,
-			`${date}-${this.agentName}-summary.md`
+			`${ date }-${ this.agentName }-summary.md`
 		);
-		fs.writeFileSync(mdFile, summary);
-		success(`Summary: ${path.relative(this.rootDir, mdFile)}`);
+		fs.writeFileSync( mdFile, summary );
+		success( `Summary: ${ path.relative( this.rootDir, mdFile ) }` );
 
 		return { jsonFile, mdFile };
 	}
@@ -303,21 +306,21 @@ Log: \`logs/agents/${date}-${this.agentName}.log\`
 
 /**
  * Generate coverage report
- * @returns {void}
+ * @return {void}
  */
 function generateCoverageReport() {
-	header('Generating Coverage Report');
+	header( 'Generating Coverage Report' );
 
-	const generator = new ReportGenerator('coverage', 'jest', 'coverage');
+	const generator = new ReportGenerator( 'coverage', 'jest', 'coverage' );
 
-	info('Running tests with coverage...');
+	info( 'Running tests with coverage...' );
 
 	try {
 		// Run Jest with coverage
-		execSync('npm run test:dry-run:all', {
+		execSync( 'npm run test:dry-run:all', {
 			stdio: 'inherit',
 			cwd: generator.rootDir,
-		});
+		} );
 
 		// Mock coverage data (in real implementation, would parse Jest output)
 		const coverageData = {
@@ -330,32 +333,36 @@ function generateCoverageReport() {
 			files: 42,
 		};
 
-		generator.save(`${generator.date}-coverage.json`, coverageData);
+		generator.save( `${ generator.date }-coverage.json`, coverageData );
 
-		success('Coverage report generated');
-	} catch (err) {
-		error('Failed to generate coverage report:', err.message);
-		process.exit(1);
+		success( 'Coverage report generated' );
+	} catch ( err ) {
+		error( 'Failed to generate coverage report:', err.message );
+		process.exit( 1 );
 	}
 }
 
 /**
  * Generate validation report
- * @returns {void}
+ * @return {void}
  */
 function generateValidationReport() {
-	header('Generating Validation Report');
+	header( 'Generating Validation Report' );
 
-	const generator = new ReportGenerator('validation', 'eslint', 'validation');
+	const generator = new ReportGenerator(
+		'validation',
+		'eslint',
+		'validation'
+	);
 
-	info('Running linting...');
+	info( 'Running linting...' );
 
 	try {
 		// Run linting
-		execSync('npm run lint:dry-run', {
+		execSync( 'npm run lint:dry-run', {
 			stdio: 'inherit',
 			cwd: generator.rootDir,
-		});
+		} );
 
 		// Mock validation data
 		const validationData = {
@@ -365,25 +372,32 @@ function generateValidationReport() {
 			results: [],
 		};
 
-		generator.save(`${generator.date}-eslint-report.json`, validationData);
+		generator.save(
+			`${ generator.date }-eslint-report.json`,
+			validationData
+		);
 
-		success('Validation report generated');
-	} catch (err) {
-		error('Failed to generate validation report:', err.message);
-		process.exit(1);
+		success( 'Validation report generated' );
+	} catch ( err ) {
+		error( 'Failed to generate validation report:', err.message );
+		process.exit( 1 );
 	}
 }
 
 /**
  * Generate analysis report
- * @returns {void}
+ * @return {void}
  */
 function generateAnalysisReport() {
-	header('Generating Analysis Report');
+	header( 'Generating Analysis Report' );
 
-	const generator = new ReportGenerator('analysis', 'lighthouse', 'analysis');
+	const generator = new ReportGenerator(
+		'analysis',
+		'lighthouse',
+		'analysis'
+	);
 
-	info('Running analysis...');
+	info( 'Running analysis...' );
 
 	// Mock analysis data
 	const analysisData = {
@@ -399,17 +413,17 @@ function generateAnalysisReport() {
 		},
 	};
 
-	generator.save(`${generator.date}-lighthouse.json`, analysisData);
+	generator.save( `${ generator.date }-lighthouse.json`, analysisData );
 
-	success('Analysis report generated');
+	success( 'Analysis report generated' );
 }
 
 /**
  * Generate performance report
- * @returns {void}
+ * @return {void}
  */
 function generatePerformanceReport() {
-	header('Generating Performance Report');
+	header( 'Generating Performance Report' );
 
 	const generator = new ReportGenerator(
 		'performance',
@@ -417,7 +431,7 @@ function generatePerformanceReport() {
 		'performance'
 	);
 
-	info('Analyzing bundle size...');
+	info( 'Analyzing bundle size...' );
 
 	// Mock performance data
 	const performanceData = {
@@ -432,48 +446,48 @@ function generatePerformanceReport() {
 		],
 	};
 
-	generator.save(`${generator.date}-bundle-size.json`, performanceData);
+	generator.save( `${ generator.date }-bundle-size.json`, performanceData );
 
-	success('Performance report generated');
+	success( 'Performance report generated' );
 }
 
 /**
  * Generate agent report example
- * @returns {void}
+ * @return {void}
  */
 function generateAgentReport() {
-	header('Generating Agent Report');
+	header( 'Generating Agent Report' );
 
-	const agent = new AgentReportGenerator('example-agent');
+	const agent = new AgentReportGenerator( 'example-agent' );
 
 	// Simulate agent work
-	info('Simulating agent execution...');
-	agent.addArtifact('patterns/example.php', 'created');
-	agent.addArtifact('theme.json', 'modified');
-	agent.addWarning('Example warning');
+	info( 'Simulating agent execution...' );
+	agent.addArtifact( 'patterns/example.php', 'created' );
+	agent.addArtifact( 'theme.json', 'modified' );
+	agent.addWarning( 'Example warning' );
 
 	agent.saveReport();
 
-	success('Agent report generated');
+	success( 'Agent report generated' );
 }
 
 /**
  * Generate comparison report
- * @returns {void}
+ * @return {void}
  */
 function generateComparisonReport() {
-	header('Generating Comparison Report');
+	header( 'Generating Comparison Report' );
 
-	const date = new Date().toISOString().split('T')[0];
+	const date = new Date().toISOString().split( 'T' )[ 0 ];
 	const reportDir = path.join(
-		path.resolve(__dirname, '..'),
+		path.resolve( __dirname, '..' ),
 		'.github',
 		'reports',
 		'comparison'
 	);
 
-	if (!fs.existsSync(reportDir)) {
-		fs.mkdirSync(reportDir, { recursive: true });
+	if ( ! fs.existsSync( reportDir ) ) {
+		fs.mkdirSync( reportDir, { recursive: true } );
 	}
 
 	// Mock comparison data
@@ -496,180 +510,183 @@ function generateComparisonReport() {
 			sizeGzip: '+0.3 kB (+2.4%)',
 			acceptable: true,
 		},
-		logFile: `logs/build/${date}-bundle-comparison.log`,
+		logFile: `logs/build/${ date }-bundle-comparison.log`,
 	};
 
-	const filePath = path.join(reportDir, `${date}-bundle-size-diff.json`);
-	fs.writeFileSync(filePath, JSON.stringify(comparisonData, null, 2));
+	const filePath = path.join( reportDir, `${ date }-bundle-size-diff.json` );
+	fs.writeFileSync( filePath, JSON.stringify( comparisonData, null, 2 ) );
 
 	success(
-		`Comparison report saved: ${path.relative(path.resolve(__dirname, '..'), filePath)}`
+		`Comparison report saved: ${ path.relative( path.resolve( __dirname, '..' ), filePath ) }`
 	);
 }
 
 /**
  * Generate summary of all reports
- * @returns {void}
+ * @return {void}
  */
 function generateSummary() {
-	header('Report Summary');
+	header( 'Report Summary' );
 
-	const rootDir = path.resolve(__dirname, '..');
-	const reportsDir = path.join(rootDir, '.github', 'reports');
+	const rootDir = path.resolve( __dirname, '..' );
+	const reportsDir = path.join( rootDir, '.github', 'reports' );
 
-	if (!fs.existsSync(reportsDir)) {
-		warning('No reports directory found');
+	if ( ! fs.existsSync( reportsDir ) ) {
+		warning( 'No reports directory found' );
 		return;
 	}
 
 	const categories = fs
-		.readdirSync(reportsDir)
-		.filter((f) => fs.statSync(path.join(reportsDir, f)).isDirectory());
+		.readdirSync( reportsDir )
+		.filter( ( f ) =>
+			fs.statSync( path.join( reportsDir, f ) ).isDirectory()
+		);
 
 	// Logging removed for lint compliance
 
-	categories.forEach((category) => {
-		const categoryPath = path.join(reportsDir, category);
+	categories.forEach( ( category ) => {
+		const categoryPath = path.join( reportsDir, category );
 		const files = fs
-			.readdirSync(categoryPath)
-			.filter((f) => f.endsWith('.json'));
+			.readdirSync( categoryPath )
+			.filter( ( f ) => f.endsWith( '.json' ) );
 
 		// Logging removed for lint compliance
 		// (removed unreachable parenthesis and code)
 
-		if (files.length > 0) {
+		if ( files.length > 0 ) {
 			// const latest = files.sort().reverse()[0];
 			// Logging removed for lint compliance
 		}
-	});
+	} );
 
-	success('Summary generated');
+	success( 'Summary generated' );
 }
 
 /**
  * Archive old reports
  * @param {number} [daysOld=30] - The number of days old a report must be to archive.
- * @returns {void}
+ * @return {void}
  */
-function archiveReports(daysOld = 30) {
-	header(`Archiving Reports Older Than ${daysOld} Days`);
+function archiveReports( daysOld = 30 ) {
+	header( `Archiving Reports Older Than ${ daysOld } Days` );
 
-	const rootDir = path.resolve(__dirname, '..');
-	const reportsDir = path.join(rootDir, '.github', 'reports');
-	const archiveDir = path.join(reportsDir, 'archived');
+	const rootDir = path.resolve( __dirname, '..' );
+	const reportsDir = path.join( rootDir, '.github', 'reports' );
 
-	if (!fs.existsSync(reportsDir)) {
-		warning('No reports directory found');
+	if ( ! fs.existsSync( reportsDir ) ) {
+		warning( 'No reports directory found' );
 		return;
 	}
 
-	if (!fs.existsSync(archiveDir)) {
-		fs.mkdirSync(archiveDir, { recursive: true });
+	const archiveDir = path.join( reportsDir, 'archived' );
+
+	if ( ! fs.existsSync( archiveDir ) ) {
+		fs.mkdirSync( archiveDir, { recursive: true } );
 	}
 
 	const cutoffDate = new Date();
-	cutoffDate.setDate(cutoffDate.getDate() - daysOld);
+	cutoffDate.setDate( cutoffDate.getDate() - daysOld );
 
 	let archivedCount = 0;
 
-	function archiveDirectory(dir) {
-		const files = fs.readdirSync(dir);
+	function archiveDirectory( dir ) {
+		const files = fs.readdirSync( dir );
 
-		files.forEach((file) => {
-			const filePath = path.join(dir, file);
-			const stat = fs.statSync(filePath);
+		files.forEach( ( file ) => {
+			const filePath = path.join( dir, file );
+			const stat = fs.statSync( filePath );
 
-			if (stat.isDirectory() && file !== 'archived') {
-				archiveDirectory(filePath);
-			} else if (stat.isFile() && stat.mtime < cutoffDate) {
-				const relativePath = path.relative(reportsDir, filePath);
-				const archivePath = path.join(archiveDir, relativePath);
-				const archiveSubDir = path.dirname(archivePath);
+			if ( stat.isDirectory() && file !== 'archived' ) {
+				archiveDirectory( filePath );
+			} else if ( stat.isFile() && stat.mtime < cutoffDate ) {
+				const relativePath = path.relative( reportsDir, filePath );
+				const archivePath = path.join( archiveDir, relativePath );
+				const archiveSubDir = path.dirname( archivePath );
 
-				if (!fs.existsSync(archiveSubDir)) {
-					fs.mkdirSync(archiveSubDir, { recursive: true });
+				if ( ! fs.existsSync( archiveSubDir ) ) {
+					fs.mkdirSync( archiveSubDir, { recursive: true } );
 				}
 
-				fs.renameSync(filePath, archivePath);
-				info(`Archived: ${relativePath}`);
+				fs.renameSync( filePath, archivePath );
+				info( `Archived: ${ relativePath }` );
 				archivedCount++;
 			}
-		});
+		} );
 	}
 
-	archiveDirectory(reportsDir);
+	archiveDirectory( reportsDir );
 
-	if (archivedCount > 0) {
-		success(`Archived ${archivedCount} reports`);
+	if ( archivedCount > 0 ) {
+		success( `Archived ${ archivedCount } reports` );
 	} else {
-		info('No reports to archive');
+		info( 'No reports to archive' );
 	}
 }
 
 /**
  * Validate report structure
- * @returns {boolean}
+ * @return {boolean}
  */
 function validateReports() {
-	header('Validating Report Structure');
+	header( 'Validating Report Structure' );
 
-	const rootDir = path.resolve(__dirname, '..');
-	const reportsDir = path.join(rootDir, '.github', 'reports');
+	const rootDir = path.resolve( __dirname, '..' );
+	const reportsDir = path.join( rootDir, '.github', 'reports' );
 
-	if (!fs.existsSync(reportsDir)) {
-		error('No reports directory found');
+	if ( ! fs.existsSync( reportsDir ) ) {
+		error( 'No reports directory found' );
 		return false;
 	}
 
 	let validCount = 0;
 	let invalidCount = 0;
 
-	function validateDirectory(dir) {
-		const files = fs.readdirSync(dir);
+	function validateDirectory( dir ) {
+		const files = fs.readdirSync( dir );
 
-		files.forEach((file) => {
-			const filePath = path.join(dir, file);
-			const stat = fs.statSync(filePath);
+		files.forEach( ( file ) => {
+			const filePath = path.join( dir, file );
+			const stat = fs.statSync( filePath );
 
-			if (stat.isDirectory() && file !== 'archived') {
-				validateDirectory(filePath);
-			} else if (stat.isFile() && file.endsWith('.json')) {
+			if ( stat.isDirectory() && file !== 'archived' ) {
+				validateDirectory( filePath );
+			} else if ( stat.isFile() && file.endsWith( '.json' ) ) {
 				try {
-					const content = fs.readFileSync(filePath, 'utf8');
-					const report = JSON.parse(content);
+					const content = fs.readFileSync( filePath, 'utf8' );
+					const report = JSON.parse( content );
 
 					// Validate required fields
-					const requiredFields = ['date', 'tool', 'type'];
+					const requiredFields = [ 'date', 'tool', 'type' ];
 					const hasRequired = requiredFields.every(
-						(field) => field in report
+						( field ) => field in report
 					);
 
-					if (hasRequired) {
+					if ( hasRequired ) {
 						validCount++;
 					} else {
 						invalidCount++;
 						warning(
-							`Invalid report: ${path.relative(rootDir, filePath)}`
+							`Invalid report: ${ path.relative( rootDir, filePath ) }`
 						);
 					}
-				} catch (err) {
+				} catch ( err ) {
 					invalidCount++;
 					error(
-						`Failed to parse: ${path.relative(rootDir, filePath)} - ${err.message}`
+						`Failed to parse: ${ path.relative( rootDir, filePath ) } - ${ err.message }`
 					);
 				}
 			}
-		});
+		} );
 	}
 
-	validateDirectory(reportsDir);
+	validateDirectory( reportsDir );
 
 	// Logging removed for lint compliance
-	success(`Valid reports: ${validCount}`);
-	if (invalidCount > 0) {
-		error(`Invalid reports: ${invalidCount}`);
+	success( `Valid reports: ${ validCount }` );
+	if ( invalidCount > 0 ) {
+		error( `Invalid reports: ${ invalidCount }` );
 	} else {
-		info(`Invalid reports: ${invalidCount}`);
+		info( `Invalid reports: ${ invalidCount }` );
 	}
 
 	return invalidCount === 0;
@@ -677,12 +694,12 @@ function validateReports() {
 
 /**
  * Main CLI handler
- * @returns {void}
+ * @return {void}
  */
 function main() {
-	const args = process.argv.slice(2);
-	const command = args[0] || 'help';
-	const type = args[1];
+	const args = process.argv.slice( 2 );
+	const command = args[ 0 ] || 'help';
+	const type = args[ 1 ];
 
 	// Logging removed for lint compliance
 	// Logging removed for lint compliance
@@ -691,17 +708,17 @@ function main() {
 	// Logging removed for lint compliance
 
 	try {
-		switch (command) {
+		switch ( command ) {
 			case 'generate':
-				if (!type) {
-					error('Generate command requires a report type');
+				if ( ! type ) {
+					error( 'Generate command requires a report type' );
 					info(
 						'Valid types: coverage, validation, analysis, performance, agents, comparison'
 					);
-					process.exit(1);
+					process.exit( 1 );
 				}
 
-				switch (type) {
+				switch ( type ) {
 					case 'coverage':
 						generateCoverageReport();
 						break;
@@ -721,8 +738,8 @@ function main() {
 						generateComparisonReport();
 						break;
 					default:
-						error(`Unknown report type: ${type}`);
-						process.exit(1);
+						error( `Unknown report type: ${ type }` );
+						process.exit( 1 );
 				}
 				break;
 
@@ -731,14 +748,14 @@ function main() {
 				break;
 
 			case 'archive': {
-				const daysOld = parseInt(args[1]) || 30;
-				archiveReports(daysOld);
+				const daysOld = parseInt( args[ 1 ] ) || 30;
+				archiveReports( daysOld );
 				break;
 			}
 
 			case 'validate': {
 				const isValid = validateReports();
-				process.exit(isValid ? 0 : 1);
+				process.exit( isValid ? 0 : 1 );
 				break;
 			}
 
@@ -751,19 +768,19 @@ function main() {
 				break;
 
 			default:
-				error(`Unknown command: ${command}`);
+				error( `Unknown command: ${ command }` );
 				// Logging removed for lint compliance
-				process.exit(1);
+				process.exit( 1 );
 		}
-	} catch (err) {
-		error('Fatal error:', err.message);
+	} catch ( err ) {
+		error( 'Fatal error:', err.message );
 		// Logging removed for lint compliance
-		process.exit(1);
+		process.exit( 1 );
 	}
 }
 
 // Run if executed directly
-if (require.main === module) {
+if ( require.main === module ) {
 	main();
 }
 

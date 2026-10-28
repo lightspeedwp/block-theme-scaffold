@@ -3,5 +3,5 @@
  * @description Dry-run script for scripts/__tests__ Jest tests.
  * @todo Expand to support additional script test scenarios if needed.
  */
-const { runWithDryRun } = require('./with-dry-run');
-runWithDryRun('npm', ['run', 'test:scripts']);
+const { runWithDryRun } = require( './with-dry-run' );
+process.exitCode = runWithDryRun( 'npm', [ 'run', 'test:scripts' ] );
