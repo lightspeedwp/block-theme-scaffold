@@ -1,129 +1,109 @@
 /**
- * Main theme JavaScript
+ * Front-end script for {{theme_name}}.
  *
- * Uses WordPress packages:
- * - @wordpress/escape-html: For safe HTML escaping
- * - @wordpress/a11y: For accessibility announcements
+ * Uses `@wordpress/escape-html` for safe HTML escaping and `@wordpress/a11y`
+ * for screen reader announcements. Block themes get their skip link from
+ * WordPress core, so this script does not add one.
  */
+import { escapeHTML } from '@wordpress/escape-html';
+import { announce } from '@wordpress/a11y';
 
-const { escapeHTML } = require('@wordpress/escape-html');
-const { announce } = require('@wordpress/a11y');
-
-// Skip link functionality
-document.addEventListener('DOMContentLoaded', function () {
-	// Add skip link with escaped content
-	const skipLink = document.createElement('a');
-	skipLink.href = '#main';
-	skipLink.className = 'skip-link screen-reader-text';
-	skipLink.textContent = escapeHTML('{{skip_link_text}}');
-	document.body.insertBefore(skipLink, document.body.firstChild);
-
-	// Announce skip link to screen readers
-	announce('Skip link added');
-
-	// Smooth scroll for anchor links with accessibility announcement
-	const anchorLinks = document.querySelectorAll('a[href^="#"]');
-	anchorLinks.forEach((link) => {
-		link.addEventListener('click', function (e) {
-			const href = this.getAttribute('href');
-			const target = document.querySelector(href);
-
-			if (target) {
-				e.preventDefault();
-				target.scrollIntoView({
-					behavior: 'smooth',
-					block: 'start',
-				});
-				// Announce to screen readers
-				const targetText =
-					target.textContent?.substring(0, 50) || 'Section';
-				announce(`Navigated to ${escapeHTML(targetText)}`);
+/**
+ * Smooth-scroll in-page links to their target, move focus there and
+ * announce it.
+ *
+ * @param {Document} doc The document.
+ */
+export function setupAnchorLinks( doc = document ) {
+	doc.querySelectorAll( 'a[href^="#"]' ).forEach( ( link ) => {
+		link.addEventListener( 'click', ( event ) => {
+			// "#" alone is not a selector; such links are left alone.
+			const id = decodeURIComponent(
+				link.getAttribute( 'href' ).slice( 1 )
+			);
+			const target = id && doc.getElementById( id );
+			if ( ! target ) {
+				return;
 			}
-		});
-	});
 
-	// Mobile menu accessibility
-	const navToggle = document.querySelector(
+			event.preventDefault();
+			target.scrollIntoView( { behavior: 'smooth', block: 'start' } );
+			if ( ! target.hasAttribute( 'tabindex' ) ) {
+				target.setAttribute( 'tabindex', '-1' );
+			}
+			target.focus( { preventScroll: true } );
+
+			const targetText =
+				target.textContent?.trim().substring( 0, 50 ) || 'Section';
+			announce( `Navigated to ${ escapeHTML( targetText ) }` );
+		} );
+	} );
+}
+
+/**
+ * Keep aria-expanded on the navigation's open button in step with clicks.
+ *
+ * @param {Document} doc The document.
+ */
+export function setupNavigationToggle( doc = document ) {
+	const toggle = doc.querySelector(
 		'.wp-block-navigation__responsive-container-open'
 	);
-	if (navToggle) {
-		navToggle.addEventListener('click', function () {
-			const expanded = this.getAttribute('aria-expanded') === 'true';
-			this.setAttribute('aria-expanded', !expanded);
-		});
+	if ( ! toggle ) {
+		return;
 	}
+	toggle.addEventListener( 'click', () => {
+		const expanded = toggle.getAttribute( 'aria-expanded' ) === 'true';
+		toggle.setAttribute( 'aria-expanded', String( ! expanded ) );
+	} );
+}
 
-	// Focus management for modal dialogs
-	const modals = document.querySelectorAll('[role="dialog"]');
-	modals.forEach((modal) => {
-		const focusableElements = modal.querySelectorAll(
-			'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
-		);
-
-		if (focusableElements.length > 0) {
-			focusableElements[0].focus();
-		}
-	});
-});
-
-// Theme utilities
-const themeUtils = {
-	/**
-	 * Initialize theme features
-	 */
-	init() {
-		this.setupAnimations();
-		this.setupLazyLoading();
-	},
-
-	/**
-	 * Setup scroll animations
-	 */
-	setupAnimations() {
-		// eslint-disable-next-line no-undef
-		if ('IntersectionObserver' in window) {
-			// eslint-disable-next-line no-undef
-			const observer = new IntersectionObserver(
-				(entries) => {
-					entries.forEach((entry) => {
-						if (entry.isIntersecting) {
-							entry.target.classList.add('is-visible');
-						}
-					});
-				},
-				{
-					threshold: 0.1,
+/**
+ * Add "is-visible" to .animate-on-scroll elements as they enter the viewport.
+ *
+ * @param {Document} doc The document.
+ * @param {Window}   win The window.
+ */
+export function setupAnimations( doc = document, win = window ) {
+	if ( typeof win.IntersectionObserver !== 'function' ) {
+		return;
+	}
+	const observer = new win.IntersectionObserver(
+		( entries ) => {
+			entries.forEach( ( entry ) => {
+				if ( entry.isIntersecting ) {
+					entry.target.classList.add( 'is-visible' );
 				}
-			);
+			} );
+		},
+		{ threshold: 0.1 }
+	);
+	doc.querySelectorAll( '.animate-on-scroll' ).forEach( ( element ) =>
+		observer.observe( element )
+	);
+}
 
-			const animatedElements =
-				document.querySelectorAll('.animate-on-scroll');
-			animatedElements.forEach((el) => observer.observe(el));
-		}
-	},
+/**
+ * Swap data-src into src, for images marked up for lazy loading.
+ *
+ * @param {Document} doc The document.
+ */
+export function setupLazyLoading( doc = document ) {
+	doc.querySelectorAll( 'img[data-src]' ).forEach( ( image ) => {
+		image.setAttribute( 'loading', 'lazy' );
+		image.src = image.dataset.src;
+		image.removeAttribute( 'data-src' );
+	} );
+}
 
-	/**
-	 * Setup lazy loading for images
-	 */
-	setupLazyLoading() {
-		// eslint-disable-next-line no-undef
-		if ('loading' in HTMLImageElement.prototype) {
-			const images = document.querySelectorAll('img[data-src]');
-			images.forEach((img) => {
-				img.src = img.dataset.src;
-				img.removeAttribute('data-src');
-			});
-		} else {
-			// Fallback for browsers without native lazy loading
-			const script = document.createElement('script');
-			script.src =
-				'https://cdn.jsdelivr.net/npm/intersection-observer@0.12.0/intersection-observer.js';
-			document.head.appendChild(script);
-		}
-	},
-};
+/**
+ * Run every front-end enhancement.
+ */
+export function init() {
+	setupAnchorLinks();
+	setupNavigationToggle();
+	setupAnimations();
+	setupLazyLoading();
+}
 
-// Initialize theme
-document.addEventListener('DOMContentLoaded', () => {
-	themeUtils.init();
-});
+document.addEventListener( 'DOMContentLoaded', init );

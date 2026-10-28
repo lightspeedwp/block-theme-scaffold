@@ -18,7 +18,7 @@ $search_label       = esc_html__( 'Search', '{{theme_slug}}' );
 $search_placeholder = esc_html__( 'Search...', '{{theme_slug}}' );
 ?>
 <!-- wp:group {"style":{"spacing":{"padding":{"top":"var:preset|spacing|50","bottom":"var:preset|spacing|50"}}},"layout":{"type":"constrained"}} -->
-<div class="wp-block-group" style="padding-top:var(--wp--preset--spacing--50);padding-bottom:var(--wp--preset--spacing--50)" role="region" aria-label="<?php esc_attr_e( 'No search results', '{{theme_slug}}' ); ?>">
+<div class="wp-block-group" style="padding-top:var(--wp--preset--spacing--50);padding-bottom:var(--wp--preset--spacing--50)">
 	<!-- wp:heading {"textAlign":"center","level":2,"style":{"spacing":{"margin":{"bottom":"var:preset|spacing|20"}}}} -->
 	<h2 class="wp-block-heading has-text-align-center" style="margin-bottom:var(--wp--preset--spacing--20)"><?php echo esc_html( $heading_text ); ?></h2>
 	<!-- /wp:heading -->

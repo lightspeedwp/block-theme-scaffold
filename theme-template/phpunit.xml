@@ -1,29 +1,22 @@
 <?xml version="1.0"?>
 <phpunit
-	bootstrap="tests/bootstrap.php"
-	backupGlobals="false"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="vendor/phpunit/phpunit/phpunit.xsd"
+	bootstrap="tests/php/bootstrap.php"
 	colors="true"
-	convertErrorsToExceptions="true"
-	convertNoticesToExceptions="true"
-	convertWarningsToExceptions="true"
-	>
+	failOnWarning="true"
+	failOnRisky="true"
+	cacheDirectory=".phpunit.cache"
+>
 	<testsuites>
-		<testsuite name="{{theme_name}} Test Suite">
-			<directory prefix="Test_" suffix=".php">./tests/php/</directory>
+		<testsuite name="unit">
+			<directory suffix="Test.php">./tests/php</directory>
 		</testsuite>
 	</testsuites>
-	<coverage includeUncoveredFiles="true">
+	<source>
 		<include>
-			<directory suffix=".php">./inc/</directory>
 			<file>./functions.php</file>
+			<directory suffix=".php">./inc</directory>
 		</include>
-		<exclude>
-			<directory>./tests/</directory>
-			<directory>./vendor/</directory>
-			<directory>./node_modules/</directory>
-		</exclude>
-	</coverage>
-	<php>
-		<const name="WP_TESTS_PHPUNIT_POLYFILLS_PATH" value="./vendor/yoast/phpunit-polyfills/phpunitpolyfills-autoload.php" />
-	</php>
+	</source>
 </phpunit>

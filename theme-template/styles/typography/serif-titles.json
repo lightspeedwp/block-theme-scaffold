@@ -1,11 +1,27 @@
 {
-	"scope": "typography",
-	"name": "{{theme_slug}}-serif-titles",
-	"label": "{{theme_name}} Serif Typography",
-	"description": "Typography tokens for serif-heavy headings.",
-	"tokens": {
-		"headingFont": "var:preset|font-family|serif",
-		"headingWeight": "700",
-		"headingLineHeight": "1.2"
+	"$schema": "https://schemas.wp.org/wp/6.9/theme.json",
+	"version": 3,
+	"title": "Serif titles",
+	"settings": {
+		"typography": {
+			"fontFamilies": [
+				{
+					"slug": "serif",
+					"name": "Serif",
+					"fontFamily": "Georgia, 'Times New Roman', serif"
+				}
+			]
+		}
+	},
+	"styles": {
+		"elements": {
+			"heading": {
+				"typography": {
+					"fontFamily": "var(--wp--preset--font-family--serif)",
+					"fontWeight": "700",
+					"lineHeight": "1.2"
+				}
+			}
+		}
 	}
 }

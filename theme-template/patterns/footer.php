@@ -22,8 +22,8 @@ $copyright_text    = sprintf(
 	gmdate( 'Y' )
 );
 ?>
-<!-- wp:group {"tagName":"footer","style":{"spacing":{"padding":{"top":"var:preset|spacing|50","bottom":"var:preset|spacing|50"},"margin":{"top":"var:preset|spacing|60"}}},"backgroundColor":"neutral","layout":{"type":"constrained"}} -->
-<footer class="wp-block-group has-neutral-background-color has-background" style="margin-top:var(--wp--preset--spacing--60);padding-top:var(--wp--preset--spacing--50);padding-bottom:var(--wp--preset--spacing--50)" role="contentinfo">
+<!-- wp:group {"tagName":"footer","style":{"spacing":{"padding":{"top":"var:preset|spacing|50","bottom":"var:preset|spacing|50"},"margin":{"top":"var:preset|spacing|60"}}},"backgroundColor":"surface","layout":{"type":"constrained"}} -->
+<footer class="wp-block-group has-surface-background-color has-background" style="margin-top:var(--wp--preset--spacing--60);padding-top:var(--wp--preset--spacing--50);padding-bottom:var(--wp--preset--spacing--50)">
 	<!-- wp:group {"align":"wide","layout":{"type":"flex","flexWrap":"wrap","justifyContent":"space-between","verticalAlignment":"top"}} -->
 	<div class="wp-block-group alignwide">
 		<!-- wp:group {"style":{"spacing":{"blockGap":"var:preset|spacing|10"}},"layout":{"type":"constrained","contentSize":"300px"}} -->
@@ -54,7 +54,7 @@ $copyright_text    = sprintf(
 			<!-- /wp:heading -->
 
 			<!-- wp:social-links {"iconColor":"foreground","iconColorValue":"var(--wp--preset--color--foreground)","className":"is-style-logos-only","style":{"spacing":{"blockGap":{"left":"var:preset|spacing|20"}}}} -->
-			<ul class="wp-block-social-links has-icon-color is-style-logos-only" aria-label="<?php esc_attr_e( 'Social media links', '{{theme_slug}}' ); ?>">
+			<ul class="wp-block-social-links has-icon-color is-style-logos-only">
 				<!-- wp:social-link {"url":"#","service":"twitter"} /-->
 				<!-- wp:social-link {"url":"#","service":"facebook"} /-->
 				<!-- wp:social-link {"url":"#","service":"instagram"} /-->
@@ -67,7 +67,7 @@ $copyright_text    = sprintf(
 	<!-- /wp:group -->
 
 	<!-- wp:separator {"align":"wide","style":{"spacing":{"margin":{"top":"var:preset|spacing|40","bottom":"var:preset|spacing|30"}}},"className":"is-style-wide"} -->
-	<hr class="wp-block-separator alignwide has-alpha-channel-opacity is-style-wide" style="margin-top:var(--wp--preset--spacing--40);margin-bottom:var(--wp--preset--spacing--30)" aria-hidden="true"/>
+	<hr class="wp-block-separator alignwide has-alpha-channel-opacity is-style-wide" style="margin-top:var(--wp--preset--spacing--40);margin-bottom:var(--wp--preset--spacing--30)"/>
 	<!-- /wp:separator -->
 
 	<!-- wp:group {"align":"wide","layout":{"type":"flex","flexWrap":"wrap","justifyContent":"space-between"}} -->

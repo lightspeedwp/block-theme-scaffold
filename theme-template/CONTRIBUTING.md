@@ -86,14 +86,14 @@ npm run start
 ### Running Tests
 
 ```bash
-# All tests
-npm test
+# JavaScript, PHP and end-to-end, as CI runs them
+npm run test:unit && composer run test && npm run test:e2e
 
 # JavaScript only
-npm run test:js
+npm run test:unit
 
 # PHP only
-npm run test:php
+composer run test
 
 # End-to-end tests
 npm run test:e2e

@@ -1,13 +1,36 @@
 {
-	"scope": "color",
-	"name": "{{theme_slug}}-palette",
-	"label": "{{theme_name}} Colour Palette",
-	"description": "Core colour tokens used through the plugin.",
-	"colors": {
-		"base": "#0f172a",
-		"contrast": "#ffffff",
-		"primary": "#1e88e5",
-		"secondary": "#ffb703",
-		"muted": "#64748b"
+	"$schema": "https://schemas.wp.org/wp/6.9/theme.json",
+	"version": 3,
+	"title": "Midnight",
+	"settings": {
+		"color": {
+			"palette": [
+				{
+					"slug": "background",
+					"color": "#0f172a",
+					"name": "Background"
+				},
+				{
+					"slug": "foreground",
+					"color": "#ffffff",
+					"name": "Foreground"
+				},
+				{
+					"slug": "primary",
+					"color": "#1e88e5",
+					"name": "Primary"
+				},
+				{
+					"slug": "secondary",
+					"color": "#ffb703",
+					"name": "Secondary"
+				},
+				{
+					"slug": "neutral",
+					"color": "#64748b",
+					"name": "Neutral"
+				}
+			]
+		}
 	}
 }

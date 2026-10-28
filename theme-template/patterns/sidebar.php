@@ -9,8 +9,8 @@
  * Viewport Width: 400
  */
 ?>
-<!-- wp:group {"layout":{"type":"constrained"}} -->
-<div class="wp-block-group" role="complementary" aria-label="<?php esc_attr_e( 'Blog sidebar', '{{theme_slug}}' ); ?>">
+<!-- wp:group {"tagName":"aside","layout":{"type":"constrained"}} -->
+<aside class="wp-block-group">
 	<!-- wp:heading {"level":2,"className":"screen-reader-text"} -->
 	<h2 class="wp-block-heading screen-reader-text"><?php esc_html_e( 'Sidebar', '{{theme_slug}}' ); ?></h2>
 	<!-- /wp:heading -->
@@ -56,5 +56,5 @@
 	<!-- /wp:heading -->
 
 	<!-- wp:archives {"showPostCounts":true} /-->
-</div>
+</aside>
 <!-- /wp:group -->

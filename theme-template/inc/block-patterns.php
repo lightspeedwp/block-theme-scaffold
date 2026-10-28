@@ -13,6 +13,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 /**
  * Register hero section pattern.
+ *
+ * @return void
  */
 function {{theme_slug|snakeCase}}_register_hero_pattern() {
 	register_block_pattern(
@@ -48,6 +50,8 @@ add_action( 'init', '{{theme_slug|snakeCase}}_register_hero_pattern' );
 
 /**
  * Register call to action pattern.
+ *
+ * @return void
  */
 function {{theme_slug|snakeCase}}_register_cta_pattern() {
 	register_block_pattern(
@@ -83,6 +87,8 @@ add_action( 'init', '{{theme_slug|snakeCase}}_register_cta_pattern' );
 
 /**
  * Register team section pattern.
+ *
+ * @return void
  */
 function {{theme_slug|snakeCase}}_register_team_pattern() {
 	register_block_pattern(

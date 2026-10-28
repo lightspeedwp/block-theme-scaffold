@@ -4,6 +4,7 @@ vendor/
 
 # Build output
 build/
+!tests/php/fixtures/build/
 dist/
 
 # Translation files (keep .pot, ignore compiled)
@@ -38,3 +39,4 @@ test-results/
 playwright-report/
 lighthouse-reports/
 .phpunit.result.cache
+.phpunit.cache/

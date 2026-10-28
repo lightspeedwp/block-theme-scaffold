@@ -22,7 +22,6 @@ npm run env:start
 npm run start
 ```
 
-See [docs/BUILD_PROCESS.md](docs/BUILD_PROCESS.md) for details
 
 ## Architecture
 
@@ -45,7 +44,6 @@ flowchart TD
 - `patterns/` → Block patterns
 - `tests/` → All tests
 
-See [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) for complete structure
 
 ## Scripts
 
@@ -59,18 +57,15 @@ See [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) for complete structure
 - `npm run lint` - All linters
 - `npm run test` - All tests
 
-See [docs/BUILD_PROCESS.md](docs/BUILD_PROCESS.md) for all commands
 
 ## Testing
 
 ```bash
-npm run test       # All tests
-npm run test:js    # JavaScript
-npm run test:php   # PHP
-npm run test:e2e   # End-to-end
+npm run test:unit    # JavaScript
+composer run test    # PHP
+npm run test:e2e     # End-to-end (after npm run env:start)
 ```
 
-See [docs/TESTING.md](docs/TESTING.md) for test writing guide
 
 ## Internationalization
 
@@ -82,7 +77,6 @@ __( 'Text', '{{theme_slug}}' )
 __( 'Text', '{{theme_slug}}' )
 ```
 
-See [docs/INTERNATIONALIZATION.md](docs/INTERNATIONALIZATION.md) for complete i18n guide
 
 ## Documentation
 

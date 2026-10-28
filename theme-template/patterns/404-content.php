@@ -13,16 +13,16 @@
  * @since {{version}}
  */
 
-$heading_text     = esc_html__( 'Page Not Found', '{{theme_slug}}' );
-$description_text = esc_html__( 'Sorry, the page you are looking for could not be found. Try searching for it below or browse our recent posts.', '{{theme_slug}}' );
-$search_label     = esc_html__( 'Search', '{{theme_slug}}' );
-$search_placeholder = esc_html__( 'Search the site...', '{{theme_slug}}' );
+$heading_text         = esc_html__( 'Page Not Found', '{{theme_slug}}' );
+$description_text     = esc_html__( 'Sorry, the page you are looking for could not be found. Try searching for it below or browse our recent posts.', '{{theme_slug}}' );
+$search_label         = esc_html__( 'Search', '{{theme_slug}}' );
+$search_placeholder   = esc_html__( 'Search the site...', '{{theme_slug}}' );
 $recent_posts_heading = esc_html__( 'Recent Posts', '{{theme_slug}}' );
 $homepage_button_text = esc_html__( 'Go to Homepage', '{{theme_slug}}' );
-$no_posts_text    = esc_html__( 'No posts available.', '{{theme_slug}}' );
+$no_posts_text        = esc_html__( 'No posts available.', '{{theme_slug}}' );
 ?>
-<!-- wp:group {"tagName":"main","style":{"spacing":{"padding":{"top":"var:preset|spacing|60","bottom":"var:preset|spacing|60"}}},"layout":{"type":"constrained"}} -->
-<main class="wp-block-group" style="padding-top:var(--wp--preset--spacing--60);padding-bottom:var(--wp--preset--spacing--60)" role="main" aria-labelledby="error-title">
+<!-- wp:group {"style":{"spacing":{"padding":{"top":"var:preset|spacing|60","bottom":"var:preset|spacing|60"}}},"layout":{"type":"constrained"}} -->
+<div class="wp-block-group" style="padding-top:var(--wp--preset--spacing--60);padding-bottom:var(--wp--preset--spacing--60)">
 	<!-- wp:heading {"textAlign":"center","level":1,"style":{"spacing":{"margin":{"bottom":"var:preset|spacing|30"}}},"anchor":"error-title"} -->
 	<h1 class="wp-block-heading has-text-align-center" id="error-title" style="margin-bottom:var(--wp--preset--spacing--30)"><?php echo esc_html( $heading_text ); ?></h1>
 	<!-- /wp:heading -->
@@ -34,7 +34,7 @@ $no_posts_text    = esc_html__( 'No posts available.', '{{theme_slug}}' );
 	<!-- wp:search {"label":"<?php echo esc_attr( $search_label ); ?>","showLabel":false,"placeholder":"<?php echo esc_attr( $search_placeholder ); ?>","width":100,"widthUnit":"%","buttonText":"<?php echo esc_attr( $search_label ); ?>","buttonPosition":"button-inside","buttonUseIcon":true,"align":"center","style":{"spacing":{"margin":{"bottom":"var:preset|spacing|50"}}}} /-->
 
 	<!-- wp:separator {"opacity":"css","className":"is-style-wide","style":{"spacing":{"margin":{"top":"var:preset|spacing|40","bottom":"var:preset|spacing|40"}}}} -->
-	<hr class="wp-block-separator has-css-opacity is-style-wide" style="margin-top:var(--wp--preset--spacing--40);margin-bottom:var(--wp--preset--spacing--40)" aria-hidden="true"/>
+	<hr class="wp-block-separator has-css-opacity is-style-wide" style="margin-top:var(--wp--preset--spacing--40);margin-bottom:var(--wp--preset--spacing--40)"/>
 	<!-- /wp:separator -->
 
 	<!-- wp:heading {"textAlign":"center","level":2,"style":{"spacing":{"margin":{"bottom":"var:preset|spacing|40"}}}} -->
@@ -72,5 +72,5 @@ $no_posts_text    = esc_html__( 'No posts available.', '{{theme_slug}}' );
 		<!-- /wp:button -->
 	</div>
 	<!-- /wp:buttons -->
-</main>
+</div>
 <!-- /wp:group -->
