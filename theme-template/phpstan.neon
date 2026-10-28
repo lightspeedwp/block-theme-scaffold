@@ -1,6 +1,4 @@
-includes:
-	- vendor/szepeviktor/phpstan-wordpress/extension.neon
-
+# phpstan/extension-installer loads szepeviktor/phpstan-wordpress.
 parameters:
 	level: 6
 	paths:
