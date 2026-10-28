@@ -1,34 +1,22 @@
 [
 	{
-		"name": "Theme Editor Script",
-		"path": "build/editor.js",
-		"limit": "30 KB",
-		"gzip": true,
-		"running": false,
-		"brotli": false
+		"name": "Editor script",
+		"path": "build/js/editor.js",
+		"limit": "30 KB"
 	},
 	{
-		"name": "Theme Frontend Script",
-		"path": "build/theme.js",
-		"limit": "20 KB",
-		"gzip": true,
-		"running": false,
-		"brotli": false
+		"name": "Front-end script",
+		"path": "build/js/theme.js",
+		"limit": "20 KB"
 	},
 	{
-		"name": "Theme Editor Style",
-		"path": "build/editor.css",
-		"limit": "15 KB",
-		"gzip": true,
-		"running": false,
-		"brotli": false
+		"name": "Editor stylesheet",
+		"path": "build/css/editor-style.css",
+		"limit": "15 KB"
 	},
 	{
-		"name": "Theme Frontend Style",
-		"path": "build/style.css",
-		"limit": "25 KB",
-		"gzip": true,
-		"running": false,
-		"brotli": false
+		"name": "Front-end stylesheet",
+		"path": "build/css/style.css",
+		"limit": "25 KB"
 	}
 ]

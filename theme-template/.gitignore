@@ -7,7 +7,9 @@ build/
 !tests/php/fixtures/build/
 dist/
 
-# Translation files (keep .pot, ignore compiled)
+# Translation template (npm run makepot; the release builds its own) and
+# compiled translations
+languages/*.pot
 languages/*.mo
 
 # Cache, temp and log files
@@ -38,5 +40,6 @@ artifacts/
 test-results/
 playwright-report/
 lighthouse-reports/
+.lighthouseci/
 .phpunit.result.cache
 .phpunit.cache/
