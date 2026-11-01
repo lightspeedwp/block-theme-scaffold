@@ -50,13 +50,12 @@ describe( 'init', () => {
 			'{{theme_slug}}/add-block-classes',
 			addBlockClasses
 		);
-		expect( registerPlugin ).toHaveBeenCalledWith(
-			'{{theme_slug}}-sidebar',
-			{
-				icon: 'admin-appearance',
-				render: ThemeSidebar,
-			}
-		);
+		// A variable keeps the call on one line whatever the slug.
+		const sidebarName = '{{theme_slug}}-sidebar';
+		expect( registerPlugin ).toHaveBeenCalledWith( sidebarName, {
+			icon: 'admin-appearance',
+			render: ThemeSidebar,
+		} );
 	} );
 } );
 

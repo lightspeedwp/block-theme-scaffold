@@ -49,6 +49,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+- Generated themes pass CI on their first push, as found in [lightspeedwp/tsp-theme#4](https://github.com/lightspeedwp/tsp-theme/pull/4):
+  - `theme-template/package-lock.json`: CI's `npm ci` and the `setup-node` npm cache need a lockfile, and generated themes had none. The generator fills in its name, version and licence. `theme-generation.yml` now runs `npm ci`, so it fails when the lockfile no longer matches `package.json`
+  - `theme-template/.npmpackagejsonlintrc.json`: `npm run lint:pkg` accepts the theme's own licence. The `@wordpress/scripts` default only accepts `GPL-2.0-or-later`, so a theme generated with `GPL-3.0-or-later` failed lint
+  - `tests/js/editor.test.js`: Prettier wrapped the `registerPlugin` call differently when the slug is shorter than `{{theme_slug}}`, so the test failed lint for `tsp-theme`. The sidebar name now goes in a variable
 - The root pre-commit hook ran the `lint-staged` tasks in `theme-template/package.json` on staged template files, where `wp-scripts` fails on the `{{theme_slug}}` package name; it now uses only the root config
 - The scaffold's own pre-commit hook works again: the root tooling uses `@wordpress/scripts` 36 (ESLint 9/10) with one flat `eslint.config.cjs` for `scripts/`, replacing `.eslintrc.js`, `.eslint.config.cjs` and `.eslintignore`. Under `@wordpress/scripts` 31, `lint:js` crashed (TypeScript 7 with `@typescript-eslint` 6), so every scaffold commit needed `--no-verify`. The hook drops the Husky v8 lines that fail in Husky 10, and runs lint, lint-staged and the tests related to staged scripts
 - Running the scaffold's tests no longer rewrites `theme-template/`: `scripts/dry-run/with-dry-run.js` renders a temporary copy (`DRY_RUN_THEME_DIR`) instead of replacing placeholders in place and restoring them, which corrupted template files whenever Jest ran two dry-run tests at once. The dry-run wrappers now return the wrapped command's exit code
