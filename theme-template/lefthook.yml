@@ -1,0 +1,49 @@
+# Git hooks, installed by `npm install` (the prepare script).
+# Skip every check with `git commit --no-verify`, or one with
+# `LEFTHOOK_EXCLUDE=build git commit`.
+
+glob_matcher: doublestar
+
+pre-commit:
+  # In order, stopping at the first failure.
+  piped: true
+  jobs:
+    - name: branch-name
+      run: sh bin/hooks/branch-name.sh
+
+    - name: changelog
+      glob: '**/*.{php,js,jsx,ts,tsx,scss}'
+      run: sh bin/hooks/changelog-entry.sh
+
+    - name: build
+      glob: 'src/**'
+      run: npm run build --silent
+
+    # Schema validation and linters on the staged files. Fixes are staged.
+    - name: lint
+      group:
+        piped: true
+        jobs:
+          - name: js
+            glob: '**/*.{js,jsx,mjs,cjs}'
+            run: npx wp-scripts lint-js --fix {staged_files} && npx wp-scripts format {staged_files}
+            stage_fixed: true
+
+          - name: css
+            glob: '**/*.{css,scss}'
+            run: npx wp-scripts lint-style --fix {staged_files}
+            stage_fixed: true
+
+          # phpcbf exits 1 when it fixes something, so phpcs gives the result.
+          - name: php
+            glob: '**/*.php'
+            run: composer run lint:fix -- {staged_files} || composer run lint -- {staged_files}
+            stage_fixed: true
+
+          - name: package-json
+            glob: 'package.json'
+            run: npx wp-scripts lint-pkg-json
+
+          - name: theme-json
+            glob: '{theme.json,styles/**/*.json}'
+            run: node bin/validate-json.js
