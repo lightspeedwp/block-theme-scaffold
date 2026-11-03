@@ -6,7 +6,7 @@
 	"blockTypes": [ "core/cover" ],
 	"styles": {
 		"color": {
-			"text": "var(--wp--preset--color--background)"
+			"text": "var(--wp--preset--color--base)"
 		},
 		"spacing": {
 			"padding": {

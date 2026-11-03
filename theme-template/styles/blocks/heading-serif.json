@@ -6,10 +6,10 @@
 	"blockTypes": [ "core/heading" ],
 	"styles": {
 		"color": {
-			"text": "var(--wp--preset--color--foreground)"
+			"text": "var(--wp--preset--color--contrast)"
 		},
 		"typography": {
-			"fontFamily": "var(--wp--preset--font-family--serif, Georgia, serif)",
+			"fontFamily": "var(--wp--preset--font-family--heading, Georgia, serif)",
 			"fontWeight": "400",
 			"lineHeight": "1.2",
 			"fontSize": "var(--wp--preset--font-size--600)"
