@@ -20,6 +20,8 @@ module.exports = [
 			// TypeScript tooling: this repo has no `typescript` package, so the
 			// WordPress config cannot parse it. Covered by its Jest tests.
 			'scripts/**/*.ts',
+			// Vendored upstream skills (scripts/agent-skills.json); not ours to lint.
+			'.agents/skills/**',
 		],
 	},
 	...defaultConfig,

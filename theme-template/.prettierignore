@@ -18,3 +18,5 @@ vendor
 coverage
 playwright-report
 test-results
+# Skills vendored unmodified from WordPress/agent-skills
+.agents/skills
