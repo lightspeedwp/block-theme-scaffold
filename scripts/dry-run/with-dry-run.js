@@ -59,7 +59,10 @@ function copyRendered( src, dest ) {
 		}
 		const from = path.join( src, entry.name );
 		const to = path.join( dest, replaceMustacheVars( entry.name ) );
-		if ( entry.isDirectory() ) {
+		// Links such as .claude/skills/<name> -> ../../.agents/skills/<name> stay links.
+		if ( entry.isSymbolicLink() ) {
+			fs.symlinkSync( fs.readlinkSync( from ), to );
+		} else if ( entry.isDirectory() ) {
 			copyRendered( from, to );
 		} else if (
 			TEXT_EXTENSIONS.has( path.extname( entry.name ).toLowerCase() )

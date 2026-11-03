@@ -513,7 +513,13 @@ const IGNORED_ENTRIES = [
 ];
 
 function copyAndReplace( src, dest ) {
-	const stat = fs.statSync( src );
+	const stat = fs.lstatSync( src );
+	// Links such as .claude/skills/wp-block-themes -> ../../.agents/skills/wp-block-themes
+	// stay links, with the same relative target.
+	if ( stat.isSymbolicLink() ) {
+		fs.symlinkSync( fs.readlinkSync( src ), dest );
+		return;
+	}
 	if ( stat.isDirectory() ) {
 		if ( ! fs.existsSync( dest ) ) {
 			fs.mkdirSync( dest );
