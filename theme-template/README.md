@@ -121,7 +121,7 @@ This theme uses `@wordpress/scripts` for a modern build workflow:
 - `npm run size-limit` - Check the built scripts and stylesheets against the limits in `.size-limit.json` (after `npm run build`)
 - `npm run lighthouse` - Lighthouse CI against wp-env (`npm run env:start` first, or set `WP_BASE_URL`); accessibility and layout shift fail, the rest warn
 
-The same checks run in `.github/workflows/ci.yml` on every pull request, and the pre-commit hook in `.husky/pre-commit` runs the linters on staged files.
+The same checks run in `.github/workflows/ci.yml` on every pull request, and the pre-commit hook in `lefthook.yml` checks the branch name, the changelog and the build, then runs the linters on staged files.
 
 #### Internationalization
 

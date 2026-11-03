@@ -67,6 +67,18 @@ npm run test:e2e     # End-to-end (after npm run env:start)
 ```
 
 
+## Git hooks
+
+`npm install` installs a pre-commit hook with [Lefthook](https://lefthook.dev/) (`lefthook.yml`). In order, it checks:
+
+1. The branch has a type prefix such as `feat/` or `fix/`, and isn't `main`, `develop` or `release/*`.
+2. A code change comes with a new `CHANGELOG.md` entry under `[Unreleased]`.
+3. `npm run build` still works when `src/` changes.
+4. The staged files pass the linters and the `theme.json` schema check. Fixes the linters make are staged.
+
+Skip one check with `LEFTHOOK_EXCLUDE=build git commit`, or all of them with `git commit --no-verify`.
+
+
 ## Internationalization
 
 ```javascript

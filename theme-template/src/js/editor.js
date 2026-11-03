@@ -5,27 +5,11 @@
  * build lists them in build/js/editor.asset.php and WordPress loads them first.
  */
 import domReady from '@wordpress/dom-ready';
-import { addFilter } from '@wordpress/hooks';
 import { __ } from '@wordpress/i18n';
 import { registerPlugin } from '@wordpress/plugins';
 import { PluginSidebar } from '@wordpress/editor';
 import { PanelBody } from '@wordpress/components';
 import { createElement } from '@wordpress/element';
-
-/**
- * Keep a Group block's custom class name on save.
- *
- * @param {Object} props      Props applied to the block's saved element.
- * @param {Object} blockType  Block type definition.
- * @param {Object} attributes Block attributes.
- * @return {Object} The props.
- */
-export function addBlockClasses( props, blockType, attributes ) {
-	if ( blockType.name === 'core/group' && attributes.className ) {
-		return { ...props, className: attributes.className };
-	}
-	return props;
-}
 
 /**
  * The theme's editor sidebar.
@@ -53,14 +37,9 @@ export function ThemeSidebar() {
 }
 
 /**
- * Register the editor filter and sidebar.
+ * Register the editor sidebar.
  */
 export function init() {
-	addFilter(
-		'blocks.getSaveContent.extraProps',
-		'{{theme_slug}}/add-block-classes',
-		addBlockClasses
-	);
 	registerPlugin( '{{theme_slug}}-sidebar', {
 		icon: 'admin-appearance',
 		render: ThemeSidebar,
