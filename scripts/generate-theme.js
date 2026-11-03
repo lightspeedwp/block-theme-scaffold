@@ -864,17 +864,11 @@ async function runScript() {
 		'{{dark_background_color}}': dark( 'dark_background_color', '#0f172a' ),
 		'{{dark_text_color}}': dark( 'dark_text_color', '#f8fafc' ),
 		'{{dark_primary_color}}': dark( 'dark_primary_color', '#38bdf8' ),
-		'{{dark_primary_light_color}}': dark(
-			'dark_primary_light_color',
-			'#7dd3fc'
-		),
-		'{{dark_primary_dark_color}}': dark(
-			'dark_primary_dark_color',
-			'#0284c7'
-		),
 		'{{dark_cta_color}}': dark( 'dark_accent_color', '#f97316' ),
 	} );
-	// Neutral and accent scales for the dark style: slate and orange, light to dark.
+	// Dark style ramps, 100 lightest to 900 darkest (same direction as the
+	// base palette). Step 500 of primary and cta comes from dark_primary_color
+	// and dark_cta_color, so those steps are skipped here.
 	const darkScales = {
 		neutral: [
 			'#f1f5f9',
@@ -887,12 +881,34 @@ async function runScript() {
 			'#1e293b',
 			'#0f172a',
 		],
+		primary: [
+			'#f0f9ff',
+			'#e0f2fe',
+			'#bae6fd',
+			'#7dd3fc',
+			null,
+			'#0ea5e9',
+			'#0284c7',
+			'#0369a1',
+			'#075985',
+		],
+		brand: [
+			'#fef3c7',
+			'#fde68a',
+			'#fcd34d',
+			'#fbbf24',
+			'#f59e0b',
+			'#d97706',
+			'#b45309',
+			'#92400e',
+			'#78350f',
+		],
 		accent: [
 			'#ffedd5',
 			'#fed7aa',
 			'#fdba74',
 			'#fb923c',
-			'#f97316',
+			null,
 			'#ea580c',
 			'#c2410c',
 			'#9a3412',
@@ -901,6 +917,9 @@ async function runScript() {
 	};
 	for ( const [ scale, colors ] of Object.entries( darkScales ) ) {
 		colors.forEach( ( color, index ) => {
+			if ( ! color ) {
+				return;
+			}
 			const key = `dark_${ scale }_${ ( index + 1 ) * 100 }_color`;
 			placeholders[ `{{${ key }}}` ] = dark( key, color );
 		} );
