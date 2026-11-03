@@ -27,8 +27,8 @@ $no_posts_text        = esc_html__( 'No posts available.', '{{theme_slug}}' );
 	<h1 class="wp-block-heading has-text-align-center" id="error-title" style="margin-bottom:var(--wp--preset--spacing--30)"><?php echo esc_html( $heading_text ); ?></h1>
 	<!-- /wp:heading -->
 
-	<!-- wp:paragraph {"align":"center","fontSize":"large","style":{"spacing":{"margin":{"bottom":"var:preset|spacing|40"}}}} -->
-	<p class="has-text-align-center has-large-font-size" style="margin-bottom:var(--wp--preset--spacing--40)"><?php echo esc_html( $description_text ); ?></p>
+	<!-- wp:paragraph {"align":"center","fontSize":"500","style":{"spacing":{"margin":{"bottom":"var:preset|spacing|40"}}}} -->
+	<p class="has-text-align-center has-500-font-size" style="margin-bottom:var(--wp--preset--spacing--40)"><?php echo esc_html( $description_text ); ?></p>
 	<!-- /wp:paragraph -->
 
 	<!-- wp:search {"label":"<?php echo esc_attr( $search_label ); ?>","showLabel":false,"placeholder":"<?php echo esc_attr( $search_placeholder ); ?>","width":100,"widthUnit":"%","buttonText":"<?php echo esc_attr( $search_label ); ?>","buttonPosition":"button-inside","buttonUseIcon":true,"align":"center","style":{"spacing":{"margin":{"bottom":"var:preset|spacing|50"}}}} /-->
@@ -48,11 +48,11 @@ $no_posts_text        = esc_html__( 'No posts available.', '{{theme_slug}}' );
 			<article class="wp-block-group">
 				<!-- wp:post-featured-image {"isLink":true,"aspectRatio":"16/9","style":{"border":{"radius":"4px"}}} /-->
 
-				<!-- wp:post-title {"isLink":true,"level":3,"fontSize":"medium"} /-->
+				<!-- wp:post-title {"isLink":true,"level":3,"fontSize":"300"} /-->
 
 				<!-- wp:post-excerpt {"excerptLength":20} /-->
 
-				<!-- wp:post-date {"isLink":true,"fontSize":"small"} /-->
+				<!-- wp:post-date {"isLink":true,"fontSize":"100"} /-->
 			</article>
 			<!-- /wp:group -->
 		<!-- /wp:post-template -->

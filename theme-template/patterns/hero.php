@@ -17,18 +17,18 @@ $hero_description = esc_html__( 'Discover amazing content and explore what we ha
 $primary_button   = esc_html__( 'Get Started', '{{theme_slug}}' );
 $secondary_button = esc_html__( 'Learn More', '{{theme_slug}}' );
 ?>
-<!-- wp:cover {"dimRatio":60,"overlayColor":"black","minHeight":600,"contentPosition":"center center","align":"full","style":{"spacing":{"padding":{"top":"var:preset|spacing|70","bottom":"var:preset|spacing|70"}}}} -->
+<!-- wp:cover {"dimRatio":60,"overlayColor":"contrast","minHeight":600,"contentPosition":"center center","align":"full","style":{"spacing":{"padding":{"top":"var:preset|spacing|70","bottom":"var:preset|spacing|70"}}}} -->
 <div class="wp-block-cover alignfull" style="padding-top:var(--wp--preset--spacing--70);padding-bottom:var(--wp--preset--spacing--70);min-height:600px">
-	<span aria-hidden="true" class="wp-block-cover__background has-black-background-color has-background-dim-60 has-background-dim"></span>
+	<span aria-hidden="true" class="wp-block-cover__background has-contrast-background-color has-background-dim-60 has-background-dim"></span>
 	<div class="wp-block-cover__inner-container">
 		<!-- wp:group {"layout":{"type":"constrained","contentSize":"800px"}} -->
 		<div class="wp-block-group">
-			<!-- wp:heading {"textAlign":"center","level":1,"style":{"typography":{"fontWeight":"700"}},"fontSize":"huge"} -->
-			<h1 class="wp-block-heading has-text-align-center has-huge-font-size" style="font-weight:700"><?php echo esc_html( $hero_title ); ?></h1>
+			<!-- wp:heading {"textAlign":"center","level":1,"style":{"typography":{"fontWeight":"700"}},"fontSize":"700"} -->
+			<h1 class="wp-block-heading has-text-align-center has-700-font-size" style="font-weight:700"><?php echo esc_html( $hero_title ); ?></h1>
 			<!-- /wp:heading -->
 
-			<!-- wp:paragraph {"align":"center","fontSize":"large","style":{"spacing":{"margin":{"top":"var:preset|spacing|30","bottom":"var:preset|spacing|40"}}}} -->
-			<p class="has-text-align-center has-large-font-size" style="margin-top:var(--wp--preset--spacing--30);margin-bottom:var(--wp--preset--spacing--40)"><?php echo esc_html( $hero_description ); ?></p>
+			<!-- wp:paragraph {"align":"center","fontSize":"500","style":{"spacing":{"margin":{"top":"var:preset|spacing|30","bottom":"var:preset|spacing|40"}}}} -->
+			<p class="has-text-align-center has-500-font-size" style="margin-top:var(--wp--preset--spacing--30);margin-bottom:var(--wp--preset--spacing--40)"><?php echo esc_html( $hero_description ); ?></p>
 			<!-- /wp:paragraph -->
 
 			<!-- wp:buttons {"layout":{"type":"flex","justifyContent":"center"},"style":{"spacing":{"blockGap":"var:preset|spacing|20"}}} -->

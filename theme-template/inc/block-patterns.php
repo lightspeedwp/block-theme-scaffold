@@ -24,20 +24,20 @@ function {{theme_slug|snakeCase}}_register_hero_pattern() {
 			'description' => __( 'A large hero section with heading, text, and button.', '{{theme_slug}}' ),
 			'categories'  => array( '{{theme_slug}}-hero' ),
 			'keywords'    => array( 'hero', 'banner', 'header' ),
-			'content'     => '<!-- wp:group {"align":"full","style":{"spacing":{"padding":{"top":"var:preset|spacing|x-large","bottom":"var:preset|spacing|x-large"}}},"backgroundColor":"primary","textColor":"background","layout":{"type":"constrained"}} -->
-<div class="wp-block-group alignfull has-background-color has-primary-background-color has-text-color has-background" style="padding-top:var(--wp--preset--spacing--x-large);padding-bottom:var(--wp--preset--spacing--x-large)">
-	<!-- wp:heading {"textAlign":"center","level":1,"fontSize":"xx-large"} -->
-	<h1 class="wp-block-heading has-text-align-center has-xx-large-font-size">{{hero_title}}</h1>
+			'content'     => '<!-- wp:group {"align":"full","style":{"spacing":{"padding":{"top":"var:preset|spacing|50","bottom":"var:preset|spacing|50"}}},"backgroundColor":"primary-500","textColor":"base","layout":{"type":"constrained"}} -->
+<div class="wp-block-group alignfull has-base-color has-primary-500-background-color has-text-color has-background" style="padding-top:var(--wp--preset--spacing--50);padding-bottom:var(--wp--preset--spacing--50)">
+	<!-- wp:heading {"textAlign":"center","level":1,"fontSize":"700"} -->
+	<h1 class="wp-block-heading has-text-align-center has-700-font-size">{{hero_title}}</h1>
 	<!-- /wp:heading -->
 
-	<!-- wp:paragraph {"align":"center","fontSize":"large"} -->
-	<p class="has-text-align-center has-large-font-size">{{hero_description}}</p>
+	<!-- wp:paragraph {"align":"center","fontSize":"500"} -->
+	<p class="has-text-align-center has-500-font-size">{{hero_description}}</p>
 	<!-- /wp:paragraph -->
 
-	<!-- wp:buttons {"layout":{"type":"flex","justifyContent":"center"},"style":{"spacing":{"margin":{"top":"var:preset|spacing|medium"}}}} -->
-	<div class="wp-block-buttons" style="margin-top:var(--wp--preset--spacing--medium)">
-		<!-- wp:button {"backgroundColor":"background","textColor":"primary","className":"is-style-fill"} -->
-		<div class="wp-block-button is-style-fill"><a class="wp-block-button__link has-primary-color has-background-background-color has-text-color has-background wp-element-button">{{hero_button_text}}</a></div>
+	<!-- wp:buttons {"layout":{"type":"flex","justifyContent":"center"},"style":{"spacing":{"margin":{"top":"var:preset|spacing|30"}}}} -->
+	<div class="wp-block-buttons" style="margin-top:var(--wp--preset--spacing--30)">
+		<!-- wp:button {"backgroundColor":"base","textColor":"primary-500","className":"is-style-fill"} -->
+		<div class="wp-block-button is-style-fill"><a class="wp-block-button__link has-primary-500-color has-base-background-color has-text-color has-background wp-element-button">{{hero_button_text}}</a></div>
 		<!-- /wp:button -->
 	</div>
 	<!-- /wp:buttons -->
@@ -61,8 +61,8 @@ function {{theme_slug|snakeCase}}_register_cta_pattern() {
 			'description' => __( 'A call to action section with heading and button.', '{{theme_slug}}' ),
 			'categories'  => array( '{{theme_slug}}-cta' ),
 			'keywords'    => array( 'cta', 'call to action', 'button' ),
-			'content'     => '<!-- wp:group {"align":"wide","style":{"spacing":{"padding":{"top":"var:preset|spacing|large","bottom":"var:preset|spacing|large","left":"var:preset|spacing|medium","right":"var:preset|spacing|medium"}},"border":{"width":"1px","style":"solid"}},"borderColor":"neutral","layout":{"type":"constrained"}} -->
-<div class="wp-block-group alignwide has-border-color has-neutral-border-color" style="border-style:solid;border-width:1px;padding-top:var(--wp--preset--spacing--large);padding-right:var(--wp--preset--spacing--medium);padding-bottom:var(--wp--preset--spacing--large);padding-left:var(--wp--preset--spacing--medium)">
+			'content'     => '<!-- wp:group {"align":"wide","style":{"spacing":{"padding":{"top":"var:preset|spacing|40","bottom":"var:preset|spacing|40","left":"var:preset|spacing|30","right":"var:preset|spacing|30"}},"border":{"width":"1px","style":"solid"}},"borderColor":"neutral-500","layout":{"type":"constrained"}} -->
+<div class="wp-block-group alignwide has-border-color has-neutral-500-border-color" style="border-style:solid;border-width:1px;padding-top:var(--wp--preset--spacing--40);padding-right:var(--wp--preset--spacing--30);padding-bottom:var(--wp--preset--spacing--40);padding-left:var(--wp--preset--spacing--30)">
 	<!-- wp:heading {"textAlign":"center","level":2} -->
 	<h2 class="wp-block-heading has-text-align-center">{{cta_title}}</h2>
 	<!-- /wp:heading -->
@@ -108,7 +108,7 @@ function {{theme_slug|snakeCase}}_register_team_pattern() {
 	<p class="has-text-align-center">{{team_description}}</p>
 	<!-- /wp:paragraph -->
 
-	<!-- wp:columns {"style":{"spacing":{"blockGap":{"top":"var:preset|spacing|medium","left":"var:preset|spacing|medium"}}}} -->
+	<!-- wp:columns {"style":{"spacing":{"blockGap":{"top":"var:preset|spacing|30","left":"var:preset|spacing|30"}}}} -->
 	<div class="wp-block-columns">
 		<!-- wp:column -->
 		<div class="wp-block-column">
@@ -120,8 +120,8 @@ function {{theme_slug|snakeCase}}_register_team_pattern() {
 			<h3 class="wp-block-heading has-text-align-center">{{team_member_1_name}}</h3>
 			<!-- /wp:heading -->
 
-			<!-- wp:paragraph {"align":"center","textColor":"neutral"} -->
-			<p class="has-text-align-center has-neutral-color has-text-color">{{team_member_1_role}}</p>
+			<!-- wp:paragraph {"align":"center","textColor":"neutral-500"} -->
+			<p class="has-text-align-center has-neutral-500-color has-text-color">{{team_member_1_role}}</p>
 			<!-- /wp:paragraph -->
 		</div>
 		<!-- /wp:column -->
@@ -136,8 +136,8 @@ function {{theme_slug|snakeCase}}_register_team_pattern() {
 			<h3 class="wp-block-heading has-text-align-center">{{team_member_2_name}}</h3>
 			<!-- /wp:heading -->
 
-			<!-- wp:paragraph {"align":"center","textColor":"neutral"} -->
-			<p class="has-text-align-center has-neutral-color has-text-color">{{team_member_2_role}}</p>
+			<!-- wp:paragraph {"align":"center","textColor":"neutral-500"} -->
+			<p class="has-text-align-center has-neutral-500-color has-text-color">{{team_member_2_role}}</p>
 			<!-- /wp:paragraph -->
 		</div>
 		<!-- /wp:column -->
@@ -152,8 +152,8 @@ function {{theme_slug|snakeCase}}_register_team_pattern() {
 			<h3 class="wp-block-heading has-text-align-center">{{team_member_3_name}}</h3>
 			<!-- /wp:heading -->
 
-			<!-- wp:paragraph {"align":"center","textColor":"neutral"} -->
-			<p class="has-text-align-center has-neutral-color has-text-color">{{team_member_3_role}}</p>
+			<!-- wp:paragraph {"align":"center","textColor":"neutral-500"} -->
+			<p class="has-text-align-center has-neutral-500-color has-text-color">{{team_member_3_role}}</p>
 			<!-- /wp:paragraph -->
 		</div>
 		<!-- /wp:column -->

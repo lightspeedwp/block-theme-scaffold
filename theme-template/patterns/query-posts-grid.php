@@ -27,14 +27,14 @@ $no_posts_text   = esc_html__( 'No posts found.', '{{theme_slug}}' );
 
 			<!-- wp:group {"style":{"spacing":{"padding":{"right":"var:preset|spacing|20","left":"var:preset|spacing|20","bottom":"var:preset|spacing|20"},"blockGap":"var:preset|spacing|10"}},"layout":{"type":"constrained"}} -->
 			<div class="wp-block-group" style="padding-right:var(--wp--preset--spacing--20);padding-left:var(--wp--preset--spacing--20);padding-bottom:var(--wp--preset--spacing--20)">
-				<!-- wp:post-terms {"term":"category","fontSize":"small"} /-->
+				<!-- wp:post-terms {"term":"category","fontSize":"100"} /-->
 
-				<!-- wp:post-title {"isLink":true,"level":3,"style":{"typography":{"fontStyle":"normal","fontWeight":"600"}},"fontSize":"medium"} /-->
+				<!-- wp:post-title {"isLink":true,"level":3,"style":{"typography":{"fontStyle":"normal","fontWeight":"600"}},"fontSize":"300"} /-->
 
 				<!-- wp:post-excerpt {"moreText":"<?php echo esc_attr( $read_more_label ); ?>","excerptLength":15} /-->
 
-				<!-- wp:group {"layout":{"type":"flex","flexWrap":"nowrap"},"fontSize":"small"} -->
-				<div class="wp-block-group has-small-font-size">
+				<!-- wp:group {"layout":{"type":"flex","flexWrap":"nowrap"},"fontSize":"100"} -->
+				<div class="wp-block-group has-100-font-size">
 					<!-- wp:post-date /-->
 					<!-- wp:post-author {"showAvatar":false,"showBio":false,"byline":"","isLink":true} /-->
 				</div>
