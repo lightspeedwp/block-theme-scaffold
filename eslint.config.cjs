@@ -17,6 +17,9 @@ module.exports = [
 			'coverage/**',
 			'logs/**',
 			'.test-temp/**',
+			// TypeScript tooling: this repo has no `typescript` package, so the
+			// WordPress config cannot parse it. Covered by its Jest tests.
+			'scripts/**/*.ts',
 		],
 	},
 	...defaultConfig,

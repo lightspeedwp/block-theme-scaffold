@@ -4,11 +4,11 @@
  * @see https://jestjs.io/docs/configuration
  */
 
-const fs = require('fs');
-const path = require('path');
+const fs = require( 'fs' );
+const path = require( 'path' );
 
-const localStorageDir = path.join(__dirname, '.test-temp', 'localstorage');
-fs.mkdirSync(localStorageDir, { recursive: true });
+const localStorageDir = path.join( __dirname, '.test-temp', 'localstorage' );
+fs.mkdirSync( localStorageDir, { recursive: true } );
 process.env.LOCAL_STORAGE_DIRECTORY =
 	process.env.LOCAL_STORAGE_DIRECTORY || localStorageDir;
 
@@ -21,6 +21,14 @@ module.exports = {
 	preset: '@wordpress/jest-preset-default',
 	// The tooling is Node code; its tests need no DOM.
 	testEnvironment: 'node',
+	// TypeScript tooling (scripts/*.ts) is compiled by the WordPress Babel
+	// preset, which strips types. JavaScript keeps the preset's transform.
+	transform: {
+		'\\.tsx?$': [
+			'babel-jest',
+			{ presets: [ '@wordpress/babel-preset-default' ] },
+		],
+	},
 	setupFilesAfterEnv: [
 		'<rootDir>/.github/tests/setup.js',
 		'<rootDir>/.github/tests/jest.setup.localstorage.js',
@@ -34,12 +42,9 @@ module.exports = {
 		'/.test-temp/',
 		'/.github/',
 	],
-	collectCoverageFrom: [
-		'scripts/**/*.js',
-		'!scripts/**/__tests__/**',
-	],
+	collectCoverageFrom: [ 'scripts/**/*.js', '!scripts/**/__tests__/**' ],
 	coverageDirectory: 'coverage',
-	coverageReporters: ['text', 'lcov', 'html'],
+	coverageReporters: [ 'text', 'lcov', 'html' ],
 	moduleNameMapper,
 	modulePathIgnorePatterns: [
 		'<rootDir>/.test-temp/',
