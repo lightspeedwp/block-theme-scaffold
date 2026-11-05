@@ -1,9 +1,9 @@
 {
   "summary": {
-    "totalFiles": 546,
-    "filesWithVariables": 123,
+    "totalFiles": 547,
+    "filesWithVariables": 124,
     "uniqueVariables": 164,
-    "totalOccurrences": 1401
+    "totalOccurrences": 1381
   },
   "variables": {
     "ThemeSlug": {
@@ -53,10 +53,9 @@
         "docs/GENERATE_THEME.md",
         "scripts/generate-theme.js",
         "scripts/utils/placeholders.js",
-        "theme-template/styles/dark.json",
         "theme-template/theme.json"
       ],
-      "count": 8,
+      "count": 7,
       "usage": [
         {
           "file": "docs/GENERATE_THEME.md",
@@ -85,10 +84,6 @@
         {
           "file": "scripts/utils/placeholders.js",
           "line": 114
-        },
-        {
-          "file": "theme-template/styles/dark.json",
-          "line": 176
         }
       ]
     },
@@ -247,7 +242,7 @@
       "usage": [
         {
           "file": "CHANGELOG.md",
-          "line": 111
+          "line": 112
         },
         {
           "file": "scripts/generate-theme.js",
@@ -565,10 +560,9 @@
         "scripts/generate-theme.js",
         "scripts/utils/placeholders.js",
         "theme-template/README.md",
-        "theme-template/styles/dark.json",
         "theme-template/theme.json"
       ],
-      "count": 10,
+      "count": 9,
       "usage": [
         {
           "file": ".github/custom-instructions.md",
@@ -605,10 +599,6 @@
         {
           "file": "scripts/utils/placeholders.js",
           "line": 58
-        },
-        {
-          "file": "theme-template/styles/dark.json",
-          "line": 11
         }
       ]
     },
@@ -747,18 +737,13 @@
       "category": "design_colors",
       "type": "color",
       "files": [
-        "theme-template/styles/dark.json",
         "theme-template/theme.json"
       ],
-      "count": 2,
+      "count": 1,
       "usage": [
         {
           "file": "theme-template/theme.json",
           "line": 162
-        },
-        {
-          "file": "theme-template/styles/dark.json",
-          "line": 111
         }
       ]
     },
@@ -767,18 +752,13 @@
       "category": "design_colors",
       "type": "color",
       "files": [
-        "theme-template/styles/dark.json",
         "theme-template/theme.json"
       ],
-      "count": 2,
+      "count": 1,
       "usage": [
         {
           "file": "theme-template/theme.json",
           "line": 167
-        },
-        {
-          "file": "theme-template/styles/dark.json",
-          "line": 116
         }
       ]
     },
@@ -787,18 +767,13 @@
       "category": "design_colors",
       "type": "color",
       "files": [
-        "theme-template/styles/dark.json",
         "theme-template/theme.json"
       ],
-      "count": 2,
+      "count": 1,
       "usage": [
         {
           "file": "theme-template/theme.json",
           "line": 172
-        },
-        {
-          "file": "theme-template/styles/dark.json",
-          "line": 121
         }
       ]
     },
@@ -807,18 +782,13 @@
       "category": "design_colors",
       "type": "color",
       "files": [
-        "theme-template/styles/dark.json",
         "theme-template/theme.json"
       ],
-      "count": 2,
+      "count": 1,
       "usage": [
         {
           "file": "theme-template/theme.json",
           "line": 177
-        },
-        {
-          "file": "theme-template/styles/dark.json",
-          "line": 126
         }
       ]
     },
@@ -827,18 +797,13 @@
       "category": "design_colors",
       "type": "color",
       "files": [
-        "theme-template/styles/dark.json",
         "theme-template/theme.json"
       ],
-      "count": 2,
+      "count": 1,
       "usage": [
         {
           "file": "theme-template/theme.json",
           "line": 187
-        },
-        {
-          "file": "theme-template/styles/dark.json",
-          "line": 136
         }
       ]
     },
@@ -847,18 +812,13 @@
       "category": "design_colors",
       "type": "color",
       "files": [
-        "theme-template/styles/dark.json",
         "theme-template/theme.json"
       ],
-      "count": 2,
+      "count": 1,
       "usage": [
         {
           "file": "theme-template/theme.json",
           "line": 192
-        },
-        {
-          "file": "theme-template/styles/dark.json",
-          "line": 141
         }
       ]
     },
@@ -867,18 +827,13 @@
       "category": "design_colors",
       "type": "color",
       "files": [
-        "theme-template/styles/dark.json",
         "theme-template/theme.json"
       ],
-      "count": 2,
+      "count": 1,
       "usage": [
         {
           "file": "theme-template/theme.json",
           "line": 197
-        },
-        {
-          "file": "theme-template/styles/dark.json",
-          "line": 146
         }
       ]
     },
@@ -887,18 +842,13 @@
       "category": "design_colors",
       "type": "color",
       "files": [
-        "theme-template/styles/dark.json",
         "theme-template/theme.json"
       ],
-      "count": 2,
+      "count": 1,
       "usage": [
         {
           "file": "theme-template/theme.json",
           "line": 202
-        },
-        {
-          "file": "theme-template/styles/dark.json",
-          "line": 151
         }
       ]
     },
@@ -1303,11 +1253,11 @@
       "usage": [
         {
           "file": "CHANGELOG.md",
-          "line": 112
+          "line": 113
         },
         {
           "file": "CHANGELOG.md",
-          "line": 131
+          "line": 132
         },
         {
           "file": "scripts/generate-theme.js",
@@ -1343,7 +1293,7 @@
       "usage": [
         {
           "file": "CHANGELOG.md",
-          "line": 131
+          "line": 132
         },
         {
           "file": "docs/GENERATE_THEME.md",
@@ -1401,18 +1351,13 @@
       "category": "design_colors",
       "type": "color",
       "files": [
-        "theme-template/styles/dark.json",
         "theme-template/theme.json"
       ],
-      "count": 2,
+      "count": 1,
       "usage": [
         {
           "file": "theme-template/theme.json",
           "line": 207
-        },
-        {
-          "file": "theme-template/styles/dark.json",
-          "line": 156
         }
       ]
     },
@@ -1421,18 +1366,13 @@
       "category": "design_colors",
       "type": "color",
       "files": [
-        "theme-template/styles/dark.json",
         "theme-template/theme.json"
       ],
-      "count": 2,
+      "count": 1,
       "usage": [
         {
           "file": "theme-template/theme.json",
           "line": 212
-        },
-        {
-          "file": "theme-template/styles/dark.json",
-          "line": 161
         }
       ]
     },
@@ -1441,18 +1381,13 @@
       "category": "design_colors",
       "type": "color",
       "files": [
-        "theme-template/styles/dark.json",
         "theme-template/theme.json"
       ],
-      "count": 2,
+      "count": 1,
       "usage": [
         {
           "file": "theme-template/theme.json",
           "line": 217
-        },
-        {
-          "file": "theme-template/styles/dark.json",
-          "line": 166
         }
       ]
     },
@@ -1461,18 +1396,13 @@
       "category": "design_colors",
       "type": "color",
       "files": [
-        "theme-template/styles/dark.json",
         "theme-template/theme.json"
       ],
-      "count": 2,
+      "count": 1,
       "usage": [
         {
           "file": "theme-template/theme.json",
           "line": 222
-        },
-        {
-          "file": "theme-template/styles/dark.json",
-          "line": 171
         }
       ]
     },
@@ -1481,18 +1411,13 @@
       "category": "design_colors",
       "type": "color",
       "files": [
-        "theme-template/styles/dark.json",
         "theme-template/theme.json"
       ],
-      "count": 2,
+      "count": 1,
       "usage": [
         {
           "file": "theme-template/theme.json",
           "line": 232
-        },
-        {
-          "file": "theme-template/styles/dark.json",
-          "line": 181
         }
       ]
     },
@@ -1501,18 +1426,13 @@
       "category": "design_colors",
       "type": "color",
       "files": [
-        "theme-template/styles/dark.json",
         "theme-template/theme.json"
       ],
-      "count": 2,
+      "count": 1,
       "usage": [
         {
           "file": "theme-template/theme.json",
           "line": 237
-        },
-        {
-          "file": "theme-template/styles/dark.json",
-          "line": 186
         }
       ]
     },
@@ -1521,18 +1441,13 @@
       "category": "design_colors",
       "type": "color",
       "files": [
-        "theme-template/styles/dark.json",
         "theme-template/theme.json"
       ],
-      "count": 2,
+      "count": 1,
       "usage": [
         {
           "file": "theme-template/theme.json",
           "line": 242
-        },
-        {
-          "file": "theme-template/styles/dark.json",
-          "line": 191
         }
       ]
     },
@@ -1541,18 +1456,13 @@
       "category": "design_colors",
       "type": "color",
       "files": [
-        "theme-template/styles/dark.json",
         "theme-template/theme.json"
       ],
-      "count": 2,
+      "count": 1,
       "usage": [
         {
           "file": "theme-template/theme.json",
           "line": 247
-        },
-        {
-          "file": "theme-template/styles/dark.json",
-          "line": 196
         }
       ]
     },
@@ -2870,7 +2780,7 @@
       "usage": [
         {
           "file": "CHANGELOG.md",
-          "line": 110
+          "line": 111
         },
         {
           "file": "scripts/generate-theme.js",
@@ -2905,7 +2815,7 @@
       "usage": [
         {
           "file": "CHANGELOG.md",
-          "line": 109
+          "line": 110
         },
         {
           "file": "scripts/generate-theme.js",
@@ -3152,11 +3062,11 @@
       "usage": [
         {
           "file": "CHANGELOG.md",
-          "line": 140
+          "line": 141
         },
         {
           "file": "CHANGELOG.md",
-          "line": 215
+          "line": 216
         },
         {
           "file": "README.md",
@@ -3352,10 +3262,9 @@
         "docs/GENERATE_THEME.md",
         "scripts/generate-theme.js",
         "scripts/utils/placeholders.js",
-        "theme-template/styles/dark.json",
         "theme-template/theme.json"
       ],
-      "count": 6,
+      "count": 5,
       "usage": [
         {
           "file": "docs/GENERATE_THEME.md",
@@ -3376,10 +3285,6 @@
         {
           "file": "scripts/utils/placeholders.js",
           "line": 61
-        },
-        {
-          "file": "theme-template/styles/dark.json",
-          "line": 41
         }
       ]
     },
@@ -3425,13 +3330,18 @@
       "files": [
         ".github/agents/template.agent.md",
         "CHANGELOG.md",
+        "docs/STRUCTURE_AUDIT.md",
         "scripts/dry-run/with-dry-run.js"
       ],
-      "count": 3,
+      "count": 4,
       "usage": [
         {
           "file": "CHANGELOG.md",
-          "line": 69
+          "line": 70
+        },
+        {
+          "file": "docs/STRUCTURE_AUDIT.md",
+          "line": 93
         },
         {
           "file": ".github/agents/template.agent.md",
@@ -3501,10 +3411,9 @@
         "scripts/generate-theme.js",
         "scripts/utils/placeholders.js",
         "theme-template/README.md",
-        "theme-template/styles/dark.json",
         "theme-template/theme.json"
       ],
-      "count": 14,
+      "count": 13,
       "usage": [
         {
           "file": ".github/custom-instructions.md",
@@ -3557,10 +3466,6 @@
         {
           "file": "scripts/utils/placeholders.js",
           "line": 56
-        },
-        {
-          "file": "theme-template/styles/dark.json",
-          "line": 86
         }
       ]
     },
@@ -3626,10 +3531,9 @@
         "scripts/generate-theme.js",
         "scripts/utils/placeholders.js",
         "theme-template/README.md",
-        "theme-template/styles/dark.json",
         "theme-template/theme.json"
       ],
-      "count": 13,
+      "count": 12,
       "usage": [
         {
           "file": ".github/custom-instructions.md",
@@ -3678,10 +3582,6 @@
         {
           "file": "scripts/utils/placeholders.js",
           "line": 113
-        },
-        {
-          "file": "theme-template/styles/dark.json",
-          "line": 131
         }
       ]
     },
@@ -4386,10 +4286,9 @@
         "scripts/generate-theme.js",
         "scripts/utils/placeholders.js",
         "theme-template/README.md",
-        "theme-template/styles/dark.json",
         "theme-template/theme.json"
       ],
-      "count": 10,
+      "count": 9,
       "usage": [
         {
           "file": ".github/custom-instructions.md",
@@ -4426,10 +4325,6 @@
         {
           "file": "scripts/utils/placeholders.js",
           "line": 59
-        },
-        {
-          "file": "theme-template/styles/dark.json",
-          "line": 16
         }
       ]
     },
@@ -4524,7 +4419,7 @@
       "usage": [
         {
           "file": "CHANGELOG.md",
-          "line": 157
+          "line": 158
         },
         {
           "file": "README.md",
@@ -5258,6 +5153,7 @@
         "README.md",
         "docs/GENERATE_THEME.md",
         "docs/RELEASE_PROCESS.md",
+        "docs/STRUCTURE_AUDIT.md",
         "scripts/generate-theme.js",
         "scripts/utils/placeholders.js",
         "theme-template/.github/workflows/release.yml",
@@ -5318,35 +5214,27 @@
         "theme-template/tests/php/ThemeSetupTest.php",
         "theme-template/tests/php/bootstrap.php"
       ],
-      "count": 453,
+      "count": 454,
       "usage": [
         {
           "file": "CHANGELOG.md",
-          "line": 59
+          "line": 60
         },
         {
           "file": "CHANGELOG.md",
-          "line": 61
+          "line": 62
         },
         {
           "file": "CHANGELOG.md",
-          "line": 72
+          "line": 73
         },
         {
           "file": "CHANGELOG.md",
-          "line": 72
+          "line": 73
         },
         {
           "file": "CHANGELOG.md",
-          "line": 76
-        },
-        {
-          "file": "CHANGELOG.md",
-          "line": 83
-        },
-        {
-          "file": "CHANGELOG.md",
-          "line": 84
+          "line": 77
         },
         {
           "file": "CHANGELOG.md",
@@ -5370,15 +5258,23 @@
         },
         {
           "file": "CHANGELOG.md",
-          "line": 86
+          "line": 87
         },
         {
           "file": "CHANGELOG.md",
-          "line": 150
+          "line": 87
         },
         {
           "file": "CHANGELOG.md",
-          "line": 231
+          "line": 87
+        },
+        {
+          "file": "CHANGELOG.md",
+          "line": 151
+        },
+        {
+          "file": "CHANGELOG.md",
+          "line": 232
         },
         {
           "file": "README.md",
@@ -5487,6 +5383,10 @@
         {
           "file": "docs/RELEASE_PROCESS.md",
           "line": 162
+        },
+        {
+          "file": "docs/STRUCTURE_AUDIT.md",
+          "line": 23
         },
         {
           "file": "scripts/generate-theme.js",
@@ -7958,6 +7858,6 @@
   "meta": {
     "undocumented": [],
     "unused": [],
-    "scannedAt": "2026-11-05T12:50:59.988Z"
+    "scannedAt": "2026-11-05T14:37:19.416Z"
   }
 }

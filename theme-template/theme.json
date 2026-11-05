@@ -644,7 +644,7 @@
 						"border": "var(--wp--preset--color--information-foreground)"
 					}
 				},
-				"overlay": "#11111140"
+				"overlay": "color-mix(in srgb, var(--wp--preset--color--contrast) 25%, transparent)"
 			},
 			"fontWeight": {
 				"thin": 100,
