@@ -43,3 +43,6 @@ lighthouse-reports/
 .lighthouseci/
 .phpunit.result.cache
 .phpunit.cache/
+
+# Claude Code: personal settings stay local
+.claude/settings.local.json

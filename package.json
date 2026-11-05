@@ -76,7 +76,10 @@
 		"release:scaffold:validate": "node scripts/agents/release-scaffold.agent.js validate",
 		"release:scaffold:report": "node scripts/agents/release-scaffold.agent.js report",
 		"release:scaffold:placeholders": "node scripts/agents/release-scaffold.agent.js placeholders",
-		"release:scaffold:schema": "node scripts/agents/release-scaffold.agent.js schema"
+		"release:scaffold:schema": "node scripts/agents/release-scaffold.agent.js schema",
+		"sync:agent-skills": "node scripts/sync-agent-skills.ts",
+		"sync:agent-skills:check": "node scripts/sync-agent-skills.ts --check",
+		"test:agent-skills": "wp-scripts test-unit-jest scripts/__tests__/sync-agent-skills.test.ts --coverage --collectCoverageFrom=scripts/sync-agent-skills.ts --coverageThreshold={\"global\":{\"statements\":80,\"branches\":80,\"functions\":80,\"lines\":80}}"
 	},
 	"devDependencies": {
 		"@wordpress/jest-preset-default": "^14.2.0",
