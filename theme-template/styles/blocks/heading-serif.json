@@ -9,7 +9,7 @@
 			"text": "var(--wp--preset--color--contrast)"
 		},
 		"typography": {
-			"fontFamily": "var(--wp--preset--font-family--heading, Georgia, serif)",
+			"fontFamily": "var(--wp--preset--font-family--serif, Georgia, serif)",
 			"fontWeight": "400",
 			"lineHeight": "1.2",
 			"fontSize": "var(--wp--preset--font-size--600)"

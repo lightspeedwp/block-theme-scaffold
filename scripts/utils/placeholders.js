@@ -107,6 +107,17 @@ const PLACEHOLDER_MAP = {
 	'{{js_namespace}}': 'blockThemeScaffold',
 };
 
+// Derive test shades from the same fixture center colors used above.
+const colorRamp = require( './color-ramp' );
+for ( const [ name, center ] of [
+	[ 'brand', PLACEHOLDER_MAP[ '{{secondary_color}}' ] ],
+	[ 'cta', PLACEHOLDER_MAP[ '{{accent_color}}' ] ],
+] ) {
+	for ( const [ step, color ] of Object.entries( colorRamp( center ) ) ) {
+		PLACEHOLDER_MAP[ `{{${ name }_${ step }_color}}` ] = color;
+	}
+}
+
 /**
  * Replace all mustache placeholders in a string with test values.
  *

@@ -45,6 +45,7 @@ const fs = require( 'fs' );
 const path = require( 'path' );
 const Ajv = require( 'ajv/dist/2020' );
 const addFormats = require( 'ajv-formats' );
+const colorRamp = require( './utils/color-ramp' );
 
 // Initialize JSON Schema validator
 const ajv = new Ajv( { allErrors: true } );
@@ -801,6 +802,16 @@ async function runScript() {
 		'{{archive_excerpt_length}}':
 			configData.content_archive_excerpt_length || '40',
 	};
+
+	// Keep each palette ramp aligned with its configured center color.
+	for ( const [ name, center ] of [
+		[ 'brand', placeholders[ '{{secondary_color}}' ] ],
+		[ 'cta', placeholders[ '{{accent_color}}' ] ],
+	] ) {
+		for ( const [ step, color ] of Object.entries( colorRamp( center ) ) ) {
+			placeholders[ `{{${ name }_${ step }_color}}` ] = color;
+		}
+	}
 
 	// Placeholders derived from the values above, or from nested config keys
 	// (urls.*, emails.*), which flattenConfig()
