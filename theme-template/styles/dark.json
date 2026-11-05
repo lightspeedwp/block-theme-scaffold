@@ -287,24 +287,24 @@
 				},
 				"feedback": {
 					"error": {
-						"text": "var(--wp--preset--color--error-background)",
+						"text": "#fca5a5",
 						"background": "var(--wp--preset--color--neutral-800)",
-						"border": "var(--wp--preset--color--error-background)"
+						"border": "#fca5a5"
 					},
 					"warning": {
-						"text": "var(--wp--preset--color--warning-background)",
+						"text": "var(--wp--preset--color--warning-foreground)",
 						"background": "var(--wp--preset--color--neutral-800)",
-						"border": "var(--wp--preset--color--warning-background)"
+						"border": "var(--wp--preset--color--warning-foreground)"
 					},
 					"success": {
-						"text": "var(--wp--preset--color--success-background)",
+						"text": "#4ade80",
 						"background": "var(--wp--preset--color--neutral-800)",
-						"border": "var(--wp--preset--color--success-background)"
+						"border": "#4ade80"
 					},
 					"info": {
-						"text": "var(--wp--preset--color--information-background)",
+						"text": "#93c5fd",
 						"background": "var(--wp--preset--color--neutral-800)",
-						"border": "var(--wp--preset--color--information-background)"
+						"border": "#93c5fd"
 					}
 				}
 			}
