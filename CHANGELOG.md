@@ -52,6 +52,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+- `styles/dark.json` inherits the palette and sets every semantic colour token, including `overlay`, from palette colours; no raw hex ([BTS-24](https://linear.app/lightspeedwp/issue/BTS-24)).
 - Removed `.github/workflows/agent-workflow.yml` and the root `ci.yml`, a stray theme workflow. Both were invalid YAML ([BTS-22](https://linear.app/lightspeedwp/issue/BTS-22)).
 - Root `npm ci` works again: the lockfile is rebuilt for `@wordpress/scripts` 36, and workflows read Node.js from `.nvmrc` (24) ([BTS-21](https://linear.app/lightspeedwp/issue/BTS-21)).
 - Generated themes pass CI on their first push, as found in [lightspeedwp/tsp-theme#4](https://github.com/lightspeedwp/tsp-theme/pull/4):
