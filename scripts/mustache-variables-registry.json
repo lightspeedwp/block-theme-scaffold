@@ -2,8 +2,8 @@
   "summary": {
     "totalFiles": 317,
     "filesWithVariables": 121,
-    "uniqueVariables": 185,
-    "totalOccurrences": 1398
+    "uniqueVariables": 147,
+    "totalOccurrences": 1362
   },
   "variables": {
     "ThemeSlug": {
@@ -53,9 +53,10 @@
         "docs/GENERATE_THEME.md",
         "scripts/generate-theme.js",
         "scripts/utils/placeholders.js",
+        "theme-template/styles/dark.json",
         "theme-template/theme.json"
       ],
-      "count": 5,
+      "count": 6,
       "usage": [
         {
           "file": "docs/GENERATE_THEME.md",
@@ -67,7 +68,7 @@
         },
         {
           "file": "theme-template/theme.json",
-          "line": 222
+          "line": 227
         },
         {
           "file": ".github/instructions/generate-theme.instructions.md",
@@ -76,6 +77,10 @@
         {
           "file": "scripts/utils/placeholders.js",
           "line": 60
+        },
+        {
+          "file": "theme-template/styles/dark.json",
+          "line": 176
         }
       ]
     },
@@ -324,7 +329,7 @@
         },
         {
           "file": "scripts/generate-theme.js",
-          "line": 927
+          "line": 863
         },
         {
           "file": "theme-template/README.md",
@@ -532,7 +537,7 @@
         },
         {
           "file": "scripts/generate-theme.js",
-          "line": 827
+          "line": 825
         },
         {
           "file": "theme-template/README.txt",
@@ -552,9 +557,10 @@
         "scripts/generate-theme.js",
         "scripts/utils/placeholders.js",
         "theme-template/README.md",
+        "theme-template/styles/dark.json",
         "theme-template/theme.json"
       ],
-      "count": 9,
+      "count": 10,
       "usage": [
         {
           "file": ".github/custom-instructions.md",
@@ -574,7 +580,7 @@
         },
         {
           "file": "theme-template/theme.json",
-          "line": 57
+          "line": 62
         },
         {
           "file": ".github/agents/generate-theme.agent.md",
@@ -591,6 +597,10 @@
         {
           "file": "scripts/utils/placeholders.js",
           "line": 58
+        },
+        {
+          "file": "theme-template/styles/dark.json",
+          "line": 11
         }
       ]
     },
@@ -618,7 +628,7 @@
         },
         {
           "file": "theme-template/theme.json",
-          "line": 310
+          "line": 315
         },
         {
           "file": ".github/instructions/generate-theme.instructions.md",
@@ -693,7 +703,7 @@
         },
         {
           "file": "theme-template/theme.json",
-          "line": 610
+          "line": 699
         },
         {
           "file": ".github/instructions/generate-theme.instructions.md",
@@ -742,7 +752,7 @@
         },
         {
           "file": "scripts/generate-theme.js",
-          "line": 834
+          "line": 832
         },
         {
           "file": "theme-template/SUPPORT.md",
@@ -776,7 +786,7 @@
         },
         {
           "file": "theme-template/theme.json",
-          "line": 707
+          "line": 793
         },
         {
           "file": "scripts/utils/placeholders.js",
@@ -807,7 +817,7 @@
         },
         {
           "file": "theme-template/theme.json",
-          "line": 704
+          "line": 790
         },
         {
           "file": ".github/instructions/generate-theme.instructions.md",
@@ -831,7 +841,7 @@
       "usage": [
         {
           "file": "scripts/generate-theme.js",
-          "line": 859
+          "line": 857
         },
         {
           "file": "theme-template/styles/blocks/button-primary.json",
@@ -851,7 +861,7 @@
       "usage": [
         {
           "file": "scripts/generate-theme.js",
-          "line": 860
+          "line": 858
         },
         {
           "file": "theme-template/styles/blocks/button-rounded.json",
@@ -911,11 +921,11 @@
         },
         {
           "file": "scripts/generate-theme.js",
-          "line": 812
+          "line": 810
         },
         {
           "file": "scripts/generate-theme.js",
-          "line": 813
+          "line": 811
         },
         {
           "file": "theme-template/package.json",
@@ -1064,7 +1074,7 @@
       "usage": [
         {
           "file": "scripts/generate-theme.js",
-          "line": 863
+          "line": 861
         },
         {
           "file": "theme-template/styles/sections/content-section.json",
@@ -1177,7 +1187,7 @@
         },
         {
           "file": "theme-template/theme.json",
-          "line": 467
+          "line": 470
         },
         {
           "file": ".github/instructions/generate-theme.instructions.md",
@@ -1210,7 +1220,7 @@
         },
         {
           "file": "scripts/generate-theme.js",
-          "line": 831
+          "line": 829
         },
         {
           "file": "theme-template/package.json",
@@ -1231,7 +1241,7 @@
       "usage": [
         {
           "file": "scripts/generate-theme.js",
-          "line": 849
+          "line": 847
         },
         {
           "file": ".github/prompts/generate-theme.prompt.md",
@@ -1255,7 +1265,7 @@
       "usage": [
         {
           "file": "scripts/generate-theme.js",
-          "line": 847
+          "line": 845
         },
         {
           "file": "theme-template/inc/block-patterns.php",
@@ -1290,7 +1300,7 @@
       "usage": [
         {
           "file": "scripts/generate-theme.js",
-          "line": 846
+          "line": 844
         },
         {
           "file": "theme-template/inc/block-patterns.php",
@@ -1310,7 +1320,7 @@
       "usage": [
         {
           "file": "scripts/generate-theme.js",
-          "line": 840
+          "line": 838
         },
         {
           "file": "theme-template/SUPPORT.md",
@@ -1337,301 +1347,6 @@
         }
       ]
     },
-    "dark_accent_100_color": {
-      "name": "dark_accent_100_color",
-      "category": "design_colors",
-      "type": "color",
-      "files": [
-        "theme-template/styles/dark.json"
-      ],
-      "count": 1,
-      "usage": [
-        {
-          "file": "theme-template/styles/dark.json",
-          "line": 196
-        }
-      ]
-    },
-    "dark_accent_200_color": {
-      "name": "dark_accent_200_color",
-      "category": "design_colors",
-      "type": "color",
-      "files": [
-        "theme-template/styles/dark.json"
-      ],
-      "count": 1,
-      "usage": [
-        {
-          "file": "theme-template/styles/dark.json",
-          "line": 191
-        }
-      ]
-    },
-    "dark_accent_300_color": {
-      "name": "dark_accent_300_color",
-      "category": "design_colors",
-      "type": "color",
-      "files": [
-        "theme-template/styles/dark.json"
-      ],
-      "count": 1,
-      "usage": [
-        {
-          "file": "theme-template/styles/dark.json",
-          "line": 186
-        }
-      ]
-    },
-    "dark_accent_400_color": {
-      "name": "dark_accent_400_color",
-      "category": "design_colors",
-      "type": "color",
-      "files": [
-        "theme-template/styles/dark.json"
-      ],
-      "count": 1,
-      "usage": [
-        {
-          "file": "theme-template/styles/dark.json",
-          "line": 181
-        }
-      ]
-    },
-    "dark_accent_600_color": {
-      "name": "dark_accent_600_color",
-      "category": "design_colors",
-      "type": "color",
-      "files": [
-        "theme-template/styles/dark.json"
-      ],
-      "count": 1,
-      "usage": [
-        {
-          "file": "theme-template/styles/dark.json",
-          "line": 171
-        }
-      ]
-    },
-    "dark_accent_700_color": {
-      "name": "dark_accent_700_color",
-      "category": "design_colors",
-      "type": "color",
-      "files": [
-        "theme-template/styles/dark.json"
-      ],
-      "count": 1,
-      "usage": [
-        {
-          "file": "theme-template/styles/dark.json",
-          "line": 166
-        }
-      ]
-    },
-    "dark_accent_800_color": {
-      "name": "dark_accent_800_color",
-      "category": "design_colors",
-      "type": "color",
-      "files": [
-        "theme-template/styles/dark.json"
-      ],
-      "count": 1,
-      "usage": [
-        {
-          "file": "theme-template/styles/dark.json",
-          "line": 161
-        }
-      ]
-    },
-    "dark_accent_900_color": {
-      "name": "dark_accent_900_color",
-      "category": "design_colors",
-      "type": "color",
-      "files": [
-        "theme-template/styles/dark.json"
-      ],
-      "count": 1,
-      "usage": [
-        {
-          "file": "theme-template/styles/dark.json",
-          "line": 156
-        }
-      ]
-    },
-    "dark_background_color": {
-      "name": "dark_background_color",
-      "category": "design_colors",
-      "type": "color",
-      "files": [
-        "scripts/generate-theme.js",
-        "theme-template/styles/dark.json"
-      ],
-      "count": 2,
-      "usage": [
-        {
-          "file": "scripts/generate-theme.js",
-          "line": 864
-        },
-        {
-          "file": "theme-template/styles/dark.json",
-          "line": 11
-        }
-      ]
-    },
-    "dark_brand_100_color": {
-      "name": "dark_brand_100_color",
-      "category": "design_colors",
-      "type": "color",
-      "files": [
-        "theme-template/styles/dark.json"
-      ],
-      "count": 1,
-      "usage": [
-        {
-          "file": "theme-template/styles/dark.json",
-          "line": 151
-        }
-      ]
-    },
-    "dark_brand_200_color": {
-      "name": "dark_brand_200_color",
-      "category": "design_colors",
-      "type": "color",
-      "files": [
-        "theme-template/styles/dark.json"
-      ],
-      "count": 1,
-      "usage": [
-        {
-          "file": "theme-template/styles/dark.json",
-          "line": 146
-        }
-      ]
-    },
-    "dark_brand_300_color": {
-      "name": "dark_brand_300_color",
-      "category": "design_colors",
-      "type": "color",
-      "files": [
-        "theme-template/styles/dark.json"
-      ],
-      "count": 1,
-      "usage": [
-        {
-          "file": "theme-template/styles/dark.json",
-          "line": 141
-        }
-      ]
-    },
-    "dark_brand_400_color": {
-      "name": "dark_brand_400_color",
-      "category": "design_colors",
-      "type": "color",
-      "files": [
-        "theme-template/styles/dark.json"
-      ],
-      "count": 1,
-      "usage": [
-        {
-          "file": "theme-template/styles/dark.json",
-          "line": 136
-        }
-      ]
-    },
-    "dark_brand_500_color": {
-      "name": "dark_brand_500_color",
-      "category": "design_colors",
-      "type": "color",
-      "files": [
-        "theme-template/styles/dark.json"
-      ],
-      "count": 1,
-      "usage": [
-        {
-          "file": "theme-template/styles/dark.json",
-          "line": 131
-        }
-      ]
-    },
-    "dark_brand_600_color": {
-      "name": "dark_brand_600_color",
-      "category": "design_colors",
-      "type": "color",
-      "files": [
-        "theme-template/styles/dark.json"
-      ],
-      "count": 1,
-      "usage": [
-        {
-          "file": "theme-template/styles/dark.json",
-          "line": 126
-        }
-      ]
-    },
-    "dark_brand_700_color": {
-      "name": "dark_brand_700_color",
-      "category": "design_colors",
-      "type": "color",
-      "files": [
-        "theme-template/styles/dark.json"
-      ],
-      "count": 1,
-      "usage": [
-        {
-          "file": "theme-template/styles/dark.json",
-          "line": 121
-        }
-      ]
-    },
-    "dark_brand_800_color": {
-      "name": "dark_brand_800_color",
-      "category": "design_colors",
-      "type": "color",
-      "files": [
-        "theme-template/styles/dark.json"
-      ],
-      "count": 1,
-      "usage": [
-        {
-          "file": "theme-template/styles/dark.json",
-          "line": 116
-        }
-      ]
-    },
-    "dark_brand_900_color": {
-      "name": "dark_brand_900_color",
-      "category": "design_colors",
-      "type": "color",
-      "files": [
-        "theme-template/styles/dark.json"
-      ],
-      "count": 1,
-      "usage": [
-        {
-          "file": "theme-template/styles/dark.json",
-          "line": 111
-        }
-      ]
-    },
-    "dark_cta_color": {
-      "name": "dark_cta_color",
-      "category": "design_colors",
-      "type": "color",
-      "files": [
-        "scripts/generate-theme.js",
-        "theme-template/styles/dark.json"
-      ],
-      "count": 2,
-      "usage": [
-        {
-          "file": "scripts/generate-theme.js",
-          "line": 867
-        },
-        {
-          "file": "theme-template/styles/dark.json",
-          "line": 176
-        }
-      ]
-    },
     "dark_mode_title": {
       "name": "dark_mode_title",
       "category": "content_strings",
@@ -1644,306 +1359,11 @@
       "usage": [
         {
           "file": "scripts/generate-theme.js",
-          "line": 858
+          "line": 856
         },
         {
           "file": "theme-template/styles/dark.json",
           "line": 4
-        }
-      ]
-    },
-    "dark_neutral_100_color": {
-      "name": "dark_neutral_100_color",
-      "category": "design_colors",
-      "type": "color",
-      "files": [
-        "theme-template/styles/dark.json"
-      ],
-      "count": 1,
-      "usage": [
-        {
-          "file": "theme-template/styles/dark.json",
-          "line": 61
-        }
-      ]
-    },
-    "dark_neutral_200_color": {
-      "name": "dark_neutral_200_color",
-      "category": "design_colors",
-      "type": "color",
-      "files": [
-        "theme-template/styles/dark.json"
-      ],
-      "count": 1,
-      "usage": [
-        {
-          "file": "theme-template/styles/dark.json",
-          "line": 56
-        }
-      ]
-    },
-    "dark_neutral_300_color": {
-      "name": "dark_neutral_300_color",
-      "category": "design_colors",
-      "type": "color",
-      "files": [
-        "theme-template/styles/dark.json"
-      ],
-      "count": 1,
-      "usage": [
-        {
-          "file": "theme-template/styles/dark.json",
-          "line": 51
-        }
-      ]
-    },
-    "dark_neutral_400_color": {
-      "name": "dark_neutral_400_color",
-      "category": "design_colors",
-      "type": "color",
-      "files": [
-        "theme-template/styles/dark.json"
-      ],
-      "count": 1,
-      "usage": [
-        {
-          "file": "theme-template/styles/dark.json",
-          "line": 46
-        }
-      ]
-    },
-    "dark_neutral_500_color": {
-      "name": "dark_neutral_500_color",
-      "category": "design_colors",
-      "type": "color",
-      "files": [
-        "theme-template/styles/dark.json"
-      ],
-      "count": 1,
-      "usage": [
-        {
-          "file": "theme-template/styles/dark.json",
-          "line": 41
-        }
-      ]
-    },
-    "dark_neutral_600_color": {
-      "name": "dark_neutral_600_color",
-      "category": "design_colors",
-      "type": "color",
-      "files": [
-        "theme-template/styles/dark.json"
-      ],
-      "count": 1,
-      "usage": [
-        {
-          "file": "theme-template/styles/dark.json",
-          "line": 36
-        }
-      ]
-    },
-    "dark_neutral_700_color": {
-      "name": "dark_neutral_700_color",
-      "category": "design_colors",
-      "type": "color",
-      "files": [
-        "theme-template/styles/dark.json"
-      ],
-      "count": 1,
-      "usage": [
-        {
-          "file": "theme-template/styles/dark.json",
-          "line": 31
-        }
-      ]
-    },
-    "dark_neutral_800_color": {
-      "name": "dark_neutral_800_color",
-      "category": "design_colors",
-      "type": "color",
-      "files": [
-        "theme-template/styles/dark.json"
-      ],
-      "count": 1,
-      "usage": [
-        {
-          "file": "theme-template/styles/dark.json",
-          "line": 26
-        }
-      ]
-    },
-    "dark_neutral_900_color": {
-      "name": "dark_neutral_900_color",
-      "category": "design_colors",
-      "type": "color",
-      "files": [
-        "theme-template/styles/dark.json"
-      ],
-      "count": 1,
-      "usage": [
-        {
-          "file": "theme-template/styles/dark.json",
-          "line": 21
-        }
-      ]
-    },
-    "dark_primary_100_color": {
-      "name": "dark_primary_100_color",
-      "category": "design_colors",
-      "type": "color",
-      "files": [
-        "theme-template/styles/dark.json"
-      ],
-      "count": 1,
-      "usage": [
-        {
-          "file": "theme-template/styles/dark.json",
-          "line": 106
-        }
-      ]
-    },
-    "dark_primary_200_color": {
-      "name": "dark_primary_200_color",
-      "category": "design_colors",
-      "type": "color",
-      "files": [
-        "theme-template/styles/dark.json"
-      ],
-      "count": 1,
-      "usage": [
-        {
-          "file": "theme-template/styles/dark.json",
-          "line": 101
-        }
-      ]
-    },
-    "dark_primary_300_color": {
-      "name": "dark_primary_300_color",
-      "category": "design_colors",
-      "type": "color",
-      "files": [
-        "theme-template/styles/dark.json"
-      ],
-      "count": 1,
-      "usage": [
-        {
-          "file": "theme-template/styles/dark.json",
-          "line": 96
-        }
-      ]
-    },
-    "dark_primary_400_color": {
-      "name": "dark_primary_400_color",
-      "category": "design_colors",
-      "type": "color",
-      "files": [
-        "theme-template/styles/dark.json"
-      ],
-      "count": 1,
-      "usage": [
-        {
-          "file": "theme-template/styles/dark.json",
-          "line": 91
-        }
-      ]
-    },
-    "dark_primary_600_color": {
-      "name": "dark_primary_600_color",
-      "category": "design_colors",
-      "type": "color",
-      "files": [
-        "theme-template/styles/dark.json"
-      ],
-      "count": 1,
-      "usage": [
-        {
-          "file": "theme-template/styles/dark.json",
-          "line": 81
-        }
-      ]
-    },
-    "dark_primary_700_color": {
-      "name": "dark_primary_700_color",
-      "category": "design_colors",
-      "type": "color",
-      "files": [
-        "theme-template/styles/dark.json"
-      ],
-      "count": 1,
-      "usage": [
-        {
-          "file": "theme-template/styles/dark.json",
-          "line": 76
-        }
-      ]
-    },
-    "dark_primary_800_color": {
-      "name": "dark_primary_800_color",
-      "category": "design_colors",
-      "type": "color",
-      "files": [
-        "theme-template/styles/dark.json"
-      ],
-      "count": 1,
-      "usage": [
-        {
-          "file": "theme-template/styles/dark.json",
-          "line": 71
-        }
-      ]
-    },
-    "dark_primary_900_color": {
-      "name": "dark_primary_900_color",
-      "category": "design_colors",
-      "type": "color",
-      "files": [
-        "theme-template/styles/dark.json"
-      ],
-      "count": 1,
-      "usage": [
-        {
-          "file": "theme-template/styles/dark.json",
-          "line": 66
-        }
-      ]
-    },
-    "dark_primary_color": {
-      "name": "dark_primary_color",
-      "category": "design_colors",
-      "type": "color",
-      "files": [
-        "scripts/generate-theme.js",
-        "theme-template/styles/dark.json"
-      ],
-      "count": 2,
-      "usage": [
-        {
-          "file": "scripts/generate-theme.js",
-          "line": 866
-        },
-        {
-          "file": "theme-template/styles/dark.json",
-          "line": 86
-        }
-      ]
-    },
-    "dark_text_color": {
-      "name": "dark_text_color",
-      "category": "design_colors",
-      "type": "color",
-      "files": [
-        "scripts/generate-theme.js",
-        "theme-template/styles/dark.json"
-      ],
-      "count": 2,
-      "usage": [
-        {
-          "file": "scripts/generate-theme.js",
-          "line": 865
-        },
-        {
-          "file": "theme-template/styles/dark.json",
-          "line": 16
         }
       ]
     },
@@ -1961,7 +1381,7 @@
       "usage": [
         {
           "file": "scripts/generate-theme.js",
-          "line": 830
+          "line": 828
         },
         {
           "file": "theme-template/README.txt",
@@ -2046,7 +1466,7 @@
         },
         {
           "file": "scripts/generate-theme.js",
-          "line": 844
+          "line": 842
         },
         {
           "file": "theme-template/README.md",
@@ -2116,7 +1536,7 @@
         },
         {
           "file": "scripts/generate-theme.js",
-          "line": 836
+          "line": 834
         },
         {
           "file": "theme-template/SUPPORT.md",
@@ -2140,7 +1560,7 @@
       "usage": [
         {
           "file": "scripts/generate-theme.js",
-          "line": 841
+          "line": 839
         },
         {
           "file": "theme-template/SUPPORT.md",
@@ -2173,15 +1593,15 @@
         },
         {
           "file": "scripts/generate-theme.js",
-          "line": 810
+          "line": 808
         },
         {
           "file": "scripts/generate-theme.js",
-          "line": 811
+          "line": 809
         },
         {
           "file": "scripts/generate-theme.js",
-          "line": 842
+          "line": 840
         },
         {
           "file": "theme-template/README.txt",
@@ -2552,7 +1972,7 @@
         },
         {
           "file": "theme-template/theme.json",
-          "line": 315
+          "line": 320
         },
         {
           "file": ".github/instructions/generate-theme.instructions.md",
@@ -2630,27 +2050,27 @@
         },
         {
           "file": "theme-template/theme.json",
-          "line": 620
+          "line": 709
         },
         {
           "file": "theme-template/theme.json",
-          "line": 628
+          "line": 717
         },
         {
           "file": "theme-template/theme.json",
-          "line": 636
+          "line": 725
         },
         {
           "file": "theme-template/theme.json",
-          "line": 644
+          "line": 733
         },
         {
           "file": "theme-template/theme.json",
-          "line": 652
+          "line": 741
         },
         {
           "file": "theme-template/theme.json",
-          "line": 660
+          "line": 749
         },
         {
           "file": ".github/instructions/generate-theme.instructions.md",
@@ -2689,27 +2109,27 @@
         },
         {
           "file": "theme-template/theme.json",
-          "line": 621
+          "line": 710
         },
         {
           "file": "theme-template/theme.json",
-          "line": 629
+          "line": 718
         },
         {
           "file": "theme-template/theme.json",
-          "line": 637
+          "line": 726
         },
         {
           "file": "theme-template/theme.json",
-          "line": 645
+          "line": 734
         },
         {
           "file": "theme-template/theme.json",
-          "line": 653
+          "line": 742
         },
         {
           "file": "theme-template/theme.json",
-          "line": 661
+          "line": 750
         },
         {
           "file": ".github/instructions/generate-theme.instructions.md",
@@ -2733,7 +2153,7 @@
       "usage": [
         {
           "file": "scripts/generate-theme.js",
-          "line": 861
+          "line": 859
         },
         {
           "file": "theme-template/styles/blocks/heading-serif.json",
@@ -2753,7 +2173,7 @@
       "usage": [
         {
           "file": "scripts/generate-theme.js",
-          "line": 845
+          "line": 843
         },
         {
           "file": "theme-template/inc/block-patterns.php",
@@ -2773,7 +2193,7 @@
       "usage": [
         {
           "file": "scripts/generate-theme.js",
-          "line": 844
+          "line": 842
         },
         {
           "file": "theme-template/inc/block-patterns.php",
@@ -2793,7 +2213,7 @@
       "usage": [
         {
           "file": "scripts/generate-theme.js",
-          "line": 862
+          "line": 860
         },
         {
           "file": "theme-template/styles/sections/hero-section.json",
@@ -2820,7 +2240,7 @@
         },
         {
           "file": "scripts/generate-theme.js",
-          "line": 843
+          "line": 841
         },
         {
           "file": ".github/agents/generate-theme.agent.md",
@@ -3580,9 +3000,10 @@
         "docs/GENERATE_THEME.md",
         "scripts/generate-theme.js",
         "scripts/utils/placeholders.js",
+        "theme-template/styles/dark.json",
         "theme-template/theme.json"
       ],
-      "count": 5,
+      "count": 6,
       "usage": [
         {
           "file": "docs/GENERATE_THEME.md",
@@ -3594,7 +3015,7 @@
         },
         {
           "file": "theme-template/theme.json",
-          "line": 87
+          "line": 92
         },
         {
           "file": ".github/instructions/generate-theme.instructions.md",
@@ -3603,6 +3024,10 @@
         {
           "file": "scripts/utils/placeholders.js",
           "line": 61
+        },
+        {
+          "file": "theme-template/styles/dark.json",
+          "line": 41
         }
       ]
     },
@@ -3702,7 +3127,7 @@
         },
         {
           "file": "scripts/generate-theme.js",
-          "line": 838
+          "line": 836
         },
         {
           "file": "theme-template/SUPPORT.md",
@@ -3724,9 +3149,10 @@
         "scripts/generate-theme.js",
         "scripts/utils/placeholders.js",
         "theme-template/README.md",
+        "theme-template/styles/dark.json",
         "theme-template/theme.json"
       ],
-      "count": 13,
+      "count": 14,
       "usage": [
         {
           "file": ".github/custom-instructions.md",
@@ -3754,7 +3180,7 @@
         },
         {
           "file": "theme-template/theme.json",
-          "line": 132
+          "line": 137
         },
         {
           "file": ".github/agents/generate-theme.agent.md",
@@ -3779,6 +3205,10 @@
         {
           "file": "scripts/utils/placeholders.js",
           "line": 56
+        },
+        {
+          "file": "theme-template/styles/dark.json",
+          "line": 86
         }
       ]
     },
@@ -3844,9 +3274,10 @@
         "scripts/generate-theme.js",
         "scripts/utils/placeholders.js",
         "theme-template/README.md",
+        "theme-template/styles/dark.json",
         "theme-template/theme.json"
       ],
-      "count": 10,
+      "count": 11,
       "usage": [
         {
           "file": ".github/custom-instructions.md",
@@ -3866,7 +3297,7 @@
         },
         {
           "file": "theme-template/theme.json",
-          "line": 177
+          "line": 182
         },
         {
           "file": ".github/agents/generate-theme.agent.md",
@@ -3887,6 +3318,10 @@
         {
           "file": "scripts/utils/placeholders.js",
           "line": 57
+        },
+        {
+          "file": "theme-template/styles/dark.json",
+          "line": 131
         }
       ]
     },
@@ -3977,7 +3412,7 @@
         },
         {
           "file": "theme-template/theme.json",
-          "line": 748
+          "line": 836
         },
         {
           "file": ".github/instructions/generate-theme.instructions.md",
@@ -4182,7 +3617,7 @@
         },
         {
           "file": "scripts/generate-theme.js",
-          "line": 832
+          "line": 830
         },
         {
           "file": "theme-template/SUPPORT.md",
@@ -4301,7 +3736,7 @@
         },
         {
           "file": "scripts/generate-theme.js",
-          "line": 824
+          "line": 822
         },
         {
           "file": "theme-template/README.txt",
@@ -4336,7 +3771,7 @@
       "usage": [
         {
           "file": "scripts/generate-theme.js",
-          "line": 851
+          "line": 849
         },
         {
           "file": "theme-template/inc/block-patterns.php",
@@ -4356,7 +3791,7 @@
       "usage": [
         {
           "file": "scripts/generate-theme.js",
-          "line": 852
+          "line": 850
         },
         {
           "file": "theme-template/inc/block-patterns.php",
@@ -4376,7 +3811,7 @@
       "usage": [
         {
           "file": "scripts/generate-theme.js",
-          "line": 853
+          "line": 851
         },
         {
           "file": "theme-template/inc/block-patterns.php",
@@ -4396,7 +3831,7 @@
       "usage": [
         {
           "file": "scripts/generate-theme.js",
-          "line": 854
+          "line": 852
         },
         {
           "file": "theme-template/inc/block-patterns.php",
@@ -4416,7 +3851,7 @@
       "usage": [
         {
           "file": "scripts/generate-theme.js",
-          "line": 855
+          "line": 853
         },
         {
           "file": "theme-template/inc/block-patterns.php",
@@ -4436,7 +3871,7 @@
       "usage": [
         {
           "file": "scripts/generate-theme.js",
-          "line": 856
+          "line": 854
         },
         {
           "file": "theme-template/inc/block-patterns.php",
@@ -4456,7 +3891,7 @@
       "usage": [
         {
           "file": "scripts/generate-theme.js",
-          "line": 857
+          "line": 855
         },
         {
           "file": "theme-template/inc/block-patterns.php",
@@ -4476,7 +3911,7 @@
       "usage": [
         {
           "file": "scripts/generate-theme.js",
-          "line": 850
+          "line": 848
         },
         {
           "file": "theme-template/inc/block-patterns.php",
@@ -4591,9 +4026,10 @@
         "scripts/generate-theme.js",
         "scripts/utils/placeholders.js",
         "theme-template/README.md",
+        "theme-template/styles/dark.json",
         "theme-template/theme.json"
       ],
-      "count": 9,
+      "count": 10,
       "usage": [
         {
           "file": ".github/custom-instructions.md",
@@ -4613,7 +4049,7 @@
         },
         {
           "file": "theme-template/theme.json",
-          "line": 62
+          "line": 67
         },
         {
           "file": ".github/agents/generate-theme.agent.md",
@@ -4630,6 +4066,10 @@
         {
           "file": "scripts/utils/placeholders.js",
           "line": 59
+        },
+        {
+          "file": "theme-template/styles/dark.json",
+          "line": 16
         }
       ]
     },
@@ -5258,7 +4698,7 @@
       "usage": [
         {
           "file": "scripts/generate-theme.js",
-          "line": 816
+          "line": 814
         }
       ]
     },
@@ -7363,7 +6803,7 @@
         },
         {
           "file": "scripts/generate-theme.js",
-          "line": 821
+          "line": 819
         },
         {
           "file": "theme-template/README.txt",
@@ -8085,7 +7525,7 @@
         },
         {
           "file": "theme-template/theme.json",
-          "line": 468
+          "line": 471
         },
         {
           "file": "scripts/utils/placeholders.js",
@@ -8154,36 +7594,47 @@
     }
   },
   "meta": {
-    "undocumented": [
-      "dark_primary_900_color",
-      "dark_primary_800_color",
-      "dark_primary_700_color",
-      "dark_primary_600_color",
-      "dark_primary_400_color",
-      "dark_primary_300_color",
-      "dark_primary_200_color",
-      "dark_primary_100_color",
-      "dark_brand_900_color",
-      "dark_brand_800_color",
-      "dark_brand_700_color",
-      "dark_brand_600_color",
-      "dark_brand_500_color",
-      "dark_brand_400_color",
-      "dark_brand_300_color",
-      "dark_brand_200_color",
-      "dark_brand_100_color"
-    ],
+    "undocumented": [],
     "unused": [
-      "body_font",
-      "dark_accent_500_color",
-      "dark_primary_dark_color",
-      "dark_primary_light_color",
-      "network",
-      "php_version_min",
-      "repo_url",
-      "wp_version_max",
-      "wp_version_min"
+      "dark_accent_100_color",
+      "dark_accent_200_color",
+      "dark_accent_300_color",
+      "dark_accent_400_color",
+      "dark_accent_600_color",
+      "dark_accent_700_color",
+      "dark_accent_800_color",
+      "dark_accent_900_color",
+      "dark_background_color",
+      "dark_brand_100_color",
+      "dark_brand_200_color",
+      "dark_brand_300_color",
+      "dark_brand_400_color",
+      "dark_brand_500_color",
+      "dark_brand_600_color",
+      "dark_brand_700_color",
+      "dark_brand_800_color",
+      "dark_brand_900_color",
+      "dark_cta_color",
+      "dark_neutral_100_color",
+      "dark_neutral_200_color",
+      "dark_neutral_300_color",
+      "dark_neutral_400_color",
+      "dark_neutral_500_color",
+      "dark_neutral_600_color",
+      "dark_neutral_700_color",
+      "dark_neutral_800_color",
+      "dark_neutral_900_color",
+      "dark_primary_100_color",
+      "dark_primary_200_color",
+      "dark_primary_300_color",
+      "dark_primary_400_color",
+      "dark_primary_600_color",
+      "dark_primary_700_color",
+      "dark_primary_800_color",
+      "dark_primary_900_color",
+      "dark_primary_color",
+      "dark_text_color"
     ],
-    "scannedAt": "2026-11-03T11:53:47.983Z"
+    "scannedAt": "2026-11-05T06:30:05.414Z"
   }
 }

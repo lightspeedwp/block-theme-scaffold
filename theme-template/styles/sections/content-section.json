@@ -24,7 +24,7 @@
 		"border": {
 			"radius": "var(--wp--preset--border-radius--200)"
 		},
-		"shadow": "var(--wp--preset--shadow--100)",
-		"css": "& { transition: box-shadow 0.3s ease; }\n&:hover { box-shadow: var(--wp--preset--shadow--200); }"
+		"shadow": "var(--wp--preset--shadow--x-small)",
+		"css": "& { transition: box-shadow 0.3s ease; }\n&:hover { box-shadow: var(--wp--preset--shadow--small); }"
 	}
 }

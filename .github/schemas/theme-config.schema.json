@@ -254,32 +254,6 @@
 						}
 					}
 				},
-				"dark_mode_colors": {
-					"type": "object",
-					"description": "Dark mode color palette (optional, for dark style variation)",
-					"properties": {
-						"dark_background_color": {
-							"type": "string",
-							"pattern": "^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{8})$",
-							"default": "#1a1a1a"
-						},
-						"dark_text_color": {
-							"type": "string",
-							"pattern": "^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{8})$",
-							"default": "#ffffff"
-						},
-						"dark_primary_color": {
-							"type": "string",
-							"pattern": "^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{8})$",
-							"default": "#4a9eff"
-						},
-						"dark_accent_color": {
-							"type": "string",
-							"pattern": "^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{8})$",
-							"default": "#ff8c5a"
-						}
-					}
-				},
 				"typography": {
 					"type": "object",
 					"description": "Font families and typography settings",

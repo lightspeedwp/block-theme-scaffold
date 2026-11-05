@@ -797,7 +797,7 @@ async function runScript() {
 	};
 
 	// Placeholders derived from the values above, or from nested config keys
-	// (urls.*, emails.*, design_system.dark_mode_colors.*), which flattenConfig()
+	// (urls.*, emails.*), which flattenConfig()
 	// prefixes. Every {{token}} in theme-template/ must have a value here.
 	const themeName = placeholders[ '{{theme_name}}' ];
 	const repoUrl = placeholders[ '{{theme_repo_url}}' ];
@@ -805,8 +805,6 @@ async function runScript() {
 		.replace( /^https?:\/\/(www\.)?/, '' )
 		.split( '/' )[ 0 ];
 	const today = new Date().toISOString().slice( 0, 10 );
-	const dark = ( key, fallback ) =>
-		configData[ `design_system_dark_mode_colors_${ key }` ] || fallback;
 	placeholders[ '{{docs_url}}' ] =
 		placeholders[ '{{docs_url}}' ] || `${ repoUrl }/wiki`;
 	placeholders[ '{{changelog_url}}' ] =
@@ -861,69 +859,7 @@ async function runScript() {
 		'{{heading_style_serif_title}}': 'Serif',
 		'{{hero_section_style_title}}': 'Hero section',
 		'{{content_section_style_title}}': 'Content section',
-		'{{dark_background_color}}': dark( 'dark_background_color', '#0f172a' ),
-		'{{dark_text_color}}': dark( 'dark_text_color', '#f8fafc' ),
-		'{{dark_primary_color}}': dark( 'dark_primary_color', '#38bdf8' ),
-		'{{dark_cta_color}}': dark( 'dark_accent_color', '#f97316' ),
 	} );
-	// Dark style ramps, 100 lightest to 900 darkest (same direction as the
-	// base palette). Step 500 of primary and cta comes from dark_primary_color
-	// and dark_cta_color, so those steps are skipped here.
-	const darkScales = {
-		neutral: [
-			'#f1f5f9',
-			'#e2e8f0',
-			'#cbd5e1',
-			'#94a3b8',
-			'#64748b',
-			'#475569',
-			'#334155',
-			'#1e293b',
-			'#0f172a',
-		],
-		primary: [
-			'#f0f9ff',
-			'#e0f2fe',
-			'#bae6fd',
-			'#7dd3fc',
-			null,
-			'#0ea5e9',
-			'#0284c7',
-			'#0369a1',
-			'#075985',
-		],
-		brand: [
-			'#fef3c7',
-			'#fde68a',
-			'#fcd34d',
-			'#fbbf24',
-			'#f59e0b',
-			'#d97706',
-			'#b45309',
-			'#92400e',
-			'#78350f',
-		],
-		accent: [
-			'#ffedd5',
-			'#fed7aa',
-			'#fdba74',
-			'#fb923c',
-			null,
-			'#ea580c',
-			'#c2410c',
-			'#9a3412',
-			'#7c2d12',
-		],
-	};
-	for ( const [ scale, colors ] of Object.entries( darkScales ) ) {
-		colors.forEach( ( color, index ) => {
-			if ( ! color ) {
-				return;
-			}
-			const key = `dark_${ scale }_${ ( index + 1 ) * 100 }_color`;
-			placeholders[ `{{${ key }}}` ] = dark( key, color );
-		} );
-	}
 	if ( argMap.author && placeholders[ '{{author}}' ] === 'Author Name' ) {
 		throw new Error( 'Invalid author name provided' );
 	}
