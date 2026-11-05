@@ -1,9 +1,9 @@
 {
   "summary": {
-    "totalFiles": 547,
-    "filesWithVariables": 125,
+    "totalFiles": 546,
+    "filesWithVariables": 123,
     "uniqueVariables": 164,
-    "totalOccurrences": 1407
+    "totalOccurrences": 1401
   },
   "variables": {
     "ThemeSlug": {
@@ -247,7 +247,7 @@
       "usage": [
         {
           "file": "CHANGELOG.md",
-          "line": 110
+          "line": 111
         },
         {
           "file": "scripts/generate-theme.js",
@@ -1303,11 +1303,11 @@
       "usage": [
         {
           "file": "CHANGELOG.md",
-          "line": 111
+          "line": 112
         },
         {
           "file": "CHANGELOG.md",
-          "line": 130
+          "line": 131
         },
         {
           "file": "scripts/generate-theme.js",
@@ -1343,7 +1343,7 @@
       "usage": [
         {
           "file": "CHANGELOG.md",
-          "line": 130
+          "line": 131
         },
         {
           "file": "docs/GENERATE_THEME.md",
@@ -2675,7 +2675,6 @@
         ".github/agents/generate-theme.agent.md",
         ".github/custom-instructions.md",
         "docs/GENERATE_THEME.md",
-        "package-lock.json",
         "scripts/generate-theme.js",
         "scripts/utils/placeholders.js",
         "theme-template/.npmpackagejsonlintrc.json",
@@ -2687,12 +2686,8 @@
         "theme-template/package.json",
         "theme-template/style.css"
       ],
-      "count": 23,
+      "count": 22,
       "usage": [
-        {
-          "file": "package-lock.json",
-          "line": 10
-        },
         {
           "file": ".github/custom-instructions.md",
           "line": 234
@@ -2875,7 +2870,7 @@
       "usage": [
         {
           "file": "CHANGELOG.md",
-          "line": 109
+          "line": 110
         },
         {
           "file": "scripts/generate-theme.js",
@@ -2910,7 +2905,7 @@
       "usage": [
         {
           "file": "CHANGELOG.md",
-          "line": 108
+          "line": 109
         },
         {
           "file": "scripts/generate-theme.js",
@@ -3157,11 +3152,11 @@
       "usage": [
         {
           "file": "CHANGELOG.md",
-          "line": 139
+          "line": 140
         },
         {
           "file": "CHANGELOG.md",
-          "line": 214
+          "line": 215
         },
         {
           "file": "README.md",
@@ -3436,7 +3431,7 @@
       "usage": [
         {
           "file": "CHANGELOG.md",
-          "line": 68
+          "line": 69
         },
         {
           "file": ".github/agents/template.agent.md",
@@ -4529,7 +4524,7 @@
       "usage": [
         {
           "file": "CHANGELOG.md",
-          "line": 156
+          "line": 157
         },
         {
           "file": "README.md",
@@ -5257,7 +5252,6 @@
         ".github/prompts/generate-theme.prompt.md",
         ".github/prompts/release.prompt.md",
         ".github/reports/SETUP-SUMMARY.md",
-        ".github/workflows/ci.yml",
         ".github/workflows/i18n.yml",
         ".github/workflows/release.yml",
         "CHANGELOG.md",
@@ -5324,35 +5318,27 @@
         "theme-template/tests/php/ThemeSetupTest.php",
         "theme-template/tests/php/bootstrap.php"
       ],
-      "count": 458,
+      "count": 453,
       "usage": [
         {
           "file": "CHANGELOG.md",
-          "line": 58
+          "line": 59
         },
         {
           "file": "CHANGELOG.md",
-          "line": 60
+          "line": 61
         },
         {
           "file": "CHANGELOG.md",
-          "line": 71
+          "line": 72
         },
         {
           "file": "CHANGELOG.md",
-          "line": 71
+          "line": 72
         },
         {
           "file": "CHANGELOG.md",
-          "line": 75
-        },
-        {
-          "file": "CHANGELOG.md",
-          "line": 82
-        },
-        {
-          "file": "CHANGELOG.md",
-          "line": 83
+          "line": 76
         },
         {
           "file": "CHANGELOG.md",
@@ -5376,15 +5362,23 @@
         },
         {
           "file": "CHANGELOG.md",
-          "line": 85
+          "line": 86
         },
         {
           "file": "CHANGELOG.md",
-          "line": 149
+          "line": 86
         },
         {
           "file": "CHANGELOG.md",
-          "line": 230
+          "line": 86
+        },
+        {
+          "file": "CHANGELOG.md",
+          "line": 150
+        },
+        {
+          "file": "CHANGELOG.md",
+          "line": 231
         },
         {
           "file": "README.md",
@@ -6209,26 +6203,6 @@
         {
           "file": ".github/reports/SETUP-SUMMARY.md",
           "line": 120
-        },
-        {
-          "file": ".github/workflows/ci.yml",
-          "line": 118
-        },
-        {
-          "file": ".github/workflows/ci.yml",
-          "line": 120
-        },
-        {
-          "file": ".github/workflows/ci.yml",
-          "line": 120
-        },
-        {
-          "file": ".github/workflows/ci.yml",
-          "line": 128
-        },
-        {
-          "file": ".github/workflows/ci.yml",
-          "line": 129
         },
         {
           "file": ".github/workflows/i18n.yml",
@@ -7984,6 +7958,6 @@
   "meta": {
     "undocumented": [],
     "unused": [],
-    "scannedAt": "2026-11-05T09:20:04.212Z"
+    "scannedAt": "2026-11-05T12:50:59.988Z"
   }
 }

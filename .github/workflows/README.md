@@ -15,9 +15,7 @@ This directory contains GitHub Actions workflow definitions for CI/CD automation
 
 | Workflow | Description |
 |----------|-------------|
-| **agent-workflow.yml** | AI agent automation workflow for GitHub Copilot |
 | **block-theme-build-and-e2e.yml** | Build and end-to-end testing workflow |
-| **ci-cd.yml** | Continuous integration and deployment workflow |
 | **code-quality.yml** | Code coverage, bundle analysis, and quality metrics |
 | **deploy-wporg.yml** | WordPress.org theme directory deployment |
 | **release.yml** | Automated release management and changelog generation |
@@ -35,15 +33,6 @@ These workflows automate:
 - WordPress.org theme directory deployment
 
 ## Workflow Details
-
-### ci-cd.yml
-
-Main CI/CD pipeline running on every push and PR:
-
-- PHP/JS linting and formatting
-- Unit tests (PHPUnit, Jest)
-- E2E tests (Playwright)
-- Theme validation
 
 ### code-quality.yml
 
@@ -73,10 +62,10 @@ Automated release management:
 
 | Trigger | Workflows |
 |---------|-----------|
-| Push to main/develop | ci-cd.yml, code-quality.yml |
-| Pull request | ci-cd.yml, code-quality.yml |
+| Push to main/develop | code-quality.yml |
+| Pull request | code-quality.yml |
 | Release published | deploy-wporg.yml |
-| Manual dispatch | release.yml, agent-workflow.yml |
+| Manual dispatch | release.yml |
 
 ## Configuration
 
