@@ -60,9 +60,11 @@ jobs:
             exit 1
           fi
 
+      # npm ci fails when the template's package-lock.json no longer
+      # matches its package.json, as it would in a generated theme's CI.
       - name: Install the theme's npm dependencies
         working-directory: ${{ env.THEME_DIR }}
-        run: npm install --no-audit --no-fund
+        run: npm ci --no-audit --no-fund
 
       - name: Lint, unit test and build
         if: matrix.checks == 'static'

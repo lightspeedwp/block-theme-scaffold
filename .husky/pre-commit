@@ -10,8 +10,7 @@ npm run lint --silent || {
 }
 
 echo "Formatting staged files..."
-# --config: only the root config. theme-template/package.json has its own
-# lint-staged block, for generated themes; run here it fails on {{theme_slug}}.
+# --config: only the root config, never one under theme-template/.
 npx lint-staged --config package.json || exit 1
 
 staged=$(git diff --cached --name-only --diff-filter=ACM -- 'scripts/*.js' 'scripts/**/*.js')

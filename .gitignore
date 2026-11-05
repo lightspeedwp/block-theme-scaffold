@@ -398,3 +398,6 @@ scripts/dry-run/.dry-run-backup/__tests__/mustache-vars.test.js
 
 # Jest localStorage shim output
 .test-temp/
+
+# Claude Code: personal settings stay local
+.claude/settings.local.json

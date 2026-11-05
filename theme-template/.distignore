@@ -45,7 +45,7 @@ phpunit.xml
 .wp-env.json
 .lighthouserc.js
 .size-limit.json
-.husky/
+lefthook.yml
 
 # Build scripts, generator config and release output
 bin/

@@ -1,0 +1,19 @@
+{
+	"source": {
+		"repository": "https://github.com/WordPress/agent-skills.git",
+		"commit": "eff3785fc28c4380d172094518c66a6a997c95d4",
+		"path": "skills"
+	},
+	"skills": [
+		"wordpress-router",
+		"wp-project-triage",
+		"wp-block-themes",
+		"wp-block-development",
+		"wp-patterns",
+		"wp-interactivity-api",
+		"wp-wpcli-and-ops",
+		"wp-performance",
+		"wpds"
+	],
+	"targets": [ ".", "theme-template" ]
+}
