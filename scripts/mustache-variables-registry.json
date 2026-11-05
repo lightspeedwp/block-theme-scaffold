@@ -1,9 +1,9 @@
 {
   "summary": {
-    "totalFiles": 609,
-    "filesWithVariables": 178,
-    "uniqueVariables": 177,
-    "totalOccurrences": 1697
+    "totalFiles": 547,
+    "filesWithVariables": 125,
+    "uniqueVariables": 164,
+    "totalOccurrences": 1407
   },
   "variables": {
     "ThemeSlug": {
@@ -11,17 +11,12 @@
       "category": "other",
       "type": "slug",
       "files": [
-        "docs/GENERATE_THEME.md",
-        "output-theme.previous/docs/GENERATE_THEME.md"
+        "docs/GENERATE_THEME.md"
       ],
-      "count": 2,
+      "count": 1,
       "usage": [
         {
           "file": "docs/GENERATE_THEME.md",
-          "line": 816
-        },
-        {
-          "file": "output-theme.previous/docs/GENERATE_THEME.md",
           "line": 816
         }
       ]
@@ -31,10 +26,9 @@
       "category": "other",
       "type": "string",
       "files": [
-        ".github/agents/task-researcher.agent.md",
-        "output-theme.previous/.github/agents/task-researcher.agent.md"
+        ".github/agents/task-researcher.agent.md"
       ],
-      "count": 6,
+      "count": 3,
       "usage": [
         {
           "file": ".github/agents/task-researcher.agent.md",
@@ -46,18 +40,6 @@
         },
         {
           "file": ".github/agents/task-researcher.agent.md",
-          "line": 104
-        },
-        {
-          "file": "output-theme.previous/.github/agents/task-researcher.agent.md",
-          "line": 73
-        },
-        {
-          "file": "output-theme.previous/.github/agents/task-researcher.agent.md",
-          "line": 100
-        },
-        {
-          "file": "output-theme.previous/.github/agents/task-researcher.agent.md",
           "line": 104
         }
       ]
@@ -71,9 +53,10 @@
         "docs/GENERATE_THEME.md",
         "scripts/generate-theme.js",
         "scripts/utils/placeholders.js",
+        "theme-template/styles/dark.json",
         "theme-template/theme.json"
       ],
-      "count": 5,
+      "count": 8,
       "usage": [
         {
           "file": "docs/GENERATE_THEME.md",
@@ -81,11 +64,15 @@
         },
         {
           "file": "scripts/generate-theme.js",
-          "line": 665
+          "line": 751
+        },
+        {
+          "file": "scripts/generate-theme.js",
+          "line": 809
         },
         {
           "file": "theme-template/theme.json",
-          "line": 71
+          "line": 227
         },
         {
           "file": ".github/instructions/generate-theme.instructions.md",
@@ -93,7 +80,15 @@
         },
         {
           "file": "scripts/utils/placeholders.js",
-          "line": 56
+          "line": 60
+        },
+        {
+          "file": "scripts/utils/placeholders.js",
+          "line": 114
+        },
+        {
+          "file": "theme-template/styles/dark.json",
+          "line": 176
         }
       ]
     },
@@ -102,17 +97,12 @@
       "category": "other",
       "type": "string",
       "files": [
-        ".github/agents/template.agent.md",
-        "output-theme.previous/.github/agents/template.agent.md"
+        ".github/agents/template.agent.md"
       ],
-      "count": 2,
+      "count": 1,
       "usage": [
         {
           "file": ".github/agents/template.agent.md",
-          "line": 67
-        },
-        {
-          "file": "output-theme.previous/.github/agents/template.agent.md",
           "line": 67
         }
       ]
@@ -123,11 +113,9 @@
       "type": "slug",
       "files": [
         ".github/agents/template.agent.md",
-        ".github/instructions/agent-spec.instructions.md",
-        "output-theme.previous/.github/agents/template.agent.md",
-        "output-theme.previous/.github/instructions/agent-spec.instructions.md"
+        ".github/instructions/agent-spec.instructions.md"
       ],
-      "count": 22,
+      "count": 11,
       "usage": [
         {
           "file": ".github/agents/template.agent.md",
@@ -171,50 +159,6 @@
         },
         {
           "file": ".github/instructions/agent-spec.instructions.md",
-          "line": 75
-        },
-        {
-          "file": "output-theme.previous/.github/agents/template.agent.md",
-          "line": 21
-        },
-        {
-          "file": "output-theme.previous/.github/agents/template.agent.md",
-          "line": 37
-        },
-        {
-          "file": "output-theme.previous/.github/agents/template.agent.md",
-          "line": 47
-        },
-        {
-          "file": "output-theme.previous/.github/agents/template.agent.md",
-          "line": 58
-        },
-        {
-          "file": "output-theme.previous/.github/agents/template.agent.md",
-          "line": 59
-        },
-        {
-          "file": "output-theme.previous/.github/agents/template.agent.md",
-          "line": 60
-        },
-        {
-          "file": "output-theme.previous/.github/agents/template.agent.md",
-          "line": 61
-        },
-        {
-          "file": "output-theme.previous/.github/instructions/agent-spec.instructions.md",
-          "line": 24
-        },
-        {
-          "file": "output-theme.previous/.github/instructions/agent-spec.instructions.md",
-          "line": 37
-        },
-        {
-          "file": "output-theme.previous/.github/instructions/agent-spec.instructions.md",
-          "line": 67
-        },
-        {
-          "file": "output-theme.previous/.github/instructions/agent-spec.instructions.md",
           "line": 75
         }
       ]
@@ -224,17 +168,12 @@
       "category": "other",
       "type": "string",
       "files": [
-        ".github/agents/template.agent.md",
-        "output-theme.previous/.github/agents/template.agent.md"
+        ".github/agents/template.agent.md"
       ],
-      "count": 2,
+      "count": 1,
       "usage": [
         {
           "file": ".github/agents/template.agent.md",
-          "line": 31
-        },
-        {
-          "file": "output-theme.previous/.github/agents/template.agent.md",
           "line": 31
         }
       ]
@@ -244,17 +183,12 @@
       "category": "content_strings",
       "type": "string",
       "files": [
-        ".github/agents/template.agent.md",
-        "output-theme.previous/.github/agents/template.agent.md"
+        ".github/agents/template.agent.md"
       ],
-      "count": 2,
+      "count": 1,
       "usage": [
         {
           "file": ".github/agents/template.agent.md",
-          "line": 30
-        },
-        {
-          "file": "output-theme.previous/.github/agents/template.agent.md",
           "line": 30
         }
       ]
@@ -265,11 +199,9 @@
       "type": "version",
       "files": [
         ".github/agents/template.agent.md",
-        ".github/instructions/agent-spec.instructions.md",
-        "output-theme.previous/.github/agents/template.agent.md",
-        "output-theme.previous/.github/instructions/agent-spec.instructions.md"
+        ".github/instructions/agent-spec.instructions.md"
       ],
-      "count": 4,
+      "count": 2,
       "usage": [
         {
           "file": ".github/agents/template.agent.md",
@@ -277,14 +209,6 @@
         },
         {
           "file": ".github/instructions/agent-spec.instructions.md",
-          "line": 24
-        },
-        {
-          "file": "output-theme.previous/.github/agents/template.agent.md",
-          "line": 32
-        },
-        {
-          "file": "output-theme.previous/.github/instructions/agent-spec.instructions.md",
           "line": 24
         }
       ]
@@ -294,10 +218,9 @@
       "category": "other",
       "type": "string",
       "files": [
-        ".github/agents/template.agent.md",
-        "output-theme.previous/.github/agents/template.agent.md"
+        ".github/agents/template.agent.md"
       ],
-      "count": 4,
+      "count": 2,
       "usage": [
         {
           "file": ".github/agents/template.agent.md",
@@ -305,14 +228,6 @@
         },
         {
           "file": ".github/agents/template.agent.md",
-          "line": 62
-        },
-        {
-          "file": "output-theme.previous/.github/agents/template.agent.md",
-          "line": 48
-        },
-        {
-          "file": "output-theme.previous/.github/agents/template.agent.md",
           "line": 62
         }
       ]
@@ -332,11 +247,11 @@
       "usage": [
         {
           "file": "CHANGELOG.md",
-          "line": 89
+          "line": 110
         },
         {
           "file": "scripts/generate-theme.js",
-          "line": 691
+          "line": 802
         },
         {
           "file": "theme-template/functions.php",
@@ -344,7 +259,7 @@
         },
         {
           "file": "scripts/utils/placeholders.js",
-          "line": 98
+          "line": 103
         },
         {
           "file": "theme-template/tests/php/ThemeSetupTest.php",
@@ -398,35 +313,35 @@
         },
         {
           "file": "scripts/generate-theme.js",
-          "line": 378
+          "line": 393
         },
         {
           "file": "scripts/generate-theme.js",
-          "line": 401
+          "line": 419
         },
         {
           "file": "scripts/generate-theme.js",
-          "line": 409
+          "line": 427
         },
         {
           "file": "scripts/generate-theme.js",
-          "line": 440
+          "line": 458
         },
         {
           "file": "scripts/generate-theme.js",
-          "line": 583
+          "line": 626
         },
         {
           "file": "scripts/generate-theme.js",
-          "line": 645
+          "line": 696
         },
         {
           "file": "scripts/generate-theme.js",
-          "line": 760
+          "line": 880
         },
         {
           "file": "theme-template/README.md",
-          "line": 164
+          "line": 166
         },
         {
           "file": "theme-template/README.txt",
@@ -506,19 +421,19 @@
         },
         {
           "file": ".github/schemas/theme-config.schema.json",
-          "line": 530
+          "line": 504
         },
         {
           "file": ".github/schemas/theme-config.schema.json",
-          "line": 531
+          "line": 505
         },
         {
           "file": "scripts/fixtures/theme-config.mock.json",
-          "line": 86
+          "line": 80
         },
         {
           "file": "scripts/utils/placeholders.js",
-          "line": 21
+          "line": 22
         },
         {
           "file": ".github/projects/plans/2025-12-12-generator-logging-schema-cleanup-design.md",
@@ -556,19 +471,19 @@
         },
         {
           "file": "scripts/generate-theme.js",
-          "line": 410
+          "line": 428
         },
         {
           "file": "scripts/generate-theme.js",
-          "line": 444
+          "line": 462
         },
         {
           "file": "scripts/generate-theme.js",
-          "line": 646
+          "line": 697
         },
         {
           "file": "theme-template/README.md",
-          "line": 165
+          "line": 167
         },
         {
           "file": "theme-template/README.txt",
@@ -604,7 +519,7 @@
         },
         {
           "file": "scripts/utils/placeholders.js",
-          "line": 22
+          "line": 23
         }
       ]
     },
@@ -615,14 +530,10 @@
       "files": [
         "docs/GENERATE_THEME.md",
         "docs/RELEASE_PROCESS.md",
-        "output-theme.previous/README.txt",
-        "output-theme.previous/docs/GENERATE_THEME.md",
-        "output-theme.previous/docs/RELEASE_PROCESS.md",
-        "output-theme/README.txt",
         "scripts/generate-theme.js",
         "theme-template/README.txt"
       ],
-      "count": 8,
+      "count": 4,
       "usage": [
         {
           "file": "docs/GENERATE_THEME.md",
@@ -633,28 +544,12 @@
           "line": 162
         },
         {
-          "file": "output-theme/README.txt",
-          "line": 3
-        },
-        {
-          "file": "output-theme.previous/README.txt",
-          "line": 3
-        },
-        {
           "file": "scripts/generate-theme.js",
-          "line": 713
+          "line": 842
         },
         {
           "file": "theme-template/README.txt",
           "line": 3
-        },
-        {
-          "file": "output-theme.previous/docs/GENERATE_THEME.md",
-          "line": 106
-        },
-        {
-          "file": "output-theme.previous/docs/RELEASE_PROCESS.md",
-          "line": 162
         }
       ]
     },
@@ -670,9 +565,10 @@
         "scripts/generate-theme.js",
         "scripts/utils/placeholders.js",
         "theme-template/README.md",
+        "theme-template/styles/dark.json",
         "theme-template/theme.json"
       ],
-      "count": 9,
+      "count": 10,
       "usage": [
         {
           "file": ".github/custom-instructions.md",
@@ -684,15 +580,15 @@
         },
         {
           "file": "scripts/generate-theme.js",
-          "line": 663
+          "line": 747
         },
         {
           "file": "theme-template/README.md",
-          "line": 168
+          "line": 170
         },
         {
           "file": "theme-template/theme.json",
-          "line": 61
+          "line": 62
         },
         {
           "file": ".github/agents/generate-theme.agent.md",
@@ -708,27 +604,11 @@
         },
         {
           "file": "scripts/utils/placeholders.js",
-          "line": 54
-        }
-      ]
-    },
-    "body_font": {
-      "name": "body_font",
-      "category": "design_typography",
-      "type": "font",
-      "files": [
-        "output-theme.previous/README.md",
-        "output-theme/README.md"
-      ],
-      "count": 2,
-      "usage": [
-        {
-          "file": "output-theme/README.md",
-          "line": 170
+          "line": 58
         },
         {
-          "file": "output-theme.previous/README.md",
-          "line": 170
+          "file": "theme-template/styles/dark.json",
+          "line": 11
         }
       ]
     },
@@ -752,11 +632,11 @@
         },
         {
           "file": "scripts/generate-theme.js",
-          "line": 669
+          "line": 761
         },
         {
           "file": "theme-template/theme.json",
-          "line": 110
+          "line": 315
         },
         {
           "file": ".github/instructions/generate-theme.instructions.md",
@@ -768,7 +648,7 @@
         },
         {
           "file": "scripts/utils/placeholders.js",
-          "line": 62
+          "line": 67
         }
       ]
     },
@@ -791,11 +671,11 @@
         },
         {
           "file": "scripts/generate-theme.js",
-          "line": 670
+          "line": 764
         },
         {
           "file": "theme-template/README.md",
-          "line": 170
+          "line": 172
         },
         {
           "file": ".github/instructions/generate-theme.instructions.md",
@@ -803,7 +683,7 @@
         },
         {
           "file": "scripts/utils/placeholders.js",
-          "line": 63
+          "line": 68
         }
       ]
     },
@@ -827,11 +707,11 @@
         },
         {
           "file": "scripts/generate-theme.js",
-          "line": 672
+          "line": 768
         },
         {
           "file": "theme-template/theme.json",
-          "line": 361
+          "line": 689
         },
         {
           "file": ".github/instructions/generate-theme.instructions.md",
@@ -843,7 +723,7 @@
         },
         {
           "file": "scripts/utils/placeholders.js",
-          "line": 70
+          "line": 75
         }
       ]
     },
@@ -852,18 +732,173 @@
       "category": "content_strings",
       "type": "string",
       "files": [
-        ".github/agents/template.agent.md",
-        "output-theme.previous/.github/agents/template.agent.md"
+        ".github/agents/template.agent.md"
       ],
-      "count": 2,
+      "count": 1,
       "usage": [
         {
           "file": ".github/agents/template.agent.md",
           "line": 68
+        }
+      ]
+    },
+    "brand_100_color": {
+      "name": "brand_100_color",
+      "category": "design_colors",
+      "type": "color",
+      "files": [
+        "theme-template/styles/dark.json",
+        "theme-template/theme.json"
+      ],
+      "count": 2,
+      "usage": [
+        {
+          "file": "theme-template/theme.json",
+          "line": 162
         },
         {
-          "file": "output-theme.previous/.github/agents/template.agent.md",
-          "line": 68
+          "file": "theme-template/styles/dark.json",
+          "line": 111
+        }
+      ]
+    },
+    "brand_200_color": {
+      "name": "brand_200_color",
+      "category": "design_colors",
+      "type": "color",
+      "files": [
+        "theme-template/styles/dark.json",
+        "theme-template/theme.json"
+      ],
+      "count": 2,
+      "usage": [
+        {
+          "file": "theme-template/theme.json",
+          "line": 167
+        },
+        {
+          "file": "theme-template/styles/dark.json",
+          "line": 116
+        }
+      ]
+    },
+    "brand_300_color": {
+      "name": "brand_300_color",
+      "category": "design_colors",
+      "type": "color",
+      "files": [
+        "theme-template/styles/dark.json",
+        "theme-template/theme.json"
+      ],
+      "count": 2,
+      "usage": [
+        {
+          "file": "theme-template/theme.json",
+          "line": 172
+        },
+        {
+          "file": "theme-template/styles/dark.json",
+          "line": 121
+        }
+      ]
+    },
+    "brand_400_color": {
+      "name": "brand_400_color",
+      "category": "design_colors",
+      "type": "color",
+      "files": [
+        "theme-template/styles/dark.json",
+        "theme-template/theme.json"
+      ],
+      "count": 2,
+      "usage": [
+        {
+          "file": "theme-template/theme.json",
+          "line": 177
+        },
+        {
+          "file": "theme-template/styles/dark.json",
+          "line": 126
+        }
+      ]
+    },
+    "brand_600_color": {
+      "name": "brand_600_color",
+      "category": "design_colors",
+      "type": "color",
+      "files": [
+        "theme-template/styles/dark.json",
+        "theme-template/theme.json"
+      ],
+      "count": 2,
+      "usage": [
+        {
+          "file": "theme-template/theme.json",
+          "line": 187
+        },
+        {
+          "file": "theme-template/styles/dark.json",
+          "line": 136
+        }
+      ]
+    },
+    "brand_700_color": {
+      "name": "brand_700_color",
+      "category": "design_colors",
+      "type": "color",
+      "files": [
+        "theme-template/styles/dark.json",
+        "theme-template/theme.json"
+      ],
+      "count": 2,
+      "usage": [
+        {
+          "file": "theme-template/theme.json",
+          "line": 192
+        },
+        {
+          "file": "theme-template/styles/dark.json",
+          "line": 141
+        }
+      ]
+    },
+    "brand_800_color": {
+      "name": "brand_800_color",
+      "category": "design_colors",
+      "type": "color",
+      "files": [
+        "theme-template/styles/dark.json",
+        "theme-template/theme.json"
+      ],
+      "count": 2,
+      "usage": [
+        {
+          "file": "theme-template/theme.json",
+          "line": 197
+        },
+        {
+          "file": "theme-template/styles/dark.json",
+          "line": 146
+        }
+      ]
+    },
+    "brand_900_color": {
+      "name": "brand_900_color",
+      "category": "design_colors",
+      "type": "color",
+      "files": [
+        "theme-template/styles/dark.json",
+        "theme-template/theme.json"
+      ],
+      "count": 2,
+      "usage": [
+        {
+          "file": "theme-template/theme.json",
+          "line": 202
+        },
+        {
+          "file": "theme-template/styles/dark.json",
+          "line": 151
         }
       ]
     },
@@ -874,30 +909,18 @@
       "files": [
         ".github/instructions/generate-theme.instructions.md",
         "docs/GENERATE_THEME.md",
-        "output-theme.previous/.github/instructions/generate-theme.instructions.md",
-        "output-theme.previous/SUPPORT.md",
-        "output-theme.previous/docs/GENERATE_THEME.md",
-        "output-theme/SUPPORT.md",
         "scripts/generate-theme.js",
         "theme-template/SUPPORT.md"
       ],
-      "count": 8,
+      "count": 4,
       "usage": [
         {
           "file": "docs/GENERATE_THEME.md",
           "line": 109
         },
         {
-          "file": "output-theme/SUPPORT.md",
-          "line": 163
-        },
-        {
-          "file": "output-theme.previous/SUPPORT.md",
-          "line": 163
-        },
-        {
           "file": "scripts/generate-theme.js",
-          "line": 717
+          "line": 849
         },
         {
           "file": "theme-template/SUPPORT.md",
@@ -905,14 +928,6 @@
         },
         {
           "file": ".github/instructions/generate-theme.instructions.md",
-          "line": 323
-        },
-        {
-          "file": "output-theme.previous/docs/GENERATE_THEME.md",
-          "line": 109
-        },
-        {
-          "file": "output-theme.previous/.github/instructions/generate-theme.instructions.md",
           "line": 323
         }
       ]
@@ -935,15 +950,15 @@
         },
         {
           "file": "scripts/generate-theme.js",
-          "line": 679
+          "line": 783
         },
         {
           "file": "theme-template/theme.json",
-          "line": 458
+          "line": 783
         },
         {
           "file": "scripts/utils/placeholders.js",
-          "line": 72
+          "line": 77
         }
       ]
     },
@@ -966,11 +981,11 @@
         },
         {
           "file": "scripts/generate-theme.js",
-          "line": 674
+          "line": 772
         },
         {
           "file": "theme-template/theme.json",
-          "line": 455
+          "line": 780
         },
         {
           "file": ".github/instructions/generate-theme.instructions.md",
@@ -978,7 +993,7 @@
         },
         {
           "file": "scripts/utils/placeholders.js",
-          "line": 71
+          "line": 76
         }
       ]
     },
@@ -987,24 +1002,14 @@
       "category": "content_strings",
       "type": "string",
       "files": [
-        "output-theme.previous/styles/blocks/button-primary.json",
-        "output-theme/styles/blocks/button-primary.json",
         "scripts/generate-theme.js",
         "theme-template/styles/blocks/button-primary.json"
       ],
-      "count": 4,
+      "count": 2,
       "usage": [
         {
           "file": "scripts/generate-theme.js",
-          "line": 737
-        },
-        {
-          "file": "output-theme/styles/blocks/button-primary.json",
-          "line": 4
-        },
-        {
-          "file": "output-theme.previous/styles/blocks/button-primary.json",
-          "line": 4
+          "line": 874
         },
         {
           "file": "theme-template/styles/blocks/button-primary.json",
@@ -1017,24 +1022,14 @@
       "category": "content_strings",
       "type": "string",
       "files": [
-        "output-theme.previous/styles/blocks/button-rounded.json",
-        "output-theme/styles/blocks/button-rounded.json",
         "scripts/generate-theme.js",
         "theme-template/styles/blocks/button-rounded.json"
       ],
-      "count": 4,
+      "count": 2,
       "usage": [
         {
           "file": "scripts/generate-theme.js",
-          "line": 738
-        },
-        {
-          "file": "output-theme/styles/blocks/button-rounded.json",
-          "line": 4
-        },
-        {
-          "file": "output-theme.previous/styles/blocks/button-rounded.json",
-          "line": 4
+          "line": 875
         },
         {
           "file": "theme-template/styles/blocks/button-rounded.json",
@@ -1047,17 +1042,12 @@
       "category": "other",
       "type": "string",
       "files": [
-        ".github/agents/template.agent.md",
-        "output-theme.previous/.github/agents/template.agent.md"
+        ".github/agents/template.agent.md"
       ],
-      "count": 2,
+      "count": 1,
       "usage": [
         {
           "file": ".github/agents/template.agent.md",
-          "line": 74
-        },
-        {
-          "file": "output-theme.previous/.github/agents/template.agent.md",
           "line": 74
         }
       ]
@@ -1073,7 +1063,7 @@
       "usage": [
         {
           "file": "scripts/utils/placeholders.js",
-          "line": 46
+          "line": 49
         }
       ]
     },
@@ -1095,23 +1085,23 @@
         },
         {
           "file": "scripts/generate-theme.js",
-          "line": 657
+          "line": 739
         },
         {
           "file": "scripts/generate-theme.js",
-          "line": 704
+          "line": 827
         },
         {
           "file": "scripts/generate-theme.js",
-          "line": 704
+          "line": 828
         },
         {
           "file": "theme-template/package.json",
-          "line": 105
+          "line": 85
         },
         {
           "file": "scripts/utils/placeholders.js",
-          "line": 42
+          "line": 45
         }
       ]
     },
@@ -1120,17 +1110,12 @@
       "category": "author_contact",
       "type": "string",
       "files": [
-        ".github/instructions/generate-theme.instructions.md",
-        "output-theme.previous/.github/instructions/generate-theme.instructions.md"
+        ".github/instructions/generate-theme.instructions.md"
       ],
-      "count": 2,
+      "count": 1,
       "usage": [
         {
           "file": ".github/instructions/generate-theme.instructions.md",
-          "line": 566
-        },
-        {
-          "file": "output-theme.previous/.github/instructions/generate-theme.instructions.md",
           "line": 566
         }
       ]
@@ -1140,17 +1125,12 @@
       "category": "author_contact",
       "type": "url",
       "files": [
-        ".github/instructions/generate-theme.instructions.md",
-        "output-theme.previous/.github/instructions/generate-theme.instructions.md"
+        ".github/instructions/generate-theme.instructions.md"
       ],
-      "count": 2,
+      "count": 1,
       "usage": [
         {
           "file": ".github/instructions/generate-theme.instructions.md",
-          "line": 567
-        },
-        {
-          "file": "output-theme.previous/.github/instructions/generate-theme.instructions.md",
           "line": 567
         }
       ]
@@ -1160,17 +1140,12 @@
       "category": "other",
       "type": "string",
       "files": [
-        ".github/instructions/generate-theme.instructions.md",
-        "output-theme.previous/.github/instructions/generate-theme.instructions.md"
+        ".github/instructions/generate-theme.instructions.md"
       ],
-      "count": 2,
+      "count": 1,
       "usage": [
         {
           "file": ".github/instructions/generate-theme.instructions.md",
-          "line": 565
-        },
-        {
-          "file": "output-theme.previous/.github/instructions/generate-theme.instructions.md",
           "line": 565
         }
       ]
@@ -1180,17 +1155,12 @@
       "category": "other",
       "type": "string",
       "files": [
-        ".github/instructions/generate-theme.instructions.md",
-        "output-theme.previous/.github/instructions/generate-theme.instructions.md"
+        ".github/instructions/generate-theme.instructions.md"
       ],
-      "count": 2,
+      "count": 1,
       "usage": [
         {
           "file": ".github/instructions/generate-theme.instructions.md",
-          "line": 564
-        },
-        {
-          "file": "output-theme.previous/.github/instructions/generate-theme.instructions.md",
           "line": 564
         }
       ]
@@ -1200,17 +1170,12 @@
       "category": "other",
       "type": "slug",
       "files": [
-        ".github/instructions/generate-theme.instructions.md",
-        "output-theme.previous/.github/instructions/generate-theme.instructions.md"
+        ".github/instructions/generate-theme.instructions.md"
       ],
-      "count": 2,
+      "count": 1,
       "usage": [
         {
           "file": ".github/instructions/generate-theme.instructions.md",
-          "line": 563
-        },
-        {
-          "file": "output-theme.previous/.github/instructions/generate-theme.instructions.md",
           "line": 563
         }
       ]
@@ -1220,17 +1185,12 @@
       "category": "versioning",
       "type": "version",
       "files": [
-        ".github/instructions/generate-theme.instructions.md",
-        "output-theme.previous/.github/instructions/generate-theme.instructions.md"
+        ".github/instructions/generate-theme.instructions.md"
       ],
-      "count": 2,
+      "count": 1,
       "usage": [
         {
           "file": ".github/instructions/generate-theme.instructions.md",
-          "line": 568
-        },
-        {
-          "file": "output-theme.previous/.github/instructions/generate-theme.instructions.md",
           "line": 568
         }
       ]
@@ -1240,17 +1200,12 @@
       "category": "design_colors",
       "type": "color",
       "files": [
-        "docs/GENERATE_THEME.md",
-        "output-theme.previous/docs/GENERATE_THEME.md"
+        "docs/GENERATE_THEME.md"
       ],
-      "count": 2,
+      "count": 1,
       "usage": [
         {
           "file": "docs/GENERATE_THEME.md",
-          "line": 817
-        },
-        {
-          "file": "output-theme.previous/docs/GENERATE_THEME.md",
           "line": 817
         }
       ]
@@ -1267,11 +1222,11 @@
       "usage": [
         {
           "file": "scripts/generate-theme.js",
-          "line": 659
+          "line": 741
         },
         {
           "file": "scripts/utils/placeholders.js",
-          "line": 40
+          "line": 43
         }
       ]
     },
@@ -1280,24 +1235,14 @@
       "category": "content_strings",
       "type": "string",
       "files": [
-        "output-theme.previous/styles/sections/content-section.json",
-        "output-theme/styles/sections/content-section.json",
         "scripts/generate-theme.js",
         "theme-template/styles/sections/content-section.json"
       ],
-      "count": 4,
+      "count": 2,
       "usage": [
         {
           "file": "scripts/generate-theme.js",
-          "line": 741
-        },
-        {
-          "file": "output-theme/styles/sections/content-section.json",
-          "line": 4
-        },
-        {
-          "file": "output-theme.previous/styles/sections/content-section.json",
-          "line": 4
+          "line": 878
         },
         {
           "file": "theme-template/styles/sections/content-section.json",
@@ -1313,15 +1258,9 @@
         ".github/instructions/generate-theme.instructions.md",
         ".github/prompts/generate-theme.prompt.md",
         ".github/reports/theme-generation-updates.md",
-        "docs/GENERATE_THEME.md",
-        "output-theme.previous/.github/instructions/generate-theme.instructions.md",
-        "output-theme.previous/.github/prompts/generate-theme.prompt.md",
-        "output-theme.previous/.github/reports/theme-generation-updates.md",
-        "output-theme.previous/docs/GENERATE_THEME.md",
-        "output-theme.previous/theme.json",
-        "output-theme/theme.json"
+        "docs/GENERATE_THEME.md"
       ],
-      "count": 14,
+      "count": 6,
       "usage": [
         {
           "file": "docs/GENERATE_THEME.md",
@@ -1330,14 +1269,6 @@
         {
           "file": "docs/GENERATE_THEME.md",
           "line": 301
-        },
-        {
-          "file": "output-theme/theme.json",
-          "line": 230
-        },
-        {
-          "file": "output-theme.previous/theme.json",
-          "line": 230
         },
         {
           "file": ".github/instructions/generate-theme.instructions.md",
@@ -1353,30 +1284,6 @@
         },
         {
           "file": ".github/reports/theme-generation-updates.md",
-          "line": 125
-        },
-        {
-          "file": "output-theme.previous/docs/GENERATE_THEME.md",
-          "line": 173
-        },
-        {
-          "file": "output-theme.previous/docs/GENERATE_THEME.md",
-          "line": 301
-        },
-        {
-          "file": "output-theme.previous/.github/instructions/generate-theme.instructions.md",
-          "line": 284
-        },
-        {
-          "file": "output-theme.previous/.github/instructions/generate-theme.instructions.md",
-          "line": 295
-        },
-        {
-          "file": "output-theme.previous/.github/prompts/generate-theme.prompt.md",
-          "line": 34
-        },
-        {
-          "file": "output-theme.previous/.github/reports/theme-generation-updates.md",
           "line": 125
         }
       ]
@@ -1396,15 +1303,15 @@
       "usage": [
         {
           "file": "CHANGELOG.md",
-          "line": 90
+          "line": 111
         },
         {
           "file": "CHANGELOG.md",
-          "line": 106
+          "line": 130
         },
         {
           "file": "scripts/generate-theme.js",
-          "line": 678
+          "line": 780
         },
         {
           "file": "theme-template/functions.php",
@@ -1412,7 +1319,7 @@
         },
         {
           "file": "scripts/utils/placeholders.js",
-          "line": 78
+          "line": 83
         },
         {
           "file": "theme-template/tests/php/ThemeSetupTest.php",
@@ -1436,7 +1343,7 @@
       "usage": [
         {
           "file": "CHANGELOG.md",
-          "line": 106
+          "line": 130
         },
         {
           "file": "docs/GENERATE_THEME.md",
@@ -1444,11 +1351,11 @@
         },
         {
           "file": "scripts/generate-theme.js",
-          "line": 676
+          "line": 776
         },
         {
           "file": "theme-template/theme.json",
-          "line": 260
+          "line": 475
         },
         {
           "file": ".github/instructions/generate-theme.instructions.md",
@@ -1460,7 +1367,7 @@
         },
         {
           "file": "scripts/utils/placeholders.js",
-          "line": 76
+          "line": 81
         }
       ]
     },
@@ -1470,37 +1377,182 @@
       "type": "date",
       "files": [
         "docs/GENERATE_THEME.md",
-        "output-theme.previous/docs/GENERATE_THEME.md",
-        "output-theme.previous/package.json",
-        "output-theme/package.json",
         "scripts/generate-theme.js",
         "theme-template/package.json"
       ],
-      "count": 6,
+      "count": 3,
       "usage": [
         {
           "file": "docs/GENERATE_THEME.md",
           "line": 120
         },
         {
-          "file": "output-theme/package.json",
-          "line": 135
-        },
-        {
-          "file": "output-theme.previous/package.json",
-          "line": 204
-        },
-        {
           "file": "scripts/generate-theme.js",
-          "line": 715
+          "line": 846
         },
         {
           "file": "theme-template/package.json",
-          "line": 108
+          "line": 88
+        }
+      ]
+    },
+    "cta_100_color": {
+      "name": "cta_100_color",
+      "category": "design_colors",
+      "type": "color",
+      "files": [
+        "theme-template/styles/dark.json",
+        "theme-template/theme.json"
+      ],
+      "count": 2,
+      "usage": [
+        {
+          "file": "theme-template/theme.json",
+          "line": 207
         },
         {
-          "file": "output-theme.previous/docs/GENERATE_THEME.md",
-          "line": 120
+          "file": "theme-template/styles/dark.json",
+          "line": 156
+        }
+      ]
+    },
+    "cta_200_color": {
+      "name": "cta_200_color",
+      "category": "design_colors",
+      "type": "color",
+      "files": [
+        "theme-template/styles/dark.json",
+        "theme-template/theme.json"
+      ],
+      "count": 2,
+      "usage": [
+        {
+          "file": "theme-template/theme.json",
+          "line": 212
+        },
+        {
+          "file": "theme-template/styles/dark.json",
+          "line": 161
+        }
+      ]
+    },
+    "cta_300_color": {
+      "name": "cta_300_color",
+      "category": "design_colors",
+      "type": "color",
+      "files": [
+        "theme-template/styles/dark.json",
+        "theme-template/theme.json"
+      ],
+      "count": 2,
+      "usage": [
+        {
+          "file": "theme-template/theme.json",
+          "line": 217
+        },
+        {
+          "file": "theme-template/styles/dark.json",
+          "line": 166
+        }
+      ]
+    },
+    "cta_400_color": {
+      "name": "cta_400_color",
+      "category": "design_colors",
+      "type": "color",
+      "files": [
+        "theme-template/styles/dark.json",
+        "theme-template/theme.json"
+      ],
+      "count": 2,
+      "usage": [
+        {
+          "file": "theme-template/theme.json",
+          "line": 222
+        },
+        {
+          "file": "theme-template/styles/dark.json",
+          "line": 171
+        }
+      ]
+    },
+    "cta_600_color": {
+      "name": "cta_600_color",
+      "category": "design_colors",
+      "type": "color",
+      "files": [
+        "theme-template/styles/dark.json",
+        "theme-template/theme.json"
+      ],
+      "count": 2,
+      "usage": [
+        {
+          "file": "theme-template/theme.json",
+          "line": 232
+        },
+        {
+          "file": "theme-template/styles/dark.json",
+          "line": 181
+        }
+      ]
+    },
+    "cta_700_color": {
+      "name": "cta_700_color",
+      "category": "design_colors",
+      "type": "color",
+      "files": [
+        "theme-template/styles/dark.json",
+        "theme-template/theme.json"
+      ],
+      "count": 2,
+      "usage": [
+        {
+          "file": "theme-template/theme.json",
+          "line": 237
+        },
+        {
+          "file": "theme-template/styles/dark.json",
+          "line": 186
+        }
+      ]
+    },
+    "cta_800_color": {
+      "name": "cta_800_color",
+      "category": "design_colors",
+      "type": "color",
+      "files": [
+        "theme-template/styles/dark.json",
+        "theme-template/theme.json"
+      ],
+      "count": 2,
+      "usage": [
+        {
+          "file": "theme-template/theme.json",
+          "line": 242
+        },
+        {
+          "file": "theme-template/styles/dark.json",
+          "line": 191
+        }
+      ]
+    },
+    "cta_900_color": {
+      "name": "cta_900_color",
+      "category": "design_colors",
+      "type": "color",
+      "files": [
+        "theme-template/styles/dark.json",
+        "theme-template/theme.json"
+      ],
+      "count": 2,
+      "usage": [
+        {
+          "file": "theme-template/theme.json",
+          "line": 247
+        },
+        {
+          "file": "theme-template/styles/dark.json",
+          "line": 196
         }
       ]
     },
@@ -1510,37 +1562,22 @@
       "type": "string",
       "files": [
         ".github/prompts/generate-theme.prompt.md",
-        "output-theme.previous/.github/prompts/generate-theme.prompt.md",
-        "output-theme.previous/inc/block-patterns.php",
-        "output-theme/inc/block-patterns.php",
         "scripts/generate-theme.js",
         "theme-template/inc/block-patterns.php"
       ],
-      "count": 6,
+      "count": 3,
       "usage": [
         {
           "file": "scripts/generate-theme.js",
-          "line": 727
+          "line": 864
         },
         {
           "file": ".github/prompts/generate-theme.prompt.md",
           "line": 35
         },
         {
-          "file": "output-theme/inc/block-patterns.php",
-          "line": 73
-        },
-        {
-          "file": "output-theme.previous/inc/block-patterns.php",
-          "line": 73
-        },
-        {
           "file": "theme-template/inc/block-patterns.php",
           "line": 77
-        },
-        {
-          "file": "output-theme.previous/.github/prompts/generate-theme.prompt.md",
-          "line": 35
         }
       ]
     },
@@ -1549,24 +1586,14 @@
       "category": "other",
       "type": "string",
       "files": [
-        "output-theme.previous/inc/block-patterns.php",
-        "output-theme/inc/block-patterns.php",
         "scripts/generate-theme.js",
         "theme-template/inc/block-patterns.php"
       ],
-      "count": 4,
+      "count": 2,
       "usage": [
         {
           "file": "scripts/generate-theme.js",
-          "line": 726
-        },
-        {
-          "file": "output-theme/inc/block-patterns.php",
-          "line": 67
-        },
-        {
-          "file": "output-theme.previous/inc/block-patterns.php",
-          "line": 67
+          "line": 862
         },
         {
           "file": "theme-template/inc/block-patterns.php",
@@ -1579,17 +1606,12 @@
       "category": "content_strings",
       "type": "string",
       "files": [
-        ".github/custom-instructions.md",
-        "output-theme.previous/.github/custom-instructions.md"
+        ".github/custom-instructions.md"
       ],
-      "count": 2,
+      "count": 1,
       "usage": [
         {
           "file": ".github/custom-instructions.md",
-          "line": 248
-        },
-        {
-          "file": "output-theme.previous/.github/custom-instructions.md",
           "line": 248
         }
       ]
@@ -1599,28 +1621,37 @@
       "category": "content_strings",
       "type": "string",
       "files": [
-        "output-theme.previous/inc/block-patterns.php",
-        "output-theme/inc/block-patterns.php",
         "scripts/generate-theme.js",
         "theme-template/inc/block-patterns.php"
       ],
-      "count": 4,
+      "count": 2,
       "usage": [
         {
           "file": "scripts/generate-theme.js",
-          "line": 725
-        },
-        {
-          "file": "output-theme/inc/block-patterns.php",
-          "line": 63
-        },
-        {
-          "file": "output-theme.previous/inc/block-patterns.php",
-          "line": 63
+          "line": 861
         },
         {
           "file": "theme-template/inc/block-patterns.php",
           "line": 67
+        }
+      ]
+    },
+    "curly": {
+      "name": "curly",
+      "category": "other",
+      "type": "url",
+      "files": [
+        "scripts/__tests__/sync-agent-skills.test.ts"
+      ],
+      "count": 2,
+      "usage": [
+        {
+          "file": "scripts/__tests__/sync-agent-skills.test.ts",
+          "line": 53
+        },
+        {
+          "file": "scripts/__tests__/sync-agent-skills.test.ts",
+          "line": 94
         }
       ]
     },
@@ -1629,24 +1660,14 @@
       "category": "urls",
       "type": "url",
       "files": [
-        "output-theme.previous/SUPPORT.md",
-        "output-theme/SUPPORT.md",
         "scripts/generate-theme.js",
         "theme-template/SUPPORT.md"
       ],
-      "count": 4,
+      "count": 2,
       "usage": [
         {
-          "file": "output-theme/SUPPORT.md",
-          "line": 104
-        },
-        {
-          "file": "output-theme.previous/SUPPORT.md",
-          "line": 104
-        },
-        {
           "file": "scripts/generate-theme.js",
-          "line": 720
+          "line": 855
         },
         {
           "file": "theme-template/SUPPORT.md",
@@ -1659,10 +1680,9 @@
       "category": "other",
       "type": "string",
       "files": [
-        "docs/GENERATE_THEME.md",
-        "output-theme.previous/docs/GENERATE_THEME.md"
+        "docs/GENERATE_THEME.md"
       ],
-      "count": 4,
+      "count": 2,
       "usage": [
         {
           "file": "docs/GENERATE_THEME.md",
@@ -1671,299 +1691,6 @@
         {
           "file": "docs/GENERATE_THEME.md",
           "line": 843
-        },
-        {
-          "file": "output-theme.previous/docs/GENERATE_THEME.md",
-          "line": 830
-        },
-        {
-          "file": "output-theme.previous/docs/GENERATE_THEME.md",
-          "line": 843
-        }
-      ]
-    },
-    "dark_accent_100_color": {
-      "name": "dark_accent_100_color",
-      "category": "design_colors",
-      "type": "color",
-      "files": [
-        "output-theme.previous/styles/dark.json",
-        "output-theme/styles/dark.json",
-        "theme-template/styles/dark.json"
-      ],
-      "count": 3,
-      "usage": [
-        {
-          "file": "output-theme/styles/dark.json",
-          "line": 85
-        },
-        {
-          "file": "output-theme.previous/styles/dark.json",
-          "line": 85
-        },
-        {
-          "file": "theme-template/styles/dark.json",
-          "line": 90
-        }
-      ]
-    },
-    "dark_accent_200_color": {
-      "name": "dark_accent_200_color",
-      "category": "design_colors",
-      "type": "color",
-      "files": [
-        "output-theme.previous/styles/dark.json",
-        "output-theme/styles/dark.json",
-        "theme-template/styles/dark.json"
-      ],
-      "count": 3,
-      "usage": [
-        {
-          "file": "output-theme/styles/dark.json",
-          "line": 90
-        },
-        {
-          "file": "output-theme.previous/styles/dark.json",
-          "line": 90
-        },
-        {
-          "file": "theme-template/styles/dark.json",
-          "line": 95
-        }
-      ]
-    },
-    "dark_accent_300_color": {
-      "name": "dark_accent_300_color",
-      "category": "design_colors",
-      "type": "color",
-      "files": [
-        "output-theme.previous/styles/dark.json",
-        "output-theme/styles/dark.json",
-        "theme-template/styles/dark.json"
-      ],
-      "count": 3,
-      "usage": [
-        {
-          "file": "output-theme/styles/dark.json",
-          "line": 95
-        },
-        {
-          "file": "output-theme.previous/styles/dark.json",
-          "line": 95
-        },
-        {
-          "file": "theme-template/styles/dark.json",
-          "line": 100
-        }
-      ]
-    },
-    "dark_accent_400_color": {
-      "name": "dark_accent_400_color",
-      "category": "design_colors",
-      "type": "color",
-      "files": [
-        "output-theme.previous/styles/dark.json",
-        "output-theme/styles/dark.json",
-        "theme-template/styles/dark.json"
-      ],
-      "count": 3,
-      "usage": [
-        {
-          "file": "output-theme/styles/dark.json",
-          "line": 100
-        },
-        {
-          "file": "output-theme.previous/styles/dark.json",
-          "line": 100
-        },
-        {
-          "file": "theme-template/styles/dark.json",
-          "line": 105
-        }
-      ]
-    },
-    "dark_accent_500_color": {
-      "name": "dark_accent_500_color",
-      "category": "design_colors",
-      "type": "color",
-      "files": [
-        "output-theme.previous/styles/dark.json",
-        "output-theme/styles/dark.json",
-        "theme-template/styles/dark.json"
-      ],
-      "count": 3,
-      "usage": [
-        {
-          "file": "output-theme/styles/dark.json",
-          "line": 105
-        },
-        {
-          "file": "output-theme.previous/styles/dark.json",
-          "line": 105
-        },
-        {
-          "file": "theme-template/styles/dark.json",
-          "line": 110
-        }
-      ]
-    },
-    "dark_accent_600_color": {
-      "name": "dark_accent_600_color",
-      "category": "design_colors",
-      "type": "color",
-      "files": [
-        "output-theme.previous/styles/dark.json",
-        "output-theme/styles/dark.json",
-        "theme-template/styles/dark.json"
-      ],
-      "count": 3,
-      "usage": [
-        {
-          "file": "output-theme/styles/dark.json",
-          "line": 110
-        },
-        {
-          "file": "output-theme.previous/styles/dark.json",
-          "line": 110
-        },
-        {
-          "file": "theme-template/styles/dark.json",
-          "line": 115
-        }
-      ]
-    },
-    "dark_accent_700_color": {
-      "name": "dark_accent_700_color",
-      "category": "design_colors",
-      "type": "color",
-      "files": [
-        "output-theme.previous/styles/dark.json",
-        "output-theme/styles/dark.json",
-        "theme-template/styles/dark.json"
-      ],
-      "count": 3,
-      "usage": [
-        {
-          "file": "output-theme/styles/dark.json",
-          "line": 115
-        },
-        {
-          "file": "output-theme.previous/styles/dark.json",
-          "line": 115
-        },
-        {
-          "file": "theme-template/styles/dark.json",
-          "line": 120
-        }
-      ]
-    },
-    "dark_accent_800_color": {
-      "name": "dark_accent_800_color",
-      "category": "design_colors",
-      "type": "color",
-      "files": [
-        "output-theme.previous/styles/dark.json",
-        "output-theme/styles/dark.json",
-        "theme-template/styles/dark.json"
-      ],
-      "count": 3,
-      "usage": [
-        {
-          "file": "output-theme/styles/dark.json",
-          "line": 120
-        },
-        {
-          "file": "output-theme.previous/styles/dark.json",
-          "line": 120
-        },
-        {
-          "file": "theme-template/styles/dark.json",
-          "line": 125
-        }
-      ]
-    },
-    "dark_accent_900_color": {
-      "name": "dark_accent_900_color",
-      "category": "design_colors",
-      "type": "color",
-      "files": [
-        "output-theme.previous/styles/dark.json",
-        "output-theme/styles/dark.json",
-        "theme-template/styles/dark.json"
-      ],
-      "count": 3,
-      "usage": [
-        {
-          "file": "output-theme/styles/dark.json",
-          "line": 125
-        },
-        {
-          "file": "output-theme.previous/styles/dark.json",
-          "line": 125
-        },
-        {
-          "file": "theme-template/styles/dark.json",
-          "line": 130
-        }
-      ]
-    },
-    "dark_background_color": {
-      "name": "dark_background_color",
-      "category": "design_colors",
-      "type": "color",
-      "files": [
-        "output-theme.previous/styles/dark.json",
-        "output-theme/styles/dark.json",
-        "scripts/generate-theme.js",
-        "theme-template/styles/dark.json"
-      ],
-      "count": 4,
-      "usage": [
-        {
-          "file": "scripts/generate-theme.js",
-          "line": 742
-        },
-        {
-          "file": "output-theme/styles/dark.json",
-          "line": 10
-        },
-        {
-          "file": "output-theme.previous/styles/dark.json",
-          "line": 10
-        },
-        {
-          "file": "theme-template/styles/dark.json",
-          "line": 10
-        }
-      ]
-    },
-    "dark_cta_color": {
-      "name": "dark_cta_color",
-      "category": "design_colors",
-      "type": "color",
-      "files": [
-        "output-theme.previous/styles/dark.json",
-        "output-theme/styles/dark.json",
-        "scripts/generate-theme.js",
-        "theme-template/styles/dark.json"
-      ],
-      "count": 4,
-      "usage": [
-        {
-          "file": "scripts/generate-theme.js",
-          "line": 747
-        },
-        {
-          "file": "output-theme/styles/dark.json",
-          "line": 35
-        },
-        {
-          "file": "output-theme.previous/styles/dark.json",
-          "line": 35
-        },
-        {
-          "file": "theme-template/styles/dark.json",
-          "line": 40
         }
       ]
     },
@@ -1972,373 +1699,18 @@
       "category": "content_strings",
       "type": "string",
       "files": [
-        "output-theme.previous/styles/dark.json",
-        "output-theme/styles/dark.json",
         "scripts/generate-theme.js",
         "theme-template/styles/dark.json"
       ],
-      "count": 4,
+      "count": 2,
       "usage": [
         {
           "file": "scripts/generate-theme.js",
-          "line": 736
-        },
-        {
-          "file": "output-theme/styles/dark.json",
-          "line": 4
-        },
-        {
-          "file": "output-theme.previous/styles/dark.json",
-          "line": 4
+          "line": 873
         },
         {
           "file": "theme-template/styles/dark.json",
           "line": 4
-        }
-      ]
-    },
-    "dark_neutral_100_color": {
-      "name": "dark_neutral_100_color",
-      "category": "design_colors",
-      "type": "color",
-      "files": [
-        "output-theme.previous/styles/dark.json",
-        "output-theme/styles/dark.json",
-        "theme-template/styles/dark.json"
-      ],
-      "count": 3,
-      "usage": [
-        {
-          "file": "output-theme/styles/dark.json",
-          "line": 40
-        },
-        {
-          "file": "output-theme.previous/styles/dark.json",
-          "line": 40
-        },
-        {
-          "file": "theme-template/styles/dark.json",
-          "line": 45
-        }
-      ]
-    },
-    "dark_neutral_200_color": {
-      "name": "dark_neutral_200_color",
-      "category": "design_colors",
-      "type": "color",
-      "files": [
-        "output-theme.previous/styles/dark.json",
-        "output-theme/styles/dark.json",
-        "theme-template/styles/dark.json"
-      ],
-      "count": 3,
-      "usage": [
-        {
-          "file": "output-theme/styles/dark.json",
-          "line": 45
-        },
-        {
-          "file": "output-theme.previous/styles/dark.json",
-          "line": 45
-        },
-        {
-          "file": "theme-template/styles/dark.json",
-          "line": 50
-        }
-      ]
-    },
-    "dark_neutral_300_color": {
-      "name": "dark_neutral_300_color",
-      "category": "design_colors",
-      "type": "color",
-      "files": [
-        "output-theme.previous/styles/dark.json",
-        "output-theme/styles/dark.json",
-        "theme-template/styles/dark.json"
-      ],
-      "count": 3,
-      "usage": [
-        {
-          "file": "output-theme/styles/dark.json",
-          "line": 50
-        },
-        {
-          "file": "output-theme.previous/styles/dark.json",
-          "line": 50
-        },
-        {
-          "file": "theme-template/styles/dark.json",
-          "line": 55
-        }
-      ]
-    },
-    "dark_neutral_400_color": {
-      "name": "dark_neutral_400_color",
-      "category": "design_colors",
-      "type": "color",
-      "files": [
-        "output-theme.previous/styles/dark.json",
-        "output-theme/styles/dark.json",
-        "theme-template/styles/dark.json"
-      ],
-      "count": 3,
-      "usage": [
-        {
-          "file": "output-theme/styles/dark.json",
-          "line": 55
-        },
-        {
-          "file": "output-theme.previous/styles/dark.json",
-          "line": 55
-        },
-        {
-          "file": "theme-template/styles/dark.json",
-          "line": 60
-        }
-      ]
-    },
-    "dark_neutral_500_color": {
-      "name": "dark_neutral_500_color",
-      "category": "design_colors",
-      "type": "color",
-      "files": [
-        "output-theme.previous/styles/dark.json",
-        "output-theme/styles/dark.json",
-        "theme-template/styles/dark.json"
-      ],
-      "count": 3,
-      "usage": [
-        {
-          "file": "output-theme/styles/dark.json",
-          "line": 60
-        },
-        {
-          "file": "output-theme.previous/styles/dark.json",
-          "line": 60
-        },
-        {
-          "file": "theme-template/styles/dark.json",
-          "line": 65
-        }
-      ]
-    },
-    "dark_neutral_600_color": {
-      "name": "dark_neutral_600_color",
-      "category": "design_colors",
-      "type": "color",
-      "files": [
-        "output-theme.previous/styles/dark.json",
-        "output-theme/styles/dark.json",
-        "theme-template/styles/dark.json"
-      ],
-      "count": 3,
-      "usage": [
-        {
-          "file": "output-theme/styles/dark.json",
-          "line": 65
-        },
-        {
-          "file": "output-theme.previous/styles/dark.json",
-          "line": 65
-        },
-        {
-          "file": "theme-template/styles/dark.json",
-          "line": 70
-        }
-      ]
-    },
-    "dark_neutral_700_color": {
-      "name": "dark_neutral_700_color",
-      "category": "design_colors",
-      "type": "color",
-      "files": [
-        "output-theme.previous/styles/dark.json",
-        "output-theme/styles/dark.json",
-        "theme-template/styles/dark.json"
-      ],
-      "count": 3,
-      "usage": [
-        {
-          "file": "output-theme/styles/dark.json",
-          "line": 70
-        },
-        {
-          "file": "output-theme.previous/styles/dark.json",
-          "line": 70
-        },
-        {
-          "file": "theme-template/styles/dark.json",
-          "line": 75
-        }
-      ]
-    },
-    "dark_neutral_800_color": {
-      "name": "dark_neutral_800_color",
-      "category": "design_colors",
-      "type": "color",
-      "files": [
-        "output-theme.previous/styles/dark.json",
-        "output-theme/styles/dark.json",
-        "theme-template/styles/dark.json"
-      ],
-      "count": 3,
-      "usage": [
-        {
-          "file": "output-theme/styles/dark.json",
-          "line": 75
-        },
-        {
-          "file": "output-theme.previous/styles/dark.json",
-          "line": 75
-        },
-        {
-          "file": "theme-template/styles/dark.json",
-          "line": 80
-        }
-      ]
-    },
-    "dark_neutral_900_color": {
-      "name": "dark_neutral_900_color",
-      "category": "design_colors",
-      "type": "color",
-      "files": [
-        "output-theme.previous/styles/dark.json",
-        "output-theme/styles/dark.json",
-        "theme-template/styles/dark.json"
-      ],
-      "count": 3,
-      "usage": [
-        {
-          "file": "output-theme/styles/dark.json",
-          "line": 80
-        },
-        {
-          "file": "output-theme.previous/styles/dark.json",
-          "line": 80
-        },
-        {
-          "file": "theme-template/styles/dark.json",
-          "line": 85
-        }
-      ]
-    },
-    "dark_primary_color": {
-      "name": "dark_primary_color",
-      "category": "design_colors",
-      "type": "color",
-      "files": [
-        "output-theme.previous/styles/dark.json",
-        "output-theme/styles/dark.json",
-        "scripts/generate-theme.js",
-        "theme-template/styles/dark.json"
-      ],
-      "count": 4,
-      "usage": [
-        {
-          "file": "scripts/generate-theme.js",
-          "line": 744
-        },
-        {
-          "file": "output-theme/styles/dark.json",
-          "line": 20
-        },
-        {
-          "file": "output-theme.previous/styles/dark.json",
-          "line": 20
-        },
-        {
-          "file": "theme-template/styles/dark.json",
-          "line": 25
-        }
-      ]
-    },
-    "dark_primary_dark_color": {
-      "name": "dark_primary_dark_color",
-      "category": "design_colors",
-      "type": "color",
-      "files": [
-        "output-theme.previous/styles/dark.json",
-        "output-theme/styles/dark.json",
-        "scripts/generate-theme.js",
-        "theme-template/styles/dark.json"
-      ],
-      "count": 4,
-      "usage": [
-        {
-          "file": "scripts/generate-theme.js",
-          "line": 746
-        },
-        {
-          "file": "output-theme/styles/dark.json",
-          "line": 30
-        },
-        {
-          "file": "output-theme.previous/styles/dark.json",
-          "line": 30
-        },
-        {
-          "file": "theme-template/styles/dark.json",
-          "line": 35
-        }
-      ]
-    },
-    "dark_primary_light_color": {
-      "name": "dark_primary_light_color",
-      "category": "design_colors",
-      "type": "color",
-      "files": [
-        "output-theme.previous/styles/dark.json",
-        "output-theme/styles/dark.json",
-        "scripts/generate-theme.js",
-        "theme-template/styles/dark.json"
-      ],
-      "count": 4,
-      "usage": [
-        {
-          "file": "scripts/generate-theme.js",
-          "line": 745
-        },
-        {
-          "file": "output-theme/styles/dark.json",
-          "line": 25
-        },
-        {
-          "file": "output-theme.previous/styles/dark.json",
-          "line": 25
-        },
-        {
-          "file": "theme-template/styles/dark.json",
-          "line": 30
-        }
-      ]
-    },
-    "dark_text_color": {
-      "name": "dark_text_color",
-      "category": "design_colors",
-      "type": "color",
-      "files": [
-        "output-theme.previous/styles/dark.json",
-        "output-theme/styles/dark.json",
-        "scripts/generate-theme.js",
-        "theme-template/styles/dark.json"
-      ],
-      "count": 4,
-      "usage": [
-        {
-          "file": "scripts/generate-theme.js",
-          "line": 743
-        },
-        {
-          "file": "output-theme/styles/dark.json",
-          "line": 15
-        },
-        {
-          "file": "output-theme.previous/styles/dark.json",
-          "line": 15
-        },
-        {
-          "file": "theme-template/styles/dark.json",
-          "line": 15
         }
       ]
     },
@@ -2349,26 +1721,14 @@
       "files": [
         ".github/agents/task-researcher.agent.md",
         ".github/agents/template.agent.md",
-        "output-theme.previous/.github/agents/task-researcher.agent.md",
-        "output-theme.previous/.github/agents/template.agent.md",
-        "output-theme.previous/README.txt",
-        "output-theme/README.txt",
         "scripts/generate-theme.js",
         "theme-template/README.txt"
       ],
-      "count": 18,
+      "count": 9,
       "usage": [
         {
-          "file": "output-theme/README.txt",
-          "line": 102
-        },
-        {
-          "file": "output-theme.previous/README.txt",
-          "line": 102
-        },
-        {
           "file": "scripts/generate-theme.js",
-          "line": 714
+          "line": 845
         },
         {
           "file": "theme-template/README.txt",
@@ -2400,34 +1760,6 @@
         },
         {
           "file": ".github/agents/template.agent.md",
-          "line": 120
-        },
-        {
-          "file": "output-theme.previous/.github/agents/task-researcher.agent.md",
-          "line": 39
-        },
-        {
-          "file": "output-theme.previous/.github/agents/task-researcher.agent.md",
-          "line": 40
-        },
-        {
-          "file": "output-theme.previous/.github/agents/task-researcher.agent.md",
-          "line": 141
-        },
-        {
-          "file": "output-theme.previous/.github/agents/task-researcher.agent.md",
-          "line": 141
-        },
-        {
-          "file": "output-theme.previous/.github/agents/template.agent.md",
-          "line": 63
-        },
-        {
-          "file": "output-theme.previous/.github/agents/template.agent.md",
-          "line": 120
-        },
-        {
-          "file": "output-theme.previous/.github/agents/template.agent.md",
           "line": 120
         }
       ]
@@ -2473,15 +1805,15 @@
         },
         {
           "file": "scripts/generate-theme.js",
-          "line": 448
+          "line": 466
         },
         {
           "file": "scripts/generate-theme.js",
-          "line": 644
+          "line": 691
         },
         {
           "file": "scripts/generate-theme.js",
-          "line": 723
+          "line": 859
         },
         {
           "file": "theme-template/README.md",
@@ -2489,7 +1821,7 @@
         },
         {
           "file": "theme-template/README.md",
-          "line": 163
+          "line": 165
         },
         {
           "file": "theme-template/README.txt",
@@ -2539,42 +1871,27 @@
       "type": "url",
       "files": [
         "docs/GENERATE_THEME.md",
-        "output-theme.previous/SUPPORT.md",
-        "output-theme.previous/docs/GENERATE_THEME.md",
-        "output-theme/SUPPORT.md",
         "scripts/generate-theme.js",
         "scripts/utils/placeholders.js",
         "theme-template/SUPPORT.md"
       ],
-      "count": 7,
+      "count": 4,
       "usage": [
         {
           "file": "docs/GENERATE_THEME.md",
           "line": 132
         },
         {
-          "file": "output-theme/SUPPORT.md",
-          "line": 28
-        },
-        {
-          "file": "output-theme.previous/SUPPORT.md",
-          "line": 28
-        },
-        {
           "file": "scripts/generate-theme.js",
-          "line": 718
+          "line": 851
         },
         {
           "file": "theme-template/SUPPORT.md",
           "line": 28
         },
         {
-          "file": "output-theme.previous/docs/GENERATE_THEME.md",
-          "line": 132
-        },
-        {
           "file": "scripts/utils/placeholders.js",
-          "line": 43
+          "line": 46
         }
       ]
     },
@@ -2583,24 +1900,14 @@
       "category": "urls",
       "type": "url",
       "files": [
-        "output-theme.previous/SUPPORT.md",
-        "output-theme/SUPPORT.md",
         "scripts/generate-theme.js",
         "theme-template/SUPPORT.md"
       ],
-      "count": 4,
+      "count": 2,
       "usage": [
         {
-          "file": "output-theme/SUPPORT.md",
-          "line": 145
-        },
-        {
-          "file": "output-theme.previous/SUPPORT.md",
-          "line": 145
-        },
-        {
           "file": "scripts/generate-theme.js",
-          "line": 721
+          "line": 856
         },
         {
           "file": "theme-template/SUPPORT.md",
@@ -2629,19 +1936,19 @@
         },
         {
           "file": "scripts/generate-theme.js",
-          "line": 656
+          "line": 738
         },
         {
           "file": "scripts/generate-theme.js",
-          "line": 703
+          "line": 825
         },
         {
           "file": "scripts/generate-theme.js",
-          "line": 703
+          "line": 826
         },
         {
           "file": "scripts/generate-theme.js",
-          "line": 721
+          "line": 857
         },
         {
           "file": "theme-template/README.txt",
@@ -2669,7 +1976,7 @@
         },
         {
           "file": "theme-template/package.json",
-          "line": 103
+          "line": 83
         },
         {
           "file": ".github/instructions/generate-theme.instructions.md",
@@ -2677,7 +1984,7 @@
         },
         {
           "file": "scripts/utils/placeholders.js",
-          "line": 41
+          "line": 44
         }
       ]
     },
@@ -2686,17 +1993,12 @@
       "category": "other",
       "type": "string",
       "files": [
-        ".github/agents/template.agent.md",
-        "output-theme.previous/.github/agents/template.agent.md"
+        ".github/agents/template.agent.md"
       ],
-      "count": 2,
+      "count": 1,
       "usage": [
         {
           "file": ".github/agents/template.agent.md",
-          "line": 35
-        },
-        {
-          "file": "output-theme.previous/.github/agents/template.agent.md",
           "line": 35
         }
       ]
@@ -2720,7 +2022,7 @@
         },
         {
           "file": "scripts/generate-theme.js",
-          "line": 682
+          "line": 788
         },
         {
           "file": "theme-template/functions.php",
@@ -2728,7 +2030,7 @@
         },
         {
           "file": "scripts/utils/placeholders.js",
-          "line": 96
+          "line": 101
         },
         {
           "file": "theme-template/tests/php/ThemeSetupTest.php",
@@ -2759,7 +2061,7 @@
         },
         {
           "file": "scripts/generate-theme.js",
-          "line": 680
+          "line": 785
         },
         {
           "file": "theme-template/functions.php",
@@ -2767,7 +2069,7 @@
         },
         {
           "file": "scripts/utils/placeholders.js",
-          "line": 97
+          "line": 102
         },
         {
           "file": "theme-template/tests/php/ThemeSetupTest.php",
@@ -2793,7 +2095,7 @@
         },
         {
           "file": "scripts/generate-theme.js",
-          "line": 686
+          "line": 794
         },
         {
           "file": "theme-template/functions.php",
@@ -2801,7 +2103,7 @@
         },
         {
           "file": "scripts/utils/placeholders.js",
-          "line": 87
+          "line": 92
         }
       ]
     },
@@ -2824,7 +2126,7 @@
         },
         {
           "file": "scripts/generate-theme.js",
-          "line": 685
+          "line": 792
         },
         {
           "file": "theme-template/functions.php",
@@ -2836,7 +2138,7 @@
         },
         {
           "file": "scripts/utils/placeholders.js",
-          "line": 86
+          "line": 91
         }
       ]
     },
@@ -2846,11 +2148,9 @@
       "type": "font",
       "files": [
         ".github/agents/generate-theme.agent.md",
-        ".github/custom-instructions.md",
-        "output-theme.previous/.github/agents/generate-theme.agent.md",
-        "output-theme.previous/.github/custom-instructions.md"
+        ".github/custom-instructions.md"
       ],
-      "count": 6,
+      "count": 3,
       "usage": [
         {
           "file": ".github/custom-instructions.md",
@@ -2862,18 +2162,6 @@
         },
         {
           "file": ".github/agents/generate-theme.agent.md",
-          "line": 168
-        },
-        {
-          "file": "output-theme.previous/.github/custom-instructions.md",
-          "line": 242
-        },
-        {
-          "file": "output-theme.previous/.github/agents/generate-theme.agent.md",
-          "line": 40
-        },
-        {
-          "file": "output-theme.previous/.github/agents/generate-theme.agent.md",
           "line": 168
         }
       ]
@@ -2884,11 +2172,9 @@
       "type": "string",
       "files": [
         ".github/custom-instructions.md",
-        ".github/prompts/generate-theme.prompt.md",
-        "output-theme.previous/.github/custom-instructions.md",
-        "output-theme.previous/.github/prompts/generate-theme.prompt.md"
+        ".github/prompts/generate-theme.prompt.md"
       ],
-      "count": 4,
+      "count": 2,
       "usage": [
         {
           "file": ".github/custom-instructions.md",
@@ -2896,14 +2182,6 @@
         },
         {
           "file": ".github/prompts/generate-theme.prompt.md",
-          "line": 35
-        },
-        {
-          "file": "output-theme.previous/.github/custom-instructions.md",
-          "line": 249
-        },
-        {
-          "file": "output-theme.previous/.github/prompts/generate-theme.prompt.md",
           "line": 35
         }
       ]
@@ -2927,7 +2205,7 @@
         },
         {
           "file": "scripts/generate-theme.js",
-          "line": 688
+          "line": 798
         },
         {
           "file": "theme-template/functions.php",
@@ -2939,7 +2217,7 @@
         },
         {
           "file": "scripts/utils/placeholders.js",
-          "line": 89
+          "line": 94
         }
       ]
     },
@@ -2961,7 +2239,7 @@
         },
         {
           "file": "scripts/generate-theme.js",
-          "line": 687
+          "line": 796
         },
         {
           "file": "theme-template/functions.php",
@@ -2969,7 +2247,7 @@
         },
         {
           "file": "scripts/utils/placeholders.js",
-          "line": 88
+          "line": 93
         }
       ]
     },
@@ -2978,17 +2256,12 @@
       "category": "other",
       "type": "string",
       "files": [
-        ".github/workflows/deploy.yml",
-        "output-theme.previous/.github/workflows/deploy.yml"
+        ".github/workflows/deploy.yml"
       ],
-      "count": 2,
+      "count": 1,
       "usage": [
         {
           "file": ".github/workflows/deploy.yml",
-          "line": 11
-        },
-        {
-          "file": "output-theme.previous/.github/workflows/deploy.yml",
           "line": 11
         }
       ]
@@ -2999,11 +2272,9 @@
       "type": "font",
       "files": [
         ".github/agents/generate-theme.agent.md",
-        ".github/custom-instructions.md",
-        "output-theme.previous/.github/agents/generate-theme.agent.md",
-        "output-theme.previous/.github/custom-instructions.md"
+        ".github/custom-instructions.md"
       ],
-      "count": 6,
+      "count": 3,
       "usage": [
         {
           "file": ".github/custom-instructions.md",
@@ -3015,18 +2286,6 @@
         },
         {
           "file": ".github/agents/generate-theme.agent.md",
-          "line": 169
-        },
-        {
-          "file": "output-theme.previous/.github/custom-instructions.md",
-          "line": 243
-        },
-        {
-          "file": "output-theme.previous/.github/agents/generate-theme.agent.md",
-          "line": 41
-        },
-        {
-          "file": "output-theme.previous/.github/agents/generate-theme.agent.md",
           "line": 169
         }
       ]
@@ -3056,11 +2315,11 @@
         },
         {
           "file": "scripts/generate-theme.js",
-          "line": 667
+          "line": 755
         },
         {
           "file": "theme-template/theme.json",
-          "line": 115
+          "line": 320
         },
         {
           "file": ".github/instructions/generate-theme.instructions.md",
@@ -3076,7 +2335,7 @@
         },
         {
           "file": "scripts/utils/placeholders.js",
-          "line": 60
+          "line": 64
         }
       ]
     },
@@ -3102,7 +2361,7 @@
         },
         {
           "file": "scripts/generate-theme.js",
-          "line": 668
+          "line": 758
         },
         {
           "file": ".github/instructions/generate-theme.instructions.md",
@@ -3110,7 +2369,7 @@
         },
         {
           "file": "scripts/utils/placeholders.js",
-          "line": 61
+          "line": 66
         }
       ]
     },
@@ -3134,31 +2393,31 @@
         },
         {
           "file": "scripts/generate-theme.js",
-          "line": 671
+          "line": 766
         },
         {
           "file": "theme-template/theme.json",
-          "line": 371
+          "line": 699
         },
         {
           "file": "theme-template/theme.json",
-          "line": 379
+          "line": 707
         },
         {
           "file": "theme-template/theme.json",
-          "line": 387
+          "line": 715
         },
         {
           "file": "theme-template/theme.json",
-          "line": 395
+          "line": 723
         },
         {
           "file": "theme-template/theme.json",
-          "line": 403
+          "line": 731
         },
         {
           "file": "theme-template/theme.json",
-          "line": 411
+          "line": 739
         },
         {
           "file": ".github/instructions/generate-theme.instructions.md",
@@ -3170,7 +2429,7 @@
         },
         {
           "file": "scripts/utils/placeholders.js",
-          "line": 68
+          "line": 73
         }
       ]
     },
@@ -3193,31 +2452,31 @@
         },
         {
           "file": "scripts/generate-theme.js",
-          "line": 673
+          "line": 770
         },
         {
           "file": "theme-template/theme.json",
-          "line": 372
+          "line": 700
         },
         {
           "file": "theme-template/theme.json",
-          "line": 380
+          "line": 708
         },
         {
           "file": "theme-template/theme.json",
-          "line": 388
+          "line": 716
         },
         {
           "file": "theme-template/theme.json",
-          "line": 396
+          "line": 724
         },
         {
           "file": "theme-template/theme.json",
-          "line": 404
+          "line": 732
         },
         {
           "file": "theme-template/theme.json",
-          "line": 412
+          "line": 740
         },
         {
           "file": ".github/instructions/generate-theme.instructions.md",
@@ -3225,7 +2484,7 @@
         },
         {
           "file": "scripts/utils/placeholders.js",
-          "line": 69
+          "line": 74
         }
       ]
     },
@@ -3234,24 +2493,14 @@
       "category": "content_strings",
       "type": "string",
       "files": [
-        "output-theme.previous/styles/blocks/heading-serif.json",
-        "output-theme/styles/blocks/heading-serif.json",
         "scripts/generate-theme.js",
         "theme-template/styles/blocks/heading-serif.json"
       ],
-      "count": 4,
+      "count": 2,
       "usage": [
         {
           "file": "scripts/generate-theme.js",
-          "line": 739
-        },
-        {
-          "file": "output-theme/styles/blocks/heading-serif.json",
-          "line": 4
-        },
-        {
-          "file": "output-theme.previous/styles/blocks/heading-serif.json",
-          "line": 4
+          "line": 876
         },
         {
           "file": "theme-template/styles/blocks/heading-serif.json",
@@ -3264,24 +2513,14 @@
       "category": "content_strings",
       "type": "string",
       "files": [
-        "output-theme.previous/inc/block-patterns.php",
-        "output-theme/inc/block-patterns.php",
         "scripts/generate-theme.js",
         "theme-template/inc/block-patterns.php"
       ],
-      "count": 4,
+      "count": 2,
       "usage": [
         {
           "file": "scripts/generate-theme.js",
-          "line": 724
-        },
-        {
-          "file": "output-theme/inc/block-patterns.php",
-          "line": 38
-        },
-        {
-          "file": "output-theme.previous/inc/block-patterns.php",
-          "line": 38
+          "line": 860
         },
         {
           "file": "theme-template/inc/block-patterns.php",
@@ -3294,24 +2533,14 @@
       "category": "other",
       "type": "string",
       "files": [
-        "output-theme.previous/inc/block-patterns.php",
-        "output-theme/inc/block-patterns.php",
         "scripts/generate-theme.js",
         "theme-template/inc/block-patterns.php"
       ],
-      "count": 4,
+      "count": 2,
       "usage": [
         {
           "file": "scripts/generate-theme.js",
-          "line": 723
-        },
-        {
-          "file": "output-theme/inc/block-patterns.php",
-          "line": 32
-        },
-        {
-          "file": "output-theme.previous/inc/block-patterns.php",
-          "line": 32
+          "line": 859
         },
         {
           "file": "theme-template/inc/block-patterns.php",
@@ -3324,24 +2553,14 @@
       "category": "content_strings",
       "type": "string",
       "files": [
-        "output-theme.previous/styles/sections/hero-section.json",
-        "output-theme/styles/sections/hero-section.json",
         "scripts/generate-theme.js",
         "theme-template/styles/sections/hero-section.json"
       ],
-      "count": 4,
+      "count": 2,
       "usage": [
         {
           "file": "scripts/generate-theme.js",
-          "line": 740
-        },
-        {
-          "file": "output-theme/styles/sections/hero-section.json",
-          "line": 4
-        },
-        {
-          "file": "output-theme.previous/styles/sections/hero-section.json",
-          "line": 4
+          "line": 877
         },
         {
           "file": "theme-template/styles/sections/hero-section.json",
@@ -3357,15 +2576,10 @@
         ".github/agents/generate-theme.agent.md",
         ".github/custom-instructions.md",
         ".github/prompts/generate-theme.prompt.md",
-        "output-theme.previous/.github/agents/generate-theme.agent.md",
-        "output-theme.previous/.github/custom-instructions.md",
-        "output-theme.previous/.github/prompts/generate-theme.prompt.md",
-        "output-theme.previous/inc/block-patterns.php",
-        "output-theme/inc/block-patterns.php",
         "scripts/generate-theme.js",
         "theme-template/inc/block-patterns.php"
       ],
-      "count": 12,
+      "count": 6,
       "usage": [
         {
           "file": ".github/custom-instructions.md",
@@ -3373,7 +2587,7 @@
         },
         {
           "file": "scripts/generate-theme.js",
-          "line": 722
+          "line": 858
         },
         {
           "file": ".github/agents/generate-theme.agent.md",
@@ -3388,32 +2602,8 @@
           "line": 35
         },
         {
-          "file": "output-theme/inc/block-patterns.php",
-          "line": 28
-        },
-        {
-          "file": "output-theme.previous/.github/custom-instructions.md",
-          "line": 247
-        },
-        {
-          "file": "output-theme.previous/inc/block-patterns.php",
-          "line": 28
-        },
-        {
           "file": "theme-template/inc/block-patterns.php",
           "line": 30
-        },
-        {
-          "file": "output-theme.previous/.github/agents/generate-theme.agent.md",
-          "line": 42
-        },
-        {
-          "file": "output-theme.previous/.github/agents/generate-theme.agent.md",
-          "line": 175
-        },
-        {
-          "file": "output-theme.previous/.github/prompts/generate-theme.prompt.md",
-          "line": 35
         }
       ]
     },
@@ -3428,7 +2618,7 @@
       "usage": [
         {
           "file": "scripts/utils/placeholders.js",
-          "line": 82
+          "line": 87
         }
       ]
     },
@@ -3443,7 +2633,7 @@
       "usage": [
         {
           "file": "scripts/utils/placeholders.js",
-          "line": 83
+          "line": 88
         }
       ]
     },
@@ -3458,7 +2648,7 @@
       "usage": [
         {
           "file": "scripts/utils/placeholders.js",
-          "line": 102
+          "line": 107
         }
       ]
     },
@@ -3467,17 +2657,12 @@
       "category": "other",
       "type": "date",
       "files": [
-        ".github/agents/template.agent.md",
-        "output-theme.previous/.github/agents/template.agent.md"
+        ".github/agents/template.agent.md"
       ],
-      "count": 2,
+      "count": 1,
       "usage": [
         {
           "file": ".github/agents/template.agent.md",
-          "line": 33
-        },
-        {
-          "file": "output-theme.previous/.github/agents/template.agent.md",
           "line": 33
         }
       ]
@@ -3490,6 +2675,7 @@
         ".github/agents/generate-theme.agent.md",
         ".github/custom-instructions.md",
         "docs/GENERATE_THEME.md",
+        "package-lock.json",
         "scripts/generate-theme.js",
         "scripts/utils/placeholders.js",
         "theme-template/.npmpackagejsonlintrc.json",
@@ -3501,8 +2687,12 @@
         "theme-template/package.json",
         "theme-template/style.css"
       ],
-      "count": 20,
+      "count": 23,
       "usage": [
+        {
+          "file": "package-lock.json",
+          "line": 10
+        },
         {
           "file": ".github/custom-instructions.md",
           "line": 234
@@ -3521,15 +2711,19 @@
         },
         {
           "file": "scripts/generate-theme.js",
-          "line": 379
+          "line": 394
         },
         {
           "file": "scripts/generate-theme.js",
-          "line": 468
+          "line": 486
         },
         {
           "file": "scripts/generate-theme.js",
-          "line": 652
+          "line": 719
+        },
+        {
+          "file": "theme-template/.npmpackagejsonlintrc.json",
+          "line": 4
         },
         {
           "file": "theme-template/CONTRIBUTING.md",
@@ -3537,15 +2731,15 @@
         },
         {
           "file": "theme-template/DEVELOPMENT.md",
-          "line": 94
+          "line": 106
         },
         {
           "file": "theme-template/README.md",
-          "line": 291
+          "line": 292
         },
         {
           "file": "theme-template/README.md",
-          "line": 299
+          "line": 300
         },
         {
           "file": "theme-template/README.txt",
@@ -3558,6 +2752,10 @@
         {
           "file": "theme-template/README.txt",
           "line": 119
+        },
+        {
+          "file": "theme-template/package-lock.json",
+          "line": 10
         },
         {
           "file": "theme-template/package.json",
@@ -3581,7 +2779,7 @@
         },
         {
           "file": "scripts/utils/placeholders.js",
-          "line": 33
+          "line": 34
         }
       ]
     },
@@ -3611,19 +2809,19 @@
         },
         {
           "file": "scripts/generate-theme.js",
-          "line": 472
+          "line": 490
         },
         {
           "file": "scripts/generate-theme.js",
-          "line": 653
+          "line": 722
         },
         {
           "file": "theme-template/DEVELOPMENT.md",
-          "line": 94
+          "line": 106
         },
         {
           "file": "theme-template/README.md",
-          "line": 299
+          "line": 300
         },
         {
           "file": "theme-template/README.txt",
@@ -3643,7 +2841,7 @@
         },
         {
           "file": "scripts/utils/placeholders.js",
-          "line": 34
+          "line": 35
         }
       ]
     },
@@ -3652,17 +2850,12 @@
       "category": "other",
       "type": "string",
       "files": [
-        ".github/agents/template.agent.md",
-        "output-theme.previous/.github/agents/template.agent.md"
+        ".github/agents/template.agent.md"
       ],
-      "count": 2,
+      "count": 1,
       "usage": [
         {
           "file": ".github/agents/template.agent.md",
-          "line": 74
-        },
-        {
-          "file": "output-theme.previous/.github/agents/template.agent.md",
           "line": 74
         }
       ]
@@ -3682,15 +2875,15 @@
       "usage": [
         {
           "file": "CHANGELOG.md",
-          "line": 88
+          "line": 109
         },
         {
           "file": "scripts/generate-theme.js",
-          "line": 690
+          "line": 801
         },
         {
           "file": "scripts/utils/placeholders.js",
-          "line": 93
+          "line": 98
         },
         {
           "file": "theme-template/inc/template-functions.php",
@@ -3717,15 +2910,15 @@
       "usage": [
         {
           "file": "CHANGELOG.md",
-          "line": 87
+          "line": 108
         },
         {
           "file": "scripts/generate-theme.js",
-          "line": 689
+          "line": 800
         },
         {
           "file": "scripts/utils/placeholders.js",
-          "line": 92
+          "line": 97
         },
         {
           "file": "theme-template/inc/template-functions.php",
@@ -3763,11 +2956,11 @@
         },
         {
           "file": "scripts/generate-theme.js",
-          "line": 464
+          "line": 482
         },
         {
           "file": "scripts/generate-theme.js",
-          "line": 651
+          "line": 714
         },
         {
           "file": "theme-template/README.md",
@@ -3803,7 +2996,7 @@
         },
         {
           "file": "scripts/utils/placeholders.js",
-          "line": 30
+          "line": 31
         }
       ]
     },
@@ -3833,11 +3026,11 @@
         },
         {
           "file": "scripts/generate-theme.js",
-          "line": 456
+          "line": 474
         },
         {
           "file": "scripts/generate-theme.js",
-          "line": 649
+          "line": 704
         },
         {
           "file": "theme-template/README.md",
@@ -3873,7 +3066,7 @@
         },
         {
           "file": "scripts/utils/placeholders.js",
-          "line": 28
+          "line": 29
         }
       ]
     },
@@ -3882,17 +3075,12 @@
       "category": "design_typography",
       "type": "font",
       "files": [
-        "docs/GENERATE_THEME.md",
-        "output-theme.previous/docs/GENERATE_THEME.md"
+        "docs/GENERATE_THEME.md"
       ],
-      "count": 2,
+      "count": 1,
       "usage": [
         {
           "file": "docs/GENERATE_THEME.md",
-          "line": 161
-        },
-        {
-          "file": "output-theme.previous/docs/GENERATE_THEME.md",
           "line": 161
         }
       ]
@@ -3902,17 +3090,12 @@
       "category": "design_typography",
       "type": "font",
       "files": [
-        "docs/GENERATE_THEME.md",
-        "output-theme.previous/docs/GENERATE_THEME.md"
+        "docs/GENERATE_THEME.md"
       ],
-      "count": 2,
+      "count": 1,
       "usage": [
         {
           "file": "docs/GENERATE_THEME.md",
-          "line": 162
-        },
-        {
-          "file": "output-theme.previous/docs/GENERATE_THEME.md",
           "line": 162
         }
       ]
@@ -3928,7 +3111,7 @@
       "usage": [
         {
           "file": "scripts/utils/placeholders.js",
-          "line": 64
+          "line": 69
         }
       ]
     },
@@ -3943,7 +3126,7 @@
       "usage": [
         {
           "file": "scripts/utils/placeholders.js",
-          "line": 65
+          "line": 70
         }
       ]
     },
@@ -3968,29 +3151,17 @@
         "docs/GENERATE_THEME.md",
         "docs/RELEASE_PROCESS.md",
         "docs/RELEASE_PROCESS_SCAFFOLD.md",
-        "output-theme.previous/.github/agents/release.agent.md",
-        "output-theme.previous/.github/custom-instructions.md",
-        "output-theme.previous/.github/instructions/folder-structure.instructions.md",
-        "output-theme.previous/.github/instructions/generate-theme.instructions.md",
-        "output-theme.previous/.github/prompts/scan-mustache-registry.prompt.md",
-        "output-theme.previous/.github/reports/projects/active.md",
-        "output-theme.previous/.github/reports/research/build-dry-run-practices.md",
-        "output-theme.previous/.github/reports/research/placeholder-strategies.md",
-        "output-theme.previous/.github/workflows/release.yml",
-        "output-theme.previous/CHANGELOG.md",
-        "output-theme.previous/docs/GENERATE_THEME.md",
-        "output-theme.previous/docs/RELEASE_PROCESS.md",
         "scripts/dry-run/README.md"
       ],
-      "count": 50,
+      "count": 32,
       "usage": [
         {
           "file": "CHANGELOG.md",
-          "line": 115
+          "line": 139
         },
         {
           "file": "CHANGELOG.md",
-          "line": 190
+          "line": 214
         },
         {
           "file": "README.md",
@@ -4039,14 +3210,6 @@
         {
           "file": "docs/RELEASE_PROCESS_SCAFFOLD.md",
           "line": 134
-        },
-        {
-          "file": "output-theme.previous/CHANGELOG.md",
-          "line": 82
-        },
-        {
-          "file": "output-theme.previous/CHANGELOG.md",
-          "line": 157
         },
         {
           "file": ".github/agents/release-scaffold.agent.md",
@@ -4105,26 +3268,6 @@
           "line": 73
         },
         {
-          "file": "output-theme.previous/.github/custom-instructions.md",
-          "line": 76
-        },
-        {
-          "file": "output-theme.previous/.github/custom-instructions.md",
-          "line": 77
-        },
-        {
-          "file": "output-theme.previous/docs/GENERATE_THEME.md",
-          "line": 31
-        },
-        {
-          "file": "output-theme.previous/docs/RELEASE_PROCESS.md",
-          "line": 14
-        },
-        {
-          "file": "output-theme.previous/docs/RELEASE_PROCESS.md",
-          "line": 229
-        },
-        {
           "file": "scripts/dry-run/README.md",
           "line": 7
         },
@@ -4139,50 +3282,6 @@
         {
           "file": ".github/reports/research/placeholder-strategies.md",
           "line": 5
-        },
-        {
-          "file": "output-theme.previous/.github/agents/release.agent.md",
-          "line": 20
-        },
-        {
-          "file": "output-theme.previous/.github/instructions/folder-structure.instructions.md",
-          "line": 10
-        },
-        {
-          "file": "output-theme.previous/.github/instructions/folder-structure.instructions.md",
-          "line": 283
-        },
-        {
-          "file": "output-theme.previous/.github/instructions/generate-theme.instructions.md",
-          "line": 10
-        },
-        {
-          "file": "output-theme.previous/.github/prompts/scan-mustache-registry.prompt.md",
-          "line": 14
-        },
-        {
-          "file": "output-theme.previous/.github/prompts/scan-mustache-registry.prompt.md",
-          "line": 37
-        },
-        {
-          "file": "output-theme.previous/.github/workflows/release.yml",
-          "line": 4
-        },
-        {
-          "file": "output-theme.previous/.github/workflows/release.yml",
-          "line": 73
-        },
-        {
-          "file": "output-theme.previous/.github/reports/projects/active.md",
-          "line": 6
-        },
-        {
-          "file": "output-theme.previous/.github/reports/research/build-dry-run-practices.md",
-          "line": 7
-        },
-        {
-          "file": "output-theme.previous/.github/reports/research/placeholder-strategies.md",
-          "line": 5
         }
       ]
     },
@@ -4191,16 +3290,9 @@
       "category": "other",
       "type": "string",
       "files": [
-        ".github/agents/generate-theme.agent.md",
-        "output-theme.previous/.github/agents/generate-theme.agent.md",
-        "output-theme.previous/styles/colors/palette.json",
-        "output-theme.previous/styles/presets/dark.json",
-        "output-theme.previous/styles/typography/serif-titles.json",
-        "output-theme/styles/colors/palette.json",
-        "output-theme/styles/presets/dark.json",
-        "output-theme/styles/typography/serif-titles.json"
+        ".github/agents/generate-theme.agent.md"
       ],
-      "count": 10,
+      "count": 2,
       "usage": [
         {
           "file": ".github/agents/generate-theme.agent.md",
@@ -4209,38 +3301,6 @@
         {
           "file": ".github/agents/generate-theme.agent.md",
           "line": 137
-        },
-        {
-          "file": "output-theme/styles/colors/palette.json",
-          "line": 4
-        },
-        {
-          "file": "output-theme/styles/presets/dark.json",
-          "line": 4
-        },
-        {
-          "file": "output-theme/styles/typography/serif-titles.json",
-          "line": 4
-        },
-        {
-          "file": "output-theme.previous/.github/agents/generate-theme.agent.md",
-          "line": 23
-        },
-        {
-          "file": "output-theme.previous/.github/agents/generate-theme.agent.md",
-          "line": 137
-        },
-        {
-          "file": "output-theme.previous/styles/colors/palette.json",
-          "line": 4
-        },
-        {
-          "file": "output-theme.previous/styles/presets/dark.json",
-          "line": 4
-        },
-        {
-          "file": "output-theme.previous/styles/typography/serif-titles.json",
-          "line": 4
         }
       ]
     },
@@ -4254,42 +3314,13 @@
         ".github/instructions/i18n.instructions.md",
         ".github/reports/SETUP-SUMMARY.md",
         "docs/GENERATE_THEME.md",
-        "output-theme.previous/.github/agents/generate-theme.agent.md",
-        "output-theme.previous/.github/instructions/generate-theme.instructions.md",
-        "output-theme.previous/.github/instructions/i18n.instructions.md",
-        "output-theme.previous/.github/reports/SETUP-SUMMARY.md",
-        "output-theme.previous/docs/GENERATE_THEME.md",
-        "output-theme.previous/package.json",
-        "output-theme.previous/styles/colors/palette.json",
-        "output-theme.previous/styles/presets/dark.json",
-        "output-theme.previous/styles/typography/serif-titles.json",
-        "output-theme/package.json",
-        "output-theme/styles/colors/palette.json",
-        "output-theme/styles/presets/dark.json",
-        "output-theme/styles/typography/serif-titles.json",
         "scripts/utils/placeholders.js"
       ],
-      "count": 23,
+      "count": 7,
       "usage": [
         {
           "file": "docs/GENERATE_THEME.md",
           "line": 97
-        },
-        {
-          "file": "output-theme/package.json",
-          "line": 15
-        },
-        {
-          "file": "output-theme/package.json",
-          "line": 128
-        },
-        {
-          "file": "output-theme.previous/package.json",
-          "line": 15
-        },
-        {
-          "file": "output-theme.previous/package.json",
-          "line": 197
         },
         {
           "file": ".github/agents/generate-theme.agent.md",
@@ -4312,76 +3343,8 @@
           "line": 123
         },
         {
-          "file": "output-theme.previous/docs/GENERATE_THEME.md",
-          "line": 97
-        },
-        {
           "file": "scripts/utils/placeholders.js",
-          "line": 49
-        },
-        {
-          "file": "output-theme/styles/colors/palette.json",
-          "line": 3
-        },
-        {
-          "file": "output-theme/styles/presets/dark.json",
-          "line": 3
-        },
-        {
-          "file": "output-theme/styles/typography/serif-titles.json",
-          "line": 3
-        },
-        {
-          "file": "output-theme.previous/.github/agents/generate-theme.agent.md",
-          "line": 28
-        },
-        {
-          "file": "output-theme.previous/.github/agents/generate-theme.agent.md",
-          "line": 147
-        },
-        {
-          "file": "output-theme.previous/.github/instructions/generate-theme.instructions.md",
-          "line": 301
-        },
-        {
-          "file": "output-theme.previous/.github/instructions/i18n.instructions.md",
-          "line": 415
-        },
-        {
-          "file": "output-theme.previous/.github/reports/SETUP-SUMMARY.md",
-          "line": 123
-        },
-        {
-          "file": "output-theme.previous/styles/colors/palette.json",
-          "line": 3
-        },
-        {
-          "file": "output-theme.previous/styles/presets/dark.json",
-          "line": 3
-        },
-        {
-          "file": "output-theme.previous/styles/typography/serif-titles.json",
-          "line": 3
-        }
-      ]
-    },
-    "network": {
-      "name": "network",
-      "category": "other",
-      "type": "string",
-      "files": [
-        "output-theme.previous/style.css",
-        "output-theme/style.css"
-      ],
-      "count": 2,
-      "usage": [
-        {
-          "file": "output-theme/style.css",
-          "line": 16
-        },
-        {
-          "file": "output-theme.previous/style.css",
-          "line": 16
+          "line": 53
         }
       ]
     },
@@ -4394,9 +3357,10 @@
         "docs/GENERATE_THEME.md",
         "scripts/generate-theme.js",
         "scripts/utils/placeholders.js",
+        "theme-template/styles/dark.json",
         "theme-template/theme.json"
       ],
-      "count": 5,
+      "count": 6,
       "usage": [
         {
           "file": "docs/GENERATE_THEME.md",
@@ -4404,11 +3368,11 @@
         },
         {
           "file": "scripts/generate-theme.js",
-          "line": 666
+          "line": 753
         },
         {
           "file": "theme-template/theme.json",
-          "line": 76
+          "line": 92
         },
         {
           "file": ".github/instructions/generate-theme.instructions.md",
@@ -4416,7 +3380,11 @@
         },
         {
           "file": "scripts/utils/placeholders.js",
-          "line": 57
+          "line": 61
+        },
+        {
+          "file": "theme-template/styles/dark.json",
+          "line": 41
         }
       ]
     },
@@ -4425,38 +3393,13 @@
       "category": "other",
       "type": "string",
       "files": [
-        ".github/agents/template.agent.md",
-        "output-theme.previous/.github/agents/template.agent.md"
+        ".github/agents/template.agent.md"
       ],
-      "count": 2,
+      "count": 1,
       "usage": [
         {
           "file": ".github/agents/template.agent.md",
           "line": 34
-        },
-        {
-          "file": "output-theme.previous/.github/agents/template.agent.md",
-          "line": 34
-        }
-      ]
-    },
-    "php_version_min": {
-      "name": "php_version_min",
-      "category": "versioning",
-      "type": "version",
-      "files": [
-        "output-theme.previous/README.txt",
-        "output-theme/README.txt"
-      ],
-      "count": 2,
-      "usage": [
-        {
-          "file": "output-theme/README.txt",
-          "line": 6
-        },
-        {
-          "file": "output-theme.previous/README.txt",
-          "line": 6
         }
       ]
     },
@@ -4487,14 +3430,13 @@
       "files": [
         ".github/agents/template.agent.md",
         "CHANGELOG.md",
-        "output-theme.previous/.github/agents/template.agent.md",
         "scripts/dry-run/with-dry-run.js"
       ],
-      "count": 4,
+      "count": 3,
       "usage": [
         {
           "file": "CHANGELOG.md",
-          "line": 47
+          "line": 68
         },
         {
           "file": ".github/agents/template.agent.md",
@@ -4503,10 +3445,6 @@
         {
           "file": "scripts/dry-run/with-dry-run.js",
           "line": 5
-        },
-        {
-          "file": "output-theme.previous/.github/agents/template.agent.md",
-          "line": 22
         }
       ]
     },
@@ -4515,10 +3453,9 @@
       "category": "other",
       "type": "string",
       "files": [
-        ".github/instructions/i18n.instructions.md",
-        "output-theme.previous/.github/instructions/i18n.instructions.md"
+        ".github/instructions/i18n.instructions.md"
       ],
-      "count": 4,
+      "count": 2,
       "usage": [
         {
           "file": ".github/instructions/i18n.instructions.md",
@@ -4526,14 +3463,6 @@
         },
         {
           "file": ".github/instructions/i18n.instructions.md",
-          "line": 354
-        },
-        {
-          "file": "output-theme.previous/.github/instructions/i18n.instructions.md",
-          "line": 348
-        },
-        {
-          "file": "output-theme.previous/.github/instructions/i18n.instructions.md",
           "line": 354
         }
       ]
@@ -4544,37 +3473,22 @@
       "type": "url",
       "files": [
         "docs/GENERATE_THEME.md",
-        "output-theme.previous/SUPPORT.md",
-        "output-theme.previous/docs/GENERATE_THEME.md",
-        "output-theme/SUPPORT.md",
         "scripts/generate-theme.js",
         "theme-template/SUPPORT.md"
       ],
-      "count": 6,
+      "count": 3,
       "usage": [
         {
           "file": "docs/GENERATE_THEME.md",
           "line": 133
         },
         {
-          "file": "output-theme/SUPPORT.md",
-          "line": 103
-        },
-        {
-          "file": "output-theme.previous/SUPPORT.md",
-          "line": 103
-        },
-        {
           "file": "scripts/generate-theme.js",
-          "line": 719
+          "line": 853
         },
         {
           "file": "theme-template/SUPPORT.md",
           "line": 103
-        },
-        {
-          "file": "output-theme.previous/docs/GENERATE_THEME.md",
-          "line": 133
         }
       ]
     },
@@ -4592,6 +3506,7 @@
         "scripts/generate-theme.js",
         "scripts/utils/placeholders.js",
         "theme-template/README.md",
+        "theme-template/styles/dark.json",
         "theme-template/theme.json"
       ],
       "count": 14,
@@ -4614,19 +3529,15 @@
         },
         {
           "file": "scripts/generate-theme.js",
-          "line": 661
+          "line": 743
         },
         {
           "file": "theme-template/README.md",
-          "line": 166
+          "line": 168
         },
         {
           "file": "theme-template/theme.json",
-          "line": 51
-        },
-        {
-          "file": "theme-template/theme.json",
-          "line": 88
+          "line": 137
         },
         {
           "file": ".github/agents/generate-theme.agent.md",
@@ -4650,27 +3561,11 @@
         },
         {
           "file": "scripts/utils/placeholders.js",
-          "line": 52
-        }
-      ]
-    },
-    "repo_url": {
-      "name": "repo_url",
-      "category": "urls",
-      "type": "url",
-      "files": [
-        "output-theme.previous/README.txt",
-        "output-theme/README.txt"
-      ],
-      "count": 2,
-      "usage": [
-        {
-          "file": "output-theme/README.txt",
-          "line": 138
+          "line": 56
         },
         {
-          "file": "output-theme.previous/README.txt",
-          "line": 138
+          "file": "theme-template/styles/dark.json",
+          "line": 86
         }
       ]
     },
@@ -4679,10 +3574,9 @@
       "category": "other",
       "type": "string",
       "files": [
-        ".github/instructions/instructions.instructions.md",
-        "output-theme.previous/.github/instructions/instructions.instructions.md"
+        ".github/instructions/instructions.instructions.md"
       ],
-      "count": 4,
+      "count": 2,
       "usage": [
         {
           "file": ".github/instructions/instructions.instructions.md",
@@ -4690,14 +3584,6 @@
         },
         {
           "file": ".github/instructions/instructions.instructions.md",
-          "line": 178
-        },
-        {
-          "file": "output-theme.previous/.github/instructions/instructions.instructions.md",
-          "line": 56
-        },
-        {
-          "file": "output-theme.previous/.github/instructions/instructions.instructions.md",
           "line": 178
         }
       ]
@@ -4707,17 +3593,12 @@
       "category": "other",
       "type": "string",
       "files": [
-        ".github/agents/template.agent.md",
-        "output-theme.previous/.github/agents/template.agent.md"
+        ".github/agents/template.agent.md"
       ],
-      "count": 2,
+      "count": 1,
       "usage": [
         {
           "file": ".github/agents/template.agent.md",
-          "line": 38
-        },
-        {
-          "file": "output-theme.previous/.github/agents/template.agent.md",
           "line": 38
         }
       ]
@@ -4727,17 +3608,12 @@
       "category": "other",
       "type": "string",
       "files": [
-        ".github/agents/template.agent.md",
-        "output-theme.previous/.github/agents/template.agent.md"
+        ".github/agents/template.agent.md"
       ],
-      "count": 2,
+      "count": 1,
       "usage": [
         {
           "file": ".github/agents/template.agent.md",
-          "line": 39
-        },
-        {
-          "file": "output-theme.previous/.github/agents/template.agent.md",
           "line": 39
         }
       ]
@@ -4755,9 +3631,10 @@
         "scripts/generate-theme.js",
         "scripts/utils/placeholders.js",
         "theme-template/README.md",
+        "theme-template/styles/dark.json",
         "theme-template/theme.json"
       ],
-      "count": 11,
+      "count": 13,
       "usage": [
         {
           "file": ".github/custom-instructions.md",
@@ -4769,19 +3646,19 @@
         },
         {
           "file": "scripts/generate-theme.js",
-          "line": 662
+          "line": 745
+        },
+        {
+          "file": "scripts/generate-theme.js",
+          "line": 808
         },
         {
           "file": "theme-template/README.md",
-          "line": 167
+          "line": 169
         },
         {
           "file": "theme-template/theme.json",
-          "line": 56
-        },
-        {
-          "file": "theme-template/theme.json",
-          "line": 88
+          "line": 182
         },
         {
           "file": ".github/agents/generate-theme.agent.md",
@@ -4801,7 +3678,15 @@
         },
         {
           "file": "scripts/utils/placeholders.js",
-          "line": 53
+          "line": 57
+        },
+        {
+          "file": "scripts/utils/placeholders.js",
+          "line": 113
+        },
+        {
+          "file": "theme-template/styles/dark.json",
+          "line": 131
         }
       ]
     },
@@ -4826,7 +3711,7 @@
         },
         {
           "file": "scripts/generate-theme.js",
-          "line": 658
+          "line": 740
         },
         {
           "file": "theme-template/CONTRIBUTING.md",
@@ -4850,7 +3735,7 @@
         },
         {
           "file": "scripts/utils/placeholders.js",
-          "line": 39
+          "line": 42
         }
       ]
     },
@@ -4859,17 +3744,12 @@
       "category": "other",
       "type": "string",
       "files": [
-        ".github/agents/template.agent.md",
-        "output-theme.previous/.github/agents/template.agent.md"
+        ".github/agents/template.agent.md"
       ],
-      "count": 2,
+      "count": 1,
       "usage": [
         {
           "file": ".github/agents/template.agent.md",
-          "line": 50
-        },
-        {
-          "file": "output-theme.previous/.github/agents/template.agent.md",
           "line": 50
         }
       ]
@@ -4893,11 +3773,11 @@
         },
         {
           "file": "scripts/generate-theme.js",
-          "line": 675
+          "line": 774
         },
         {
           "file": "theme-template/theme.json",
-          "line": 499
+          "line": 826
         },
         {
           "file": ".github/instructions/generate-theme.instructions.md",
@@ -4905,7 +3785,7 @@
         },
         {
           "file": "scripts/utils/placeholders.js",
-          "line": 73
+          "line": 78
         }
       ]
     },
@@ -4920,7 +3800,7 @@
       "usage": [
         {
           "file": "scripts/utils/placeholders.js",
-          "line": 44
+          "line": 47
         }
       ]
     },
@@ -4945,11 +3825,11 @@
         },
         {
           "file": "scripts/generate-theme.js",
-          "line": 681
+          "line": 786
         },
         {
           "file": "scripts/utils/placeholders.js",
-          "line": 101
+          "line": 106
         }
       ]
     },
@@ -4963,14 +3843,9 @@
         ".github/projects/plans/2025-12-12-generator-logging-schema-cleanup-design.md",
         ".github/projects/plans/2025-12-15-implementation-plan.md",
         ".github/projects/plans/2025-12-17-docker-implementation-plan.md",
-        "output-theme.previous/.github/agents/generate-theme.agent.md",
-        "output-theme.previous/.github/agents/template.agent.md",
-        "output-theme.previous/.github/projects/plans/2025-12-12-generator-logging-schema-cleanup-design.md",
-        "output-theme.previous/.github/projects/plans/2025-12-15-implementation-plan.md",
-        "output-theme.previous/.github/projects/plans/2025-12-17-docker-implementation-plan.md",
         "scripts/dry-run/dry-run-config.js"
       ],
-      "count": 49,
+      "count": 25,
       "usage": [
         {
           "file": ".github/agents/generate-theme.agent.md",
@@ -5071,102 +3946,6 @@
         {
           "file": ".github/projects/plans/2025-12-17-docker-implementation-plan.md",
           "line": 39
-        },
-        {
-          "file": "output-theme.previous/.github/agents/generate-theme.agent.md",
-          "line": 24
-        },
-        {
-          "file": "output-theme.previous/.github/agents/generate-theme.agent.md",
-          "line": 138
-        },
-        {
-          "file": "output-theme.previous/.github/agents/generate-theme.agent.md",
-          "line": 147
-        },
-        {
-          "file": "output-theme.previous/.github/agents/generate-theme.agent.md",
-          "line": 148
-        },
-        {
-          "file": "output-theme.previous/.github/agents/template.agent.md",
-          "line": 63
-        },
-        {
-          "file": "output-theme.previous/.github/agents/template.agent.md",
-          "line": 120
-        },
-        {
-          "file": "output-theme.previous/.github/agents/template.agent.md",
-          "line": 120
-        },
-        {
-          "file": "output-theme.previous/.github/projects/plans/2025-12-12-generator-logging-schema-cleanup-design.md",
-          "line": 34
-        },
-        {
-          "file": "output-theme.previous/.github/projects/plans/2025-12-12-generator-logging-schema-cleanup-design.md",
-          "line": 478
-        },
-        {
-          "file": "output-theme.previous/.github/projects/plans/2025-12-12-generator-logging-schema-cleanup-design.md",
-          "line": 491
-        },
-        {
-          "file": "output-theme.previous/.github/projects/plans/2025-12-12-generator-logging-schema-cleanup-design.md",
-          "line": 508
-        },
-        {
-          "file": "output-theme.previous/.github/projects/plans/2025-12-12-generator-logging-schema-cleanup-design.md",
-          "line": 520
-        },
-        {
-          "file": "output-theme.previous/.github/projects/plans/2025-12-15-implementation-plan.md",
-          "line": 139
-        },
-        {
-          "file": "output-theme.previous/.github/projects/plans/2025-12-15-implementation-plan.md",
-          "line": 146
-        },
-        {
-          "file": "output-theme.previous/.github/projects/plans/2025-12-15-implementation-plan.md",
-          "line": 165
-        },
-        {
-          "file": "output-theme.previous/.github/projects/plans/2025-12-15-implementation-plan.md",
-          "line": 172
-        },
-        {
-          "file": "output-theme.previous/.github/projects/plans/2025-12-15-implementation-plan.md",
-          "line": 180
-        },
-        {
-          "file": "output-theme.previous/.github/projects/plans/2025-12-15-implementation-plan.md",
-          "line": 187
-        },
-        {
-          "file": "output-theme.previous/.github/projects/plans/2025-12-15-implementation-plan.md",
-          "line": 257
-        },
-        {
-          "file": "output-theme.previous/.github/projects/plans/2025-12-15-implementation-plan.md",
-          "line": 330
-        },
-        {
-          "file": "output-theme.previous/.github/projects/plans/2025-12-15-implementation-plan.md",
-          "line": 374
-        },
-        {
-          "file": "output-theme.previous/.github/projects/plans/2025-12-15-implementation-plan.md",
-          "line": 397
-        },
-        {
-          "file": "output-theme.previous/.github/projects/plans/2025-12-17-docker-implementation-plan.md",
-          "line": 28
-        },
-        {
-          "file": "output-theme.previous/.github/projects/plans/2025-12-17-docker-implementation-plan.md",
-          "line": 39
         }
       ]
     },
@@ -5175,17 +3954,12 @@
       "category": "other",
       "type": "string",
       "files": [
-        ".github/agents/template.agent.md",
-        "output-theme.previous/.github/agents/template.agent.md"
+        ".github/agents/template.agent.md"
       ],
-      "count": 2,
+      "count": 1,
       "usage": [
         {
           "file": ".github/agents/template.agent.md",
-          "line": 36
-        },
-        {
-          "file": "output-theme.previous/.github/agents/template.agent.md",
           "line": 36
         }
       ]
@@ -5197,30 +3971,18 @@
       "files": [
         ".github/instructions/generate-theme.instructions.md",
         "docs/GENERATE_THEME.md",
-        "output-theme.previous/.github/instructions/generate-theme.instructions.md",
-        "output-theme.previous/SUPPORT.md",
-        "output-theme.previous/docs/GENERATE_THEME.md",
-        "output-theme/SUPPORT.md",
         "scripts/generate-theme.js",
         "theme-template/SUPPORT.md"
       ],
-      "count": 8,
+      "count": 4,
       "usage": [
         {
           "file": "docs/GENERATE_THEME.md",
           "line": 107
         },
         {
-          "file": "output-theme/SUPPORT.md",
-          "line": 153
-        },
-        {
-          "file": "output-theme.previous/SUPPORT.md",
-          "line": 153
-        },
-        {
           "file": "scripts/generate-theme.js",
-          "line": 716
+          "line": 847
         },
         {
           "file": "theme-template/SUPPORT.md",
@@ -5228,14 +3990,6 @@
         },
         {
           "file": ".github/instructions/generate-theme.instructions.md",
-          "line": 321
-        },
-        {
-          "file": "output-theme.previous/docs/GENERATE_THEME.md",
-          "line": 107
-        },
-        {
-          "file": "output-theme.previous/.github/instructions/generate-theme.instructions.md",
           "line": 321
         }
       ]
@@ -5251,7 +4005,7 @@
       "usage": [
         {
           "file": "scripts/utils/placeholders.js",
-          "line": 45
+          "line": 48
         }
       ]
     },
@@ -5276,7 +4030,7 @@
         },
         {
           "file": "scripts/generate-theme.js",
-          "line": 655
+          "line": 735
         },
         {
           "file": "theme-template/README.txt",
@@ -5284,7 +4038,7 @@
         },
         {
           "file": "theme-template/package.json",
-          "line": 104
+          "line": 84
         },
         {
           "file": ".github/instructions/generate-theme.instructions.md",
@@ -5296,7 +4050,7 @@
         },
         {
           "file": "scripts/utils/placeholders.js",
-          "line": 38
+          "line": 40
         }
       ]
     },
@@ -5305,17 +4059,12 @@
       "category": "other",
       "type": "string",
       "files": [
-        ".github/agents/template.agent.md",
-        "output-theme.previous/.github/agents/template.agent.md"
+        ".github/agents/template.agent.md"
       ],
-      "count": 2,
+      "count": 1,
       "usage": [
         {
           "file": ".github/agents/template.agent.md",
-          "line": 69
-        },
-        {
-          "file": "output-theme.previous/.github/agents/template.agent.md",
           "line": 69
         }
       ]
@@ -5325,23 +4074,13 @@
       "category": "theme_metadata",
       "type": "string",
       "files": [
-        "output-theme.previous/style.css",
-        "output-theme/style.css",
         "scripts/utils/placeholders.js"
       ],
-      "count": 3,
+      "count": 1,
       "usage": [
         {
-          "file": "output-theme/style.css",
-          "line": 15
-        },
-        {
-          "file": "output-theme.previous/style.css",
-          "line": 15
-        },
-        {
           "file": "scripts/utils/placeholders.js",
-          "line": 25
+          "line": 26
         }
       ]
     },
@@ -5351,37 +4090,22 @@
       "type": "string",
       "files": [
         "docs/GENERATE_THEME.md",
-        "output-theme.previous/README.txt",
-        "output-theme.previous/docs/GENERATE_THEME.md",
-        "output-theme/README.txt",
         "scripts/generate-theme.js",
         "theme-template/README.txt"
       ],
-      "count": 6,
+      "count": 3,
       "usage": [
         {
           "file": "docs/GENERATE_THEME.md",
           "line": 188
         },
         {
-          "file": "output-theme/README.txt",
-          "line": 16
-        },
-        {
-          "file": "output-theme.previous/README.txt",
-          "line": 16
-        },
-        {
           "file": "scripts/generate-theme.js",
-          "line": 712
+          "line": 839
         },
         {
           "file": "theme-template/README.txt",
           "line": 16
-        },
-        {
-          "file": "output-theme.previous/docs/GENERATE_THEME.md",
-          "line": 188
         }
       ]
     },
@@ -5390,17 +4114,12 @@
       "category": "other",
       "type": "string",
       "files": [
-        ".github/agents/template.agent.md",
-        "output-theme.previous/.github/agents/template.agent.md"
+        ".github/agents/template.agent.md"
       ],
-      "count": 2,
+      "count": 1,
       "usage": [
         {
           "file": ".github/agents/template.agent.md",
-          "line": 35
-        },
-        {
-          "file": "output-theme.previous/.github/agents/template.agent.md",
           "line": 35
         }
       ]
@@ -5410,24 +4129,14 @@
       "category": "other",
       "type": "string",
       "files": [
-        "output-theme.previous/inc/block-patterns.php",
-        "output-theme/inc/block-patterns.php",
         "scripts/generate-theme.js",
         "theme-template/inc/block-patterns.php"
       ],
-      "count": 4,
+      "count": 2,
       "usage": [
         {
           "file": "scripts/generate-theme.js",
-          "line": 729
-        },
-        {
-          "file": "output-theme/inc/block-patterns.php",
-          "line": 102
-        },
-        {
-          "file": "output-theme.previous/inc/block-patterns.php",
-          "line": 102
+          "line": 866
         },
         {
           "file": "theme-template/inc/block-patterns.php",
@@ -5440,24 +4149,14 @@
       "category": "other",
       "type": "string",
       "files": [
-        "output-theme.previous/inc/block-patterns.php",
-        "output-theme/inc/block-patterns.php",
         "scripts/generate-theme.js",
         "theme-template/inc/block-patterns.php"
       ],
-      "count": 4,
+      "count": 2,
       "usage": [
         {
           "file": "scripts/generate-theme.js",
-          "line": 730
-        },
-        {
-          "file": "output-theme/inc/block-patterns.php",
-          "line": 114
-        },
-        {
-          "file": "output-theme.previous/inc/block-patterns.php",
-          "line": 114
+          "line": 867
         },
         {
           "file": "theme-template/inc/block-patterns.php",
@@ -5470,24 +4169,14 @@
       "category": "other",
       "type": "string",
       "files": [
-        "output-theme.previous/inc/block-patterns.php",
-        "output-theme/inc/block-patterns.php",
         "scripts/generate-theme.js",
         "theme-template/inc/block-patterns.php"
       ],
-      "count": 4,
+      "count": 2,
       "usage": [
         {
           "file": "scripts/generate-theme.js",
-          "line": 731
-        },
-        {
-          "file": "output-theme/inc/block-patterns.php",
-          "line": 118
-        },
-        {
-          "file": "output-theme.previous/inc/block-patterns.php",
-          "line": 118
+          "line": 868
         },
         {
           "file": "theme-template/inc/block-patterns.php",
@@ -5500,24 +4189,14 @@
       "category": "other",
       "type": "string",
       "files": [
-        "output-theme.previous/inc/block-patterns.php",
-        "output-theme/inc/block-patterns.php",
         "scripts/generate-theme.js",
         "theme-template/inc/block-patterns.php"
       ],
-      "count": 4,
+      "count": 2,
       "usage": [
         {
           "file": "scripts/generate-theme.js",
-          "line": 732
-        },
-        {
-          "file": "output-theme/inc/block-patterns.php",
-          "line": 130
-        },
-        {
-          "file": "output-theme.previous/inc/block-patterns.php",
-          "line": 130
+          "line": 869
         },
         {
           "file": "theme-template/inc/block-patterns.php",
@@ -5530,24 +4209,14 @@
       "category": "other",
       "type": "string",
       "files": [
-        "output-theme.previous/inc/block-patterns.php",
-        "output-theme/inc/block-patterns.php",
         "scripts/generate-theme.js",
         "theme-template/inc/block-patterns.php"
       ],
-      "count": 4,
+      "count": 2,
       "usage": [
         {
           "file": "scripts/generate-theme.js",
-          "line": 733
-        },
-        {
-          "file": "output-theme/inc/block-patterns.php",
-          "line": 134
-        },
-        {
-          "file": "output-theme.previous/inc/block-patterns.php",
-          "line": 134
+          "line": 870
         },
         {
           "file": "theme-template/inc/block-patterns.php",
@@ -5560,24 +4229,14 @@
       "category": "other",
       "type": "string",
       "files": [
-        "output-theme.previous/inc/block-patterns.php",
-        "output-theme/inc/block-patterns.php",
         "scripts/generate-theme.js",
         "theme-template/inc/block-patterns.php"
       ],
-      "count": 4,
+      "count": 2,
       "usage": [
         {
           "file": "scripts/generate-theme.js",
-          "line": 734
-        },
-        {
-          "file": "output-theme/inc/block-patterns.php",
-          "line": 146
-        },
-        {
-          "file": "output-theme.previous/inc/block-patterns.php",
-          "line": 146
+          "line": 871
         },
         {
           "file": "theme-template/inc/block-patterns.php",
@@ -5590,24 +4249,14 @@
       "category": "other",
       "type": "string",
       "files": [
-        "output-theme.previous/inc/block-patterns.php",
-        "output-theme/inc/block-patterns.php",
         "scripts/generate-theme.js",
         "theme-template/inc/block-patterns.php"
       ],
-      "count": 4,
+      "count": 2,
       "usage": [
         {
           "file": "scripts/generate-theme.js",
-          "line": 735
-        },
-        {
-          "file": "output-theme/inc/block-patterns.php",
-          "line": 150
-        },
-        {
-          "file": "output-theme.previous/inc/block-patterns.php",
-          "line": 150
+          "line": 872
         },
         {
           "file": "theme-template/inc/block-patterns.php",
@@ -5620,24 +4269,14 @@
       "category": "content_strings",
       "type": "string",
       "files": [
-        "output-theme.previous/inc/block-patterns.php",
-        "output-theme/inc/block-patterns.php",
         "scripts/generate-theme.js",
         "theme-template/inc/block-patterns.php"
       ],
-      "count": 4,
+      "count": 2,
       "usage": [
         {
           "file": "scripts/generate-theme.js",
-          "line": 728
-        },
-        {
-          "file": "output-theme/inc/block-patterns.php",
-          "line": 98
-        },
-        {
-          "file": "output-theme.previous/inc/block-patterns.php",
-          "line": 98
+          "line": 865
         },
         {
           "file": "theme-template/inc/block-patterns.php",
@@ -5665,17 +4304,12 @@
       "category": "other",
       "type": "string",
       "files": [
-        ".github/projects/plans/2025-12-12-generator-logging-schema-cleanup-design.md",
-        "output-theme.previous/.github/projects/plans/2025-12-12-generator-logging-schema-cleanup-design.md"
+        ".github/projects/plans/2025-12-12-generator-logging-schema-cleanup-design.md"
       ],
-      "count": 2,
+      "count": 1,
       "usage": [
         {
           "file": ".github/projects/plans/2025-12-12-generator-logging-schema-cleanup-design.md",
-          "line": 776
-        },
-        {
-          "file": "output-theme.previous/.github/projects/plans/2025-12-12-generator-logging-schema-cleanup-design.md",
           "line": 776
         }
       ]
@@ -5705,11 +4339,11 @@
         },
         {
           "file": "scripts/generate-theme.js",
-          "line": 460
+          "line": 478
         },
         {
           "file": "scripts/generate-theme.js",
-          "line": 650
+          "line": 709
         },
         {
           "file": "theme-template/README.txt",
@@ -5741,7 +4375,7 @@
         },
         {
           "file": "scripts/utils/placeholders.js",
-          "line": 29
+          "line": 30
         }
       ]
     },
@@ -5757,9 +4391,10 @@
         "scripts/generate-theme.js",
         "scripts/utils/placeholders.js",
         "theme-template/README.md",
+        "theme-template/styles/dark.json",
         "theme-template/theme.json"
       ],
-      "count": 9,
+      "count": 10,
       "usage": [
         {
           "file": ".github/custom-instructions.md",
@@ -5771,15 +4406,15 @@
         },
         {
           "file": "scripts/generate-theme.js",
-          "line": 664
+          "line": 749
         },
         {
           "file": "theme-template/README.md",
-          "line": 169
+          "line": 171
         },
         {
           "file": "theme-template/theme.json",
-          "line": 66
+          "line": 67
         },
         {
           "file": ".github/agents/generate-theme.agent.md",
@@ -5795,7 +4430,11 @@
         },
         {
           "file": "scripts/utils/placeholders.js",
-          "line": 55
+          "line": 59
+        },
+        {
+          "file": "theme-template/styles/dark.json",
+          "line": 16
         }
       ]
     },
@@ -5805,52 +4444,20 @@
       "type": "string",
       "files": [
         ".github/agents/generate-theme.agent.md",
-        "docs/GENERATE_THEME.md",
-        "output-theme.previous/.github/agents/generate-theme.agent.md",
-        "output-theme.previous/README.txt",
-        "output-theme.previous/docs/GENERATE_THEME.md",
-        "output-theme/README.txt"
+        "docs/GENERATE_THEME.md"
       ],
-      "count": 10,
+      "count": 3,
       "usage": [
         {
           "file": "docs/GENERATE_THEME.md",
           "line": 189
         },
         {
-          "file": "output-theme/README.txt",
-          "line": 27
-        },
-        {
-          "file": "output-theme/README.txt",
-          "line": 98
-        },
-        {
-          "file": "output-theme.previous/README.txt",
-          "line": 27
-        },
-        {
-          "file": "output-theme.previous/README.txt",
-          "line": 98
-        },
-        {
           "file": ".github/agents/generate-theme.agent.md",
           "line": 29
         },
         {
           "file": ".github/agents/generate-theme.agent.md",
-          "line": 148
-        },
-        {
-          "file": "output-theme.previous/docs/GENERATE_THEME.md",
-          "line": 189
-        },
-        {
-          "file": "output-theme.previous/.github/agents/generate-theme.agent.md",
-          "line": 29
-        },
-        {
-          "file": "output-theme.previous/.github/agents/generate-theme.agent.md",
           "line": 148
         }
       ]
@@ -5883,6 +4490,7 @@
         "scripts/generate-theme.js",
         "scripts/utils/placeholders.js",
         "theme-template/CHANGELOG.md",
+        "theme-template/CLAUDE.md",
         "theme-template/CONTRIBUTING.md",
         "theme-template/DEVELOPMENT.md",
         "theme-template/README.md",
@@ -5917,11 +4525,11 @@
         "theme-template/tests/js/editor.test.js",
         "theme-template/webpack.config.js"
       ],
-      "count": 131,
+      "count": 133,
       "usage": [
         {
           "file": "CHANGELOG.md",
-          "line": 132
+          "line": 156
         },
         {
           "file": "README.md",
@@ -5993,23 +4601,23 @@
         },
         {
           "file": "scripts/generate-theme.js",
-          "line": 406
+          "line": 424
         },
         {
           "file": "scripts/generate-theme.js",
-          "line": 432
+          "line": 450
         },
         {
           "file": "scripts/generate-theme.js",
-          "line": 583
+          "line": 626
         },
         {
           "file": "scripts/generate-theme.js",
-          "line": 642
+          "line": 687
         },
         {
           "file": "scripts/generate-theme.js",
-          "line": 697
+          "line": 819
         },
         {
           "file": "theme-template/CHANGELOG.md",
@@ -6018,6 +4626,14 @@
         {
           "file": "theme-template/CHANGELOG.md",
           "line": 14
+        },
+        {
+          "file": "theme-template/CLAUDE.md",
+          "line": 1
+        },
+        {
+          "file": "theme-template/CLAUDE.md",
+          "line": 3
         },
         {
           "file": "theme-template/CONTRIBUTING.md",
@@ -6037,7 +4653,7 @@
         },
         {
           "file": "theme-template/DEVELOPMENT.md",
-          "line": 94
+          "line": 106
         },
         {
           "file": "theme-template/README.md",
@@ -6045,11 +4661,11 @@
         },
         {
           "file": "theme-template/README.md",
-          "line": 161
+          "line": 163
         },
         {
           "file": "theme-template/README.md",
-          "line": 299
+          "line": 300
         },
         {
           "file": "theme-template/README.txt",
@@ -6133,7 +4749,7 @@
         },
         {
           "file": "theme-template/package.json",
-          "line": 100
+          "line": 80
         },
         {
           "file": "theme-template/screenshot.png.md",
@@ -6433,7 +5049,7 @@
         },
         {
           "file": "theme-template/src/js/editor.js",
-          "line": 40
+          "line": 24
         },
         {
           "file": "theme-template/src/js/theme.js",
@@ -6441,7 +5057,7 @@
         },
         {
           "file": "theme-template/tests/js/editor.test.js",
-          "line": 69
+          "line": 39
         }
       ]
     },
@@ -6456,7 +5072,7 @@
       "usage": [
         {
           "file": "scripts/generate-theme.js",
-          "line": 706
+          "line": 831
         }
       ]
     },
@@ -6465,17 +5081,12 @@
       "category": "other",
       "type": "string",
       "files": [
-        ".github/projects/plans/2025-12-12-generator-logging-schema-cleanup-design.md",
-        "output-theme.previous/.github/projects/plans/2025-12-12-generator-logging-schema-cleanup-design.md"
+        ".github/projects/plans/2025-12-12-generator-logging-schema-cleanup-design.md"
       ],
-      "count": 2,
+      "count": 1,
       "usage": [
         {
           "file": ".github/projects/plans/2025-12-12-generator-logging-schema-cleanup-design.md",
-          "line": 263
-        },
-        {
-          "file": "output-theme.previous/.github/projects/plans/2025-12-12-generator-logging-schema-cleanup-design.md",
           "line": 263
         }
       ]
@@ -6526,19 +5137,19 @@
         },
         {
           "file": "scripts/generate-theme.js",
-          "line": 382
+          "line": 397
         },
         {
           "file": "scripts/generate-theme.js",
-          "line": 384
+          "line": 399
         },
         {
           "file": "scripts/generate-theme.js",
-          "line": 654
+          "line": 727
         },
         {
           "file": "scripts/generate-theme.js",
-          "line": 698
+          "line": 820
         },
         {
           "file": "theme-template/CONTRIBUTING.md",
@@ -6570,7 +5181,7 @@
         },
         {
           "file": "theme-template/README.md",
-          "line": 286
+          "line": 287
         },
         {
           "file": "theme-template/README.txt",
@@ -6614,7 +5225,7 @@
         },
         {
           "file": "theme-template/package.json",
-          "line": 107
+          "line": 87
         },
         {
           "file": ".github/instructions/generate-theme.instructions.md",
@@ -6626,7 +5237,7 @@
         },
         {
           "file": "scripts/utils/placeholders.js",
-          "line": 37
+          "line": 38
         }
       ]
     },
@@ -6713,59 +5324,67 @@
         "theme-template/tests/php/ThemeSetupTest.php",
         "theme-template/tests/php/bootstrap.php"
       ],
-      "count": 454,
+      "count": 458,
       "usage": [
         {
           "file": "CHANGELOG.md",
-          "line": 50
+          "line": 58
         },
         {
           "file": "CHANGELOG.md",
-          "line": 50
+          "line": 60
         },
         {
           "file": "CHANGELOG.md",
-          "line": 54
+          "line": 71
         },
         {
           "file": "CHANGELOG.md",
-          "line": 61
+          "line": 71
         },
         {
           "file": "CHANGELOG.md",
-          "line": 62
+          "line": 75
         },
         {
           "file": "CHANGELOG.md",
-          "line": 62
+          "line": 82
         },
         {
           "file": "CHANGELOG.md",
-          "line": 63
+          "line": 83
         },
         {
           "file": "CHANGELOG.md",
-          "line": 63
+          "line": 83
         },
         {
           "file": "CHANGELOG.md",
-          "line": 64
+          "line": 84
         },
         {
           "file": "CHANGELOG.md",
-          "line": 64
+          "line": 84
         },
         {
           "file": "CHANGELOG.md",
-          "line": 64
+          "line": 85
         },
         {
           "file": "CHANGELOG.md",
-          "line": 125
+          "line": 85
         },
         {
           "file": "CHANGELOG.md",
-          "line": 206
+          "line": 85
+        },
+        {
+          "file": "CHANGELOG.md",
+          "line": 149
+        },
+        {
+          "file": "CHANGELOG.md",
+          "line": 230
         },
         {
           "file": "README.md",
@@ -6877,27 +5496,23 @@
         },
         {
           "file": "scripts/generate-theme.js",
-          "line": 376
+          "line": 391
         },
         {
           "file": "scripts/generate-theme.js",
-          "line": 402
+          "line": 420
         },
         {
           "file": "scripts/generate-theme.js",
-          "line": 476
+          "line": 494
         },
         {
           "file": "scripts/generate-theme.js",
-          "line": 508
+          "line": 543
         },
         {
           "file": "scripts/generate-theme.js",
-          "line": 509
-        },
-        {
-          "file": "scripts/generate-theme.js",
-          "line": 509
+          "line": 546
         },
         {
           "file": "scripts/generate-theme.js",
@@ -6905,23 +5520,27 @@
         },
         {
           "file": "scripts/generate-theme.js",
-          "line": 561
+          "line": 587
         },
         {
           "file": "scripts/generate-theme.js",
-          "line": 562
+          "line": 602
         },
         {
           "file": "scripts/generate-theme.js",
-          "line": 570
+          "line": 603
         },
         {
           "file": "scripts/generate-theme.js",
-          "line": 583
+          "line": 612
         },
         {
           "file": "scripts/generate-theme.js",
-          "line": 643
+          "line": 626
+        },
+        {
+          "file": "scripts/generate-theme.js",
+          "line": 690
         },
         {
           "file": "theme-template/.wp-env.json",
@@ -6937,11 +5556,11 @@
         },
         {
           "file": "theme-template/DEVELOPMENT.md",
-          "line": 74
+          "line": 86
         },
         {
           "file": "theme-template/DEVELOPMENT.md",
-          "line": 77
+          "line": 89
         },
         {
           "file": "theme-template/README.md",
@@ -6957,15 +5576,19 @@
         },
         {
           "file": "theme-template/README.md",
-          "line": 133
+          "line": 128
         },
         {
           "file": "theme-template/README.md",
-          "line": 162
+          "line": 135
         },
         {
           "file": "theme-template/README.md",
-          "line": 287
+          "line": 164
+        },
+        {
+          "file": "theme-template/README.md",
+          "line": 288
         },
         {
           "file": "theme-template/README.txt",
@@ -7172,6 +5795,14 @@
           "line": 186
         },
         {
+          "file": "theme-template/package-lock.json",
+          "line": 2
+        },
+        {
+          "file": "theme-template/package-lock.json",
+          "line": 8
+        },
+        {
           "file": "theme-template/package.json",
           "line": 2
         },
@@ -7181,19 +5812,19 @@
         },
         {
           "file": "theme-template/package.json",
-          "line": 72
+          "line": 70
         },
         {
           "file": "theme-template/package.json",
-          "line": 72
+          "line": 70
         },
         {
           "file": "theme-template/package.json",
-          "line": 72
+          "line": 70
         },
         {
           "file": "theme-template/package.json",
-          "line": 101
+          "line": 81
         },
         {
           "file": "theme-template/style.css",
@@ -7657,7 +6288,7 @@
         },
         {
           "file": "scripts/utils/placeholders.js",
-          "line": 130
+          "line": 146
         },
         {
           "file": "theme-template/inc/block-patterns.php",
@@ -8257,51 +6888,47 @@
         },
         {
           "file": "theme-template/.github/workflows/release.yml",
-          "line": 66
+          "line": 59
         },
         {
           "file": "theme-template/.github/workflows/release.yml",
-          "line": 66
+          "line": 74
         },
         {
           "file": "theme-template/.github/workflows/release.yml",
-          "line": 80
+          "line": 74
+        },
+        {
+          "file": "theme-template/.github/workflows/release.yml",
+          "line": 88
         },
         {
           "file": "theme-template/src/js/editor.js",
-          "line": 39
+          "line": 23
         },
         {
           "file": "theme-template/src/js/editor.js",
-          "line": 40
+          "line": 24
         },
         {
           "file": "theme-template/src/js/editor.js",
-          "line": 45
+          "line": 29
         },
         {
           "file": "theme-template/src/js/editor.js",
-          "line": 49
+          "line": 33
         },
         {
           "file": "theme-template/src/js/editor.js",
-          "line": 61
-        },
-        {
-          "file": "theme-template/src/js/editor.js",
-          "line": 64
+          "line": 43
         },
         {
           "file": "theme-template/tests/js/editor.test.js",
-          "line": 50
+          "line": 25
         },
         {
           "file": "theme-template/tests/js/editor.test.js",
-          "line": 54
-        },
-        {
-          "file": "theme-template/tests/js/editor.test.js",
-          "line": 68
+          "line": 38
         },
         {
           "file": "theme-template/tests/php/IncludesTest.php",
@@ -8539,14 +7166,11 @@
       "type": "string",
       "files": [
         "docs/GENERATE_THEME.md",
-        "output-theme.previous/README.txt",
-        "output-theme.previous/docs/GENERATE_THEME.md",
-        "output-theme/README.txt",
         "scripts/generate-theme.js",
         "theme-template/README.txt",
         "theme-template/style.css"
       ],
-      "count": 9,
+      "count": 5,
       "usage": [
         {
           "file": "docs/GENERATE_THEME.md",
@@ -8557,16 +7181,8 @@
           "line": 254
         },
         {
-          "file": "output-theme/README.txt",
-          "line": 10
-        },
-        {
-          "file": "output-theme.previous/README.txt",
-          "line": 10
-        },
-        {
           "file": "scripts/generate-theme.js",
-          "line": 711
+          "line": 836
         },
         {
           "file": "theme-template/README.txt",
@@ -8575,14 +7191,6 @@
         {
           "file": "theme-template/style.css",
           "line": 15
-        },
-        {
-          "file": "output-theme.previous/docs/GENERATE_THEME.md",
-          "line": 187
-        },
-        {
-          "file": "output-theme.previous/docs/GENERATE_THEME.md",
-          "line": 254
         }
       ]
     },
@@ -8615,15 +7223,15 @@
         },
         {
           "file": "scripts/generate-theme.js",
-          "line": 380
+          "line": 395
         },
         {
           "file": "scripts/generate-theme.js",
-          "line": 436
+          "line": 454
         },
         {
           "file": "scripts/generate-theme.js",
-          "line": 648
+          "line": 701
         },
         {
           "file": "theme-template/README.txt",
@@ -8635,7 +7243,7 @@
         },
         {
           "file": "theme-template/package.json",
-          "line": 102
+          "line": 82
         },
         {
           "file": "theme-template/style.css",
@@ -8647,7 +7255,7 @@
         },
         {
           "file": "scripts/utils/placeholders.js",
-          "line": 24
+          "line": 25
         }
       ]
     },
@@ -8669,7 +7277,7 @@
         },
         {
           "file": "scripts/generate-theme.js",
-          "line": 684
+          "line": 790
         },
         {
           "file": "theme-template/functions.php",
@@ -8677,7 +7285,7 @@
         },
         {
           "file": "scripts/utils/placeholders.js",
-          "line": 91
+          "line": 96
         }
       ]
     },
@@ -8699,7 +7307,7 @@
         },
         {
           "file": "scripts/generate-theme.js",
-          "line": 683
+          "line": 789
         },
         {
           "file": "theme-template/functions.php",
@@ -8707,7 +7315,7 @@
         },
         {
           "file": "scripts/utils/placeholders.js",
-          "line": 90
+          "line": 95
         }
       ]
     },
@@ -8722,7 +7330,7 @@
       "usage": [
         {
           "file": "scripts/generate-theme.js",
-          "line": 696
+          "line": 818
         }
       ]
     },
@@ -8731,17 +7339,12 @@
       "category": "other",
       "type": "string",
       "files": [
-        ".github/projects/plans/2025-12-15-implementation-plan.md",
-        "output-theme.previous/.github/projects/plans/2025-12-15-implementation-plan.md"
+        ".github/projects/plans/2025-12-15-implementation-plan.md"
       ],
-      "count": 2,
+      "count": 1,
       "usage": [
         {
           "file": ".github/projects/plans/2025-12-15-implementation-plan.md",
-          "line": 598
-        },
-        {
-          "file": "output-theme.previous/.github/projects/plans/2025-12-15-implementation-plan.md",
           "line": 598
         }
       ]
@@ -8751,17 +7354,12 @@
       "category": "other",
       "type": "string",
       "files": [
-        ".github/projects/plans/2025-12-15-implementation-plan.md",
-        "output-theme.previous/.github/projects/plans/2025-12-15-implementation-plan.md"
+        ".github/projects/plans/2025-12-15-implementation-plan.md"
       ],
-      "count": 2,
+      "count": 1,
       "usage": [
         {
           "file": ".github/projects/plans/2025-12-15-implementation-plan.md",
-          "line": 112
-        },
-        {
-          "file": "output-theme.previous/.github/projects/plans/2025-12-15-implementation-plan.md",
           "line": 112
         }
       ]
@@ -8772,10 +7370,9 @@
       "type": "date",
       "files": [
         "docs/GENERATE_THEME.md",
-        "output-theme.previous/docs/GENERATE_THEME.md",
         "theme-template/package.json"
       ],
-      "count": 3,
+      "count": 2,
       "usage": [
         {
           "file": "docs/GENERATE_THEME.md",
@@ -8783,11 +7380,7 @@
         },
         {
           "file": "theme-template/package.json",
-          "line": 109
-        },
-        {
-          "file": "output-theme.previous/docs/GENERATE_THEME.md",
-          "line": 121
+          "line": 89
         }
       ]
     },
@@ -8798,12 +7391,9 @@
       "files": [
         ".github/projects/plans/2025-12-18-mustache-variable-enhancements.md",
         ".github/prompts/generate-theme.prompt.md",
-        "docs/GENERATE_THEME.md",
-        "output-theme.previous/.github/projects/plans/2025-12-18-mustache-variable-enhancements.md",
-        "output-theme.previous/.github/prompts/generate-theme.prompt.md",
-        "output-theme.previous/docs/GENERATE_THEME.md"
+        "docs/GENERATE_THEME.md"
       ],
-      "count": 12,
+      "count": 6,
       "usage": [
         {
           "file": "docs/GENERATE_THEME.md",
@@ -8818,14 +7408,6 @@
           "line": 31
         },
         {
-          "file": "output-theme.previous/docs/GENERATE_THEME.md",
-          "line": 55
-        },
-        {
-          "file": "output-theme.previous/docs/GENERATE_THEME.md",
-          "line": 950
-        },
-        {
           "file": ".github/projects/plans/2025-12-18-mustache-variable-enhancements.md",
           "line": 17
         },
@@ -8835,22 +7417,6 @@
         },
         {
           "file": ".github/projects/plans/2025-12-18-mustache-variable-enhancements.md",
-          "line": 354
-        },
-        {
-          "file": "output-theme.previous/.github/prompts/generate-theme.prompt.md",
-          "line": 31
-        },
-        {
-          "file": "output-theme.previous/.github/projects/plans/2025-12-18-mustache-variable-enhancements.md",
-          "line": 17
-        },
-        {
-          "file": "output-theme.previous/.github/projects/plans/2025-12-18-mustache-variable-enhancements.md",
-          "line": 34
-        },
-        {
-          "file": "output-theme.previous/.github/projects/plans/2025-12-18-mustache-variable-enhancements.md",
           "line": 354
         }
       ]
@@ -8861,11 +7427,9 @@
       "type": "string",
       "files": [
         ".github/instructions/generate-theme.instructions.md",
-        "docs/GENERATE_THEME.md",
-        "output-theme.previous/.github/instructions/generate-theme.instructions.md",
-        "output-theme.previous/docs/GENERATE_THEME.md"
+        "docs/GENERATE_THEME.md"
       ],
-      "count": 4,
+      "count": 2,
       "usage": [
         {
           "file": "docs/GENERATE_THEME.md",
@@ -8873,14 +7437,6 @@
         },
         {
           "file": ".github/instructions/generate-theme.instructions.md",
-          "line": 18
-        },
-        {
-          "file": "output-theme.previous/docs/GENERATE_THEME.md",
-          "line": 37
-        },
-        {
-          "file": "output-theme.previous/.github/instructions/generate-theme.instructions.md",
           "line": 18
         }
       ]
@@ -8890,10 +7446,9 @@
       "category": "other",
       "type": "string",
       "files": [
-        ".github/instructions/folder-structure.instructions.md",
-        "output-theme.previous/.github/instructions/folder-structure.instructions.md"
+        ".github/instructions/folder-structure.instructions.md"
       ],
-      "count": 8,
+      "count": 4,
       "usage": [
         {
           "file": ".github/instructions/folder-structure.instructions.md",
@@ -8909,22 +7464,6 @@
         },
         {
           "file": ".github/instructions/folder-structure.instructions.md",
-          "line": 301
-        },
-        {
-          "file": "output-theme.previous/.github/instructions/folder-structure.instructions.md",
-          "line": 76
-        },
-        {
-          "file": "output-theme.previous/.github/instructions/folder-structure.instructions.md",
-          "line": 89
-        },
-        {
-          "file": "output-theme.previous/.github/instructions/folder-structure.instructions.md",
-          "line": 117
-        },
-        {
-          "file": "output-theme.previous/.github/instructions/folder-structure.instructions.md",
           "line": 301
         }
       ]
@@ -8975,7 +7514,7 @@
         "theme-template/patterns/testimonials.php",
         "theme-template/style.css"
       ],
-      "count": 84,
+      "count": 86,
       "usage": [
         {
           "file": ".github/custom-instructions.md",
@@ -9087,23 +7626,23 @@
         },
         {
           "file": "scripts/generate-theme.js",
-          "line": 377
+          "line": 392
         },
         {
           "file": "scripts/generate-theme.js",
-          "line": 403
+          "line": 421
         },
         {
           "file": "scripts/generate-theme.js",
-          "line": 452
+          "line": 470
         },
         {
           "file": "scripts/generate-theme.js",
-          "line": 583
+          "line": 626
         },
         {
           "file": "scripts/generate-theme.js",
-          "line": 647
+          "line": 698
         },
         {
           "file": "theme-template/CHANGELOG.md",
@@ -9111,11 +7650,11 @@
         },
         {
           "file": "theme-template/DEVELOPMENT.md",
-          "line": 94
+          "line": 106
         },
         {
           "file": "theme-template/README.md",
-          "line": 299
+          "line": 300
         },
         {
           "file": "theme-template/README.txt",
@@ -9144,6 +7683,14 @@
         {
           "file": "theme-template/functions.php",
           "line": 17
+        },
+        {
+          "file": "theme-template/package-lock.json",
+          "line": 3
+        },
+        {
+          "file": "theme-template/package-lock.json",
+          "line": 9
         },
         {
           "file": "theme-template/package.json",
@@ -9235,7 +7782,7 @@
         },
         {
           "file": "scripts/utils/placeholders.js",
-          "line": 23
+          "line": 24
         },
         {
           "file": "theme-template/inc/block-patterns.php",
@@ -9323,15 +7870,9 @@
         ".github/instructions/generate-theme.instructions.md",
         ".github/prompts/generate-theme.prompt.md",
         ".github/reports/theme-generation-updates.md",
-        "docs/GENERATE_THEME.md",
-        "output-theme.previous/.github/instructions/generate-theme.instructions.md",
-        "output-theme.previous/.github/prompts/generate-theme.prompt.md",
-        "output-theme.previous/.github/reports/theme-generation-updates.md",
-        "output-theme.previous/docs/GENERATE_THEME.md",
-        "output-theme.previous/theme.json",
-        "output-theme/theme.json"
+        "docs/GENERATE_THEME.md"
       ],
-      "count": 12,
+      "count": 5,
       "usage": [
         {
           "file": "docs/GENERATE_THEME.md",
@@ -9340,14 +7881,6 @@
         {
           "file": "docs/GENERATE_THEME.md",
           "line": 302
-        },
-        {
-          "file": "output-theme/theme.json",
-          "line": 231
-        },
-        {
-          "file": "output-theme.previous/theme.json",
-          "line": 231
         },
         {
           "file": ".github/instructions/generate-theme.instructions.md",
@@ -9359,26 +7892,6 @@
         },
         {
           "file": ".github/reports/theme-generation-updates.md",
-          "line": 125
-        },
-        {
-          "file": "output-theme.previous/docs/GENERATE_THEME.md",
-          "line": 174
-        },
-        {
-          "file": "output-theme.previous/docs/GENERATE_THEME.md",
-          "line": 302
-        },
-        {
-          "file": "output-theme.previous/.github/instructions/generate-theme.instructions.md",
-          "line": 285
-        },
-        {
-          "file": "output-theme.previous/.github/prompts/generate-theme.prompt.md",
-          "line": 34
-        },
-        {
-          "file": "output-theme.previous/.github/reports/theme-generation-updates.md",
           "line": 125
         }
       ]
@@ -9396,55 +7909,15 @@
       "usage": [
         {
           "file": "scripts/generate-theme.js",
-          "line": 677
+          "line": 778
         },
         {
           "file": "theme-template/theme.json",
-          "line": 261
+          "line": 476
         },
         {
           "file": "scripts/utils/placeholders.js",
-          "line": 77
-        }
-      ]
-    },
-    "wp_version_max": {
-      "name": "wp_version_max",
-      "category": "versioning",
-      "type": "version",
-      "files": [
-        "output-theme.previous/README.txt",
-        "output-theme/README.txt"
-      ],
-      "count": 2,
-      "usage": [
-        {
-          "file": "output-theme/README.txt",
-          "line": 5
-        },
-        {
-          "file": "output-theme.previous/README.txt",
-          "line": 5
-        }
-      ]
-    },
-    "wp_version_min": {
-      "name": "wp_version_min",
-      "category": "versioning",
-      "type": "version",
-      "files": [
-        "output-theme.previous/README.txt",
-        "output-theme/README.txt"
-      ],
-      "count": 2,
-      "usage": [
-        {
-          "file": "output-theme/README.txt",
-          "line": 4
-        },
-        {
-          "file": "output-theme.previous/README.txt",
-          "line": 4
+          "line": 82
         }
       ]
     },
@@ -9471,7 +7944,7 @@
         },
         {
           "file": "scripts/generate-theme.js",
-          "line": 660
+          "line": 742
         },
         {
           "file": "theme-template/README.txt",
@@ -9487,19 +7960,19 @@
         },
         {
           "file": ".github/schemas/theme-config.schema.json",
-          "line": 530
+          "line": 504
         },
         {
           "file": ".github/schemas/theme-config.schema.json",
-          "line": 531
+          "line": 505
         },
         {
           "file": "scripts/fixtures/theme-config.mock.json",
-          "line": 86
+          "line": 80
         },
         {
           "file": "scripts/utils/placeholders.js",
-          "line": 81
+          "line": 86
         },
         {
           "file": ".github/schemas/examples/theme-config.example.json",
@@ -9511,6 +7984,6 @@
   "meta": {
     "undocumented": [],
     "unused": [],
-    "scannedAt": "2026-10-25T20:06:54.943Z"
+    "scannedAt": "2026-11-05T09:20:04.212Z"
   }
 }

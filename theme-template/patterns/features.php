@@ -35,10 +35,10 @@ $feature_3_desc  = esc_html__( 'Our dedicated support team is here to help you e
 	<div class="wp-block-columns alignwide">
 		<!-- wp:column -->
 		<div class="wp-block-column">
-			<!-- wp:group {"style":{"spacing":{"padding":{"top":"var:preset|spacing|30","right":"var:preset|spacing|30","bottom":"var:preset|spacing|30","left":"var:preset|spacing|30"}},"border":{"radius":"8px"}},"backgroundColor":"surface","layout":{"type":"constrained"}} -->
-			<div class="wp-block-group has-surface-background-color has-background" style="border-radius:8px;padding-top:var(--wp--preset--spacing--30);padding-right:var(--wp--preset--spacing--30);padding-bottom:var(--wp--preset--spacing--30);padding-left:var(--wp--preset--spacing--30)">
-				<!-- wp:heading {"textAlign":"center","level":3,"fontSize":"large"} -->
-				<h3 class="wp-block-heading has-text-align-center has-large-font-size"><?php echo esc_html( $feature_1_title ); ?></h3>
+			<!-- wp:group {"style":{"spacing":{"padding":{"top":"var:preset|spacing|30","right":"var:preset|spacing|30","bottom":"var:preset|spacing|30","left":"var:preset|spacing|30"}},"border":{"radius":"8px"}},"backgroundColor":"neutral-100","textColor":"neutral-900","layout":{"type":"constrained"}} -->
+			<div class="wp-block-group has-neutral-900-color has-neutral-100-background-color has-text-color has-background" style="border-radius:8px;padding-top:var(--wp--preset--spacing--30);padding-right:var(--wp--preset--spacing--30);padding-bottom:var(--wp--preset--spacing--30);padding-left:var(--wp--preset--spacing--30)">
+				<!-- wp:heading {"textAlign":"center","level":3,"fontSize":"500"} -->
+				<h3 class="wp-block-heading has-text-align-center has-500-font-size"><?php echo esc_html( $feature_1_title ); ?></h3>
 				<!-- /wp:heading -->
 
 				<!-- wp:paragraph {"align":"center"} -->
@@ -51,10 +51,10 @@ $feature_3_desc  = esc_html__( 'Our dedicated support team is here to help you e
 
 		<!-- wp:column -->
 		<div class="wp-block-column">
-			<!-- wp:group {"style":{"spacing":{"padding":{"top":"var:preset|spacing|30","right":"var:preset|spacing|30","bottom":"var:preset|spacing|30","left":"var:preset|spacing|30"}},"border":{"radius":"8px"}},"backgroundColor":"surface","layout":{"type":"constrained"}} -->
-			<div class="wp-block-group has-surface-background-color has-background" style="border-radius:8px;padding-top:var(--wp--preset--spacing--30);padding-right:var(--wp--preset--spacing--30);padding-bottom:var(--wp--preset--spacing--30);padding-left:var(--wp--preset--spacing--30)">
-				<!-- wp:heading {"textAlign":"center","level":3,"fontSize":"large"} -->
-				<h3 class="wp-block-heading has-text-align-center has-large-font-size"><?php echo esc_html( $feature_2_title ); ?></h3>
+			<!-- wp:group {"style":{"spacing":{"padding":{"top":"var:preset|spacing|30","right":"var:preset|spacing|30","bottom":"var:preset|spacing|30","left":"var:preset|spacing|30"}},"border":{"radius":"8px"}},"backgroundColor":"neutral-100","textColor":"neutral-900","layout":{"type":"constrained"}} -->
+			<div class="wp-block-group has-neutral-900-color has-neutral-100-background-color has-text-color has-background" style="border-radius:8px;padding-top:var(--wp--preset--spacing--30);padding-right:var(--wp--preset--spacing--30);padding-bottom:var(--wp--preset--spacing--30);padding-left:var(--wp--preset--spacing--30)">
+				<!-- wp:heading {"textAlign":"center","level":3,"fontSize":"500"} -->
+				<h3 class="wp-block-heading has-text-align-center has-500-font-size"><?php echo esc_html( $feature_2_title ); ?></h3>
 				<!-- /wp:heading -->
 
 				<!-- wp:paragraph {"align":"center"} -->
@@ -67,10 +67,10 @@ $feature_3_desc  = esc_html__( 'Our dedicated support team is here to help you e
 
 		<!-- wp:column -->
 		<div class="wp-block-column">
-			<!-- wp:group {"style":{"spacing":{"padding":{"top":"var:preset|spacing|30","right":"var:preset|spacing|30","bottom":"var:preset|spacing|30","left":"var:preset|spacing|30"}},"border":{"radius":"8px"}},"backgroundColor":"surface","layout":{"type":"constrained"}} -->
-			<div class="wp-block-group has-surface-background-color has-background" style="border-radius:8px;padding-top:var(--wp--preset--spacing--30);padding-right:var(--wp--preset--spacing--30);padding-bottom:var(--wp--preset--spacing--30);padding-left:var(--wp--preset--spacing--30)">
-				<!-- wp:heading {"textAlign":"center","level":3,"fontSize":"large"} -->
-				<h3 class="wp-block-heading has-text-align-center has-large-font-size"><?php echo esc_html( $feature_3_title ); ?></h3>
+			<!-- wp:group {"style":{"spacing":{"padding":{"top":"var:preset|spacing|30","right":"var:preset|spacing|30","bottom":"var:preset|spacing|30","left":"var:preset|spacing|30"}},"border":{"radius":"8px"}},"backgroundColor":"neutral-100","textColor":"neutral-900","layout":{"type":"constrained"}} -->
+			<div class="wp-block-group has-neutral-900-color has-neutral-100-background-color has-text-color has-background" style="border-radius:8px;padding-top:var(--wp--preset--spacing--30);padding-right:var(--wp--preset--spacing--30);padding-bottom:var(--wp--preset--spacing--30);padding-left:var(--wp--preset--spacing--30)">
+				<!-- wp:heading {"textAlign":"center","level":3,"fontSize":"500"} -->
+				<h3 class="wp-block-heading has-text-align-center has-500-font-size"><?php echo esc_html( $feature_3_title ); ?></h3>
 				<!-- /wp:heading -->
 
 				<!-- wp:paragraph {"align":"center"} -->

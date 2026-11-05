@@ -12,18 +12,18 @@
  * @since {{version}}
  */
 ?>
-<!-- wp:group {"style":{"spacing":{"margin":{"top":"0","bottom":"var:preset|spacing|40"}}},"layout":{"type":"flex","flexWrap":"wrap","justifyContent":"left"},"fontSize":"small"} -->
-<div class="wp-block-group has-small-font-size" style="margin-top:0;margin-bottom:var(--wp--preset--spacing--40)">
+<!-- wp:group {"style":{"spacing":{"margin":{"top":"0","bottom":"var:preset|spacing|40"}}},"layout":{"type":"flex","flexWrap":"wrap","justifyContent":"left"},"fontSize":"100"} -->
+<div class="wp-block-group has-100-font-size" style="margin-top:0;margin-bottom:var(--wp--preset--spacing--40)">
 	<!-- wp:post-author {"showAvatar":false,"byline":"<?php esc_attr_e( 'By', '{{theme_slug}}' ); ?>","isLink":true} /-->
 
-	<!-- wp:paragraph {"fontSize":"small"} -->
-	<p class="has-small-font-size">·</p>
+	<!-- wp:paragraph {"fontSize":"100"} -->
+	<p class="has-100-font-size">·</p>
 	<!-- /wp:paragraph -->
 
 	<!-- wp:post-date {"isLink":true} /-->
 
-	<!-- wp:paragraph {"fontSize":"small"} -->
-	<p class="has-small-font-size">·</p>
+	<!-- wp:paragraph {"fontSize":"100"} -->
+	<p class="has-100-font-size">·</p>
 	<!-- /wp:paragraph -->
 
 	<!-- wp:post-terms {"term":"category","separator":", "} /-->

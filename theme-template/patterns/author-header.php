@@ -19,6 +19,6 @@
 
 	<!-- wp:avatar {"size":120,"isLink":false,"align":"center","style":{"spacing":{"margin":{"bottom":"var:preset|spacing|20"}}}} /-->
 
-	<!-- wp:post-author-biography {"textAlign":"center","style":{"typography":{"lineHeight":"1.7"}},"fontSize":"medium"} /-->
+	<!-- wp:post-author-biography {"textAlign":"center","style":{"typography":{"lineHeight":"1.7"}},"fontSize":"300"} /-->
 </div>
 <!-- /wp:group -->

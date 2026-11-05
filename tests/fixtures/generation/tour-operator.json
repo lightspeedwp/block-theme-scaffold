@@ -38,12 +38,6 @@
 			"accent_color": "#0f766e",
 			"neutral_color": "#6b7280"
 		},
-		"dark_mode_colors": {
-			"dark_background_color": "#0f172a",
-			"dark_text_color": "#f8fafc",
-			"dark_primary_color": "#38bdf8",
-			"dark_accent_color": "#f97316"
-		},
 		"typography": {
 			"heading_font_family": "'Inter', system-ui, sans-serif",
 			"heading_font_name": "Inter",

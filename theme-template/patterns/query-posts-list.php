@@ -25,17 +25,17 @@ $no_posts_text   = esc_html__( 'No posts found.', '{{theme_slug}}' );
 		<article class="wp-block-group">
 			<!-- wp:post-featured-image {"isLink":true,"aspectRatio":"16/9","style":{"border":{"radius":"4px"}}} /-->
 
-			<!-- wp:post-title {"isLink":true,"level":2,"style":{"typography":{"fontStyle":"normal","fontWeight":"600"}},"fontSize":"large"} /-->
+			<!-- wp:post-title {"isLink":true,"level":2,"style":{"typography":{"fontStyle":"normal","fontWeight":"600"}},"fontSize":"500"} /-->
 
-			<!-- wp:group {"layout":{"type":"flex","flexWrap":"wrap"},"style":{"spacing":{"blockGap":"var:preset|spacing|10"}},"fontSize":"small"} -->
-			<div class="wp-block-group has-small-font-size">
+			<!-- wp:group {"layout":{"type":"flex","flexWrap":"wrap"},"style":{"spacing":{"blockGap":"var:preset|spacing|10"}},"fontSize":"100"} -->
+			<div class="wp-block-group has-100-font-size">
 				<!-- wp:post-date {"isLink":true} /-->
-				<!-- wp:paragraph {"fontSize":"small"} -->
-				<p class="has-small-font-size">·</p>
+				<!-- wp:paragraph {"fontSize":"100"} -->
+				<p class="has-100-font-size">·</p>
 				<!-- /wp:paragraph -->
 				<!-- wp:post-author {"showAvatar":false,"showBio":false,"byline":"","isLink":true} /-->
-				<!-- wp:paragraph {"fontSize":"small"} -->
-				<p class="has-small-font-size">·</p>
+				<!-- wp:paragraph {"fontSize":"100"} -->
+				<p class="has-100-font-size">·</p>
 				<!-- /wp:paragraph -->
 				<!-- wp:post-terms {"term":"category"} /-->
 			</div>

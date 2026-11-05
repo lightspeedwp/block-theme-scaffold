@@ -6,8 +6,8 @@
 		"typography": {
 			"fontFamilies": [
 				{
-					"slug": "serif",
-					"name": "Serif",
+					"slug": "heading",
+					"name": "Heading",
 					"fontFamily": "Georgia, 'Times New Roman', serif"
 				}
 			]
@@ -17,7 +17,7 @@
 		"elements": {
 			"heading": {
 				"typography": {
-					"fontFamily": "var(--wp--preset--font-family--serif)",
+					"fontFamily": "var(--wp--preset--font-family--heading)",
 					"fontWeight": "700",
 					"lineHeight": "1.2"
 				}

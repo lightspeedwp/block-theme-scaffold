@@ -6,7 +6,7 @@
 	"blockTypes": [ "core/heading" ],
 	"styles": {
 		"color": {
-			"text": "var(--wp--preset--color--foreground)"
+			"text": "var(--wp--preset--color--contrast)"
 		},
 		"typography": {
 			"fontFamily": "var(--wp--preset--font-family--serif, Georgia, serif)",

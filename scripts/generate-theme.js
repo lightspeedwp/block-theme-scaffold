@@ -45,6 +45,7 @@ const fs = require( 'fs' );
 const path = require( 'path' );
 const Ajv = require( 'ajv/dist/2020' );
 const addFormats = require( 'ajv-formats' );
+const colorRamp = require( './utils/color-ramp' );
 
 // Initialize JSON Schema validator
 const ajv = new Ajv( { allErrors: true } );
@@ -802,8 +803,18 @@ async function runScript() {
 			configData.content_archive_excerpt_length || '40',
 	};
 
+	// Keep each palette ramp aligned with its configured center color.
+	for ( const [ name, center ] of [
+		[ 'brand', placeholders[ '{{secondary_color}}' ] ],
+		[ 'cta', placeholders[ '{{accent_color}}' ] ],
+	] ) {
+		for ( const [ step, color ] of Object.entries( colorRamp( center ) ) ) {
+			placeholders[ `{{${ name }_${ step }_color}}` ] = color;
+		}
+	}
+
 	// Placeholders derived from the values above, or from nested config keys
-	// (urls.*, emails.*, design_system.dark_mode_colors.*), which flattenConfig()
+	// (urls.*, emails.*), which flattenConfig()
 	// prefixes. Every {{token}} in theme-template/ must have a value here.
 	const themeName = placeholders[ '{{theme_name}}' ];
 	const repoUrl = placeholders[ '{{theme_repo_url}}' ];
@@ -811,8 +822,6 @@ async function runScript() {
 		.replace( /^https?:\/\/(www\.)?/, '' )
 		.split( '/' )[ 0 ];
 	const today = new Date().toISOString().slice( 0, 10 );
-	const dark = ( key, fallback ) =>
-		configData[ `design_system_dark_mode_colors_${ key }` ] || fallback;
 	placeholders[ '{{docs_url}}' ] =
 		placeholders[ '{{docs_url}}' ] || `${ repoUrl }/wiki`;
 	placeholders[ '{{changelog_url}}' ] =
@@ -867,50 +876,7 @@ async function runScript() {
 		'{{heading_style_serif_title}}': 'Serif',
 		'{{hero_section_style_title}}': 'Hero section',
 		'{{content_section_style_title}}': 'Content section',
-		'{{dark_background_color}}': dark( 'dark_background_color', '#0f172a' ),
-		'{{dark_text_color}}': dark( 'dark_text_color', '#f8fafc' ),
-		'{{dark_primary_color}}': dark( 'dark_primary_color', '#38bdf8' ),
-		'{{dark_primary_light_color}}': dark(
-			'dark_primary_light_color',
-			'#7dd3fc'
-		),
-		'{{dark_primary_dark_color}}': dark(
-			'dark_primary_dark_color',
-			'#0284c7'
-		),
-		'{{dark_cta_color}}': dark( 'dark_accent_color', '#f97316' ),
 	} );
-	// Neutral and accent scales for the dark style: slate and orange, light to dark.
-	const darkScales = {
-		neutral: [
-			'#f1f5f9',
-			'#e2e8f0',
-			'#cbd5e1',
-			'#94a3b8',
-			'#64748b',
-			'#475569',
-			'#334155',
-			'#1e293b',
-			'#0f172a',
-		],
-		accent: [
-			'#ffedd5',
-			'#fed7aa',
-			'#fdba74',
-			'#fb923c',
-			'#f97316',
-			'#ea580c',
-			'#c2410c',
-			'#9a3412',
-			'#7c2d12',
-		],
-	};
-	for ( const [ scale, colors ] of Object.entries( darkScales ) ) {
-		colors.forEach( ( color, index ) => {
-			const key = `dark_${ scale }_${ ( index + 1 ) * 100 }_color`;
-			placeholders[ `{{${ key }}}` ] = dark( key, color );
-		} );
-	}
 	if ( argMap.author && placeholders[ '{{author}}' ] === 'Author Name' ) {
 		throw new Error( 'Invalid author name provided' );
 	}

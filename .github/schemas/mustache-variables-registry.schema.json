@@ -116,14 +116,6 @@
         "#fff"
       ]
     },
-    "body_font": {
-      "type": "string",
-      "description": "Body font reference",
-      "examples": [
-        "system-ui",
-        "Inter"
-      ]
-    },
     "body_font_family": {
       "type": "string",
       "description": "Body font family (CSS font-family value)",
@@ -159,6 +151,62 @@
       "description": "Auto-discovered placeholder (content_strings)",
       "examples": [
         "boundaries_and_context"
+      ]
+    },
+    "brand_100_color": {
+      "type": "string",
+      "description": "Auto-discovered placeholder (design_colors)",
+      "examples": [
+        "brand_100_color"
+      ]
+    },
+    "brand_200_color": {
+      "type": "string",
+      "description": "Auto-discovered placeholder (design_colors)",
+      "examples": [
+        "brand_200_color"
+      ]
+    },
+    "brand_300_color": {
+      "type": "string",
+      "description": "Auto-discovered placeholder (design_colors)",
+      "examples": [
+        "brand_300_color"
+      ]
+    },
+    "brand_400_color": {
+      "type": "string",
+      "description": "Auto-discovered placeholder (design_colors)",
+      "examples": [
+        "brand_400_color"
+      ]
+    },
+    "brand_600_color": {
+      "type": "string",
+      "description": "Auto-discovered placeholder (design_colors)",
+      "examples": [
+        "brand_600_color"
+      ]
+    },
+    "brand_700_color": {
+      "type": "string",
+      "description": "Auto-discovered placeholder (design_colors)",
+      "examples": [
+        "brand_700_color"
+      ]
+    },
+    "brand_800_color": {
+      "type": "string",
+      "description": "Auto-discovered placeholder (design_colors)",
+      "examples": [
+        "brand_800_color"
+      ]
+    },
+    "brand_900_color": {
+      "type": "string",
+      "description": "Auto-discovered placeholder (design_colors)",
+      "examples": [
+        "brand_900_color"
       ]
     },
     "business_email": {
@@ -327,6 +375,62 @@
         "2025-01-15"
       ]
     },
+    "cta_100_color": {
+      "type": "string",
+      "description": "Auto-discovered placeholder (design_colors)",
+      "examples": [
+        "cta_100_color"
+      ]
+    },
+    "cta_200_color": {
+      "type": "string",
+      "description": "Auto-discovered placeholder (design_colors)",
+      "examples": [
+        "cta_200_color"
+      ]
+    },
+    "cta_300_color": {
+      "type": "string",
+      "description": "Auto-discovered placeholder (design_colors)",
+      "examples": [
+        "cta_300_color"
+      ]
+    },
+    "cta_400_color": {
+      "type": "string",
+      "description": "Auto-discovered placeholder (design_colors)",
+      "examples": [
+        "cta_400_color"
+      ]
+    },
+    "cta_600_color": {
+      "type": "string",
+      "description": "Auto-discovered placeholder (design_colors)",
+      "examples": [
+        "cta_600_color"
+      ]
+    },
+    "cta_700_color": {
+      "type": "string",
+      "description": "Auto-discovered placeholder (design_colors)",
+      "examples": [
+        "cta_700_color"
+      ]
+    },
+    "cta_800_color": {
+      "type": "string",
+      "description": "Auto-discovered placeholder (design_colors)",
+      "examples": [
+        "cta_800_color"
+      ]
+    },
+    "cta_900_color": {
+      "type": "string",
+      "description": "Auto-discovered placeholder (design_colors)",
+      "examples": [
+        "cta_900_color"
+      ]
+    },
     "cta_button_text": {
       "type": "string",
       "description": "Call-to-action button text",
@@ -358,6 +462,13 @@
         "Ready to Get Started?"
       ]
     },
+    "curly": {
+      "type": "string",
+      "description": "Auto-discovered placeholder (other)",
+      "examples": [
+        "curly"
+      ]
+    },
     "custom_dev_url": {
       "type": "string",
       "description": "Custom development URL",
@@ -373,179 +484,11 @@
         "custom_value"
       ]
     },
-    "dark_accent_100_color": {
-      "type": "string",
-      "description": "Auto-discovered placeholder (design_colors)",
-      "examples": [
-        "dark_accent_100_color"
-      ]
-    },
-    "dark_accent_200_color": {
-      "type": "string",
-      "description": "Auto-discovered placeholder (design_colors)",
-      "examples": [
-        "dark_accent_200_color"
-      ]
-    },
-    "dark_accent_300_color": {
-      "type": "string",
-      "description": "Auto-discovered placeholder (design_colors)",
-      "examples": [
-        "dark_accent_300_color"
-      ]
-    },
-    "dark_accent_400_color": {
-      "type": "string",
-      "description": "Auto-discovered placeholder (design_colors)",
-      "examples": [
-        "dark_accent_400_color"
-      ]
-    },
-    "dark_accent_500_color": {
-      "type": "string",
-      "description": "Auto-discovered placeholder (design_colors)",
-      "examples": [
-        "dark_accent_500_color"
-      ]
-    },
-    "dark_accent_600_color": {
-      "type": "string",
-      "description": "Auto-discovered placeholder (design_colors)",
-      "examples": [
-        "dark_accent_600_color"
-      ]
-    },
-    "dark_accent_700_color": {
-      "type": "string",
-      "description": "Auto-discovered placeholder (design_colors)",
-      "examples": [
-        "dark_accent_700_color"
-      ]
-    },
-    "dark_accent_800_color": {
-      "type": "string",
-      "description": "Auto-discovered placeholder (design_colors)",
-      "examples": [
-        "dark_accent_800_color"
-      ]
-    },
-    "dark_accent_900_color": {
-      "type": "string",
-      "description": "Auto-discovered placeholder (design_colors)",
-      "examples": [
-        "dark_accent_900_color"
-      ]
-    },
-    "dark_background_color": {
-      "type": "string",
-      "description": "Auto-discovered placeholder (design_colors)",
-      "examples": [
-        "dark_background_color"
-      ]
-    },
-    "dark_cta_color": {
-      "type": "string",
-      "description": "Auto-discovered placeholder (design_colors)",
-      "examples": [
-        "dark_cta_color"
-      ]
-    },
     "dark_mode_title": {
       "type": "string",
       "description": "Auto-discovered placeholder (content_strings)",
       "examples": [
         "dark_mode_title"
-      ]
-    },
-    "dark_neutral_100_color": {
-      "type": "string",
-      "description": "Auto-discovered placeholder (design_colors)",
-      "examples": [
-        "dark_neutral_100_color"
-      ]
-    },
-    "dark_neutral_200_color": {
-      "type": "string",
-      "description": "Auto-discovered placeholder (design_colors)",
-      "examples": [
-        "dark_neutral_200_color"
-      ]
-    },
-    "dark_neutral_300_color": {
-      "type": "string",
-      "description": "Auto-discovered placeholder (design_colors)",
-      "examples": [
-        "dark_neutral_300_color"
-      ]
-    },
-    "dark_neutral_400_color": {
-      "type": "string",
-      "description": "Auto-discovered placeholder (design_colors)",
-      "examples": [
-        "dark_neutral_400_color"
-      ]
-    },
-    "dark_neutral_500_color": {
-      "type": "string",
-      "description": "Auto-discovered placeholder (design_colors)",
-      "examples": [
-        "dark_neutral_500_color"
-      ]
-    },
-    "dark_neutral_600_color": {
-      "type": "string",
-      "description": "Auto-discovered placeholder (design_colors)",
-      "examples": [
-        "dark_neutral_600_color"
-      ]
-    },
-    "dark_neutral_700_color": {
-      "type": "string",
-      "description": "Auto-discovered placeholder (design_colors)",
-      "examples": [
-        "dark_neutral_700_color"
-      ]
-    },
-    "dark_neutral_800_color": {
-      "type": "string",
-      "description": "Auto-discovered placeholder (design_colors)",
-      "examples": [
-        "dark_neutral_800_color"
-      ]
-    },
-    "dark_neutral_900_color": {
-      "type": "string",
-      "description": "Auto-discovered placeholder (design_colors)",
-      "examples": [
-        "dark_neutral_900_color"
-      ]
-    },
-    "dark_primary_color": {
-      "type": "string",
-      "description": "Auto-discovered placeholder (design_colors)",
-      "examples": [
-        "dark_primary_color"
-      ]
-    },
-    "dark_primary_dark_color": {
-      "type": "string",
-      "description": "Auto-discovered placeholder (design_colors)",
-      "examples": [
-        "dark_primary_dark_color"
-      ]
-    },
-    "dark_primary_light_color": {
-      "type": "string",
-      "description": "Auto-discovered placeholder (design_colors)",
-      "examples": [
-        "dark_primary_light_color"
-      ]
-    },
-    "dark_text_color": {
-      "type": "string",
-      "description": "Auto-discovered placeholder (design_colors)",
-      "examples": [
-        "dark_text_color"
       ]
     },
     "date": {
@@ -918,13 +861,6 @@
         "my_theme"
       ]
     },
-    "network": {
-      "type": "string",
-      "description": "Auto-discovered placeholder (other)",
-      "examples": [
-        "network"
-      ]
-    },
     "neutral_color": {
       "type": "string",
       "description": "Neutral/background color (hex format)",
@@ -939,15 +875,6 @@
       "description": "Auto-discovered placeholder (other)",
       "examples": [
         "owner"
-      ]
-    },
-    "php_version_min": {
-      "type": "string",
-      "description": "Minimum PHP version (same as min_php_version)",
-      "pattern": "^\\d+\\.\\d+$",
-      "examples": [
-        "8.0",
-        "8.1"
       ]
     },
     "placeholder": {
@@ -988,14 +915,6 @@
         "#0073aa",
         "#ff6600",
         "#333"
-      ]
-    },
-    "repo_url": {
-      "type": "string",
-      "description": "Repository URL (generic)",
-      "format": "uri",
-      "examples": [
-        "https://github.com/username/repo"
       ]
     },
     "role": {
@@ -1397,24 +1316,6 @@
       "description": "Auto-discovered placeholder (design_layout)",
       "examples": [
         "wide_width_px"
-      ]
-    },
-    "wp_version_max": {
-      "type": "string",
-      "description": "Maximum WordPress version tested (same as tested_wp_version)",
-      "pattern": "^\\d+\\.\\d+$",
-      "examples": [
-        "6.7",
-        "6.8"
-      ]
-    },
-    "wp_version_min": {
-      "type": "string",
-      "description": "Minimum WordPress version (same as min_wp_version)",
-      "pattern": "^\\d+\\.\\d+$",
-      "examples": [
-        "6.5",
-        "6.4"
       ]
     },
     "year": {

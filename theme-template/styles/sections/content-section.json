@@ -6,8 +6,8 @@
 	"blockTypes": [ "core/group" ],
 	"styles": {
 		"color": {
-			"background": "var(--wp--preset--color--background)",
-			"text": "var(--wp--preset--color--foreground)"
+			"background": "var(--wp--preset--color--base)",
+			"text": "var(--wp--preset--color--contrast)"
 		},
 		"spacing": {
 			"padding": {
@@ -22,9 +22,9 @@
 			}
 		},
 		"border": {
-			"radius": "var(--wp--preset--border-radius--medium)"
+			"radius": "var(--wp--preset--border-radius--200)"
 		},
-		"shadow": "var(--wp--preset--shadow--small)",
-		"css": "& { transition: box-shadow 0.3s ease; }\n&:hover { box-shadow: var(--wp--preset--shadow--medium); }"
+		"shadow": "var(--wp--preset--shadow--x-small)",
+		"css": "& { transition: box-shadow 0.3s ease; }\n&:hover { box-shadow: var(--wp--preset--shadow--small); }"
 	}
 }
