@@ -52,6 +52,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+- Root `npm ci` works again: the lockfile is rebuilt for `@wordpress/scripts` 36, and workflows read Node.js from `.nvmrc` (24) ([BTS-21](https://linear.app/lightspeedwp/issue/BTS-21)).
 - Generated themes pass CI on their first push, as found in [lightspeedwp/tsp-theme#4](https://github.com/lightspeedwp/tsp-theme/pull/4):
   - `theme-template/package-lock.json`: CI's `npm ci` and the `setup-node` npm cache need a lockfile, and generated themes had none. The generator fills in its name, version and licence. `theme-generation.yml` now runs `npm ci`, so it fails when the lockfile no longer matches `package.json`
   - `theme-template/.npmpackagejsonlintrc.json`: `npm run lint:pkg` accepts the theme's own licence. The `@wordpress/scripts` default only accepts `GPL-2.0-or-later`, so a theme generated with `GPL-3.0-or-later` failed lint
