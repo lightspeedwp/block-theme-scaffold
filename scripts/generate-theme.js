@@ -805,10 +805,14 @@ async function runScript() {
 
 	// Keep each palette ramp aligned with its configured center color.
 	for ( const [ name, center ] of [
+		[ 'primary', placeholders[ '{{primary_color}}' ] ],
+		[ 'neutral', placeholders[ '{{neutral_color}}' ] ],
 		[ 'brand', placeholders[ '{{secondary_color}}' ] ],
 		[ 'cta', placeholders[ '{{accent_color}}' ] ],
 	] ) {
-		for ( const [ step, color ] of Object.entries( colorRamp( center ) ) ) {
+		for ( const [ step, color ] of Object.entries(
+			colorRamp( center, name === 'neutral' )
+		) ) {
 			placeholders[ `{{${ name }_${ step }_color}}` ] = color;
 		}
 	}

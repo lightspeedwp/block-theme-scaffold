@@ -23,6 +23,6 @@
 				"left": "1.5em"
 			}
 		},
-		"css": "& .wp-block-button__link { transition: all var(--wp--custom--motion--duration--100) var(--wp--custom--motion--easing--standard); }\n& .wp-block-button__link:hover { background-color: var(--wp--preset--color--brand-500); }\n& .wp-block-button__link:active { background-color: var(--wp--preset--color--brand-500); }\n& .wp-block-button__link:focus { outline: 2px solid var(--wp--preset--color--cta-500); outline-offset: 2px; }\n& .wp-block-button__link:focus-visible { outline: 2px solid var(--wp--preset--color--cta-500); outline-offset: 2px; }"
+		"css": "& .wp-block-button__link { transition: all var(--wp--custom--motion--duration--100) var(--wp--custom--motion--easing--standard); }\n& .wp-block-button__link:hover { background-color: var(--wp--preset--color--brand-600); }\n& .wp-block-button__link:active { background-color: var(--wp--preset--color--brand-600); }\n& .wp-block-button__link:focus { outline: 2px solid var(--wp--preset--color--cta-500); outline-offset: 2px; }\n& .wp-block-button__link:focus-visible { outline: 2px solid var(--wp--preset--color--cta-500); outline-offset: 2px; }"
 	}
 }

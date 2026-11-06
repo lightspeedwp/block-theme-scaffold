@@ -90,29 +90,6 @@ describe( 'generate-theme placeholders', () => {
 		{
 			name: 'defaults with a customized primary',
 			colors: { primary_color: '#aa00cc' },
-			primary: '#aa00cc',
-			brand: [
-				'#ccdce4',
-				'#99b9c9',
-				'#6697ad',
-				'#337492',
-				'#005177',
-				'#00415f',
-				'#003147',
-				'#002030',
-				'#001018',
-			],
-			cta: [
-				'#ffe1d7',
-				'#ffc4ae',
-				'#ffa686',
-				'#ff895d',
-				'#ff6b35',
-				'#cc562a',
-				'#994020',
-				'#662b15',
-				'#33150b',
-			],
 		},
 		{
 			name: 'custom colors including alpha',
@@ -121,33 +98,11 @@ describe( 'generate-theme placeholders', () => {
 				secondary_color: '#ff000080',
 				accent_color: '#0000ff',
 			},
-			primary: '#123456',
-			brand: [
-				'#ffcccc80',
-				'#ff999980',
-				'#ff666680',
-				'#ff333380',
-				'#ff000080',
-				'#cc000080',
-				'#99000080',
-				'#66000080',
-				'#33000080',
-			],
-			cta: [
-				'#ccccff',
-				'#9999ff',
-				'#6666ff',
-				'#3333ff',
-				'#0000ff',
-				'#0000cc',
-				'#000099',
-				'#000066',
-				'#000033',
-			],
 		},
 	] )(
-		'generates consistent ramps for $name',
-		( { colors, primary, brand, cta } ) => {
+		'builds every ramp around its configured colour for $name',
+		( { colors } ) => {
+			const colorRamp = require( '../utils/color-ramp' );
 			const dir = fs.mkdtempSync(
 				path.join( os.tmpdir(), 'bts-config-' )
 			);
@@ -169,16 +124,18 @@ describe( 'generate-theme placeholders', () => {
 			).settings.color.palette;
 			const get = ( slug ) =>
 				palette.find( ( entry ) => entry.slug === slug ).color;
-			expect( get( 'primary-500' ) ).toBe( primary );
-			for ( const [ family, expected ] of [
-				[ 'brand', brand ],
-				[ 'cta', cta ],
-			] ) {
-				expect(
-					Array.from( { length: 9 }, ( _, i ) =>
-						get( `${ family }-${ ( i + 1 ) * 100 }` )
-					)
-				).toEqual( expected );
+			const configured = {
+				primary: colors.primary_color,
+				brand: colors.secondary_color || '#005177',
+				cta: colors.accent_color || '#ff6b35',
+			};
+			for ( const [ family, color ] of Object.entries( configured ) ) {
+				const ramp = colorRamp.RAMP_STEPS.map( ( step ) =>
+					get( `${ family }-${ step }` )
+				);
+				// The configured colour sits, unchanged, at its nearest step.
+				expect( ramp ).toContain( color );
+				expect( ramp ).toEqual( Object.values( colorRamp( color ) ) );
 			}
 			// The dark variation inherits the palette from theme.json and only remaps semantic tokens.
 			const dark = JSON.parse(
@@ -190,6 +147,26 @@ describe( 'generate-theme placeholders', () => {
 			expect( dark.settings.color ).toBeUndefined();
 		}
 	);
+
+	it( 'builds every palette ramp in OKLCH, lightest to darkest', () => {
+		const { Color, RAMP_STEPS } = require( '../utils/color-ramp' );
+		const { cwd, output } = generate( mockConfig );
+		cleanup.push( cwd );
+		const palette = JSON.parse(
+			fs.readFileSync( path.join( output, 'theme.json' ), 'utf8' )
+		).settings.color.palette;
+		const get = ( slug ) =>
+			palette.find( ( entry ) => entry.slug === slug ).color;
+		for ( const family of [ 'primary', 'neutral', 'brand', 'cta' ] ) {
+			const lightness = RAMP_STEPS.map(
+				( step ) =>
+					Color.fromHex( get( `${ family }-${ step }` ) ).toOklch().l
+			);
+			for ( let i = 1; i < lightness.length; i++ ) {
+				expect( lightness[ i ] ).toBeLessThan( lightness[ i - 1 ] );
+			}
+		}
+	} );
 
 	it( 'gives every semantic colour token a dark value that references the palette', () => {
 		const { cwd, output } = generate( mockConfig );

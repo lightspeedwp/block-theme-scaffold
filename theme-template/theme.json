@@ -69,92 +69,92 @@
 				{
 					"name": "Neutral 100",
 					"slug": "neutral-100",
-					"color": "#f5f5f5"
+					"color": "{{neutral_100_color}}"
 				},
 				{
 					"name": "Neutral 200",
 					"slug": "neutral-200",
-					"color": "#e5e7eb"
+					"color": "{{neutral_200_color}}"
 				},
 				{
 					"name": "Neutral 300",
 					"slug": "neutral-300",
-					"color": "#d1d5db"
+					"color": "{{neutral_300_color}}"
 				},
 				{
 					"name": "Neutral 400",
 					"slug": "neutral-400",
-					"color": "#9ca3af"
+					"color": "{{neutral_400_color}}"
 				},
 				{
 					"name": "Neutral 500",
 					"slug": "neutral-500",
-					"color": "{{neutral_color}}"
+					"color": "{{neutral_500_color}}"
 				},
 				{
 					"name": "Neutral 600",
 					"slug": "neutral-600",
-					"color": "#4b5563"
+					"color": "{{neutral_600_color}}"
 				},
 				{
 					"name": "Neutral 700",
 					"slug": "neutral-700",
-					"color": "#374151"
+					"color": "{{neutral_700_color}}"
 				},
 				{
 					"name": "Neutral 800",
 					"slug": "neutral-800",
-					"color": "#1f2937"
+					"color": "{{neutral_800_color}}"
 				},
 				{
 					"name": "Neutral 900",
 					"slug": "neutral-900",
-					"color": "#111827"
+					"color": "{{neutral_900_color}}"
 				},
 				{
 					"name": "Primary 100",
 					"slug": "primary-100",
-					"color": "#e7f0fb"
+					"color": "{{primary_100_color}}"
 				},
 				{
 					"name": "Primary 200",
 					"slug": "primary-200",
-					"color": "#c3d9f3"
+					"color": "{{primary_200_color}}"
 				},
 				{
 					"name": "Primary 300",
 					"slug": "primary-300",
-					"color": "#548dd1"
+					"color": "{{primary_300_color}}"
 				},
 				{
 					"name": "Primary 400",
 					"slug": "primary-400",
-					"color": "#2f75c6"
+					"color": "{{primary_400_color}}"
 				},
 				{
 					"name": "Primary 500",
 					"slug": "primary-500",
-					"color": "{{primary_color}}"
+					"color": "{{primary_500_color}}"
 				},
 				{
 					"name": "Primary 600",
 					"slug": "primary-600",
-					"color": "#094d9f"
+					"color": "{{primary_600_color}}"
 				},
 				{
 					"name": "Primary 700",
 					"slug": "primary-700",
-					"color": "#08458e"
+					"color": "{{primary_700_color}}"
 				},
 				{
 					"name": "Primary 800",
 					"slug": "primary-800",
-					"color": "#06326a"
+					"color": "{{primary_800_color}}"
 				},
 				{
 					"name": "Primary 900",
 					"slug": "primary-900",
-					"color": "#041f42"
+					"color": "{{primary_900_color}}"
 				},
 				{
 					"name": "Brand 100",
@@ -179,7 +179,7 @@
 				{
 					"name": "Brand 500",
 					"slug": "brand-500",
-					"color": "{{secondary_color}}"
+					"color": "{{brand_500_color}}"
 				},
 				{
 					"name": "Brand 600",
@@ -224,7 +224,7 @@
 				{
 					"name": "CTA 500",
 					"slug": "cta-500",
-					"color": "{{accent_color}}"
+					"color": "{{cta_500_color}}"
 				},
 				{
 					"name": "CTA 600",
@@ -578,11 +578,11 @@
 			"color": {
 				"text": {
 					"default": "var(--wp--preset--color--contrast)",
-					"muted": "var(--wp--preset--color--neutral-600)",
+					"muted": "var(--wp--preset--color--neutral-700)",
 					"inverse": "var(--wp--preset--color--base)",
 					"brand": "var(--wp--preset--color--brand-600)",
 					"link": "var(--wp--preset--color--brand-700)",
-					"link-hover": "var(--wp--preset--color--primary-500)",
+					"link-hover": "var(--wp--preset--color--primary-600)",
 					"disabled": "var(--wp--preset--color--neutral-500)",
 					"inverse-subtle": "var(--wp--preset--color--neutral-100)",
 					"placeholder": "var(--wp--preset--color--neutral-600)"
@@ -607,8 +607,8 @@
 				},
 				"action": {
 					"primary": {
-						"background": "var(--wp--preset--color--primary-500)",
-						"background-hover": "var(--wp--preset--color--primary-600)",
+						"background": "var(--wp--preset--color--primary-600)",
+						"background-hover": "var(--wp--preset--color--primary-700)",
 						"text": "var(--wp--preset--color--base)"
 					},
 					"secondary": {
@@ -617,8 +617,8 @@
 						"text": "var(--wp--preset--color--base)"
 					},
 					"cta": {
-						"background": "var(--wp--preset--color--cta-500)",
-						"background-hover": "var(--wp--preset--color--cta-600)",
+						"background": "var(--wp--preset--color--cta-600)",
+						"background-hover": "var(--wp--preset--color--cta-700)",
 						"text": "var(--wp--preset--color--base)"
 					}
 				},

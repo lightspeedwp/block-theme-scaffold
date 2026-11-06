@@ -181,6 +181,13 @@
         "brand_400_color"
       ]
     },
+    "brand_500_color": {
+      "type": "string",
+      "description": "Auto-discovered placeholder (design_colors)",
+      "examples": [
+        "brand_500_color"
+      ]
+    },
     "brand_600_color": {
       "type": "string",
       "description": "Auto-discovered placeholder (design_colors)",
@@ -401,6 +408,13 @@
       "description": "Auto-discovered placeholder (design_colors)",
       "examples": [
         "cta_400_color"
+      ]
+    },
+    "cta_500_color": {
+      "type": "string",
+      "description": "Auto-discovered placeholder (design_colors)",
+      "examples": [
+        "cta_500_color"
       ]
     },
     "cta_600_color": {
@@ -861,6 +875,69 @@
         "my_theme"
       ]
     },
+    "neutral_100_color": {
+      "type": "string",
+      "description": "Auto-discovered placeholder (design_colors)",
+      "examples": [
+        "neutral_100_color"
+      ]
+    },
+    "neutral_200_color": {
+      "type": "string",
+      "description": "Auto-discovered placeholder (design_colors)",
+      "examples": [
+        "neutral_200_color"
+      ]
+    },
+    "neutral_300_color": {
+      "type": "string",
+      "description": "Auto-discovered placeholder (design_colors)",
+      "examples": [
+        "neutral_300_color"
+      ]
+    },
+    "neutral_400_color": {
+      "type": "string",
+      "description": "Auto-discovered placeholder (design_colors)",
+      "examples": [
+        "neutral_400_color"
+      ]
+    },
+    "neutral_500_color": {
+      "type": "string",
+      "description": "Auto-discovered placeholder (design_colors)",
+      "examples": [
+        "neutral_500_color"
+      ]
+    },
+    "neutral_600_color": {
+      "type": "string",
+      "description": "Auto-discovered placeholder (design_colors)",
+      "examples": [
+        "neutral_600_color"
+      ]
+    },
+    "neutral_700_color": {
+      "type": "string",
+      "description": "Auto-discovered placeholder (design_colors)",
+      "examples": [
+        "neutral_700_color"
+      ]
+    },
+    "neutral_800_color": {
+      "type": "string",
+      "description": "Auto-discovered placeholder (design_colors)",
+      "examples": [
+        "neutral_800_color"
+      ]
+    },
+    "neutral_900_color": {
+      "type": "string",
+      "description": "Auto-discovered placeholder (design_colors)",
+      "examples": [
+        "neutral_900_color"
+      ]
+    },
     "neutral_color": {
       "type": "string",
       "description": "Neutral/background color (hex format)",
@@ -904,6 +981,69 @@
       "format": "uri",
       "examples": [
         "https://example.com/premium-support"
+      ]
+    },
+    "primary_100_color": {
+      "type": "string",
+      "description": "Auto-discovered placeholder (design_colors)",
+      "examples": [
+        "primary_100_color"
+      ]
+    },
+    "primary_200_color": {
+      "type": "string",
+      "description": "Auto-discovered placeholder (design_colors)",
+      "examples": [
+        "primary_200_color"
+      ]
+    },
+    "primary_300_color": {
+      "type": "string",
+      "description": "Auto-discovered placeholder (design_colors)",
+      "examples": [
+        "primary_300_color"
+      ]
+    },
+    "primary_400_color": {
+      "type": "string",
+      "description": "Auto-discovered placeholder (design_colors)",
+      "examples": [
+        "primary_400_color"
+      ]
+    },
+    "primary_500_color": {
+      "type": "string",
+      "description": "Auto-discovered placeholder (design_colors)",
+      "examples": [
+        "primary_500_color"
+      ]
+    },
+    "primary_600_color": {
+      "type": "string",
+      "description": "Auto-discovered placeholder (design_colors)",
+      "examples": [
+        "primary_600_color"
+      ]
+    },
+    "primary_700_color": {
+      "type": "string",
+      "description": "Auto-discovered placeholder (design_colors)",
+      "examples": [
+        "primary_700_color"
+      ]
+    },
+    "primary_800_color": {
+      "type": "string",
+      "description": "Auto-discovered placeholder (design_colors)",
+      "examples": [
+        "primary_800_color"
+      ]
+    },
+    "primary_900_color": {
+      "type": "string",
+      "description": "Auto-discovered placeholder (design_colors)",
+      "examples": [
+        "primary_900_color"
       ]
     },
     "primary_color": {
