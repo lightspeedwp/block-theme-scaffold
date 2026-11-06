@@ -236,6 +236,41 @@ describe( 'generate-theme placeholders', () => {
 		} );
 	} );
 
+	it( 'uses numeric shadow slugs, and every shadow reference matches a preset', () => {
+		const { cwd, output } = generate( mockConfig );
+		cleanup.push( cwd );
+		const { presets } = JSON.parse(
+			fs.readFileSync( path.join( output, 'theme.json' ), 'utf8' )
+		).settings.shadow;
+		// The figma-to-block-theme Tokens mode writes the same slugs (BTS-30).
+		const slugs = presets.map( ( preset ) => preset.slug );
+		expect( slugs ).toEqual( [ '100', '200', '300', '400', '500', '600' ] );
+
+		const unknown = [];
+		for ( const entry of fs.readdirSync( output, {
+			recursive: true,
+			withFileTypes: true,
+		} ) ) {
+			const file = path.join( entry.parentPath, entry.name );
+			const relative = path.relative( output, file );
+			if (
+				! entry.isFile() ||
+				/(^|\/)(\.agents|\.claude|node_modules)\//.test( relative )
+			) {
+				continue;
+			}
+			const text = fs.readFileSync( file, 'utf8' );
+			for ( const [ , slug ] of text.matchAll(
+				/(?:--wp--preset--shadow--|var:preset\|shadow\|)([a-z0-9-]+)/g
+			) ) {
+				if ( ! slugs.includes( slug ) ) {
+					unknown.push( `${ relative }: ${ slug }` );
+				}
+			}
+		}
+		expect( unknown ).toEqual( [] );
+	} );
+
 	it( 'ships the per-block stylesheet loader and an example block stylesheet', () => {
 		const { cwd, output } = generate( mockConfig );
 		cleanup.push( cwd );

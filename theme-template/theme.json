@@ -517,32 +517,32 @@
 			"presets": [
 				{
 					"name": "xSmall",
-					"slug": "x-small",
+					"slug": "100",
 					"shadow": "0 1px 2px 0 rgba(17, 17, 17, 0.2)"
 				},
 				{
 					"name": "Small",
-					"slug": "small",
+					"slug": "200",
 					"shadow": "0 2px 4px 0 rgba(17, 17, 17, 0.22)"
 				},
 				{
 					"name": "Medium",
-					"slug": "medium",
+					"slug": "300",
 					"shadow": "0 4px 8px 0 rgba(17, 17, 17, 0.24)"
 				},
 				{
 					"name": "Large",
-					"slug": "large",
+					"slug": "400",
 					"shadow": "0 6px 12px 0 rgba(17, 17, 17, 0.26)"
 				},
 				{
 					"name": "xLarge",
-					"slug": "x-large",
+					"slug": "500",
 					"shadow": "0 10px 20px 0 rgba(17, 17, 17, 0.28)"
 				},
 				{
 					"name": "Huge",
-					"slug": "huge",
+					"slug": "600",
 					"shadow": "0 16px 32px 0 rgba(17, 17, 17, 0.3)"
 				}
 			]
@@ -844,7 +844,7 @@
 				}
 			}
 		},
-		"css": "/* Enhanced theme styles and custom fallbacks */\n@media (prefers-reduced-motion: reduce) { *, *::before, *::after { transition-duration: 0s !important; animation-duration: 0s !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; } }\n.wp-block-button__link { transition: all var(--wp--custom--motion--duration--200) var(--wp--custom--motion--easing--standard); }\n.wp-block-button:focus-within .wp-block-button__link { outline: 2px solid var(--wp--custom--color--border--focus); outline-offset: 2px; }\n@supports (aspect-ratio: 1) { .wp-block-image img { aspect-ratio: var(--aspect-ratio); } }\n@supports (box-shadow: 0 0 0 var(--wp--preset--shadow--small)) { .wp-block-quote { box-shadow: var(--wp--preset--shadow--x-small); } }",
+		"css": "/* Enhanced theme styles and custom fallbacks */\n@media (prefers-reduced-motion: reduce) { *, *::before, *::after { transition-duration: 0s !important; animation-duration: 0s !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; } }\n.wp-block-button__link { transition: all var(--wp--custom--motion--duration--200) var(--wp--custom--motion--easing--standard); }\n.wp-block-button:focus-within .wp-block-button__link { outline: 2px solid var(--wp--custom--color--border--focus); outline-offset: 2px; }\n@supports (aspect-ratio: 1) { .wp-block-image img { aspect-ratio: var(--aspect-ratio); } }\n@supports (box-shadow: 0 0 0 var(--wp--preset--shadow--200)) { .wp-block-quote { box-shadow: var(--wp--preset--shadow--100); } }",
 		"blocks": {
 			"core/navigation": {
 				"typography": {
