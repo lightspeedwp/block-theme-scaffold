@@ -4,7 +4,7 @@
  *
  * Usage: node bin/validate-json.js [file ...]
  * With no files, theme.json and every styles/**\/*.json are checked.
- * The schema is a copy of https://schemas.wp.org/wp/6.9/theme.json.
+ * The schema is a copy of https://schemas.wp.org/wp/7.1/theme.json.
  */
 const fs = require( 'node:fs' );
 const Ajv = require( 'ajv' );
