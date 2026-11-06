@@ -199,6 +199,18 @@ Edit `theme.json` to customize:
 - Spacing scale
 - Layout settings
 
+#### Colour tokens
+
+Colour things with the semantic tokens in `settings.custom.color`, not palette colours:
+
+- In patterns, templates and parts, set colours in the block's `style.color` (or `style.border.color`) as `var(--wp--custom--color--<group>--<role>)`, for example `var(--wp--custom--color--text--default)` or `var(--wp--custom--color--surface--subtle)`. Block colour attributes such as `textColor` only take palette slugs, so don't use them.
+- In `styles/blocks/`, `styles/sections/` and SCSS, use the same `--wp--custom--color--*` variables.
+- Palette colours (`--wp--preset--color--*`) appear only in the `settings.custom.color` definitions, preset definitions such as gradients, and `styles/dark.json`.
+
+`styles/dark.json` changes only the semantic tokens, so anything coloured with them switches with the colour mode.
+
+Editor colour controls (the palette) are for a client building their own page. Those colours are fixed: on a site with a colour mode switcher, making a page coloured this way switch modes needs development.
+
 ### Adding Custom Patterns
 
 1. Create new pattern files in the `patterns/` directory

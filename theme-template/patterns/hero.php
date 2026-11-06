@@ -17,9 +17,9 @@ $hero_description = esc_html__( 'Discover amazing content and explore what we ha
 $primary_button   = esc_html__( 'Get Started', '{{theme_slug}}' );
 $secondary_button = esc_html__( 'Learn More', '{{theme_slug}}' );
 ?>
-<!-- wp:cover {"dimRatio":100,"overlayColor":"contrast","textColor":"base","minHeight":600,"contentPosition":"center center","align":"full","style":{"spacing":{"padding":{"top":"var:preset|spacing|70","bottom":"var:preset|spacing|70"}}}} -->
-<div class="wp-block-cover alignfull has-base-color has-text-color" style="padding-top:var(--wp--preset--spacing--70);padding-bottom:var(--wp--preset--spacing--70);min-height:600px">
-	<span aria-hidden="true" class="wp-block-cover__background has-contrast-background-color has-background-dim-100 has-background-dim"></span>
+<!-- wp:cover {"dimRatio":100,"customOverlayColor":"var(--wp--custom--color--surface--inverse)","minHeight":600,"contentPosition":"center center","align":"full","style":{"spacing":{"padding":{"top":"var:preset|spacing|70","bottom":"var:preset|spacing|70"}},"color":{"text":"var(--wp--custom--color--text--inverse)"}}} -->
+<div class="wp-block-cover alignfull has-text-color" style="color:var(--wp--custom--color--text--inverse);padding-top:var(--wp--preset--spacing--70);padding-bottom:var(--wp--preset--spacing--70);min-height:600px">
+	<span aria-hidden="true" class="wp-block-cover__background has-background-dim-100 has-background-dim" style="background-color:var(--wp--custom--color--surface--inverse)"></span>
 	<div class="wp-block-cover__inner-container">
 		<!-- wp:group {"layout":{"type":"constrained","contentSize":"800px"}} -->
 		<div class="wp-block-group">

@@ -271,6 +271,57 @@ describe( 'generate-theme placeholders', () => {
 		expect( unknown ).toEqual( [] );
 	} );
 
+	it( 'uses semantic colour tokens, keeping palette colours to their definitions', () => {
+		const { cwd, output } = generate( mockConfig );
+		cleanup.push( cwd );
+		// Palette colours belong in settings.color, settings.custom.color and
+		// styles/dark.json only (BTS-32). Everything else uses
+		// --wp--custom--color--* so the colour modes reach it.
+		const palette =
+			/--wp--preset--color--[a-z0-9-]+|var:preset\|color\||"(?:textColor|backgroundColor|borderColor|overlayColor|iconColor|overlayTextColor|overlayBackgroundColor)":|has-[a-z0-9-]+-(?:background-|border-)?color\b(?<!has-text-color|has-border-color|has-icon-color|has-link-color)/g;
+		const found = [];
+		const scan = ( relative, text ) => {
+			for ( const [ match ] of text.matchAll( palette ) ) {
+				found.push( `${ relative }: ${ match }` );
+			}
+		};
+		for ( const dir of [
+			'patterns',
+			'parts',
+			'templates',
+			'styles',
+			'src',
+		] ) {
+			const root = path.join( output, dir );
+			if ( ! fs.existsSync( root ) ) {
+				continue;
+			}
+			for ( const entry of fs.readdirSync( root, {
+				recursive: true,
+				withFileTypes: true,
+			} ) ) {
+				const file = path.join( entry.parentPath, entry.name );
+				const relative = path.relative( output, file );
+				if ( ! entry.isFile() || relative === 'styles/dark.json' ) {
+					continue;
+				}
+				scan( relative, fs.readFileSync( file, 'utf8' ) );
+			}
+		}
+		const theme = JSON.parse(
+			fs.readFileSync( path.join( output, 'theme.json' ), 'utf8' )
+		);
+		const tokens = theme.settings.custom.color;
+		const settings = { ...theme.settings, color: undefined };
+		settings.custom = { ...theme.settings.custom, color: undefined };
+		scan(
+			'theme.json',
+			JSON.stringify( { settings, styles: theme.styles } )
+		);
+		expect( found ).toEqual( [] );
+		expect( tokens.action.cta.background ).toMatch( /cta-600/ );
+	} );
+
 	it( 'ships the per-block stylesheet loader and an example block stylesheet', () => {
 		const { cwd, output } = generate( mockConfig );
 		cleanup.push( cwd );

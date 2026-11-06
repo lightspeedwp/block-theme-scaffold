@@ -863,7 +863,7 @@
 					"fontSize": "var(--wp--preset--font-size--300)"
 				},
 				"color": {
-					"text": "var(--wp--preset--color--neutral-500)"
+					"text": "var(--wp--custom--color--text--muted)"
 				}
 			}
 		}
