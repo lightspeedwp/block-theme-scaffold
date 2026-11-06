@@ -1,9 +1,9 @@
 {
   "summary": {
-    "totalFiles": 547,
-    "filesWithVariables": 124,
+    "totalFiles": 546,
+    "filesWithVariables": 123,
     "uniqueVariables": 164,
-    "totalOccurrences": 1381
+    "totalOccurrences": 1379
   },
   "variables": {
     "ThemeSlug": {
@@ -242,7 +242,7 @@
       "usage": [
         {
           "file": "CHANGELOG.md",
-          "line": 112
+          "line": 114
         },
         {
           "file": "scripts/generate-theme.js",
@@ -701,7 +701,7 @@
         },
         {
           "file": "theme-template/theme.json",
-          "line": 689
+          "line": 721
         },
         {
           "file": ".github/instructions/generate-theme.instructions.md",
@@ -904,7 +904,7 @@
         },
         {
           "file": "theme-template/theme.json",
-          "line": 783
+          "line": 815
         },
         {
           "file": "scripts/utils/placeholders.js",
@@ -935,7 +935,7 @@
         },
         {
           "file": "theme-template/theme.json",
-          "line": 780
+          "line": 812
         },
         {
           "file": ".github/instructions/generate-theme.instructions.md",
@@ -1253,11 +1253,11 @@
       "usage": [
         {
           "file": "CHANGELOG.md",
-          "line": 113
+          "line": 115
         },
         {
           "file": "CHANGELOG.md",
-          "line": 132
+          "line": 134
         },
         {
           "file": "scripts/generate-theme.js",
@@ -1293,7 +1293,7 @@
       "usage": [
         {
           "file": "CHANGELOG.md",
-          "line": 132
+          "line": 134
         },
         {
           "file": "docs/GENERATE_THEME.md",
@@ -2307,27 +2307,27 @@
         },
         {
           "file": "theme-template/theme.json",
-          "line": 699
-        },
-        {
-          "file": "theme-template/theme.json",
-          "line": 707
-        },
-        {
-          "file": "theme-template/theme.json",
-          "line": 715
-        },
-        {
-          "file": "theme-template/theme.json",
-          "line": 723
-        },
-        {
-          "file": "theme-template/theme.json",
           "line": 731
         },
         {
           "file": "theme-template/theme.json",
           "line": 739
+        },
+        {
+          "file": "theme-template/theme.json",
+          "line": 747
+        },
+        {
+          "file": "theme-template/theme.json",
+          "line": 755
+        },
+        {
+          "file": "theme-template/theme.json",
+          "line": 763
+        },
+        {
+          "file": "theme-template/theme.json",
+          "line": 771
         },
         {
           "file": ".github/instructions/generate-theme.instructions.md",
@@ -2366,27 +2366,27 @@
         },
         {
           "file": "theme-template/theme.json",
-          "line": 700
-        },
-        {
-          "file": "theme-template/theme.json",
-          "line": 708
-        },
-        {
-          "file": "theme-template/theme.json",
-          "line": 716
-        },
-        {
-          "file": "theme-template/theme.json",
-          "line": 724
-        },
-        {
-          "file": "theme-template/theme.json",
           "line": 732
         },
         {
           "file": "theme-template/theme.json",
           "line": 740
+        },
+        {
+          "file": "theme-template/theme.json",
+          "line": 748
+        },
+        {
+          "file": "theme-template/theme.json",
+          "line": 756
+        },
+        {
+          "file": "theme-template/theme.json",
+          "line": 764
+        },
+        {
+          "file": "theme-template/theme.json",
+          "line": 772
         },
         {
           "file": ".github/instructions/generate-theme.instructions.md",
@@ -2780,7 +2780,7 @@
       "usage": [
         {
           "file": "CHANGELOG.md",
-          "line": 111
+          "line": 113
         },
         {
           "file": "scripts/generate-theme.js",
@@ -2815,7 +2815,7 @@
       "usage": [
         {
           "file": "CHANGELOG.md",
-          "line": 110
+          "line": 112
         },
         {
           "file": "scripts/generate-theme.js",
@@ -3062,11 +3062,11 @@
       "usage": [
         {
           "file": "CHANGELOG.md",
-          "line": 141
+          "line": 143
         },
         {
           "file": "CHANGELOG.md",
-          "line": 216
+          "line": 218
         },
         {
           "file": "README.md",
@@ -3330,18 +3330,13 @@
       "files": [
         ".github/agents/template.agent.md",
         "CHANGELOG.md",
-        "docs/STRUCTURE_AUDIT.md",
         "scripts/dry-run/with-dry-run.js"
       ],
-      "count": 4,
+      "count": 3,
       "usage": [
         {
           "file": "CHANGELOG.md",
-          "line": 70
-        },
-        {
-          "file": "docs/STRUCTURE_AUDIT.md",
-          "line": 93
+          "line": 72
         },
         {
           "file": ".github/agents/template.agent.md",
@@ -3672,7 +3667,7 @@
         },
         {
           "file": "theme-template/theme.json",
-          "line": 826
+          "line": 858
         },
         {
           "file": ".github/instructions/generate-theme.instructions.md",
@@ -4419,7 +4414,7 @@
       "usage": [
         {
           "file": "CHANGELOG.md",
-          "line": 158
+          "line": 160
         },
         {
           "file": "README.md",
@@ -5153,7 +5148,6 @@
         "README.md",
         "docs/GENERATE_THEME.md",
         "docs/RELEASE_PROCESS.md",
-        "docs/STRUCTURE_AUDIT.md",
         "scripts/generate-theme.js",
         "scripts/utils/placeholders.js",
         "theme-template/.github/workflows/release.yml",
@@ -5214,43 +5208,27 @@
         "theme-template/tests/php/ThemeSetupTest.php",
         "theme-template/tests/php/bootstrap.php"
       ],
-      "count": 454,
+      "count": 453,
       "usage": [
-        {
-          "file": "CHANGELOG.md",
-          "line": 60
-        },
         {
           "file": "CHANGELOG.md",
           "line": 62
         },
         {
           "file": "CHANGELOG.md",
-          "line": 73
+          "line": 64
         },
         {
           "file": "CHANGELOG.md",
-          "line": 73
+          "line": 75
         },
         {
           "file": "CHANGELOG.md",
-          "line": 77
+          "line": 75
         },
         {
           "file": "CHANGELOG.md",
-          "line": 84
-        },
-        {
-          "file": "CHANGELOG.md",
-          "line": 85
-        },
-        {
-          "file": "CHANGELOG.md",
-          "line": 85
-        },
-        {
-          "file": "CHANGELOG.md",
-          "line": 86
+          "line": 79
         },
         {
           "file": "CHANGELOG.md",
@@ -5266,15 +5244,31 @@
         },
         {
           "file": "CHANGELOG.md",
-          "line": 87
+          "line": 88
         },
         {
           "file": "CHANGELOG.md",
-          "line": 151
+          "line": 88
         },
         {
           "file": "CHANGELOG.md",
-          "line": 232
+          "line": 89
+        },
+        {
+          "file": "CHANGELOG.md",
+          "line": 89
+        },
+        {
+          "file": "CHANGELOG.md",
+          "line": 89
+        },
+        {
+          "file": "CHANGELOG.md",
+          "line": 153
+        },
+        {
+          "file": "CHANGELOG.md",
+          "line": 234
         },
         {
           "file": "README.md",
@@ -5383,10 +5377,6 @@
         {
           "file": "docs/RELEASE_PROCESS.md",
           "line": 162
-        },
-        {
-          "file": "docs/STRUCTURE_AUDIT.md",
-          "line": 23
         },
         {
           "file": "scripts/generate-theme.js",
@@ -7858,6 +7848,6 @@
   "meta": {
     "undocumented": [],
     "unused": [],
-    "scannedAt": "2026-11-05T14:37:19.416Z"
+    "scannedAt": "2026-11-06T06:49:35.412Z"
   }
 }
