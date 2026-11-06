@@ -354,6 +354,31 @@ describe( 'generate-theme placeholders', () => {
 		expect( settings.typography.textShadowPresets ).toBeUndefined();
 	} );
 
+	it( 'keeps each block style in the folder for its block', () => {
+		const { cwd, output } = generate( mockConfig );
+		cleanup.push( cwd );
+		// BTS-34: the layout figma-to-block-theme writes,
+		// styles/blocks/<block>/<slug>.json.
+		const blocks = path.join( output, 'styles', 'blocks' );
+		const files = fs
+			.readdirSync( blocks, { recursive: true } )
+			.filter( ( file ) => file.endsWith( '.json' ) );
+		expect( files.length ).toBeGreaterThan( 0 );
+		for ( const file of files ) {
+			const style = JSON.parse(
+				fs.readFileSync( path.join( blocks, file ), 'utf8' )
+			);
+			const expected = style.blockTypes.map(
+				( type ) =>
+					`${ type.split( '/' ).pop() }${ path.sep }${ style.slug }.json`
+			);
+			expect( expected ).toContain( file );
+		}
+		expect( fs.existsSync( path.join( output, 'styles', 'colors' ) ) ).toBe(
+			false
+		);
+	} );
+
 	it( 'ships the per-block stylesheet loader and an example block stylesheet', () => {
 		const { cwd, output } = generate( mockConfig );
 		cleanup.push( cwd );

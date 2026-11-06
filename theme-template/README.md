@@ -142,6 +142,10 @@ The same checks run in `.github/workflows/ci.yml` on every pull request, and the
 │   ├── css/           # SCSS/CSS source files
 │   └── js/            # JavaScript source files
 ├── styles/             # Style variations
+│   ├── blocks/<block>/ # Block styles, one folder per block (button/primary.json)
+│   ├── sections/       # Section styles; group them in subfolders (cards/) as they grow
+│   ├── typography/     # Typography variations
+│   └── dark.json       # Dark mode: remaps the semantic colour tokens
 ├── templates/          # Block templates
 ├── tests/              # Test files
 ├── public/             # Built assets (auto-generated)
