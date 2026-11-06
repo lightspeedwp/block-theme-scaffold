@@ -221,7 +221,7 @@ Status updated 6 Nov 2026. Topics 4 to 7 are framed as "match what the theme.jso
 | 4 | Numeric shadow slugs: scaffold, then TSP and the TSP Figma file | Scaffold: [BTS-30](https://linear.app/lightspeedwp/issue/BTS-30), PR #48. TSP: [TSP-57](https://linear.app/lightspeedwp/issue/TSP-57) |
 | 5 | Semantic token usage aligned with TSP and Figma | [BTS-32](https://linear.app/lightspeedwp/issue/BTS-32), PR #51 (waiting on Warwick's review) |
 | 6 | `dimensionSizes`, `textShadow`, `blockVisibility` enabled, not seeded | [BTS-33](https://linear.app/lightspeedwp/issue/BTS-33), stacked on #51 |
-| 7 | `styles/blocks/` per-block folders, drop `styles/colors/palette.json` if nothing reads it | Ready. Overlaps GIT-2755 |
+| 7 | `styles/blocks/` per-block folders, drop `styles/colors/palette.json` if nothing reads it | [BTS-34](https://linear.app/lightspeedwp/issue/BTS-34), stacked on #53. Related: GIT-2755 |
 | 8 | Font size ladder and family names | Needs Zared |
 | 9 | Template and pattern coverage | Part of the work |
 | 10 | Org standards update (`lightspeedwp/.github`) | [GIT-2756](https://linear.app/lightspeedwp/issue/GIT-2756) |
