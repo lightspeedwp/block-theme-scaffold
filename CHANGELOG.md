@@ -32,6 +32,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- `theme.json` and style JSON use the WordPress 7.1 schema; the width, height and min-width controls and block visibility are on, with no dimension size or text shadow values seeded ([BTS-33](https://linear.app/lightspeedwp/issue/BTS-33)).
 - Patterns, block and section styles and SCSS use the semantic `--wp--custom--color--*` tokens instead of palette colours, so `dark.json` reaches them; buttons now use `action.cta.*` (AA) ([BTS-32](https://linear.app/lightspeedwp/issue/BTS-32)).
 - Shadow preset slugs are numeric, `100` to `600` (was `x-small` to `huge`), matching the `figma-to-block-theme` Tokens mode; values and names are unchanged ([BTS-30](https://linear.app/lightspeedwp/issue/BTS-30)).
 - `theme.json` gets `custom.layer` and `custom.motion` tokens; scaffold z-index and transitions use them, and a reduced-motion rule disables transitions ([BTS-26](https://linear.app/lightspeedwp/issue/BTS-26)).

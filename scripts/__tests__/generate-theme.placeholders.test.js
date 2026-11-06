@@ -322,6 +322,38 @@ describe( 'generate-theme placeholders', () => {
 		expect( tokens.action.cta.background ).toMatch( /cta-600/ );
 	} );
 
+	it( 'uses the WordPress 7.1 schema and enables its settings without seeding values', () => {
+		const { cwd, output } = generate( mockConfig );
+		cleanup.push( cwd );
+		const read = ( file ) =>
+			JSON.parse( fs.readFileSync( path.join( output, file ), 'utf8' ) );
+		const files = [
+			'theme.json',
+			...fs
+				.readdirSync( path.join( output, 'styles' ), {
+					recursive: true,
+				} )
+				.filter( ( file ) => file.endsWith( '.json' ) )
+				.map( ( file ) => path.join( 'styles', file ) ),
+		];
+		for ( const file of files ) {
+			expect( [ file, read( file ).$schema ] ).toEqual( [
+				file,
+				'https://schemas.wp.org/wp/7.1/theme.json',
+			] );
+		}
+		// BTS-33: switched on, values left to each theme.
+		const { settings } = read( 'theme.json' );
+		expect( settings.dimensions ).toMatchObject( {
+			width: true,
+			height: true,
+			minWidth: true,
+		} );
+		expect( settings.dimensions.dimensionSizes ).toBeUndefined();
+		expect( settings.blockVisibility ).toEqual( { allowEditing: true } );
+		expect( settings.typography.textShadowPresets ).toBeUndefined();
+	} );
+
 	it( 'ships the per-block stylesheet loader and an example block stylesheet', () => {
 		const { cwd, output } = generate( mockConfig );
 		cleanup.push( cwd );

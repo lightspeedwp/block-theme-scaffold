@@ -1,5 +1,5 @@
 {
-	"$schema": "https://schemas.wp.org/wp/6.9/theme.json",
+	"$schema": "https://schemas.wp.org/wp/7.1/theme.json",
 	"version": 3,
 	"settings": {
 		"appearanceTools": true,
@@ -478,6 +478,9 @@
 		"dimensions": {
 			"aspectRatio": true,
 			"minHeight": true,
+			"minWidth": true,
+			"width": true,
+			"height": true,
 			"defaultAspectRatios": true,
 			"aspectRatios": [
 				{
@@ -511,6 +514,9 @@
 					"ratio": "21/9"
 				}
 			]
+		},
+		"blockVisibility": {
+			"allowEditing": true
 		},
 		"shadow": {
 			"defaultPresets": false,
