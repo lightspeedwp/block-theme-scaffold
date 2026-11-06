@@ -89,7 +89,7 @@
 				{
 					"name": "Neutral 500",
 					"slug": "neutral-500",
-					"color": "{{neutral_color}}"
+					"color": "{{neutral_500_color}}"
 				},
 				{
 					"name": "Neutral 600",
@@ -134,7 +134,7 @@
 				{
 					"name": "Primary 500",
 					"slug": "primary-500",
-					"color": "{{primary_color}}"
+					"color": "{{primary_500_color}}"
 				},
 				{
 					"name": "Primary 600",
@@ -179,7 +179,7 @@
 				{
 					"name": "Brand 500",
 					"slug": "brand-500",
-					"color": "{{secondary_color}}"
+					"color": "{{brand_500_color}}"
 				},
 				{
 					"name": "Brand 600",
@@ -224,7 +224,7 @@
 				{
 					"name": "CTA 500",
 					"slug": "cta-500",
-					"color": "{{accent_color}}"
+					"color": "{{cta_500_color}}"
 				},
 				{
 					"name": "CTA 600",
@@ -578,11 +578,11 @@
 			"color": {
 				"text": {
 					"default": "var(--wp--preset--color--contrast)",
-					"muted": "var(--wp--preset--color--neutral-600)",
+					"muted": "var(--wp--preset--color--neutral-700)",
 					"inverse": "var(--wp--preset--color--base)",
 					"brand": "var(--wp--preset--color--brand-600)",
 					"link": "var(--wp--preset--color--brand-700)",
-					"link-hover": "var(--wp--preset--color--primary-500)",
+					"link-hover": "var(--wp--preset--color--primary-600)",
 					"disabled": "var(--wp--preset--color--neutral-500)",
 					"inverse-subtle": "var(--wp--preset--color--neutral-100)",
 					"placeholder": "var(--wp--preset--color--neutral-600)"
@@ -607,8 +607,8 @@
 				},
 				"action": {
 					"primary": {
-						"background": "var(--wp--preset--color--primary-500)",
-						"background-hover": "var(--wp--preset--color--primary-600)",
+						"background": "var(--wp--preset--color--primary-600)",
+						"background-hover": "var(--wp--preset--color--primary-700)",
 						"text": "var(--wp--preset--color--base)"
 					},
 					"secondary": {
@@ -617,8 +617,8 @@
 						"text": "var(--wp--preset--color--base)"
 					},
 					"cta": {
-						"background": "var(--wp--preset--color--cta-500)",
-						"background-hover": "var(--wp--preset--color--cta-600)",
+						"background": "var(--wp--preset--color--cta-600)",
+						"background-hover": "var(--wp--preset--color--cta-700)",
 						"text": "var(--wp--preset--color--base)"
 					}
 				},

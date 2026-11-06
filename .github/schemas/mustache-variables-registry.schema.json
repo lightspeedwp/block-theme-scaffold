@@ -181,6 +181,13 @@
         "brand_400_color"
       ]
     },
+    "brand_500_color": {
+      "type": "string",
+      "description": "Auto-discovered placeholder (design_colors)",
+      "examples": [
+        "brand_500_color"
+      ]
+    },
     "brand_600_color": {
       "type": "string",
       "description": "Auto-discovered placeholder (design_colors)",
@@ -401,6 +408,13 @@
       "description": "Auto-discovered placeholder (design_colors)",
       "examples": [
         "cta_400_color"
+      ]
+    },
+    "cta_500_color": {
+      "type": "string",
+      "description": "Auto-discovered placeholder (design_colors)",
+      "examples": [
+        "cta_500_color"
       ]
     },
     "cta_600_color": {
@@ -889,6 +903,13 @@
         "neutral_400_color"
       ]
     },
+    "neutral_500_color": {
+      "type": "string",
+      "description": "Auto-discovered placeholder (design_colors)",
+      "examples": [
+        "neutral_500_color"
+      ]
+    },
     "neutral_600_color": {
       "type": "string",
       "description": "Auto-discovered placeholder (design_colors)",
@@ -988,6 +1009,13 @@
       "description": "Auto-discovered placeholder (design_colors)",
       "examples": [
         "primary_400_color"
+      ]
+    },
+    "primary_500_color": {
+      "type": "string",
+      "description": "Auto-discovered placeholder (design_colors)",
+      "examples": [
+        "primary_500_color"
       ]
     },
     "primary_600_color": {

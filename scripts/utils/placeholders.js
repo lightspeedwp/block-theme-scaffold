@@ -115,7 +115,9 @@ for ( const [ name, center ] of [
 	[ 'brand', PLACEHOLDER_MAP[ '{{secondary_color}}' ] ],
 	[ 'cta', PLACEHOLDER_MAP[ '{{accent_color}}' ] ],
 ] ) {
-	for ( const [ step, color ] of Object.entries( colorRamp( center ) ) ) {
+	for ( const [ step, color ] of Object.entries(
+		colorRamp( center, name === 'neutral' )
+	) ) {
 		PLACEHOLDER_MAP[ `{{${ name }_${ step }_color}}` ] = color;
 	}
 }

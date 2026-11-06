@@ -810,7 +810,9 @@ async function runScript() {
 		[ 'brand', placeholders[ '{{secondary_color}}' ] ],
 		[ 'cta', placeholders[ '{{accent_color}}' ] ],
 	] ) {
-		for ( const [ step, color ] of Object.entries( colorRamp( center ) ) ) {
+		for ( const [ step, color ] of Object.entries(
+			colorRamp( center, name === 'neutral' )
+		) ) {
 			placeholders[ `{{${ name }_${ step }_color}}` ] = color;
 		}
 	}
