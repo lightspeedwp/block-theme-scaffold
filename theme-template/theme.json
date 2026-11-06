@@ -675,6 +675,38 @@
 				"200": "2px",
 				"300": "4px",
 				"400": "8px"
+			},
+			"layer": {
+				"base": "1",
+				"sticky": "10",
+				"dropdown": "20",
+				"popover": "30",
+				"overlay": "40",
+				"modal": "50",
+				"toast": "60",
+				"skip-link": "70"
+			},
+			"motion": {
+				"duration": {
+					"100": "200ms",
+					"200": "300ms",
+					"300": "500ms",
+					"400": "700ms",
+					"500": "1000ms"
+				},
+				"easing": {
+					"standard": "cubic-bezier(0.4, 0, 0.2, 1)",
+					"accelerate": "cubic-bezier(0.4, 0, 1, 1)",
+					"decelerate": "cubic-bezier(0, 0, 0.2, 1)",
+					"sharp": "cubic-bezier(0.4, 0, 0.6, 1)",
+					"linear": "linear"
+				},
+				"delay": {
+					"micro": "50ms",
+					"small": "100ms",
+					"medium": "200ms",
+					"large": "400ms"
+				}
 			}
 		}
 	},
@@ -812,7 +844,7 @@
 				}
 			}
 		},
-		"css": "/* Enhanced theme styles and custom fallbacks */\n.wp-block-button__link { transition: all 0.3s ease; }\n.wp-block-button:focus-within .wp-block-button__link { outline: 2px solid var(--wp--custom--color--border--focus); outline-offset: 2px; }\n@supports (aspect-ratio: 1) { .wp-block-image img { aspect-ratio: var(--aspect-ratio); } }\n@supports (box-shadow: 0 0 0 var(--wp--preset--shadow--small)) { .wp-block-quote { box-shadow: var(--wp--preset--shadow--x-small); } }",
+		"css": "/* Enhanced theme styles and custom fallbacks */\n@media (prefers-reduced-motion: reduce) { *, *::before, *::after { transition-duration: 0s !important; animation-duration: 0s !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; } }\n.wp-block-button__link { transition: all var(--wp--custom--motion--duration--200) var(--wp--custom--motion--easing--standard); }\n.wp-block-button:focus-within .wp-block-button__link { outline: 2px solid var(--wp--custom--color--border--focus); outline-offset: 2px; }\n@supports (aspect-ratio: 1) { .wp-block-image img { aspect-ratio: var(--aspect-ratio); } }\n@supports (box-shadow: 0 0 0 var(--wp--preset--shadow--small)) { .wp-block-quote { box-shadow: var(--wp--preset--shadow--x-small); } }",
 		"blocks": {
 			"core/navigation": {
 				"typography": {

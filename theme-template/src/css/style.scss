@@ -57,7 +57,7 @@ body {
 	text-decoration: none;
 	top: 5px;
 	width: auto;
-	z-index: 100000;
+	z-index: var(--wp--custom--layer--skip-link);
 }
 
 /* Button styles */
@@ -173,13 +173,12 @@ body {
 .skip-link {
 	position: absolute;
 	left: -9999px;
-	z-index: 999999999;
+	z-index: var(--wp--custom--layer--skip-link);
 	text-decoration: none;
 
 	&:focus {
 		left: 6px;
 		top: 7px;
-		z-index: 999999;
 		padding: 8px 16px;
 		background: var(--wp--preset--color--base);
 		color: var(--wp--preset--color--contrast);
