@@ -53,6 +53,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+- The hero pattern's cover overlay is solid (`dimRatio` 100) with no image, so its text and buttons pass WCAG AA contrast in every generated theme ([BTS-28](https://linear.app/lightspeedwp/issue/BTS-28)).
 - `styles/dark.json` inherits the palette and sets every semantic colour token, including `overlay`, from palette colours; no raw hex ([BTS-24](https://linear.app/lightspeedwp/issue/BTS-24)).
 - Removed `.github/workflows/agent-workflow.yml` and the root `ci.yml`, a stray theme workflow. Both were invalid YAML ([BTS-22](https://linear.app/lightspeedwp/issue/BTS-22)).
 - Root `npm ci` works again: the lockfile is rebuilt for `@wordpress/scripts` 36, and workflows read Node.js from `.nvmrc` (24) ([BTS-21](https://linear.app/lightspeedwp/issue/BTS-21)).
