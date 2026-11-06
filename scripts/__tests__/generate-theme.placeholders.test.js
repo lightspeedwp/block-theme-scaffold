@@ -259,6 +259,23 @@ describe( 'generate-theme placeholders', () => {
 		} );
 	} );
 
+	it( 'ships the per-block stylesheet loader and an example block stylesheet', () => {
+		const { cwd, output } = generate( mockConfig );
+		cleanup.push( cwd );
+		const read = ( file ) =>
+			fs.readFileSync( path.join( output, file ), 'utf8' );
+		expect( read( 'functions.php' ) ).toContain(
+			"'inc/block-stylesheets.php'"
+		);
+		expect( read( 'inc/block-stylesheets.php' ) ).toContain(
+			'wp_enqueue_block_style('
+		);
+		expect( read( 'src/styles/core-button.scss' ) ).toContain(
+			'.wp-block-button'
+		);
+		expect( read( 'webpack.config.js' ) ).toContain( '...blockStyles' );
+	} );
+
 	it( 'reads the repository URL from urls.theme_repo_url', () => {
 		const { cwd, output } = generate( mockConfig );
 		cleanup.push( cwd );

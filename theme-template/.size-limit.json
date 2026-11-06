@@ -18,5 +18,10 @@
 		"name": "Front-end stylesheet",
 		"path": "build/css/style.css",
 		"limit": "25 KB"
+	},
+	{
+		"name": "Block stylesheets",
+		"path": "build/styles/*.css",
+		"limit": "10 KB"
 	}
 ]

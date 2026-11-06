@@ -60,41 +60,6 @@ body {
 	z-index: var(--wp--custom--layer--skip-link);
 }
 
-/* Button styles */
-/* stylelint-disable no-descending-specificity */
-
-.wp-block-button {
-
-	&.is-style-outline {
-
-		.wp-block-button__link {
-			border: 2px solid currentcolor;
-			background: transparent;
-
-			&:hover {
-				background: currentcolor;
-				color: var(--wp--preset--color--base);
-			}
-		}
-	}
-
-	&.is-style-ghost {
-
-		.wp-block-button__link {
-			background: transparent;
-			color: inherit;
-			text-decoration: underline;
-			border: none;
-
-			&:hover {
-				text-decoration: none;
-			}
-		}
-	}
-}
-
-/* stylelint-enable no-descending-specificity */
-
 /* Quote styles */
 .wp-block-quote {
 
