@@ -11,3 +11,5 @@ logs/**
 tmp/**
 scripts/mustache-variables-registry.json
 tests/fixtures/**
+# Reports that quote placeholders as examples
+docs/STRUCTURE_AUDIT.md

@@ -18,6 +18,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- `docs/STRUCTURE_AUDIT.md`: the 5 Nov structure audit against ATI, KWV, SD and TSP, Zared's decisions and the topic order with status; `.mustacheignore` skips it ([BTS-31](https://linear.app/lightspeedwp/issue/BTS-31)).
 - Generated themes load per-block CSS: `src/styles/core-<block>.scss` builds to minified `build/styles/` CSS with RTL, and `inc/block-stylesheets.php` loads it only where the block is used ([BTS-27](https://linear.app/lightspeedwp/issue/BTS-27)).
 - Generated themes get CI and local checks, proven first in [lightspeedwp/ls-test-theme](https://github.com/lightspeedwp/ls-test-theme) (#1 to #3) and moved back into `theme-template/` ([BTS-5](https://linear.app/lightspeedwp/issue/BTS-5)). Regenerating LS Test Theme reproduces it with 0 differences:
   - `.github/workflows/ci.yml`: JS (lint, unit tests, build, enqueued build files exist), PHP 8.4 and 8.5 (PHPCS, PHPStan, PHPUnit) and E2E (wp-env, Playwright) jobs
