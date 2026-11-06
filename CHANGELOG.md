@@ -54,6 +54,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+- Generated themes build the primary and neutral ramps (100 to 900) from their configured colours, like brand and CTA, instead of fixed blues and greys around a configured step 500 ([BTS-29](https://linear.app/lightspeedwp/issue/BTS-29)).
 - The hero pattern's cover overlay is solid (`dimRatio` 100) with no image, so its text and buttons pass WCAG AA contrast in every generated theme ([BTS-28](https://linear.app/lightspeedwp/issue/BTS-28)).
 - `styles/dark.json` inherits the palette and sets every semantic colour token, including `overlay`, from palette colours; no raw hex ([BTS-24](https://linear.app/lightspeedwp/issue/BTS-24)).
 - Removed `.github/workflows/agent-workflow.yml` and the root `ci.yml`, a stray theme workflow. Both were invalid YAML ([BTS-22](https://linear.app/lightspeedwp/issue/BTS-22)).

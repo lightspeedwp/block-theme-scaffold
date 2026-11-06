@@ -191,6 +191,35 @@ describe( 'generate-theme placeholders', () => {
 		}
 	);
 
+	it( 'derives every palette ramp from its step-500 colour, lightest to darkest', () => {
+		const colorRamp = require( '../utils/color-ramp' );
+		const { cwd, output } = generate( mockConfig );
+		cleanup.push( cwd );
+		const palette = JSON.parse(
+			fs.readFileSync( path.join( output, 'theme.json' ), 'utf8' )
+		).settings.color.palette;
+		const get = ( slug ) =>
+			palette.find( ( entry ) => entry.slug === slug ).color;
+		const luminance = ( hex ) =>
+			[ 1, 3, 5 ]
+				.map( ( i ) => parseInt( hex.slice( i, i + 2 ), 16 ) )
+				.reduce( ( sum, channel ) => sum + channel, 0 );
+		for ( const family of [ 'primary', 'neutral', 'brand', 'cta' ] ) {
+			const steps = Array.from(
+				{ length: 9 },
+				( _, i ) => ( i + 1 ) * 100
+			);
+			const ramp = colorRamp( get( `${ family }-500` ) );
+			for ( const step of steps.filter( ( s ) => s !== 500 ) ) {
+				expect( get( `${ family }-${ step }` ) ).toBe( ramp[ step ] );
+			}
+			const light = steps.map( ( step ) =>
+				luminance( get( `${ family }-${ step }` ) )
+			);
+			expect( light ).toEqual( [ ...light ].sort( ( a, b ) => b - a ) );
+		}
+	} );
+
 	it( 'gives every semantic colour token a dark value that references the palette', () => {
 		const { cwd, output } = generate( mockConfig );
 		cleanup.push( cwd );

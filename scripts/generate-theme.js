@@ -805,6 +805,8 @@ async function runScript() {
 
 	// Keep each palette ramp aligned with its configured center color.
 	for ( const [ name, center ] of [
+		[ 'primary', placeholders[ '{{primary_color}}' ] ],
+		[ 'neutral', placeholders[ '{{neutral_color}}' ] ],
 		[ 'brand', placeholders[ '{{secondary_color}}' ] ],
 		[ 'cta', placeholders[ '{{accent_color}}' ] ],
 	] ) {

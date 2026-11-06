@@ -110,6 +110,8 @@ const PLACEHOLDER_MAP = {
 // Derive test shades from the same fixture center colors used above.
 const colorRamp = require( './color-ramp' );
 for ( const [ name, center ] of [
+	[ 'primary', PLACEHOLDER_MAP[ '{{primary_color}}' ] ],
+	[ 'neutral', PLACEHOLDER_MAP[ '{{neutral_color}}' ] ],
 	[ 'brand', PLACEHOLDER_MAP[ '{{secondary_color}}' ] ],
 	[ 'cta', PLACEHOLDER_MAP[ '{{accent_color}}' ] ],
 ] ) {

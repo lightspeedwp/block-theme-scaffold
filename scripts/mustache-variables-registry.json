@@ -2,8 +2,8 @@
   "summary": {
     "totalFiles": 553,
     "filesWithVariables": 125,
-    "uniqueVariables": 164,
-    "totalOccurrences": 1392
+    "uniqueVariables": 180,
+    "totalOccurrences": 1412
   },
   "variables": {
     "ThemeSlug": {
@@ -67,7 +67,7 @@
         },
         {
           "file": "scripts/generate-theme.js",
-          "line": 809
+          "line": 811
         },
         {
           "file": "theme-template/theme.json",
@@ -83,7 +83,7 @@
         },
         {
           "file": "scripts/utils/placeholders.js",
-          "line": 114
+          "line": 116
         }
       ]
     },
@@ -242,7 +242,7 @@
       "usage": [
         {
           "file": "CHANGELOG.md",
-          "line": 115
+          "line": 116
         },
         {
           "file": "scripts/generate-theme.js",
@@ -332,7 +332,7 @@
         },
         {
           "file": "scripts/generate-theme.js",
-          "line": 880
+          "line": 882
         },
         {
           "file": "theme-template/README.md",
@@ -540,7 +540,7 @@
         },
         {
           "file": "scripts/generate-theme.js",
-          "line": 842
+          "line": 844
         },
         {
           "file": "theme-template/README.txt",
@@ -870,7 +870,7 @@
         },
         {
           "file": "scripts/generate-theme.js",
-          "line": 849
+          "line": 851
         },
         {
           "file": "theme-template/SUPPORT.md",
@@ -959,7 +959,7 @@
       "usage": [
         {
           "file": "scripts/generate-theme.js",
-          "line": 874
+          "line": 876
         },
         {
           "file": "theme-template/styles/blocks/button-primary.json",
@@ -979,7 +979,7 @@
       "usage": [
         {
           "file": "scripts/generate-theme.js",
-          "line": 875
+          "line": 877
         },
         {
           "file": "theme-template/styles/blocks/button-rounded.json",
@@ -1039,11 +1039,11 @@
         },
         {
           "file": "scripts/generate-theme.js",
-          "line": 827
+          "line": 829
         },
         {
           "file": "scripts/generate-theme.js",
-          "line": 828
+          "line": 830
         },
         {
           "file": "theme-template/package.json",
@@ -1192,7 +1192,7 @@
       "usage": [
         {
           "file": "scripts/generate-theme.js",
-          "line": 878
+          "line": 880
         },
         {
           "file": "theme-template/styles/sections/content-section.json",
@@ -1253,11 +1253,11 @@
       "usage": [
         {
           "file": "CHANGELOG.md",
-          "line": 116
+          "line": 117
         },
         {
           "file": "CHANGELOG.md",
-          "line": 135
+          "line": 136
         },
         {
           "file": "scripts/generate-theme.js",
@@ -1293,7 +1293,7 @@
       "usage": [
         {
           "file": "CHANGELOG.md",
-          "line": 135
+          "line": 136
         },
         {
           "file": "docs/GENERATE_THEME.md",
@@ -1338,7 +1338,7 @@
         },
         {
           "file": "scripts/generate-theme.js",
-          "line": 846
+          "line": 848
         },
         {
           "file": "theme-template/package.json",
@@ -1479,7 +1479,7 @@
       "usage": [
         {
           "file": "scripts/generate-theme.js",
-          "line": 864
+          "line": 866
         },
         {
           "file": ".github/prompts/generate-theme.prompt.md",
@@ -1503,7 +1503,7 @@
       "usage": [
         {
           "file": "scripts/generate-theme.js",
-          "line": 862
+          "line": 864
         },
         {
           "file": "theme-template/inc/block-patterns.php",
@@ -1538,7 +1538,7 @@
       "usage": [
         {
           "file": "scripts/generate-theme.js",
-          "line": 861
+          "line": 863
         },
         {
           "file": "theme-template/inc/block-patterns.php",
@@ -1577,7 +1577,7 @@
       "usage": [
         {
           "file": "scripts/generate-theme.js",
-          "line": 855
+          "line": 857
         },
         {
           "file": "theme-template/SUPPORT.md",
@@ -1616,7 +1616,7 @@
       "usage": [
         {
           "file": "scripts/generate-theme.js",
-          "line": 873
+          "line": 875
         },
         {
           "file": "theme-template/styles/dark.json",
@@ -1638,7 +1638,7 @@
       "usage": [
         {
           "file": "scripts/generate-theme.js",
-          "line": 845
+          "line": 847
         },
         {
           "file": "theme-template/README.txt",
@@ -1723,7 +1723,7 @@
         },
         {
           "file": "scripts/generate-theme.js",
-          "line": 859
+          "line": 861
         },
         {
           "file": "theme-template/README.md",
@@ -1793,7 +1793,7 @@
         },
         {
           "file": "scripts/generate-theme.js",
-          "line": 851
+          "line": 853
         },
         {
           "file": "theme-template/SUPPORT.md",
@@ -1817,7 +1817,7 @@
       "usage": [
         {
           "file": "scripts/generate-theme.js",
-          "line": 856
+          "line": 858
         },
         {
           "file": "theme-template/SUPPORT.md",
@@ -1850,15 +1850,15 @@
         },
         {
           "file": "scripts/generate-theme.js",
-          "line": 825
+          "line": 827
         },
         {
           "file": "scripts/generate-theme.js",
-          "line": 826
+          "line": 828
         },
         {
           "file": "scripts/generate-theme.js",
-          "line": 857
+          "line": 859
         },
         {
           "file": "theme-template/README.txt",
@@ -2410,7 +2410,7 @@
       "usage": [
         {
           "file": "scripts/generate-theme.js",
-          "line": 876
+          "line": 878
         },
         {
           "file": "theme-template/styles/blocks/heading-serif.json",
@@ -2430,7 +2430,7 @@
       "usage": [
         {
           "file": "scripts/generate-theme.js",
-          "line": 860
+          "line": 862
         },
         {
           "file": "theme-template/inc/block-patterns.php",
@@ -2450,7 +2450,7 @@
       "usage": [
         {
           "file": "scripts/generate-theme.js",
-          "line": 859
+          "line": 861
         },
         {
           "file": "theme-template/inc/block-patterns.php",
@@ -2470,7 +2470,7 @@
       "usage": [
         {
           "file": "scripts/generate-theme.js",
-          "line": 877
+          "line": 879
         },
         {
           "file": "theme-template/styles/sections/hero-section.json",
@@ -2497,7 +2497,7 @@
         },
         {
           "file": "scripts/generate-theme.js",
-          "line": 858
+          "line": 860
         },
         {
           "file": ".github/agents/generate-theme.agent.md",
@@ -2780,7 +2780,7 @@
       "usage": [
         {
           "file": "CHANGELOG.md",
-          "line": 114
+          "line": 115
         },
         {
           "file": "scripts/generate-theme.js",
@@ -2815,7 +2815,7 @@
       "usage": [
         {
           "file": "CHANGELOG.md",
-          "line": 113
+          "line": 114
         },
         {
           "file": "scripts/generate-theme.js",
@@ -3062,11 +3062,11 @@
       "usage": [
         {
           "file": "CHANGELOG.md",
-          "line": 144
+          "line": 145
         },
         {
           "file": "CHANGELOG.md",
-          "line": 219
+          "line": 220
         },
         {
           "file": "README.md",
@@ -3253,6 +3253,126 @@
         }
       ]
     },
+    "neutral_100_color": {
+      "name": "neutral_100_color",
+      "category": "design_colors",
+      "type": "color",
+      "files": [
+        "theme-template/theme.json"
+      ],
+      "count": 1,
+      "usage": [
+        {
+          "file": "theme-template/theme.json",
+          "line": 72
+        }
+      ]
+    },
+    "neutral_200_color": {
+      "name": "neutral_200_color",
+      "category": "design_colors",
+      "type": "color",
+      "files": [
+        "theme-template/theme.json"
+      ],
+      "count": 1,
+      "usage": [
+        {
+          "file": "theme-template/theme.json",
+          "line": 77
+        }
+      ]
+    },
+    "neutral_300_color": {
+      "name": "neutral_300_color",
+      "category": "design_colors",
+      "type": "color",
+      "files": [
+        "theme-template/theme.json"
+      ],
+      "count": 1,
+      "usage": [
+        {
+          "file": "theme-template/theme.json",
+          "line": 82
+        }
+      ]
+    },
+    "neutral_400_color": {
+      "name": "neutral_400_color",
+      "category": "design_colors",
+      "type": "color",
+      "files": [
+        "theme-template/theme.json"
+      ],
+      "count": 1,
+      "usage": [
+        {
+          "file": "theme-template/theme.json",
+          "line": 87
+        }
+      ]
+    },
+    "neutral_600_color": {
+      "name": "neutral_600_color",
+      "category": "design_colors",
+      "type": "color",
+      "files": [
+        "theme-template/theme.json"
+      ],
+      "count": 1,
+      "usage": [
+        {
+          "file": "theme-template/theme.json",
+          "line": 97
+        }
+      ]
+    },
+    "neutral_700_color": {
+      "name": "neutral_700_color",
+      "category": "design_colors",
+      "type": "color",
+      "files": [
+        "theme-template/theme.json"
+      ],
+      "count": 1,
+      "usage": [
+        {
+          "file": "theme-template/theme.json",
+          "line": 102
+        }
+      ]
+    },
+    "neutral_800_color": {
+      "name": "neutral_800_color",
+      "category": "design_colors",
+      "type": "color",
+      "files": [
+        "theme-template/theme.json"
+      ],
+      "count": 1,
+      "usage": [
+        {
+          "file": "theme-template/theme.json",
+          "line": 107
+        }
+      ]
+    },
+    "neutral_900_color": {
+      "name": "neutral_900_color",
+      "category": "design_colors",
+      "type": "color",
+      "files": [
+        "theme-template/theme.json"
+      ],
+      "count": 1,
+      "usage": [
+        {
+          "file": "theme-template/theme.json",
+          "line": 112
+        }
+      ]
+    },
     "neutral_color": {
       "name": "neutral_color",
       "category": "design_colors",
@@ -3264,7 +3384,7 @@
         "scripts/utils/placeholders.js",
         "theme-template/theme.json"
       ],
-      "count": 5,
+      "count": 7,
       "usage": [
         {
           "file": "docs/GENERATE_THEME.md",
@@ -3273,6 +3393,10 @@
         {
           "file": "scripts/generate-theme.js",
           "line": 753
+        },
+        {
+          "file": "scripts/generate-theme.js",
+          "line": 809
         },
         {
           "file": "theme-template/theme.json",
@@ -3285,6 +3409,10 @@
         {
           "file": "scripts/utils/placeholders.js",
           "line": 61
+        },
+        {
+          "file": "scripts/utils/placeholders.js",
+          "line": 114
         }
       ]
     },
@@ -3336,7 +3464,7 @@
       "usage": [
         {
           "file": "CHANGELOG.md",
-          "line": 73
+          "line": 74
         },
         {
           "file": ".github/agents/template.agent.md",
@@ -3384,11 +3512,131 @@
         },
         {
           "file": "scripts/generate-theme.js",
-          "line": 853
+          "line": 855
         },
         {
           "file": "theme-template/SUPPORT.md",
           "line": 103
+        }
+      ]
+    },
+    "primary_100_color": {
+      "name": "primary_100_color",
+      "category": "design_colors",
+      "type": "color",
+      "files": [
+        "theme-template/theme.json"
+      ],
+      "count": 1,
+      "usage": [
+        {
+          "file": "theme-template/theme.json",
+          "line": 117
+        }
+      ]
+    },
+    "primary_200_color": {
+      "name": "primary_200_color",
+      "category": "design_colors",
+      "type": "color",
+      "files": [
+        "theme-template/theme.json"
+      ],
+      "count": 1,
+      "usage": [
+        {
+          "file": "theme-template/theme.json",
+          "line": 122
+        }
+      ]
+    },
+    "primary_300_color": {
+      "name": "primary_300_color",
+      "category": "design_colors",
+      "type": "color",
+      "files": [
+        "theme-template/theme.json"
+      ],
+      "count": 1,
+      "usage": [
+        {
+          "file": "theme-template/theme.json",
+          "line": 127
+        }
+      ]
+    },
+    "primary_400_color": {
+      "name": "primary_400_color",
+      "category": "design_colors",
+      "type": "color",
+      "files": [
+        "theme-template/theme.json"
+      ],
+      "count": 1,
+      "usage": [
+        {
+          "file": "theme-template/theme.json",
+          "line": 132
+        }
+      ]
+    },
+    "primary_600_color": {
+      "name": "primary_600_color",
+      "category": "design_colors",
+      "type": "color",
+      "files": [
+        "theme-template/theme.json"
+      ],
+      "count": 1,
+      "usage": [
+        {
+          "file": "theme-template/theme.json",
+          "line": 142
+        }
+      ]
+    },
+    "primary_700_color": {
+      "name": "primary_700_color",
+      "category": "design_colors",
+      "type": "color",
+      "files": [
+        "theme-template/theme.json"
+      ],
+      "count": 1,
+      "usage": [
+        {
+          "file": "theme-template/theme.json",
+          "line": 147
+        }
+      ]
+    },
+    "primary_800_color": {
+      "name": "primary_800_color",
+      "category": "design_colors",
+      "type": "color",
+      "files": [
+        "theme-template/theme.json"
+      ],
+      "count": 1,
+      "usage": [
+        {
+          "file": "theme-template/theme.json",
+          "line": 152
+        }
+      ]
+    },
+    "primary_900_color": {
+      "name": "primary_900_color",
+      "category": "design_colors",
+      "type": "color",
+      "files": [
+        "theme-template/theme.json"
+      ],
+      "count": 1,
+      "usage": [
+        {
+          "file": "theme-template/theme.json",
+          "line": 157
         }
       ]
     },
@@ -3408,7 +3656,7 @@
         "theme-template/README.md",
         "theme-template/theme.json"
       ],
-      "count": 13,
+      "count": 15,
       "usage": [
         {
           "file": ".github/custom-instructions.md",
@@ -3429,6 +3677,10 @@
         {
           "file": "scripts/generate-theme.js",
           "line": 743
+        },
+        {
+          "file": "scripts/generate-theme.js",
+          "line": 808
         },
         {
           "file": "theme-template/README.md",
@@ -3461,6 +3713,10 @@
         {
           "file": "scripts/utils/placeholders.js",
           "line": 56
+        },
+        {
+          "file": "scripts/utils/placeholders.js",
+          "line": 113
         }
       ]
     },
@@ -3544,7 +3800,7 @@
         },
         {
           "file": "scripts/generate-theme.js",
-          "line": 808
+          "line": 810
         },
         {
           "file": "theme-template/README.md",
@@ -3576,7 +3832,7 @@
         },
         {
           "file": "scripts/utils/placeholders.js",
-          "line": 113
+          "line": 115
         }
       ]
     },
@@ -3872,7 +4128,7 @@
         },
         {
           "file": "scripts/generate-theme.js",
-          "line": 847
+          "line": 849
         },
         {
           "file": "theme-template/SUPPORT.md",
@@ -3991,7 +4247,7 @@
         },
         {
           "file": "scripts/generate-theme.js",
-          "line": 839
+          "line": 841
         },
         {
           "file": "theme-template/README.txt",
@@ -4026,7 +4282,7 @@
       "usage": [
         {
           "file": "scripts/generate-theme.js",
-          "line": 866
+          "line": 868
         },
         {
           "file": "theme-template/inc/block-patterns.php",
@@ -4046,7 +4302,7 @@
       "usage": [
         {
           "file": "scripts/generate-theme.js",
-          "line": 867
+          "line": 869
         },
         {
           "file": "theme-template/inc/block-patterns.php",
@@ -4066,7 +4322,7 @@
       "usage": [
         {
           "file": "scripts/generate-theme.js",
-          "line": 868
+          "line": 870
         },
         {
           "file": "theme-template/inc/block-patterns.php",
@@ -4086,7 +4342,7 @@
       "usage": [
         {
           "file": "scripts/generate-theme.js",
-          "line": 869
+          "line": 871
         },
         {
           "file": "theme-template/inc/block-patterns.php",
@@ -4106,7 +4362,7 @@
       "usage": [
         {
           "file": "scripts/generate-theme.js",
-          "line": 870
+          "line": 872
         },
         {
           "file": "theme-template/inc/block-patterns.php",
@@ -4126,7 +4382,7 @@
       "usage": [
         {
           "file": "scripts/generate-theme.js",
-          "line": 871
+          "line": 873
         },
         {
           "file": "theme-template/inc/block-patterns.php",
@@ -4146,7 +4402,7 @@
       "usage": [
         {
           "file": "scripts/generate-theme.js",
-          "line": 872
+          "line": 874
         },
         {
           "file": "theme-template/inc/block-patterns.php",
@@ -4166,7 +4422,7 @@
       "usage": [
         {
           "file": "scripts/generate-theme.js",
-          "line": 865
+          "line": 867
         },
         {
           "file": "theme-template/inc/block-patterns.php",
@@ -4415,7 +4671,7 @@
       "usage": [
         {
           "file": "CHANGELOG.md",
-          "line": 161
+          "line": 162
         },
         {
           "file": "README.md",
@@ -4503,7 +4759,7 @@
         },
         {
           "file": "scripts/generate-theme.js",
-          "line": 819
+          "line": 821
         },
         {
           "file": "theme-template/CHANGELOG.md",
@@ -4966,7 +5222,7 @@
       "usage": [
         {
           "file": "scripts/generate-theme.js",
-          "line": 831
+          "line": 833
         }
       ]
     },
@@ -5043,7 +5299,7 @@
         },
         {
           "file": "scripts/generate-theme.js",
-          "line": 820
+          "line": 822
         },
         {
           "file": "theme-template/CONTRIBUTING.md",
@@ -5223,31 +5479,23 @@
       "usage": [
         {
           "file": "CHANGELOG.md",
-          "line": 63
+          "line": 64
         },
         {
           "file": "CHANGELOG.md",
-          "line": 65
+          "line": 66
         },
         {
           "file": "CHANGELOG.md",
-          "line": 76
+          "line": 77
         },
         {
           "file": "CHANGELOG.md",
-          "line": 76
+          "line": 77
         },
         {
           "file": "CHANGELOG.md",
-          "line": 80
-        },
-        {
-          "file": "CHANGELOG.md",
-          "line": 87
-        },
-        {
-          "file": "CHANGELOG.md",
-          "line": 88
+          "line": 81
         },
         {
           "file": "CHANGELOG.md",
@@ -5271,15 +5519,23 @@
         },
         {
           "file": "CHANGELOG.md",
-          "line": 90
+          "line": 91
         },
         {
           "file": "CHANGELOG.md",
-          "line": 154
+          "line": 91
         },
         {
           "file": "CHANGELOG.md",
-          "line": 235
+          "line": 91
+        },
+        {
+          "file": "CHANGELOG.md",
+          "line": 155
+        },
+        {
+          "file": "CHANGELOG.md",
+          "line": 236
         },
         {
           "file": "README.md",
@@ -6163,7 +6419,7 @@
         },
         {
           "file": "scripts/utils/placeholders.js",
-          "line": 146
+          "line": 148
         },
         {
           "file": "theme-template/inc/block-patterns.php",
@@ -7097,7 +7353,7 @@
         },
         {
           "file": "scripts/generate-theme.js",
-          "line": 836
+          "line": 838
         },
         {
           "file": "theme-template/README.txt",
@@ -7245,7 +7501,7 @@
       "usage": [
         {
           "file": "scripts/generate-theme.js",
-          "line": 818
+          "line": 820
         }
       ]
     },
@@ -7902,8 +8158,25 @@
     }
   },
   "meta": {
-    "undocumented": [],
+    "undocumented": [
+      "neutral_100_color",
+      "neutral_200_color",
+      "neutral_300_color",
+      "neutral_400_color",
+      "neutral_600_color",
+      "neutral_700_color",
+      "neutral_800_color",
+      "neutral_900_color",
+      "primary_100_color",
+      "primary_200_color",
+      "primary_300_color",
+      "primary_400_color",
+      "primary_600_color",
+      "primary_700_color",
+      "primary_800_color",
+      "primary_900_color"
+    ],
     "unused": [],
-    "scannedAt": "2026-11-06T06:50:07.763Z"
+    "scannedAt": "2026-11-06T09:12:24.504Z"
   }
 }
