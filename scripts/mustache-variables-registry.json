@@ -237,7 +237,7 @@
       "usage": [
         {
           "file": "CHANGELOG.md",
-          "line": 119
+          "line": 120
         },
         {
           "file": "scripts/generate-theme.js",
@@ -1263,11 +1263,11 @@
       "usage": [
         {
           "file": "CHANGELOG.md",
-          "line": 120
+          "line": 121
         },
         {
           "file": "CHANGELOG.md",
-          "line": 139
+          "line": 140
         },
         {
           "file": "scripts/generate-theme.js",
@@ -1303,7 +1303,7 @@
       "usage": [
         {
           "file": "CHANGELOG.md",
-          "line": 139
+          "line": 140
         },
         {
           "file": "docs/GENERATE_THEME.md",
@@ -2665,11 +2665,11 @@
         },
         {
           "file": "theme-template/README.md",
-          "line": 292
+          "line": 304
         },
         {
           "file": "theme-template/README.md",
-          "line": 300
+          "line": 312
         },
         {
           "file": "theme-template/README.txt",
@@ -2751,7 +2751,7 @@
         },
         {
           "file": "theme-template/README.md",
-          "line": 300
+          "line": 312
         },
         {
           "file": "theme-template/README.txt",
@@ -2805,7 +2805,7 @@
       "usage": [
         {
           "file": "CHANGELOG.md",
-          "line": 118
+          "line": 119
         },
         {
           "file": "scripts/generate-theme.js",
@@ -2840,7 +2840,7 @@
       "usage": [
         {
           "file": "CHANGELOG.md",
-          "line": 117
+          "line": 118
         },
         {
           "file": "scripts/generate-theme.js",
@@ -3087,11 +3087,11 @@
       "usage": [
         {
           "file": "CHANGELOG.md",
-          "line": 148
+          "line": 149
         },
         {
           "file": "CHANGELOG.md",
-          "line": 223
+          "line": 224
         },
         {
           "file": "README.md",
@@ -3499,7 +3499,7 @@
       "usage": [
         {
           "file": "CHANGELOG.md",
-          "line": 77
+          "line": 78
         },
         {
           "file": ".github/agents/template.agent.md",
@@ -4711,7 +4711,7 @@
       "usage": [
         {
           "file": "CHANGELOG.md",
-          "line": 165
+          "line": 166
         },
         {
           "file": "README.md",
@@ -4847,7 +4847,7 @@
         },
         {
           "file": "theme-template/README.md",
-          "line": 300
+          "line": 312
         },
         {
           "file": "theme-template/README.txt",
@@ -5371,7 +5371,7 @@
         },
         {
           "file": "theme-template/README.md",
-          "line": 287
+          "line": 299
         },
         {
           "file": "theme-template/README.txt",
@@ -5519,31 +5519,23 @@
       "usage": [
         {
           "file": "CHANGELOG.md",
-          "line": 67
+          "line": 68
         },
         {
           "file": "CHANGELOG.md",
-          "line": 69
+          "line": 70
         },
         {
           "file": "CHANGELOG.md",
-          "line": 80
+          "line": 81
         },
         {
           "file": "CHANGELOG.md",
-          "line": 80
+          "line": 81
         },
         {
           "file": "CHANGELOG.md",
-          "line": 84
-        },
-        {
-          "file": "CHANGELOG.md",
-          "line": 91
-        },
-        {
-          "file": "CHANGELOG.md",
-          "line": 92
+          "line": 85
         },
         {
           "file": "CHANGELOG.md",
@@ -5567,15 +5559,23 @@
         },
         {
           "file": "CHANGELOG.md",
-          "line": 94
+          "line": 95
         },
         {
           "file": "CHANGELOG.md",
-          "line": 158
+          "line": 95
         },
         {
           "file": "CHANGELOG.md",
-          "line": 239
+          "line": 95
+        },
+        {
+          "file": "CHANGELOG.md",
+          "line": 159
+        },
+        {
+          "file": "CHANGELOG.md",
+          "line": 240
         },
         {
           "file": "README.md",
@@ -5779,7 +5779,7 @@
         },
         {
           "file": "theme-template/README.md",
-          "line": 288
+          "line": 300
         },
         {
           "file": "theme-template/README.txt",
@@ -7866,7 +7866,7 @@
         },
         {
           "file": "theme-template/README.md",
-          "line": 300
+          "line": 312
         },
         {
           "file": "theme-template/README.txt",
@@ -8200,6 +8200,6 @@
   "meta": {
     "undocumented": [],
     "unused": [],
-    "scannedAt": "2026-11-06T13:24:15.782Z"
+    "scannedAt": "2026-11-06T13:48:11.689Z"
   }
 }

@@ -26,8 +26,8 @@ $testimonial_3_text   = esc_html__( '"Outstanding quality and exceptional custom
 $testimonial_3_author = esc_html__( 'Sarah Johnson', '{{theme_slug}}' );
 $testimonial_3_role   = esc_html__( 'Small Business Owner', '{{theme_slug}}' );
 ?>
-<!-- wp:group {"align":"full","style":{"spacing":{"padding":{"top":"var:preset|spacing|60","bottom":"var:preset|spacing|60"}}},"backgroundColor":"neutral-100","textColor":"neutral-900","layout":{"type":"constrained"}} -->
-<div class="wp-block-group alignfull has-neutral-900-color has-neutral-100-background-color has-text-color has-background" style="padding-top:var(--wp--preset--spacing--60);padding-bottom:var(--wp--preset--spacing--60)">
+<!-- wp:group {"align":"full","style":{"spacing":{"padding":{"top":"var:preset|spacing|60","bottom":"var:preset|spacing|60"}},"color":{"text":"var(--wp--custom--color--text--default)","background":"var(--wp--custom--color--surface--subtle)"}},"layout":{"type":"constrained"}} -->
+<div class="wp-block-group alignfull has-text-color has-background" style="color:var(--wp--custom--color--text--default);background-color:var(--wp--custom--color--surface--subtle);padding-top:var(--wp--preset--spacing--60);padding-bottom:var(--wp--preset--spacing--60)">
 	<!-- wp:heading {"textAlign":"center","level":2,"style":{"spacing":{"margin":{"bottom":"var:preset|spacing|50"}}}} -->
 	<h2 class="wp-block-heading has-text-align-center" style="margin-bottom:var(--wp--preset--spacing--50)"><?php echo esc_html( $section_title ); ?></h2>
 	<!-- /wp:heading -->
@@ -36,8 +36,8 @@ $testimonial_3_role   = esc_html__( 'Small Business Owner', '{{theme_slug}}' );
 	<div class="wp-block-columns alignwide">
 		<!-- wp:column -->
 		<div class="wp-block-column">
-			<!-- wp:group {"style":{"spacing":{"padding":{"top":"var:preset|spacing|30","right":"var:preset|spacing|30","bottom":"var:preset|spacing|30","left":"var:preset|spacing|30"}},"border":{"radius":"8px"}},"backgroundColor":"base","layout":{"type":"constrained"}} -->
-			<div class="wp-block-group has-base-background-color has-background" style="border-radius:8px;padding-top:var(--wp--preset--spacing--30);padding-right:var(--wp--preset--spacing--30);padding-bottom:var(--wp--preset--spacing--30);padding-left:var(--wp--preset--spacing--30)">
+			<!-- wp:group {"style":{"spacing":{"padding":{"top":"var:preset|spacing|30","right":"var:preset|spacing|30","bottom":"var:preset|spacing|30","left":"var:preset|spacing|30"}},"border":{"radius":"8px"},"color":{"background":"var(--wp--custom--color--surface--default)"}},"layout":{"type":"constrained"}} -->
+			<div class="wp-block-group has-background" style="border-radius:8px;background-color:var(--wp--custom--color--surface--default);padding-top:var(--wp--preset--spacing--30);padding-right:var(--wp--preset--spacing--30);padding-bottom:var(--wp--preset--spacing--30);padding-left:var(--wp--preset--spacing--30)">
 				<!-- wp:paragraph {"style":{"typography":{"fontStyle":"italic","lineHeight":"1.7"}}} -->
 				<p style="font-style:italic;line-height:1.7"><?php echo esc_html( $testimonial_1_text ); ?></p>
 				<!-- /wp:paragraph -->
@@ -56,8 +56,8 @@ $testimonial_3_role   = esc_html__( 'Small Business Owner', '{{theme_slug}}' );
 
 		<!-- wp:column -->
 		<div class="wp-block-column">
-			<!-- wp:group {"style":{"spacing":{"padding":{"top":"var:preset|spacing|30","right":"var:preset|spacing|30","bottom":"var:preset|spacing|30","left":"var:preset|spacing|30"}},"border":{"radius":"8px"}},"backgroundColor":"base","layout":{"type":"constrained"}} -->
-			<div class="wp-block-group has-base-background-color has-background" style="border-radius:8px;padding-top:var(--wp--preset--spacing--30);padding-right:var(--wp--preset--spacing--30);padding-bottom:var(--wp--preset--spacing--30);padding-left:var(--wp--preset--spacing--30)">
+			<!-- wp:group {"style":{"spacing":{"padding":{"top":"var:preset|spacing|30","right":"var:preset|spacing|30","bottom":"var:preset|spacing|30","left":"var:preset|spacing|30"}},"border":{"radius":"8px"},"color":{"background":"var(--wp--custom--color--surface--default)"}},"layout":{"type":"constrained"}} -->
+			<div class="wp-block-group has-background" style="border-radius:8px;background-color:var(--wp--custom--color--surface--default);padding-top:var(--wp--preset--spacing--30);padding-right:var(--wp--preset--spacing--30);padding-bottom:var(--wp--preset--spacing--30);padding-left:var(--wp--preset--spacing--30)">
 				<!-- wp:paragraph {"style":{"typography":{"fontStyle":"italic","lineHeight":"1.7"}}} -->
 				<p style="font-style:italic;line-height:1.7"><?php echo esc_html( $testimonial_2_text ); ?></p>
 				<!-- /wp:paragraph -->
@@ -76,8 +76,8 @@ $testimonial_3_role   = esc_html__( 'Small Business Owner', '{{theme_slug}}' );
 
 		<!-- wp:column -->
 		<div class="wp-block-column">
-			<!-- wp:group {"style":{"spacing":{"padding":{"top":"var:preset|spacing|30","right":"var:preset|spacing|30","bottom":"var:preset|spacing|30","left":"var:preset|spacing|30"}},"border":{"radius":"8px"}},"backgroundColor":"base","layout":{"type":"constrained"}} -->
-			<div class="wp-block-group has-base-background-color has-background" style="border-radius:8px;padding-top:var(--wp--preset--spacing--30);padding-right:var(--wp--preset--spacing--30);padding-bottom:var(--wp--preset--spacing--30);padding-left:var(--wp--preset--spacing--30)">
+			<!-- wp:group {"style":{"spacing":{"padding":{"top":"var:preset|spacing|30","right":"var:preset|spacing|30","bottom":"var:preset|spacing|30","left":"var:preset|spacing|30"}},"border":{"radius":"8px"},"color":{"background":"var(--wp--custom--color--surface--default)"}},"layout":{"type":"constrained"}} -->
+			<div class="wp-block-group has-background" style="border-radius:8px;background-color:var(--wp--custom--color--surface--default);padding-top:var(--wp--preset--spacing--30);padding-right:var(--wp--preset--spacing--30);padding-bottom:var(--wp--preset--spacing--30);padding-left:var(--wp--preset--spacing--30)">
 				<!-- wp:paragraph {"style":{"typography":{"fontStyle":"italic","lineHeight":"1.7"}}} -->
 				<p style="font-style:italic;line-height:1.7"><?php echo esc_html( $testimonial_3_text ); ?></p>
 				<!-- /wp:paragraph -->
