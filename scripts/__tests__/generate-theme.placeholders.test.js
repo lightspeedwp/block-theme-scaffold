@@ -219,6 +219,46 @@ describe( 'generate-theme placeholders', () => {
 		}
 	} );
 
+	it( 'defines the LightSpeed layer and motion tokens', () => {
+		const { cwd, output } = generate( mockConfig );
+		cleanup.push( cwd );
+		const { layer, motion } = JSON.parse(
+			fs.readFileSync( path.join( output, 'theme.json' ), 'utf8' )
+		).settings.custom;
+		// Values follow the lightspeedwp/.github layer and animation standards,
+		// plus a skip-link role and a 200ms duration-100 (BTS-26).
+		expect( layer ).toEqual( {
+			base: '1',
+			sticky: '10',
+			dropdown: '20',
+			popover: '30',
+			overlay: '40',
+			modal: '50',
+			toast: '60',
+			'skip-link': '70',
+		} );
+		expect( motion.duration ).toEqual( {
+			100: '200ms',
+			200: '300ms',
+			300: '500ms',
+			400: '700ms',
+			500: '1000ms',
+		} );
+		expect( Object.keys( motion.easing ) ).toEqual( [
+			'standard',
+			'accelerate',
+			'decelerate',
+			'sharp',
+			'linear',
+		] );
+		expect( motion.delay ).toEqual( {
+			micro: '50ms',
+			small: '100ms',
+			medium: '200ms',
+			large: '400ms',
+		} );
+	} );
+
 	it( 'reads the repository URL from urls.theme_repo_url', () => {
 		const { cwd, output } = generate( mockConfig );
 		cleanup.push( cwd );
