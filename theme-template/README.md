@@ -211,6 +211,16 @@ Colour things with the semantic tokens in `settings.custom.color`, not palette c
 
 Editor colour controls (the palette) are for a client building their own page. Those colours are fixed: on a site with a colour mode switcher, making a page coloured this way switch modes needs development.
 
+#### WordPress 7.1 features
+
+`theme.json` uses the WordPress 7.1 schema. These features are switched on but not given values; add values where the theme needs them:
+
+- **Dimension sizes.** The width, height and minimum width controls are on (`settings.dimensions`). Add presets in `settings.dimensions.dimensionSizes` (`{ name, slug, size }`) to offer fixed sizes; WordPress itself only adds button widths.
+- **Text shadow.** Set `typography.textShadow` in `styles` (for example on a heading over an image). WordPress 7.1 has no text shadow presets. Text must still pass contrast without the shadow.
+- **Block visibility.** `settings.blockVisibility.allowEditing` is `true`, so editors can hide a block on some screen sizes. Set it to `false` to remove the controls; blocks already hidden stay hidden.
+
+Older WordPress versions ignore these keys.
+
 ### Adding Custom Patterns
 
 1. Create new pattern files in the `patterns/` directory
