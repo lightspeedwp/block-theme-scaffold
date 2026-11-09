@@ -253,6 +253,10 @@ Older WordPress versions ignore these keys.
 
 `inc/` is for PHP that patterns can't express, not for registering simple patterns.
 
+### Theme Screenshot
+
+WordPress shows `screenshot.png` (1200 × 900) in Appearance > Themes. The theme ships without one. Make it with the `theme-screenshot` skill in [lightspeedwp/.github](https://github.com/lightspeedwp/.github): it takes the site's logo and the colours in `theme.json`, and lays them out with a divider and a line about the site, in the LightSpeed style. Save it as `screenshot.png` in the theme root.
+
 ## Testing
 
 - **JavaScript**: Vitest unit tests in `tests/js/`, failing below 70% branches or 80% statements and functions
