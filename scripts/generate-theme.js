@@ -737,7 +737,9 @@ async function runScript() {
 			`https://wordpress.org/support/theme/${ themeSlug }`,
 		'{{docs_url}}': configData.urls_docs_url || '',
 		'{{changelog_url}}': configData.urls_changelog_url || '',
-		'{{security_email}}': `security@${ authorUri.replace( /^https?:\/\/(www\.)?/, '' ).split( '/' )[ 0 ] }`,
+		'{{security_email}}':
+			configData.emails_security_email ||
+			`security@${ authorUri.replace( /^https?:\/\/(www\.)?/, '' ).split( '/' )[ 0 ] }`,
 		'{{contact_email}}': `contact@${ authorUri.replace( /^https?:\/\/(www\.)?/, '' ).split( '/' )[ 0 ] }`,
 		'{{year}}': new Date().getFullYear().toString(),
 		'{{primary_color}}':
@@ -763,6 +765,12 @@ async function runScript() {
 			"system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
 		'{{body_font_name}}':
 			configData.design_system_typography_body_font_name || 'System Font',
+		'{{monospace_font_family}}':
+			configData.design_system_typography_mono_font_family ||
+			"Menlo, Monaco, Consolas, 'Courier New', monospace",
+		'{{monospace_font_name}}':
+			configData.design_system_typography_mono_font_name ||
+			'System Monospace',
 		'{{heading_font_weight}}':
 			configData.design_system_typography_heading_font_weight || '700',
 		'{{body_line_height}}':
@@ -786,17 +794,16 @@ async function runScript() {
 		'{{skip_link_text}}':
 			configData.content_skip_link_text || 'Skip to content',
 		'{{excerpt_length}}': configData.content_excerpt_length || '55',
-		'{{thumbnail_width}}': configData.image_sizes_thumbnail_width || '150',
-		'{{thumbnail_height}}':
-			configData.image_sizes_thumbnail_height || '150',
+		'{{thumbnail_width}}': configData.images_thumbnail_width || '150',
+		'{{thumbnail_height}}': configData.images_thumbnail_height || '150',
 		'{{featured_image_width}}':
-			configData.image_sizes_featured_image_width || '1200',
+			configData.images_featured_image_width || '1200',
 		'{{featured_image_height}}':
-			configData.image_sizes_featured_image_height || '630',
+			configData.images_featured_image_height || '630',
 		'{{gallery_image_width}}':
-			configData.image_sizes_gallery_image_width || '800',
+			configData.images_gallery_image_width || '800',
 		'{{gallery_image_height}}':
-			configData.image_sizes_gallery_image_height || '600',
+			configData.images_gallery_image_height || '600',
 		'{{logo_width}}': configData.images_logo_width || '250',
 		'{{logo_height}}': configData.images_logo_height || '100',
 		'{{archive_excerpt_length}}':

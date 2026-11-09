@@ -33,6 +33,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- Config inputs nothing read are gone (`theme_structure`, `features`, `wizard_mode`, hero, CTA and footer text), as are the unused theme pattern categories; a test checks each key is read ([BTS-40](https://linear.app/lightspeedwp/issue/BTS-40)).
 - Generated themes default to `Requires at least: 7.1` and `Tested up to: 7.1` (was 6.5 and 6.7), matching the 7.1 `theme.json` schema; `phpcs.xml` and fixtures follow ([BTS-36](https://linear.app/lightspeedwp/issue/BTS-36)).
 - Font sizes `100` to `900` (`200` Base, `600` X-Large, `900` Colossal); font family slugs are roles (`heading`, `body`, `accent`, `monospace`; `serif` is now `accent`) with real font names ([BTS-35](https://linear.app/lightspeedwp/issue/BTS-35)).
 - Block styles move to `styles/blocks/<block>/<slug>.json`, as the theme.json skills write them, and the unused Midnight palette (`styles/colors/palette.json`) is removed ([BTS-34](https://linear.app/lightspeedwp/issue/BTS-34)).
@@ -62,6 +63,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+- Config `images.*` sizes, `emails.security_email` and `design_system.typography.mono_font_*` now reach the generated theme; the generator ignored them ([BTS-40](https://linear.app/lightspeedwp/issue/BTS-40)).
 - `templates/page-no-title.html` exists for the declared Page (No Title) custom template, and the unused `blank` template is no longer declared; a test checks every custom template has a file ([BTS-37](https://linear.app/lightspeedwp/issue/BTS-37)).
 - The PHP-registered hero, call to action and team patterns are removed (palette colours, a duplicate slug); team is `patterns/team.php`, and the unregistered components category is dropped ([BTS-38](https://linear.app/lightspeedwp/issue/BTS-38)).
 - Generated themes build all four colour ramps in OKLCH, like the site-to-design-tokens skill, with each configured colour at its nearest step; buttons and link hover use step 600 ([BTS-29](https://linear.app/lightspeedwp/issue/BTS-29)).

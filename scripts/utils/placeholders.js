@@ -66,8 +66,9 @@ const PLACEHOLDER_MAP = {
 	'{{heading_font_name}}': 'System Sans',
 	'{{body_font_family}}': 'Georgia, "Times New Roman", Times, serif',
 	'{{body_font_name}}': 'System Serif',
-	'{{monospace_font_family}}': '"Courier New", Courier, monospace',
-	'{{monospace_font_name}}': 'Monospace',
+	'{{monospace_font_family}}':
+		"Menlo, Monaco, Consolas, 'Courier New', monospace",
+	'{{monospace_font_name}}': 'System Monospace',
 
 	// Typography - Font properties
 	'{{heading_font_weight}}': '700',

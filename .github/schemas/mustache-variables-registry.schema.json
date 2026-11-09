@@ -789,23 +789,6 @@
         "6.4"
       ]
     },
-    "mono_font_family": {
-      "type": "string",
-      "description": "Monospace font family for code",
-      "default": "monospace",
-      "examples": [
-        "monospace",
-        "Fira Code, monospace"
-      ]
-    },
-    "mono_font_name": {
-      "type": "string",
-      "description": "Monospace font name",
-      "examples": [
-        "Monospace",
-        "Fira Code"
-      ]
-    },
     "monospace_font_family": {
       "type": "string",
       "description": "Auto-discovered placeholder (design_typography)",

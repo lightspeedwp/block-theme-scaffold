@@ -39,7 +39,6 @@ The following mustache variables are available for use in the theme scaffold. Th
 | `{{text_color}}`        | Text color (hex)                          | "#1a1a1a"                                   |
 | `{{font_family}}`       | Body font family (CSS)                    | "system-ui"                                 |
 | `{{heading_font}}`      | Heading font family (CSS)                 | "inherit"                                   |
-| `{{hero_title}}`        | Homepage hero title                       | "Welcome"                                   |
 
 ---
 
@@ -86,8 +85,7 @@ This agent uses an interactive, multi-stage wizard (see `scripts/lib/wizard.js`)
   "background_color": "#ffffff",
   "text_color": "#1a1a1a",
   "font_family": "system-ui",
-  "heading_font": "inherit",
-  "hero_title": "Welcome"
+  "heading_font": "inherit"
 }
 ```
 
@@ -172,7 +170,6 @@ To start generating a new theme, simply say:
 
 | Question            | Variable         | Example   |
 | ------------------- | ---------------- | --------- |
-| Homepage hero title | `{{hero_title}}` | "Welcome" |
 
 ---
 

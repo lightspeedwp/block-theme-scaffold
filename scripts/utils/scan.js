@@ -504,8 +504,6 @@ function validateConfig( configPath, results ) {
 				! discoveredVars.has( key ) &&
 				! key.startsWith( '_' ) &&
 				key !== 'design_system' &&
-				key !== 'theme_structure' &&
-				key !== 'features' &&
 				key !== 'content'
 			) {
 				extra.push( key );
