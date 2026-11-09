@@ -223,5 +223,18 @@ Status updated 6 Nov 2026. Topics 4 to 7 are framed as "match what the theme.jso
 | 6 | `dimensionSizes`, `textShadow`, `blockVisibility` enabled, not seeded | [BTS-33](https://linear.app/lightspeedwp/issue/BTS-33), stacked on #51 |
 | 7 | `styles/blocks/` per-block folders, drop `styles/colors/palette.json` if nothing reads it | [BTS-34](https://linear.app/lightspeedwp/issue/BTS-34), stacked on #53. Related: GIT-2755 |
 | 8 | Font size ladder and family names: `100` to `900` (`200` Base, `900` Colossal), role slugs `heading`, `body`, `accent`, `monospace`, real font names (Zared, 9 Nov) | [BTS-35](https://linear.app/lightspeedwp/issue/BTS-35), stacked on #55. TSP: TSP-59 |
-| 9 | Template and pattern coverage | Part of the work |
+| 9 | Template and pattern coverage: add `page-no-title` and `page-with-sidebar`, drop `blank`; simple patterns in `patterns/` only; no components category; no `page-no-header` or mobile menu part (Zared, 9 Nov) | [BTS-37](https://linear.app/lightspeedwp/issue/BTS-37), [BTS-38](https://linear.app/lightspeedwp/issue/BTS-38), [BTS-39](https://linear.app/lightspeedwp/issue/BTS-39). Config clean-up: [BTS-40](https://linear.app/lightspeedwp/issue/BTS-40) |
 | 10 | Org standards update (`lightspeedwp/.github`) | [GIT-2756](https://linear.app/lightspeedwp/issue/GIT-2756) |
+
+### Gap decisions (Zared, 9 Nov 2026)
+
+The section 3.2 gaps that affect the base scaffold:
+
+| Gap | Decision |
+| --- | --- |
+| 12. Radius | Numeric ladder `0` to `700`, as in TSP and its Figma file: `600` Huge (50px), `700` Round. Patterns and SCSS use the presets. [BTS-42](https://linear.app/lightspeedwp/issue/BTS-42) |
+| 6. `custom` groups | The scaffold keeps its base set (`color`, `fontWeight`, `lineHeight`, `letterSpacing`, `borderWidth`, `layer`, `motion`). Breakpoints and other groups are added during a theme build when needed. |
+| 13. `dimensionSizes` | Use WordPress 7.1 `dimensionSizes` for fixed lengths, not `custom.spacing` or `custom.breakpoint`. |
+| 10. Namespacing | Prefixed functions, the WordPress and scaffold idiom; no PHP namespaces. |
+| 11. Spec Kit and `guidelines/` | Not in the scaffold. Spec Kit is an org norm used per project, mostly in Linear. |
+| Optional features | The base scaffold comes first. WooCommerce and Tour Operator switches follow ([BTS-41](https://linear.app/lightspeedwp/issue/BTS-41)). Theme structure and the wizard role belong to the theme skills ([LS-4782](https://linear.app/lightspeedwp/issue/LS-4782)). |

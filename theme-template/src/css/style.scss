@@ -35,7 +35,7 @@ body {
 
 .screen-reader-text:focus {
 	background-color: #f1f1f1;
-	border-radius: 3px;
+	border-radius: var(--wp--preset--border-radius--100);
 	box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.6);
 	clip-path: none;
 	color: #21759b;
@@ -85,13 +85,13 @@ body {
 		box-shadow:
 			0 4px 6px -1px rgba(0, 0, 0, 0.1),
 			0 2px 4px -1px rgba(0, 0, 0, 0.06);
-		border-radius: 0.5rem;
+		border-radius: var(--wp--preset--border-radius--200);
 		padding: var(--wp--preset--spacing--30);
 	}
 
 	&.is-style-border {
 		border: 1px solid var(--wp--custom--color--border--default);
-		border-radius: 0.5rem;
+		border-radius: var(--wp--preset--border-radius--200);
 		padding: var(--wp--preset--spacing--30);
 	}
 }
@@ -102,7 +102,7 @@ body {
 	&.is-style-rounded {
 
 		img {
-			border-radius: 0.5rem;
+			border-radius: var(--wp--preset--border-radius--200);
 		}
 	}
 }
@@ -140,7 +140,7 @@ body {
 		background: var(--wp--custom--color--surface--default);
 		color: var(--wp--custom--color--text--default);
 		text-decoration: none;
-		border-radius: 3px;
+		border-radius: var(--wp--preset--border-radius--100);
 		box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.6);
 	}
 }

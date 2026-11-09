@@ -9,14 +9,14 @@
 
 /* Block toolbar customizations */
 .block-editor-block-toolbar {
-	border-radius: 4px;
+	border-radius: var(--wp--preset--border-radius--100);
 }
 
 /* Block controls */
 .block-editor-block-controls {
 
 	.components-toolbar-group {
-		border-radius: 4px;
+		border-radius: var(--wp--preset--border-radius--100);
 	}
 }
 

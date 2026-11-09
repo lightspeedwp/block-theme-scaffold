@@ -233,6 +233,8 @@ Font sizes run from `100` to `900`. Use them with `var(--wp--preset--font-size--
 
 Font family slugs name a role, not a font: `heading` and `body` always, `accent` and `monospace` when the design needs them. Don't add slugs named after a font. Each family's `name` is the real font name (for example "Montserrat"), which is what editors see in the font picker.
 
+Border radius presets run `0` (None), `100` (4px), `200` (8px), `300` (12px), `400` (16px), `500` (24px), `600` (50px, Huge) and `700` (Round). Use `var(--wp--preset--border-radius--<slug>)` or the block's radius control, not a fixed length.
+
 #### WordPress 7.1 features
 
 `theme.json` uses the WordPress 7.1 schema. These features are switched on but not given values; add values where the theme needs them:

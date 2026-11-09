@@ -31,7 +31,7 @@
 	</div>
 	<!-- /wp:group -->
 
-	<!-- wp:post-featured-image {"align":"wide","style":{"spacing":{"margin":{"top":"var:preset|spacing|40","bottom":"var:preset|spacing|40"}},"border":{"radius":"8px"}}} /-->
+	<!-- wp:post-featured-image {"align":"wide","style":{"spacing":{"margin":{"top":"var:preset|spacing|40","bottom":"var:preset|spacing|40"}},"border":{"radius":"var:preset|border-radius|200"}}} /-->
 
 	<!-- wp:post-content {"layout":{"type":"constrained"}} /-->
 

@@ -36,8 +36,8 @@ $testimonial_3_role   = esc_html__( 'Small Business Owner', '{{theme_slug}}' );
 	<div class="wp-block-columns alignwide">
 		<!-- wp:column -->
 		<div class="wp-block-column">
-			<!-- wp:group {"style":{"spacing":{"padding":{"top":"var:preset|spacing|30","right":"var:preset|spacing|30","bottom":"var:preset|spacing|30","left":"var:preset|spacing|30"}},"border":{"radius":"8px"},"color":{"background":"var(--wp--custom--color--surface--default)"}},"layout":{"type":"constrained"}} -->
-			<div class="wp-block-group has-background" style="border-radius:8px;background-color:var(--wp--custom--color--surface--default);padding-top:var(--wp--preset--spacing--30);padding-right:var(--wp--preset--spacing--30);padding-bottom:var(--wp--preset--spacing--30);padding-left:var(--wp--preset--spacing--30)">
+			<!-- wp:group {"style":{"spacing":{"padding":{"top":"var:preset|spacing|30","right":"var:preset|spacing|30","bottom":"var:preset|spacing|30","left":"var:preset|spacing|30"}},"border":{"radius":"var:preset|border-radius|200"},"color":{"background":"var(--wp--custom--color--surface--default)"}},"layout":{"type":"constrained"}} -->
+			<div class="wp-block-group has-background" style="border-radius:var(--wp--preset--border-radius--200);background-color:var(--wp--custom--color--surface--default);padding-top:var(--wp--preset--spacing--30);padding-right:var(--wp--preset--spacing--30);padding-bottom:var(--wp--preset--spacing--30);padding-left:var(--wp--preset--spacing--30)">
 				<!-- wp:paragraph {"style":{"typography":{"fontStyle":"italic","lineHeight":"1.7"}}} -->
 				<p style="font-style:italic;line-height:1.7"><?php echo esc_html( $testimonial_1_text ); ?></p>
 				<!-- /wp:paragraph -->
@@ -56,8 +56,8 @@ $testimonial_3_role   = esc_html__( 'Small Business Owner', '{{theme_slug}}' );
 
 		<!-- wp:column -->
 		<div class="wp-block-column">
-			<!-- wp:group {"style":{"spacing":{"padding":{"top":"var:preset|spacing|30","right":"var:preset|spacing|30","bottom":"var:preset|spacing|30","left":"var:preset|spacing|30"}},"border":{"radius":"8px"},"color":{"background":"var(--wp--custom--color--surface--default)"}},"layout":{"type":"constrained"}} -->
-			<div class="wp-block-group has-background" style="border-radius:8px;background-color:var(--wp--custom--color--surface--default);padding-top:var(--wp--preset--spacing--30);padding-right:var(--wp--preset--spacing--30);padding-bottom:var(--wp--preset--spacing--30);padding-left:var(--wp--preset--spacing--30)">
+			<!-- wp:group {"style":{"spacing":{"padding":{"top":"var:preset|spacing|30","right":"var:preset|spacing|30","bottom":"var:preset|spacing|30","left":"var:preset|spacing|30"}},"border":{"radius":"var:preset|border-radius|200"},"color":{"background":"var(--wp--custom--color--surface--default)"}},"layout":{"type":"constrained"}} -->
+			<div class="wp-block-group has-background" style="border-radius:var(--wp--preset--border-radius--200);background-color:var(--wp--custom--color--surface--default);padding-top:var(--wp--preset--spacing--30);padding-right:var(--wp--preset--spacing--30);padding-bottom:var(--wp--preset--spacing--30);padding-left:var(--wp--preset--spacing--30)">
 				<!-- wp:paragraph {"style":{"typography":{"fontStyle":"italic","lineHeight":"1.7"}}} -->
 				<p style="font-style:italic;line-height:1.7"><?php echo esc_html( $testimonial_2_text ); ?></p>
 				<!-- /wp:paragraph -->
@@ -76,8 +76,8 @@ $testimonial_3_role   = esc_html__( 'Small Business Owner', '{{theme_slug}}' );
 
 		<!-- wp:column -->
 		<div class="wp-block-column">
-			<!-- wp:group {"style":{"spacing":{"padding":{"top":"var:preset|spacing|30","right":"var:preset|spacing|30","bottom":"var:preset|spacing|30","left":"var:preset|spacing|30"}},"border":{"radius":"8px"},"color":{"background":"var(--wp--custom--color--surface--default)"}},"layout":{"type":"constrained"}} -->
-			<div class="wp-block-group has-background" style="border-radius:8px;background-color:var(--wp--custom--color--surface--default);padding-top:var(--wp--preset--spacing--30);padding-right:var(--wp--preset--spacing--30);padding-bottom:var(--wp--preset--spacing--30);padding-left:var(--wp--preset--spacing--30)">
+			<!-- wp:group {"style":{"spacing":{"padding":{"top":"var:preset|spacing|30","right":"var:preset|spacing|30","bottom":"var:preset|spacing|30","left":"var:preset|spacing|30"}},"border":{"radius":"var:preset|border-radius|200"},"color":{"background":"var(--wp--custom--color--surface--default)"}},"layout":{"type":"constrained"}} -->
+			<div class="wp-block-group has-background" style="border-radius:var(--wp--preset--border-radius--200);background-color:var(--wp--custom--color--surface--default);padding-top:var(--wp--preset--spacing--30);padding-right:var(--wp--preset--spacing--30);padding-bottom:var(--wp--preset--spacing--30);padding-left:var(--wp--preset--spacing--30)">
 				<!-- wp:paragraph {"style":{"typography":{"fontStyle":"italic","lineHeight":"1.7"}}} -->
 				<p style="font-style:italic;line-height:1.7"><?php echo esc_html( $testimonial_3_text ); ?></p>
 				<!-- /wp:paragraph -->

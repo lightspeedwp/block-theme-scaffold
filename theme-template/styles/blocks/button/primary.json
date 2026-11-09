@@ -10,7 +10,7 @@
 			"text": "var(--wp--custom--color--action--cta--text)"
 		},
 		"border": {
-			"radius": "0"
+			"radius": "var(--wp--preset--border-radius--0)"
 		},
 		"typography": {
 			"fontWeight": "700",

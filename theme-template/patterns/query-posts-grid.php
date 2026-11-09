@@ -21,8 +21,8 @@ $no_posts_text   = esc_html__( 'No posts found.', '{{theme_slug}}' );
 <!-- wp:query {"queryId":0,"query":{"perPage":9,"pages":0,"offset":0,"postType":"post","order":"desc","orderBy":"date","author":"","search":"","exclude":[],"sticky":"","inherit":true},"align":"wide","layout":{"type":"default"}} -->
 <div class="wp-block-query alignwide">
 	<!-- wp:post-template {"layout":{"type":"grid","columnCount":3},"style":{"spacing":{"blockGap":"var:preset|spacing|40"}}} -->
-		<!-- wp:group {"tagName":"article","style":{"spacing":{"blockGap":"var:preset|spacing|20"},"border":{"radius":"8px"}},"layout":{"type":"constrained"}} -->
-		<article class="wp-block-group" style="border-radius:8px">
+		<!-- wp:group {"tagName":"article","style":{"spacing":{"blockGap":"var:preset|spacing|20"},"border":{"radius":"var:preset|border-radius|200"}},"layout":{"type":"constrained"}} -->
+		<article class="wp-block-group" style="border-radius:var(--wp--preset--border-radius--200)">
 			<!-- wp:post-featured-image {"isLink":true,"aspectRatio":"4/3","style":{"border":{"radius":{"topLeft":"8px","topRight":"8px"}}}} /-->
 
 			<!-- wp:group {"style":{"spacing":{"padding":{"right":"var:preset|spacing|20","left":"var:preset|spacing|20","bottom":"var:preset|spacing|20"},"blockGap":"var:preset|spacing|10"}},"layout":{"type":"constrained"}} -->
