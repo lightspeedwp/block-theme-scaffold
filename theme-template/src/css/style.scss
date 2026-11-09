@@ -5,14 +5,6 @@
 /* Custom theme styles */
 :root {
 
-	/* Custom properties for theme colors */
-	--theme-primary: var(--wp--preset--color--primary-500);
-	--theme-brand: var(--wp--preset--color--brand-500);
-	--theme-base: var(--wp--preset--color--base);
-	--theme-contrast: var(--wp--preset--color--contrast);
-	--theme-cta: var(--wp--preset--color--cta-500);
-	--theme-neutral-500: var(--wp--preset--color--neutral-500);
-
 	/* Custom properties for spacing */
 	--theme-spacing-xs: var(--wp--preset--spacing--10);
 	--theme-spacing-sm: var(--wp--preset--spacing--20);
@@ -72,7 +64,7 @@ body {
 			content: '"';
 			font-size: 4rem;
 			line-height: 1;
-			color: var(--wp--preset--color--primary-500);
+			color: var(--wp--custom--color--text--brand);
 			position: absolute;
 			top: -1rem;
 			left: -1rem;
@@ -98,7 +90,7 @@ body {
 	}
 
 	&.is-style-border {
-		border: 1px solid var(--wp--preset--color--neutral-500);
+		border: 1px solid var(--wp--custom--color--border--default);
 		border-radius: 0.5rem;
 		padding: var(--wp--preset--spacing--30);
 	}
@@ -145,8 +137,8 @@ body {
 		left: 6px;
 		top: 7px;
 		padding: 8px 16px;
-		background: var(--wp--preset--color--base);
-		color: var(--wp--preset--color--contrast);
+		background: var(--wp--custom--color--surface--default);
+		color: var(--wp--custom--color--text--default);
 		text-decoration: none;
 		border-radius: 3px;
 		box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.6);

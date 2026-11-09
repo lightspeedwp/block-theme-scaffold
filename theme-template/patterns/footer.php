@@ -22,8 +22,8 @@ $copyright_text    = sprintf(
 	gmdate( 'Y' )
 );
 ?>
-<!-- wp:group {"tagName":"footer","style":{"spacing":{"padding":{"top":"var:preset|spacing|50","bottom":"var:preset|spacing|50"},"margin":{"top":"var:preset|spacing|60"}}},"backgroundColor":"neutral-100","textColor":"neutral-900","layout":{"type":"constrained"}} -->
-<footer class="wp-block-group has-neutral-900-color has-neutral-100-background-color has-text-color has-background" style="margin-top:var(--wp--preset--spacing--60);padding-top:var(--wp--preset--spacing--50);padding-bottom:var(--wp--preset--spacing--50)">
+<!-- wp:group {"tagName":"footer","style":{"spacing":{"padding":{"top":"var:preset|spacing|50","bottom":"var:preset|spacing|50"},"margin":{"top":"var:preset|spacing|60"}},"color":{"text":"var(--wp--custom--color--text--default)","background":"var(--wp--custom--color--surface--subtle)"}},"layout":{"type":"constrained"}} -->
+<footer class="wp-block-group has-text-color has-background" style="color:var(--wp--custom--color--text--default);background-color:var(--wp--custom--color--surface--subtle);margin-top:var(--wp--preset--spacing--60);padding-top:var(--wp--preset--spacing--50);padding-bottom:var(--wp--preset--spacing--50)">
 	<!-- wp:group {"align":"wide","layout":{"type":"flex","flexWrap":"wrap","justifyContent":"space-between","verticalAlignment":"top"}} -->
 	<div class="wp-block-group alignwide">
 		<!-- wp:group {"style":{"spacing":{"blockGap":"var:preset|spacing|10"}},"layout":{"type":"constrained","contentSize":"300px"}} -->
@@ -53,7 +53,7 @@ $copyright_text    = sprintf(
 			<h3 class="wp-block-heading has-300-font-size" style="margin-bottom:var(--wp--preset--spacing--20)"><?php echo esc_html( $follow_us_title ); ?></h3>
 			<!-- /wp:heading -->
 
-			<!-- wp:social-links {"iconColor":"contrast","iconColorValue":"var(--wp--preset--color--contrast)","className":"is-style-logos-only","style":{"spacing":{"blockGap":{"left":"var:preset|spacing|20"}}}} -->
+			<!-- wp:social-links {"customIconColor":"var(--wp--custom--color--text--default)","iconColorValue":"var(--wp--custom--color--text--default)","className":"is-style-logos-only","style":{"spacing":{"blockGap":{"left":"var:preset|spacing|20"}}}} -->
 			<ul class="wp-block-social-links has-icon-color is-style-logos-only">
 				<!-- wp:social-link {"url":"#","service":"twitter"} /-->
 				<!-- wp:social-link {"url":"#","service":"facebook"} /-->
