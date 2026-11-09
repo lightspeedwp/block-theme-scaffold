@@ -319,12 +319,31 @@ For more information, see:
 	console.log( helpText );
 }
 
-function replacePlaceholders( content ) {
+/**
+ * Escape a value for use inside a JSON string, so a font stack such as
+ * "Argesta Display", Georgia, serif keeps theme.json valid.
+ *
+ * @param {string} value Placeholder value.
+ * @return {string} The value with quotes, backslashes and control characters escaped.
+ */
+function escapeJsonString( value ) {
+	return JSON.stringify( String( value ) ).slice( 1, -1 );
+}
+
+/**
+ * Replace every placeholder in a file's content.
+ *
+ * @param {string}  content File content.
+ * @param {boolean} json    True for JSON files: values are escaped for JSON strings.
+ * @return {string} The content with placeholders replaced.
+ */
+function replacePlaceholders( content, json = false ) {
 	let result = content;
+	const escape = json ? escapeJsonString : ( value ) => value;
 
 	// First pass: replace standard placeholders
 	for ( const [ key, value ] of Object.entries( placeholders ) ) {
-		result = result.split( key ).join( value );
+		result = result.split( key ).join( escape( value ) );
 	}
 
 	// Single pass: handle all placeholder formats with optional filters
@@ -375,7 +394,7 @@ function replacePlaceholders( content ) {
 				}
 			}
 
-			return value;
+			return escape( value );
 		}
 	);
 
@@ -559,7 +578,7 @@ function copyAndReplace( src, dest ) {
 		}
 	} else {
 		let content = fs.readFileSync( src, 'utf8' );
-		content = replacePlaceholders( content );
+		content = replacePlaceholders( content, dest.endsWith( '.json' ) );
 		fs.writeFileSync( dest, content );
 	}
 }
@@ -789,6 +808,11 @@ async function runScript() {
 			"system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
 		'{{body_font_name}}':
 			configData.design_system_typography_body_font_name || 'System Font',
+		'{{accent_font_family}}':
+			configData.design_system_typography_accent_font_family ||
+			"Georgia, 'Times New Roman', serif",
+		'{{accent_font_name}}':
+			configData.design_system_typography_accent_font_name || 'Georgia',
 		'{{monospace_font_family}}':
 			configData.design_system_typography_mono_font_family ||
 			"Menlo, Monaco, Consolas, 'Courier New', monospace",

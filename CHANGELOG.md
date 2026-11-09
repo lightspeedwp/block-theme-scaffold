@@ -33,6 +33,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- The accent font can be set in the config (`accent_font_family`, `accent_font_name`) like the other three roles, and the README documents the font options ([BTS-50](https://linear.app/lightspeedwp/issue/BTS-50)).
 - The generator requires a Theme URI (`--theme_uri` or `theme_uri` in the config) and no longer writes `https://example.com/theme` into style.css and package.json ([BTS-47](https://linear.app/lightspeedwp/issue/BTS-47)).
 - Generated themes deny the npm install scripts they don't need, so npm 11 installs without warnings; DEVELOPMENT.md explains this and how the hooks install ([BTS-48](https://linear.app/lightspeedwp/issue/BTS-48)).
 - Radius presets run `0` to `700` as in TSP (`600` Huge 50px, `700` Round, `500` renamed X-Large); patterns, button styles and SCSS use them instead of fixed lengths ([BTS-42](https://linear.app/lightspeedwp/issue/BTS-42)).
@@ -66,6 +67,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+- Placeholder values are JSON-escaped in JSON files, so a font stack with double quotes no longer breaks theme.json ([BTS-50](https://linear.app/lightspeedwp/issue/BTS-50)).
 - Search results template uses the core Query Title block in place of a block that doesn't exist; a test checks every template block is registered ([BTS-43](https://linear.app/lightspeedwp/issue/BTS-43)).
 - Config `images.*` sizes, `emails.security_email` and `design_system.typography.mono_font_*` now reach the generated theme; the generator ignored them ([BTS-40](https://linear.app/lightspeedwp/issue/BTS-40)).
 - `templates/page-no-title.html` exists for the declared Page (No Title) custom template, and the unused `blank` template is no longer declared; a test checks every custom template has a file ([BTS-37](https://linear.app/lightspeedwp/issue/BTS-37)).
