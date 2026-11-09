@@ -271,6 +271,87 @@ describe( 'generate-theme placeholders', () => {
 		expect( unknown ).toEqual( [] );
 	} );
 
+	it( 'uses font sizes 100 to 900 and role font families, and every reference matches a preset', () => {
+		const { cwd, output } = generate( mockConfig );
+		cleanup.push( cwd );
+		const { fontSizes, fontFamilies } = JSON.parse(
+			fs.readFileSync( path.join( output, 'theme.json' ), 'utf8' )
+		).settings.typography;
+		// Ladder and names agreed for BTS-35: 200 is Base (the 1rem root size).
+		expect(
+			fontSizes.map( ( size ) => `${ size.slug } ${ size.name }` )
+		).toEqual( [
+			'100 Tiny',
+			'200 Base',
+			'300 Small',
+			'400 Medium',
+			'500 Large',
+			'600 X-Large',
+			'700 Huge',
+			'800 Gigantic',
+			'900 Colossal',
+		] );
+		// Family slugs are roles; names are the real font, never the role.
+		const families = fontFamilies.map( ( family ) => family.slug );
+		expect( families ).toEqual( [
+			'body',
+			'heading',
+			'accent',
+			'monospace',
+		] );
+		for ( const family of fontFamilies ) {
+			expect( family.name.toLowerCase() ).not.toBe( family.slug );
+		}
+
+		const defined = {
+			'font-size': fontSizes.map( ( size ) => size.slug ),
+			'font-family': families,
+		};
+		const unknown = [];
+		for ( const entry of fs.readdirSync( output, {
+			recursive: true,
+			withFileTypes: true,
+		} ) ) {
+			const file = path.join( entry.parentPath, entry.name );
+			const relative = path.relative( output, file );
+			if (
+				! entry.isFile() ||
+				/(^|\/)(\.agents|\.claude|node_modules)\//.test( relative )
+			) {
+				continue;
+			}
+			const text = fs.readFileSync( file, 'utf8' );
+			// CSS variables, block attributes and preset classes. Raw values
+			// such as "fontSize":"0.875rem" are not slugs, so they don't match.
+			const references = [
+				[
+					/(?:--wp--preset--|var:preset\|)(font-size|font-family)(?:--|\|)([a-z0-9-]+)/g,
+					( match ) => [ match[ 1 ], match[ 2 ] ],
+				],
+				[
+					/"(fontSize|fontFamily)":"([a-z0-9-]+)"/g,
+					( match ) => [
+						match[ 1 ] === 'fontSize' ? 'font-size' : 'font-family',
+						match[ 2 ],
+					],
+				],
+				[
+					/\bhas-([a-z0-9-]+)-(font-size|font-family)\b/g,
+					( match ) => [ match[ 2 ], match[ 1 ] ],
+				],
+			];
+			for ( const [ pattern, read ] of references ) {
+				for ( const match of text.matchAll( pattern ) ) {
+					const [ type, slug ] = read( match );
+					if ( ! defined[ type ].includes( slug ) ) {
+						unknown.push( `${ relative }: ${ type } ${ slug }` );
+					}
+				}
+			}
+		}
+		expect( unknown ).toEqual( [] );
+	} );
+
 	it( 'uses semantic colour tokens, keeping palette colours to their definitions', () => {
 		const { cwd, output } = generate( mockConfig );
 		cleanup.push( cwd );

@@ -313,17 +313,22 @@
 				{
 					"slug": "body",
 					"fontFamily": "{{body_font_family}}",
-					"name": "Body"
+					"name": "{{body_font_name}}"
 				},
 				{
 					"slug": "heading",
 					"fontFamily": "{{heading_font_family}}",
-					"name": "Heading"
+					"name": "{{heading_font_name}}"
 				},
-			{
-					"slug": "serif",
-					"fontFamily": "Georgia, serif",
-					"name": "Serif"
+				{
+					"slug": "accent",
+					"fontFamily": "Georgia, 'Times New Roman', serif",
+					"name": "Georgia"
+				},
+				{
+					"slug": "monospace",
+					"fontFamily": "Menlo, Monaco, Consolas, 'Courier New', monospace",
+					"name": "System Monospace"
 				}
 			],
 			"fontSizes": [
@@ -339,7 +344,7 @@
 				{
 					"slug": "200",
 					"size": "1rem",
-					"name": "xSmall",
+					"name": "Base",
 					"fluid": {
 						"min": "0.875rem",
 						"max": "1rem"
@@ -375,7 +380,7 @@
 				{
 					"slug": "600",
 					"size": "2.5rem",
-					"name": "xLarge",
+					"name": "X-Large",
 					"fluid": {
 						"min": "2rem",
 						"max": "2.5rem"
@@ -397,6 +402,15 @@
 					"fluid": {
 						"min": "3rem",
 						"max": "4rem"
+					}
+				},
+				{
+					"slug": "900",
+					"size": "5rem",
+					"name": "Colossal",
+					"fluid": {
+						"min": "3.5rem",
+						"max": "5rem"
 					}
 				}
 			],
