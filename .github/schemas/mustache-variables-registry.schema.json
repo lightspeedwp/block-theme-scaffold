@@ -455,25 +455,11 @@
         "Contact Us"
       ]
     },
-    "cta_description": {
-      "type": "string",
-      "description": "Call-to-action section description",
-      "examples": [
-        "Join thousands of happy customers"
-      ]
-    },
     "cta_text": {
       "type": "string",
       "description": "Auto-discovered placeholder (content_strings)",
       "examples": [
         "cta_text"
-      ]
-    },
-    "cta_title": {
-      "type": "string",
-      "description": "Call-to-action section title",
-      "examples": [
-        "Ready to Get Started?"
       ]
     },
     "curly": {
@@ -690,23 +676,6 @@
       "description": "Auto-discovered placeholder (content_strings)",
       "examples": [
         "heading_style_serif_title"
-      ]
-    },
-    "hero_button_text": {
-      "type": "string",
-      "description": "Hero section button text",
-      "default": "Get Started",
-      "examples": [
-        "Get Started",
-        "Learn More",
-        "Start Now"
-      ]
-    },
-    "hero_description": {
-      "type": "string",
-      "description": "Homepage hero section description",
-      "examples": [
-        "Build amazing websites with WordPress"
       ]
     },
     "hero_section_style_title": {
@@ -1195,65 +1164,6 @@
       "description": "Auto-discovered placeholder (other)",
       "examples": [
         "team"
-      ]
-    },
-    "team_description": {
-      "type": "string",
-      "description": "Team section description",
-      "examples": [
-        "The people behind our success"
-      ]
-    },
-    "team_member_1_name": {
-      "type": "string",
-      "description": "Team member 1 name",
-      "examples": [
-        "John Doe"
-      ]
-    },
-    "team_member_1_role": {
-      "type": "string",
-      "description": "Team member 1 role",
-      "examples": [
-        "CEO",
-        "Founder"
-      ]
-    },
-    "team_member_2_name": {
-      "type": "string",
-      "description": "Team member 2 name",
-      "examples": [
-        "Jane Smith"
-      ]
-    },
-    "team_member_2_role": {
-      "type": "string",
-      "description": "Team member 2 role",
-      "examples": [
-        "CTO",
-        "Co-Founder"
-      ]
-    },
-    "team_member_3_name": {
-      "type": "string",
-      "description": "Team member 3 name",
-      "examples": [
-        "Bob Johnson"
-      ]
-    },
-    "team_member_3_role": {
-      "type": "string",
-      "description": "Team member 3 role",
-      "examples": [
-        "Lead Developer"
-      ]
-    },
-    "team_title": {
-      "type": "string",
-      "description": "Team section title",
-      "examples": [
-        "Meet Our Team",
-        "Our Team"
       ]
     },
     "test_undocumented_var": {

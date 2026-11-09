@@ -245,9 +245,11 @@ Older WordPress versions ignore these keys.
 
 ### Adding Custom Patterns
 
-1. Create new pattern files in the `patterns/` directory
-2. Register patterns in `inc/block-patterns.php`
-3. Add pattern categories as needed
+1. Create a pattern file in `patterns/`. WordPress registers it from the file header (Title, Slug, Categories), so no PHP registration is needed.
+2. Colour it with the semantic `--wp--custom--color--*` tokens (see Colour tokens).
+3. Use core pattern categories where they fit; add a theme category in `functions.php` only when none does.
+
+`inc/` is for PHP that patterns can't express, not for registering simple patterns.
 
 ## Testing
 

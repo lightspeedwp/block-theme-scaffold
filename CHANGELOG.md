@@ -62,6 +62,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 
 - `templates/page-no-title.html` exists for the declared Page (No Title) custom template, and the unused `blank` template is no longer declared; a test checks every custom template has a file ([BTS-37](https://linear.app/lightspeedwp/issue/BTS-37)).
+- The PHP-registered hero, call to action and team patterns are removed (palette colours, a duplicate slug); team is `patterns/team.php`, and the unregistered components category is dropped ([BTS-38](https://linear.app/lightspeedwp/issue/BTS-38)).
 - Generated themes build all four colour ramps in OKLCH, like the site-to-design-tokens skill, with each configured colour at its nearest step; buttons and link hover use step 600 ([BTS-29](https://linear.app/lightspeedwp/issue/BTS-29)).
 - The hero pattern's cover overlay is solid (`dimRatio` 100) with no image, so its text and buttons pass WCAG AA contrast in every generated theme ([BTS-28](https://linear.app/lightspeedwp/issue/BTS-28)).
 - `styles/dark.json` inherits the palette and sets every semantic colour token, including `overlay`, from palette colours; no raw hex ([BTS-24](https://linear.app/lightspeedwp/issue/BTS-24)).

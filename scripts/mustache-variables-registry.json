@@ -2,8 +2,8 @@
   "summary": {
     "totalFiles": 554,
     "filesWithVariables": 125,
-    "uniqueVariables": 184,
-    "totalOccurrences": 1414
+    "uniqueVariables": 172,
+    "totalOccurrences": 1364
   },
   "variables": {
     "ThemeSlug": {
@@ -237,7 +237,7 @@
       "usage": [
         {
           "file": "CHANGELOG.md",
-          "line": 125
+          "line": 126
         },
         {
           "file": "scripts/generate-theme.js",
@@ -327,7 +327,7 @@
         },
         {
           "file": "scripts/generate-theme.js",
-          "line": 884
+          "line": 869
         },
         {
           "file": "theme-template/README.md",
@@ -974,7 +974,7 @@
       "usage": [
         {
           "file": "scripts/generate-theme.js",
-          "line": 878
+          "line": 863
         },
         {
           "file": "theme-template/styles/blocks/button/primary.json",
@@ -994,7 +994,7 @@
       "usage": [
         {
           "file": "scripts/generate-theme.js",
-          "line": 879
+          "line": 864
         },
         {
           "file": "theme-template/styles/blocks/button/rounded.json",
@@ -1207,7 +1207,7 @@
       "usage": [
         {
           "file": "scripts/generate-theme.js",
-          "line": 882
+          "line": 867
         },
         {
           "file": "theme-template/styles/sections/content-section.json",
@@ -1268,11 +1268,11 @@
       "usage": [
         {
           "file": "CHANGELOG.md",
-          "line": 126
+          "line": 127
         },
         {
           "file": "CHANGELOG.md",
-          "line": 145
+          "line": 146
         },
         {
           "file": "scripts/generate-theme.js",
@@ -1308,7 +1308,7 @@
       "usage": [
         {
           "file": "CHANGELOG.md",
-          "line": 145
+          "line": 146
         },
         {
           "file": "docs/GENERATE_THEME.md",
@@ -1501,43 +1501,13 @@
       "category": "content_strings",
       "type": "string",
       "files": [
-        ".github/prompts/generate-theme.prompt.md",
-        "scripts/generate-theme.js",
-        "theme-template/inc/block-patterns.php"
+        ".github/prompts/generate-theme.prompt.md"
       ],
-      "count": 3,
+      "count": 1,
       "usage": [
-        {
-          "file": "scripts/generate-theme.js",
-          "line": 868
-        },
         {
           "file": ".github/prompts/generate-theme.prompt.md",
           "line": 35
-        },
-        {
-          "file": "theme-template/inc/block-patterns.php",
-          "line": 77
-        }
-      ]
-    },
-    "cta_description": {
-      "name": "cta_description",
-      "category": "other",
-      "type": "string",
-      "files": [
-        "scripts/generate-theme.js",
-        "theme-template/inc/block-patterns.php"
-      ],
-      "count": 2,
-      "usage": [
-        {
-          "file": "scripts/generate-theme.js",
-          "line": 866
-        },
-        {
-          "file": "theme-template/inc/block-patterns.php",
-          "line": 71
         }
       ]
     },
@@ -1553,26 +1523,6 @@
         {
           "file": ".github/custom-instructions.md",
           "line": 248
-        }
-      ]
-    },
-    "cta_title": {
-      "name": "cta_title",
-      "category": "content_strings",
-      "type": "string",
-      "files": [
-        "scripts/generate-theme.js",
-        "theme-template/inc/block-patterns.php"
-      ],
-      "count": 2,
-      "usage": [
-        {
-          "file": "scripts/generate-theme.js",
-          "line": 865
-        },
-        {
-          "file": "theme-template/inc/block-patterns.php",
-          "line": 67
         }
       ]
     },
@@ -1646,7 +1596,7 @@
       "usage": [
         {
           "file": "scripts/generate-theme.js",
-          "line": 877
+          "line": 862
         },
         {
           "file": "theme-template/styles/dark.json",
@@ -1721,7 +1671,7 @@
         "theme-template/package.json",
         "theme-template/style.css"
       ],
-      "count": 20,
+      "count": 19,
       "usage": [
         {
           "file": ".github/custom-instructions.md",
@@ -1750,10 +1700,6 @@
         {
           "file": "scripts/generate-theme.js",
           "line": 691
-        },
-        {
-          "file": "scripts/generate-theme.js",
-          "line": 863
         },
         {
           "file": "theme-template/README.md",
@@ -2445,51 +2391,11 @@
       "usage": [
         {
           "file": "scripts/generate-theme.js",
-          "line": 880
+          "line": 865
         },
         {
           "file": "theme-template/styles/blocks/heading/serif.json",
           "line": 4
-        }
-      ]
-    },
-    "hero_button_text": {
-      "name": "hero_button_text",
-      "category": "content_strings",
-      "type": "string",
-      "files": [
-        "scripts/generate-theme.js",
-        "theme-template/inc/block-patterns.php"
-      ],
-      "count": 2,
-      "usage": [
-        {
-          "file": "scripts/generate-theme.js",
-          "line": 864
-        },
-        {
-          "file": "theme-template/inc/block-patterns.php",
-          "line": 40
-        }
-      ]
-    },
-    "hero_description": {
-      "name": "hero_description",
-      "category": "other",
-      "type": "string",
-      "files": [
-        "scripts/generate-theme.js",
-        "theme-template/inc/block-patterns.php"
-      ],
-      "count": 2,
-      "usage": [
-        {
-          "file": "scripts/generate-theme.js",
-          "line": 863
-        },
-        {
-          "file": "theme-template/inc/block-patterns.php",
-          "line": 34
         }
       ]
     },
@@ -2505,7 +2411,7 @@
       "usage": [
         {
           "file": "scripts/generate-theme.js",
-          "line": 881
+          "line": 866
         },
         {
           "file": "theme-template/styles/sections/hero-section.json",
@@ -2520,19 +2426,13 @@
       "files": [
         ".github/agents/generate-theme.agent.md",
         ".github/custom-instructions.md",
-        ".github/prompts/generate-theme.prompt.md",
-        "scripts/generate-theme.js",
-        "theme-template/inc/block-patterns.php"
+        ".github/prompts/generate-theme.prompt.md"
       ],
-      "count": 6,
+      "count": 4,
       "usage": [
         {
           "file": ".github/custom-instructions.md",
           "line": 247
-        },
-        {
-          "file": "scripts/generate-theme.js",
-          "line": 862
         },
         {
           "file": ".github/agents/generate-theme.agent.md",
@@ -2545,10 +2445,6 @@
         {
           "file": ".github/prompts/generate-theme.prompt.md",
           "line": 35
-        },
-        {
-          "file": "theme-template/inc/block-patterns.php",
-          "line": 30
         }
       ]
     },
@@ -2675,11 +2571,11 @@
         },
         {
           "file": "theme-template/README.md",
-          "line": 336
+          "line": 338
         },
         {
           "file": "theme-template/README.md",
-          "line": 344
+          "line": 346
         },
         {
           "file": "theme-template/README.txt",
@@ -2761,7 +2657,7 @@
         },
         {
           "file": "theme-template/README.md",
-          "line": 344
+          "line": 346
         },
         {
           "file": "theme-template/README.txt",
@@ -2815,7 +2711,7 @@
       "usage": [
         {
           "file": "CHANGELOG.md",
-          "line": 124
+          "line": 125
         },
         {
           "file": "scripts/generate-theme.js",
@@ -2831,7 +2727,7 @@
         },
         {
           "file": "theme-template/tests/php/IncludesTest.php",
-          "line": 91
+          "line": 60
         }
       ]
     },
@@ -2850,7 +2746,7 @@
       "usage": [
         {
           "file": "CHANGELOG.md",
-          "line": 123
+          "line": 124
         },
         {
           "file": "scripts/generate-theme.js",
@@ -2866,7 +2762,7 @@
         },
         {
           "file": "theme-template/tests/php/IncludesTest.php",
-          "line": 91
+          "line": 60
         }
       ]
     },
@@ -3097,11 +2993,11 @@
       "usage": [
         {
           "file": "CHANGELOG.md",
-          "line": 154
+          "line": 155
         },
         {
           "file": "CHANGELOG.md",
-          "line": 229
+          "line": 230
         },
         {
           "file": "README.md",
@@ -3509,7 +3405,7 @@
       "usage": [
         {
           "file": "CHANGELOG.md",
-          "line": 83
+          "line": 84
         },
         {
           "file": ".github/agents/template.agent.md",
@@ -4320,166 +4216,6 @@
         }
       ]
     },
-    "team_description": {
-      "name": "team_description",
-      "category": "other",
-      "type": "string",
-      "files": [
-        "scripts/generate-theme.js",
-        "theme-template/inc/block-patterns.php"
-      ],
-      "count": 2,
-      "usage": [
-        {
-          "file": "scripts/generate-theme.js",
-          "line": 870
-        },
-        {
-          "file": "theme-template/inc/block-patterns.php",
-          "line": 108
-        }
-      ]
-    },
-    "team_member_1_name": {
-      "name": "team_member_1_name",
-      "category": "other",
-      "type": "string",
-      "files": [
-        "scripts/generate-theme.js",
-        "theme-template/inc/block-patterns.php"
-      ],
-      "count": 2,
-      "usage": [
-        {
-          "file": "scripts/generate-theme.js",
-          "line": 871
-        },
-        {
-          "file": "theme-template/inc/block-patterns.php",
-          "line": 120
-        }
-      ]
-    },
-    "team_member_1_role": {
-      "name": "team_member_1_role",
-      "category": "other",
-      "type": "string",
-      "files": [
-        "scripts/generate-theme.js",
-        "theme-template/inc/block-patterns.php"
-      ],
-      "count": 2,
-      "usage": [
-        {
-          "file": "scripts/generate-theme.js",
-          "line": 872
-        },
-        {
-          "file": "theme-template/inc/block-patterns.php",
-          "line": 124
-        }
-      ]
-    },
-    "team_member_2_name": {
-      "name": "team_member_2_name",
-      "category": "other",
-      "type": "string",
-      "files": [
-        "scripts/generate-theme.js",
-        "theme-template/inc/block-patterns.php"
-      ],
-      "count": 2,
-      "usage": [
-        {
-          "file": "scripts/generate-theme.js",
-          "line": 873
-        },
-        {
-          "file": "theme-template/inc/block-patterns.php",
-          "line": 136
-        }
-      ]
-    },
-    "team_member_2_role": {
-      "name": "team_member_2_role",
-      "category": "other",
-      "type": "string",
-      "files": [
-        "scripts/generate-theme.js",
-        "theme-template/inc/block-patterns.php"
-      ],
-      "count": 2,
-      "usage": [
-        {
-          "file": "scripts/generate-theme.js",
-          "line": 874
-        },
-        {
-          "file": "theme-template/inc/block-patterns.php",
-          "line": 140
-        }
-      ]
-    },
-    "team_member_3_name": {
-      "name": "team_member_3_name",
-      "category": "other",
-      "type": "string",
-      "files": [
-        "scripts/generate-theme.js",
-        "theme-template/inc/block-patterns.php"
-      ],
-      "count": 2,
-      "usage": [
-        {
-          "file": "scripts/generate-theme.js",
-          "line": 875
-        },
-        {
-          "file": "theme-template/inc/block-patterns.php",
-          "line": 152
-        }
-      ]
-    },
-    "team_member_3_role": {
-      "name": "team_member_3_role",
-      "category": "other",
-      "type": "string",
-      "files": [
-        "scripts/generate-theme.js",
-        "theme-template/inc/block-patterns.php"
-      ],
-      "count": 2,
-      "usage": [
-        {
-          "file": "scripts/generate-theme.js",
-          "line": 876
-        },
-        {
-          "file": "theme-template/inc/block-patterns.php",
-          "line": 156
-        }
-      ]
-    },
-    "team_title": {
-      "name": "team_title",
-      "category": "content_strings",
-      "type": "string",
-      "files": [
-        "scripts/generate-theme.js",
-        "theme-template/inc/block-patterns.php"
-      ],
-      "count": 2,
-      "usage": [
-        {
-          "file": "scripts/generate-theme.js",
-          "line": 869
-        },
-        {
-          "file": "theme-template/inc/block-patterns.php",
-          "line": 104
-        }
-      ]
-    },
     "test_undocumented_var": {
       "name": "test_undocumented_var",
       "category": "other",
@@ -4689,7 +4425,6 @@
         "theme-template/SECURITY.md",
         "theme-template/SUPPORT.md",
         "theme-template/functions.php",
-        "theme-template/inc/block-patterns.php",
         "theme-template/inc/block-styles.php",
         "theme-template/inc/block-stylesheets.php",
         "theme-template/inc/template-functions.php",
@@ -4709,6 +4444,7 @@
         "theme-template/patterns/query-posts-grid.php",
         "theme-template/patterns/query-posts-list.php",
         "theme-template/patterns/single-post-content.php",
+        "theme-template/patterns/team.php",
         "theme-template/patterns/testimonials.php",
         "theme-template/screenshot.png.md",
         "theme-template/src/js/editor.js",
@@ -4721,7 +4457,7 @@
       "usage": [
         {
           "file": "CHANGELOG.md",
-          "line": 171
+          "line": 172
         },
         {
           "file": "README.md",
@@ -4857,7 +4593,7 @@
         },
         {
           "file": "theme-template/README.md",
-          "line": 344
+          "line": 346
         },
         {
           "file": "theme-template/README.txt",
@@ -5148,14 +4884,6 @@
           "line": 19
         },
         {
-          "file": "theme-template/inc/block-patterns.php",
-          "line": 3
-        },
-        {
-          "file": "theme-template/inc/block-patterns.php",
-          "line": 5
-        },
-        {
           "file": "theme-template/inc/block-styles.php",
           "line": 3
         },
@@ -5238,6 +4966,14 @@
         {
           "file": "theme-template/patterns/single-post-content.php",
           "line": 12
+        },
+        {
+          "file": "theme-template/patterns/team.php",
+          "line": 11
+        },
+        {
+          "file": "theme-template/patterns/team.php",
+          "line": 16
         },
         {
           "file": "theme-template/patterns/testimonials.php",
@@ -5381,7 +5117,7 @@
         },
         {
           "file": "theme-template/README.md",
-          "line": 331
+          "line": 333
         },
         {
           "file": "theme-template/README.txt",
@@ -5474,7 +5210,6 @@
         "theme-template/SUPPORT.md",
         "theme-template/composer.json",
         "theme-template/functions.php",
-        "theme-template/inc/block-patterns.php",
         "theme-template/inc/block-styles.php",
         "theme-template/inc/block-stylesheets.php",
         "theme-template/inc/template-functions.php",
@@ -5503,6 +5238,7 @@
         "theme-template/patterns/query-posts-list.php",
         "theme-template/patterns/sidebar.php",
         "theme-template/patterns/single-post-content.php",
+        "theme-template/patterns/team.php",
         "theme-template/patterns/testimonials.php",
         "theme-template/src/js/editor.js",
         "theme-template/style.css",
@@ -5525,35 +5261,27 @@
         "theme-template/tests/php/ThemeSetupTest.php",
         "theme-template/tests/php/bootstrap.php"
       ],
-      "count": 463,
+      "count": 442,
       "usage": [
         {
           "file": "CHANGELOG.md",
-          "line": 73
+          "line": 74
         },
         {
           "file": "CHANGELOG.md",
-          "line": 75
+          "line": 76
         },
         {
           "file": "CHANGELOG.md",
-          "line": 86
+          "line": 87
         },
         {
           "file": "CHANGELOG.md",
-          "line": 86
+          "line": 87
         },
         {
           "file": "CHANGELOG.md",
-          "line": 90
-        },
-        {
-          "file": "CHANGELOG.md",
-          "line": 97
-        },
-        {
-          "file": "CHANGELOG.md",
-          "line": 98
+          "line": 91
         },
         {
           "file": "CHANGELOG.md",
@@ -5577,15 +5305,23 @@
         },
         {
           "file": "CHANGELOG.md",
-          "line": 100
+          "line": 101
         },
         {
           "file": "CHANGELOG.md",
-          "line": 164
+          "line": 101
         },
         {
           "file": "CHANGELOG.md",
-          "line": 245
+          "line": 101
+        },
+        {
+          "file": "CHANGELOG.md",
+          "line": 165
+        },
+        {
+          "file": "CHANGELOG.md",
+          "line": 246
         },
         {
           "file": "README.md",
@@ -5789,7 +5525,7 @@
         },
         {
           "file": "theme-template/README.md",
-          "line": 332
+          "line": 334
         },
         {
           "file": "theme-template/README.txt",
@@ -6472,78 +6208,6 @@
           "line": 150
         },
         {
-          "file": "theme-template/inc/block-patterns.php",
-          "line": 19
-        },
-        {
-          "file": "theme-template/inc/block-patterns.php",
-          "line": 21
-        },
-        {
-          "file": "theme-template/inc/block-patterns.php",
-          "line": 23
-        },
-        {
-          "file": "theme-template/inc/block-patterns.php",
-          "line": 24
-        },
-        {
-          "file": "theme-template/inc/block-patterns.php",
-          "line": 25
-        },
-        {
-          "file": "theme-template/inc/block-patterns.php",
-          "line": 49
-        },
-        {
-          "file": "theme-template/inc/block-patterns.php",
-          "line": 56
-        },
-        {
-          "file": "theme-template/inc/block-patterns.php",
-          "line": 58
-        },
-        {
-          "file": "theme-template/inc/block-patterns.php",
-          "line": 60
-        },
-        {
-          "file": "theme-template/inc/block-patterns.php",
-          "line": 61
-        },
-        {
-          "file": "theme-template/inc/block-patterns.php",
-          "line": 62
-        },
-        {
-          "file": "theme-template/inc/block-patterns.php",
-          "line": 86
-        },
-        {
-          "file": "theme-template/inc/block-patterns.php",
-          "line": 93
-        },
-        {
-          "file": "theme-template/inc/block-patterns.php",
-          "line": 95
-        },
-        {
-          "file": "theme-template/inc/block-patterns.php",
-          "line": 97
-        },
-        {
-          "file": "theme-template/inc/block-patterns.php",
-          "line": 98
-        },
-        {
-          "file": "theme-template/inc/block-patterns.php",
-          "line": 99
-        },
-        {
-          "file": "theme-template/inc/block-patterns.php",
-          "line": 167
-        },
-        {
           "file": "theme-template/inc/block-styles.php",
           "line": 19
         },
@@ -6917,39 +6581,35 @@
         },
         {
           "file": "theme-template/patterns/sidebar.php",
-          "line": 6
+          "line": 14
         },
         {
           "file": "theme-template/patterns/sidebar.php",
-          "line": 15
+          "line": 17
         },
         {
           "file": "theme-template/patterns/sidebar.php",
-          "line": 18
+          "line": 17
         },
         {
           "file": "theme-template/patterns/sidebar.php",
-          "line": 18
+          "line": 17
         },
         {
           "file": "theme-template/patterns/sidebar.php",
-          "line": 18
+          "line": 24
         },
         {
           "file": "theme-template/patterns/sidebar.php",
-          "line": 25
+          "line": 34
         },
         {
           "file": "theme-template/patterns/sidebar.php",
-          "line": 35
+          "line": 44
         },
         {
           "file": "theme-template/patterns/sidebar.php",
-          "line": 45
-        },
-        {
-          "file": "theme-template/patterns/sidebar.php",
-          "line": 55
+          "line": 54
         },
         {
           "file": "theme-template/patterns/single-post-content.php",
@@ -6958,6 +6618,26 @@
         {
           "file": "theme-template/patterns/single-post-content.php",
           "line": 41
+        },
+        {
+          "file": "theme-template/patterns/team.php",
+          "line": 4
+        },
+        {
+          "file": "theme-template/patterns/team.php",
+          "line": 15
+        },
+        {
+          "file": "theme-template/patterns/team.php",
+          "line": 16
+        },
+        {
+          "file": "theme-template/patterns/team.php",
+          "line": 17
+        },
+        {
+          "file": "theme-template/patterns/team.php",
+          "line": 18
         },
         {
           "file": "theme-template/patterns/testimonials.php",
@@ -7153,63 +6833,35 @@
         },
         {
           "file": "theme-template/tests/php/IncludesTest.php",
-          "line": 6
+          "line": 5
         },
         {
           "file": "theme-template/tests/php/IncludesTest.php",
-          "line": 9
+          "line": 8
         },
         {
           "file": "theme-template/tests/php/IncludesTest.php",
-          "line": 32
+          "line": 30
         },
         {
           "file": "theme-template/tests/php/IncludesTest.php",
-          "line": 33
+          "line": 45
         },
         {
           "file": "theme-template/tests/php/IncludesTest.php",
-          "line": 34
+          "line": 48
         },
         {
           "file": "theme-template/tests/php/IncludesTest.php",
-          "line": 37
+          "line": 48
         },
         {
           "file": "theme-template/tests/php/IncludesTest.php",
-          "line": 37
+          "line": 63
         },
         {
           "file": "theme-template/tests/php/IncludesTest.php",
-          "line": 37
-        },
-        {
-          "file": "theme-template/tests/php/IncludesTest.php",
-          "line": 43
-        },
-        {
-          "file": "theme-template/tests/php/IncludesTest.php",
-          "line": 61
-        },
-        {
-          "file": "theme-template/tests/php/IncludesTest.php",
-          "line": 76
-        },
-        {
-          "file": "theme-template/tests/php/IncludesTest.php",
-          "line": 79
-        },
-        {
-          "file": "theme-template/tests/php/IncludesTest.php",
-          "line": 79
-        },
-        {
-          "file": "theme-template/tests/php/IncludesTest.php",
-          "line": 94
-        },
-        {
-          "file": "theme-template/tests/php/IncludesTest.php",
-          "line": 103
+          "line": 72
         },
         {
           "file": "theme-template/tests/php/TestCase.php",
@@ -7712,7 +7364,6 @@
         "theme-template/README.txt",
         "theme-template/SECURITY.md",
         "theme-template/functions.php",
-        "theme-template/inc/block-patterns.php",
         "theme-template/inc/block-styles.php",
         "theme-template/inc/block-stylesheets.php",
         "theme-template/inc/template-functions.php",
@@ -7733,6 +7384,7 @@
         "theme-template/patterns/query-posts-grid.php",
         "theme-template/patterns/query-posts-list.php",
         "theme-template/patterns/single-post-content.php",
+        "theme-template/patterns/team.php",
         "theme-template/patterns/testimonials.php",
         "theme-template/style.css"
       ],
@@ -7876,7 +7528,7 @@
         },
         {
           "file": "theme-template/README.md",
-          "line": 344
+          "line": 346
         },
         {
           "file": "theme-template/README.txt",
@@ -8007,10 +7659,6 @@
           "line": 24
         },
         {
-          "file": "theme-template/inc/block-patterns.php",
-          "line": 6
-        },
-        {
           "file": "theme-template/inc/block-styles.php",
           "line": 6
         },
@@ -8081,6 +7729,10 @@
         {
           "file": "theme-template/patterns/single-post-content.php",
           "line": 13
+        },
+        {
+          "file": "theme-template/patterns/team.php",
+          "line": 12
         },
         {
           "file": "theme-template/patterns/testimonials.php",
@@ -8210,6 +7862,6 @@
   "meta": {
     "undocumented": [],
     "unused": [],
-    "scannedAt": "2026-11-09T08:44:52.501Z"
+    "scannedAt": "2026-11-09T09:17:24.836Z"
   }
 }
