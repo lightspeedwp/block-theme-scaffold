@@ -270,7 +270,7 @@ logs/
 
 # Generated themes
 generated-theme/
-output-theme/
+output-theme/<slug>/
 ```
 
 ### Always Tracked
@@ -314,7 +314,7 @@ src/ → (webpack/sass) → build/ → (package) → dist/
 ### Generation Process
 
 ```
-scaffold/ → (generate-theme.js) → output-theme/
+scaffold/ → (generate-theme.js) → output-theme/<slug>/
 ```
 
 ### Testing Process

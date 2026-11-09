@@ -81,7 +81,7 @@ describe( 'theme URI', () => {
 		const result = run( [ ...identity, '--theme_uri', uri ] );
 		expect( result.status ).toBe( 0 );
 
-		const output = path.join( result.cwd, 'output-theme' );
+		const output = path.join( result.cwd, 'output-theme', 'uri-theme' );
 		const style = fs.readFileSync(
 			path.join( output, 'style.css' ),
 			'utf8'

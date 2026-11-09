@@ -29,7 +29,7 @@ function generateWith( typography ) {
 	} );
 	const themeJson = JSON.parse(
 		fs.readFileSync(
-			path.join( dir, 'output-theme', 'theme.json' ),
+			path.join( dir, 'output-theme', 'font-theme', 'theme.json' ),
 			'utf8'
 		)
 	);
