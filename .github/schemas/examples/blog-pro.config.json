@@ -6,6 +6,7 @@
 	"description": "A clean, minimal WordPress block theme optimized for content creators, bloggers, and online publishers",
 	"author": "Blogger Name",
 	"author_uri": "https://yoursite.com",
+	"theme_uri": "https://yoursite.com/themes/blog-pro",
 	"version": "1.0.0",
 	"min_wp_version": "7.1",
 	"tested_wp_version": "7.1",

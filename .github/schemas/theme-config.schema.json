@@ -4,7 +4,7 @@
 	"title": "WordPress Block Theme Configuration",
 	"description": "Complete configuration for theme generation wizard. Fill in values and pass to generate-theme with --config flag. Supports 142 mustache variables discovered via scripts/scan-mustache-variables.js",
 	"type": "object",
-	"required": ["theme_slug", "theme_name", "author"],
+	"required": ["theme_slug", "theme_name", "author", "theme_uri"],
 	"properties": {
 		"_comment": {
 			"type": "string",
@@ -100,10 +100,10 @@
 		},
 		"theme_uri": {
 			"type": "string",
-			"description": "Theme homepage URL",
+			"description": "Theme homepage URL (required; becomes Theme URI in style.css and homepage in package.json)",
 			"format": "uri",
 			"pattern": "^https?://",
-			"default": "https://example.com/theme"
+			"examples": ["https://lightspeedwp.agency/themes/my-theme"]
 		},
 		"theme_tags": {
 			"type": "string",

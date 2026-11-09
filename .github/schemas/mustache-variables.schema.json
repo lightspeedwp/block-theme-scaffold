@@ -45,6 +45,7 @@
     "collected_description",
     "collected_name",
     "collected_slug",
+    "collected_theme_uri",
     "collected_version",
     "color1",
     "contact_email",

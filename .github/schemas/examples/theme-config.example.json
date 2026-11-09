@@ -5,6 +5,7 @@
 	"description": "A professional WordPress block theme designed specifically for tour operators, travel agencies, and adventure tourism businesses.",
 	"author": "LightSpeed",
 	"author_uri": "https://developer.lsdev.biz",
+	"theme_uri": "https://developer.lsdev.biz/themes/tour-operator-pro",
 	"version": "1.0.0",
 	"min_wp_version": "7.1",
 	"tested_wp_version": "7.1",

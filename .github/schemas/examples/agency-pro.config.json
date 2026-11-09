@@ -6,6 +6,7 @@
 	"description": "A sophisticated WordPress block theme designed for creative agencies, design studios, and professional service providers",
 	"author": "Your Agency",
 	"author_uri": "https://youragency.com",
+	"theme_uri": "https://youragency.com/themes/agency-pro",
 	"version": "1.0.0",
 	"min_wp_version": "7.1",
 	"tested_wp_version": "7.1",

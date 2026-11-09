@@ -74,6 +74,7 @@ describe( 'generate-theme placeholders', () => {
 				theme_slug: 'minimal-theme',
 				theme_name: 'Minimal & Theme',
 				author: 'LightSpeed',
+				theme_uri: 'https://lightspeedwp.agency/themes/minimal-theme',
 			} )
 		);
 		const { cwd, output } = generate( configPath );
@@ -114,6 +115,7 @@ describe( 'generate-theme placeholders', () => {
 					theme_slug: 'color-theme',
 					theme_name: 'Color Theme',
 					author: 'LightSpeed',
+					theme_uri: 'https://lightspeedwp.agency/themes/color-theme',
 					design_system: { colors },
 				} )
 			);

@@ -33,6 +33,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- The generator requires a Theme URI (`--theme_uri` or `theme_uri` in the config) and no longer writes `https://example.com/theme` into style.css and package.json ([BTS-47](https://linear.app/lightspeedwp/issue/BTS-47)).
 - Generated themes deny the npm install scripts they don't need, so npm 11 installs without warnings; DEVELOPMENT.md explains this and how the hooks install ([BTS-48](https://linear.app/lightspeedwp/issue/BTS-48)).
 - Radius presets run `0` to `700` as in TSP (`600` Huge 50px, `700` Round, `500` renamed X-Large); patterns, button styles and SCSS use them instead of fixed lengths ([BTS-42](https://linear.app/lightspeedwp/issue/BTS-42)).
 - Config inputs nothing read are gone (`theme_structure`, `features`, `wizard_mode`, hero, CTA and footer text), as are the unused theme pattern categories; a test checks each key is read ([BTS-40](https://linear.app/lightspeedwp/issue/BTS-40)).

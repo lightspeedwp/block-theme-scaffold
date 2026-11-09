@@ -93,6 +93,7 @@ These commands wrap each agent via `scripts/dry-run/with-dry-run.js` so `{{musta
      --name "Scaffold Release Check" \
      --author "Scaffold QA" \
      --author_uri "https://example.com" \
+     --theme_uri "https://example.com/scaffold-release-check" \
      --version "$(cat VERSION)"
 
    # Verify Phase 1 cleanup
