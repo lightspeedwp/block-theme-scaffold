@@ -33,6 +33,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- `docs/GENERATE_THEME.md` is rewritten around what the generator really does: its options, the output folder, the checks to run and how placeholders work ([BTS-45](https://linear.app/lightspeedwp/issue/BTS-45)).
 - The screenshot placeholder note is gone; the READMEs point to the `theme-screenshot` skill, which makes `screenshot.png` from the site's logo ([BTS-46](https://linear.app/lightspeedwp/issue/BTS-46)).
 - The accent font can be set in the config (`accent_font_family`, `accent_font_name`) like the other three roles, and the README documents the font options ([BTS-50](https://linear.app/lightspeedwp/issue/BTS-50)).
 - The generator requires a Theme URI (`--theme_uri` or `theme_uri` in the config) and no longer writes `https://example.com/theme` into style.css and package.json ([BTS-47](https://linear.app/lightspeedwp/issue/BTS-47)).
