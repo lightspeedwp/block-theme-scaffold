@@ -6965,11 +6965,11 @@
         },
         {
           "file": "theme-template/tests/php/ThemeSetupTest.php",
-          "line": 148
+          "line": 150
         },
         {
           "file": "theme-template/tests/php/ThemeSetupTest.php",
-          "line": 149
+          "line": 151
         },
         {
           "file": "theme-template/tests/php/bootstrap.php",
@@ -7862,6 +7862,6 @@
   "meta": {
     "undocumented": [],
     "unused": [],
-    "scannedAt": "2026-11-09T09:23:44.209Z"
+    "scannedAt": "2026-11-09T09:51:33.215Z"
   }
 }
