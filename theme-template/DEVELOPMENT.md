@@ -22,6 +22,8 @@ npm run env:start
 npm run start
 ```
 
+npm 11 runs a package's install scripts only when `package.json` allows them (`allowScripts`). None of the theme's dependencies need theirs: the build uses prebuilt binaries, and the `prepare` script installs the git hooks. So `allowScripts` denies them, and `npm install` gives no warning. If a dependency you add needs its install script, allow it with `npm install-scripts approve <package>`.
+
 
 ## Architecture
 
@@ -69,7 +71,7 @@ npm run test:e2e     # End-to-end (after npm run env:start)
 
 ## Git hooks
 
-`npm install` installs a pre-commit hook with [Lefthook](https://lefthook.dev/) (`lefthook.yml`). In order, it checks:
+`npm install` installs a pre-commit hook with [Lefthook](https://lefthook.dev/) (`lefthook.yml`), through the `prepare` script (`bin/hooks/install.cjs`). Outside a git checkout it does nothing, so run `npm install` again after `git init`. In order, the hook checks:
 
 1. The branch has a type prefix such as `feat/` or `fix/`, and isn't `main`, `develop` or `release/*`.
 2. A code change comes with a new `CHANGELOG.md` entry under `[Unreleased]`.
