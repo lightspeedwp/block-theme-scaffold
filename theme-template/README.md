@@ -215,6 +215,24 @@ Colour things with the semantic tokens in `settings.custom.color`, not palette c
 
 Editor colour controls (the palette) are for a client building their own page. Those colours are fixed: on a site with a colour mode switcher, making a page coloured this way switch modes needs development.
 
+#### Typography presets
+
+Font sizes run from `100` to `900`. Use them with `var(--wp--preset--font-size--<slug>)` or the block's `fontSize` attribute:
+
+| Slug | Name | Size | Typical use |
+| --- | --- | --- | --- |
+| `100` | Tiny | 0.75rem | Captions, meta |
+| `200` | Base | 1rem | Body text (the 16px rem base) |
+| `300` | Small | 1.25rem | Lead text |
+| `400` | Medium | 1.5rem | Small headings |
+| `500` | Large | 2rem | Section headings |
+| `600` | X-Large | 2.5rem | Page headings |
+| `700` | Huge | 3rem | Hero headings |
+| `800` | Gigantic | 4rem | Large display text |
+| `900` | Colossal | 5rem | Home hero or call-to-action text |
+
+Font family slugs name a role, not a font: `heading` and `body` always, `accent` and `monospace` when the design needs them. Don't add slugs named after a font. Each family's `name` is the real font name (for example "Montserrat"), which is what editors see in the font picker.
+
 #### WordPress 7.1 features
 
 `theme.json` uses the WordPress 7.1 schema. These features are switched on but not given values; add values where the theme needs them:
