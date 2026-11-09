@@ -45,13 +45,13 @@ The theme is written to `./output-theme/`. Copy it to `wp-content/themes/`, then
 
 ### Fonts
 
-The theme has four font families, named by role: `heading`, `body`, `accent` and `monospace`. Set them in the config under `design_system.typography`, each with a CSS stack and a display name (the real font's name):
+Font families are named by role: `heading`, `body` and `monospace` always, and `accent` only when the design uses a third family. Set them in the config under `design_system.typography`, each with a CSS stack and a display name (the real font's name):
 
 | Role | Config keys | Default |
 | --- | --- | --- |
 | `heading` | `heading_font_family`, `heading_font_name` | System font stack, "System Font" |
 | `body` | `body_font_family`, `body_font_name` | System font stack, "System Font" |
-| `accent` | `accent_font_family`, `accent_font_name` | Georgia |
+| `accent` | `accent_font_family`, `accent_font_name` | None: added only when `accent_font_family` is set |
 | `monospace` | `mono_font_family`, `mono_font_name` | System monospace stack, "System Monospace" |
 
 The generator only sets the stacks. When a theme is built from a design or a live site, the theme skills (`figma-to-block-theme`, `site-to-design-tokens`) replace them with the real fonts and add the font files.
