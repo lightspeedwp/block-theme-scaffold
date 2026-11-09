@@ -655,6 +655,12 @@ async function main() {
 }
 
 async function runScript() {
+	// Help needs no theme details, so it comes before any validation.
+	if ( argMap.help || argMap.h ) {
+		showHelp();
+		process.exit( 0 );
+	}
+
 	let configData = {};
 
 	if ( argMap.config ) {

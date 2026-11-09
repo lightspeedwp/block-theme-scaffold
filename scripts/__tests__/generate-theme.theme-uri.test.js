@@ -44,6 +44,12 @@ afterAll( () => {
 } );
 
 describe( 'theme URI', () => {
+	it( 'still shows the help without a theme URI', () => {
+		const result = run( [ '--help' ] );
+		expect( result.status ).toBe( 0 );
+		expect( result.stdout ).toContain( '--theme_uri' );
+	} );
+
 	it( 'stops CLI generation when --theme_uri is missing', () => {
 		const result = run( identity );
 		expect( result.status ).not.toBe( 0 );
