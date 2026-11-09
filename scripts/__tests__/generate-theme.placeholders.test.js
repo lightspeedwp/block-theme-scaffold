@@ -296,12 +296,8 @@ describe( 'generate-theme placeholders', () => {
 		] );
 		// Family slugs are roles; names are the real font, never the role.
 		const families = fontFamilies.map( ( family ) => family.slug );
-		expect( families ).toEqual( [
-			'body',
-			'heading',
-			'accent',
-			'monospace',
-		] );
+		// No accent family unless the config sets one (BTS-50).
+		expect( families ).toEqual( [ 'body', 'heading', 'monospace' ] );
 		for ( const family of fontFamilies ) {
 			expect( family.name.toLowerCase() ).not.toBe( family.slug );
 		}

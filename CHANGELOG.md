@@ -35,7 +35,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - `docs/GENERATE_THEME.md` is rewritten around what the generator really does: its options, the output folder, the checks to run and how placeholders work ([BTS-45](https://linear.app/lightspeedwp/issue/BTS-45)).
 - The screenshot placeholder note is gone; the READMEs point to the `theme-screenshot` skill, which makes `screenshot.png` from the site's logo ([BTS-46](https://linear.app/lightspeedwp/issue/BTS-46)).
-- The accent font can be set in the config (`accent_font_family`, `accent_font_name`) like the other three roles, and the README documents the font options ([BTS-50](https://linear.app/lightspeedwp/issue/BTS-50)).
+- An accent font family is added only when the config sets one (`accent_font_family`, `accent_font_name`), and the README documents the font options ([BTS-50](https://linear.app/lightspeedwp/issue/BTS-50)).
 - The generator requires a Theme URI (`--theme_uri` or `theme_uri` in the config) and no longer writes `https://example.com/theme` into style.css and package.json ([BTS-47](https://linear.app/lightspeedwp/issue/BTS-47)).
 - Generated themes deny the npm install scripts they don't need, so npm 11 installs without warnings; DEVELOPMENT.md explains this and how the hooks install ([BTS-48](https://linear.app/lightspeedwp/issue/BTS-48)).
 - Radius presets run `0` to `700` as in TSP (`600` Huge 50px, `700` Round, `500` renamed X-Large); patterns, button styles and SCSS use them instead of fixed lengths ([BTS-42](https://linear.app/lightspeedwp/issue/BTS-42)).

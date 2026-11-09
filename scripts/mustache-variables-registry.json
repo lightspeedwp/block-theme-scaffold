@@ -2,8 +2,8 @@
   "summary": {
     "totalFiles": 560,
     "filesWithVariables": 122,
-    "uniqueVariables": 171,
-    "totalOccurrences": 1228
+    "uniqueVariables": 169,
+    "totalOccurrences": 1224
   },
   "variables": {
     "YYYYMMDD": {
@@ -42,11 +42,11 @@
       "usage": [
         {
           "file": "scripts/generate-theme.js",
-          "line": 802
+          "line": 842
         },
         {
           "file": "scripts/generate-theme.js",
-          "line": 872
+          "line": 907
         },
         {
           "file": ".github/instructions/generate-theme.instructions.md",
@@ -59,46 +59,6 @@
         {
           "file": "scripts/utils/placeholders.js",
           "line": 117
-        }
-      ]
-    },
-    "accent_font_family": {
-      "name": "accent_font_family",
-      "category": "design_typography",
-      "type": "font",
-      "files": [
-        "scripts/generate-theme.js",
-        "theme-template/theme.json"
-      ],
-      "count": 2,
-      "usage": [
-        {
-          "file": "scripts/generate-theme.js",
-          "line": 817
-        },
-        {
-          "file": "theme-template/theme.json",
-          "line": 330
-        }
-      ]
-    },
-    "accent_font_name": {
-      "name": "accent_font_name",
-      "category": "design_typography",
-      "type": "font",
-      "files": [
-        "scripts/generate-theme.js",
-        "theme-template/theme.json"
-      ],
-      "count": 2,
-      "usage": [
-        {
-          "file": "scripts/generate-theme.js",
-          "line": 820
-        },
-        {
-          "file": "theme-template/theme.json",
-          "line": 331
         }
       ]
     },
@@ -261,7 +221,7 @@
         },
         {
           "file": "scripts/generate-theme.js",
-          "line": 863
+          "line": 898
         },
         {
           "file": "theme-template/functions.php",
@@ -304,15 +264,7 @@
         },
         {
           "file": "scripts/generate-theme.js",
-          "line": 424
-        },
-        {
-          "file": "scripts/generate-theme.js",
-          "line": 450
-        },
-        {
-          "file": "scripts/generate-theme.js",
-          "line": 458
+          "line": 463
         },
         {
           "file": "scripts/generate-theme.js",
@@ -320,15 +272,23 @@
         },
         {
           "file": "scripts/generate-theme.js",
-          "line": 653
+          "line": 497
         },
         {
           "file": "scripts/generate-theme.js",
-          "line": 747
+          "line": 528
         },
         {
           "file": "scripts/generate-theme.js",
-          "line": 930
+          "line": 693
+        },
+        {
+          "file": "scripts/generate-theme.js",
+          "line": 787
+        },
+        {
+          "file": "scripts/generate-theme.js",
+          "line": 965
         },
         {
           "file": "theme-template/README.md",
@@ -441,15 +401,15 @@
       "usage": [
         {
           "file": "scripts/generate-theme.js",
-          "line": 459
+          "line": 498
         },
         {
           "file": "scripts/generate-theme.js",
-          "line": 493
+          "line": 532
         },
         {
           "file": "scripts/generate-theme.js",
-          "line": 748
+          "line": 788
         },
         {
           "file": "theme-template/README.md",
@@ -510,7 +470,7 @@
         },
         {
           "file": "scripts/generate-theme.js",
-          "line": 907
+          "line": 942
         },
         {
           "file": "theme-template/README.txt",
@@ -539,7 +499,7 @@
         },
         {
           "file": "scripts/generate-theme.js",
-          "line": 798
+          "line": 838
         },
         {
           "file": "theme-template/README.md",
@@ -582,7 +542,7 @@
       "usage": [
         {
           "file": "scripts/generate-theme.js",
-          "line": 812
+          "line": 852
         },
         {
           "file": "theme-template/theme.json",
@@ -617,7 +577,7 @@
       "usage": [
         {
           "file": "scripts/generate-theme.js",
-          "line": 815
+          "line": 855
         },
         {
           "file": "theme-template/README.md",
@@ -652,11 +612,11 @@
       "usage": [
         {
           "file": "scripts/generate-theme.js",
-          "line": 830
+          "line": 865
         },
         {
           "file": "theme-template/theme.json",
-          "line": 746
+          "line": 741
         },
         {
           "file": ".github/instructions/generate-theme.instructions.md",
@@ -835,7 +795,7 @@
       "usage": [
         {
           "file": "scripts/generate-theme.js",
-          "line": 914
+          "line": 949
         },
         {
           "file": "theme-template/SUPPORT.md",
@@ -860,11 +820,11 @@
       "usage": [
         {
           "file": "scripts/generate-theme.js",
-          "line": 845
+          "line": 880
         },
         {
           "file": "theme-template/theme.json",
-          "line": 840
+          "line": 835
         },
         {
           "file": "scripts/utils/placeholders.js",
@@ -886,11 +846,11 @@
       "usage": [
         {
           "file": "scripts/generate-theme.js",
-          "line": 834
+          "line": 869
         },
         {
           "file": "theme-template/theme.json",
-          "line": 837
+          "line": 832
         },
         {
           "file": ".github/instructions/generate-theme.instructions.md",
@@ -914,7 +874,7 @@
       "usage": [
         {
           "file": "scripts/generate-theme.js",
-          "line": 924
+          "line": 959
         },
         {
           "file": "theme-template/styles/blocks/button/primary.json",
@@ -934,7 +894,7 @@
       "usage": [
         {
           "file": "scripts/generate-theme.js",
-          "line": 925
+          "line": 960
         },
         {
           "file": "theme-template/styles/blocks/button/rounded.json",
@@ -985,15 +945,15 @@
       "usage": [
         {
           "file": "scripts/generate-theme.js",
-          "line": 788
+          "line": 828
         },
         {
           "file": "scripts/generate-theme.js",
-          "line": 892
+          "line": 927
         },
         {
           "file": "scripts/generate-theme.js",
-          "line": 893
+          "line": 928
         },
         {
           "file": "theme-template/package.json",
@@ -1122,7 +1082,7 @@
       "usage": [
         {
           "file": "scripts/generate-theme.js",
-          "line": 792
+          "line": 832
         },
         {
           "file": "scripts/utils/placeholders.js",
@@ -1142,7 +1102,7 @@
       "usage": [
         {
           "file": "scripts/generate-theme.js",
-          "line": 928
+          "line": 963
         },
         {
           "file": "theme-template/styles/sections/content-section.json",
@@ -1202,7 +1162,7 @@
         },
         {
           "file": "scripts/generate-theme.js",
-          "line": 842
+          "line": 877
         },
         {
           "file": "theme-template/functions.php",
@@ -1237,11 +1197,11 @@
         },
         {
           "file": "scripts/generate-theme.js",
-          "line": 838
+          "line": 873
         },
         {
           "file": "theme-template/theme.json",
-          "line": 494
+          "line": 489
         },
         {
           "file": ".github/instructions/generate-theme.instructions.md",
@@ -1269,7 +1229,7 @@
       "usage": [
         {
           "file": "scripts/generate-theme.js",
-          "line": 911
+          "line": 946
         },
         {
           "file": "theme-template/package.json",
@@ -1473,7 +1433,7 @@
       "usage": [
         {
           "file": "scripts/generate-theme.js",
-          "line": 920
+          "line": 955
         },
         {
           "file": "theme-template/SUPPORT.md",
@@ -1493,7 +1453,7 @@
       "usage": [
         {
           "file": "scripts/generate-theme.js",
-          "line": 923
+          "line": 958
         },
         {
           "file": "theme-template/styles/dark.json",
@@ -1515,7 +1475,7 @@
       "usage": [
         {
           "file": "scripts/generate-theme.js",
-          "line": 910
+          "line": 945
         },
         {
           "file": "theme-template/README.txt",
@@ -1579,11 +1539,11 @@
         },
         {
           "file": "scripts/generate-theme.js",
-          "line": 497
+          "line": 536
         },
         {
           "file": "scripts/generate-theme.js",
-          "line": 742
+          "line": 782
         },
         {
           "file": "theme-template/README.md",
@@ -1648,7 +1608,7 @@
       "usage": [
         {
           "file": "scripts/generate-theme.js",
-          "line": 916
+          "line": 951
         },
         {
           "file": "theme-template/SUPPORT.md",
@@ -1672,7 +1632,7 @@
       "usage": [
         {
           "file": "scripts/generate-theme.js",
-          "line": 921
+          "line": 956
         },
         {
           "file": "theme-template/SUPPORT.md",
@@ -1696,19 +1656,19 @@
       "usage": [
         {
           "file": "scripts/generate-theme.js",
-          "line": 787
+          "line": 827
         },
         {
           "file": "scripts/generate-theme.js",
-          "line": 890
+          "line": 925
         },
         {
           "file": "scripts/generate-theme.js",
-          "line": 891
+          "line": 926
         },
         {
           "file": "scripts/generate-theme.js",
-          "line": 922
+          "line": 957
         },
         {
           "file": "theme-template/README.txt",
@@ -1777,7 +1737,7 @@
       "usage": [
         {
           "file": "scripts/generate-theme.js",
-          "line": 850
+          "line": 885
         },
         {
           "file": "theme-template/functions.php",
@@ -1811,7 +1771,7 @@
       "usage": [
         {
           "file": "scripts/generate-theme.js",
-          "line": 847
+          "line": 882
         },
         {
           "file": "theme-template/functions.php",
@@ -1840,7 +1800,7 @@
       "usage": [
         {
           "file": "scripts/generate-theme.js",
-          "line": 855
+          "line": 890
         },
         {
           "file": "theme-template/functions.php",
@@ -1866,7 +1826,7 @@
       "usage": [
         {
           "file": "scripts/generate-theme.js",
-          "line": 853
+          "line": 888
         },
         {
           "file": "theme-template/functions.php",
@@ -1940,7 +1900,7 @@
       "usage": [
         {
           "file": "scripts/generate-theme.js",
-          "line": 859
+          "line": 894
         },
         {
           "file": "theme-template/functions.php",
@@ -1969,7 +1929,7 @@
       "usage": [
         {
           "file": "scripts/generate-theme.js",
-          "line": 857
+          "line": 892
         },
         {
           "file": "theme-template/functions.php",
@@ -2036,7 +1996,7 @@
       "usage": [
         {
           "file": "scripts/generate-theme.js",
-          "line": 806
+          "line": 846
         },
         {
           "file": "theme-template/theme.json",
@@ -2074,7 +2034,7 @@
       "usage": [
         {
           "file": "scripts/generate-theme.js",
-          "line": 809
+          "line": 849
         },
         {
           "file": "theme-template/theme.json",
@@ -2105,31 +2065,31 @@
       "usage": [
         {
           "file": "scripts/generate-theme.js",
-          "line": 828
+          "line": 863
         },
         {
           "file": "theme-template/theme.json",
-          "line": 756
+          "line": 751
         },
         {
           "file": "theme-template/theme.json",
-          "line": 764
+          "line": 759
         },
         {
           "file": "theme-template/theme.json",
-          "line": 772
+          "line": 767
         },
         {
           "file": "theme-template/theme.json",
-          "line": 780
+          "line": 775
         },
         {
           "file": "theme-template/theme.json",
-          "line": 788
+          "line": 783
         },
         {
           "file": "theme-template/theme.json",
-          "line": 796
+          "line": 791
         },
         {
           "file": ".github/instructions/generate-theme.instructions.md",
@@ -2159,31 +2119,31 @@
       "usage": [
         {
           "file": "scripts/generate-theme.js",
-          "line": 832
+          "line": 867
         },
         {
           "file": "theme-template/theme.json",
-          "line": 757
+          "line": 752
         },
         {
           "file": "theme-template/theme.json",
-          "line": 765
+          "line": 760
         },
         {
           "file": "theme-template/theme.json",
-          "line": 773
+          "line": 768
         },
         {
           "file": "theme-template/theme.json",
-          "line": 781
+          "line": 776
         },
         {
           "file": "theme-template/theme.json",
-          "line": 789
+          "line": 784
         },
         {
           "file": "theme-template/theme.json",
-          "line": 797
+          "line": 792
         },
         {
           "file": ".github/instructions/generate-theme.instructions.md",
@@ -2207,7 +2167,7 @@
       "usage": [
         {
           "file": "scripts/generate-theme.js",
-          "line": 926
+          "line": 961
         },
         {
           "file": "theme-template/styles/blocks/heading/serif.json",
@@ -2227,7 +2187,7 @@
       "usage": [
         {
           "file": "scripts/generate-theme.js",
-          "line": 927
+          "line": 962
         },
         {
           "file": "theme-template/styles/sections/hero-section.json",
@@ -2341,15 +2301,15 @@
         },
         {
           "file": "scripts/generate-theme.js",
-          "line": 425
+          "line": 464
         },
         {
           "file": "scripts/generate-theme.js",
-          "line": 517
+          "line": 556
         },
         {
           "file": "scripts/generate-theme.js",
-          "line": 768
+          "line": 808
         },
         {
           "file": "theme-template/.npmpackagejsonlintrc.json",
@@ -2430,11 +2390,11 @@
       "usage": [
         {
           "file": "scripts/generate-theme.js",
-          "line": 521
+          "line": 560
         },
         {
           "file": "scripts/generate-theme.js",
-          "line": 771
+          "line": 811
         },
         {
           "file": "theme-template/DEVELOPMENT.md",
@@ -2500,7 +2460,7 @@
         },
         {
           "file": "scripts/generate-theme.js",
-          "line": 862
+          "line": 897
         },
         {
           "file": "scripts/utils/placeholders.js",
@@ -2535,7 +2495,7 @@
         },
         {
           "file": "scripts/generate-theme.js",
-          "line": 861
+          "line": 896
         },
         {
           "file": "scripts/utils/placeholders.js",
@@ -2568,11 +2528,11 @@
       "usage": [
         {
           "file": "scripts/generate-theme.js",
-          "line": 513
+          "line": 552
         },
         {
           "file": "scripts/generate-theme.js",
-          "line": 763
+          "line": 803
         },
         {
           "file": "theme-template/README.md",
@@ -2629,11 +2589,11 @@
       "usage": [
         {
           "file": "scripts/generate-theme.js",
-          "line": 505
+          "line": 544
         },
         {
           "file": "scripts/generate-theme.js",
-          "line": 753
+          "line": 793
         },
         {
           "file": "theme-template/README.md",
@@ -2686,11 +2646,11 @@
       "usage": [
         {
           "file": "scripts/generate-theme.js",
-          "line": 822
+          "line": 857
         },
         {
           "file": "theme-template/theme.json",
-          "line": 335
+          "line": 330
         },
         {
           "file": "scripts/utils/placeholders.js",
@@ -2711,11 +2671,11 @@
       "usage": [
         {
           "file": "scripts/generate-theme.js",
-          "line": 825
+          "line": 860
         },
         {
           "file": "theme-template/theme.json",
-          "line": 336
+          "line": 331
         },
         {
           "file": "scripts/utils/placeholders.js",
@@ -3094,11 +3054,11 @@
       "usage": [
         {
           "file": "scripts/generate-theme.js",
-          "line": 804
+          "line": 844
         },
         {
           "file": "scripts/generate-theme.js",
-          "line": 870
+          "line": 905
         },
         {
           "file": ".github/instructions/generate-theme.instructions.md",
@@ -3210,7 +3170,7 @@
       "usage": [
         {
           "file": "scripts/generate-theme.js",
-          "line": 918
+          "line": 953
         },
         {
           "file": "theme-template/SUPPORT.md",
@@ -3375,11 +3335,11 @@
         },
         {
           "file": "scripts/generate-theme.js",
-          "line": 794
+          "line": 834
         },
         {
           "file": "scripts/generate-theme.js",
-          "line": 869
+          "line": 904
         },
         {
           "file": "theme-template/README.md",
@@ -3485,11 +3445,11 @@
         },
         {
           "file": "scripts/generate-theme.js",
-          "line": 796
+          "line": 836
         },
         {
           "file": "scripts/generate-theme.js",
-          "line": 871
+          "line": 906
         },
         {
           "file": "theme-template/README.md",
@@ -3537,7 +3497,7 @@
       "usage": [
         {
           "file": "scripts/generate-theme.js",
-          "line": 789
+          "line": 829
         },
         {
           "file": "theme-template/CONTRIBUTING.md",
@@ -3594,11 +3554,11 @@
       "usage": [
         {
           "file": "scripts/generate-theme.js",
-          "line": 836
+          "line": 871
         },
         {
           "file": "theme-template/theme.json",
-          "line": 883
+          "line": 878
         },
         {
           "file": ".github/instructions/generate-theme.instructions.md",
@@ -3637,7 +3597,7 @@
       "usage": [
         {
           "file": "scripts/generate-theme.js",
-          "line": 848
+          "line": 883
         },
         {
           "file": "scripts/utils/placeholders.js",
@@ -3789,7 +3749,7 @@
       "usage": [
         {
           "file": "scripts/generate-theme.js",
-          "line": 912
+          "line": 947
         },
         {
           "file": "theme-template/SUPPORT.md",
@@ -3832,7 +3792,7 @@
       "usage": [
         {
           "file": "scripts/generate-theme.js",
-          "line": 784
+          "line": 824
         },
         {
           "file": "theme-template/README.txt",
@@ -3898,7 +3858,7 @@
       "usage": [
         {
           "file": "scripts/generate-theme.js",
-          "line": 904
+          "line": 939
         },
         {
           "file": "theme-template/README.txt",
@@ -3967,11 +3927,11 @@
       "usage": [
         {
           "file": "scripts/generate-theme.js",
-          "line": 509
+          "line": 548
         },
         {
           "file": "scripts/generate-theme.js",
-          "line": 758
+          "line": 798
         },
         {
           "file": "theme-template/README.txt",
@@ -4028,7 +3988,7 @@
         },
         {
           "file": "scripts/generate-theme.js",
-          "line": 800
+          "line": 840
         },
         {
           "file": "theme-template/README.md",
@@ -4194,23 +4154,23 @@
         },
         {
           "file": "scripts/generate-theme.js",
-          "line": 455
+          "line": 494
         },
         {
           "file": "scripts/generate-theme.js",
-          "line": 481
+          "line": 520
         },
         {
           "file": "scripts/generate-theme.js",
-          "line": 653
+          "line": 693
         },
         {
           "file": "scripts/generate-theme.js",
-          "line": 738
+          "line": 778
         },
         {
           "file": "scripts/generate-theme.js",
-          "line": 884
+          "line": 919
         },
         {
           "file": "theme-template/CHANGELOG.md",
@@ -4641,7 +4601,7 @@
       "usage": [
         {
           "file": "scripts/generate-theme.js",
-          "line": 896
+          "line": 931
         }
       ]
     },
@@ -4697,19 +4657,19 @@
         },
         {
           "file": "scripts/generate-theme.js",
-          "line": 428
+          "line": 467
         },
         {
           "file": "scripts/generate-theme.js",
-          "line": 430
+          "line": 469
         },
         {
           "file": "scripts/generate-theme.js",
-          "line": 776
+          "line": 816
         },
         {
           "file": "scripts/generate-theme.js",
-          "line": 885
+          "line": 920
         },
         {
           "file": "theme-template/CONTRIBUTING.md",
@@ -4985,47 +4945,27 @@
         },
         {
           "file": "scripts/generate-theme.js",
-          "line": 422
+          "line": 461
         },
         {
           "file": "scripts/generate-theme.js",
-          "line": 451
+          "line": 490
         },
         {
           "file": "scripts/generate-theme.js",
-          "line": 525
+          "line": 564
         },
         {
           "file": "scripts/generate-theme.js",
-          "line": 574
+          "line": 613
         },
         {
           "file": "scripts/generate-theme.js",
-          "line": 577
+          "line": 616
         },
         {
           "file": "scripts/generate-theme.js",
-          "line": 578
-        },
-        {
-          "file": "scripts/generate-theme.js",
-          "line": 614
-        },
-        {
-          "file": "scripts/generate-theme.js",
-          "line": 629
-        },
-        {
-          "file": "scripts/generate-theme.js",
-          "line": 630
-        },
-        {
-          "file": "scripts/generate-theme.js",
-          "line": 639
-        },
-        {
-          "file": "scripts/generate-theme.js",
-          "line": 643
+          "line": 617
         },
         {
           "file": "scripts/generate-theme.js",
@@ -5033,11 +4973,31 @@
         },
         {
           "file": "scripts/generate-theme.js",
-          "line": 741
+          "line": 668
         },
         {
           "file": "scripts/generate-theme.js",
-          "line": 939
+          "line": 669
+        },
+        {
+          "file": "scripts/generate-theme.js",
+          "line": 679
+        },
+        {
+          "file": "scripts/generate-theme.js",
+          "line": 683
+        },
+        {
+          "file": "scripts/generate-theme.js",
+          "line": 693
+        },
+        {
+          "file": "scripts/generate-theme.js",
+          "line": 781
+        },
+        {
+          "file": "scripts/generate-theme.js",
+          "line": 974
         },
         {
           "file": "theme-template/.wp-env.json",
@@ -6538,7 +6498,7 @@
       "usage": [
         {
           "file": "scripts/generate-theme.js",
-          "line": 901
+          "line": 936
         },
         {
           "file": "theme-template/README.txt",
@@ -6571,15 +6531,15 @@
         },
         {
           "file": "scripts/generate-theme.js",
-          "line": 426
+          "line": 465
         },
         {
           "file": "scripts/generate-theme.js",
-          "line": 485
+          "line": 524
         },
         {
           "file": "scripts/generate-theme.js",
-          "line": 752
+          "line": 792
         },
         {
           "file": "theme-template/README.txt",
@@ -6620,7 +6580,7 @@
       "usage": [
         {
           "file": "scripts/generate-theme.js",
-          "line": 852
+          "line": 887
         },
         {
           "file": "theme-template/functions.php",
@@ -6645,7 +6605,7 @@
       "usage": [
         {
           "file": "scripts/generate-theme.js",
-          "line": 851
+          "line": 886
         },
         {
           "file": "theme-template/functions.php",
@@ -6668,7 +6628,7 @@
       "usage": [
         {
           "file": "scripts/generate-theme.js",
-          "line": 883
+          "line": 918
         }
       ]
     },
@@ -6917,23 +6877,23 @@
         },
         {
           "file": "scripts/generate-theme.js",
-          "line": 423
+          "line": 462
         },
         {
           "file": "scripts/generate-theme.js",
-          "line": 452
+          "line": 491
         },
         {
           "file": "scripts/generate-theme.js",
-          "line": 501
+          "line": 540
         },
         {
           "file": "scripts/generate-theme.js",
-          "line": 653
+          "line": 693
         },
         {
           "file": "scripts/generate-theme.js",
-          "line": 749
+          "line": 789
         },
         {
           "file": "theme-template/CHANGELOG.md",
@@ -7195,11 +7155,11 @@
       "usage": [
         {
           "file": "scripts/generate-theme.js",
-          "line": 840
+          "line": 875
         },
         {
           "file": "theme-template/theme.json",
-          "line": 495
+          "line": 490
         },
         {
           "file": "scripts/utils/placeholders.js",
@@ -7223,7 +7183,7 @@
       "usage": [
         {
           "file": "scripts/generate-theme.js",
-          "line": 793
+          "line": 833
         },
         {
           "file": "theme-template/README.txt",
@@ -7257,6 +7217,6 @@
       "color1",
       "custom_variable"
     ],
-    "scannedAt": "2026-11-09T12:48:08.116Z"
+    "scannedAt": "2026-11-09T13:10:20.930Z"
   }
 }

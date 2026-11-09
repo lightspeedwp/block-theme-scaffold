@@ -68,7 +68,7 @@ The config needs `theme_slug`, `theme_name`, `author` and `theme_uri`. `.github/
 | Group | What it sets |
 | --- | --- |
 | `design_system.colors` | The colours each palette ramp is built around: primary, secondary, accent, neutral, background and text. |
-| `design_system.typography` | The four font roles, `heading`, `body`, `accent` and `monospace` (`*_font_family` and `*_font_name`), plus weights and line heights. See [Fonts](../README.md#fonts). |
+| `design_system.typography` | The font roles `heading`, `body` and `monospace`, and `accent` only when the design uses a third family (`*_font_family` and `*_font_name`), plus weights and line heights. See [Fonts](../README.md#fonts). |
 | `design_system.layout` | Content and wide widths. |
 | `images` | Featured image, thumbnail, gallery and logo sizes. |
 | `urls`, `emails` | Support, docs, changelog and contact details. |

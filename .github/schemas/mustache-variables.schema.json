@@ -7,8 +7,6 @@
   "enum": [
     "YYYYMMDD",
     "accent_color",
-    "accent_font_family",
-    "accent_font_name",
     "agent_role",
     "agent_slug",
     "agent_summary",
@@ -180,6 +178,6 @@
   "examples": [
     "YYYYMMDD",
     "accent_color",
-    "accent_font_family"
+    "agent_role"
   ]
 }
