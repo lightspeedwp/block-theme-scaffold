@@ -1,6 +1,6 @@
 {
   "summary": {
-    "totalFiles": 554,
+    "totalFiles": 553,
     "filesWithVariables": 125,
     "uniqueVariables": 172,
     "totalOccurrences": 1364
@@ -6965,11 +6965,11 @@
         },
         {
           "file": "theme-template/tests/php/ThemeSetupTest.php",
-          "line": 148
+          "line": 150
         },
         {
           "file": "theme-template/tests/php/ThemeSetupTest.php",
-          "line": 149
+          "line": 151
         },
         {
           "file": "theme-template/tests/php/bootstrap.php",
@@ -7862,6 +7862,6 @@
   "meta": {
     "undocumented": [],
     "unused": [],
-    "scannedAt": "2026-11-09T09:17:24.836Z"
+    "scannedAt": "2026-11-09T09:41:55.840Z"
   }
 }
