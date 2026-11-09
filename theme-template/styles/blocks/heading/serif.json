@@ -9,7 +9,7 @@
 			"text": "var(--wp--custom--color--text--default)"
 		},
 		"typography": {
-			"fontFamily": "var(--wp--preset--font-family--accent, Georgia, serif)",
+			"fontFamily": "Georgia, 'Times New Roman', serif",
 			"fontWeight": "400",
 			"lineHeight": "1.2",
 			"fontSize": "var(--wp--preset--font-size--600)"
