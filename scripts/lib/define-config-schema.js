@@ -96,13 +96,13 @@ const CONFIG_SCHEMA = {
 		stage: 2,
 		required: false,
 		type: 'version',
-		default: '6.5',
+		default: '7.1',
 	},
 	tested_wp_version: {
 		stage: 2,
 		required: false,
 		type: 'version',
-		default: '6.7',
+		default: '7.1',
 	},
 	min_php_version: {
 		stage: 2,

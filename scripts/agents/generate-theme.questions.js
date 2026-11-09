@@ -7,7 +7,7 @@ const questions = [
 		type: 'input',
 		name: 'name',
 		message: 'Theme display name:',
-		validate: (val) =>
+		validate: ( val ) =>
 			val && val.length >= 2
 				? true
 				: 'Name must be at least 2 characters.',
@@ -16,8 +16,8 @@ const questions = [
 		type: 'input',
 		name: 'slug',
 		message: 'Theme slug (lowercase, hyphens):',
-		validate: (val) =>
-			/^[a-z0-9\-]{2,}$/.test(val)
+		validate: ( val ) =>
+			/^[a-z0-9\-]{2,}$/.test( val )
 				? true
 				: 'Slug must be lowercase, hyphens, min 2 chars.',
 	},
@@ -25,7 +25,7 @@ const questions = [
 		type: 'input',
 		name: 'author',
 		message: 'Author name:',
-		validate: (val) =>
+		validate: ( val ) =>
 			val && val.length >= 2
 				? true
 				: 'Author must be at least 2 characters.',
@@ -34,14 +34,14 @@ const questions = [
 		type: 'input',
 		name: 'author_uri',
 		message: 'Author website URL:',
-		validate: (val) =>
-			/^https?:\/\//.test(val) ? true : 'Must be a valid URL.',
+		validate: ( val ) =>
+			/^https?:\/\//.test( val ) ? true : 'Must be a valid URL.',
 	},
 	{
 		type: 'input',
 		name: 'description',
 		message: 'Theme description:',
-		validate: (val) =>
+		validate: ( val ) =>
 			val && val.length >= 5
 				? true
 				: 'Description must be at least 5 characters.',
@@ -57,10 +57,10 @@ const questions = [
 		type: 'input',
 		name: 'version',
 		message: 'Initial version (semver):',
-		when: (answers) => !answers.useVersionDefaults,
+		when: ( answers ) => ! answers.useVersionDefaults,
 		default: '1.0.0',
-		validate: (val) =>
-			/^\d+\.\d+(\.\d+)?(-[\w.]+)?$/.test(val)
+		validate: ( val ) =>
+			/^\d+\.\d+(\.\d+)?(-[\w.]+)?$/.test( val )
 				? true
 				: 'Must be valid semver.',
 	},
@@ -68,26 +68,28 @@ const questions = [
 		type: 'input',
 		name: 'min_wp_version',
 		message: 'Minimum WordPress version:',
-		when: (answers) => !answers.useVersionDefaults,
-		default: '6.5',
-		validate: (val) => (/^\d+\.\d+$/.test(val) ? true : 'Format: x.y'),
+		when: ( answers ) => ! answers.useVersionDefaults,
+		default: '7.1',
+		validate: ( val ) =>
+			/^\d+\.\d+$/.test( val ) ? true : 'Format: x.y',
 	},
 	{
 		type: 'input',
 		name: 'tested_wp_version',
 		message: 'Tested up to WordPress version:',
-		when: (answers) => !answers.useVersionDefaults,
-		default: '6.7',
-		validate: (val) => (/^\d+\.\d+$/.test(val) ? true : 'Format: x.y'),
+		when: ( answers ) => ! answers.useVersionDefaults,
+		default: '7.1',
+		validate: ( val ) =>
+			/^\d+\.\d+$/.test( val ) ? true : 'Format: x.y',
 	},
 	{
 		type: 'input',
 		name: 'min_php_version',
 		message: 'Minimum PHP version:',
-		when: (answers) => !answers.useVersionDefaults,
+		when: ( answers ) => ! answers.useVersionDefaults,
 		default: '8.0',
-		validate: (val) =>
-			/^\d+(\.\d+)?$/.test(val) ? true : 'Format: x or x.y',
+		validate: ( val ) =>
+			/^\d+(\.\d+)?$/.test( val ) ? true : 'Format: x or x.y',
 	},
 	// Stage 3: Design Tokens (optional)
 	{
@@ -100,10 +102,10 @@ const questions = [
 		type: 'input',
 		name: 'primary_color',
 		message: 'Primary colour (hex):',
-		when: (answers) => answers.customDesignTokens,
+		when: ( answers ) => answers.customDesignTokens,
 		default: '#0073aa',
-		validate: (val) =>
-			/^#([0-9a-fA-F]{3}|[0-9a-fA-F]{6})$/.test(val)
+		validate: ( val ) =>
+			/^#([0-9a-fA-F]{3}|[0-9a-fA-F]{6})$/.test( val )
 				? true
 				: 'Must be valid hex colour.',
 	},
@@ -111,10 +113,10 @@ const questions = [
 		type: 'input',
 		name: 'secondary_color',
 		message: 'Secondary colour (hex):',
-		when: (answers) => answers.customDesignTokens,
+		when: ( answers ) => answers.customDesignTokens,
 		default: '#005177',
-		validate: (val) =>
-			/^#([0-9a-fA-F]{3}|[0-9a-fA-F]{6})$/.test(val)
+		validate: ( val ) =>
+			/^#([0-9a-fA-F]{3}|[0-9a-fA-F]{6})$/.test( val )
 				? true
 				: 'Must be valid hex colour.',
 	},
@@ -122,10 +124,10 @@ const questions = [
 		type: 'input',
 		name: 'background_color',
 		message: 'Background colour (hex):',
-		when: (answers) => answers.customDesignTokens,
+		when: ( answers ) => answers.customDesignTokens,
 		default: '#ffffff',
-		validate: (val) =>
-			/^#([0-9a-fA-F]{3}|[0-9a-fA-F]{6})$/.test(val)
+		validate: ( val ) =>
+			/^#([0-9a-fA-F]{3}|[0-9a-fA-F]{6})$/.test( val )
 				? true
 				: 'Must be valid hex colour.',
 	},
@@ -133,10 +135,10 @@ const questions = [
 		type: 'input',
 		name: 'text_color',
 		message: 'Text colour (hex):',
-		when: (answers) => answers.customDesignTokens,
+		when: ( answers ) => answers.customDesignTokens,
 		default: '#1a1a1a',
-		validate: (val) =>
-			/^#([0-9a-fA-F]{3}|[0-9a-fA-F]{6})$/.test(val)
+		validate: ( val ) =>
+			/^#([0-9a-fA-F]{3}|[0-9a-fA-F]{6})$/.test( val )
 				? true
 				: 'Must be valid hex colour.',
 	},
@@ -144,17 +146,17 @@ const questions = [
 		type: 'input',
 		name: 'font_family',
 		message: 'Body font family (CSS):',
-		when: (answers) => answers.customDesignTokens,
+		when: ( answers ) => answers.customDesignTokens,
 		default: 'system-ui',
-		validate: (val) => !!val,
+		validate: ( val ) => !! val,
 	},
 	{
 		type: 'input',
 		name: 'heading_font',
 		message: 'Heading font family (CSS):',
-		when: (answers) => answers.customDesignTokens,
+		when: ( answers ) => answers.customDesignTokens,
 		default: 'inherit',
-		validate: (val) => !!val,
+		validate: ( val ) => !! val,
 	},
 	// Stage 4: Initial Content (optional)
 	{
@@ -167,9 +169,9 @@ const questions = [
 		type: 'input',
 		name: 'hero_title',
 		message: 'Homepage hero title:',
-		when: (answers) => answers.addHeroTitle,
+		when: ( answers ) => answers.addHeroTitle,
 		default: 'Welcome',
-		validate: (val) => !!val,
+		validate: ( val ) => !! val,
 	},
 ];
 

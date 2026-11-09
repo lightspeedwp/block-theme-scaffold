@@ -54,9 +54,9 @@ const DRY_RUN_VALUES = {
 	taxonomy_slug: 'category',
 
 	// Requirements
-	requires_wp: '6.5',
+	requires_wp: '7.1',
 	requires_php: '8.0',
-	tested_up_to: '6.7',
+	tested_up_to: '7.1',
 
 	// Meta
 	website: 'https://example.com',

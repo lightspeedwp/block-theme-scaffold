@@ -32,6 +32,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- Generated themes default to `Requires at least: 7.1` and `Tested up to: 7.1` (was 6.5 and 6.7), matching the 7.1 `theme.json` schema; `phpcs.xml` and fixtures follow ([BTS-36](https://linear.app/lightspeedwp/issue/BTS-36)).
 - Font sizes `100` to `900` (`200` Base, `600` X-Large, `900` Colossal); font family slugs are roles (`heading`, `body`, `accent`, `monospace`; `serif` is now `accent`) with real font names ([BTS-35](https://linear.app/lightspeedwp/issue/BTS-35)).
 - Block styles move to `styles/blocks/<block>/<slug>.json`, as the theme.json skills write them, and the unused Midnight palette (`styles/colors/palette.json`) is removed ([BTS-34](https://linear.app/lightspeedwp/issue/BTS-34)).
 - `theme.json` and style JSON use the WordPress 7.1 schema; the width, height and min-width controls and block visibility are on, with no dimension size or text shadow values seeded ([BTS-33](https://linear.app/lightspeedwp/issue/BTS-33)).

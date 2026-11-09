@@ -26,8 +26,8 @@ const PLACEHOLDER_MAP = {
 	'{{tags}}': 'block-theme, full-site-editing, accessibility-ready',
 
 	// WordPress requirements
-	'{{min_wp_version}}': '6.0',
-	'{{tested_wp_version}}': '6.9',
+	'{{min_wp_version}}': '7.1',
+	'{{tested_wp_version}}': '7.1',
 	'{{min_php_version}}': '7.4',
 
 	// License information

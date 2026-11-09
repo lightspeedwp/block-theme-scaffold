@@ -30,8 +30,8 @@ The following mustache variables are available for use in the theme scaffold. Th
 | `{{license}}`           | License short name                        | "GPL-3.0-or-later"                          |
 | `{{license_uri}}`       | License URL                               | "https://www.gnu.org/licenses/gpl-3.0.html" |
 | `{{version}}`           | Initial version (semver)                  | "1.0.0"                                     |
-| `{{min_wp_version}}`    | Minimum WordPress version                 | "6.5"                                       |
-| `{{tested_wp_version}}` | Tested up to WordPress version            | "6.7"                                       |
+| `{{min_wp_version}}`    | Minimum WordPress version                 | "7.1"                                       |
+| `{{tested_wp_version}}` | Tested up to WordPress version            | "7.1"                                       |
 | `{{min_php_version}}`   | Minimum PHP version                       | "8.0"                                       |
 | `{{primary_color}}`     | Primary brand color (hex)                 | "#0073aa"                                   |
 | `{{secondary_color}}`   | Secondary color (hex)                     | "#005177"                                   |
@@ -78,8 +78,8 @@ This agent uses an interactive, multi-stage wizard (see `scripts/lib/wizard.js`)
   "author_uri": "https://lightspeedwp.agency/",
   "description": "A luxurious WordPress theme for safari lodges and eco-tourism",
   "version": "1.0.0",
-  "min_wp_version": "6.5",
-  "tested_wp_version": "6.7",
+  "min_wp_version": "7.1",
+  "tested_wp_version": "7.1",
   "min_php_version": "8.0",
   "primary_color": "#0073aa",
   "secondary_color": "#005177",
@@ -153,8 +153,8 @@ To start generating a new theme, simply say:
 | Question          | Variable                | Default | Notes                     |
 | ----------------- | ----------------------- | ------- | ------------------------- |
 | Initial version   | `{{version}}`           | "1.0.0" | Semver format             |
-| Minimum WordPress | `{{min_wp_version}}`    | "6.5"   | Block theme requires 6.0+ |
-| Tested WordPress  | `{{tested_wp_version}}` | "6.7"   | Latest stable             |
+| Minimum WordPress | `{{min_wp_version}}`    | "7.1"   | Uses the WordPress 7.1 theme.json schema |
+| Tested WordPress  | `{{tested_wp_version}}` | "7.1"   | Latest stable             |
 | Minimum PHP       | `{{min_php_version}}`   | "8.0"   | PHP 8.0+ recommended      |
 
 ### Stage 3: Design Tokens (Optional)
@@ -223,8 +223,8 @@ _You can answer all at once or one by one._"
 Would you like to use defaults?
 
 - Version: 1.0.0
-- Min WP: 6.5
-- Tested WP: 6.7
+- Min WP: 7.1
+- Tested WP: 7.1
 - Min PHP: 8.0
 
 _Say 'yes' for defaults, or provide custom values._"
@@ -256,8 +256,8 @@ Description:    A luxurious WordPress theme for safari lodges and eco-tourism
 Author:         LightSpeed
 Author URI:     https://developer.lsdev.biz
 Version:        1.0.0
-Min WordPress:  6.5
-Tested WP:      6.7
+Min WordPress:  7.1
+Tested WP:      7.1
 Min PHP:        8.0
 ```
 
@@ -277,8 +277,8 @@ cd /path/to/block-theme-scaffold && node scripts/generate-theme.js \
   --author "LightSpeed" \
   --author_uri "https://lightspeedwp.agency/" \
   --version "1.0.0" \
-  --min_wp_version "6.5" \
-  --tested_wp_version "6.7" \
+  --min_wp_version "7.1" \
+  --tested_wp_version "7.1" \
   --min_php_version "8.0"
 ```
 
