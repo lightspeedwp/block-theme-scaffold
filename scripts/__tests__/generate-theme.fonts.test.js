@@ -1,5 +1,6 @@
 /**
- * The four role-named font families come from the config, with defaults.
+ * The role-named font families come from the config. heading, body and
+ * monospace always exist; accent only when the config sets one.
  */
 const { execFileSync } = require( 'child_process' );
 const fs = require( 'fs' );
@@ -75,9 +76,19 @@ describe( 'font families', () => {
 		expect( families.monospace.name ).toBe( 'JetBrains Mono' );
 	} );
 
-	it( 'falls back to Georgia for the accent font', () => {
+	it( 'adds no accent font unless the config sets one', () => {
 		const families = generateWith( {} );
-		expect( families.accent.name ).toBe( 'Georgia' );
-		expect( families.accent.fontFamily ).toContain( 'Georgia' );
+		expect( Object.keys( families ).sort() ).toEqual( [
+			'body',
+			'heading',
+			'monospace',
+		] );
+	} );
+
+	it( 'names the accent font after its first family when no name is set', () => {
+		const families = generateWith( {
+			accent_font_family: '"Playfair Display", Georgia, serif',
+		} );
+		expect( families.accent.name ).toBe( 'Playfair Display' );
 	} );
 } );

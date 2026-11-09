@@ -26,20 +26,6 @@
         "#00ff00"
       ]
     },
-    "accent_font_family": {
-      "type": "string",
-      "description": "Auto-discovered placeholder (design_typography)",
-      "examples": [
-        "accent_font_family"
-      ]
-    },
-    "accent_font_name": {
-      "type": "string",
-      "description": "Auto-discovered placeholder (design_typography)",
-      "examples": [
-        "accent_font_name"
-      ]
-    },
     "agent_role": {
       "type": "string",
       "description": "Auto-discovered placeholder (other)",

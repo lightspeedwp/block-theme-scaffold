@@ -326,11 +326,6 @@
 					"name": "{{heading_font_name}}"
 				},
 				{
-					"slug": "accent",
-					"fontFamily": "{{accent_font_family}}",
-					"name": "{{accent_font_name}}"
-				},
-				{
 					"slug": "monospace",
 					"fontFamily": "{{monospace_font_family}}",
 					"name": "{{monospace_font_name}}"
