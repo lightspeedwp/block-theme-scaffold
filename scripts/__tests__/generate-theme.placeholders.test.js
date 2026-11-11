@@ -352,6 +352,34 @@ describe( 'generate-theme placeholders', () => {
 		expect( unknown ).toEqual( [] );
 	} );
 
+	it( 'has a file for every custom template, and declares every template outside the hierarchy', () => {
+		const { cwd, output } = generate( mockConfig );
+		cleanup.push( cwd );
+		const { customTemplates } = JSON.parse(
+			fs.readFileSync( path.join( output, 'theme.json' ), 'utf8' )
+		);
+		const files = fs
+			.readdirSync( path.join( output, 'templates' ) )
+			.map( ( file ) => path.basename( file, '.html' ) );
+		const declared = customTemplates.map( ( template ) => template.name );
+
+		// BTS-37: theme.json declared templates that had no file.
+		expect(
+			declared.filter( ( name ) => ! files.includes( name ) )
+		).toEqual( [] );
+
+		// Template hierarchy names, including slug-specific ones such as
+		// single-tour or page-about, don't need declaring.
+		const hierarchy =
+			/^(index|home|front-page|singular|single|page|archive|author|category|tag|taxonomy|date|search|404|attachment|privacy-policy|embed)$|^(single|page|archive|author|category|tag|taxonomy)-/;
+		expect(
+			files.filter(
+				( name ) =>
+					! hierarchy.test( name ) && ! declared.includes( name )
+			)
+		).toEqual( [] );
+	} );
+
 	it( 'uses semantic colour tokens, keeping palette colours to their definitions', () => {
 		const { cwd, output } = generate( mockConfig );
 		cleanup.push( cwd );
