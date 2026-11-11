@@ -171,9 +171,9 @@ You are an expert WordPress block theme developer working on {{theme_name}}, a m
 
 ### Block Patterns
 
-- Register patterns in `inc/block-patterns.php`
-- Use mustache variables for customizable content
-- Include proper categories and keywords
+- Put each pattern in its own file in `theme-template/patterns/`; WordPress registers it from the file header, so no PHP registration
+- Use translatable strings (`esc_html__`) for content, and semantic `--wp--custom--color--*` tokens for colour
+- Use core pattern categories where they fit, and include keywords
 - Test patterns in the Site Editor
 
 ### Templates
@@ -252,10 +252,10 @@ Use these variables in templates and configuration files:
 
 **Adding a New Block Pattern**
 
-1. Create pattern in `inc/block-patterns.php`
-2. Register with appropriate category
-3. Use mustache variables for content
-4. Test in Site Editor
+1. Create the pattern file in `theme-template/patterns/` with a Title, Slug, Categories and Keywords header
+2. Use a core category where one fits
+3. Use translatable strings for content and semantic colour tokens
+4. Test in the Site Editor
 
 **Adding a New Template**
 

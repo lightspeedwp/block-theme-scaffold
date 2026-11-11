@@ -1,7 +1,6 @@
 <?php
 /**
- * Tests for inc/block-patterns.php, inc/block-styles.php and
- * inc/template-functions.php.
+ * Tests for inc/block-styles.php and inc/template-functions.php.
  *
  * @package {{theme_slug}}
  */
@@ -14,36 +13,6 @@ use Brain\Monkey\Functions;
  * Include file tests.
  */
 class IncludesTest extends TestCase {
-
-	/**
-	 * Each PHP-registered pattern is prefixed, categorised and has no
-	 * placeholder left from generation.
-	 *
-	 * @return void
-	 */
-	public function test_block_patterns() {
-		$patterns = array();
-		Functions\when( 'register_block_pattern' )->alias(
-			static function ( $name, $args ) use ( &$patterns ) {
-				$patterns[ $name ] = $args;
-			}
-		);
-
-		{{theme_slug|snakeCase}}_register_hero_pattern();
-		{{theme_slug|snakeCase}}_register_cta_pattern();
-		{{theme_slug|snakeCase}}_register_team_pattern();
-
-		$this->assertSame(
-			array( '{{theme_slug}}/hero-section', '{{theme_slug}}/call-to-action', '{{theme_slug}}/team-section' ),
-			array_keys( $patterns )
-		);
-		foreach ( $patterns as $name => $args ) {
-			$this->assertNotEmpty( $args['title'], $name );
-			$this->assertNotEmpty( $args['categories'], $name );
-			$this->assertStringStartsWith( '{{theme_slug}}-', $args['categories'][0], $name );
-			$this->assertStringNotContainsString( '{{', $args['content'], $name );
-		}
-	}
 
 	/**
 	 * Block styles are registered on core blocks only.

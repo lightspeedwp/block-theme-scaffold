@@ -145,7 +145,9 @@ class ThemeSetupTest extends TestCase {
 	 * @return void
 	 */
 	public function test_hooks_are_registered() {
-		$this->assertGreaterThanOrEqual( 15, count( $GLOBALS['{{theme_slug|snakeCase}}_hooks'] ) );
+		// A floor, not a count: it catches the scan in bootstrap.php finding
+		// nothing, without breaking each time a hook is added or removed.
+		$this->assertGreaterThanOrEqual( 10, count( $GLOBALS['{{theme_slug|snakeCase}}_hooks'] ) );
 		foreach ( $GLOBALS['{{theme_slug|snakeCase}}_hooks'] as $hook ) {
 			$this->assertTrue( $hook['registered'], $hook['hook'] . ' => ' . $hook['callback'] );
 			$this->assertTrue( function_exists( $hook['callback'] ), $hook['callback'] );

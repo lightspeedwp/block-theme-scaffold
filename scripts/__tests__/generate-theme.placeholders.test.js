@@ -380,6 +380,72 @@ describe( 'generate-theme placeholders', () => {
 		).toEqual( [] );
 	} );
 
+	it( 'keeps patterns in patterns/, each in a core or theme-registered category', () => {
+		const { cwd, output } = generate( mockConfig );
+		cleanup.push( cwd );
+		// BTS-38: simple patterns are files in patterns/, never PHP strings.
+		const inc = path.join( output, 'inc' );
+		const registering = fs
+			.readdirSync( inc )
+			.filter( ( file ) =>
+				/register_block_pattern\s*\(/.test(
+					fs.readFileSync( path.join( inc, file ), 'utf8' )
+				)
+			);
+		expect( registering ).toEqual( [] );
+
+		// Core categories as registered by WordPress 7.1.
+		const core = [
+			'banner',
+			'buttons',
+			'columns',
+			'text',
+			'query',
+			'featured',
+			'call-to-action',
+			'team',
+			'testimonials',
+			'services',
+			'contact',
+			'about',
+			'portfolio',
+			'gallery',
+			'media',
+			'videos',
+			'audio',
+			'posts',
+			'footer',
+			'header',
+			'navigation',
+		];
+		const functions = fs.readFileSync(
+			path.join( output, 'functions.php' ),
+			'utf8'
+		);
+		const theme = [
+			...functions.matchAll( /'([a-z0-9-]+)'\s*=>\s*array\(\s*'label'/g ),
+		].map( ( match ) => match[ 1 ] );
+		const unknown = [];
+		const patterns = path.join( output, 'patterns' );
+		for ( const file of fs.readdirSync( patterns ) ) {
+			const header = fs
+				.readFileSync( path.join( patterns, file ), 'utf8' )
+				.match( /^\s*\*\s*Categories:\s*(.+)$/m );
+			const categories = header
+				? header[ 1 ].split( ',' ).map( ( item ) => item.trim() )
+				: [];
+			for ( const category of categories ) {
+				if (
+					! core.includes( category ) &&
+					! theme.includes( category )
+				) {
+					unknown.push( `${ file }: ${ category }` );
+				}
+			}
+		}
+		expect( unknown ).toEqual( [] );
+	} );
+
 	it( 'uses semantic colour tokens, keeping palette colours to their definitions', () => {
 		const { cwd, output } = generate( mockConfig );
 		cleanup.push( cwd );
@@ -396,6 +462,7 @@ describe( 'generate-theme placeholders', () => {
 		};
 		for ( const dir of [
 			'patterns',
+			'inc',
 			'parts',
 			'templates',
 			'styles',

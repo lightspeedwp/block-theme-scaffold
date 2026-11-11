@@ -146,7 +146,7 @@ add_action( 'init', '{{theme_slug|snakeCase}}_register_pattern_categories' );
 /**
  * Load theme includes.
  */
-foreach ( array( 'inc/block-patterns.php', 'inc/block-styles.php', 'inc/block-stylesheets.php', 'inc/template-functions.php' ) as ${{theme_slug|snakeCase}}_include ) {
+foreach ( array( 'inc/block-styles.php', 'inc/block-stylesheets.php', 'inc/template-functions.php' ) as ${{theme_slug|snakeCase}}_include ) {
 	require_once get_theme_file_path( ${{theme_slug|snakeCase}}_include );
 }
 

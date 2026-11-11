@@ -3,7 +3,6 @@
  * Title: Sidebar
  * Slug: {{theme_slug}}/sidebar
  * Description: A sidebar with search, recent posts, categories, tags, and archives widgets.
- * Categories: {{theme_slug}}-components
  * Keywords: sidebar, widgets, search, categories, tags, archives
  * Block Types: core/template-part/sidebar
  * Viewport Width: 400
