@@ -158,8 +158,8 @@ The generator supports these mustache variables throughout the scaffold:
 | `{{heading_font_name}}` | text | Display name for heading font | `Poppins` | theme.json |
 | `{{body_font_family}}` | css | CSS font stack for body | `"Inter", sans-serif` | theme.json |
 | `{{body_font_name}}` | text | Display name for body font | `Inter` | theme.json |
-| `{{mono_font_family}}` | css | CSS font stack for code | `"Fira Code", monospace` | theme.json |
-| `{{mono_font_name}}` | text | Display name for mono font | `Fira Code` | theme.json |
+| `{{monospace_font_family}}` | css | CSS font stack for code | `"Fira Code", monospace` | theme.json |
+| `{{monospace_font_name}}` | text | Display name for mono font | `Fira Code` | theme.json |
 | `{{heading_font_weight}}` | number | Font weight for headings | `700` | theme.json |
 | `{{body_line_height}}` | number | Line height for body text | `1.6` | theme.json |
 | `{{heading_line_height}}` | number | Line height for headings | `1.2` | theme.json |

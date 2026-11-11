@@ -86,27 +86,6 @@ class ThemeSetupTest extends TestCase {
 	}
 
 	/**
-	 * Every pattern category uses the theme prefix.
-	 *
-	 * @return void
-	 */
-	public function test_pattern_categories_are_prefixed() {
-		$slugs = array();
-		Functions\when( 'register_block_pattern_category' )->alias(
-			static function ( $slug ) use ( &$slugs ) {
-				$slugs[] = $slug;
-			}
-		);
-
-		{{theme_slug|snakeCase}}_register_pattern_categories();
-
-		$this->assertCount( 6, $slugs );
-		foreach ( $slugs as $slug ) {
-			$this->assertStringStartsWith( '{{theme_slug}}-', $slug );
-		}
-	}
-
-	/**
 	 * The image sizes are registered with the theme prefix.
 	 *
 	 * @return void

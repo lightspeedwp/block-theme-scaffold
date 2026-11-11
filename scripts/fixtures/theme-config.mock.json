@@ -1,6 +1,5 @@
 {
 	"_comment": "Mock configuration mirroring the JSON schema used by scripts/validation/validate-config-schema.js",
-	"wizard_mode": "advanced",
 	"theme_slug": "tour-operator",
 	"theme_name": "Tour Operator",
 	"description": "A WordPress block theme tailored for travel leaders, full of modern layouts and accessibility best practices.",
@@ -70,73 +69,6 @@
 		"excerpt_length": 40,
 		"excerpt_more": "Read more...",
 		"skip_link_text": "Skip to content",
-		"button_border_radius": "6px",
-		"hero_title": "Journeys Crafted for Modern Travelers",
-		"hero_description": "Tour Operator transforms your destination storytelling with immersive full site editing patterns.",
-		"hero_button_text": "Book a Preview",
-		"cta_title": "Ready to Go Live?",
-		"cta_description": "Launch a theme that highlights your destinations, itineraries, and guest stories.",
-		"cta_button_text": "Start Planning",
-		"footer_text": "© {{year}} {{author}}. All rights reserved."
-	},
-	"theme_structure": {
-		"template_parts": [
-			"header",
-			"footer",
-			"sidebar",
-			"post-meta",
-			"pagination"
-		],
-		"templates": [
-			"index",
-			"home",
-			"front-page",
-			"single",
-			"page",
-			"archive",
-			"404"
-		],
-		"patterns": [
-			"header",
-			"footer",
-			"hero",
-			"call-to-action",
-			"features",
-			"testimonials",
-			"post-card",
-			"post-meta",
-			"pagination"
-		],
-		"pattern_categories": [
-			{
-				"slug": "headers",
-				"label": "Headers"
-			},
-			{
-				"slug": "showcase",
-				"label": "Showcase"
-			}
-		],
-		"style_variations": {
-			"global": ["dark"],
-			"block_styles": ["button-primary", "button-rounded"],
-			"section_styles": ["hero-section", "content-section"]
-		}
-	},
-	"features": {
-		"editor_styles": true,
-		"post_thumbnails": true,
-		"custom_logo": true,
-		"html5_support": [
-			"search-form",
-			"comment-form",
-			"comment-list",
-			"gallery",
-			"caption",
-			"style",
-			"script"
-		],
-		"responsive_embeds": true,
-		"woocommerce_support": false
+		"button_border_radius": "6px"
 	}
 }

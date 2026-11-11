@@ -327,8 +327,8 @@
 				},
 				{
 					"slug": "monospace",
-					"fontFamily": "Menlo, Monaco, Consolas, 'Courier New', monospace",
-					"name": "System Monospace"
+					"fontFamily": "{{monospace_font_family}}",
+					"name": "{{monospace_font_name}}"
 				}
 			],
 			"fontSizes": [

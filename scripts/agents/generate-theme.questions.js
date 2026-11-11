@@ -158,21 +158,6 @@ const questions = [
 		default: 'inherit',
 		validate: ( val ) => !! val,
 	},
-	// Stage 4: Initial Content (optional)
-	{
-		type: 'confirm',
-		name: 'addHeroTitle',
-		message: 'Add a homepage hero title?',
-		default: false,
-	},
-	{
-		type: 'input',
-		name: 'hero_title',
-		message: 'Homepage hero title:',
-		when: ( answers ) => answers.addHeroTitle,
-		default: 'Welcome',
-		validate: ( val ) => !! val,
-	},
 ];
 
 module.exports = questions;

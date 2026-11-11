@@ -102,8 +102,6 @@
     "logo_width",
     "min_php_version",
     "min_wp_version",
-    "mono_font_family",
-    "mono_font_name",
     "monospace_font_family",
     "monospace_font_name",
     "mustache",

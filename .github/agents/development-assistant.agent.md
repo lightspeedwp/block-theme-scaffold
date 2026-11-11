@@ -123,7 +123,6 @@ Focus on Playwright, Jest, PHPUnit, and accessibility testing.
 
 - `{{theme_slug}}_setup` — Theme setup
 - `{{theme_slug}}_enqueue_assets` — Asset loading
-- `{{theme_slug}}_register_pattern_categories` — Block pattern categories
 
 ## Example Requests
 
