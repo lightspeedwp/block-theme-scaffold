@@ -67,6 +67,9 @@ const templateDir = path.resolve( __dirname, '..', 'theme-template' );
 // Use a predictable output directory for generation (matches test expectations)
 const outputDir = path.resolve( process.cwd(), 'output-theme' ); // Always use ./output-theme for generation
 
+// The accent font, set in runScript() from the config. Empty: no accent font.
+const accentFont = { family: '', name: '' };
+
 /**
  * Sanitize user input to prevent security vulnerabilities
  * @param input
@@ -319,12 +322,31 @@ For more information, see:
 	console.log( helpText );
 }
 
-function replacePlaceholders( content ) {
+/**
+ * Escape a value for use inside a JSON string, so a font stack such as
+ * "Argesta Display", Georgia, serif keeps theme.json valid.
+ *
+ * @param {string} value Placeholder value.
+ * @return {string} The value with quotes, backslashes and control characters escaped.
+ */
+function escapeJsonString( value ) {
+	return JSON.stringify( String( value ) ).slice( 1, -1 );
+}
+
+/**
+ * Replace every placeholder in a file's content.
+ *
+ * @param {string}  content File content.
+ * @param {boolean} json    True for JSON files: values are escaped for JSON strings.
+ * @return {string} The content with placeholders replaced.
+ */
+function replacePlaceholders( content, json = false ) {
 	let result = content;
+	const escape = json ? escapeJsonString : ( value ) => value;
 
 	// First pass: replace standard placeholders
 	for ( const [ key, value ] of Object.entries( placeholders ) ) {
-		result = result.split( key ).join( value );
+		result = result.split( key ).join( escape( value ) );
 	}
 
 	// Single pass: handle all placeholder formats with optional filters
@@ -375,7 +397,7 @@ function replacePlaceholders( content ) {
 				}
 			}
 
-			return value;
+			return escape( value );
 		}
 	);
 
@@ -388,6 +410,42 @@ function toPackageVendor( value ) {
 		.replace( /[^a-z0-9]+/g, '-' )
 		.replace( /^-+|-+$/g, '' );
 	return vendor || 'theme-vendor';
+}
+
+/**
+ * Add the accent font family to theme.json, only when the config sets one.
+ * A theme gets an accent font when its design uses a third family, so the
+ * template has none by default.
+ *
+ * @param {string} destRoot Generated theme folder.
+ */
+function addAccentFont( destRoot ) {
+	const family = accentFont.family;
+	if ( ! family ) {
+		return;
+	}
+	const themeJsonPath = path.join( destRoot, 'theme.json' );
+	const themeJson = JSON.parse( fs.readFileSync( themeJsonPath, 'utf8' ) );
+	const families = themeJson.settings.typography.fontFamilies;
+	const accent = {
+		slug: 'accent',
+		fontFamily: family,
+		name:
+			accentFont.name ||
+			family.split( ',' )[ 0 ].replace( /["']/g, '' ).trim(),
+	};
+	const monospace = families.findIndex(
+		( item ) => item.slug === 'monospace'
+	);
+	families.splice(
+		monospace === -1 ? families.length : monospace,
+		0,
+		accent
+	);
+	fs.writeFileSync(
+		themeJsonPath,
+		`${ JSON.stringify( themeJson, null, '\t' ) }\n`
+	);
 }
 
 function updateMetadataFiles( destRoot ) {
@@ -559,7 +617,7 @@ function copyAndReplace( src, dest ) {
 		}
 	} else {
 		let content = fs.readFileSync( src, 'utf8' );
-		content = replacePlaceholders( content );
+		content = replacePlaceholders( content, dest.endsWith( '.json' ) );
 		fs.writeFileSync( dest, content );
 	}
 }
@@ -615,6 +673,7 @@ async function main() {
 	}
 
 	updateMetadataFiles( outputDir );
+	addAccentFont( outputDir );
 
 	logger.info(
 		`Theme generation completed successfully: ${ placeholders[ '{{theme_slug}}' ] }`
@@ -906,6 +965,11 @@ async function runScript() {
 	if ( argMap.author && placeholders[ '{{author}}' ] === 'Author Name' ) {
 		throw new Error( 'Invalid author name provided' );
 	}
+
+	accentFont.family =
+		configData.design_system_typography_accent_font_family || '';
+	accentFont.name =
+		configData.design_system_typography_accent_font_name || '';
 
 	await main();
 }

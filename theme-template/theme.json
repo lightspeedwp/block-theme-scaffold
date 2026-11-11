@@ -326,11 +326,6 @@
 					"name": "{{heading_font_name}}"
 				},
 				{
-					"slug": "accent",
-					"fontFamily": "Georgia, 'Times New Roman', serif",
-					"name": "Georgia"
-				},
-				{
 					"slug": "monospace",
 					"fontFamily": "{{monospace_font_family}}",
 					"name": "{{monospace_font_name}}"

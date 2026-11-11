@@ -28,6 +28,8 @@
 			"heading_font_name": "System Font",
 			"body_font_family": "system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
 			"body_font_name": "System Font",
+			"mono_font_family": "Menlo, Monaco, Consolas, 'Courier New', monospace",
+			"mono_font_name": "System Monospace",
 			"heading_font_weight": "700",
 			"body_line_height": "1.6",
 			"heading_line_height": "1.2",

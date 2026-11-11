@@ -288,6 +288,19 @@
 							"default": "System Font",
 							"examples": ["Inter", "Georgia", "System Font"]
 						},
+						"accent_font_family": {
+							"type": "string",
+							"description": "CSS font stack for an accent font family. Optional: the theme gets an accent font only when this is set, for a design that uses a third family.",
+							"examples": [
+								"Georgia, 'Times New Roman', serif",
+								"\"Playfair Display\", Georgia, serif"
+							]
+						},
+						"accent_font_name": {
+							"type": "string",
+							"description": "Display name for the accent font (defaults to the first family in accent_font_family)",
+							"examples": ["Georgia", "Playfair Display"]
+						},
 						"mono_font_family": {
 							"type": "string",
 							"description": "CSS font stack for monospace/code text",
