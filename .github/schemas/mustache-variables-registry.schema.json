@@ -3,13 +3,6 @@
   "description": "Registry of all mustache template variables used in the block theme scaffold",
   "type": "object",
   "properties": {
-    "ThemeSlug": {
-      "type": "string",
-      "description": "Auto-discovered placeholder (other)",
-      "examples": [
-        "ThemeSlug"
-      ]
-    },
     "YYYYMMDD": {
       "type": "string",
       "description": "Auto-discovered placeholder (other)",
@@ -331,14 +324,6 @@
         "collected_version"
       ]
     },
-    "color1": {
-      "type": "string",
-      "description": "Additional color palette option (hex format)",
-      "pattern": "^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$",
-      "examples": [
-        "#0073aa"
-      ]
-    },
     "contact_email": {
       "type": "string",
       "description": "Auto-discovered placeholder (author_contact)",
@@ -482,13 +467,6 @@
       "format": "uri",
       "examples": [
         "https://dev.example.com"
-      ]
-    },
-    "custom_variable": {
-      "type": "string",
-      "description": "Custom variable placeholder (for extensibility)",
-      "examples": [
-        "custom_value"
       ]
     },
     "dark_mode_title": {
@@ -815,6 +793,13 @@
       "description": "Example mustache variable (placeholder in documentation)",
       "examples": [
         "example_value"
+      ]
+    },
+    "my_value": {
+      "type": "string",
+      "description": "Auto-discovered placeholder (other)",
+      "examples": [
+        "my_value"
       ]
     },
     "name": {

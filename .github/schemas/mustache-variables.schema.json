@@ -5,7 +5,6 @@
   "description": "Enumerates every mustache placeholder currently discovered in the scaffold.",
   "type": "string",
   "enum": [
-    "ThemeSlug",
     "YYYYMMDD",
     "accent_color",
     "agent_role",
@@ -47,7 +46,6 @@
     "collected_slug",
     "collected_theme_uri",
     "collected_version",
-    "color1",
     "contact_email",
     "content_section_style_title",
     "content_width",
@@ -67,7 +65,6 @@
     "cta_text",
     "curly",
     "custom_dev_url",
-    "custom_variable",
     "dark_mode_title",
     "date",
     "description",
@@ -106,6 +103,7 @@
     "monospace_font_family",
     "monospace_font_name",
     "mustache",
+    "my_value",
     "name",
     "namespace",
     "neutral_100_color",
@@ -178,8 +176,8 @@
     "year"
   ],
   "examples": [
-    "ThemeSlug",
     "YYYYMMDD",
-    "accent_color"
+    "accent_color",
+    "agent_role"
   ]
 }
