@@ -1,6 +1,6 @@
 {
   "summary": {
-    "totalFiles": 556,
+    "totalFiles": 558,
     "filesWithVariables": 123,
     "uniqueVariables": 170,
     "totalOccurrences": 1337
@@ -237,7 +237,7 @@
       "usage": [
         {
           "file": "CHANGELOG.md",
-          "line": 130
+          "line": 131
         },
         {
           "file": "scripts/generate-theme.js",
@@ -1254,11 +1254,11 @@
       "usage": [
         {
           "file": "CHANGELOG.md",
-          "line": 131
+          "line": 132
         },
         {
           "file": "CHANGELOG.md",
-          "line": 150
+          "line": 151
         },
         {
           "file": "scripts/generate-theme.js",
@@ -1294,7 +1294,7 @@
       "usage": [
         {
           "file": "CHANGELOG.md",
-          "line": 150
+          "line": 151
         },
         {
           "file": "docs/GENERATE_THEME.md",
@@ -2688,7 +2688,7 @@
       "usage": [
         {
           "file": "CHANGELOG.md",
-          "line": 129
+          "line": 130
         },
         {
           "file": "scripts/generate-theme.js",
@@ -2723,7 +2723,7 @@
       "usage": [
         {
           "file": "CHANGELOG.md",
-          "line": 128
+          "line": 129
         },
         {
           "file": "scripts/generate-theme.js",
@@ -2970,11 +2970,11 @@
       "usage": [
         {
           "file": "CHANGELOG.md",
-          "line": 159
+          "line": 160
         },
         {
           "file": "CHANGELOG.md",
-          "line": 234
+          "line": 235
         },
         {
           "file": "README.md",
@@ -3382,7 +3382,7 @@
       "usage": [
         {
           "file": "CHANGELOG.md",
-          "line": 88
+          "line": 89
         },
         {
           "file": ".github/agents/template.agent.md",
@@ -4434,7 +4434,7 @@
       "usage": [
         {
           "file": "CHANGELOG.md",
-          "line": 176
+          "line": 177
         },
         {
           "file": "README.md",
@@ -5218,31 +5218,23 @@
       "usage": [
         {
           "file": "CHANGELOG.md",
-          "line": 78
+          "line": 79
         },
         {
           "file": "CHANGELOG.md",
-          "line": 80
+          "line": 81
         },
         {
           "file": "CHANGELOG.md",
-          "line": 91
+          "line": 92
         },
         {
           "file": "CHANGELOG.md",
-          "line": 91
+          "line": 92
         },
         {
           "file": "CHANGELOG.md",
-          "line": 95
-        },
-        {
-          "file": "CHANGELOG.md",
-          "line": 102
-        },
-        {
-          "file": "CHANGELOG.md",
-          "line": 103
+          "line": 96
         },
         {
           "file": "CHANGELOG.md",
@@ -5266,15 +5258,23 @@
         },
         {
           "file": "CHANGELOG.md",
-          "line": 105
+          "line": 106
         },
         {
           "file": "CHANGELOG.md",
-          "line": 169
+          "line": 106
         },
         {
           "file": "CHANGELOG.md",
-          "line": 250
+          "line": 106
+        },
+        {
+          "file": "CHANGELOG.md",
+          "line": 170
+        },
+        {
+          "file": "CHANGELOG.md",
+          "line": 251
         },
         {
           "file": "README.md",
@@ -7733,6 +7733,6 @@
   "meta": {
     "undocumented": [],
     "unused": [],
-    "scannedAt": "2026-11-09T11:05:29.565Z"
+    "scannedAt": "2026-11-09T12:15:22.237Z"
   }
 }

@@ -64,6 +64,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+- Search results template uses the core Query Title block in place of a block that doesn't exist; a test checks every template block is registered ([BTS-43](https://linear.app/lightspeedwp/issue/BTS-43)).
 - Config `images.*` sizes, `emails.security_email` and `design_system.typography.mono_font_*` now reach the generated theme; the generator ignored them ([BTS-40](https://linear.app/lightspeedwp/issue/BTS-40)).
 - `templates/page-no-title.html` exists for the declared Page (No Title) custom template, and the unused `blank` template is no longer declared; a test checks every custom template has a file ([BTS-37](https://linear.app/lightspeedwp/issue/BTS-37)).
 - The PHP-registered hero, call to action and team patterns are removed (palette colours, a duplicate slug); team is `patterns/team.php`, and the unregistered components category is dropped ([BTS-38](https://linear.app/lightspeedwp/issue/BTS-38)).
