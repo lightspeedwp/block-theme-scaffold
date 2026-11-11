@@ -182,17 +182,17 @@ These variables have sensible defaults but can be customized:
 
 #### `{{min_wp_version}}`
 
-- **Default:** `"6.5"`
+- **Default:** `"7.1"`
 - **Type:** WordPress version
 - **Used in:** style.css, README.txt
-- **Question:** "Minimum WordPress version? (default: 6.5)"
+- **Question:** "Minimum WordPress version? (default: 7.1)"
 
 #### `{{tested_wp_version}}`
 
-- **Default:** `"6.7"`
+- **Default:** `"7.1"`
 - **Type:** WordPress version
 - **Used in:** style.css, README.txt
-- **Question:** "Tested up to WordPress version? (default: 6.7)"
+- **Question:** "Tested up to WordPress version? (default: 7.1)"
 
 #### `{{min_php_version}}`
 
@@ -470,8 +470,8 @@ Would you like to customize version and compatibility settings?
 
 Defaults:
 - Version: 1.0.0
-- Min WordPress: 6.5
-- Tested WordPress: 6.7
+- Min WordPress: 7.1
+- Tested WordPress: 7.1
 - Min PHP: 8.0
 
 Customize? (yes/no):

@@ -258,8 +258,8 @@ OPTIONAL ARGUMENTS (CLI Mode):
   --description "TEXT"     Theme description
   --author_uri "URL"       Author website URL
   --version "X.Y.Z"        Starting version (default: 1.0.0)
-  --min_wp_version "X.Y"   Min WordPress version (default: 6.5)
-  --tested_wp_version "X.Y" Tested WordPress version (default: 6.7)
+  --min_wp_version "X.Y"   Min WordPress version (default: 7.1)
+  --tested_wp_version "X.Y" Tested WordPress version (default: 7.1)
   --min_php_version "X.Y"  Min PHP version (default: 8.0)
 
 CONFIGURATION FILE FORMAT:
@@ -705,12 +705,12 @@ async function runScript() {
 			sanitizeInput(
 				configData.min_wp_version || argMap.min_wp_version,
 				'version'
-			) || '6.5',
+			) || '7.1',
 		'{{tested_wp_version}}':
 			sanitizeInput(
 				configData.tested_wp_version || argMap.tested_wp_version,
 				'version'
-			) || '6.7',
+			) || '7.1',
 		'{{min_php_version}}':
 			sanitizeInput(
 				configData.min_php_version || argMap.min_php_version,
