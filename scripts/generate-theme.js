@@ -172,9 +172,14 @@ function loadConfig( configPath ) {
 		}
 
 		// Validate required fields (backup validation)
-		if ( ! config.theme_slug || ! config.theme_name || ! config.author ) {
+		if (
+			! config.theme_slug ||
+			! config.theme_name ||
+			! config.author ||
+			! config.theme_uri
+		) {
 			throw new Error(
-				'Configuration must include theme_slug, theme_name, and author'
+				'Configuration must include theme_slug, theme_name, author and theme_uri'
 			);
 		}
 
@@ -224,7 +229,7 @@ USAGE:
     node bin/generate-theme.js --config theme-config.json
 
   CLI Mode:
-    node bin/generate-theme.js --slug SLUG --name "NAME" --author "AUTHOR" [OPTIONS]
+    node bin/generate-theme.js --slug SLUG --name "NAME" --author "AUTHOR" --theme_uri "URL" [OPTIONS]
 
   Help:
     node bin/generate-theme.js --help
@@ -247,12 +252,14 @@ MODES:
          --slug tour-operator \\
          --name "Tour Operator" \\
          --author "LightSpeed" \\
-         --author_uri "https://developer.lsdev.biz"
+         --author_uri "https://developer.lsdev.biz" \\
+         --theme_uri "https://developer.lsdev.biz/themes/tour-operator"
 
 REQUIRED ARGUMENTS (CLI Mode):
   --slug SLUG              Theme slug (lowercase, hyphens only)
   --name "NAME"            Theme display name
   --author "AUTHOR"        Author/organization name
+  --theme_uri "URL"        Theme homepage URL (Theme URI in style.css)
 
 OPTIONAL ARGUMENTS (CLI Mode):
   --description "TEXT"     Theme description
@@ -283,7 +290,8 @@ EXAMPLES:
       --slug my-theme \\
       --name "My Theme" \\
       --author "Jane Developer" \\
-      --author_uri "https://jane.dev"
+      --author_uri "https://jane.dev" \\
+      --theme_uri "https://jane.dev/my-theme"
 
   Override config with CLI:
     node bin/generate-theme.js \\
@@ -628,6 +636,12 @@ async function main() {
 }
 
 async function runScript() {
+	// Help needs no theme details, so it comes before any validation.
+	if ( argMap.help || argMap.h ) {
+		showHelp();
+		process.exit( 0 );
+	}
+
 	let configData = {};
 
 	if ( argMap.config ) {
@@ -683,6 +697,24 @@ async function runScript() {
 		throw new Error( 'Invalid theme slug provided' );
 	}
 
+	if ( ! ( configData.theme_uri || argMap.theme_uri ) ) {
+		throw new Error(
+			'Theme URI is required: pass --theme_uri "https://…" or set theme_uri in the config'
+		);
+	}
+
+	let themeUri;
+	try {
+		themeUri = sanitizeInput(
+			configData.theme_uri || argMap.theme_uri,
+			'url'
+		);
+	} catch {
+		throw new Error(
+			'Invalid theme URI: must start with http:// or https://'
+		);
+	}
+
 	placeholders = {
 		'{{theme_name}}':
 			sanitizeInput( configData.theme_name || argMap.name, 'name' ) ||
@@ -698,9 +730,7 @@ async function runScript() {
 		'{{version}}':
 			sanitizeInput( configData.version || argMap.version, 'version' ) ||
 			'1.0.0',
-		'{{theme_uri}}':
-			sanitizeInput( configData.theme_uri || argMap.theme_uri, 'url' ) ||
-			'https://example.com/theme',
+		'{{theme_uri}}': themeUri,
 		'{{min_wp_version}}':
 			sanitizeInput(
 				configData.min_wp_version || argMap.min_wp_version,

@@ -6,6 +6,7 @@
 	"description": "A modern WordPress block theme designed for tour operators, travel agencies, and adventure guides",
 	"author": "Your Agency",
 	"author_uri": "https://youragency.com",
+	"theme_uri": "https://youragency.com/themes/tour-operator",
 	"version": "1.0.0",
 	"min_wp_version": "7.1",
 	"tested_wp_version": "7.1",

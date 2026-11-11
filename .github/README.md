@@ -63,7 +63,7 @@ Please use the attached agent and folder, and generate a theme for me.
 
 **CLI Mode**
 ```bash
-node scripts/generate-theme.js --slug my-theme --name "My Theme" --author  "Your Name" ...
+node scripts/generate-theme.js --slug my-theme --name "My Theme" --author "Your Name" --theme_uri "https://example.com/my-theme" ...
 ```
 
 **JSON Mode**

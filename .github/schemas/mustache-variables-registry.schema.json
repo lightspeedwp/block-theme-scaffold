@@ -317,6 +317,13 @@
         "collected_slug"
       ]
     },
+    "collected_theme_uri": {
+      "type": "string",
+      "description": "Auto-discovered placeholder (urls)",
+      "examples": [
+        "collected_theme_uri"
+      ]
+    },
     "collected_version": {
       "type": "string",
       "description": "Auto-discovered placeholder (versioning)",

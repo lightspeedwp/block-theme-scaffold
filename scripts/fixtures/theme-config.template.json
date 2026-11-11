@@ -6,6 +6,7 @@
 	"description": "A modern WordPress block theme built with accessibility and performance in mind.",
 	"author": "Test Author",
 	"author_uri": "https://example.com",
+	"theme_uri": "https://example.com/my-theme",
 	"version": "1.0.0",
 	"min_wp_version": "7.1",
 	"tested_wp_version": "7.1",

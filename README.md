@@ -32,7 +32,7 @@ Files in `theme-template/` contain `{{mustache}}` placeholders (for example `{{t
 
 ```bash
 npm install
-node scripts/generate-theme.js --slug my-theme --name "My Theme" --author "Your Name" --author_uri "https://example.com"
+node scripts/generate-theme.js --slug my-theme --name "My Theme" --author "Your Name" --author_uri "https://example.com" --theme_uri "https://example.com/my-theme"
 ```
 
 Or from a JSON config:

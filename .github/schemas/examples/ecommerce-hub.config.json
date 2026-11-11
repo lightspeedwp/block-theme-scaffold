@@ -6,6 +6,7 @@
 	"description": "A feature-rich WordPress block theme built for online stores, product catalogs, and digital commerce",
 	"author": "Your Store",
 	"author_uri": "https://yourstore.com",
+	"theme_uri": "https://yourstore.com/themes/ecommerce-hub",
 	"version": "1.0.0",
 	"min_wp_version": "7.1",
 	"tested_wp_version": "7.1",

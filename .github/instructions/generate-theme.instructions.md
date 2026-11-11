@@ -565,6 +565,7 @@ node scripts/generate-theme.js \
   --description "{{collected_description}}" \
   --author "{{collected_author}}" \
   --author_uri "{{collected_author_uri}}" \
+  --theme_uri "{{collected_theme_uri}}" \
   --version "{{collected_version}}"
   # ... additional args if customized
 ```
