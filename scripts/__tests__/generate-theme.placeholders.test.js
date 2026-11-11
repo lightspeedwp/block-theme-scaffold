@@ -446,6 +446,65 @@ describe( 'generate-theme placeholders', () => {
 		expect( unknown ).toEqual( [] );
 	} );
 
+	it( 'uses radius presets 0 to 700, with no hard-coded radius in theme files', () => {
+		const { cwd, output } = generate( mockConfig );
+		cleanup.push( cwd );
+		const { radiusSizes } = JSON.parse(
+			fs.readFileSync( path.join( output, 'theme.json' ), 'utf8' )
+		).settings.border;
+		// BTS-42: the same ladder as TSP and its Figma file.
+		const slugs = radiusSizes.map( ( size ) => size.slug );
+		expect( slugs ).toEqual( [
+			'0',
+			'100',
+			'200',
+			'300',
+			'400',
+			'500',
+			'600',
+			'700',
+		] );
+
+		const found = [];
+		for ( const dir of [
+			'patterns',
+			'parts',
+			'templates',
+			'styles',
+			'src',
+		] ) {
+			const root = path.join( output, dir );
+			if ( ! fs.existsSync( root ) ) {
+				continue;
+			}
+			for ( const entry of fs.readdirSync( root, {
+				recursive: true,
+				withFileTypes: true,
+			} ) ) {
+				if ( ! entry.isFile() ) {
+					continue;
+				}
+				const file = path.join( entry.parentPath, entry.name );
+				const relative = path.relative( output, file );
+				const text = fs.readFileSync( file, 'utf8' );
+				// A length or percentage where a radius preset belongs.
+				for ( const [ match ] of text.matchAll(
+					/"radius":\s*"\d[^"]*"|border-radius:\s*\d[\w.%]*/g
+				) ) {
+					found.push( `${ relative }: ${ match }` );
+				}
+				for ( const [ , slug ] of text.matchAll(
+					/(?:--wp--preset--border-radius--|var:preset\|border-radius\|)([a-z0-9-]+)/g
+				) ) {
+					if ( ! slugs.includes( slug ) ) {
+						found.push( `${ relative }: unknown preset ${ slug }` );
+					}
+				}
+			}
+		}
+		expect( found ).toEqual( [] );
+	} );
+
 	it( 'uses semantic colour tokens, keeping palette colours to their definitions', () => {
 		const { cwd, output } = generate( mockConfig );
 		cleanup.push( cwd );

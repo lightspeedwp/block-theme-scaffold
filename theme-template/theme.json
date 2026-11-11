@@ -36,11 +36,16 @@
 				},
 				{
 					"slug": "500",
-					"name": "xLarge",
+					"name": "X-Large",
 					"size": "24px"
 				},
 				{
 					"slug": "600",
+					"name": "Huge",
+					"size": "50px"
+				},
+				{
+					"slug": "700",
 					"name": "Round",
 					"size": "9999px"
 				}

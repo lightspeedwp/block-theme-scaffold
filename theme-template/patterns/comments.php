@@ -23,7 +23,7 @@
 			<div class="wp-block-group">
 				<!-- wp:group {"layout":{"type":"flex","flexWrap":"nowrap"}} -->
 				<div class="wp-block-group">
-					<!-- wp:avatar {"size":40,"style":{"border":{"radius":"20px"}}} /-->
+					<!-- wp:avatar {"size":40,"style":{"border":{"radius":"var:preset|border-radius|700"}}} /-->
 					<!-- wp:group {"layout":{"type":"flex","orientation":"vertical","justifyContent":"left"}} -->
 					<div class="wp-block-group">
 						<!-- wp:comment-author-name /-->

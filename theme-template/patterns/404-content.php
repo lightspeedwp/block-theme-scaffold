@@ -46,7 +46,7 @@ $no_posts_text        = esc_html__( 'No posts available.', '{{theme_slug}}' );
 		<!-- wp:post-template {"layout":{"type":"grid","columnCount":3},"style":{"spacing":{"blockGap":"var:preset|spacing|40"}}} -->
 			<!-- wp:group {"tagName":"article","style":{"spacing":{"blockGap":"var:preset|spacing|20"}},"layout":{"type":"constrained"}} -->
 			<article class="wp-block-group">
-				<!-- wp:post-featured-image {"isLink":true,"aspectRatio":"16/9","style":{"border":{"radius":"4px"}}} /-->
+				<!-- wp:post-featured-image {"isLink":true,"aspectRatio":"16/9","style":{"border":{"radius":"var:preset|border-radius|100"}}} /-->
 
 				<!-- wp:post-title {"isLink":true,"level":3,"fontSize":"300"} /-->
 
