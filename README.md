@@ -41,7 +41,7 @@ Or from a JSON config:
 node scripts/generate-theme.js --config theme-config.json
 ```
 
-The theme is written to `./output-theme/`. Copy it to `wp-content/themes/`, then run `npm install && composer install && npm run build` inside it.
+The theme is written to `./output-theme/<slug>/`. Copy that folder to `wp-content/themes/<slug>/`, or generate straight into place with `--output ~/Studio/my-site/wp-content/themes/my-theme` (the folder must not exist yet). Then run `npm install && composer install && npm run build` inside it.
 
 ### Fonts
 

@@ -168,6 +168,8 @@ The agent uses `scripts/utils/mode-detector.js` to determine the mode and `scrip
     --name "Scaffold Release Check" \
     --author "Scaffold QA" \
     --author_uri "https://example.com" \
+    --theme_uri "https://example.com/scaffold-release-check" \
+    --output output-theme \
     --version "1.0.0"
 
   # Verify output

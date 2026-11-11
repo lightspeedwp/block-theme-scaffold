@@ -24,7 +24,8 @@ function generate( configPath ) {
 		cwd,
 		stdio: 'pipe',
 	} );
-	return { cwd, output: path.join( cwd, 'output-theme' ) };
+	const [ slug ] = fs.readdirSync( path.join( cwd, 'output-theme' ) );
+	return { cwd, output: path.join( cwd, 'output-theme', slug ) };
 }
 
 function leftovers( dir ) {

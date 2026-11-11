@@ -72,7 +72,7 @@ node scripts/generate-theme.js --config theme-config.json
 ```
 
 #### 4. Copy the theme to your site.
-Copy the `output-theme` directory that will be generated in your repository and copy and paste that in your `themes` directory. 
+The theme is generated in `output-theme/<slug>/`. Copy that folder to `wp-content/themes/<slug>/`, or pass `--output <folder>` to generate it straight into `wp-content/themes/`.
 
 Make sure to rename it to the same value as your Theme Slug.
 

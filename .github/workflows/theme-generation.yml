@@ -49,7 +49,7 @@ jobs:
           mkdir -p "$RUNNER_TEMP/generated"
           cd "$RUNNER_TEMP/generated"
           node "$GITHUB_WORKSPACE/scripts/generate-theme.js" --config "$GITHUB_WORKSPACE/tests/fixtures/generation/$FIXTURE.json"
-          echo "THEME_DIR=$RUNNER_TEMP/generated/output-theme" >> "$GITHUB_ENV"
+          echo "THEME_DIR=$RUNNER_TEMP/generated/output-theme/$(node -p "require('$GITHUB_WORKSPACE/tests/fixtures/generation/$FIXTURE.json').theme_slug")" >> "$GITHUB_ENV"
 
       # A mustache token has no spaces; GitHub Actions ${{ }} expressions do.
       - name: No placeholder is left

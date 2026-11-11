@@ -64,8 +64,9 @@ const logger = new FileLogger( 'generate-theme', 'generation' );
 // Everything else in this repository is generator tooling and is never copied.
 const templateDir = path.resolve( __dirname, '..', 'theme-template' );
 
-// Use a predictable output directory for generation (matches test expectations)
-const outputDir = path.resolve( process.cwd(), 'output-theme' ); // Always use ./output-theme for generation
+// The theme folder: ./output-theme/<slug>/ by default, or --output <folder>.
+// Set in runScript() once the slug is known.
+let outputDir;
 
 // The accent font, set in runScript() from the config. Empty: no accent font.
 const accentFont = { family: '', name: '' };
@@ -306,10 +307,13 @@ TEMPLATE:
   what a generated theme contains.
 
 OUTPUT:
-  ./output-theme/ (relative to the current working directory)
+  ./output-theme/<slug>/ (relative to the current working directory)
+  --output FOLDER          Write the theme to FOLDER instead, for example
+                           --output ~/Studio/my-site/wp-content/themes/my-theme
+                           (the folder must not exist yet)
 
 POST-GENERATION:
-  cd output-theme
+  cd output-theme/<slug>
   npm install
   composer install
   npm run start
@@ -628,9 +632,9 @@ async function main() {
 		process.exit( 0 );
 	}
 
-	console.log(
-		`✓ Output location: ${ path.relative( process.cwd(), outputDir ) }/`
-	);
+	const relativeOutput = path.relative( process.cwd(), outputDir ) || '.';
+
+	console.log( `✓ Output location: ${ relativeOutput }/` );
 
 	if ( ! fs.existsSync( templateDir ) ) {
 		throw new Error( `Theme template folder not found: ${ templateDir }` );
@@ -638,11 +642,7 @@ async function main() {
 
 	if ( fs.existsSync( outputDir ) ) {
 		console.error(
-			`❌ Error: Output directory ${ path.basename(
-				outputDir
-			) } already exists. Remove it or rename it first:\n   rm -rf ${ path.basename(
-				outputDir
-			) }`
+			`❌ Error: Output directory ${ relativeOutput } already exists. Remove it or choose another with --output:\n   rm -rf ${ relativeOutput }`
 		);
 		process.exit( 1 );
 	}
@@ -680,14 +680,14 @@ async function main() {
 	);
 	await logger.save();
 
-	const locationMsg = `Location: ${ path.relative(
-		process.cwd(),
-		outputDir
-	) }/`;
-	const cdMsg = `cd ${ path.basename( outputDir ) }`;
-	const installMsg = `Copy ${ path.basename(
-		outputDir
-	) }/ to wp-content/themes/`;
+	const themeSlug = placeholders[ '{{theme_slug}}' ];
+	const locationMsg = `Location: ${ relativeOutput }/`;
+	const cdMsg = `cd ${ relativeOutput }`;
+	const installMsg = outputDir.includes(
+		`${ path.sep }wp-content${ path.sep }themes${ path.sep }`
+	)
+		? 'Already in wp-content/themes/'
+		: `Copy ${ relativeOutput }/ to wp-content/themes/${ themeSlug }/`;
 
 	console.log(
 		`\u2713 Theme generated successfully!\n\n${ locationMsg }\n\nTheme Details:\n  Name: ${ placeholders[ '{{theme_name}}' ] }\n  Slug: ${ placeholders[ '{{theme_slug}}' ] }\n  Author: ${ placeholders[ '{{author}}' ] }\n  Version: ${ placeholders[ '{{version}}' ] }\n\nNext Steps:\n  1. Navigate to theme directory:\n     ${ cdMsg }\n\n  2. Install dependencies:\n     npm install\n     composer install\n\n  3. Start development:\n     npm run start\n\n  4. Build for production:\n     npm run build\n\n  5. Install in WordPress:\n     - ${ installMsg }\n     - Activate in WordPress admin\n\nFor documentation, see:\n  - README.md (theme overview)\n  - DEVELOPMENT.md (development workflow)\n  - docs/ (complete documentation)\n`
@@ -965,6 +965,14 @@ async function runScript() {
 	if ( argMap.author && placeholders[ '{{author}}' ] === 'Author Name' ) {
 		throw new Error( 'Invalid author name provided' );
 	}
+
+	outputDir = argMap.output
+		? path.resolve( process.cwd(), String( argMap.output ) )
+		: path.resolve(
+				process.cwd(),
+				'output-theme',
+				placeholders[ '{{theme_slug}}' ]
+			);
 
 	accentFont.family =
 		configData.design_system_typography_accent_font_family || '';

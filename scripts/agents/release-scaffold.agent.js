@@ -529,6 +529,7 @@ function testThemeGeneration() {
 		--author "Scaffold QA" \\
 		--author_uri "https://example.com" \\
 		--theme_uri "https://example.com/scaffold-release-test" \\
+		--output output-theme \\
 		--version "$(cat VERSION)"`,
 		{ silent: false }
 	);

@@ -67,6 +67,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+- The generator writes to `output-theme/<slug>/` (or `--output <folder>`), and its next steps and the README say to copy it to `wp-content/themes/<slug>/` ([BTS-44](https://linear.app/lightspeedwp/issue/BTS-44)).
 - Placeholder values are JSON-escaped in JSON files, so a font stack with double quotes no longer breaks theme.json ([BTS-50](https://linear.app/lightspeedwp/issue/BTS-50)).
 - Search results template uses the core Query Title block in place of a block that doesn't exist; a test checks every template block is registered ([BTS-43](https://linear.app/lightspeedwp/issue/BTS-43)).
 - Config `images.*` sizes, `emails.security_email` and `design_system.typography.mono_font_*` now reach the generated theme; the generator ignored them ([BTS-40](https://linear.app/lightspeedwp/issue/BTS-40)).
