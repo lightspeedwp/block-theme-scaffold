@@ -1,9 +1,9 @@
 {
   "summary": {
-    "totalFiles": 561,
-    "filesWithVariables": 123,
+    "totalFiles": 560,
+    "filesWithVariables": 122,
     "uniqueVariables": 171,
-    "totalOccurrences": 1340
+    "totalOccurrences": 1338
   },
   "variables": {
     "ThemeSlug": {
@@ -237,7 +237,7 @@
       "usage": [
         {
           "file": "CHANGELOG.md",
-          "line": 136
+          "line": 137
         },
         {
           "file": "scripts/generate-theme.js",
@@ -1269,11 +1269,11 @@
       "usage": [
         {
           "file": "CHANGELOG.md",
-          "line": 137
+          "line": 138
         },
         {
           "file": "CHANGELOG.md",
-          "line": 156
+          "line": 157
         },
         {
           "file": "scripts/generate-theme.js",
@@ -1309,7 +1309,7 @@
       "usage": [
         {
           "file": "CHANGELOG.md",
-          "line": 156
+          "line": 157
         },
         {
           "file": "docs/GENERATE_THEME.md",
@@ -2563,11 +2563,11 @@
         },
         {
           "file": "theme-template/README.md",
-          "line": 340
+          "line": 344
         },
         {
           "file": "theme-template/README.md",
-          "line": 348
+          "line": 352
         },
         {
           "file": "theme-template/README.txt",
@@ -2649,7 +2649,7 @@
         },
         {
           "file": "theme-template/README.md",
-          "line": 348
+          "line": 352
         },
         {
           "file": "theme-template/README.txt",
@@ -2703,7 +2703,7 @@
       "usage": [
         {
           "file": "CHANGELOG.md",
-          "line": 135
+          "line": 136
         },
         {
           "file": "scripts/generate-theme.js",
@@ -2738,7 +2738,7 @@
       "usage": [
         {
           "file": "CHANGELOG.md",
-          "line": 134
+          "line": 135
         },
         {
           "file": "scripts/generate-theme.js",
@@ -2985,11 +2985,11 @@
       "usage": [
         {
           "file": "CHANGELOG.md",
-          "line": 165
+          "line": 166
         },
         {
           "file": "CHANGELOG.md",
-          "line": 240
+          "line": 241
         },
         {
           "file": "README.md",
@@ -3397,7 +3397,7 @@
       "usage": [
         {
           "file": "CHANGELOG.md",
-          "line": 94
+          "line": 95
         },
         {
           "file": ".github/agents/template.agent.md",
@@ -4438,18 +4438,17 @@
         "theme-template/patterns/single-post-content.php",
         "theme-template/patterns/team.php",
         "theme-template/patterns/testimonials.php",
-        "theme-template/screenshot.png.md",
         "theme-template/src/js/editor.js",
         "theme-template/src/js/theme.js",
         "theme-template/style.css",
         "theme-template/tests/js/editor.test.js",
         "theme-template/webpack.config.js"
       ],
-      "count": 129,
+      "count": 127,
       "usage": [
         {
           "file": "CHANGELOG.md",
-          "line": 182
+          "line": 183
         },
         {
           "file": "README.md",
@@ -4585,7 +4584,7 @@
         },
         {
           "file": "theme-template/README.md",
-          "line": 348
+          "line": 352
         },
         {
           "file": "theme-template/README.txt",
@@ -4646,14 +4645,6 @@
         {
           "file": "theme-template/package.json",
           "line": 80
-        },
-        {
-          "file": "theme-template/screenshot.png.md",
-          "line": 1
-        },
-        {
-          "file": "theme-template/screenshot.png.md",
-          "line": 51
         },
         {
           "file": "theme-template/style.css",
@@ -5085,7 +5076,7 @@
         },
         {
           "file": "theme-template/README.md",
-          "line": 335
+          "line": 339
         },
         {
           "file": "theme-template/README.txt",
@@ -5233,31 +5224,23 @@
       "usage": [
         {
           "file": "CHANGELOG.md",
-          "line": 84
+          "line": 85
         },
         {
           "file": "CHANGELOG.md",
-          "line": 86
+          "line": 87
         },
         {
           "file": "CHANGELOG.md",
-          "line": 97
+          "line": 98
         },
         {
           "file": "CHANGELOG.md",
-          "line": 97
+          "line": 98
         },
         {
           "file": "CHANGELOG.md",
-          "line": 101
-        },
-        {
-          "file": "CHANGELOG.md",
-          "line": 108
-        },
-        {
-          "file": "CHANGELOG.md",
-          "line": 109
+          "line": 102
         },
         {
           "file": "CHANGELOG.md",
@@ -5281,15 +5264,23 @@
         },
         {
           "file": "CHANGELOG.md",
-          "line": 111
+          "line": 112
         },
         {
           "file": "CHANGELOG.md",
-          "line": 175
+          "line": 112
         },
         {
           "file": "CHANGELOG.md",
-          "line": 256
+          "line": 112
+        },
+        {
+          "file": "CHANGELOG.md",
+          "line": 176
+        },
+        {
+          "file": "CHANGELOG.md",
+          "line": 257
         },
         {
           "file": "README.md",
@@ -5501,7 +5492,7 @@
         },
         {
           "file": "theme-template/README.md",
-          "line": 336
+          "line": 340
         },
         {
           "file": "theme-template/README.txt",
@@ -7436,7 +7427,7 @@
         },
         {
           "file": "theme-template/README.md",
-          "line": 348
+          "line": 352
         },
         {
           "file": "theme-template/README.txt",
@@ -7756,6 +7747,6 @@
   "meta": {
     "undocumented": [],
     "unused": [],
-    "scannedAt": "2026-11-09T13:07:18.369Z"
+    "scannedAt": "2026-11-09T13:09:18.612Z"
   }
 }

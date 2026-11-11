@@ -43,6 +43,8 @@ node scripts/generate-theme.js --config theme-config.json
 
 The theme is written to `./output-theme/<slug>/`. Copy that folder to `wp-content/themes/<slug>/`, or generate straight into place with `--output ~/Studio/my-site/wp-content/themes/my-theme` (the folder must not exist yet). Then run `npm install && composer install && npm run build` inside it.
 
+Generated themes have no `screenshot.png`. Make one from the site's logo with the `theme-screenshot` skill in [lightspeedwp/.github](https://github.com/lightspeedwp/.github), and save it in the theme root.
+
 ### Fonts
 
 Font families are named by role: `heading`, `body` and `monospace` always, and `accent` only when the design uses a third family. Set them in the config under `design_system.typography`, each with a CSS stack and a display name (the real font's name):
