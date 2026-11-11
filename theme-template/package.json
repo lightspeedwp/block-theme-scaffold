@@ -87,5 +87,13 @@
 		"repositoryUrl": "{{theme_repo_url}}",
 		"created": "{{created_date}}",
 		"updated": "{{updated_date}}"
+	},
+	"allowScripts": {
+		"@parcel/watcher": false,
+		"core-js": false,
+		"core-js-pure": false,
+		"fs-ext-extra-prebuilt": false,
+		"fsevents": false,
+		"lefthook": false
 	}
 }
