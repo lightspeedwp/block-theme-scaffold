@@ -902,6 +902,14 @@
 			"postTypes": [
 				"page"
 			]
+		},
+		{
+			"name": "page-with-sidebar",
+			"title": "Page with Sidebar",
+			"postTypes": [
+				"page",
+				"post"
+			]
 		}
 	],
 	"templateParts": [
